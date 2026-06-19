@@ -73317,7 +73317,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-19T09:10:11.146Z",
+    "last_run": "2026-06-19T11:38:25.359Z",
     "total_crawled": 58,
     "ai_enabled": true,
     "ai_provider": "groq",
@@ -73720,6 +73720,22 @@
     },
     {
       "timestamp": "2026-06-19T09:10:11.146Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T11:21:10.470Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T11:38:25.360Z",
       "success": true,
       "tools_found": 50,
       "tools_added": 0,
