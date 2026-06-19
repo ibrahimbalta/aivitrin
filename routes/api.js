@@ -1310,14 +1310,51 @@ router.post('/advisor', async function (req, res) {
     const db = readDB();
     const settings = db.crawler_settings || {};
     
-    // Check if API key is set
-    if (settings.ai_api_key) {
+    // Check if API key is set in DB or local environment
+    const apiKey = settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY;
+    if (apiKey) {
       try {
         const { callLLM } = require('../services/ai');
         const categoriesList = db.categories.map(c => `"${c.id}" (${c.name})`).join(', ');
         
-        // Pick a small subset of tools to prevent prompt blowing
-        const availableTools = db.tools.slice(0, 150).map(t => {
+        // Dynamic search heuristics to find top relevant tools for the LLM prompt
+        const stopWords = new Set(['bana', 'bir', 've', 'en', 'için', 'olan', 'araçlar', 'araç', 'yapay', 'zeka', 'bul', 'öner', 'tavsiye', 'et', 'mi', 'mu', 'nedir', 'listele', 'hangileri', 'nasıl']);
+        const keywords = message.toLowerCase()
+          .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+          .split(/\s+/)
+          .filter(word => word.length > 1 && !stopWords.has(word));
+
+        const scoredTools = db.tools.map(t => {
+          let score = 0;
+          const name = String(t.name || '').toLowerCase();
+          const desc = String(t.description || '').toLowerCase();
+          const tags = (Array.isArray(t.tags) ? t.tags.join(' ') : String(t.tags || '')).toLowerCase();
+          const catId = String(t.category_id || '').toLowerCase();
+
+          keywords.forEach(keyword => {
+            if (name === keyword) score += 25;
+            else if (name.includes(keyword)) score += 10;
+            if (desc.includes(keyword)) score += 4;
+            if (tags.includes(keyword)) score += 6;
+            if (catId.includes(keyword)) score += 5;
+          });
+
+          return { tool: t, score };
+        });
+
+        let relevantTools = scoredTools
+          .filter(item => item.score > 0)
+          .sort((a, b) => b.score - a.score || (b.tool.featured || 0) - (a.tool.featured || 0))
+          .map(item => item.tool);
+
+        if (relevantTools.length === 0) {
+          // If no match, fallback to some popular tools
+          relevantTools = [...db.tools]
+            .sort((a, b) => (b.featured || 0) - (a.featured || 0) || (b.rating || 0) - (a.rating || 0));
+        }
+
+        // Limit the tools sent to LLM to prevent prompt blowing
+        const availableTools = relevantTools.slice(0, 80).map(t => {
           return { id: t.id, name: t.name, description: t.description.substring(0, 100), category_id: t.category_id, pricing: t.pricing };
         });
 
@@ -1337,13 +1374,13 @@ Geçerli Kategoriler:
 [ ${categoriesList} ]`;
 
         const userPrompt = `Kullanıcı Mesajı: "${message}"`;
-        const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+        const llResponse = await callLLM(systemPrompt, userPrompt, settings);
         
         let advisorReply = { reply: '', recommended_tool_ids: [] };
         try {
-          advisorReply = JSON.parse(llmResponse);
+          advisorReply = JSON.parse(llResponse);
         } catch (e) {
-          const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+          const cleanJson = llResponse.replace(/```json/g, '').replace(/```/g, '').trim();
           advisorReply = JSON.parse(cleanJson);
         }
         
