@@ -73317,7 +73317,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-19T06:51:12.604Z",
+    "last_run": "2026-06-19T09:10:11.146Z",
     "total_crawled": 58,
     "ai_enabled": true,
     "ai_provider": "groq",
@@ -73709,6 +73709,22 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T09:02:43.244Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T09:10:11.146Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -73927,6 +73943,40 @@
       },
       "approved": false,
       "created_at": "2026-06-19T06:49:39.633Z"
+    },
+    {
+      "id": "story_1781859799317_d53mx",
+      "name": "Tasarımcı Hande",
+      "role": "Arayüz Tasarımcısı — Bursa",
+      "avatar": "T",
+      "color_accent": "linear-gradient(135deg, hsl(15, 95%, 55%), hsl(35, 90%, 50%))",
+      "title": "Tasarım Hızı 3 Kat Arttı",
+      "quote": "3 günden 4 saate düşürdüm!",
+      "stats": [
+        {
+          "value": "3x",
+          "label": "Tasarım Hız�� Artışı"
+        },
+        {
+          "value": "20",
+          "label": "Logo ve İkon Alternatifi"
+        },
+        {
+          "value": "4 saat",
+          "label": "Tasarım Teslim Süresi"
+        }
+      ],
+      "tools": [
+        "Midjourney",
+        "ChatGPT"
+      ],
+      "content": {
+        "challenge": "Tasarım projelerinde yavaşlık",
+        "solution": "Midjourney ile logo ve ikon taslakları, ChatGPT ile sunum metni",
+        "result": "Tasarım teslim süresi 3 günden 4 saate düştü"
+      },
+      "approved": false,
+      "created_at": "2026-06-19T09:03:20.503Z"
     }
   ]
 }

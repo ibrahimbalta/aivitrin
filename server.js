@@ -101,39 +101,45 @@ app.get('/stories', function (req, res) {
 });
 
 // ─── Start ───
-app.listen(PORT, function () {
-  // Preload database from MongoDB Atlas on startup
-  const { syncFromMongo } = require('./db/database');
-  syncFromMongo().catch(err => {
-    console.error('Database preload error on startup:', err.message);
+if (!process.env.VERCEL) {
+  app.listen(PORT, function () {
+    // Preload database from MongoDB Atlas on startup
+    const { syncFromMongo } = require('./db/database');
+    syncFromMongo().catch(err => {
+      console.error('Database preload error on startup:', err.message);
+    });
+
+    console.log('');
+    console.log('⚡ ═══════════════════════════════════════════');
+    console.log('   AIvitrin Sunucusu Çalışıyor!');
+    console.log('   🌐 Site:  http://localhost:' + PORT);
+    console.log('   🔧 Admin: http://localhost:' + PORT + '/admin/login.html');
+    console.log('   👤 Admin: admin / admin123');
+    console.log('═══════════════════════════════════════════════');
+    console.log('');
+
+    // ─── Otomatik Tarayıcı Zamanlayıcısı ───
+    try {
+      const { runCrawler } = require('./services/crawler');
+      // Sunucu açıldıktan 15 saniye sonra ilk otomatik taramayı başlat
+      setTimeout(function () {
+        runCrawler().catch(function (err) {
+          console.error('İlk otomatik tarama hatası:', err);
+        });
+      }, 15000);
+
+      // Her 6 saatte bir çalıştır (6 * 60 * 60 * 1000 ms)
+      setInterval(function () {
+        runCrawler().catch(function (err) {
+          console.error('Zamanlanmış otomatik tarama hatası:', err);
+        });
+      }, 6 * 60 * 60 * 1000);
+    } catch (err) {
+      console.error('Tarayıcı zamanlayıcı hatası:', err.message);
+    }
   });
+}
 
-  console.log('');
-  console.log('⚡ ═══════════════════════════════════════════');
-  console.log('   AIvitrin Sunucusu Çalışıyor!');
-  console.log('   🌐 Site:  http://localhost:' + PORT);
-  console.log('   🔧 Admin: http://localhost:' + PORT + '/admin/login.html');
-  console.log('   👤 Admin: admin / admin123');
-  console.log('═══════════════════════════════════════════════');
-  console.log('');
+// Vercel serverless export
+module.exports = app;
 
-  // ─── Otomatik Tarayıcı Zamanlayıcısı ───
-  try {
-    const { runCrawler } = require('./services/crawler');
-    // Sunucu açıldıktan 15 saniye sonra ilk otomatik taramayı başlat
-    setTimeout(function () {
-      runCrawler().catch(function (err) {
-        console.error('İlk otomatik tarama hatası:', err);
-      });
-    }, 15000);
-
-    // Her 6 saatte bir çalıştır (6 * 60 * 60 * 1000 ms)
-    setInterval(function () {
-      runCrawler().catch(function (err) {
-        console.error('Zamanlanmış otomatik tarama hatası:', err);
-      });
-    }, 6 * 60 * 60 * 1000);
-  } catch (err) {
-    console.error('Tarayıcı zamanlayıcı hatası:', err.message);
-  }
-});
