@@ -6,7 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatbotHtml = `
     <!-- Floating Chat Bubble -->
     <button class="ai-advisor-bubble" id="ai-advisor-bubble" title="AI Danışman'a Sor">
-      <span class="bubble-icon">💬</span>
+      <span class="bubble-icon" style="display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <path d="M12 7l1 2.5L15.5 10 13 11 12 13.5 11 11 8.5 10 11 9.5z" fill="currentColor"></path>
+        </svg>
+      </span>
       <span class="bubble-badge">AI</span>
     </button>
 

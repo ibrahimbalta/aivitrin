@@ -3811,3 +3811,127 @@ img {
   color: var(--text-muted) !important;
 }
 
+/* ---- 26. AI Advisor Promo Banner ---- */
+.ai-promo-banner {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(235, 100, 65, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.ai-promo-banner:hover {
+  border-color: var(--accent-purple);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.18) 0%, rgba(235, 100, 65, 0.08) 100%);
+}
+
+.ai-promo-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.ai-promo-banner-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-purple);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.ai-promo-banner-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-promo-banner-content p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 720px;
+}
+
+.ai-promo-banner-btn {
+  flex-shrink: 0;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(235, 100, 65, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.ai-promo-banner:hover .ai-promo-banner-btn {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(235, 100, 65, 0.35);
+}
+
+@media (max-width: 768px) {
+  .ai-promo-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .ai-promo-banner-left {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .ai-promo-banner-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto;
+  }
+  
+  .ai-promo-banner-content h3 {
+    justify-content: center;
+    font-size: 1.15rem;
+  }
+  
+  .ai-promo-banner-content p {
+    font-size: 0.85rem;
+  }
+  
+  .ai-promo-banner-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
