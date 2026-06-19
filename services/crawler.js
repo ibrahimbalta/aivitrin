@@ -172,6 +172,8 @@ function fetchFeed(url) {
 // Main Crawler Function
 async function runCrawler() {
   console.log('🤖 AI Tarayıcı başlatıldı...');
+  const { syncFromMongo } = require('../db/database');
+  await syncFromMongo();
   const db = readDB();
   const settings = db.crawler_settings || { auto_approve: false, last_run: null, total_crawled: 0 };
   const autoApprove = settings.auto_approve;

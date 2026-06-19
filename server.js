@@ -31,6 +31,17 @@ const { requireAuth } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ─── Database Synchronization Middleware ───
+const { syncFromMongo } = require('./db/database');
+app.use(async (req, res, next) => {
+  try {
+    await syncFromMongo();
+  } catch (err) {
+    console.error('Database sync middleware error:', err.message);
+  }
+  next();
+});
+
 // ─── Middleware ───
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -91,6 +102,12 @@ app.get('/stories', function (req, res) {
 
 // ─── Start ───
 app.listen(PORT, function () {
+  // Preload database from MongoDB Atlas on startup
+  const { syncFromMongo } = require('./db/database');
+  syncFromMongo().catch(err => {
+    console.error('Database preload error on startup:', err.message);
+  });
+
   console.log('');
   console.log('⚡ ═══════════════════════════════════════════');
   console.log('   AIvitrin Sunucusu Çalışıyor!');
