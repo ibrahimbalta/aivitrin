@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2051,OpenAI Search API,openai-search-api,AI Search Platform,Paid,https://platform.openai.com,"AI-powered web and semantic search API","search,llm,api",true,true
+2052,Anthropic Search Tool,anthropic-search-tool,AI Search System,Paid,https://www.anthropic.com,"Claude integrated web search and retrieval system","search,llm,tools",true,true
+2053,Google Gemini Search AI,gemini-search-ai,AI Search Engine,Paid,https://ai.google,"AI-powered Gemini search and retrieval system","search,google,llm",true,true
+2054,Meta AI Search,meta-ai-search,AI Search Platform,Free,https://ai.meta.com,"Meta AI semantic search engine system","search,meta,llm",true,true
+2055,Mistral Search API,mistral-search-api,AI Search API,Paid,https://mistral.ai,"AI retrieval and search API for applications","search,llm,api",true,true
+
+2056,Perplexity AI Search,perplexity-ai-search,AI Answer Engine,Freemium,https://www.perplexity.ai,"AI-powered conversational search engine","search,answer,llm",true,true
+2057,You.com AI Search,you-ai-search,AI Search Engine,Freemium,https://you.com,"AI-powered personalized search engine","search,ai,web",true,true
+2058,Phind AI Search Engine,phind-ai-search-engine,AI Developer Search,Freemium,https://www.phind.com,"AI search engine for developers and coding queries","search,code,ai",true,true
+2059,Andi AI Search,andi-ai-search,AI Search Engine,Free,https://andisearch.com,"Conversational AI search engine without ads","search,ai,chat",true,true
+2060,Kompas AI Search,kompas-ai-search,AI Search Engine,Free,https://kompas.ai,"AI semantic search engine platform","search,ai,semantic",true,true
+
+2061,Exa AI Search,exa-ai-search,AI Semantic Search,Paid,https://exa.ai,"AI semantic web search and retrieval system","search,semantic,llm",true,true
+2062,Metaphor AI Search,metaphor-ai-search,AI Search API,Paid,https://metaphor.systems,"AI search API for structured web retrieval","search,api,llm",true,true
+2063,Tavily AI Search,tavily-ai-search,AI Search API,Paid,https://tavily.com,"AI optimized search API for LLM applications","search,api,ai",true,true
+2064,SerpAPI AI,serpapi-ai,AI Search API,Paid,https://serpapi.com,"Search engine results API for AI applications","search,api,data",true,true
+2065,Bing AI Search API,bing-ai-search-api,AI Search API,Paid,https://www.microsoft.com/bing,"Microsoft AI-powered search API system","search,microsoft,api",true,true
+
+2066,Google Custom Search AI,google-custom-search-ai,AI Search API,Paid,https://programmablesearchengine.google.com,"Custom AI search engine builder","search,google,api",true,true
+2067,Brave AI Search,brave-ai-search,AI Privacy Search,Free,https://search.brave.com,"Privacy-focused AI search engine","search,privacy,ai",true,true
+2068,Kagi AI Search,kagi-ai-search,AI Premium Search,Paid,https://kagi.com,"Ad-free premium AI search engine","search,ai,premium",true,true
+2069,Wolfram Alpha AI,wolfram-alpha-ai,AI Computation Engine,Freemium,https://www.wolframalpha.com,"AI computational knowledge engine","search,math,ai",true,true
+2070,Consensus AI Search,consensus-ai-search,AI Research Search,Freemium,https://consensus.app,"AI search engine for scientific research papers","search,research,ai",true,true
+
+2071,Elicit AI Search,elicit-ai-search,AI Research Assistant,Freemium,https://elicit.org,"AI research paper search and summarization tool","research,search,llm",true,true
+2072,Semantic Scholar AI,semantic-scholar-ai,AI Academic Search,Free,https://www.semanticscholar.org,"AI-powered academic research search engine","research,academic,ai",true,true
+2073,Connected Papers AI,connected-papers-ai,AI Research Graph,Freemium,https://www.connectedpapers.com,"AI research paper relationship visualization tool","research,graph,ai",true,true
+2074,Scite AI Search,scite-ai-search,AI Citation Engine,Paid,https://scite.ai,"AI citation analysis and research validation tool","research,citation,ai",true,true
+2075,ResearchRabbit AI,researchrabbit-ai,AI Research Tool,Free,https://www.researchrabbit.ai,"AI research paper discovery and mapping tool","research,ai,graph",true,true
+
+2076,OpenAI Knowledge Search,openai-knowledge-search,AI Knowledge Engine,Paid,https://platform.openai.com,"AI knowledge retrieval and reasoning system","knowledge,llm,search",true,true
+2077,Anthropic Knowledge Engine,anthropic-knowledge-engine,AI Knowledge System,Paid,https://www.anthropic.com,"Claude knowledge retrieval and reasoning system","knowledge,llm,enterprise",true,true
+2078,Google Knowledge AI,google-knowledge-ai,AI Knowledge Graph,Paid,https://ai.google,"Google AI knowledge graph system","knowledge,google,llm",true,true
+2079,Meta Knowledge AI,meta-knowledge-ai,AI Knowledge System,Free,https://ai.meta.com,"Meta AI knowledge retrieval system","knowledge,meta,llm",true,true
+2080,Mistral Knowledge API,mistral-knowledge-api,AI Knowledge API,Paid,https://mistral.ai,"Knowledge retrieval API for AI applications","knowledge,llm,api",true,true
+
+2081,OpenAI Memory Search,openai-memory-search,AI Memory Retrieval,Paid,https://platform.openai.com,"Memory-based semantic search system for AI","memory,search,llm",true,true
+2082,Pinecone Search Engine,pinecone-search-engine,AI Vector Search,Paid,https://www.pinecone.io,"Vector-based semantic search engine","vector,search,ai",true,true
+2083,Weaviate Search Cloud,weaviate-search-cloud,AI Vector Search,Paid,https://weaviate.io,"Cloud semantic vector search system","vector,search,cloud",true,true
+2084,Qdrant Search Engine,qdrant-search-engine,AI Vector Search,Paid,https://qdrant.tech,"High-performance vector search engine","vector,search,ai",true,true
+2085,Milvus Search Cloud,milvus-search-cloud,AI Vector Search,Paid,https://milvus.io,"Large-scale vector search infrastructure","vector,search,cloud",true,true
+
+2086,Chroma Search DB,chroma-search-db,AI Vector Search,Free,https://www.trychroma.com,"Lightweight vector search database","vector,search,open-source",true,true
+2087,Elastic AI Search,elastic-ai-search,Paid,https://www.elastic.co,"AI-powered enterprise search engine","search,enterprise,ai",true,true
+2088,Algolia AI Search,algolia-ai-search,Paid,https://www.algolia.com,"AI-enhanced instant search API","search,api,ai",true,true
+2089,Typesense AI Search,typesense-ai-search,AI Search Engine,Free,https://typesense.org,"Open-source fast search engine with AI support","search,open-source,ai",true,true
+2090,Zilliz AI Search,zilliz-ai-search,AI Vector Search,Paid,https://zilliz.com,"Cloud vector search engine for AI apps","vector,search,ai",true,true
+
+2091,OpenAI RAG Search Engine,openai-rag-search-engine,AI RAG Search,Paid,https://platform.openai.com,"Retrieval-augmented AI search system","rag,search,llm",true,true
+2092,LangChain RAG Search,langchain-rag-search,AI RAG Framework,Free,https://www.langchain.com,"RAG-based AI search framework","rag,search,framework",true,true
+2093,LlamaIndex RAG Search,llamaindex-rag-search,AI RAG System,Free,https://www.llamaindex.ai,"RAG pipeline for AI search applications","rag,search,data",true,true
+2094,Haystack RAG Search,haystack-rag-search,AI RAG Engine,Free,https://haystack.deepset.ai,"Open-source RAG search engine system","rag,search,open-source",true,true
+2095,Weaviate RAG Search,weaviate-rag-search,Paid,https://weaviate.io,"Vector-based RAG search system","rag,search,vector",true,true
+
+2096,Pinecone RAG Search,pinecone-rag-search,Paid,https://www.pinecone.io,"Cloud RAG search infrastructure","rag,search,cloud",true,true
+2097,Qdrant RAG Search,qdrant-rag-search,Paid,https://qdrant.tech,"Semantic RAG search engine system","rag,search,ai",true,true
+2098,Milvus RAG Search,milvus-rag-search,Paid,https://milvus.io,"Large-scale RAG search system","rag,search,cloud",true,true
+2099,Chroma RAG Search,chroma-rag-search,Free,https://www.trychroma.com,"Lightweight RAG search engine","rag,search,open-source",true,true
+2100,AutoGPT RAG Search,autogpt-rag-search,AI Agent Search,Free,https://github.com/Significant-Gravitas/AutoGPT,"Autonomous agent-based RAG search system","agents,rag,search",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2901,OpenAI Security AI,openai-security-ai,AI Cybersecurity Platform,Paid,https://platform.openai.com,"AI cybersecurity threat detection and response system","security,cyber,ai",true,true
+2902,CrowdStrike AI,crowdstrike-ai,AI Cybersecurity Platform,Paid,https://www.crowdstrike.com,"AI endpoint protection and threat intelligence system","security,endpoint,ai",true,true
+2903,Darktrace AI,darktrace-ai,AI Cyber Defense,Paid,https://www.darktrace.com,"AI autonomous cybersecurity threat detection system","security,defense,ai",true,true
+2904,SentinelOne AI,sentinelone-ai,AI Security Platform,Paid,https://www.sentinelone.com,"AI endpoint protection and response automation system","security,endpoint,ai",true,true
+2905,Microsoft Defender AI,microsoft-defender-ai,AI Security Tool,Paid,https://www.microsoft.com/en-us/security,"AI-based threat protection and security analytics","security,microsoft,ai",true,true
+
+2906,OpenAI Fraud Detection AI,openai-fraud-ai,AI Fraud Detection,Paid,https://platform.openai.com,"AI fraud detection and anomaly detection system","fraud,security,ai",true,true
+2907,Stripe Radar AI,stripe-radar-ai,AI Payment Security,Paid,https://stripe.com/radar,"AI payment fraud detection system","payments,fraud,ai",true,true
+2908,Sift AI,sift-ai,AI Fraud Prevention,Paid,https://sift.com,"AI digital trust and fraud prevention platform","fraud,security,ai",true,true
+2909,Feedzai AI,feedzai-ai,AI Risk Management,Paid,https://feedzai.com,"AI financial fraud detection system","fraud,finance,ai",true,true
+2910,Ravelin AI,ravelin-ai,AI Fraud Detection,Paid,https://www.ravelin.com,"AI e-commerce fraud prevention platform","fraud,ecommerce,ai",true,true
+
+2911,OpenAI Identity AI,openai-identity-ai,AI Identity Verification,Paid,https://platform.openai.com,"AI identity verification and authentication system","identity,security,ai",true,true
+2912,Onfido AI,onfido-ai,AI Identity Verification,Paid,https://onfido.com,"AI identity verification and KYC system","identity,kyc,ai",true,true
+2913,Jumio AI,jumio-ai,AI Identity Platform,Paid,https://www.jumio.com,"AI digital identity verification system","identity,security,ai",true,true
+2914,Trulioo AI,trulioo-ai,AI Identity Verification,Paid,https://www.trulioo.com,"AI global identity verification platform","identity,kyc,ai",true,true
+2915,Persona AI,persona-ai,AI Identity Verification,Paid,https://withpersona.com,"AI identity verification and onboarding system","identity,security,ai",true,true
+
+2916,OpenAI Network Security AI,openai-network-security-ai,AI Network Defense,Paid,https://platform.openai.com,"AI network intrusion detection and protection system","network,security,ai",true,true
+2917,Palo Alto AI,palo-alto-ai,AI Firewall System,Paid,https://www.paloaltonetworks.com,"AI-powered enterprise firewall and security platform","security,network,ai",true,true
+2918,Fortinet AI,fortinet-ai,AI Cybersecurity Platform,Paid,https://www.fortinet.com,"AI network security and firewall protection system","security,network,ai",true,true
+2919,Check Point AI,check-point-ai,AI Security Platform,Paid,https://www.checkpoint.com,"AI cybersecurity and threat prevention system","security,enterprise,ai",true,true
+2920,Cisco Security AI,cisco-security-ai,AI Network Security,Paid,https://www.cisco.com,"AI enterprise network protection system","security,cisco,ai",true,true
+
+2921,OpenAI Data Security AI,openai-data-security-ai,AI Data Protection,Paid,https://platform.openai.com,"AI data encryption and security monitoring system","data,security,ai",true,true
+2922,Vault AI,vault-ai,AI Data Protection,Paid,https://www.hashicorp.com/products/vault,"AI secure data access and encryption system","security,data,ai",true,true
+2923,Varonis AI,varonis-ai,AI Data Security,Paid,https://www.varonis.com,"AI data governance and security platform","security,data,ai",true,true
+2924,BigID AI,bigid-ai,AI Data Privacy,Paid,https://www.bigid.com,"AI data privacy and governance system","privacy,data,ai",true,true
+2925,OneTrust Data AI,onetrust-data-ai,AI Privacy Platform,Paid,https://www.onetrust.com,"AI data privacy and compliance management system","privacy,compliance,ai",true,true
+
+2926,OpenAI Threat Intelligence AI,openai-threat-ai,AI Threat Intelligence,Paid,https://platform.openai.com,"AI cyber threat intelligence and monitoring system","security,threat,ai",true,true
+2927,Recorded Future AI,recorded-future-ai,AI Threat Intelligence,Paid,https://www.recordedfuture.com,"AI cyber threat intelligence platform","security,intelligence,ai",true,true
+2928,Anomali AI,anomali-ai,AI Threat Detection,Paid,https://www.anomali.com,"AI threat detection and security intelligence system","security,threat,ai",true,true
+2929,Flashpoint AI,flashpoint-ai,AI Threat Intelligence,Paid,https://www.flashpoint.io,"AI cyber risk and threat intelligence platform","security,intelligence,ai",true,true
+2930,Cybereason AI,cybereason-ai,AI Endpoint Protection,Paid,https://www.cybereason.com,"AI endpoint detection and response system","security,endpoint,ai",true,true
+
+2931,OpenAI Email Security AI,openai-email-security-ai,AI Email Protection,Paid,https://platform.openai.com,"AI email phishing detection and protection system","email,security,ai",true,true
+2932,Proofpoint AI,proofpoint-ai,AI Email Security,Paid,https://www.proofpoint.com,"AI email security and phishing protection system","email,security,ai",true,true
+2933,Mimecast AI,mimecast-ai,AI Email Protection,Paid,https://www.mimecast.com,"AI email security and threat protection system","email,security,ai",true,true
+2934,Barracuda AI,barracuda-ai,AI Email Security,Paid,https://www.barracuda.com,"AI email filtering and cybersecurity system","email,security,ai",true,true
+2935,Abnormal Security AI,abnormal-security-ai,AI Email Threat Detection,Paid,https://abnormalsecurity.com,"AI behavioral email security platform","email,security,ai",true,true
+
+2936,OpenAI App Security AI,openai-app-security-ai,AI Application Security,Paid,https://platform.openai.com,"AI application vulnerability detection system","security,apps,ai",true,true
+2937,Veracode AI,veracode-ai,AI App Security,Paid,https://www.veracode.com,"AI application security testing platform","security,apps,ai",true,true
+2938,Checkmarx AI,checkmarx-ai,AI Code Security,Paid,https://checkmarx.com,"AI source code security and vulnerability scanning","security,code,ai",true,true
+2939,Snyk Code AI,snyk-code-ai,AI Code Security,Paid,https://snyk.io,"AI code vulnerability detection system","security,code,ai",true,true
+2940,Snyk Cloud AI,snyk-cloud-ai,AI Cloud Security,Paid,https://snyk.io,"AI cloud infrastructure security platform","security,cloud,ai",true,true
+
+2941,OpenAI Governance AI,openai-governance-ai,AI Governance Platform,Paid,https://platform.openai.com,"AI governance and policy compliance system","governance,ai,compliance",true,true
+2942,ServiceNow AI,servicenow-ai,AI Enterprise Workflow,Paid,https://www.servicenow.com,"AI enterprise workflow and governance system","enterprise,workflow,ai",true,true
+2943,SAP AI,sap-ai,AI Enterprise Platform,Paid,https://www.sap.com,"AI enterprise resource planning system","enterprise,erp,ai",true,true
+2944,Oracle AI,oracle-ai,AI Enterprise Cloud,Paid,https://www.oracle.com,"AI enterprise cloud and database system","enterprise,cloud,ai",true,true
+2945,Workiva AI,workiva-ai,AI Compliance Reporting,Paid,https://www.workiva.com,"AI compliance and reporting automation system","compliance,enterprise,ai",true,true
+
+2946,OpenAI Automation Security AI,openai-automation-security-ai,AI Security Automation,Paid,https://platform.openai.com,"AI automated security monitoring system","security,automation,ai",true,true
+2947,Splunk AI,splunk-ai,AI Security Analytics,Paid,https://www.splunk.com,"AI security monitoring and log analytics platform","security,analytics,ai",true,true
+2948,Elastic Security AI,elastic-security-ai,AI Threat Detection,Paid,https://www.elastic.co/security,"AI log analysis and cybersecurity platform","security,logs,ai",true,true
+2949,Datadog Security AI,datadog-security-ai,AI Monitoring Security,Paid,https://www.datadoghq.com,"AI infrastructure monitoring and security platform","security,monitoring,ai",true,true
+2950,New Relic AI,new-relic-ai,AI Observability Platform,Paid,https://newrelic.com,"AI application performance monitoring and security insights","security,observability,ai",true,true

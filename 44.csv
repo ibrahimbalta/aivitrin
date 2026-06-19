@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2151,OpenAI Video Studio,openai-video-studio,AI Video Generation,Paid,https://platform.openai.com,"AI video generation and editing studio","video,genai,ai",true,true
+2152,Google Veo Studio,veo-studio,AI Video Generation,Paid,https://ai.google,"Google Veo-based AI video generation platform","video,google,genai",true,true
+2153,Meta Video AI Studio,meta-video-ai-studio,AI Video Tool,Free,https://ai.meta.com,"Meta AI video generation and editing system","video,meta,genai",true,true
+2154,Mistral Video API,mistral-video-api,AI Video API,Paid,https://mistral.ai,"Multimodal video generation and understanding API","video,llm,api",true,true
+2155,Anthropic Vision Video Tool,anthropic-vision-video-tool,AI Video Understanding,Paid,https://www.anthropic.com,"Video reasoning and multimodal understanding system","video,vision,llm",true,true
+
+2156,Runway Gen-3 Video,runway-gen-3-video,AI Video Generator,Paid,https://runwayml.com,"Advanced AI video generation platform","video,genai,creative",true,true
+2157,Pika Labs AI,pika-labs-ai,AI Video Generator,Freemium,https://pika.art,"Text-to-video AI generation platform","video,genai,ai",true,true
+2158,Luma AI Dream Machine,luma-ai-dream-machine,AI Video Generator,Freemium,https://lumalabs.ai,"High-quality AI video generation model","video,genai,ai",true,true
+2159,Kaiber AI Video,kaiber-ai-video,AI Video Generator,Freemium,https://kaiber.ai,"AI video creation for music and art","video,creative,ai",true,true
+2160,Synthesia AI,synthesia-ai,AI Avatar Video,Paid,https://www.synthesia.io,"AI avatar-based video generation platform","video,avatar,ai",true,true
+
+2161,HeyGen AI Video,heygen-ai-video,AI Avatar Video,Freemium,https://www.heygen.com,"AI spokesperson video generation platform","video,avatar,ai",true,true
+2162,Colossyan AI,colossyan-ai,AI Video Generator,Paid,https://www.colossyan.com,"AI presenter video creation platform","video,avatar,ai",true,true
+2163,DeepBrain AI Video,deepbrain-ai-video,AI Avatar Video,Paid,https://www.deepbrain.io,"AI human avatar video generation system","video,avatar,ai",true,true
+2164,D-ID AI Video,d-id-ai-video,AI Talking Head Video,Freemium,https://www.d-id.com,"AI talking avatar video generation tool","video,avatar,ai",true,true
+2165,Hour One AI,hour-one-ai,AI Video Generator,Paid,https://hourone.ai,"AI human presenter video platform","video,avatar,ai",true,true
+
+2166,Steve AI Video,steve-ai-video,AI Video Generator,Freemium,https://www.steve.ai,"AI explainer video generation platform","video,marketing,ai",true,true
+2167,InVideo AI,invideo-ai,AI Video Editor,Freemium,https://invideo.io,"AI-powered video editing and creation tool","video,editor,ai",true,true
+2168,Kapwing AI Video,kapwing-ai-video,AI Video Editor,Freemium,https://www.kapwing.com,"Online AI video editing platform","video,editor,ai",true,true
+2169,Pictory AI,pictory-ai,AI Video Generator,Freemium,https://pictory.ai,"AI text-to-video content creation tool","video,marketing,ai",true,true
+2170,Descript AI Video,descript-ai-video,AI Video Editing,Paid,https://www.descript.com,"AI video editing and transcription tool","video,editor,ai",true,true
+
+2171,Adobe Premiere AI,adobe-premiere-ai,AI Video Editing,Paid,https://www.adobe.com,"AI-powered video editing in Adobe Premiere","video,adobe,editing",true,true
+2172,Filmora AI Video,filmora-ai-video,AI Video Editor,Freemium,https://filmora.wondershare.com,"AI-assisted video editing software","video,editor,ai",true,true
+2173,VEED AI Video,veed-ai-video,AI Video Editor,Freemium,https://www.veed.io,"Online AI video editing platform","video,editor,ai",true,true
+2174,Clipchamp AI,clipchamp-ai,AI Video Editor,Free,https://clipchamp.com,"Microsoft AI video editing platform","video,microsoft,editor",true,true
+2175,Runway Video Editor,runway-video-editor,AI Video Tool,Paid,https://runwayml.com,"AI-powered video editing suite","video,editor,ai",true,true
+
+2176,Stable Video Diffusion,stable-video-diffusion,AI Video Model,Free,https://stability.ai,"Open-source AI video generation model","video,open-source,ai",true,true
+2177,AnimateDiff AI,animatediff-ai,AI Animation Tool,Free,https://github.com,"AI animation generation framework for video models","video,animation,ai",true,true
+2178,Deforum AI Video,deforum-ai-video,AI Animation Tool,Free,https://github.com,"Stable Diffusion animation video system","video,animation,ai",true,true
+2179,Zeroscope AI Video,zeroscope-ai-video,AI Video Model,Free,https://huggingface.co,"Open-source text-to-video generation model","video,open-source,ai",true,true
+2180,ModelScope Video AI,modelscope-video-ai,AI Video Model,Free,https://modelscope.cn,"Text-to-video AI model framework","video,model,ai",true,true
+
+2181,Runway Motion Brush,runway-motion-brush,AI Video Editing,Paid,https://runwayml.com,"AI motion control for video generation","video,motion,ai",true,true
+2182,Pika Motion AI,pika-motion-ai,AI Video Editing,Freemium,https://pika.art,"AI motion editing and video control tool","video,motion,ai",true,true
+2183,Luma Camera AI,luma-camera-ai,AI Video Capture,Freemium,https://lumalabs.ai,"AI-based 3D video and scene capture tool","video,3d,ai",true,true
+2184,Wonder Studio AI,wonder-studio-ai,AI VFX Tool,Paid,https://wonderdynamics.com,"AI VFX and character replacement system","video,vfx,ai",true,true
+2185,DeepMotion AI,deepmotion-ai,AI Motion Capture,Freemium,https://www.deepmotion.com,"AI motion capture and animation tool","video,motion,ai",true,true
+
+2186,Plask AI Motion,plask-ai-motion,AI Motion Capture,Freemium,https://plask.ai,"AI motion capture for animation and games","video,motion,ai",true,true
+2187,Rokoko AI Motion,rokoko-ai-motion,AI Motion Capture,Paid,https://www.rokoko.com,"AI-powered motion capture system","video,motion,ai",true,true
+2188,Move AI Studio,move-ai-studio,AI Motion Capture,Paid,https://www.move.ai,"Markerless AI motion capture platform","video,motion,ai",true,true
+2189,RUN3D AI Video,run3d-ai-video,AI 3D Video Tool,Freemium,https://run3d.ai,"AI-based 3D video reconstruction tool","video,3d,ai",true,true
+2190,Kaedim AI Video,kaedim-ai-video,AI 3D Generation,Paid,https://www.kaedim3d.com,"AI conversion of video/image to 3D assets","video,3d,ai",true,true
+
+2191,Genmo AI Video,genmo-ai-video,AI Video Generator,Freemium,https://www.genmo.ai,"AI video generation platform with creative controls","video,genai,ai",true,true
+2192,Fliki AI Video,fliki-ai-video,AI Video Generator,Freemium,https://fliki.ai,"AI text-to-video and voiceover generation tool","video,voice,ai",true,true
+2193,Colossyan Studio,colossyan-studio,AI Video Platform,Paid,https://www.colossyan.com,"AI presenter video studio platform","video,avatar,ai",true,true
+2194,Elai AI Video,elai-ai-video,AI Video Generator,Paid,https://elai.io,"AI avatar video creation platform","video,avatar,ai",true,true
+2195,Rephrase AI,rephrase-ai,AI Video Generator,Paid,https://www.rephrase.ai,"AI personalized video generation platform","video,marketing,ai",true,true
+
+2196,Synthesys AI Video,synthesys-ai-video,AI Video Generator,Paid,https://synthesys.io,"AI voice and avatar video generation platform","video,voice,ai",true,true
+2197,Hour One Studio,hour-one-studio,AI Video Platform,Paid,https://hourone.ai,"AI presenter video studio system","video,avatar,ai",true,true
+2198,Deepfake Web AI,deepfake-web-ai,AI Video Face Swap,Freemium,https://deepfakesweb.com,"AI face swap and deepfake video tool","video,face,ai",true,true
+2199,FaceSwap AI Video,faceswap-ai-video,AI Video Tool,Free,https://github.com,"Open-source face swap video system","video,face,ai",true,true
+2200,Avatarify AI,avatarify-ai,AI Avatar Video,Free,https://github.com,"Real-time AI avatar video system","video,avatar,ai",true,true

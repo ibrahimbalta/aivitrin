@@ -1,0 +1,1092 @@
+// Yapay Zeka Vitrini — Ana Uygulama (API Entegrasyonlu)
+'use strict';
+
+/**
+ * Yapay Zeka Vitrini — Ana Uygulama Modülü
+ * API'den veri çeker, arama, filtreleme, tema, animasyon ve render işlemlerini yönetir.
+ */
+
+// ─────────────────────────────────────────────
+// YARDIMCI FONKSİYONLAR
+// ─────────────────────────────────────────────
+
+function debounce(fn, ms) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), ms);
+  };
+}
+
+function getPricingLabel(pricing) {
+  const labels = { ucretsiz: 'Ücretsiz', ucretli: 'Ücretli', freemium: 'Freemium' };
+  return labels[pricing] || pricing;
+}
+
+function getCategoryById(categoryId) {
+  return window._categories.find(function (c) { return c.id === categoryId; });
+}
+
+function trLower(str) {
+  return (str || '').toLocaleLowerCase('tr-TR');
+}
+
+// ─────────────────────────────────────────────
+// UYGULAMA BAŞLATMA
+// ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async function () {
+
+  // Global Toast Notification System
+  window.showToast = function (message, type) {
+    var toast = document.createElement('div');
+    toast.className = 'toast toast-' + (type || 'success');
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(function() {
+      toast.style.animation = 'toastOut 0.3s ease forwards';
+      setTimeout(function() {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 300);
+    }, 4000);
+  };
+  var showToast = window.showToast;
+
+  // Global veri depoları
+  window._categories = [];
+  window._tools = [];
+
+  // ═══════════════════════════════════════════
+  // API'DEN VERİ ÇEKME
+  // ═══════════════════════════════════════════
+  async function fetchCategories() {
+    try {
+      const res = await fetch('/api/categories');
+      const data = await res.json();
+      window._categories = data;
+      return data;
+    } catch (err) {
+      console.error('Kategoriler yüklenemedi:', err);
+      return [];
+    }
+  }
+
+  async function fetchTools() {
+    try {
+      const res = await fetch('/api/tools');
+      const data = await res.json();
+      window._tools = data.tools || data;
+      return window._tools;
+    } catch (err) {
+      console.error('Araçlar yüklenemedi:', err);
+      return [];
+    }
+  }
+
+  async function fetchStats() {
+    try {
+      const res = await fetch('/api/stats');
+      return await res.json();
+    } catch (err) {
+      console.error('İstatistikler yüklenemedi:', err);
+      return { totalTools: 0, totalCategories: 0, freeTools: 0 };
+    }
+  }
+
+  // ═══════════════════════════════════════════
+  // DOM Referansları
+  // ═══════════════════════════════════════════
+  var toolsGrid        = document.querySelector('#tools-grid');
+  var categoriesGrid   = document.querySelector('#categories-grid');
+  var featuredGrid     = document.querySelector('#featured-grid');
+  var searchInput      = document.querySelector('#search-input');
+  var heroSearchInput  = document.querySelector('#hero-search-input');
+  var filterPricing    = document.querySelector('#filter-pricing');
+  var filterLanguage   = document.querySelector('#filter-language');
+  var filterSort       = document.querySelector('#filter-sort');
+  var btnClearFilters  = document.querySelector('#btn-clear-filters');
+  var themeToggle      = document.querySelector('#theme-toggle');
+  var mobileMenuBtn    = document.querySelector('#mobile-menu-btn');
+  var mobileNav        = document.querySelector('#mobile-nav');
+  var newsletterForm   = document.querySelector('#newsletter-form');
+  var toolCountEl      = document.querySelector('#tools-count');
+  var suggestionChips  = document.querySelectorAll('.suggestion-chip');
+  var statTools        = document.querySelector('#stat-tools');
+  var statCategories   = document.querySelector('#stat-categories');
+  var statFree         = document.querySelector('#stat-free');
+  var backToTop        = document.querySelector('#back-to-top');
+  var smartSearchCheckbox = document.querySelector('#smart-search-checkbox');
+  var heroSmartSearchCheckbox = document.querySelector('#hero-smart-search-checkbox');
+  var yerliSearchCheckbox = document.querySelector('#yerli-search-checkbox');
+
+  var activeCategory = null;
+  var currentPage = 1;
+  var itemsPerPage = 12;
+
+  // Interactive Cursor Spotlight tracking
+  document.addEventListener('mousemove', function (e) {
+    document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
+    document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
+  });
+
+  // ═══════════════════════════════════════════
+  // RENDER FONKSİYONLARI
+  // ═══════════════════════════════════════════
+
+  function renderToolCard(tool) {
+    var cat = getCategoryById(tool.category_id || tool.category);
+    var catLabel = cat ? (cat.icon + ' ' + cat.name) : (tool.category_name ? (tool.category_icon + ' ' + tool.category_name) : '');
+    var stars = '★'.repeat(Math.round(tool.rating));
+    var pricingLabel = getPricingLabel(tool.pricing);
+
+    var badges = '';
+    if (tool.featured) {
+      badges += '<span class="badge badge-featured">⭐ Öne Çıkan</span>';
+    }
+    if (tool.is_new || tool.isNew) {
+      badges += '<span class="badge badge-new">🆕 Yeni</span>';
+    }
+
+    // Türkçe Desteği Rozeti
+    if (tool.turkish_supported === 'full') {
+      badges += '<span class="badge badge-tr full">🇹🇷 Türkçe</span>';
+    } else if (tool.turkish_supported === 'partial') {
+      badges += '<span class="badge badge-tr partial">🇹🇷 Kısmi</span>';
+    } else if (tool.turkish_supported === 'none') {
+      badges += '<span class="badge badge-tr none">🇬🇧 İngilizce</span>';
+    }
+
+    // Yerli Teknoloji Rozeti
+    if (tool.made_in_turkey) {
+      badges += '<span class="badge badge-yerli">🇹🇷 Yerli</span>';
+    }
+
+    var tags = tool.tags;
+    if (typeof tags === 'string') {
+      try { tags = JSON.parse(tags); } catch(e) { tags = []; }
+    }
+
+    var tagsHtml = '';
+    if (tags && tags.length > 0) {
+      tagsHtml = '<div class="tool-tags">';
+      tags.slice(0, 3).forEach(function (tag) {
+        tagsHtml += '<span class="tool-tag">' + tag + '</span>';
+      });
+      tagsHtml += '</div>';
+    }
+
+    var firstLetter = tool.name.charAt(0).toUpperCase();
+    var pricingSub = tool.pricing_try ? '<span class="tool-pricing-sub">' + tool.pricing_try + '</span>' : '';
+    
+    // Bookmark durumu
+    var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+    var isBookmarked = bookmarks.indexOf(tool.id) !== -1;
+    var bookmarkClass = isBookmarked ? ' active' : '';
+
+    return '<div class="tool-card" data-url="' + tool.url + '" data-id="' + tool.id + '" style="cursor:pointer">' +
+      '<div class="tool-card-header">' +
+        '<div class="tool-icon">' + firstLetter + '</div>' +
+        '<div class="tool-info">' +
+          '<h3 class="tool-name">' + tool.name + '</h3>' +
+          '<span class="tool-category-badge">' + catLabel + '</span>' +
+        '</div>' +
+        '<div class="tool-header-badges">' + badges + '</div>' +
+      '</div>' +
+      '<p class="tool-description">' + tool.description + '</p>' +
+      '<div class="tool-footer">' +
+        '<div class="tool-rating">' + stars + ' <span>' + tool.rating + '</span></div>' +
+        '<div class="tool-pricing-group">' +
+          '<span class="tool-pricing pricing-' + tool.pricing + '">' + pricingLabel + '</span>' +
+          pricingSub +
+        '</div>' +
+      '</div>' +
+      tagsHtml +
+      '<div class="tool-card-actions">' +
+        '<button class="btn-card-action btn-card-vote" data-id="' + tool.id + '" title="Beğen / Oy Ver">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>' +
+          '<span class="vote-count">' + (tool.votes || 0) + '</span>' +
+        '</button>' +
+        '<button class="btn-card-action btn-card-bookmark' + bookmarkClass + '" data-id="' + tool.id + '" title="Çantama Ekle">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>' +
+        '</button>' +
+        '<button class="btn-card-action btn-card-compare" data-id="' + tool.id + '" title="Karşılaştır">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20L20.5 3.5M20 16v5h-5M4 4l16.5 16.5"></path></svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function bindCardEvents(container) {
+    if (!container) return;
+
+    // Kartların yer imi durumlarını yerel depolamaya göre eşitle
+    var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+    container.querySelectorAll('.btn-card-bookmark').forEach(function (btn) {
+      var id = btn.getAttribute('data-id');
+      if (bookmarks.indexOf(id) !== -1) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    container.querySelectorAll('.tool-card').forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.tool-card-actions')) return;
+        var id = this.getAttribute('data-id');
+        if (id) window.location.href = '/tool/' + id;
+      });
+    });
+
+    container.querySelectorAll('.btn-card-vote').forEach(function (btn) {
+      btn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = this.getAttribute('data-id');
+        
+        var votedList = JSON.parse(localStorage.getItem('voted_tools') || '[]');
+        if (votedList.indexOf(id) !== -1) {
+          showToast('Bu araca zaten oy verdiniz!', 'error');
+          return;
+        }
+
+        var voteCountEl = this.querySelector('.vote-count');
+        var self = this;
+        self.disabled = true;
+
+        try {
+          var res = await fetch('/api/tools/' + id + '/vote', { method: 'POST' });
+          var data = await res.json();
+          if (data.success) {
+            voteCountEl.textContent = data.votes;
+            votedList.push(id);
+            localStorage.setItem('voted_tools', JSON.stringify(votedList));
+            self.classList.add('voted');
+            showToast('Oyunuz başarıyla kaydedildi!', 'success');
+            
+            var localTool = window._tools.find(function(t) { return t.id === id; });
+            if (localTool) localTool.votes = data.votes;
+          } else {
+            showToast(data.error || 'Oy verilemedi.', 'error');
+          }
+        } catch(err) {
+          showToast('Bağlantı hatası.', 'error');
+        } finally {
+          self.disabled = false;
+        }
+      });
+    });
+
+    container.querySelectorAll('.btn-card-bookmark').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var id = this.getAttribute('data-id');
+        var self = this;
+
+        if (!window.isUserLoggedIn) {
+          if (typeof window.showAuthModal === 'function') {
+            window.showAuthModal(function() {
+              self.click();
+            });
+          } else {
+            showToast('Lütfen giriş yapın.', 'error');
+          }
+          return;
+        }
+
+        var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+        var idx = bookmarks.indexOf(id);
+
+        if (idx === -1) {
+          bookmarks.push(id);
+          this.classList.add('active');
+          showToast('AI Çantama başarıyla eklendi!', 'success');
+        } else {
+          bookmarks.splice(idx, 1);
+          this.classList.remove('active');
+          showToast('AI Çantamdan çıkarıldı.', 'success');
+        }
+        localStorage.setItem('toolkit', JSON.stringify(bookmarks));
+        window.dispatchEvent(new CustomEvent('toolkitUpdated'));
+      });
+    });
+
+    container.querySelectorAll('.btn-card-compare').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = this.getAttribute('data-id');
+        var compareList = JSON.parse(localStorage.getItem('compare_tools') || '[]');
+        
+        if (compareList.indexOf(id) !== -1) {
+          showToast('Bu araç zaten karşılaştırma listesinde.', 'error');
+          return;
+        }
+
+        if (compareList.length >= 3) {
+          showToast('En fazla 3 aracı karşılaştırabilirsiniz.', 'error');
+          return;
+        }
+
+        compareList.push(id);
+        localStorage.setItem('compare_tools', JSON.stringify(compareList));
+        showToast('Araç karşılaştırma listesine eklendi.', 'success');
+        
+        if (confirm('Karşılaştırma listesine eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?')) {
+          window.location.href = '/compare';
+        }
+      });
+    });
+  }
+
+  // Çanta değişimlerini dinle ve tüm kartların durumunu güncelle
+  window.addEventListener('toolkitUpdated', function () {
+    var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+    document.querySelectorAll('.btn-card-bookmark').forEach(function (btn) {
+      var id = btn.getAttribute('data-id');
+      if (bookmarks.indexOf(id) !== -1) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  });
+
+  function renderTools(tools, totalFilteredCount) {
+    if (!toolsGrid) return;
+
+    if (toolCountEl) {
+      toolCountEl.textContent = (totalFilteredCount !== undefined ? totalFilteredCount : tools.length) + ' araç bulundu';
+    }
+
+    if (tools.length === 0) {
+      toolsGrid.innerHTML =
+        '<div class="no-results">' +
+          '<div class="no-results-icon">🔍</div>' +
+          '<h3>Araç bulunamadı</h3>' +
+          '<p>Farklı anahtar kelimeler veya filtreler deneyiniz.</p>' +
+        '</div>';
+      return;
+    }
+
+    toolsGrid.innerHTML = tools.map(renderToolCard).join('');
+    bindCardEvents(toolsGrid);
+  }
+
+  function renderPagination(totalItems) {
+    var paginationContainer = document.getElementById('pagination-container');
+    if (!paginationContainer) return;
+
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
+    if (totalPages <= 1) {
+      paginationContainer.innerHTML = '';
+      return;
+    }
+
+    var html = '<span style="font-size:0.875rem;color:var(--text-muted);margin-right:8px">Sayfa:</span>';
+    
+    var range = [];
+    var delta = 2; // number of pages to show around current page
+
+    for (var i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= currentPage - delta && i <= currentPage + delta)) {
+        range.push(i);
+      }
+    }
+
+    var last = null;
+    range.forEach(function(p) {
+      if (last !== null) {
+        if (p - last === 2) {
+          var midPage = last + 1;
+          html += '<button class="page-btn" data-page="' + midPage + '">' + midPage + '</button>';
+        } else if (p - last > 2) {
+          html += '<span style="color:var(--text-muted);padding:0 6px">...</span>';
+        }
+      }
+      var activeClass = (p === currentPage) ? ' active' : '';
+      html += '<button class="page-btn' + activeClass + '" data-page="' + p + '">' + p + '</button>';
+      last = p;
+    });
+
+    paginationContainer.innerHTML = html;
+
+    paginationContainer.querySelectorAll('.page-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var page = parseInt(this.getAttribute('data-page'));
+        currentPage = page;
+        applyFilters();
+        
+        var toolsSection = document.querySelector('#tools-section');
+        if (toolsSection) {
+          toolsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  function renderCategories(categories) {
+    if (!categoriesGrid) return;
+
+    var html = '';
+    categories.forEach(function (cat) {
+      var activeClass = (activeCategory === cat.id) ? ' active' : '';
+      html +=
+        '<button class="category-card' + activeClass + '" data-category="' + cat.id + '">' +
+          '<span class="category-icon">' + cat.icon + '</span>' +
+          '<span class="category-name">' + cat.name + '</span>' +
+          '<span class="category-count">' + cat.count + ' araç</span>' +
+        '</button>';
+    });
+
+    categoriesGrid.innerHTML = html;
+
+    categoriesGrid.querySelectorAll('.category-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var selectedCategory = this.getAttribute('data-category');
+        activeCategory = (activeCategory === selectedCategory) ? null : selectedCategory;
+        currentPage = 1;
+        renderCategories(window._categories);
+        applyFilters();
+        if (activeCategory) {
+          var toolsSection = document.querySelector('#tools-section');
+          if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  function renderFeatured() {
+    if (!featuredGrid) return;
+    var featured = window._tools.filter(function (t) { return t.featured; }).slice(0, 6);
+    featuredGrid.innerHTML = featured.map(renderToolCard).join('');
+    bindCardEvents(featuredGrid);
+  }
+
+  // ═══════════════════════════════════════════
+  // FİLTRELEME & ARAMA
+  // ═══════════════════════════════════════════
+
+  async function applyFilters() {
+    var searchTerm = searchInput ? trLower(searchInput.value.trim()) : '';
+    var pricing = filterPricing ? filterPricing.value : 'all';
+    var language = filterLanguage ? filterLanguage.value : 'all';
+    var sortBy = filterSort ? filterSort.value : 'rating-desc';
+
+    var filtered = [];
+    var matchScores = {};
+
+    var isSmart = (smartSearchCheckbox && smartSearchCheckbox.checked) || 
+                  (heroSmartSearchCheckbox && heroSmartSearchCheckbox.checked);
+
+    if (isSmart && searchTerm) {
+      if (toolsGrid) {
+        toolsGrid.innerHTML = '<div class="loader" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-secondary)">🧠 Yapay Zeka ile Akıllı Arama yapılıyor...</div>';
+      }
+      try {
+        var catParam = activeCategory ? activeCategory : '';
+        var res = await fetch('/api/semantic-search?q=' + encodeURIComponent(searchTerm) + '&pricing=' + pricing + '&category=' + catParam + '&sort=' + sortBy);
+        var data = await res.json();
+        filtered = data.tools || [];
+        if (language && language !== 'all') {
+          filtered = filtered.filter(function (tool) { return tool.turkish_supported === language; });
+        }
+        if (yerliSearchCheckbox && yerliSearchCheckbox.checked) {
+          filtered = filtered.filter(function (tool) { return tool.made_in_turkey; });
+        }
+      } catch (err) {
+        console.error('Akıllı arama başarısız:', err);
+        showToast('Akıllı arama sırasında hata oluştu, yerel arama kullanılıyor.', 'error');
+        isSmart = false;
+      }
+    }
+
+    if (!isSmart || !searchTerm) {
+      window._tools.forEach(function (tool) {
+        if (activeCategory && (tool.category_id || tool.category) !== activeCategory) return;
+        if (pricing && pricing !== 'all' && tool.pricing !== pricing) return;
+        if (language && language !== 'all' && tool.turkish_supported !== language) return;
+        if (yerliSearchCheckbox && yerliSearchCheckbox.checked && !tool.made_in_turkey) return;
+
+        var score = 0;
+
+        if (searchTerm) {
+          var tags = tool.tags;
+          if (typeof tags === 'string') { try { tags = JSON.parse(tags); } catch(e) { tags = []; } }
+
+          var searchWords = searchTerm.split(/\s+/).filter(function(w) { return w.length > 0; });
+          var stopWords = ['yapan', 'aracı', 'arac', 'olan', 'bir', 've', 'en', 'ai', 'yapay', 'zeka', 'çevir', 'cevir', 'siteleri', 'sistemi', 'programi', 'programı'];
+          
+          if (searchWords.length > 1) {
+            searchWords = searchWords.filter(function(w) {
+              return stopWords.indexOf(w) === -1;
+            });
+          }
+          
+          if (searchWords.length === 0) {
+            searchWords = [searchTerm];
+          }
+
+          var nameText = trLower(tool.name);
+          var descText = trLower(tool.description);
+          var tagsText = (tags || []).map(function(t) { return trLower(t); }).join(' ');
+
+          var isMatch = false;
+          searchWords.forEach(function(sw) {
+            var wordMatched = false;
+            if (nameText.indexOf(sw) !== -1) {
+              score += 15;
+              wordMatched = true;
+            }
+            (tags || []).forEach(function(tag) {
+              if (trLower(tag).indexOf(sw) !== -1) {
+                score += 8;
+                wordMatched = true;
+              }
+            });
+            if (descText.indexOf(sw) !== -1) {
+              score += 4;
+              wordMatched = true;
+            }
+
+            if (wordMatched) isMatch = true;
+          });
+
+          if (!isMatch) return;
+        }
+
+        filtered.push(tool);
+        matchScores[tool.id] = score;
+      });
+
+      if (sortBy === 'rating-desc') {
+        filtered.sort(function (a, b) {
+          if (searchTerm) {
+            var diff = matchScores[b.id] - matchScores[a.id];
+            if (Math.abs(diff) > 1) return diff;
+          }
+          return b.rating - a.rating;
+        });
+      } else if (sortBy === 'popular') {
+        filtered.sort(function (a, b) {
+          if (searchTerm) {
+            var diff = matchScores[b.id] - matchScores[a.id];
+            if (Math.abs(diff) > 1) return diff;
+          }
+          return (b.votes || 0) - (a.votes || 0);
+        });
+      } else if (sortBy === 'name-asc') {
+        filtered.sort(function (a, b) { return a.name.localeCompare(b.name, 'tr'); });
+      } else if (sortBy === 'newest') {
+        filtered.sort(function (a, b) {
+          if (a.is_new === b.is_new) {
+            if (searchTerm) {
+              var diff = matchScores[b.id] - matchScores[a.id];
+              if (Math.abs(diff) > 1) return diff;
+            }
+            return b.rating - a.rating;
+          }
+          return a.is_new ? -1 : 1;
+        });
+      }
+    }
+
+    var totalItems = filtered.length;
+    var totalPages = Math.ceil(totalItems / itemsPerPage);
+    if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+    
+    var startIndex = (currentPage - 1) * itemsPerPage;
+    var endIndex = startIndex + itemsPerPage;
+    var pageTools = filtered.slice(startIndex, endIndex);
+
+    renderTools(pageTools, totalItems);
+    renderPagination(totalItems);
+  }
+
+  // ═══════════════════════════════════════════
+  // OLAY DİNLEYİCİLER
+  // ═══════════════════════════════════════════
+
+  if (searchInput) {
+    searchInput.addEventListener('keyup', debounce(function() {
+      currentPage = 1;
+      applyFilters();
+    }, 200));
+  }
+
+  if (heroSearchInput) {
+    heroSearchInput.addEventListener('keyup', debounce(function() {
+      if (searchInput) {
+        searchInput.value = heroSearchInput.value;
+        currentPage = 1;
+        var toolsSection = document.querySelector('#tools-section');
+        if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+        applyFilters();
+      }
+    }, 300));
+  }
+
+  if (smartSearchCheckbox) {
+    smartSearchCheckbox.addEventListener('change', function () {
+      if (heroSmartSearchCheckbox) heroSmartSearchCheckbox.checked = this.checked;
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (heroSmartSearchCheckbox) {
+    heroSmartSearchCheckbox.addEventListener('change', function () {
+      if (smartSearchCheckbox) smartSearchCheckbox.checked = this.checked;
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (yerliSearchCheckbox) {
+    yerliSearchCheckbox.addEventListener('change', function () {
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (filterPricing) {
+    filterPricing.addEventListener('change', function() {
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (filterLanguage) {
+    filterLanguage.addEventListener('change', function() {
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (filterSort) {
+    filterSort.addEventListener('change', function() {
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  if (btnClearFilters) {
+    btnClearFilters.addEventListener('click', function () {
+      if (searchInput) searchInput.value = '';
+      if (heroSearchInput) heroSearchInput.value = '';
+      if (filterPricing) filterPricing.value = 'all';
+      if (filterLanguage) filterLanguage.value = 'all';
+      if (filterSort) filterSort.value = 'rating-desc';
+      if (yerliSearchCheckbox) yerliSearchCheckbox.checked = false;
+      activeCategory = null;
+      currentPage = 1;
+      renderCategories(window._categories);
+      applyFilters();
+    });
+  }
+
+  // Öneri chip'leri
+  suggestionChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var term = this.textContent.trim();
+      if (searchInput) {
+        searchInput.value = term;
+        currentPage = 1;
+        var toolsSection = document.querySelector('#tools-section');
+        if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+        applyFilters();
+      }
+    });
+  });
+
+  // Footer kategori linkleri
+  var footerCategories = document.querySelectorAll('#footer-categories a');
+  footerCategories.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var selectedCategory = this.getAttribute('data-category');
+      activeCategory = selectedCategory;
+      currentPage = 1;
+      renderCategories(window._categories);
+      applyFilters();
+      var toolsSection = document.querySelector('#tools-section');
+      if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // ═══════════════════════════════════════════
+  // TEMA DEĞİŞTİRİCİ
+  // ═══════════════════════════════════════════
+  var savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = (current === 'dark') ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+
+  // ═══════════════════════════════════════════
+  // MOBİL MENÜ
+  // ═══════════════════════════════════════════
+  if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener('click', function () {
+      mobileNav.classList.toggle('active');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('active');
+      });
+    });
+  }
+
+  // ═══════════════════════════════════════════
+  // SCROLL ANİMASYONLARI
+  // ═══════════════════════════════════════════
+  var animatedElements = document.querySelectorAll('.animate-on-scroll');
+  if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(function (el) { scrollObserver.observe(el); });
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href');
+      if (targetId && targetId.length > 1) {
+        var target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // Back to top
+  if (backToTop) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ═══════════════════════════════════════════
+  // BÜLTEN FORMU
+  // ═══════════════════════════════════════════
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var emailInput = this.querySelector('input[type="email"]');
+      var email = emailInput ? emailInput.value.trim() : '';
+      if (!email) return;
+
+      var self = this;
+      var submitBtn = self.querySelector('button[type="submit"]');
+      var originalBtnText = submitBtn ? submitBtn.textContent : 'Abone Ol';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'İşleniyor...';
+      }
+
+      fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var msg = document.createElement('div');
+        if (data.success) {
+          msg.className = 'newsletter-success';
+          msg.style.color = '#10b981';
+          msg.style.marginTop = '12px';
+          msg.style.fontSize = '0.9rem';
+          msg.innerHTML = '🎉 Teşekkürler! <strong>' + email + '</strong> adresi bültenimize başarıyla kaydedildi.';
+          self.reset();
+        } else {
+          msg.className = 'newsletter-error';
+          msg.style.color = '#ef4444';
+          msg.style.marginTop = '12px';
+          msg.style.fontSize = '0.9rem';
+          msg.innerHTML = '❌ Hata: ' + (data.error || 'Abone olunamadı.');
+        }
+        self.parentNode.insertBefore(msg, self.nextSibling);
+        setTimeout(function () {
+          if (msg.parentNode) msg.parentNode.removeChild(msg);
+        }, 5000);
+      })
+      .catch(function (err) {
+        var msg = document.createElement('div');
+        msg.className = 'newsletter-error';
+        msg.style.color = '#ef4444';
+        msg.style.marginTop = '12px';
+        msg.style.fontSize = '0.9rem';
+        msg.innerHTML = '❌ Sunucu bağlantı hatası.';
+        self.parentNode.insertBefore(msg, self.nextSibling);
+        setTimeout(function () {
+          if (msg.parentNode) msg.parentNode.removeChild(msg);
+        }, 5000);
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      });
+    });
+  }
+
+  // ═══════════════════════════════════════════
+  // İSTATİSTİK SAYACI ANİMASYONU
+  // ═══════════════════════════════════════════
+  function animateCounter(element, target, duration) {
+    if (!element) return;
+    var startTs = null;
+    function step(timestamp) {
+      if (!startTs) startTs = timestamp;
+      var progress = Math.min((timestamp - startTs) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 4);
+      element.textContent = Math.floor(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        element.textContent = target;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ═══════════════════════════════════════════
+  // VERİ YÜKLEME VE İLK RENDER
+  // ═══════════════════════════════════════════
+  try {
+    const [categories, tools, stats] = await Promise.all([
+      fetchCategories(),
+      fetchTools(),
+      fetchStats()
+    ]);
+
+    renderCategories(categories);
+    renderFeatured();
+    applyFilters();
+    renderDirectoryIndex(categories, tools);
+
+    // İstatistikler
+    var statsBar = document.querySelector('.stats-bar');
+    if (statsBar && 'IntersectionObserver' in window) {
+      var statsObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(statTools, stats.totalTools || tools.length, 1500);
+            animateCounter(statCategories, stats.totalCategories || categories.length, 1500);
+            animateCounter(statFree, stats.freeTools || 0, 1500);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      statsObserver.observe(statsBar);
+    } else {
+      animateCounter(statTools, stats.totalTools || tools.length, 1500);
+      animateCounter(statCategories, stats.totalCategories || categories.length, 1500);
+      animateCounter(statFree, stats.freeTools || 0, 1500);
+    }
+
+    // ─── ARAÇ GÖNDERME MODALI MANTIĞI ───
+    var subCategorySelect = document.getElementById('sub-category');
+    if (subCategorySelect && categories) {
+      subCategorySelect.innerHTML = '<option value="">Kategori Seçin</option>' + categories.map(function(c) {
+        return '<option value="' + c.id + '">' + c.icon + ' ' + c.name + '</option>';
+      }).join('');
+    }
+
+    var submitModal = document.getElementById('submit-tool-modal');
+    var btnSubmitTool = document.getElementById('btn-submit-tool');
+    var mobileBtnSubmitTool = document.getElementById('mobile-btn-submit-tool');
+    var submitModalClose = document.getElementById('submit-modal-close');
+    var submitModalCancel = document.getElementById('submit-modal-cancel');
+    var submitToolForm = document.getElementById('submit-tool-form');
+    var btnSubmitSave = document.getElementById('btn-submit-save');
+
+    function openSubmitModal(e) {
+      if(e) e.preventDefault();
+      if(submitModal) submitModal.classList.add('active');
+    }
+    function closeSubmitModal() {
+      if(submitModal) {
+        submitModal.classList.remove('active');
+        if(submitToolForm) submitToolForm.reset();
+      }
+    }
+
+    if(btnSubmitTool) btnSubmitTool.addEventListener('click', openSubmitModal);
+    if(mobileBtnSubmitTool) mobileBtnSubmitTool.addEventListener('click', openSubmitModal);
+    if(submitModalClose) submitModalClose.addEventListener('click', closeSubmitModal);
+    if(submitModalCancel) submitModalCancel.addEventListener('click', closeSubmitModal);
+
+    // Gönder Butonu Tıklama
+    if(btnSubmitSave) {
+      btnSubmitSave.addEventListener('click', async function() {
+        var name = document.getElementById('sub-name').value.trim();
+        var url = document.getElementById('sub-url').value.trim();
+        var desc = document.getElementById('sub-description').value.trim();
+        var category = document.getElementById('sub-category').value;
+        var pricing = document.getElementById('sub-pricing').value;
+        var tagsStr = document.getElementById('sub-tags').value;
+
+        if(!name || !url || !desc || !category) {
+          showToast('Lütfen tüm zorunlu (*) alanları doldurun.', 'error');
+          return;
+        }
+
+        if(desc.length < 10) {
+          showToast('Açıklama en az 10 karakter olmalıdır.', 'error');
+          return;
+        }
+
+        var featured = document.getElementById('sub-featured') ? document.getElementById('sub-featured').checked : false;
+        var madeInTurkey = document.getElementById('sub-made-in-turkey') ? document.getElementById('sub-made-in-turkey').checked : false;
+
+        var body = {
+          name: name,
+          url: url,
+          description: desc,
+          category_id: category,
+          pricing: pricing,
+          featured: featured,
+          made_in_turkey: madeInTurkey,
+          tags: tagsStr ? tagsStr.split(',').map(function(s){ return s.trim() }).filter(Boolean) : []
+        };
+
+        btnSubmitSave.disabled = true;
+        btnSubmitSave.textContent = 'Gönderiliyor...';
+
+        try {
+          var res = await fetch('/api/submissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          var data = await res.json();
+          if(data.success) {
+            showToast('Harika! Aracınız başarıyla gönderildi, editör onayından sonra yayınlanacaktır.', 'success');
+            closeSubmitModal();
+          } else {
+            showToast(data.error || 'Gönderim sırasında bir hata oluştu.', 'error');
+          }
+        } catch(e) {
+          showToast('Sunucu bağlantı hatası oluştu.', 'error');
+        } finally {
+          btnSubmitSave.disabled = false;
+          btnSubmitSave.textContent = 'Gönder';
+        }
+      });
+    }
+
+  } catch (err) {
+    console.error('Uygulama başlatılamadı:', err);
+  }
+
+  function renderDirectoryIndex(categories, tools) {
+    var catsListEl = document.getElementById('directory-categories-list');
+    var tagsListEl = document.getElementById('directory-tags-list');
+    if (!catsListEl || !tagsListEl) return;
+
+    // Calculate category counts
+    var categoryCounts = {};
+    tools.forEach(function (t) {
+      var catId = t.category_id || t.category;
+      if (catId) {
+        categoryCounts[catId] = (categoryCounts[catId] || 0) + 1;
+      }
+    });
+
+    var sortedCats = categories
+      .map(function (c) { return Object.assign({}, c, { count: categoryCounts[c.id] || 0 }); })
+      .sort(function (a, b) { return b.count - a.count; })
+      .slice(0, 18); // top 18 categories
+
+    catsListEl.innerHTML = sortedCats.map(function (c) {
+      return `
+        <div class="directory-item" onclick="filterByCategory('${c.id}')">
+          <span class="directory-item-name">${c.icon} ${c.name}</span>
+          <span class="directory-item-leader"></span>
+          <span class="directory-item-count">${c.count}</span>
+        </div>
+      `;
+    }).join('');
+
+    // Calculate tag counts
+    var tagCounts = {};
+    tools.forEach(function (t) {
+      var tags = t.tags;
+      if (typeof tags === 'string') {
+        try { tags = JSON.parse(tags); } catch(e) { tags = []; }
+      }
+      if (Array.isArray(tags)) {
+        tags.forEach(function (tag) {
+          var cleanTag = tag.trim();
+          if (cleanTag) {
+            tagCounts[cleanTag] = (tagCounts[cleanTag] || 0) + 1;
+          }
+        });
+      }
+    });
+
+    var sortedTags = Object.keys(tagCounts)
+      .map(function (tag) { return { name: tag, count: tagCounts[tag] }; })
+      .sort(function (a, b) { return b.count - a.count; })
+      .slice(0, 18); // top 18 tags
+
+    tagsListEl.innerHTML = sortedTags.map(function (t) {
+      return `
+        <div class="directory-item" onclick="filterByTag('${t.name}')">
+          <span class="directory-item-name"># ${t.name}</span>
+          <span class="directory-item-leader"></span>
+          <span class="directory-item-count">${t.count}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.filterByCategory = function (catId) {
+    activeCategory = (activeCategory === catId) ? null : catId;
+    currentPage = 1;
+    renderCategories(window._categories);
+    applyFilters();
+    var toolsSection = document.querySelector('#tools-section');
+    if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  window.filterByTag = function (tagName) {
+    if (searchInput) {
+      searchInput.value = tagName;
+    }
+    if (heroSearchInput) {
+      heroSearchInput.value = tagName;
+    }
+    currentPage = 1;
+    if (smartSearchCheckbox) smartSearchCheckbox.checked = false;
+    if (heroSmartSearchCheckbox) heroSmartSearchCheckbox.checked = false;
+    applyFilters();
+    var toolsSection = document.querySelector('#tools-section');
+    if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+  };
+});

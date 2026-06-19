@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+951,Khanmigo,khanmigo,AI Tutor,Freemium,https://www.khanacademy.org/khan-labs,"AI-powered tutor from Khan Academy for personalized learning","education,tutor,learning",true,true
+952,Duolingo Max,duolingo-max,AI Language Learning,Paid,https://www.duolingo.com/max,"AI features for language learning and conversation practice","education,language,tutor",true,true
+953,Quizlet Q-Chat,quizlet-qchat,AI Study Assistant,Freemium,https://quizlet.com,"AI-powered study tutor and flashcard assistant","education,study,flashcards",true,true
+954,Socratic by Google,socratic-google,AI Homework Helper,Free,https://socratic.org,"AI tool that helps students solve homework problems","education,homework,learning",true,true
+955,CheggMate,cheggmate,AI Study Assistant,Paid,https://www.chegg.com/cheggmate,"AI tutoring and academic assistance platform","education,study,tutor",true,true
+
+956,Photomath AI,photomath-ai,AI Math Solver,Freemium,https://photomath.com,"AI-powered math problem solver with step-by-step explanations","math,education,solver",true,true
+957,Wolfram Alpha AI,wolfram-alpha-ai,AI Knowledge Engine,Freemium,https://www.wolframalpha.com,"Computational knowledge engine powered by AI","math,science,knowledge",true,true
+958,Symbolab AI,symbolab-ai,AI Math Solver,Freemium,https://www.symbolab.com,"Step-by-step AI math problem solving tool","math,education,solver",true,true
+959,Mathway AI,mathway-ai,AI Math Solver,Freemium,https://www.mathway.com,"AI math solver for algebra, calculus and more","math,education,solver",true,true
+960,GeoGebra AI,geogebra-ai,AI Math Learning Tool,Free,https://www.geogebra.org,"Interactive math and geometry learning platform with AI tools","math,education,geometry",true,true
+
+961,Quizizz AI,quizizz-ai,AI Learning Platform,Freemium,https://quizizz.com,"AI-powered quizzes and interactive learning tools","education,quiz,learning",true,true
+962,Blooket AI,blooket-ai,AI Education Game,Free,https://www.blooket.com,"Gamified AI learning platform for students","education,game,learning",true,true
+963,Nearpod AI,nearpod-ai,AI Classroom Tool,Freemium,https://nearpod.com,"Interactive lessons and AI-assisted classroom engagement","education,classroom,learning",true,true
+964,Edpuzzle AI,edpuzzle-ai,AI Video Learning,Freemium,https://edpuzzle.com,"AI-enhanced video lessons for education","education,video,learning",true,true
+965,Kahoot AI,kahoot-ai,AI Quiz Platform,Freemium,https://kahoot.com,"AI-powered quiz and learning game platform","education,quiz,game",true,true
+
+966,Course Hero AI,course-hero-ai,AI Study Assistant,Freemium,https://www.coursehero.com,"AI academic help and study resources platform","education,study,academic",true,true
+967,Brainly AI,brainly-ai,AI Homework Help,Freemium,https://brainly.com,"AI-powered Q&A learning community for students","education,homework,qa",true,true
+968,Studocu AI,studocu-ai,AI Study Platform,Freemium,https://www.studocu.com,"AI-based study notes and academic materials platform","education,notes,study",true,true
+969,Gradescope AI,gradescope-ai,AI Grading System,Paid,https://www.gradescope.com,"AI-assisted grading and assessment platform","education,grading,assessment",true,true
+970,Turnitin AI,turnitin-ai,AI Plagiarism Detection,Paid,https://www.turnitin.com,"AI-based plagiarism detection and academic integrity system","education,plagiarism,writing",true,true
+
+971,Scribbr AI,scribbr-ai,AI Writing Assistant,Freemium,https://www.scribbr.com,"AI academic writing and citation assistant","writing,education,academic",true,true
+972,GrammarlyGO,grammarly-go,AI Writing Assistant,Freemium,https://www.grammarly.com,"AI-powered writing and grammar improvement tool","writing,grammar,ai",true,true
+973,Wordtune Edu,wordtune-edu,AI Writing Tool,Freemium,https://www.wordtune.com,"AI rewriting and academic writing assistant","writing,education,editing",true,true
+974,QuillBot AI,quillbot-ai,AI Paraphrasing Tool,Freemium,https://quillbot.com,"AI paraphrasing and summarization tool for students","writing,paraphrase,education",true,true
+975,Sapling AI,sapling-ai,AI Writing Assistant,Freemium,https://sapling.ai,"AI grammar correction and writing assistant for professionals","writing,grammar,ai",true,true
+
+976,Notion AI EDU,notion-ai-edu,AI Study Workspace,Freemium,https://www.notion.so,"AI-powered workspace for studying and note-taking","education,notes,workspace",true,true
+977,Obsidian Canvas AI,obsidian-canvas-ai,AI Knowledge Mapping,Free,https://obsidian.md,"AI-enhanced knowledge graph and note organization","notes,knowledge,education",true,true
+978,Mem AI EDU,mem-ai-edu,AI Memory System,Freemium,https://mem.ai,"AI-based personal knowledge and study assistant","notes,learning,ai",true,true
+979,RemNote AI,remnote-ai,AI Study System,Freemium,https://www.remnote.com,"AI-powered spaced repetition learning system","education,flashcards,learning",true,true
+980,SuperMemo AI,supermemo-ai,AI Memory Learning,Freemium,https://supermemo.guru,"AI-based long-term memory and learning optimization","learning,memory,education",true,true
+
+981,Perusall AI,perusall-ai,AI Reading Platform,Freemium,https://www.perusall.com,"AI-assisted collaborative reading and annotation tool","education,reading,collaboration",true,true
+982,ReadTheory AI,readtheory-ai,AI Reading Tutor,Free,https://readtheory.org,"AI reading comprehension improvement platform","education,reading,tutor",true,true
+983,Roshi AI,roshi-ai,AI Language Learning,Freemium,https://roshi.ai,"Generate reading materials for language learning","education,language,reading",true,true
+984,LingQ AI,lingq-ai,AI Language Learning,Freemium,https://www.lingq.com,"AI-powered immersive language learning platform","education,language,learning",true,true
+985,Babbel AI,babbel-ai,AI Language Tutor,Freemium,https://www.babbel.com,"AI-enhanced language learning courses","education,language,tutor",true,true
+
+986,Speak AI,speak-ai,AI Language Practice,Freemium,https://speak.com,"AI conversation practice for language learners","education,language,speaking",true,true
+987,ELSA Speak AI,elsa-speak-ai,AI Pronunciation Coach,Freemium,https://elsaspeak.com,"AI pronunciation and accent training assistant","education,language,speech",true,true
+988,Gliglish AI,gliglish-ai,AI Speaking Tutor,Freemium,https://gliglish.com,"AI real-time conversation practice tutor","education,language,speaking",true,true
+989,Loora AI,loora-ai,AI English Tutor,Freemium,https://loora.ai,"AI-powered English speaking practice assistant","education,english,tutor",true,true
+990,TalkPal AI,talkpal-ai,AI Language Tutor,Freemium,https://talkpal.ai,"AI language conversation and learning assistant","education,language,ai",true,true
+
+991,EssayBot AI,essaybot-ai,AI Writing Generator,Freemium,https://www.essaybot.com,"AI essay writing assistant for students","writing,education,essay",true,true
+992,Paperpal EDU,paperpal-edu,AI Academic Writing,Freemium,https://paperpal.com,"AI tool for academic writing and editing support","writing,academic,education",true,true
+993,ScholarAI,scholarai,AI Research Assistant,Freemium,https://www.scholarai.io,"AI assistant for academic research and papers","research,education,ai",true,true
+994,Consensus EDU,consensus-edu,AI Science Tutor,Freemium,https://consensus.app,"AI scientific search and explanation tool","science,education,research",true,true
+995,Elicit EDU,elicit-edu,AI Research Tutor,Freemium,https://elicit.com,"AI literature review and academic research assistant","research,education,ai",true,true
+
+996,Grades AI,grades-ai,AI Assessment Tool,Paid,https://gradescope.com,"AI-assisted grading and evaluation system","education,grading,ai",true,true
+997,ExamSoft AI,examsoft-ai,AI Exam Platform,Paid,https://www.examsoft.com,"AI-based exam delivery and assessment system","education,exam,assessment",true,true
+998,Proctorio AI,proctorio-ai,AI Exam Proctoring,Paid,https://proctorio.com,"AI remote exam proctoring and monitoring system","education,security,exam",true,true
+999,Respondus AI,respondus-ai,AI Exam Security,Paid,https://www.respondus.com,"AI exam monitoring and lockdown browser system","education,security,exam",true,true
+1000,Classtime AI,classtime-ai,AI Classroom Assessment,Freemium,https://www.classtime.com,"AI-powered classroom assessment and quizzes","education,classroom,assessment",true,true

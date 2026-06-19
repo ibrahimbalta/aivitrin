@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+551,Perplexity AI,perplexity-ai,AI Search Engine,Freemium,https://www.perplexity.ai,"AI-powered answer engine and research assistant","search,research,knowledge",true,true
+552,You.com,you-com,AI Search Engine,Freemium,https://you.com,"AI search engine with chat, research and productivity tools","search,chat,productivity",true,true
+553,Andi Search,andi-search,AI Search Assistant,Free,https://andisearch.com,"Conversational AI search engine with summarized answers","search,chat,web",true,true
+554,Consensus,consensus,AI Academic Search,Freemium,https://consensus.app,"AI search engine for scientific papers and evidence-based answers","research,science,papers",true,true
+555,Elicit,elicit,AI Research Assistant,Freemium,https://elicit.com,"AI assistant for literature reviews and academic research","research,academic,papers",true,true
+
+556,Research Rabbit,research-rabbit,AI Research Discovery,Freemium,https://www.researchrabbit.ai,"Discover and visualize scientific papers using AI","research,science,visualization",true,true
+557,Scite Assistant,scite-assistant,AI Research Tool,Freemium,https://scite.ai,"Analyze scientific citations and evaluate research reliability","citations,academic,science",true,true
+558,SciSpace Copilot,scispace-copilot,AI Research Assistant,Freemium,https://typeset.io,"AI assistant for understanding scientific papers","papers,academic,education",true,true
+559,Connected Papers,connected-papers,Research Visualization,Freemium,https://www.connectedpapers.com,"Visual graph exploration for academic papers and related studies","research,science,graph",true,true
+560,Semantic Scholar AI,semantic-scholar-ai,AI Academic Search,Free,https://www.semanticscholar.org,"AI-powered academic search and paper recommendations","papers,search,research",true,true
+
+561,Explainpaper,explainpaper,AI Paper Assistant,Freemium,https://www.explainpaper.com,"Simplifies complex scientific papers using AI explanations","papers,learning,education",true,true
+562,Scholarcy,scholarcy,AI Research Summarizer,Freemium,https://www.scholarcy.com,"Creates summaries and flashcards from academic articles","summary,academic,study",true,true
+563,Paperpal,paperpal,AI Academic Writing,Freemium,https://paperpal.com,"AI writing and editing assistant for researchers","writing,academic,editing",true,true
+564,Trinka AI,trinka-ai,AI Grammar Assistant,Freemium,https://www.trinka.ai,"AI grammar and language improvement for academic writing","grammar,writing,research",true,true
+565,Writefull,writefull,AI Academic Writing,Freemium,https://www.writefull.com,"AI writing support for researchers and students","academic,writing,language",true,true
+
+566,Otter AI,otter-ai,AI Meeting Assistant,Freemium,https://otter.ai,"Meeting transcription, summaries and action items using AI","meeting,transcription,notes",true,true
+567,Fireflies AI,fireflies-ai,AI Meeting Assistant,Freemium,https://fireflies.ai,"AI meeting recorder, transcription and team collaboration","meeting,notes,transcription",true,true
+568,Fathom AI,fathom-ai,AI Meeting Assistant,Free,https://fathom.video,"Free AI meeting summaries and recordings","meeting,zoom,notes",true,true
+569,Avoma,avoma,AI Meeting Intelligence,Freemium,https://www.avoma.com,"AI-powered meeting insights and conversation intelligence","meetings,sales,analytics",true,true
+570,MeetGeek,meetgeek,AI Meeting Assistant,Freemium,https://meetgeek.ai,"Automatic meeting notes, summaries and insights","meetings,notes,productivity",true,true
+
+571,Tactiq,tactiq,AI Meeting Notes,Freemium,https://tactiq.io,"AI transcription and meeting notes for Google Meet and Zoom","meetings,transcription,productivity",true,true
+572,tl;dv,tldv,AI Meeting Recorder,Freemium,https://tldv.io,"Record, transcribe and summarize online meetings with AI","meetings,video,notes",true,true
+573,Nyota AI,nyota-ai,AI Meeting Assistant,Freemium,https://www.nyota.ai,"AI meeting notes and task management assistant","meetings,tasks,productivity",true,true
+574,Supernormal,supernormal,AI Meeting Assistant,Freemium,https://supernormal.com,"AI-generated meeting notes and summaries","meetings,notes,automation",true,true
+575,Grain AI,grain-ai,AI Conversation Intelligence,Freemium,https://grain.com,"Capture customer conversations and generate insights","meetings,sales,customer",true,true
+
+576,Mem AI,mem-ai,AI Knowledge Management,Freemium,https://mem.ai,"AI-powered note taking and personal knowledge base","notes,knowledge,productivity",true,true
+577,Reflect Notes AI,reflect-notes-ai,AI Note Taking,Freemium,https://reflect.app,"AI-enhanced note taking and personal knowledge management","notes,writing,knowledge",true,true
+578,Notion AI,notion-ai,AI Workspace,Freemium,https://www.notion.so/product/ai,"AI writing, summaries and productivity inside Notion","notes,workspace,writing",true,true
+579,Obsidian AI,obsidian-ai,AI Knowledge Assistant,Freemium,https://obsidian.md,"AI plugins and assistants for personal knowledge management","notes,knowledge,pkm",true,true
+580,Heptabase AI,heptabase-ai,AI Visual Knowledge,Freemium,https://heptabase.com,"Visual thinking and knowledge organization with AI","knowledge,visual,learning",true,true
+
+581,Glean,glean,Enterprise AI Search,Paid,https://www.glean.com,"AI search across company knowledge and applications","enterprise,search,knowledge",true,true
+582,Guru AI,guru-ai,AI Knowledge Base,Freemium,https://www.getguru.com,"AI-powered company wiki and knowledge management","knowledge,wiki,enterprise",true,true
+583,Slite AI,slite-ai,AI Team Documentation,Freemium,https://slite.com,"AI assistant for team notes and documentation","documentation,team,writing",true,true
+584,Tettra AI,tettra-ai,AI Knowledge Management,Freemium,https://tettra.com,"AI knowledge base for teams and internal documentation","knowledge,team,docs",true,true
+585,Document360 AI,document360-ai,AI Documentation,Freemium,https://document360.com,"AI-powered documentation and knowledge base platform","docs,knowledge,enterprise",true,true
+
+586,Read AI,read-ai,AI Meeting Analytics,Freemium,https://www.read.ai,"AI insights for meetings, emails and messaging","meetings,analytics,productivity",true,true
+587,Jamie AI,jamie-ai,AI Meeting Assistant,Freemium,https://www.meetjamie.ai,"AI note taker that works across meeting platforms","meeting,notes,assistant",true,true
+588,Krisp AI,krisp-ai,AI Noise Cancellation,Freemium,https://krisp.ai,"AI-powered voice enhancement and background noise removal","audio,voice,meetings",true,true
+589,Equal Time AI,equal-time-ai,AI Meeting Analytics,Paid,https://equaltime.io,"AI analytics for meeting participation and inclusion","meetings,analytics,team",true,true
+590,Rewind AI,rewind-ai,AI Personal Memory,Freemium,https://www.rewind.ai,"AI assistant that records and searches your digital history","memory,search,productivity",true,true
+
+591,Recall AI,recall-ai,AI Meeting API,Paid,https://www.recall.ai,"API for integrating bots into online meetings","api,meetings,developer",true,true
+592,ScreenApp AI,screenapp-ai,AI Screen Recorder,Freemium,https://screenapp.io,"AI screen recording, transcription and summaries","screen,video,notes",true,true
+593,Screen Studio AI,screen-studio-ai,AI Screen Recording,Paid,https://www.screen.studio,"AI-enhanced screen recording and editing tool","screen,video,creator",true,true
+594,Screenity AI,screenity-ai,AI Screen Tool,Free,https://screenity.io,"Open-source screen recording and annotation extension","screen,recording,opensource",true,true
+595,Loom AI,loom-ai,AI Video Messaging,Freemium,https://www.loom.com,"AI summaries and enhancements for asynchronous video communication","video,work,communication",true,true
+
+596,Beautiful.ai,beautiful-ai,AI Presentation Generator,Freemium,https://www.beautiful.ai,"AI-powered presentation design and slide creation","slides,presentation,design",true,true
+597,Tome AI,tome-ai,AI Presentation Generator,Freemium,https://tome.app,"Create presentations and stories using generative AI","slides,storytelling,design",true,true
+598,Pitch AI,pitch-ai,AI Presentation Software,Freemium,https://pitch.com,"Collaborative presentations with AI assistance","slides,team,design",true,true
+599,SlidesAI,slides-ai,AI Presentation Generator,Freemium,https://www.slidesai.io,"Generate Google Slides presentations from text","slides,google,education",true,true
+600,Presentations.ai,presentations-ai,AI Presentation Generator,Freemium,https://www.presentations.ai,"Create professional presentations using AI","slides,business,design",true,true

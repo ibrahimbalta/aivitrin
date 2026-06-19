@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+501,Legora,legora,AI Legal Assistant,Freemium,https://www.legora.com,"AI assistant for legal research, document review and law firms","legal,documents,research",true,true
+502,CaseText CoCounsel,casetext-cocounsel,AI Legal Assistant,Paid,https://casetext.com/cocounsel,"AI legal assistant for research, document review and litigation support","legal,law,research",true,true
+503,Luminance,luminance,AI Contract Review,Paid,https://www.luminance.com,"AI-powered contract analysis and legal document automation","contracts,legal,automation",true,true
+504,Evisort,evisort,AI Contract Intelligence,Paid,https://www.evisort.com,"AI contract lifecycle management and analysis platform","contracts,enterprise,legal",true,true
+505,Robin AI,robin-ai,AI Contract Assistant,Freemium,https://www.robinai.com,"AI contract drafting and legal review platform","contracts,law,documents",true,true
+
+506,Spellbook Legal,spellbook-legal,AI Legal Drafting,Paid,https://www.spellbook.legal,"AI contract drafting assistant for lawyers","legal,contracts,writing",true,true
+507,Paxton AI,paxton-ai,AI Legal Assistant,Freemium,https://www.paxton.ai,"AI legal research and document drafting assistant","legal,research,documents",true,true
+508,LawDroid,lawdroid,AI Legal Chatbot,Freemium,https://www.lawdroid.com,"AI chatbot builder for law firms and attorneys","legal,chatbot,automation",true,true
+509,LegalRobot,legalrobot,AI Legal Analysis,Freemium,https://legalrobot.com,"AI-powered contract analysis and legal language simplification","legal,contracts,analysis",true,true
+510,ClauseBase,clausebase,AI Legal Document Automation,Paid,https://www.clausebase.com,"Smart legal drafting and clause management system","legal,documents,contracts",true,true
+
+511,Paradox Olivia,paradox-olivia,AI Recruiting Assistant,Paid,https://www.paradox.ai,"AI recruiting assistant for candidate communication and interview scheduling","hr,recruitment,assistant",true,true
+512,Humanly AI,humanly-ai,AI Recruiting Platform,Freemium,https://www.humanly.io,"AI screening and interview automation for recruiters","hr,interview,automation",true,true
+513,HireEZ,hireez,AI Talent Acquisition,Freemium,https://hireez.com,"AI-powered candidate sourcing and recruitment automation","recruiting,sourcing,hr",true,true
+514,SeekOut Assist,seekout-assist,AI Recruiting Assistant,Paid,https://www.seekout.com,"AI tools for talent discovery and recruiting workflows","hr,talent,automation",true,true
+515,Ashby AI,ashby-ai,AI Hiring Platform,Paid,https://www.ashbyhq.com,"AI-powered applicant tracking and recruiting platform","hr,ats,recruitment",true,true
+
+516,Shopia,shopia,AI Ecommerce Content,Freemium,https://www.shopia.ai,"AI writing and marketing tools for ecommerce stores","ecommerce,seo,content",true,true
+517,Describely,describely,AI Product Content,Freemium,https://describely.ai,"Generate product descriptions and ecommerce content using AI","ecommerce,products,copywriting",true,true
+518,CopyMonkey,copymonkey,AI Amazon Listing,Freemium,https://copymonkey.ai,"AI optimization for Amazon product listings","amazon,ecommerce,seo",true,true
+519,Sellesta,sellesta,AI Amazon Assistant,Freemium,https://sellesta.ai,"AI keyword research and listing optimization for sellers","amazon,marketing,ecommerce",true,true
+520,Ecomtent,ecomtent,AI Ecommerce Images,Freemium,https://www.ecomtent.ai,"AI-generated product photos and ecommerce visuals","ecommerce,images,product",true,true
+
+521,Rep AI,rep-ai,AI Shopping Assistant,Paid,https://www.hellorep.ai,"AI sales assistant and customer shopping guide","ecommerce,sales,assistant",true,true
+522,Gorgias AI,gorgias-ai,AI Ecommerce Support,Freemium,https://www.gorgias.com,"AI customer service automation for online stores","support,ecommerce,chatbot",true,true
+523,Gladly AI,gladly-ai,AI Customer Experience,Paid,https://www.gladly.ai,"AI-powered customer service and experience platform","customer-service,crm,support",true,true
+524,Kustomer AI,kustomer-ai,AI Customer Support,Paid,https://www.kustomer.com,"AI customer service platform with automation and insights","support,crm,automation",true,true
+525,Forethought Assist,forethought-assist,AI Support Agent,Paid,https://www.forethought.ai,"AI agent for automated customer support","support,agents,automation",true,true
+
+526,CrewAI,crewai,AI Multi-Agent Framework,Free,https://www.crewai.com,"Open-source framework for creating collaborative AI agents","agents,automation,opensource",true,true
+527,AutoGPT,autogpt,AI Autonomous Agent,Free,https://agpt.co,"Autonomous AI agent platform for complex tasks","agents,autonomous,opensource",true,true
+528,AgentGPT,agentgpt,AI Agent Platform,Freemium,https://agentgpt.reworkd.ai,"Run autonomous AI agents directly in the browser","agents,browser,automation",true,true
+529,BabyAGI,babyagi,AI Agent Framework,Free,https://babyagi.org,"Experimental autonomous AI task management agent","agents,opensource,research",true,true
+530,OpenDevin,open-devin,AI Software Agent,Free,https://opendevin.github.io,"Open-source AI software engineering agent","coding,agents,developer",true,true
+
+531,Devin AI,devin-ai,AI Software Engineer,Paid,https://devin.ai,"AI software engineering assistant capable of coding tasks","coding,developer,automation",true,true
+532,Cognition AI Devin,cognition-ai-devin,AI Coding Agent,Paid,https://www.cognition.ai,"AI company building autonomous software agents","coding,agents,software",false,true
+533,Sweep AI,sweep-ai,AI Code Assistant,Freemium,https://sweep.dev,"AI GitHub assistant that writes and fixes code","coding,github,developer",true,true
+534,CodiumAI,codium-ai,AI Code Testing,Freemium,https://www.qodo.ai,"AI-powered code testing and quality tools","coding,testing,developer",true,true
+535,Qodo,qodo,AI Code Quality,Paid,https://www.qodo.ai,"AI platform for code integrity, testing and review","coding,testing,quality",true,true
+
+536,MutableAI,mutable-ai,AI Coding Assistant,Freemium,https://mutable.ai,"AI-powered software development assistant","coding,developer,productivity",true,true
+537,Sourcegraph Cody,sourcegraph-cody,AI Code Assistant,Freemium,https://sourcegraph.com/cody,"AI coding assistant with deep codebase understanding","coding,search,developer",true,true
+538,Continue.dev,continue-dev,AI Coding Extension,Free,https://continue.dev,"Open-source AI coding assistant for IDEs","coding,ide,opensource",true,true
+539,Codeium Windsurf,codeium-windsurf,AI IDE,Freemium,https://windsurf.com,"AI-native coding environment and editor","coding,ide,developer",true,true
+540,Blackbox AI,blackbox-ai,AI Developer Assistant,Freemium,https://www.blackbox.ai,"AI coding assistant with code search and generation","coding,search,programming",true,true
+
+541,Phind,phind,AI Developer Search,Freemium,https://www.phind.com,"AI search engine designed for developers","search,coding,developer",true,true
+542,Tabnine,tabnine,AI Code Completion,Freemium,https://www.tabnine.com,"AI-powered code completion and developer productivity","coding,autocomplete,developer",true,true
+543,Amazon CodeWhisperer,amazon-codewhisperer,AI Coding Assistant,Free,https://aws.amazon.com/codewhisperer,"AI coding companion for software developers","coding,aws,developer",true,true
+544,JetBrains AI Assistant,jetbrains-ai-assistant,AI IDE Assistant,Paid,https://www.jetbrains.com/ai,"AI assistant integrated into JetBrains IDEs","coding,ide,productivity",true,true
+545,Replit Agent,replit-agent,AI Coding Agent,Freemium,https://replit.com/ai,"AI agent that builds applications from natural language","coding,agents,app-builder",true,true
+
+546,Bolt.new,bolt-new,AI App Builder,Freemium,https://bolt.new,"AI-powered full-stack web application generator","coding,web,fullstack",true,true
+547,Lovable,lovable,AI App Builder,Freemium,https://lovable.dev,"Build complete applications using AI prompts","no-code,app-builder,developer",true,true
+548,V0 by Vercel,v0-by-vercel,AI UI Generator,Freemium,https://v0.dev,"Generate React interfaces from text prompts","ui,react,frontend",true,true
+549,Magic Patterns,magic-patterns,AI UI Designer,Freemium,https://www.magicpatterns.com,"AI-generated UI designs and prototypes","ui,design,prototype",true,true
+550,Builder.io AI,builder-io-ai,AI Website Builder,Freemium,https://www.builder.io,"AI-powered visual development and website creation platform","website,nocode,development",true,true

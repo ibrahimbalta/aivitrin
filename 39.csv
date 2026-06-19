@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1901,OpenAI Safety Studio,openai-safety-studio,AI Safety Platform,Paid,https://platform.openai.com,"AI model safety evaluation and guardrail system","ai,safety,llm",true,true
+1902,Anthropic Safety Layer,anthropic-safety-layer,AI Safety Platform,Paid,https://www.anthropic.com,"Claude safety alignment and guardrail system","ai,safety,enterprise",true,true
+1903,Google AI Safety Hub,google-ai-safety-hub,AI Safety Platform,Paid,https://ai.google,"AI safety monitoring and policy enforcement tools","ai,safety,google",true,true
+1904,Meta AI Safety Toolkit,meta-ai-safety-toolkit,AI Safety Platform,Free,https://ai.meta.com,"Open AI safety and alignment tools for Llama models","ai,safety,meta",true,true
+1905,Mistral Safety API,mistral-safety-api,AI Safety API,Paid,https://mistral.ai,"Safety filtering and moderation API for LLMs","ai,safety,api",true,true
+
+1906,Guardrails AI Framework,guardrails-ai-framework,AI Safety Framework,Free,https://www.guardrailsai.com,"Validation and safety guardrails for LLM outputs","ai,safety,validation",true,true
+1907,Rebuff AI Security,rebuff-ai-security,AI Prompt Security,Free,https://www.rebuff.ai,"Prompt injection detection and AI security layer","ai,security,prompt",true,true
+1908,Lakera AI Security,lakera-ai-security,AI Safety Security,Paid,https://www.lakera.ai,"Enterprise AI security and content filtering system","ai,security,enterprise",true,true
+1909,Protect AI Platform,protect-ai-platform,AI Security Platform,Paid,https://protectai.com,"AI model supply chain security platform","ai,security,ml",true,true
+1910,HiddenLayer Security,hiddenlayer-security,AI Security Platform,Paid,https://hiddenlayer.com,"Machine learning model threat detection system","ai,security,ml",true,true
+
+1911,Robust Intelligence AI,robust-intelligence-ai,AI Model Safety,Paid,https://www.robustintelligence.com,"AI model validation and risk detection platform","ai,safety,ml",true,true
+1912,CalypsoAI Defense,calypsoai-defense,AI Security Platform,Paid,https://www.calypsoai.com,"Enterprise AI defense and monitoring system","ai,security,enterprise",true,true
+1913,Prompt Security Layer,prompt-security-layer,AI Prompt Security,Free,https://github.com,"Open-source prompt injection defense tools","ai,security,prompt",true,true
+1914,NeMo Guardrails,nemo-guardrails,AI Guardrails Framework,Free,https://github.com/NVIDIA/NeMo-Guardrails,"NVIDIA LLM safety and guardrails framework","ai,safety,nvidia",true,true
+1915,LangChain Guardrails,langchain-guardrails,AI Guardrails System,Free,https://www.langchain.com,"Safety and validation layer for LLM applications","ai,safety,framework",true,true
+
+1916,LlamaIndex Guard System,llamaindex-guard-system,AI Guardrails Framework,Free,https://www.llamaindex.ai,"Guardrails and safety system for LLM pipelines","ai,safety,data",true,true
+1917,OpenAI Moderation API,openai-moderation-api,AI Content Safety API,Paid,https://platform.openai.com,"Content moderation and safety filtering API","ai,safety,api",true,true
+1918,Google Moderation AI,google-moderation-ai,AI Safety API,Paid,https://ai.google,"AI content moderation and safety system","ai,safety,google",true,true
+1919,Anthropic Moderation API,anthropic-moderation-api,AI Safety API,Paid,https://www.anthropic.com,"Content safety and filtering API for Claude","ai,safety,api",true,true
+1920,Mistral Moderation API,mistral-moderation-api,AI Safety API,Paid,https://mistral.ai,"LLM content moderation and safety API","ai,safety,api",true,true
+
+1921,Azure AI Content Safety,azure-ai-content-safety,AI Safety Platform,Paid,https://azure.microsoft.com,"Microsoft AI content safety and filtering service","ai,safety,azure",true,true
+1922,AWS AI Safety Guardrails,aws-ai-safety-guardrails,AI Safety Platform,Paid,https://aws.amazon.com,"AWS AI guardrails and policy enforcement system","ai,safety,aws",true,true
+1923,Cloudflare AI Shield,cloudflare-ai-shield,AI Security Platform,Paid,https://www.cloudflare.com,"AI application protection and firewall layer","ai,security,cloud",true,true
+1924,DataDog AI Monitoring,datadog-ai-monitoring,AI Observability,Paid,https://www.datadoghq.com,"AI system monitoring and observability platform","ai,monitoring,ops",true,true
+1925,New Relic AI Insights,newrelic-ai-insights,AI Observability,Paid,https://newrelic.com,"AI performance monitoring and analytics system","ai,monitoring,enterprise",true,true
+
+1926,Sentry AI Monitoring,sentry-ai-monitoring,AI Error Tracking,Freemium,https://sentry.io,"AI-powered error tracking and monitoring system","ai,monitoring,debug",true,true
+1927,Prometheus AI Metrics,prometheus-ai-metrics,AI Monitoring System,Free,https://prometheus.io,"Open-source metrics system for AI workloads","ai,monitoring,open-source",true,true
+1928,Grafana AI Dashboard,grafana-ai-dashboard,AI Visualization Tool,Free,https://grafana.com,"AI system dashboards and visualization platform","ai,monitoring,visualization",true,true
+1929,Elastic AI Observability,elastic-ai-observability,Paid,https://www.elastic.co,"AI logs and observability platform","ai,monitoring,search",true,true
+1930,Splunk AI Insights,splunk-ai-insights,AI Monitoring Platform,Paid,https://www.splunk.com,"AI-driven log analysis and monitoring system","ai,monitoring,enterprise",true,true
+
+1931,Arize AI Observability,arize-ai-observability,AI Model Monitoring,Paid,https://arize.com,"ML model monitoring and drift detection platform","ai,monitoring,ml",true,true
+1932,Fiddler AI Monitoring,fiddler-ai-monitoring,AI Explainability Platform,Paid,https://www.fiddler.ai,"Model explainability and monitoring system","ai,monitoring,ml",true,true
+1933,WhyLabs AI Observability,whylabs-ai-observability,AI Monitoring Platform,Paid,https://whylabs.ai,"AI data and model monitoring system","ai,monitoring,ml",true,true
+1934,Evidently AI,evidently-ai,AI Monitoring Tool,Free,https://www.evidentlyai.com,"Open-source ML monitoring and drift detection","ai,monitoring,open-source",true,true
+1935,NannyML AI,nannyml-ai,AI Monitoring Tool,Free,https://nannyml.com,"Post-deployment model monitoring tool","ai,monitoring,ml",true,true
+
+1936,TruEra AI Platform,truera-ai-platform,AI Model Quality,Paid,https://truera.com,"AI model quality evaluation and debugging platform","ai,quality,ml",true,true
+1937,Arthur AI Monitoring,arthur-ai-monitoring,AI Model Governance,Paid,https://www.arthur.ai,"AI governance and monitoring platform","ai,governance,enterprise",true,true
+1938,Fairlearn AI,fairlearn-ai,AI Fairness Tool,Free,https://fairlearn.org,"Fairness assessment toolkit for machine learning","ai,fairness,ml",true,true
+1939,AIF360 IBM Toolkit,aif360-ibm-toolkit,AI Fairness Toolkit,Free,https://aif360.mybluemix.net,"IBM fairness evaluation toolkit for ML models","ai,fairness,ibm",true,true
+1940,Google Responsible AI Toolkit,google-responsible-ai-toolkit,AI Ethics Tools,Free,https://ai.google/responsibility,"Responsible AI development and ethics tools","ai,ethics,google",true,true
+
+1941,OpenAI Policy Engine,openai-policy-engine,AI Policy System,Paid,https://platform.openai.com,"AI policy enforcement and compliance engine","ai,policy,llm",true,true
+1942,Anthropic Policy Layer,anthropic-policy-layer,AI Policy System,Paid,https://www.anthropic.com,"LLM policy enforcement and governance system","ai,policy,enterprise",true,true
+1943,Microsoft AI Governance,microsoft-ai-governance,AI Governance Platform,Paid,https://www.microsoft.com,"Enterprise AI governance and compliance tools","ai,governance,enterprise",true,true
+1944,Google AI Governance Hub,google-ai-governance-hub,AI Governance Platform,Paid,https://ai.google,"AI governance and policy control system","ai,governance,google",true,true
+1945,AWS AI Governance Guardrails,aws-ai-governance-guardrails,AI Governance Platform,Paid,https://aws.amazon.com,"AWS AI governance and compliance guardrails","ai,governance,aws",true,true
+
+1946,Open Policy Agent AI,opa-ai,AI Policy Engine,Free,https://www.openpolicyagent.org,"Open-source policy engine for AI systems","ai,policy,open-source",true,true
+1947,LlamaIndex Governance Layer,llamaindex-governance-layer,AI Governance System,Free,https://www.llamaindex.ai,"Governance and policy layer for LLM apps","ai,governance,data",true,true
+1948,LangChain Compliance Engine,langchain-compliance-engine,AI Compliance System,Free,https://www.langchain.com,"Compliance and policy system for LLM apps","ai,compliance,framework",true,true
+1949,Holistic AI Governance,holistic-ai-governance,AI Governance Platform,Paid,https://www.holisticai.com,"Enterprise AI governance and risk management","ai,governance,enterprise",true,true
+1950,Credo AI Platform,credo-ai-platform,AI Governance Platform,Paid,https://www.credo.ai,"AI governance, risk and compliance platform","ai,governance,ml",true,true

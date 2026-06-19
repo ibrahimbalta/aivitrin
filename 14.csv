@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+651,Runway,runway,AI Video Generator,Freemium,https://runwayml.com,"AI-powered video generation, editing and visual effects platform","video,editing,generative",true,true
+652,Pika,pika,AI Video Generator,Freemium,https://pika.art,"Create videos from text, images and videos using AI","video,text-to-video,animation",true,true
+653,Luma Dream Machine,luma-dream-machine,AI Video Generator,Freemium,https://lumalabs.ai/dream-machine,"High-quality AI video generation from text and images","video,generative,creative",true,true
+654,HeyGen,heygen,AI Avatar Video,Freemium,https://www.heygen.com,"Create AI avatars, talking videos and multilingual content","avatar,video,marketing",true,true
+655,Synthesia,synthesia,AI Avatar Generator,Paid,https://www.synthesia.io,"Generate professional videos with realistic AI presenters","avatar,video,training",true,true
+
+656,D-ID,d-id,AI Talking Avatar,Freemium,https://www.d-id.com,"Create talking avatars from images using AI","avatar,face,video",true,true
+657,Tavus,tavus,AI Video Personalization,Paid,https://www.tavus.io,"Generate personalized videos with AI avatars","video,personalization,marketing",true,true
+658,DeepBrain AI,deepbrain-ai,AI Human Avatar,Freemium,https://www.deepbrain.io,"AI human avatars and virtual presenters","avatar,human,video",true,true
+659,Hour One,hour-one,AI Virtual Human,Freemium,https://hourone.ai,"Create realistic digital humans and AI presenters","avatar,virtual-human,video",true,true
+660,Elai,elai,AI Presenter Video,Freemium,https://elai.io,"Create AI videos from text with digital avatars","avatar,video,education",true,true
+
+661,ElevenLabs,elevenlabs,AI Voice Generator,Freemium,https://elevenlabs.io,"Realistic AI voice generation, cloning and dubbing platform","voice,tts,cloning",true,true
+662,Murf AI,murf-ai,AI Voice Generator,Freemium,https://murf.ai,"AI text-to-speech and professional voiceovers","voice,tts,audio",true,true
+663,PlayHT,playht,AI Voice Generator,Freemium,https://play.ht,"Generate realistic voices and AI narration","voice,tts,podcast",true,true
+664,WellSaid Labs,wellsaid-labs,AI Voice Studio,Paid,https://www.wellsaidlabs.com,"Professional AI voice generation for businesses","voice,narration,enterprise",true,true
+665,LOVO AI,lovo-ai,AI Voice Generator,Freemium,https://lovo.ai,"AI voiceovers, cloning and audio production","voice,tts,creator",true,true
+
+666,Resemble AI,resemble-ai,AI Voice Cloning,Freemium,https://www.resemble.ai,"AI voice cloning and synthetic speech platform","voice,cloning,audio",true,true
+667,Speechify,speechify,AI Text-to-Speech,Freemium,https://speechify.com,"Convert text into natural sounding speech","reading,tts,accessibility",true,true
+668,Descript,descript,AI Audio & Video Editor,Freemium,https://www.descript.com,"Edit audio and videos with text-based AI tools","audio,video,podcast",true,true
+669,Adobe Podcast,adobe-podcast,AI Audio Enhancement,Freemium,https://podcast.adobe.com,"AI-powered audio cleanup and podcast tools","audio,podcast,noise-removal",true,true
+670,Auphonic,auphonic,AI Audio Processing,Freemium,https://auphonic.com,"Automatic audio leveling and enhancement for creators","audio,podcast,editing",true,true
+
+671,Cleanvoice AI,cleanvoice-ai,AI Podcast Editing,Freemium,https://cleanvoice.ai,"Remove filler words and silence from recordings","podcast,editing,audio",true,true
+672,Podcastle,podcastle,AI Podcast Studio,Freemium,https://podcastle.ai,"Create, edit and publish podcasts using AI","podcast,recording,voice",true,true
+673,Wondercraft AI,wondercraft-ai,AI Audio Creator,Freemium,https://www.wondercraft.ai,"Create podcasts and audio stories with AI voices","podcast,storytelling,voice",true,true
+674,AudioPen,audiopen,AI Voice Notes,Freemium,https://audiopen.ai,"Transform spoken thoughts into structured text","voice,notes,productivity",true,true
+675,Voicemod AI,voicemod-ai,AI Voice Changer,Freemium,https://www.voicemod.net,"Real-time AI voice changing and sound effects","voice,gaming,streaming",true,true
+
+676,Kits AI,kits-ai,AI Music Voice,Freemium,https://kits.ai,"AI voice models for singers and music production","music,voice,creator",true,true
+677,Soundraw,soundraw,AI Music Generator,Freemium,https://soundraw.io,"Create royalty-free music using artificial intelligence","music,generator,audio",true,true
+678,AIVA,aiva,AI Music Composer,Freemium,https://www.aiva.ai,"Generate original music compositions with AI","music,composer,soundtrack",true,true
+679,Beatoven AI,beatoven-ai,AI Music Generator,Freemium,https://www.beatoven.ai,"Create custom background music for videos and podcasts","music,background,creator",true,true
+680,Boomy,boomy,AI Music Creator,Freemium,https://boomy.com,"Generate and publish AI-created songs","music,songs,creator",true,true
+
+681,Suno AI,suno-ai,AI Music Generator,Freemium,https://suno.com,"Generate complete songs from text prompts","music,songs,generative",true,true
+682,Udio,udio,AI Music Generator,Freemium,https://www.udio.com,"Create realistic songs with AI vocals and instruments","music,vocals,generative",true,true
+683,Musicfy,musicfy,AI Voice & Music,Freemium,https://musicfy.lol,"AI singing voices and music creation platform","music,voice,cloning",true,true
+684,LALAL.AI,lalal-ai,AI Audio Separation,Freemium,https://www.lalal.ai,"Separate vocals and instruments using AI","audio,music,editing",true,true
+685,Moises AI,moises-ai,AI Music Practice,Freemium,https://moises.ai,"Separate tracks and assist musicians with AI tools","music,instruments,learning",true,true
+
+686,TopMediai,topmediai,AI Media Toolkit,Freemium,https://www.topmediai.com,"AI tools for voice, video and image creation","media,voice,video",true,true
+687,VEED AI,veed-ai,AI Video Editor,Freemium,https://www.veed.io,"Online video editor with AI subtitles and effects","video,editing,subtitles",true,true
+688,CapCut AI,capcut-ai,AI Video Editor,Freemium,https://www.capcut.com,"AI-powered mobile and web video editing suite","video,editing,creator",true,true
+689,OpusClip,opusclip,AI Video Repurposing,Freemium,https://www.opus.pro,"Turn long videos into viral short clips using AI","video,shorts,social-media",true,true
+690,Vizard AI,vizard-ai,AI Video Repurposing,Freemium,https://vizard.ai,"Automatically create short videos from long-form content","video,marketing,editing",true,true
+
+691,Captions AI,captions-ai,AI Video Creator,Freemium,https://www.captions.ai,"AI-powered video editing, dubbing and captions","video,captions,creator",true,true
+692,Descript Storyboard,descript-storyboard,AI Video Editing,Freemium,https://www.descript.com,"Script-based video editing and production tools","video,editing,writing",true,true
+693,Wisecut,wisecut,AI Video Editor,Freemium,https://www.wisecut.video,"Automatic video editing with silence removal and subtitles","video,editing,subtitles",true,true
+694,Fliki,fliki,AI Text-to-Video,Freemium,https://fliki.ai,"Convert text into videos with AI voices","video,tts,content",true,true
+695,InVideo AI,invideo-ai,AI Video Generator,Freemium,https://invideo.io,"Generate complete videos from text prompts","video,marketing,creator",true,true
+
+696,Steve AI,steve-ai,AI Animation Generator,Freemium,https://www.steve.ai,"Create animated videos and explainers using AI","animation,video,education",true,true
+697,Animaker AI,animaker-ai,AI Animation Platform,Freemium,https://www.animaker.com,"AI-assisted animation and video creation platform","animation,video,creator",true,true
+698,Vyond AI,vyond-ai,AI Animation Creator,Paid,https://www.vyond.com,"Business animation and training videos powered by AI","animation,training,enterprise",true,true
+699,Kaiber AI,kaiber-ai,AI Video Art,Freemium,https://kaiber.ai,"Generate artistic videos and music visuals with AI","video,art,music",true,true
+700,LeiaPix,leiapix,AI 3D Animation,Freemium,https://www.leiapix.com,"Transform images into 3D depth animations","3d,animation,image",true,true

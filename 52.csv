@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2551,OpenAI Healthcare AI,openai-healthcare-ai,AI Healthcare Platform,Paid,https://platform.openai.com,"AI-powered healthcare assistance and clinical decision support system","healthcare,ai,medical",true,true
+2552,Google Health AI,google-health-ai,AI Healthcare Platform,Paid,https://health.google,"Google AI medical research and healthcare intelligence system","healthcare,google,ai",true,true
+2553,Microsoft Health Copilot,microsoft-health-copilot,AI Healthcare Assistant,Paid,https://www.microsoft.com/health,"AI healthcare workflow and clinical assistant system","healthcare,microsoft,ai",true,true
+2554,Meta Health AI,meta-health-ai,AI Health System,Free,https://ai.meta.com,"Meta AI-powered health analytics and wellness tools","healthcare,meta,ai",true,true
+2555,Mistral Health API,mistral-health-api,AI Healthcare API,Paid,https://mistral.ai,"AI medical data processing and healthcare API system","healthcare,llm,api",true,true
+
+2556,IBM Watson Health AI,ibm-watson-health-ai,AI Healthcare Platform,Paid,https://www.ibm.com/watson-health,"AI clinical decision support and healthcare analytics system","healthcare,ibm,ai",true,true
+2557,Ada Health AI,ada-health-ai,AI Symptom Checker,Freemium,https://ada.com,"AI-powered symptom checker and health assistant","healthcare,diagnosis,ai",true,true
+2558,Babylon Health AI,babylon-health-ai,AI Telemedicine Platform,Paid,https://www.babylonhealth.com,"AI virtual doctor and telemedicine system","healthcare,telemedicine,ai",true,true
+2559,Tempus AI,tempus-ai,AI Precision Medicine,Paid,https://www.tempus.com,"AI-driven precision medicine and cancer research platform","healthcare,oncology,ai",true,true
+2560,PathAI,pathai,AI Medical Imaging,Paid,https://www.pathai.com,"AI pathology and medical imaging analysis system","healthcare,imaging,ai",true,true
+
+2561,Zebra Medical Vision AI,zebra-medical-ai,AI Radiology Platform,Paid,https://www.zebra-med.com,"AI radiology imaging analysis and diagnosis system","healthcare,radiology,ai",true,true
+2562,Enlitic AI,enlitic-ai,AI Medical Imaging,Paid,https://www.enlitic.com,"AI medical imaging data analysis platform","healthcare,imaging,ai",true,true
+2563,Aidoc AI,aidoc-ai,AI Radiology Tool,Paid,https://www.aidoc.com,"AI radiology workflow and diagnostic assistance system","healthcare,radiology,ai",true,true
+2564,Arterys AI,arterys-ai,AI Medical Imaging,Paid,https://arterys.com,"AI cloud-based medical imaging analysis system","healthcare,imaging,ai",true,true
+2565,Caption Health AI,caption-health-ai,AI Ultrasound Guidance,Paid,https://captionhealth.com,"AI ultrasound imaging guidance system","healthcare,ultrasound,ai",true,true
+
+2566,OpenAI Medical Imaging AI,openai-medical-imaging-ai,AI Imaging Platform,Paid,https://platform.openai.com,"AI medical imaging interpretation system","healthcare,imaging,ai",true,true
+2567,Siemens Healthineers AI,siemens-health-ai,AI Healthcare Imaging,Paid,https://www.siemens-healthineers.com,"AI-powered medical imaging and diagnostics system","healthcare,siemens,ai",true,true
+2568,GE Healthcare AI,ge-health-ai,AI Medical Systems,Paid,https://www.gehealthcare.com,"AI medical imaging and healthcare diagnostics system","healthcare,ge,ai",true,true
+2569,Philips Health AI,philips-health-ai,AI Healthcare Platform,Paid,https://www.philips.com/healthcare,"AI healthcare imaging and monitoring systems","healthcare,philips,ai",true,true
+2570,Butterfly Network AI,butterfly-ai,AI Ultrasound Device,Paid,https://www.butterflynetwork.com,"AI portable ultrasound imaging system","healthcare,ultrasound,ai",true,true
+
+2571,DeepMind Health AI,deepmind-health-ai,AI Medical Research,Paid,https://deepmind.google,"AI medical research and diagnostics system","healthcare,research,ai",true,true
+2572,Insilico Medicine AI,insilico-medicine-ai,AI Drug Discovery,Paid,https://insilico.com,"AI-driven drug discovery and biotech research platform","healthcare,biotech,ai",true,true
+2573,BenevolentAI,benevolent-ai,AI Drug Discovery,Paid,https://www.benevolent.com,"AI pharmaceutical research and drug discovery system","healthcare,biotech,ai",true,true
+2574,Atomwise AI,atomwise-ai,AI Drug Discovery,Paid,https://www.atomwise.com,"AI molecular drug discovery platform","healthcare,drug,ai",true,true
+2575,Exscientia AI,exscientia-ai,AI Drug Design,Paid,https://www.exscientia.ai,"AI drug design and pharmaceutical research system","healthcare,drug,ai",true,true
+
+2576,OpenAI Drug Research AI,openai-drug-research-ai,AI Pharma Research,Paid,https://platform.openai.com,"AI-assisted drug discovery and biomedical research system","healthcare,drug,ai",true,true
+2577,Healx AI,healx-ai,AI Rare Disease Research,Paid,https://healx.io,"AI drug discovery for rare diseases","healthcare,rare-disease,ai",true,true
+2578,Owkin AI,owkin-ai,AI Medical Research,Paid,https://www.owkin.com,"AI biomedical research and data collaboration platform","healthcare,research,ai",true,true
+2579,Pathos AI,pathos-ai,AI Drug Discovery,Paid,https://www.pathos.com,"AI pharmaceutical research platform","healthcare,biotech,ai",true,true
+2580,Valo Health AI,valo-health-ai,AI Drug Discovery,Paid,https://www.valohealth.com,"AI-based drug discovery and genomics platform","healthcare,genomics,ai",true,true
+
+2581,OpenAI Genomics AI,openai-genomics-ai,AI Genomics Platform,Paid,https://platform.openai.com,"AI genomic analysis and healthcare data system","healthcare,genomics,ai",true,true
+2582,23andMe AI,23andme-ai,AI Genetics Platform,Paid,https://www.23andme.com,"AI genetic analysis and ancestry insights system","healthcare,genetics,ai",true,true
+2583,Helix AI,helix-ai,AI Genomics Platform,Paid,https://www.helix.com,"AI genome sequencing and health insights system","healthcare,genomics,ai",true,true
+2584,DNAnexus AI,dnanexus-ai,AI Genomics Cloud,Paid,https://www.dnanexus.com,"AI genomic data analysis cloud platform","healthcare,genomics,ai",true,true
+2585,Illumina AI,illumina-ai,AI DNA Sequencing,Paid,https://www.illumina.com,"AI-powered DNA sequencing and analysis system","healthcare,genomics,ai",true,true
+
+2586,OpenAI Mental Health AI,openai-mental-health-ai,AI Mental Health Platform,Paid,https://platform.openai.com,"AI mental health support and counseling system","healthcare,mental-health,ai",true,true
+2587,Wysa AI,wysa-ai,AI Mental Health Chatbot,Freemium,https://www.wysa.io,"AI emotional support and mental health chatbot","healthcare,mental-health,ai",true,true
+2588,Woebot AI,woebot-ai,AI Therapy Chatbot,Paid,https://woebothealth.com,"AI cognitive behavioral therapy chatbot","healthcare,therapy,ai",true,true
+2589,Tess AI,tess-ai,AI Emotional Support,Paid,https://www.x2ai.com/tess,"AI mental health support and coaching system","healthcare,mental-health,ai",true,true
+2590,Replika AI,replika-ai,AI Companion Chatbot,Freemium,https://replika.com,"AI emotional companion and mental wellness chatbot","healthcare,companion,ai",true,true
+
+2591,OpenAI Fitness AI,openai-fitness-ai,AI Fitness Platform,Paid,https://platform.openai.com,"AI fitness coaching and health tracking system","healthcare,fitness,ai",true,true
+2592,Fitbod AI,fitbod-ai,AI Fitness Coach,Freemium,https://fitbod.me,"AI workout planning and fitness tracking app","healthcare,fitness,ai",true,true
+2593,Freeletics AI,freeletics-ai,AI Fitness Trainer,Freemium,https://www.freeletics.com,"AI personal fitness training system","healthcare,fitness,ai",true,true
+2594,WHOOP AI,whoop-ai,AI Health Tracker,Paid,https://www.whoop.com,"AI health and recovery tracking wearable system","healthcare,wearable,ai",true,true
+2595,Apple Health AI,apple-health-ai,AI Health Platform,Free,https://www.apple.com/health,"Apple AI health tracking and wellness system","healthcare,apple,ai",true,true
+
+2596,Google Fit AI,google-fit-ai,AI Health Tracker,Free,https://www.google.com/fit,"Google AI fitness and health tracking platform","healthcare,google,ai",true,true
+2597,Strava AI,strava-ai,AI Fitness Analytics,Freemium,https://www.strava.com,"AI sports tracking and performance analytics system","healthcare,sports,ai",true,true
+2598,Garmin AI,garmin-ai,AI Wearable Health,Paid,https://www.garmin.com,"AI wearable fitness and health monitoring system","healthcare,wearable,ai",true,true
+2599,Oura Ring AI,oura-ring-ai,AI Sleep Tracking,Paid,https://ouraring.com,"AI sleep and health tracking wearable ring system","healthcare,sleep,ai",true,true
+2600,Fitbit AI,fitbit-ai,AI Health Tracker,Freemium,https://www.fitbit.com,"AI fitness and activity tracking system","healthcare,fitness,ai",true,true

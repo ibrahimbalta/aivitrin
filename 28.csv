@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1351,Perplexity API,perplexity-api,AI Search API,Paid,https://www.perplexity.ai,"AI-powered search and answer engine API with citations","search,api,knowledge",true,true
+1352,You.com API,youcom-api,AI Search API,Freemium,https://you.com,"Conversational AI search engine API","search,llm,api",true,true
+1353,Brave Search API,brave-search-api,AI Search API,Paid,https://brave.com/search/api,"Privacy-focused search engine API","search,privacy,api",true,true
+1354,SerpAPI,serpapi,AI Search Data API,Paid,https://serpapi.com,"Google search results API for structured data retrieval","search,api,data",true,true
+1355,Tavily API,tavily-api,AI Research API,Freemium,https://tavily.com,"AI-powered research and web retrieval API","search,research,api",true,true
+
+1356,Exa AI API,exa-ai-api,AI Search Engine API,Paid,https://exa.ai,"AI semantic search engine API for developers","search,semantic,api",true,true
+1357,Kagi API,kagi-api,AI Search API,Paid,https://kagi.com,"Premium privacy-focused AI search API","search,privacy,api",true,true
+1358,Andi Search API,andi-search-api,AI Search API,Free,https://andisearch.com,"Conversational AI search API","search,assistant,api",true,true
+1359,Phind API,phind-api,AI Developer Search API,Freemium,https://www.phind.com,"AI search engine optimized for coding and dev tasks","search,coding,api",true,true
+1360,Komodo AI Search,komodo-ai-search,AI Knowledge Search API,Freemium,https://komodo.ai,"AI knowledge retrieval and summarization API","search,knowledge,api",true,true
+
+1361,Wolfram Alpha API,wolfram-alpha-api,AI Computational API,Paid,https://www.wolframalpha.com,"Computational knowledge engine API","math,science,api",true,true
+1362,Algolia AI,algolia-ai,AI Search Platform,Paid,https://www.algolia.com,"AI-powered site search and recommendation API","search,ranking,api",true,true
+1363,Elastic AI Search,elastic-ai-search,AI Search Engine,Paid,https://www.elastic.co,"AI-enhanced enterprise search platform","search,enterprise,api",true,true
+1364,Typesense AI,typesense-ai,AI Search Engine,Freemium,https://typesense.org,"Fast open-source search engine with AI features","search,open-source,api",true,true
+1365,Meilisearch AI,meilisearch-ai,AI Search Engine,Free,https://www.meilisearch.com,"Open-source search engine with AI ranking","search,open-source,api",true,true
+
+1366,Pinecone AI,pinecone-ai,AI Vector Database,Paid,https://www.pinecone.io,"Vector database for AI semantic search applications","vector,search,ai",true,true
+1367,Weaviate AI,weaviate-ai,AI Vector DB,Free,https://weaviate.io,"Open-source vector database for AI search","vector,db,ai",true,true
+1368,Milvus AI,milvus-ai,AI Vector Database,Free,https://milvus.io,"Scalable vector database for AI applications","vector,db,ai",true,true
+1369,Chroma AI,chroma-ai,AI Vector DB,Free,https://www.trychroma.com,"Lightweight vector database for embeddings","vector,ai,db",true,true
+1370,Qdrant AI,qdrant-ai,AI Vector Search,Free,https://qdrant.tech,"High-performance vector similarity search engine","vector,search,ai",true,true
+
+1371,LlamaIndex,llamaindex,AI Data Framework,Freemium,https://www.llamaindex.ai,"Framework for building LLM-powered data applications","llm,data,framework",true,true
+1372,LangChain,langchain,AI Framework,Freemium,https://www.langchain.com,"Framework for building AI agents and apps","llm,agents,framework",true,true
+1373,Haystack AI,haystack-ai,AI NLP Framework,Free,https://haystack.deepset.ai,"Open-source framework for LLM applications","nlp,framework,ai",true,true
+1374,Semantic Kernel,semantic-kernel,AI SDK,Free,https://github.com/microsoft/semantic-kernel,"Microsoft AI orchestration SDK","sdk,llm,ai",true,true
+1375,AutoGPT,autogpt,AI Agent Framework,Free,https://github.com/Significant-Gravitas/AutoGPT,"Autonomous AI agent framework","agents,automation,llm",true,true
+
+1376,BabyAGI,babyagi,AI Agent System,Free,https://github.com/yoheinakajima/babyagi,"Task-driven autonomous AI agent system","agents,automation,ai",true,true
+1377,CrewAI,crewai,AI Multi-Agent System,Freemium,https://www.crewai.com,"Multi-agent AI collaboration framework","agents,workflow,llm",true,true
+1378,AutoGen AI,autogen-ai,AI Agent Framework,Free,https://github.com/microsoft/autogen,"Microsoft multi-agent AI system framework","agents,framework,llm",true,true
+1379,OpenAI Agents SDK,openai-agents-sdk,AI Agent SDK,Paid,https://platform.openai.com,"SDK for building AI agents with OpenAI models","agents,api,llm",true,true
+1380,LangGraph,langgraph,AI Agent Workflow,Freemium,https://langchain-ai.github.io/langgraph,"Graph-based AI agent orchestration framework","agents,workflow,llm",true,true
+
+1381,AgentGPT,agentgpt,AI Autonomous Agent,Freemium,https://agentgpt.reworkd.ai,"Browser-based autonomous AI agent builder","agents,automation,llm",true,true
+1382,GodMode AI,godmode-ai,AI Agent UI,Free,https://godmode.space,"UI for autonomous AI agent workflows","agents,ui,llm",true,true
+1383,Flowise AI,flowise-ai,AI Visual LLM Builder,Freemium,https://flowiseai.com,"Drag-and-drop LLM workflow builder","llm,no-code,agents",true,true
+1384,PromptFlow AI,promptflow-ai,AI Workflow Tool,Freemium,https://github.com/microsoft/promptflow,"Microsoft prompt workflow orchestration tool","prompts,workflow,llm",true,true
+1385,Chainlit AI,chainlit-ai,AI App Builder,Free,https://chainlit.io,"Build LLM apps with UI interface easily","llm,apps,framework",true,true
+
+1386,Rasa AI,rasa-ai,AI Chatbot Framework,Free,https://rasa.com,"Open-source conversational AI framework","chatbot,nlp,ai",true,true
+1387,Botpress AI,botpress-ai,AI Chatbot Platform,Freemium,https://botpress.com,"AI chatbot builder for enterprises","chatbot,enterprise,ai",true,true
+1388,Dialogflow CX,dialogflow-cx,AI Conversational AI,Paid,https://cloud.google.com/dialogflow,"Google conversational AI platform","chatbot,google,ai",true,true
+1389,Amazon Lex,amazon-lex,AI Chatbot Service,Paid,https://aws.amazon.com/lex,"AWS conversational AI service","chatbot,aws,ai",true,true
+1390,IBM Watson Assistant,watson-assistant,AI Chatbot,Freemium,https://www.ibm.com/cloud/watson-assistant,"IBM conversational AI assistant platform","chatbot,ibm,ai",true,true
+
+1391,OpenAssistant,openassistant,AI Open Chatbot,Free,https://openassistant.io,"Open-source ChatGPT alternative project","chatbot,open-source,llm",true,true
+1392,Character AI,character-ai,AI Character Chat,Freemium,https://character.ai,"AI character-based conversational platform","chatbot,roleplay,ai",true,true
+1393,Poe AI,poe-ai,AI Chat Platform,Freemium,https://poe.com,"Multi-model AI chat platform","chat,llm,ai",true,true
+1394,HuggingChat,huggingchat,AI Chatbot,Free,https://huggingface.co/chat,"Open-source AI chat interface by Hugging Face","chat,llm,open-source",true,true
+1395,Grok AI,grok-ai,AI Chat Assistant,Freemium,https://x.ai,"AI assistant integrated into X platform","chat,llm,ai",true,true
+
+1396,Claude API Tools,claude-api-tools,AI Developer Tools,Paid,https://claude.ai,"Claude model tools for developers and agents","llm,api,tools",true,true
+1397,OpenAI Function Calling,openai-function-calling,AI Tool Use API,Paid,https://platform.openai.com,"Function calling capability for AI agents","llm,agents,api",true,true
+1398,Toolformer AI,toolformer-ai,AI Research Model,Free,https://arxiv.org/abs/2302.04761,"AI model that learns tool usage automatically","research,llm,ai",true,true
+1399,ReAct AI Framework,react-ai,AI Reasoning Framework,Free,https://arxiv.org/abs/2210.03629,"Reasoning and acting framework for LLM agents","agents,research,llm",true,true
+1400,MRKL System,mrkl-system,AI Hybrid Reasoning,Free,https://arxiv.org/abs/2205.00445,"Modular reasoning and tool use architecture for AI","agents,research,llm",true,true

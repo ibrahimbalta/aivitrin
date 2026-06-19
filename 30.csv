@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1451,Runway Safety Tools,runway-safety-tools,AI Content Safety,Paid,https://runwayml.com,"AI moderation and safe generation tools for media content","safety,video,ai",true,true
+1452,OpenAI GPT Moderation,gpt-moderation,AI Content Moderation API,Paid,https://platform.openai.com,"AI moderation model for text safety filtering","safety,nlp,api",true,true
+1453,Perspective Toxicity Model,perspective-toxicity-model,AI Toxicity Detection,Free,https://perspectiveapi.com,"Detect toxic language in text using ML models","safety,nlp,ai",true,true
+1454,Detoxify AI,detoxify-ai,AI Text Moderation,Free,https://github.com/unitaryai/detoxify,"Open-source toxicity detection model","safety,nlp,open-source",true,true
+1455,Roberta Toxic Classifier,roberta-toxic-classifier,AI Moderation Model,Free,https://huggingface.co,"Transformer-based toxicity classification model","nlp,safety,ai",true,true
+
+1456,LangChain Guardrails,langchain-guardrails,AI Output Validation,Freemium,https://www.langchain.com,"Guardrails for safe and structured LLM outputs","llm,safety,framework",true,true
+1457,Guardrails Hub,guardrails-hub,AI Validation Platform,Freemium,https://www.guardrailsai.com,"Prebuilt validators for LLM applications","llm,safety,validation",true,true
+1458,Rebuff Cloud,rebuff-cloud,AI Security Platform,Paid,https://protectai.com,"Enterprise prompt injection detection system","security,llm,api",true,true
+1459,Prompt Security AI,prompt-security-ai,AI Prompt Protection,Freemium,https://promptsecurity.io,"Detect and block malicious prompts","security,llm,ai",true,true
+1460,Lakera Guard,lakera-guard,AI Security API,Paid,https://lakera.ai,"Real-time AI prompt injection protection API","security,llm,api",true,true
+
+1461,NVIDIA NeMo Guardrails,nvidia-nemo-guardrails,AI Safety Framework,Free,https://github.com/NVIDIA/NeMo-Guardrails,"Open-source LLM safety and control framework","llm,safety,ai",true,true
+1462,Anthropic Safety Tools,anthropic-safety-tools,AI Safety System,Paid,https://www.anthropic.com,"Built-in AI safety and alignment tools","safety,llm,ai",true,true
+1463,OpenAI Safety Kit,openai-safety-kit,AI Safety SDK,Paid,https://platform.openai.com,"Safety tools for secure LLM applications","safety,llm,api",true,true
+1464,Meta Llama Safety,meta-llama-safety,AI Safety Model,Free,https://ai.meta.com,"Safety-tuned LLaMA models for content filtering","safety,llm,ai",true,true
+1465,Google Safety AI,google-safety-ai,AI Safety API,Paid,https://ai.google,"Google content safety and moderation system","safety,nlp,api",true,true
+
+1466,Hugging Face Safety Hub,hf-safety-hub,AI Model Safety,Free,https://huggingface.co,"Safety datasets and moderation models hub","safety,nlp,open-source",true,true
+1467,OpenAI Content Filter,openai-content-filter,AI Text Filter,Paid,https://platform.openai.com,"Text filtering system for unsafe outputs","safety,nlp,api",true,true
+1468,Azure AI Content Filter,azure-ai-content-filter,AI Safety API,Paid,https://azure.microsoft.com,"Microsoft AI content moderation system","safety,api,ai",true,true
+1469,Amazon Comprehend Safety,amazon-comprehend-safety,AI NLP Safety API,Paid,https://aws.amazon.com/comprehend,"AWS NLP moderation and analysis system","aws,safety,nlp",true,true
+1470,IBM Watson Moderation,ibm-watson-moderation,AI Content Safety API,Paid,https://www.ibm.com,"IBM AI content moderation and safety tools","ibm,safety,nlp",true,true
+
+1471,DeepMind Safety AI,deepmind-safety-ai,AI Research Safety,Free,https://deepmind.google,"AI alignment and safety research models","research,safety,llm",true,true
+1472,AI Alignment Toolkit,ai-alignment-toolkit,AI Research Framework,Free,https://github.com,"Open-source AI alignment research tools","research,safety,ai",true,true
+1473,Constitutional AI Tools,const-ai-tools,AI Alignment System,Free,https://www.anthropic.com,"AI alignment via rule-based constraints","safety,llm,research",true,true
+1474,RLAIF Framework,rlaif-framework,AI Reinforcement Learning,Free,https://arxiv.org,"Reinforcement learning from AI feedback framework","rlhf,research,llm",true,true
+1475,RLHF Toolkit,rlhf-toolkit,AI Training Framework,Free,https://github.com,"Human feedback-based AI training toolkit","rlhf,training,llm",true,true
+
+1476,OpenAI Fine-tuning API,fine-tuning-api,AI Model Training API,Paid,https://platform.openai.com,"Custom model fine-tuning API for GPT models","training,llm,api",true,true
+1477,Azure Fine-tune AI,azure-fine-tune-ai,AI Model Training,Paid,https://azure.microsoft.com,"Microsoft AI model fine-tuning service","training,ml,api",true,true
+1478,Google Vertex Fine-tune,vertex-fine-tune,AI Model Training,Paid,https://cloud.google.com,"Google AI model training and tuning platform","ml,google,ai",true,true
+1479,Hugging Face Trainer,hf-trainer,AI Training Framework,Free,https://huggingface.co,"Train and fine-tune transformer models","ml,training,ai",true,true
+1480,Axolotl AI,axolotl-ai,AI LLM Fine-tuning,Free,https://github.com,"Efficient LLM fine-tuning framework","llm,training,open-source",true,true
+
+1481,LoRA Toolkit,lora-toolkit,AI Model Adaptation,Free,https://github.com,"Low-Rank Adaptation fine-tuning method toolkit","llm,training,ai",true,true
+1482,QLoRA AI,qllora-ai,AI Efficient Training,Free,https://arxiv.org,"Memory-efficient LLM fine-tuning method","llm,training,research",true,true
+1483,PEFT Library,peft-library,AI Parameter Efficient Fine-tuning,Free,https://huggingface.co,"Library for efficient model fine-tuning","ml,training,ai",true,true
+1484,Transformers Trainer,transformers-trainer,AI ML Framework,Free,https://huggingface.co,"Hugging Face transformers training toolkit","ml,nlp,ai",true,true
+1485,DeepSpeed AI,deepspeed-ai,AI Training Optimization,Free,https://www.deepspeed.ai,"Microsoft framework for large-scale model training","ml,optimization,ai",true,true
+
+1486,FSDP PyTorch,fsdp-pytorch,AI Distributed Training,Free,https://pytorch.org,"Fully Sharded Data Parallel training system","ml,pytorch,ai",true,true
+1487,JAX AI,jax-ai,AI Research Framework,Free,https://jax.readthedocs.io,"Google high-performance ML framework","ml,research,ai",true,true
+1488,Flax AI,flax-ai,AI Neural Network Library,Free,https://flax.readthedocs.io,"Neural network library built on JAX","ml,research,ai",true,true
+1489,TensorFlow Extended,tfx,AI ML Pipeline,Free,https://www.tensorflow.org/tfx,"End-to-end ML pipeline framework","ml,google,ai",true,true
+1490,PyTorch Lightning,lightning-ai,AI Training Framework,Free,https://lightning.ai,"Simplified PyTorch training framework","ml,training,ai",true,true
+
+1491,Weights AI Cloud,weights-ai-cloud,AI Experiment Platform,Paid,https://wandb.ai,"Cloud ML experiment tracking system","ml,tracking,ai",true,true
+1492,Neptune Cloud AI,neptune-cloud-ai,AI Experiment Tracking,Paid,https://neptune.ai,"ML experiment tracking cloud platform","ml,tracking,ai",true,true
+1493,Comet Cloud AI,comet-cloud-ai,AI ML Monitoring,Paid,https://www.comet.com,"Cloud ML experiment tracking system","ml,monitoring,ai",true,true
+1494,ClearML Cloud,clearml-cloud,AI MLOps Cloud,Free,https://clear.ml,"Cloud MLOps automation platform","ml,devops,ai",true,true
+1495,MLflow Cloud,mlflow-cloud,AI ML Lifecycle,Paid,https://mlflow.org,"Cloud ML lifecycle management system","ml,devops,ai",true,true
+
+1496,Kubeflow Cloud,kubeflow-cloud,AI Kubernetes ML,Paid,https://kubeflow.org,"Cloud-native ML workflows on Kubernetes","ml,kubernetes,ai",true,true
+1497,Seldon Cloud,seldon-cloud,AI Model Deployment,Paid,https://www.seldon.io,"Enterprise ML model deployment platform","ml,enterprise,ai",true,true
+1498,BentoCloud AI,bentocloud-ai,AI Model Serving Cloud,Paid,https://bentoml.com,"Cloud platform for ML model serving","ml,api,ai",true,true
+1499,RunPod Serverless AI,runpod-serverless-ai,AI GPU Cloud,Paid,https://www.runpod.io,"Serverless GPU compute for AI workloads","gpu,cloud,ai",true,true
+1500,Modal Serverless AI,modal-serverless-ai,AI Compute Platform,Paid,https://modal.com,"Serverless infrastructure for AI applications","cloud,compute,ai",true,true

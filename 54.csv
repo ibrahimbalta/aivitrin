@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2651,OpenAI Marketing AI,openai-marketing-ai,AI Marketing Platform,Paid,https://platform.openai.com,"AI-powered marketing automation and campaign optimization system","marketing,ai,ads",true,true
+2652,Google Ads AI,google-ads-ai,AI Advertising Platform,Paid,https://ads.google.com,"Google AI ad targeting and optimization system","ads,google,marketing",true,true
+2653,Meta Ads AI,meta-ads-ai,AI Advertising Platform,Paid,https://www.facebook.com/business/ads,"Meta AI ad targeting and campaign optimization system","ads,meta,marketing",true,true
+2654,TikTok Ads AI,tiktok-ads-ai,AI Advertising Platform,Paid,https://ads.tiktok.com,"AI-powered TikTok advertising system","ads,tiktok,marketing",true,true
+2655,Amazon Ads AI,amazon-ads-ai,AI Advertising Platform,Paid,https://advertising.amazon.com,"Amazon AI ad optimization and targeting system","ads,amazon,marketing",true,true
+
+2656,HubSpot Marketing AI,hubspot-marketing-ai,AI Marketing Platform,Paid,https://www.hubspot.com,"AI inbound marketing and automation system","marketing,crm,ai",true,true
+2657,Marketo AI,marketo-ai,AI Marketing Automation,Paid,https://www.adobe.com/marketing/marketo.html,"Adobe AI marketing automation platform","marketing,adobe,ai",true,true
+2658,Salesforce Marketing Cloud AI,salesforce-marketing-ai,AI Marketing Platform,Paid,https://www.salesforce.com/marketing-cloud,"AI-driven customer journey and marketing automation","marketing,salesforce,ai",true,true
+2659,Mailchimp AI,mailchimp-ai,AI Email Marketing,Freemium,https://mailchimp.com,"AI email marketing and campaign optimization tool","email,marketing,ai",true,true
+2660,ActiveCampaign AI,activecampaign-ai,AI Email Automation,Paid,https://www.activecampaign.com,"AI customer journey and email automation platform","email,automation,ai",true,true
+
+2661,OpenAI Content Marketing AI,openai-content-marketing-ai,AI Content Platform,Paid,https://platform.openai.com,"AI content marketing and SEO optimization system","content,seo,ai",true,true
+2662,Jasper AI,jasper-ai,AI Content Writer,Paid,https://www.jasper.ai,"AI copywriting and marketing content generation tool","content,writing,ai",true,true
+2663,Copy.ai,copy-ai,AI Copywriting Tool,Freemium,https://www.copy.ai,"AI marketing copy and content generation platform","content,copywriting,ai",true,true
+2664,Writesonic AI,writesonic-ai,AI Writing Tool,Freemium,https://writesonic.com,"AI SEO content and marketing copy generator","content,seo,ai",true,true
+2665,Anyword AI,anyword-ai,AI Marketing Copy,Paid,https://anyword.com,"AI performance-driven marketing copy optimization tool","content,marketing,ai",true,true
+
+2666,OpenAI SEO AI,openai-seo-ai,AI SEO Platform,Paid,https://platform.openai.com,"AI SEO optimization and keyword strategy system","seo,marketing,ai",true,true
+2667,Surfer SEO AI,surfer-seo-ai,AI SEO Tool,Paid,https://surferseo.com,"AI SEO content optimization platform","seo,content,ai",true,true
+2668,Semrush AI,semrush-ai,AI SEO Analytics,Paid,https://www.semrush.com,"AI SEO and marketing analytics platform","seo,marketing,ai",true,true
+2669,Ahrefs AI,ahrefs-ai,AI SEO Tool,Paid,https://ahrefs.com,"AI backlink and SEO analysis system","seo,analytics,ai",true,true
+2670,RankMath AI,rankmath-ai,AI SEO Plugin,Freemium,https://rankmath.com,"AI SEO optimization plugin for WordPress","seo,wordpress,ai",true,true
+
+2671,OpenAI Social Media AI,openai-social-ai,AI Social Media Platform,Paid,https://platform.openai.com,"AI social media content generation and scheduling system","social,marketing,ai",true,true
+2672,Hootsuite AI,hootsuite-ai,AI Social Media Tool,Paid,https://hootsuite.com,"AI social media scheduling and analytics platform","social,automation,ai",true,true
+2673,Buffer AI,buffer-ai,AI Social Media Scheduler,Freemium,https://buffer.com,"AI social media posting and analytics tool","social,marketing,ai",true,true
+2674,Sprout Social AI,sprout-social-ai,AI Social Analytics,Paid,https://sproutsocial.com,"AI social media engagement and analytics system","social,analytics,ai",true,true
+2675,Later AI,later-ai,AI Instagram Scheduler,Freemium,https://later.com,"AI social media content planning platform","social,instagram,ai",true,true
+
+2676,OpenAI Influencer AI,openai-influencer-ai,AI Influencer Marketing,Paid,https://platform.openai.com,"AI influencer discovery and marketing system","influencer,marketing,ai",true,true
+2677,Upfluence AI,upfluence-ai,AI Influencer Platform,Paid,https://www.upfluence.com,"AI influencer marketing and analytics platform","influencer,marketing,ai",true,true
+2678,Heepsy AI,heepsy-ai,AI Influencer Search,Paid,https://www.heepsy.com,"AI influencer discovery and analysis system","influencer,social,ai",true,true
+2679,Traackr AI,traackr-ai,AI Influencer Analytics,Paid,https://www.traackr.com,"AI influencer performance analytics system","influencer,analytics,ai",true,true
+2680,Klear AI,klear-ai,AI Influencer Platform,Paid,https://klear.com,"AI influencer marketing intelligence platform","influencer,marketing,ai",true,true
+
+2681,OpenAI Affiliate AI,openai-affiliate-ai,AI Affiliate Marketing,Paid,https://platform.openai.com,"AI affiliate marketing automation system","affiliate,marketing,ai",true,true
+2682,Impact AI,impact-ai,AI Affiliate Platform,Paid,https://impact.com,"AI affiliate tracking and partnership platform","affiliate,marketing,ai",true,true
+2683,ShareASale AI,shareasale-ai,AI Affiliate Network,Paid,https://www.shareasale.com,"AI affiliate network and tracking system","affiliate,network,ai",true,true
+2684,CJ Affiliate AI,cj-affiliate-ai,AI Affiliate Platform,Paid,https://www.cj.com,"AI affiliate marketing analytics system","affiliate,marketing,ai",true,true
+2685,Awin AI,awin-ai,AI Affiliate Network,Paid,https://www.awin.com,"AI affiliate marketing and tracking platform","affiliate,marketing,ai",true,true
+
+2686,OpenAI Ad Optimization AI,openai-ad-optimization-ai,AI Ad Platform,Paid,https://platform.openai.com,"AI advertising optimization and bidding system","ads,optimization,ai",true,true
+2687,Smartly.io AI,smartly-ai,AI Ad Automation,Paid,https://www.smartly.io,"AI social advertising automation platform","ads,social,ai",true,true
+2688,AdCreative AI,adcreative-ai,AI Ad Generator,Freemium,https://www.adcreative.ai,"AI ad banner and creative generation tool","ads,creative,ai",true,true
+2689,Revealbot AI,revealbot-ai,AI Ad Automation,Paid,https://revealbot.com,"AI ad campaign automation and optimization system","ads,automation,ai",true,true
+2690,Madgicx AI,madgicx-ai,AI Ad Intelligence,Paid,https://madgicx.com,"AI ad analytics and optimization platform","ads,analytics,ai",true,true
+
+2691,OpenAI Marketing Analytics AI,openai-marketing-analytics-ai,AI Analytics Platform,Paid,https://platform.openai.com,"AI marketing performance analytics system","marketing,analytics,ai",true,true
+2692,Google Analytics AI,google-analytics-ai,AI Analytics Tool,Free,https://analytics.google.com,"Google AI web analytics and insights system","analytics,google,ai",true,true
+2693,Mixpanel Marketing AI,mixpanel-marketing-ai,AI Product Analytics,Paid,https://mixpanel.com,"AI marketing and product analytics system","analytics,product,ai",true,true
+2694,Amplitude Marketing AI,amplitude-marketing-ai,AI Growth Analytics,Paid,https://amplitude.com,"AI user behavior and growth analytics system","analytics,growth,ai",true,true
+2695,Heap Marketing AI,heap-marketing-ai,AI Behavioral Analytics,Paid,https://heap.io,"AI user behavior tracking and analytics system","analytics,behavior,ai",true,true
+
+2696,OpenAI Conversion AI,openai-conversion-ai,AI CRO Platform,Paid,https://platform.openai.com,"AI conversion rate optimization system","conversion,marketing,ai",true,true
+2697,VWO AI,vwo-ai,AI A/B Testing Platform,Paid,https://vwo.com,"AI A/B testing and conversion optimization platform","conversion,testing,ai",true,true
+2698,Optimizely AI,optimizely-ai,AI Experimentation Platform,Paid,https://www.optimizely.com,"AI experimentation and CRO platform","conversion,experiments,ai",true,true
+2699,Unbounce AI,unbounce-ai,AI Landing Page Builder,Paid,https://unbounce.com,"AI landing page optimization and conversion system","conversion,landing-page,ai",true,true
+2700,Instapage AI,instapage-ai,AI Landing Page Tool,Paid,https://instapage.com,"AI landing page and conversion optimization platform","conversion,marketing,ai",true,true

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Başvurular — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-subs" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-subs)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-subs)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-subs)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a>
+        <a href="/admin/tools.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Araçlar</a>
+        <a href="/admin/categories.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg> Kategoriler</a>
+        <a href="/admin/submissions.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular <span class="badge-count" id="nav-sub-count" style="display:none;background:var(--accent-red);color:white;border-radius:10px;padding:2px 6px;font-size:11px;margin-left:auto;font-weight:600">0</span>
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Siteyi Görüntüle</a>
+      </nav>
+      <div class="sidebar-footer"><button class="btn-logout" id="btn-logout"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Çıkış Yap</button></div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Araç Başvuruları</h1>
+      </div>
+
+      <div class="data-table-wrapper">
+        <div class="table-header">
+          <h3>Bekleyen Başvurular</h3>
+          <span class="tools-count" id="submissions-count">0 bekleyen başvuru</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Araç Adı</th>
+              <th>Kategori</th>
+              <th>Fiyatlandırma</th>
+              <th>Kaynak</th>
+              <th>Açıklama / Link</th>
+              <th>Tarih</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="submissions-table-body">
+            <tr>
+              <td colspan="7" class="empty-state">Yükleniyor...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Başvuru Detayları</h3>
+        <button class="modal-close" id="detail-modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="detail-modal-body">
+        <!-- Content will be injected -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="detail-close">Kapat</button>
+        <button class="btn-delete" id="detail-reject">Reddet</button>
+        <button class="btn-primary" id="detail-approve">Onayla & Yayınla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script logic loaded from admin.js but specific implementation inside -->
+  <script src="js/admin.js"></script>
+  <script>
+    'use strict';
+    
+    var subsTableBody = document.getElementById('submissions-table-body');
+    var subsCountEl = document.getElementById('submissions-count');
+    var detailModal = document.getElementById('detail-modal');
+    var detailModalBody = document.getElementById('detail-modal-body');
+    
+    var activeSub = null;
+    var allCategories = [];
+
+    // Load Categories
+    async function loadCats() {
+      try {
+        const res = await fetch('/api/categories');
+        allCategories = await res.json();
+      } catch(e) { console.error(e); }
+    }
+
+    function getCatLabel(catId) {
+      const cat = allCategories.find(c => c.id === catId);
+      return cat ? `${cat.icon} ${cat.name}` : catId;
+    }
+
+    // Load Submissions
+    async function loadSubmissions() {
+      try {
+        const res = await fetch('/api/submissions');
+        const subs = await res.json();
+        
+        subsCountEl.textContent = `${subs.length} bekleyen başvuru`;
+        
+        // Update sidebar count
+        const badge = document.getElementById('nav-sub-count');
+        if (badge) {
+          if (subs.length > 0) {
+            badge.textContent = subs.length;
+            badge.style.display = 'inline-block';
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+
+        if (subs.length === 0) {
+          subsTableBody.innerHTML = '<tr><td colspan="7" class="empty-state"><p>Bekleyen başvuru bulunmamaktadır. 🎉</p></td></tr>';
+          return;
+        }
+
+        subsTableBody.innerHTML = subs.map(s => {
+          const sourceBadge = s.source === 'crawler' 
+            ? '<span class="badge" style="background:hsla(195,90%,55%,0.15);color:var(--accent-cyan);border:1px solid hsla(195,90%,55%,0.3)">🤖 Tarayıcı</span>'
+            : '<span class="badge" style="background:hsla(265,90%,65%,0.15);color:var(--accent-purple);border:1px solid hsla(265,90%,65%,0.3)">👤 Kullanıcı</span>';
+          
+          const pricingLabel = s.pricing === 'ucretsiz' ? 'Ücretsiz' : s.pricing === 'freemium' ? 'Freemium' : 'Ücretli';
+          const pricingClass = `badge-${s.pricing}`;
+
+          const dateStr = s.created_at ? new Date(s.created_at).toLocaleDateString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '-';
+          
+          const featuredBadge = s.featured 
+            ? ' <span class="badge" style="background:var(--accent-yellow);color:#000;font-weight:600;font-size:0.7rem;vertical-align:middle;margin-left:5px;border:1px solid var(--accent-yellow)">⭐ Öne Çıkan (5.000 TL)</span>'
+            : '';
+
+          const yerliBadge = s.made_in_turkey 
+            ? ' <span class="badge" style="background:hsla(0,80%,50%,0.15);color:hsl(0,80%,60%);font-weight:600;font-size:0.7rem;vertical-align:middle;margin-left:5px;border:1px solid hsla(0,80%,50%,0.3)">🇹🇷 Yerli</span>'
+            : '';
+
+          return `
+            <tr>
+              <td><strong>${s.name}</strong>${featuredBadge}${yerliBadge}</td>
+              <td>${getCatLabel(s.category_id)}</td>
+              <td><span class="badge ${pricingClass}">${pricingLabel}</span></td>
+              <td>${sourceBadge}</td>
+              <td>
+                <div style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-secondary)" title="${s.description}">${s.description}</div>
+                <a href="${s.url}" target="_blank" style="color:var(--accent-cyan);font-size:0.75rem;display:inline-block;margin-top:2px">${s.url}</a>
+              </td>
+              <td>${dateStr}</td>
+              <td class="table-actions">
+                <button class="btn-edit btn-view-sub" data-id="${s.id}">İncele</button>
+                <button class="btn-delete btn-reject-sub" data-id="${s.id}" style="color:var(--accent-red)">Reddet</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // View detail buttons
+        subsTableBody.querySelectorAll('.btn-view-sub').forEach(btn => {
+          btn.addEventListener('click', function() { openDetail(subs.find(s => s.id === this.dataset.id)); });
+        });
+
+        // Reject buttons
+        subsTableBody.querySelectorAll('.btn-reject-sub').forEach(btn => {
+          btn.addEventListener('click', function() { rejectSub(this.dataset.id); });
+        });
+
+      } catch(e) {
+        showToast('Başvurular yüklenemedi.', 'error');
+      }
+    }
+
+    function openDetail(sub) {
+      activeSub = sub;
+      const pricingLabel = sub.pricing === 'ucretsiz' ? 'Ücretsiz' : sub.pricing === 'freemium' ? 'Freemium' : 'Ücretli';
+      const sourceLabel = sub.source === 'crawler' ? '🤖 AI Web Tarayıcısı' : '👤 Kullanıcı Başvurusu';
+      
+      const featuredLabel = sub.featured 
+        ? '<span style="color:var(--accent-yellow);font-weight:bold">Evet (Yıllık 5.000 TL Sponsorluk)</span>' 
+        : 'Hayır';
+
+      const yerliLabel = sub.made_in_turkey 
+        ? '<span style="color:hsl(0,80%,60%);font-weight:bold">🇹🇷 Evet — Yerli Teknoloji</span>' 
+        : 'Hayır';
+
+      detailModalBody.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Araç Adı</label><strong style="font-size:1.2rem">${sub.name}</strong></div>
+          <div style="display:flex;gap:32px;flex-wrap:wrap">
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Kategori</label><span>${getCatLabel(sub.category_id)}</span></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Fiyatlandırma</label><span>${pricingLabel}</span></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Kaynak</label><span>${sourceLabel}</span></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Öne Çıkan Sponsorluk</label><span>${featuredLabel}</span></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Yerli Teknoloji</label><span>${yerliLabel}</span></div>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Web Sitesi</label>
+            <a href="${sub.url}" target="_blank" style="color:var(--accent-cyan);word-break:break-all">${sub.url} 🔗</a>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Açıklama</label>
+            <p style="background:var(--bg-input);padding:12px;border-radius:var(--radius-sm);color:var(--text-secondary);line-height:1.5">${sub.description}</p>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Etiketler</label>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+              ${(sub.tags || []).map(t => `<span class="badge badge-freemium" style="border-radius:4px">${t}</span>`).join('') || 'Etiket yok'}
+            </div>
+          </div>
+        </div>
+      `;
+      detailModal.classList.add('active');
+    }
+
+    function closeDetailModal() {
+      detailModal.classList.remove('active');
+      activeSub = null;
+    }
+
+    document.getElementById('detail-modal-close').addEventListener('click', closeDetailModal);
+    document.getElementById('detail-close').addEventListener('click', closeDetailModal);
+
+    // Approve action
+    document.getElementById('detail-approve').addEventListener('click', async () => {
+      if(!activeSub) return;
+      try {
+        const res = await fetch(`/api/submissions/${activeSub.id}/approve`, { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Başvuru onaylandı ve vitrine eklendi!', 'success');
+          closeDetailModal();
+          loadSubmissions();
+        } else {
+          showToast(data.error || 'Onaylanırken hata oluştu.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    });
+
+    // Reject action from detail
+    document.getElementById('detail-reject').addEventListener('click', () => {
+      if(activeSub) rejectSub(activeSub.id);
+    });
+
+    async function rejectSub(id) {
+      if (!confirm('Bu başvuruyu silmek istediğinizden emin misiniz?')) return;
+      try {
+        const res = await fetch(`/api/submissions/${id}/reject`, { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Başvuru reddedildi ve silindi.', 'success');
+          closeDetailModal();
+          loadSubmissions();
+        } else {
+          showToast(data.error || 'Silinirken hata oluştu.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    }
+
+    // Init page
+    (async () => {
+      await loadCats();
+      await loadSubmissions();
+    })();
+  </script>
+</body>
+</html>

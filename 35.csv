@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1701,OpenAI Agent Builder,openai-agent-builder,AI Agent Platform,Paid,https://platform.openai.com,"No-code/low-code AI agent creation platform","agents,llm,automation",true,true
+1702,Anthropic Agent Studio,anthropic-agent-studio,AI Agent Platform,Paid,https://www.anthropic.com,"Claude-based enterprise AI agent builder","agents,llm,enterprise",true,true
+1703,Google Agent Builder,google-agent-builder,AI Agent Platform,Paid,https://ai.google,"Gemini-powered AI agent development platform","agents,google,llm",true,true
+1704,Microsoft Copilot Agents,microsoft-copilot-agents,AI Agent Platform,Paid,https://www.microsoft.com,"Enterprise AI copilots and automation agents","copilot,agents,enterprise",true,true
+1705,Meta Agent Studio,meta-agent-studio,AI Agent Platform,Free,https://ai.meta.com,"Meta AI agent creation and deployment tools","agents,meta,llm",true,true
+
+1706,Amazon Bedrock Agents,amazon-bedrock-agents,AI Agent Platform,Paid,https://aws.amazon.com/bedrock,"AWS managed AI agent orchestration service","agents,aws,llm",true,true
+1707,IBM Watsonx Agents,watsonx-agents,AI Agent Platform,Paid,https://www.ibm.com/watsonx,"IBM enterprise AI agent and automation system","agents,ibm,enterprise",true,true
+1708,Salesforce Agentforce,salesforce-agentforce,AI CRM Agents,Paid,https://www.salesforce.com,"AI-powered CRM automation agents for businesses","crm,agents,ai",true,true
+1709,HubSpot AI Agents,hubspot-ai-agents,AI Marketing Agents,Paid,https://www.hubspot.com,"Marketing and sales automation AI agents","marketing,agents,ai",true,true
+1710,Zoho Zia Agents,zoho-zia-agents,AI Business Agents,Paid,https://www.zoho.com,"Business automation AI agents for CRM workflows","crm,agents,ai",true,true
+
+1711,Notion AI Agents,notion-ai-agents,AI Productivity Agents,Freemium,https://www.notion.so,"AI agents for workspace automation and productivity","notes,agents,ai",true,true
+1712,Airtable AI Agents,airtable-ai-agents,AI Automation Agents,Freemium,https://airtable.com,"Database automation AI agents","database,agents,ai",true,true
+1713,ClickUp AI Agents,clickup-ai-agents,AI Task Agents,Freemium,https://clickup.com,"AI-powered task and project automation agents","tasks,agents,ai",true,true
+1714,Miro AI Agents,miro-ai-agents,AI Collaboration Agents,Freemium,https://miro.com,"AI whiteboard collaboration and workflow agents","collaboration,agents,ai",true,true
+1715,Figma AI Agents,figma-ai-agents,AI Design Agents,Paid,https://www.figma.com,"AI agents for UI/UX design automation","design,agents,ui",true,true
+
+1716,Canva AI Agents,canva-ai-agents,AI Design Agents,Freemium,https://www.canva.com,"AI agents for design and content creation workflows","design,agents,ai",true,true
+1717,Adobe AI Agents,adobe-ai-agents,AI Creative Agents,Paid,https://www.adobe.com,"Creative AI agents for design, video and media","creative,agents,ai",true,true
+1718,Runway AI Agents,runway-ai-agents,AI Video Agents,Paid,https://runwayml.com,"AI agents for video generation and editing workflows","video,agents,ai",true,true
+1719,Pika AI Agents,pika-ai-agents,AI Video Agents,Freemium,https://pika.art,"AI video generation agents for creators","video,agents,ai",true,true
+1720,Synthesia AI Agents,synthesia-ai-agents,AI Video Agents,Paid,https://www.synthesia.io,"AI avatar video automation agents","video,agents,avatar",true,true
+
+1721,HeyGen AI Agents,heygen-ai-agents,AI Avatar Agents,Paid,https://www.heygen.com,"AI avatar video generation agents","video,agents,ai",true,true
+1722,D-ID AI Agents,d-id-ai-agents,AI Talking Agents,Paid,https://www.d-id.com,"Talking avatar and video generation agents","video,agents,ai",true,true
+1723,DeepBrain AI Agents,deepbrain-ai-agents,AI Human Agents,Paid,https://www.deepbrain.io,"AI human presenter automation agents","video,agents,enterprise",true,true
+1724,Hour One AI Agents,hour-one-ai-agents,AI Presenter Agents,Paid,https://hourone.ai,"AI video presenter automation agents","video,agents,ai",true,true
+1725,Colossyan AI Agents,colossyan-ai-agents,AI Training Agents,Paid,https://www.colossyan.com,"AI training video automation agents","video,agents,training",true,true
+
+1726,Fliki AI Agents,fliki-ai-agents,AI Content Agents,Freemium,https://fliki.ai,"AI text-to-video content automation agents","video,tts,agents",true,true
+1727,Pictory AI Agents,pictory-ai-agents,AI Video Automation Agents,Paid,https://pictory.ai,"AI video creation automation agents","video,automation,agents",true,true
+1728,Lumen5 AI Agents,lumen5-ai-agents,AI Marketing Agents,Paid,https://lumen5.com,"AI marketing video automation agents","marketing,video,agents",true,true
+1729,VEED AI Agents,veed-ai-agents,AI Video Editing Agents,Freemium,https://www.veed.io,"AI video editing automation agents","video,editing,agents",true,true
+1730,CapCut AI Agents,capcut-ai-agents,AI Social Video Agents,Freemium,https://www.capcut.com,"AI social media video automation agents","video,social,agents",true,true
+
+1731,Descript AI Agents,descript-ai-agents,AI Audio Agents,Freemium,https://www.descript.com,"AI audio/video editing automation agents","audio,video,agents",true,true
+1732,Adobe Podcast Agents,adobe-podcast-agents,AI Audio Agents,Freemium,https://podcast.adobe.com,"AI podcast editing automation agents","audio,podcast,agents",true,true
+1733,Audacity AI Agents,audacity-ai-agents,AI Audio Agents,Free,https://www.audacityteam.org,"Open-source AI audio editing agents","audio,open-source,agents",true,true
+1734,ElevenLabs Voice Agents,elevenlabs-voice-agents,AI Voice Agents,Paid,https://elevenlabs.io,"AI voice generation and cloning agents","voice,agents,tts",true,true
+1735,PlayHT Voice Agents,playht-voice-agents,AI Voice Agents,Freemium,https://play.ht,"AI narration and speech automation agents","voice,agents,tts",true,true
+
+1736,Murf Voice Agents,murf-voice-agents,AI Voice Agents,Paid,https://murf.ai,"AI voiceover automation agents","voice,agents,tts",true,true
+1737,Lovo Voice Agents,lovo-voice-agents,AI Voice Agents,Freemium,https://lovo.ai,"AI dubbing and voice automation agents","voice,agents,ai",true,true
+1738,WellSaid Voice Agents,wellsaid-voice-agents,AI Voice Agents,Paid,https://wellsaidlabs.com,"Professional AI voice generation agents","voice,agents,tts",true,true
+1739,Resemble Voice Agents,resemble-voice-agents,AI Voice Cloning Agents,Paid,https://www.resemble.ai,"AI voice cloning automation agents","voice,cloning,agents",true,true
+1740,Speechify Voice Agents,speechify-voice-agents,AI Reading Agents,Freemium,https://speechify.com,"AI text-to-speech reading automation agents","voice,reader,agents",true,true
+
+1741,Deepgram Speech Agents,deepgram-speech-agents,AI Speech Agents,Paid,https://deepgram.com,"AI speech-to-text automation agents","stt,voice,agents",true,true
+1742,AssemblyAI Agents,assemblyai-agents,AI Audio Agents,Paid,https://www.assemblyai.com,"AI audio intelligence automation agents","stt,analysis,agents",true,true
+1743,Rev AI Agents,rev-ai-agents,AI Transcription Agents,Paid,https://www.rev.ai,"AI transcription automation agents","stt,transcription,agents",true,true
+1744,Sonix AI Agents,sonix-ai-agents,AI Subtitle Agents,Freemium,https://sonix.ai,"AI subtitle generation automation agents","stt,video,agents",true,true
+1745,Otter AI Agents,otter-ai-agents,AI Meeting Agents,Freemium,https://otter.ai,"AI meeting transcription automation agents","meetings,agents,ai",true,true
+
+1746,Fireflies AI Agents,fireflies-ai-agents,AI Meeting Agents,Freemium,https://fireflies.ai,"AI meeting recording and summary agents","meetings,agents,ai",true,true
+1747,Fathom AI Agents,fathom-ai-agents,AI Meeting Agents,Freemium,https://fathom.video,"AI meeting insight automation agents","meetings,agents,ai",true,true
+1748,Grain AI Agents,grain-ai-agents,AI Meeting Video Agents,Freemium,https://grain.com,"AI meeting clip automation agents","meetings,video,agents",true,true
+1749,Avoma AI Agents,avoma-ai-agents,AI Meeting Intelligence Agents,Paid,https://www.avoma.com,"AI meeting analytics and coaching agents","meetings,sales,agents",true,true
+1750,Sembly AI Agents,sembly-ai-agents,AI Meeting Intelligence Agents,Paid,https://www.sembly.ai,"AI meeting insight and transcription agents","meetings,analysis,agents",true,true

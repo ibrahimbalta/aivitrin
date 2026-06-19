@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2801,OpenAI Legal AI,openai-legal-ai,AI Legal Platform,Paid,https://platform.openai.com,"AI-powered legal analysis and contract intelligence system","legal,ai,contracts",true,true
+2802,Harvey AI,harvey-ai,AI Legal Assistant,Paid,https://www.harvey.ai,"AI legal copilot for law firms and enterprises","legal,law,ai",true,true
+2803,Lexis+ AI,lexis-ai,AI Legal Research,Paid,https://www.lexisnexis.com,"AI legal research and case analysis platform","legal,research,ai",true,true
+2804,Westlaw AI,westlaw-ai,AI Legal Research,Paid,https://legal.thomsonreuters.com,"AI legal database and research assistant","legal,cases,ai",true,true
+2805,DoNotPay AI,donotpay-ai,AI Legal Automation,Freemium,https://www.donotpay.com,"AI legal chatbot for consumer rights and disputes","legal,automation,ai",true,true
+
+2806,OpenAI Contract AI,openai-contract-ai,AI Contract Platform,Paid,https://platform.openai.com,"AI contract drafting and analysis system","legal,contracts,ai",true,true
+2807,Evisort AI,evisort-ai,AI Contract Management,Paid,https://www.evisort.com,"AI contract lifecycle management system","legal,contracts,ai",true,true
+2808,Ironclad AI,ironclad-ai,AI Contract Workflow,Paid,https://ironcladapp.com,"AI contract workflow automation platform","legal,contracts,ai",true,true
+2809,Luminance AI,luminance-ai,AI Legal Review,Paid,https://www.luminance.com,"AI document and legal review system","legal,documents,ai",true,true
+2810,Kira Systems AI,kira-systems-ai,AI Legal Analysis,Paid,https://kirasystems.com,"AI contract and legal document analysis system","legal,ai,documents",true,true
+
+2811,OpenAI Compliance AI,openai-compliance-ai,AI Compliance System,Paid,https://platform.openai.com,"AI regulatory compliance and monitoring system","legal,compliance,ai",true,true
+2812,Relativity AI,relativity-ai,AI eDiscovery,Paid,https://www.relativity.com,"AI legal eDiscovery and document analysis platform","legal,ediscovery,ai",true,true
+2813,Everlaw AI,everlaw-ai,AI Litigation Platform,Paid,https://www.everlaw.com,"AI litigation and legal discovery system","legal,litigation,ai",true,true
+2814,DISCO AI,disco-ai,AI Legal Discovery,Paid,https://www.csdisco.com,"AI legal case review and eDiscovery platform","legal,cases,ai",true,true
+2815,CaseText AI,casetext-ai,AI Legal Research,Paid,https://casetext.com,"AI legal research and case law assistant","legal,research,ai",true,true
+
+2816,OpenAI Tax Law AI,openai-tax-law-ai,AI Tax Legal Platform,Paid,https://platform.openai.com,"AI tax law analysis and compliance system","legal,tax,ai",true,true
+2817,TaxGPT AI,taxgpt-ai,AI Tax Assistant,Paid,https://taxgpt.com,"AI tax law and filing assistant system","tax,legal,ai",true,true
+2818,Clio AI,clio-ai,AI Law Practice Management,Paid,https://www.clio.com,"AI law firm management and automation platform","legal,law,ai",true,true
+2819,Smokeball AI,smokeball-ai,AI Legal Practice,Paid,https://www.smokeball.com,"AI legal practice management system","legal,workflow,ai",true,true
+2820,MyCase AI,mycase-ai,AI Legal Software,Paid,https://www.mycase.com,"AI legal case and client management platform","legal,crm,ai",true,true
+
+2821,OpenAI HR Legal AI,openai-hr-legal-ai,AI HR Compliance,Paid,https://platform.openai.com,"AI HR legal compliance and employee regulation system","hr,legal,ai",true,true
+2822,Workday AI,workday-ai,AI HR Platform,Paid,https://www.workday.com,"AI enterprise HR and workforce management system","hr,enterprise,ai",true,true
+2823,BambooHR AI,bamboohr-ai,AI HR Software,Paid,https://www.bamboohr.com,"AI HR management and employee tracking system","hr,ai,management",true,true
+2824,HiBob AI,hibob-ai,AI HR Platform,Paid,https://www.hibob.com,"AI modern HR and people management platform","hr,people,ai",true,true
+2825,Gusto HR AI,gusto-hr-ai,AI HR Payroll,Paid,https://gusto.com,"AI HR and payroll automation system","hr,payroll,ai",true,true
+
+2826,OpenAI Recruitment AI,openai-recruitment-ai,AI Hiring Platform,Paid,https://platform.openai.com,"AI recruitment and candidate screening system","recruitment,hiring,ai",true,true
+2827,LinkedIn Recruiter AI,linkedin-recruiter-ai,AI Hiring Tool,Paid,https://www.linkedin.com/talent,"AI recruiting and candidate matching system","recruitment,linkedin,ai",true,true
+2828,Greenhouse AI,greenhouse-ai,AI Hiring Platform,Paid,https://www.greenhouse.com,"AI applicant tracking and hiring system","recruitment,ats,ai",true,true
+2829,Lever AI,lever-ai,AI Hiring System,Paid,https://www.lever.co,"AI recruitment and talent management platform","recruitment,ats,ai",true,true
+2830,Workable AI,workable-ai,AI Recruiting Platform,Paid,https://www.workable.com,"AI hiring and applicant tracking system","recruitment,hiring,ai",true,true
+
+2831,OpenAI Education Law AI,openai-education-law-ai,AI Legal Education,Paid,https://platform.openai.com,"AI legal education and training system","legal,education,ai",true,true
+2832,LawGeex AI,lawgeex-ai,AI Contract Review,Paid,https://www.lawgeex.com,"AI contract review and legal automation system","legal,contracts,ai",true,true
+2833,LegalZoom AI,legalzoom-ai,AI Legal Services,Paid,https://www.legalzoom.com,"AI legal document creation platform","legal,documents,ai",true,true
+2834,Avvo AI,avvo-ai,AI Legal Q&A,Freemium,https://www.avvo.com,"AI legal question and answer system","legal,qa,ai",true,true
+2835,Justia AI,justia-ai,AI Legal Research,Free,https://www.justia.com,"AI legal database and research tool","legal,research,ai",true,true
+
+2836,OpenAI Policy AI,openai-policy-ai,AI Policy Analysis,Paid,https://platform.openai.com,"AI policy and regulatory analysis system","policy,legal,ai",true,true
+2837,Polisis AI,polisis-ai,AI Policy Summarization,Free,https://polisis.com,"AI privacy policy analysis system","policy,privacy,ai",true,true
+2838,Termly AI,termly-ai,AI Legal Policies,Paid,https://termly.io,"AI privacy policy and legal compliance generator","legal,privacy,ai",true,true
+2839,Iubenda AI,iubenda-ai,AI Legal Compliance,Paid,https://www.iubenda.com,"AI privacy policy and compliance platform","legal,compliance,ai",true,true
+2840,OneTrust AI,onetrust-ai,AI Compliance Platform,Paid,https://www.onetrust.com,"AI data privacy and compliance management system","compliance,privacy,ai",true,true
+
+2841,OpenAI Document AI,openai-document-ai,AI Document Intelligence,Paid,https://platform.openai.com,"AI document processing and understanding system","documents,ai,automation",true,true
+2842,DocuSign AI,docusign-ai,AI E-Signature Platform,Paid,https://www.docusign.com,"AI contract signing and document workflow system","documents,contracts,ai",true,true
+2843,PandaDoc AI,pandadoc-ai,AI Document Automation,Paid,https://www.pandadoc.com,"AI document generation and e-signature platform","documents,automation,ai",true,true
+2844,Adobe Acrobat AI,adobe-acrobat-ai,AI PDF Tool,Paid,https://www.adobe.com/acrobat,"AI PDF editing and document intelligence system","pdf,documents,ai",true,true
+2845,ABBYY AI,abbyy-ai,AI Document OCR,Paid,https://www.abbyy.com,"AI OCR and document processing system","ocr,documents,ai",true,true
+
+2846,OpenAI Knowledge AI,openai-knowledge-ai,AI Knowledge System,Paid,https://platform.openai.com,"AI knowledge extraction and reasoning system","knowledge,ai,search",true,true
+2847,Notion AI,notion-ai,AI Productivity Tool,Freemium,https://www.notion.so,"AI note-taking and knowledge management system","productivity,notes,ai",true,true
+2848,Roam Research AI,roam-ai,AI Knowledge Graph,Paid,https://roamresearch.com,"AI knowledge graph and note linking system","knowledge,graph,ai",true,true
+2849,Obsidian AI,obsidian-ai,AI Note System,Freemium,https://obsidian.md,"AI personal knowledge management system","knowledge,notes,ai",true,true
+2850,Tana AI,tana-ai,AI Knowledge Workspace,Paid,https://tana.inc,"AI structured knowledge and workspace system","knowledge,workspace,ai",true,true

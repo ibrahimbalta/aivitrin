@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1651,OpenAI Vision Studio,openai-vision-studio,AI Vision Platform,Paid,https://platform.openai.com,"AI vision analysis and multimodal application studio","vision,llm,ai",true,true
+1652,Google Gemini Vision Studio,gemini-vision-studio,AI Multimodal Platform,Paid,https://ai.google,"Multimodal AI image and video understanding studio","vision,google,ai",true,true
+1653,Anthropic Claude Vision,claude-vision,AI Vision LLM,Paid,https://www.anthropic.com,"Claude-based image and document understanding system","vision,llm,ai",true,true
+1654,Meta AI Vision Studio,meta-vision-studio,AI Vision Platform,Free,https://ai.meta.com,"Meta multimodal vision AI tools and models","vision,meta,ai",true,true
+1655,Mistral Vision API,mistral-vision-api,AI Vision API,Paid,https://mistral.ai,"Multimodal vision understanding API","vision,api,llm",true,true
+
+1656,Azure Computer Vision Studio,azure-vision-studio,AI Vision API,Paid,https://azure.microsoft.com,"Microsoft computer vision AI services and studio","vision,azure,api",true,true
+1657,AWS Rekognition Studio,aws-rekognition-studio,AI Vision API,Paid,https://aws.amazon.com/rekognition,"AWS image and video analysis AI platform","vision,aws,ai",true,true
+1658,Google Vision AI Studio,google-vision-ai-studio,AI Vision API,Paid,https://cloud.google.com/vision,"Google image recognition and analysis platform","vision,google,api",true,true
+1659,Clarifai Vision Studio,clarifai-vision-studio,AI Vision Platform,Paid,https://www.clarifai.com,"Enterprise computer vision AI platform","vision,enterprise,ai",true,true
+1660,Roboflow Vision Studio,roboflow-vision-studio,AI Vision ML Platform,Freemium,https://roboflow.com,"AI computer vision dataset and training platform","vision,ml,ai",true,true
+
+1661,Labelbox AI,labelbox-ai,AI Data Labeling Platform,Paid,https://labelbox.com,"AI-powered data labeling and training platform","ml,data,ai",true,true
+1662,Scale AI Platform,scale-ai-platform,AI Data Platform,Paid,https://scale.com,"Data labeling and AI training data platform","ml,data,ai",true,true
+1663,SuperAnnotate AI,superannotate-ai,AI Data Labeling Tool,Paid,https://superannotate.com,"AI dataset annotation and labeling platform","ml,data,vision",true,true
+1664,V7 Labs AI,v7-labs-ai,AI Vision Dataset Tool,Paid,https://www.v7labs.com,"AI image annotation and training dataset platform","vision,data,ai",true,true
+1665,Label Studio,label-studio,AI Open Source Labeling,Free,https://labelstud.io,"Open-source data labeling and annotation tool","ml,data,open-source",true,true
+
+1666,Edge Impulse AI,edge-impulse-ai,AI Edge ML Platform,Freemium,https://www.edgeimpulse.com,"AI for edge devices and embedded systems","ml,edge,iot",true,true
+1667,TensorFlow Lite AI,tensorflow-lite-ai,AI Edge ML,Free,https://www.tensorflow.org/lite,"Lightweight ML framework for mobile and edge devices","ml,edge,google",true,true
+1668,ONNX Runtime AI,onnx-runtime-ai,AI Model Runtime,Free,https://onnxruntime.ai,"Cross-platform AI model inference runtime","ml,inference,ai",true,true
+1669,Core ML Apple,coreml-apple,AI Edge Framework,Free,https://developer.apple.com,"Apple machine learning framework for iOS/macOS","apple,ml,ai",true,true
+1670,PyTorch Mobile,torch-mobile,AI Mobile ML,Free,https://pytorch.org/mobile,"Mobile deployment framework for PyTorch models","ml,mobile,ai",true,true
+
+1671,NVIDIA TensorRT,nvidia-tensorrt,AI Inference Optimization,Free,https://developer.nvidia.com/tensorrt,"High-performance deep learning inference optimizer","gpu,inference,ai",true,true
+1672,NVIDIA Triton Server,nvidia-triton-server,AI Model Serving,Free,https://developer.nvidia.com/triton-inference-server,"AI model inference serving platform","gpu,inference,ai",true,true
+1673,Intel OpenVINO,intel-openvino,AI Optimization Toolkit,Free,https://www.intel.com/openvino,"AI model optimization for Intel hardware","intel,inference,ai",true,true
+1674,Hugging Face Optimum,hf-optimum,AI Optimization Library,Free,https://huggingface.co,optimum,"Model optimization toolkit for transformers","ml,optimization,ai",true,true
+1675,DeepSpeed Inference,deepspeed-inference,AI Inference Engine,Free,https://www.deepspeed.ai,"High-speed AI inference optimization system","ml,inference,ai",true,true
+
+1676,Ray Serve Cloud,ray-serve-cloud,AI Distributed Serving,Paid,https://www.ray.io,"Distributed AI model serving system","ml,distributed,ai",true,true
+1677,Modal GPU Cloud,modal-gpu-cloud,AI Compute Platform,Paid,https://modal.com,"Serverless GPU compute platform for AI workloads","gpu,cloud,ai",true,true
+1678,RunPod GPU Cloud,runpod-gpu-cloud,AI GPU Platform,Paid,https://www.runpod.io,"GPU cloud infrastructure for AI training and inference","gpu,cloud,ai",true,true
+1679,Lambda Labs Cloud,lambda-labs-cloud,AI GPU Cloud,Paid,https://lambdalabs.com,"GPU cloud for AI model training and deployment","gpu,cloud,ai",true,true
+1680,Paperspace Gradient,paperspace-gradient,AI Cloud ML Platform,Paid,https://www.paperspace.com,"Cloud-based AI development and training platform","ml,cloud,ai",true,true
+
+1681,SageMaker Studio,sagemaker-studio,AI ML Platform,Paid,https://aws.amazon.com/sagemaker,"AWS integrated ML development environment","aws,ml,ai",true,true
+1682,Vertex AI Studio,vertex-ai-studio,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Google ML development and deployment platform","google,ml,ai",true,true
+1683,Azure ML Studio,azure-ml-studio,AI ML Platform,Paid,https://azure.microsoft.com,"Microsoft cloud ML development platform","azure,ml,ai",true,true
+1684,Databricks ML Studio,databricks-ml-studio,AI Data Platform,Paid,https://www.databricks.com,"AI-powered data engineering and ML platform","data,ml,ai",true,true
+1685,Snowflake Cortex AI,snowflake-cortex-ai,AI Data Intelligence,Paid,https://www.snowflake.com,"AI-native data warehouse intelligence platform","data,ai,enterprise",true,true
+
+1686,Dataiku AI Studio,dataiku-ai-studio,AI Data Science Platform,Paid,https://www.dataiku.com,"Enterprise AI workflow and data science platform","data,ml,enterprise",true,true
+1687,DataRobot AI Cloud,datarobot-ai-cloud,AI AutoML Platform,Paid,https://www.datarobot.com,"Automated machine learning cloud platform","ml,auto,enterprise",true,true
+1688,H2O AI Cloud,h2o-ai-cloud,AI AutoML Platform,Paid,https://www.h2o.ai,"Enterprise AI and AutoML cloud platform","ml,auto,enterprise",true,true
+1689,Domino AI Cloud,domino-ai-cloud,AI MLOps Platform,Paid,https://www.dominodatalab.com,"Enterprise MLOps and AI lifecycle platform","ml,ops,enterprise",true,true
+1690,ClearML AI Cloud,clearml-ai-cloud,AI MLOps Platform,Free,https://clear.ml,"Open-source MLOps automation cloud platform","ml,ops,open-source",true,true
+
+1691,Weights & Biases Cloud,wandb-cloud,AI Experiment Platform,Paid,https://wandb.ai,"ML experiment tracking and model observability cloud","ml,tracking,ai",true,true
+1692,Neptune ML Cloud,neptune-ml-cloud,AI Experiment Tracking,Paid,https://neptune.ai,"ML experiment tracking and metadata cloud platform","ml,tracking,ai",true,true
+1693,Comet ML Cloud,comet-ml-cloud,AI Monitoring Platform,Paid,https://www.comet.com,"AI model monitoring and experiment tracking cloud","ml,monitoring,ai",true,true
+1694,MLflow Cloud Platform,mlflow-cloud-platform,AI ML Lifecycle,Paid,https://mlflow.org,"Cloud ML lifecycle management system","ml,devops,ai",true,true
+1695,Kubeflow Cloud Platform,kubeflow-cloud-platform,AI Kubernetes ML,Paid,https://kubeflow.org,"Kubernetes-based ML pipeline orchestration platform","ml,kubernetes,ai",true,true
+
+1696,Seldon Cloud Platform,seldon-cloud-platform,AI Deployment Platform,Paid,https://www.seldon.io,"Enterprise ML model deployment platform","ml,deploy,enterprise",true,true
+1697,BentoML Cloud,bentoml-cloud,AI Model Serving,Paid,https://bentoml.com,"Cloud-based ML model serving platform","ml,api,cloud",true,true
+1698,Anyscale Cloud,anyscale-cloud,AI Distributed Compute,Paid,https://www.anyscale.com,"Ray-based distributed AI compute cloud platform","ml,distributed,cloud",true,true
+1699,Ray AI Cloud,ray-ai-cloud,AI Distributed System,Paid,https://www.ray.io,"Distributed AI training and inference system cloud","ml,distributed,ai",true,true
+1700,OpenAI Agents Cloud,openai-agents-cloud,AI Agent Platform,Paid,https://platform.openai.com,"Cloud platform for building autonomous AI agents","agents,llm,cloud",true,true

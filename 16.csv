@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+751,Tableau AI,tableau-ai,AI Data Analytics,Paid,https://www.tableau.com,"AI-powered data visualization and business intelligence platform","analytics,bi,data",true,true
+752,Power BI Copilot,powerbi-copilot,AI BI Tool,Paid,https://powerbi.microsoft.com,"Microsoft AI assistant for business intelligence and dashboards","bi,analytics,enterprise",true,true
+753,Looker AI,looker-ai,AI Data Platform,Paid,https://cloud.google.com/looker,"AI-powered data exploration and business intelligence","bi,google,data",true,true
+754,Qlik Sense AI,qlik-sense-ai,AI Analytics Platform,Paid,https://www.qlik.com,"AI-driven analytics and associative data exploration","analytics,bi,data",true,true
+755,ThoughtSpot AI,thoughtspot-ai,AI Analytics Search,Paid,https://www.thoughtspot.com,"AI search-based analytics for enterprise data","bi,search,data",true,true
+
+756,Zoho Analytics AI,zoho-analytics-ai,AI BI Platform,Freemium,https://www.zoho.com/analytics,"AI-powered business intelligence and reporting tools","analytics,bi,small-business",true,true
+757,Sisense AI,sisense-ai,AI Analytics Platform,Paid,https://www.sisense.com,"AI-driven embedded analytics for enterprises","bi,data,analytics",true,true
+758,Metabase AI,metabase-ai,AI Data Visualization,Free,https://www.metabase.com,"Open-source BI and data visualization platform","bi,open-source,data",true,true
+759,Apache Superset AI,superset-ai,AI BI Tool,Free,https://superset.apache.org,"Open-source data exploration and visualization tool","bi,open-source,data",true,true
+760,Redash AI,redash-ai,AI Data Dashboard,Free,https://redash.io,"Query and visualize data with AI-assisted dashboards","analytics,dashboard,data",true,true
+
+761,Hex AI,hex-ai,AI Data Workspace,Freemium,https://hex.tech,"Collaborative data science and analytics workspace","data,notebook,analytics",true,true
+762,Mode AI,mode-ai,AI Data Science Tool,Paid,https://mode.com,"AI-powered analytics and data science platform","analytics,data,science",true,true
+763,Deepnote AI,deepnote-ai,AI Notebook Platform,Freemium,https://deepnote.com,"Collaborative data notebooks with AI assistance","notebook,data,collaboration",true,true
+764,Jupyter AI,jupyter-ai,AI Notebook Assistant,Free,https://jupyter.org,"AI extensions for Jupyter notebooks","notebook,python,data",true,true
+765,Kaggle AI,kaggle-ai,AI Data Science Platform,Free,https://www.kaggle.com,"AI-assisted data science and machine learning community platform","ml,data,competition",true,true
+
+766,Databricks AI,databricks-ai,AI Data Platform,Paid,https://www.databricks.com,"Unified AI and data analytics platform","data,ml,enterprise",true,true
+767,Snowflake AI,snowflake-ai,AI Data Cloud,Paid,https://www.snowflake.com,"AI-powered cloud data warehouse and analytics","data,cloud,analytics",true,true
+768,BigQuery AI,bigquery-ai,AI Data Warehouse,Paid,https://cloud.google.com/bigquery,"Google AI-powered data warehouse and analytics engine","data,google,warehouse",true,true
+769,Amazon Redshift AI,redshift-ai,AI Data Warehouse,Paid,https://aws.amazon.com/redshift,"AI-driven data warehouse for large-scale analytics","aws,data,warehouse",true,true
+770,Oracle Autonomous DB AI,oracle-autonomous-ai,AI Database,Paid,https://www.oracle.com/autonomous-database,"Self-driving database with AI optimization","database,oracle,enterprise",true,true
+
+771,DataRobot,datarobot,AI Machine Learning Platform,Paid,https://www.datarobot.com,"Automated machine learning and predictive analytics platform","ml,automation,analytics",true,true
+772,H2O.ai,h2o-ai,AI ML Platform,Freemium,https://www.h2o.ai,"Open-source and enterprise AI machine learning platform","ml,open-source,data",true,true
+773,Dataiku,dataiku,AI Data Science Platform,Paid,https://www.dataiku.com,"End-to-end AI and data science platform for enterprises","ml,enterprise,data",true,true
+774,Alteryx AI,alteryx-ai,AI Data Automation,Paid,https://www.alteryx.com,"AI-driven data preparation and analytics automation","data,automation,analytics",true,true
+775,Knime AI,knime-ai,AI Data Workflow,Free,https://www.knime.com,"Open-source data analytics and AI workflow tool","data,workflow,open-source",true,true
+
+776,Airbyte AI,airbyte-ai,AI Data Integration,Free,https://airbyte.com,"Open-source data integration and ETL platform","data,etl,open-source",true,true
+777,Fivetran AI,fivetran-ai,AI Data Pipeline,Paid,https://www.fivetran.com,"Automated data pipelines for analytics and AI systems","etl,data,automation",true,true
+778,Stitch Data AI,stitch-ai,AI ETL Tool,Paid,https://www.stitchdata.com,"Simple AI-assisted data pipeline and ETL tool","etl,data,integration",true,true
+779,Talend AI,talend-ai,AI Data Integration,Paid,https://www.talend.com,"AI-powered data integration and governance platform","data,etl,enterprise",true,true
+780,Informatica AI,informatica-ai,AI Data Management,Paid,https://www.informatica.com,"Enterprise AI data management and integration platform","data,governance,enterprise",true,true
+
+781,Apache Airflow AI,airflow-ai,AI Workflow Orchestration,Free,https://airflow.apache.org,"Workflow automation and data pipeline orchestration","workflow,data,open-source",true,true
+782,Prefect AI,prefect-ai,AI Data Orchestration,Freemium,https://www.prefect.io,"Modern data workflow orchestration with AI support","workflow,data,automation",true,true
+783,Dagster AI,dagster-ai,AI Data Pipelines,Free,https://dagster.io,"Data orchestration platform for analytics and ML workflows","data,pipelines,open-source",true,true
+784,Kestra AI,kestra-ai,AI Workflow Automation,Free,https://kestra.io,"Open-source data orchestration and workflow automation","workflow,data,automation",true,true
+785,Metaflow AI,metaflow-ai,AI ML Workflow,Free,https://metaflow.org,"Netflix framework for data science and ML workflows","ml,workflow,data",true,true
+
+786,Anomalo AI,anomalo-ai,AI Data Quality,Paid,https://www.anomalo.com,"AI-powered data quality monitoring platform","data,quality,analytics",true,true
+787,Monte Carlo AI,monte-carlo-ai,AI Data Observability,Paid,https://www.montecarlodata.com,"AI-driven data reliability and observability platform","data,monitoring,analytics",true,true
+788,Bigeye AI,bigeye-ai,AI Data Monitoring,Paid,https://www.bigeye.com,"Data observability and monitoring for pipelines","data,quality,monitoring",true,true
+789,Datafold AI,datafold-ai,AI Data Testing,Paid,https://www.datafold.com,"AI-powered data diffing and testing platform","data,testing,analytics",true,true
+790,Accend AI,accend-ai,AI Data Observability,Freemium,https://accend.io,"AI-based monitoring for modern data stacks","data,observability,monitoring",true,true
+
+791,Run.ai,run-ai,AI GPU Cloud,Paid,https://www.run.ai,"AI infrastructure for GPU resource management","gpu,cloud,ml",true,true
+792,NVIDIA AI Enterprise,nvidia-ai-enterprise,AI Cloud Platform,Paid,https://www.nvidia.com,"Enterprise AI platform for accelerated computing","gpu,ai,enterprise",true,true
+793,Modal AI Cloud,modal-ai-cloud,AI Serverless Compute,Freemium,https://modal.com,"Serverless GPU computing for AI workloads","cloud,gpu,compute",true,true
+794,Bentoml AI,bentoml-ai,AI Model Serving,Free,https://www.bentoml.com,"Model serving platform for production AI systems","ml,deployment,api",true,true
+795,Seldon AI,seldon-ai,AI Model Deployment,Freemium,https://www.seldon.io,"MLOps platform for deploying machine learning models","ml,deploy,enterprise",true,true
+
+796,KServe AI,kserve-ai,AI Model Serving,Free,https://kserve.github.io,"Kubernetes-based model inference platform","ml,kubernetes,serving",true,true
+797,Triton Inference Server,triton-inference-server,AI Inference Engine,Free,https://developer.nvidia.com/triton-inference-server,"High-performance AI inference serving system","inference,gpu,ml",true,true
+798,Ray AI,ray-ai,AI Distributed Computing,Free,https://www.ray.io,"Distributed computing framework for AI workloads","ml,distributed,compute",true,true
+799,Flyte AI,flyte-ai,AI Workflow Engine,Free,https://flyte.org,"Workflow automation platform for data and ML pipelines","workflow,ml,data",true,true
+800,Cube AI,cube-ai,AI Analytics API,Paid,https://cube.dev,"Semantic layer and analytics API for AI applications","data,api,analytics",true,true

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="login-page">
+  <div class="login-card">
+    <div class="login-logo">
+      <span class="login-icon" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-bottom:12px">
+        <svg width="48" height="48" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logo-grad-login" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+              <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+            </linearGradient>
+          </defs>
+          <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-login)" opacity="0.85"></path>
+          <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-login)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-login)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+        </svg>
+      </span>
+      <h1 style="font-size:1.8rem;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;justify-content:center;line-height:1"><span style="background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:800;margin-right:1px">AI</span><span style="color:var(--text-primary);font-weight:400;letter-spacing:-0.01em">vitrin</span></h1>
+      <p style="margin-top:8px">Yönetim Paneli</p>
+    </div>
+    <form class="login-form" id="login-form">
+      <div class="form-group">
+        <label for="username">Kullanıcı Adı</label>
+        <input type="text" id="username" name="username" placeholder="Kullanıcı adınızı girin" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Şifre</label>
+        <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required autocomplete="current-password">
+      </div>
+      <p class="login-error" id="login-error"></p>
+      <button type="submit" class="btn-login">Giriş Yap</button>
+    </form>
+    <p class="login-footer">© 2026 AIvitrin</p>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const err = document.getElementById('login-error');
+      err.textContent = ''; err.style.display = 'none';
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      try {
+        const res = await fetch('/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username,password}) });
+        const data = await res.json();
+        if (data.success) { window.location.href = '/admin/'; }
+        else { err.textContent = data.message || 'Giriş başarısız.'; err.style.display = 'block'; }
+      } catch(e) { err.textContent = 'Sunucu hatası.'; err.style.display = 'block'; }
+    });
+    fetch('/auth/check').then(r=>r.json()).then(d=>{ if(d.authenticated) window.location.href='/admin/'; }).catch(()=>{});
+  </script>
+</body>
+</html>

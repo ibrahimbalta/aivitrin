@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2251,OpenAI Productivity Studio,openai-productivity-studio,AI Productivity Platform,Paid,https://platform.openai.com,"AI-powered productivity and workflow automation suite","productivity,ai,workflow",true,true
+2252,Google Workspace AI,google-workspace-ai,AI Productivity Suite,Paid,https://workspace.google.com,"Google AI-enhanced productivity tools for documents and email","productivity,google,ai",true,true
+2253,Microsoft Copilot Studio,microsoft-copilot-studio,AI Productivity Platform,Paid,https://www.microsoft.com,"AI assistant for Microsoft Office ecosystem","productivity,microsoft,ai",true,true
+2254,Meta Productivity AI,meta-productivity-ai,AI Assistant Platform,Free,https://ai.meta.com,"Meta AI productivity and assistant tools","productivity,meta,ai",true,true
+2255,Mistral Productivity API,mistral-productivity-api,AI Productivity API,Paid,https://mistral.ai,"AI automation API for productivity workflows","productivity,llm,api",true,true
+
+2256,Notion AI,notion-ai,AI Writing Assistant,Freemium,https://www.notion.so,"AI-powered writing and workspace assistant","productivity,writing,ai",true,true
+2257,ClickUp AI,clickup-ai,AI Project Management,Freemium,https://clickup.com,"AI project management and task automation tool","productivity,pm,ai",true,true
+2258,Asana AI,asana-ai,AI Task Management,Paid,https://asana.com,"AI-powered task and workflow management system","productivity,workflow,ai",true,true
+2259,Trello AI Automation,trello-ai-automation,AI Task Tool,Freemium,https://trello.com,"AI-enhanced task boards and automation system","productivity,kanban,ai",true,true
+2260,Monday AI,monday-ai,AI Work OS,Paid,https://monday.com,"AI-driven work management and collaboration platform","productivity,workflow,ai",true,true
+
+2261,Slack AI,slack-ai,AI Communication Tool,Paid,https://slack.com,"AI-powered team communication and summarization tool","productivity,chat,ai",true,true
+2262,Zoom AI Companion,zoom-ai-companion,AI Meeting Assistant,Paid,https://zoom.us,"AI meeting transcription and summarization assistant","meeting,ai,productivity",true,true
+2263,Google Meet AI Notes,google-meet-ai-notes,AI Meeting Tool,Paid,https://meet.google.com,"AI-powered meeting notes and summaries","meeting,google,ai",true,true
+2264,Microsoft Teams AI,microsoft-teams-ai,AI Collaboration Tool,Paid,https://www.microsoft.com/microsoft-teams,"AI meeting assistant for Teams ecosystem","meeting,microsoft,ai",true,true
+2265,Otter AI,otter-ai,AI Transcription Tool,Freemium,https://otter.ai,"AI meeting transcription and note-taking tool","meeting,transcription,ai",true,true
+
+2266,Fireflies AI,fireflies-ai,AI Meeting Assistant,Freemium,https://fireflies.ai,"AI meeting recorder and summarization system","meeting,ai,notes",true,true
+2267,Fathom AI,fathom-ai,AI Meeting Notes,Freemium,https://fathom.video,"AI meeting highlights and summaries tool","meeting,video,ai",true,true
+2268,Sembly AI,sembly-ai,AI Meeting Assistant,Freemium,https://www.sembly.ai,"AI meeting insights and task extraction tool","meeting,ai,workflow",true,true
+2269,Avoma AI,avoma-ai,AI Meeting Intelligence,Paid,https://www.avoma.com,"AI meeting intelligence and analytics platform","meeting,sales,ai",true,true
+2270,tl;dv AI Meeting,tl-dv-ai-meeting,AI Meeting Recorder,Freemium,https://tldv.io,"AI meeting recording and clip generation tool","meeting,video,ai",true,true
+
+2271,Grammarly AI,grammarly-ai,AI Writing Assistant,Freemium,https://www.grammarly.com,"AI grammar and writing improvement assistant","writing,ai,productivity",true,true
+2272,QuillBot AI,quillbot-ai,AI Paraphrasing Tool,Freemium,https://quillbot.com,"AI paraphrasing and writing enhancement tool","writing,ai,paraphrase",true,true
+2273,Wordtune AI,wordtune-ai,AI Writing Tool,Freemium,https://www.wordtune.com,"AI writing rewriting and tone adjustment tool","writing,ai,editor",true,true
+2274,Jasper AI,jasper-ai,AI Copywriting Tool,Paid,https://www.jasper.ai,"AI marketing and copywriting platform","writing,marketing,ai",true,true
+2275,Copy.ai,copy-ai,AI Copywriting Tool,Freemium,https://www.copy.ai,"AI content generation and marketing assistant","writing,marketing,ai",true,true
+
+2276,Writesonic AI,writesonic-ai,AI Writing Platform,Freemium,https://writesonic.com,"AI content creation and SEO writing tool","writing,seo,ai",true,true
+2277,Rytr AI,rytr-ai,AI Writing Tool,Freemium,https://rytr.me,"Simple AI writing assistant for content creation","writing,ai,assistant",true,true
+2278,Anyword AI,anyword-ai,AI Copy Optimization,Paid,https://anyword.com,"AI-powered marketing copy optimization tool","writing,marketing,ai",true,true
+2279,Simplified AI,simplified-ai,AI Content Platform,Freemium,https://simplified.com,"AI design, writing, and marketing platform","writing,design,ai",true,true
+2280,Scalenut AI,scalenut-ai,AI SEO Writing,Paid,https://www.scalenut.com,"AI SEO content writing and optimization platform","writing,seo,ai",true,true
+
+2281,Surfer SEO AI,surfer-seo-ai,AI SEO Tool,Paid,https://surferseo.com,"AI SEO optimization and content scoring system","seo,writing,ai",true,true
+2282,Clearscope AI,clearscope-ai,AI SEO Content Tool,Paid,https://www.clearscope.io,"AI SEO content optimization platform","seo,content,ai",true,true
+2283,Frase AI,frase-ai,AI SEO Writing,Paid,https://www.frase.io,"AI content research and SEO writing assistant","seo,writing,ai",true,true
+2284,NeuronWriter AI,neuronwriter-ai,AI SEO Tool,Paid,https://neuronwriter.com,"AI content optimization and SEO tool","seo,writing,ai",true,true
+2285,MarketMuse AI,marketmuse-ai,AI SEO Platform,Paid,https://www.marketmuse.com,"AI content strategy and SEO optimization platform","seo,content,ai",true,true
+
+2286,Hemingway AI,hemingway-ai,AI Writing Editor,Free,https://hemingwayapp.com,"AI readability and writing clarity tool","writing,editor,ai",true,true
+2287,ProWritingAid AI,prowritingaid-ai,AI Writing Tool,Freemium,https://prowritingaid.com,"AI grammar and writing enhancement tool","writing,grammar,ai",true,true
+2288,Linguix AI,linguix-ai,AI Writing Assistant,Freemium,https://linguix.com,"AI grammar correction and writing assistant","writing,grammar,ai",true,true
+2289,Slick Write AI,slick-write-ai,AI Writing Tool,Free,https://www.slickwrite.com,"AI grammar and style checker tool","writing,editor,ai",true,true
+2290,LanguageTool AI,languagetool-ai,AI Grammar Tool,Freemium,https://languagetool.org,"Open-source AI grammar and style correction tool","writing,grammar,ai",true,true
+
+2291,DeepL Write AI,deepl-write-ai,AI Writing Translator,Freemium,https://www.deepl.com/write,"AI writing improvement and translation tool","writing,translation,ai",true,true
+2292,DeepL Translator AI,deepl-translator-ai,AI Translation Tool,Freemium,https://www.deepl.com,"High-quality AI translation system","translation,ai,language",true,true
+2293,Google Translate AI,google-translate-ai,AI Translation Tool,Free,https://translate.google.com,"Google AI translation system","translation,google,ai",true,true
+2294,Microsoft Translator AI,microsoft-translator-ai,AI Translation Tool,Free,https://www.microsoft.com/translator,"Microsoft AI translation service","translation,ai,microsoft",true,true
+2295,iTranslate AI,itranslate-ai,AI Translation Tool,Freemium,https://www.itranslate.com,"AI translation and language assistant app","translation,ai,mobile",true,true
+
+2296,OpenAI Language Studio,openai-language-studio,AI Language Platform,Paid,https://platform.openai.com,"AI language generation and NLP platform","language,llm,ai",true,true
+2297,Anthropic Language Engine,anthropic-language-engine,AI Language Model,Paid,https://www.anthropic.com,"Claude-based language understanding system","language,llm,ai",true,true
+2298,Google Language AI,google-language-ai,AI Language Platform,Paid,https://ai.google,"Google language understanding and NLP system","language,google,llm",true,true
+2299,Meta Language AI,meta-language-ai,AI Language Model,Free,https://ai.meta.com,"Meta large language model ecosystem","language,meta,llm",true,true
+2300,Mistral Language API,mistral-language-api,AI Language API,Paid,https://mistral.ai,"Language understanding and generation API","language,llm,api",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1801,OpenAI Toolformer SDK,toolformer-sdk,AI Tool Use Framework,Paid,https://platform.openai.com,"Framework for tool-using LLM applications","llm,tools,agents",true,true
+1802,Anthropic Tool Use API,anthropic-tool-use-api,AI Tool Use System,Paid,https://www.anthropic.com,"Tool-using Claude API for structured actions","llm,tools,enterprise",true,true
+1803,Google Gemini Tools API,gemini-tools-api,AI Tool Use Platform,Paid,https://ai.google,"Tool-calling system for Gemini models","llm,tools,google",true,true
+1804,Microsoft Copilot Tools,microsoft-copilot-tools,AI Automation Tools,Paid,https://www.microsoft.com,"Tool-using Copilot automation framework","copilot,tools,enterprise",true,true
+1805,Meta Toolformer Stack,meta-toolformer-stack,AI Tool Use Framework,Free,https://ai.meta.com,"Meta tool-use AI framework for Llama models","llm,tools,meta",true,true
+
+1806,LangChain Tools Framework,langchain-tools-framework,AI Agent Tools,Free,https://www.langchain.com,"Tool integration framework for LLM agents","agents,tools,llm",true,true
+1807,LlamaIndex Tools Layer,llamaindex-tools-layer,AI Tool Integration,Free,https://www.llamaindex.ai,"Tool and API integration layer for LLM apps","llm,tools,data",true,true
+1808,Haystack Tools Engine,haystack-tools-engine,AI Tool Framework,Free,https://haystack.deepset.ai,"Open-source tool calling system for NLP apps","nlp,tools,open-source",true,true
+1809,AutoGPT Tools System,autogpt-tools-system,AI Agent Tools,Free,https://github.com/Significant-Gravitas/AutoGPT,"Tool execution system for autonomous agents","agents,tools,ai",true,true
+1810,BabyAGI Tools Layer,babyagi-tools-layer,AI Agent Tools,Free,https://github.com/yoheinakajima/babyagi,"Lightweight tool system for AI agents","agents,tools,ai",true,true
+
+1811,CrewAI Tools Engine,crewai-tools-engine,AI Multi-Agent Tools,Paid,https://www.crewai.com,"Tool system for multi-agent workflows","agents,tools,ai",true,true
+1812,LangGraph Tools Layer,langgraph-tools-layer,AI Agent Tools,Paid,https://langchain-ai.github.io/langgraph,"Graph-based tool execution for AI agents","agents,tools,workflow",true,true
+1813,OpenAI Function Calling SDK,function-calling-sdk,AI Tool API,Paid,https://platform.openai.com,"Structured function calling for GPT models","llm,tools,api",true,true
+1814,Google Function Calling,google-function-calling,AI Tool API,Paid,https://ai.google,"Function calling system for Gemini models","llm,tools,google",true,true
+1815,Claude Function Calling,claude-function-calling,AI Tool API,Paid,https://www.anthropic.com,"Structured tool execution for Claude models","llm,tools,api",true,true
+
+1816,Mistral Function API,mistral-function-api,AI Tool API,Paid,https://mistral.ai,"Tool-use API for Mistral models","llm,tools,api",true,true
+1817,OpenAI Plugins SDK,openai-plugins-sdk,AI Plugin System,Paid,https://platform.openai.com,"Plugin system for extending GPT capabilities","llm,plugins,tools",true,true
+1818,ChatGPT Plugin Store,chatgpt-plugin-store,AI Plugin Marketplace,Freemium,https://chat.openai.com,"Marketplace for ChatGPT plugins","llm,plugins,marketplace",true,true
+1819,LangChain Plugins Hub,langchain-plugins-hub,AI Plugin Framework,Free,https://www.langchain.com,"Plugin ecosystem for LLM applications","llm,plugins,framework",true,true
+1820,LlamaIndex Plugins,llamaindex-plugins,AI Plugin System,Free,https://www.llamaindex.ai,"Plugins for extending LLM capabilities","llm,plugins,data",true,true
+
+1821,AutoGPT Plugins Engine,autogpt-plugins-engine,AI Agent Plugins,Free,https://github.com/Significant-Gravitas/AutoGPT,"Plugin system for autonomous AI agents","agents,plugins,ai",true,true
+1822,BabyAGI Plugins,babyagi-plugins,AI Agent Plugins,Free,https://github.com/yoheinakajima/babyagi,"Lightweight plugin architecture for AI agents","agents,plugins,ai",true,true
+1823,CrewAI Plugins System,crewai-plugins-system,AI Multi-Agent Plugins,Paid,https://www.crewai.com,"Plugin system for collaborative AI agents","agents,plugins,ai",true,true
+1824,LangGraph Plugins,langgraph-plugins,AI Agent Plugins,Paid,https://langchain-ai.github.io/langgraph,"Plugin architecture for agent graphs","agents,plugins,workflow",true,true
+1825,OpenAI Assistants API,assistants-api,AI Assistant Platform,Paid,https://platform.openai.com,"Full assistant framework with tools and memory","llm,assistant,api",true,true
+
+1826,Anthropic Assistants API,anthropic-assistants-api,AI Assistant Platform,Paid,https://www.anthropic.com,"Claude assistant API for enterprise apps","llm,assistant,enterprise",true,true
+1827,Google Assistant API,google-assistant-api,AI Assistant Platform,Paid,https://ai.google,"Gemini assistant API for applications","llm,assistant,google",true,true
+1828,Microsoft Copilot API,microsoft-copilot-api,AI Assistant Platform,Paid,https://www.microsoft.com,"Copilot assistant integration API","copilot,assistant,api",true,true
+1829,Meta Assistant API,meta-assistant-api,AI Assistant Platform,Free,https://ai.meta.com,"Meta AI assistant API for developers","llm,assistant,meta",true,true
+1830,Mistral Assistant API,mistral-assistant-api,AI Assistant Platform,Paid,https://mistral.ai,"Assistant API for Mistral models","llm,assistant,api",true,true
+
+1831,OpenAI Agents SDK,openai-agents-sdk,AI Agent Framework,Paid,https://platform.openai.com,"SDK for building autonomous AI agents","agents,llm,framework",true,true
+1832,LangChain Agents Framework,langchain-agents-framework,AI Agent Framework,Free,https://www.langchain.com,"Framework for building LLM-based agents","agents,llm,framework",true,true
+1833,LlamaIndex Agents,llamaindex-agents,AI Agent Framework,Free,https://www.llamaindex.ai,"Agent system built on data indexing pipelines","agents,llm,data",true,true
+1834,Haystack Agents,haystack-agents,AI Agent Framework,Free,https://haystack.deepset.ai,"Open-source NLP agent framework","agents,nlp,open-source",true,true
+1835,AutoGPT Agents Core,autogpt-agents-core,AI Agent Framework,Free,https://github.com/Significant-Gravitas/AutoGPT,"Core autonomous agent system","agents,framework,ai",true,true
+
+1836,BabyAGI Agents,babyagi-agents,AI Agent Framework,Free,https://github.com/yoheinakajima/babyagi,"Minimal autonomous AI agent system","agents,framework,ai",true,true
+1837,CrewAI Agents Engine,crewai-agents-engine,AI Multi-Agent Framework,Paid,https://www.crewai.com,"Multi-agent collaboration framework","agents,multi-agent,ai",true,true
+1838,LangGraph Agents Engine,langgraph-agents-engine,AI Graph Agents,Paid,https://langchain-ai.github.io/langgraph,"Graph-based agent orchestration system","agents,graph,workflow",true,true
+1839,OpenAI Swarm,openai-swarm,AI Multi-Agent System,Paid,https://platform.openai.com,"Experimental multi-agent coordination framework","agents,multi-agent,llm",true,true
+1840,Google Agent Mesh,google-agent-mesh,AI Agent Network,Paid,https://ai.google,"Distributed AI agent coordination system","agents,network,google",true,true
+
+1841,Microsoft Autogen Mesh,microsoft-autogen-mesh,AI Multi-Agent System,Paid,https://www.microsoft.com,"Multi-agent orchestration system by Microsoft","agents,multi-agent,enterprise",true,true
+1842,Meta Agent Mesh,meta-agent-mesh,AI Agent Network,Free,https://ai.meta.com,"Meta distributed AI agent coordination system","agents,network,meta",true,true
+1843,Amazon Bedrock Agent Mesh,amazon-bedrock-agent-mesh,AI Agent System,Paid,https://aws.amazon.com/bedrock,"AWS multi-agent orchestration system","agents,aws,cloud",true,true
+1844,IBM Watson Agent Mesh,ibm-watson-agent-mesh,AI Agent System,Paid,https://www.ibm.com,"Enterprise AI agent coordination system","agents,ibm,enterprise",true,true
+1845,Mistral Agent Mesh,mistral-agent-mesh,AI Agent System,Paid,https://mistral.ai,"Distributed agent orchestration system","agents,llm,api",true,true
+
+1846,OpenAI Tool Registry,openai-tool-registry,AI Tool System,Paid,https://platform.openai.com,"Central registry for AI tools and functions","tools,registry,llm",true,true
+1847,LangChain Tool Registry,langchain-tool-registry,AI Tool System,Free,https://www.langchain.com,"Tool registry for LLM applications","tools,framework,llm",true,true
+1848,LlamaIndex Tool Registry,llamaindex-tool-registry,AI Tool System,Free,https://www.llamaindex.ai,"Tool registry for data-aware AI systems","tools,data,llm",true,true
+1849,AutoGPT Tool Registry,autogpt-tool-registry,AI Tool System,Free,https://github.com/Significant-Gravitas/AutoGPT,"Tool registry for autonomous agents","tools,agents,ai",true,true
+1850,BabyAGI Tool Registry,babyagi-tool-registry,AI Tool System,Free,https://github.com/yoheinakajima/babyagi,"Lightweight tool registry for AI agents","tools,agents,ai",true,true

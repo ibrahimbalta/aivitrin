@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+401,AutoGen,autogen,AI Agent Framework,Free,https://microsoft.github.io/autogen,"Microsoft framework for building multi-agent AI applications","agents,llm,developer",true,true
+402,LangGraph,langgraph,AI Agent Workflow,Free,https://langchain.com/langgraph,"Framework for stateful AI agent workflows","agents,workflow,llm",true,true
+403,Semantic Kernel,semantic-kernel,AI Agent SDK,Free,https://github.com/microsoft/semantic-kernel,"Microsoft SDK for integrating AI into applications","sdk,agents,developer",true,true
+404,Haystack,haystack,AI RAG Framework,Free,https://haystack.deepset.ai,"Open-source framework for search and RAG applications","rag,search,opensource",true,true
+405,Langflow,langflow,AI Workflow Builder,Free,https://langflow.org,"Visual interface for building LLM workflows","workflow,rag,low-code",true,true
+
+406,Dust,dust,AI Workspace,Freemium,https://dust.tt,"AI assistants connected to company knowledge","enterprise,agents,knowledge",true,true
+407,Stack AI,stack-ai,AI App Builder,Freemium,https://www.stack-ai.com,"No-code platform for creating AI applications","no-code,agents,automation",true,true
+408,Voiceflow,voiceflow,AI Agent Builder,Freemium,https://www.voiceflow.com,"Build conversational AI agents and chat experiences","chatbot,design,automation",true,true
+409,Rasa,rasa,AI Conversational Platform,Free,https://rasa.com,"Open-source conversational AI framework","chatbot,nlp,opensource",true,true
+410,Dialogflow,dialogflow,AI Chatbot Platform,Freemium,https://cloud.google.com/dialogflow,"Google platform for building conversational interfaces","chatbot,nlp,google",true,true
+
+411,Amazon Lex,amazon-lex,AI Conversation Service,Paid,https://aws.amazon.com/lex,"AWS service for chatbots and voice assistants","aws,chatbot,voice",true,true
+412,IBM Watsonx Assistant,watsonx-assistant,AI Assistant Platform,Paid,https://www.ibm.com/products/watsonx-assistant,"Enterprise conversational AI platform","enterprise,chatbot,automation",true,true
+413,Kore.ai,kore-ai,AI Virtual Assistant,Paid,https://kore.ai,"Enterprise AI assistants and automation platform","enterprise,assistant,automation",true,true
+414,Aisera,aisera,AI Service Agent,Paid,https://aisera.com,"AI agents for customer service and IT support","service,agents,enterprise",true,true
+415,Moveworks,moveworks,AI Employee Assistant,Paid,https://www.moveworks.com,"AI assistant for workplace support and automation","employee,helpdesk,automation",true,true
+
+416,Redis Vector,redis-vector,AI Vector Database,Freemium,https://redis.io,"Vector search capabilities for AI applications","vector,database,rag",true,true
+417,Qdrant,qdrant,AI Vector Database,Free,https://qdrant.tech,"Open-source vector database for semantic search","vector,opensource,search",true,true
+418,Milvus,milvus,AI Vector Database,Free,https://milvus.io,"High-performance vector database for AI workloads","vector,embedding,rag",true,true
+419,Astra DB,astra-db,AI Vector Database,Freemium,https://www.datastax.com/products/datastax-astra,"Cloud database with vector search support","database,vector,cloud",true,true
+420,SingleStore AI,singlestore-ai,AI Database,Freemium,https://www.singlestore.com,"Database platform with AI and vector capabilities","database,analytics,vector",true,true
+
+421,Weights & Biases,weights-and-biases,AI MLOps,Freemium,https://wandb.ai,"Experiment tracking and machine learning operations platform","mlops,training,analytics",true,true
+422,Comet ML,comet-ml,AI MLOps,Freemium,https://www.comet.com,"ML experiment management and monitoring platform","mlops,models,analytics",true,true
+423,MLflow,mlflow,AI MLOps,Free,https://mlflow.org,"Open-source machine learning lifecycle platform","mlops,opensource,deployment",true,true
+424,Neptune AI,neptune-ai,AI MLOps,Freemium,https://neptune.ai,"AI experiment tracking and model management","mlops,models,monitoring",true,true
+425,Domino Data Lab,domino-data-lab,AI Data Science Platform,Paid,https://www.dominodatalab.com,"Enterprise AI and data science platform","data-science,enterprise,ml",true,true
+
+426,Modal,modal,AI Compute Platform,Freemium,https://modal.com,"Serverless infrastructure for AI workloads","cloud,gpu,developer",true,true
+427,Replicate API,replicate-api,AI Model API,Freemium,https://replicate.com,"Run AI models through a simple API interface","api,models,developer",true,true
+428,Fireworks AI,fireworks-ai,AI Inference Platform,Freemium,https://fireworks.ai,"Fast infrastructure for serving AI models","llm,inference,cloud",true,true
+429,Anyscale,anyscale,AI Infrastructure,Paid,https://www.anyscale.com,"Ray-based platform for scaling AI applications","infrastructure,distributed,ml",true,true
+430,OctoAI,octo-ai,AI Inference Platform,Paid,https://octo.ai,"Cloud platform for AI model deployment and inference","inference,gpu,models",true,true
+
+431,Gradio,gradio,AI App Interface,Free,https://gradio.app,"Build web interfaces for machine learning models","ml,ui,opensource",true,true
+432,Streamlit,streamlit,AI Data App Builder,Free,https://streamlit.io,"Create interactive data and AI applications with Python","python,data,apps",true,true
+433,Chainlit,chainlit,AI Chat App Framework,Free,https://chainlit.io,"Framework for building conversational AI applications","chatbot,llm,python",true,true
+434,Lobe Chat,lobe-chat,AI Chat Interface,Free,https://lobehub.com,"Open-source modern interface for AI assistants","chat,opensource,llm",true,true
+435,LibreChat,librechat,AI Chat Platform,Free,https://www.librechat.ai,"Self-hosted AI chat platform supporting multiple models","chat,self-hosted,opensource",true,true
+
+436,OpenWebUI,open-webui,AI Local Chat Interface,Free,https://openwebui.com,"Self-hosted interface for local and cloud AI models","local,llm,opensource",true,true
+437,FastGPT,fastgpt,AI Knowledge Base,Free,https://fastgpt.io,"Open-source RAG knowledge base and chatbot system","rag,knowledge,chatbot",true,true
+438,Rivet,rivet,AI Workflow Builder,Free,https://rivet.ironcladapp.com,"Visual editor for building AI workflows","workflow,agents,developer",true,true
+439,FlowGPT,flowgpt,AI Prompt Community,Free,https://flowgpt.com,"Community for sharing AI prompts and assistants","prompts,community,chat",true,true
+440,PromptBase,promptbase,AI Prompt Marketplace,Freemium,https://promptbase.com,"Marketplace for buying and selling AI prompts","prompts,marketplace,creator",true,true
+
+441,AIPRM,aiprm,AI Prompt Tool,Freemium,https://www.aiprm.com,"Prompt management and templates for AI tools","prompts,chatgpt,productivity",true,true
+442,PromptHero,prompthero,AI Prompt Search,Freemium,https://prompthero.com,"Search engine for AI image and text prompts","prompts,image,search",true,true
+443,Glif,glif,AI Creative Apps,Freemium,https://glif.app,"Create small AI-powered creative applications","creative,apps,no-code",true,true
+444,Relevance AI,relevance-ai,AI Agent Platform,Freemium,https://relevanceai.com,"Build AI agents and automate business tasks","agents,automation,business",true,true
+445,MindStudio,mindstudio,AI Agent Builder,Freemium,https://mindstudio.ai,"No-code platform for creating AI workers","agents,no-code,automation",true,true
+
+446,Relay.app,relay-app,AI Workflow Automation,Freemium,https://relay.app,"Human-in-the-loop AI workflow automation","automation,workflow,business",true,true
+447,Lindy,lindy,AI Executive Assistant,Freemium,https://lindy.ai,"AI assistant for emails, meetings and workflows","assistant,productivity,automation",true,true
+448,Adept AI,adept-ai,AI Action Model,Paid,https://www.adept.ai,"AI systems designed to execute software actions","agents,automation,computer-use",true,true
+449,Rabbit r1,rabbit-r1,AI Personal Assistant Device,Paid,https://www.rabbit.tech,"AI-powered personal assistant hardware device","device,assistant,hardware",true,true
+450,Humane AI Pin,humane-ai-pin,AI Wearable Device,Paid,https://humane.com,"Wearable AI assistant device","wearable,assistant,hardware",true,true

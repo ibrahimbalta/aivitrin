@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1951,OpenAI Data Studio,openai-data-studio,AI Data Platform,Paid,https://platform.openai.com,"AI-powered data preparation and analysis studio","data,ai,analytics",true,true
+1952,Anthropic Data Engine,anthropic-data-engine,AI Data Platform,Paid,https://www.anthropic.com,"Data processing and structured reasoning system for LLMs","data,llm,enterprise",true,true
+1953,Google Vertex Data Studio,vertex-data-studio,AI Data Platform,Paid,https://cloud.google.com/vertex-ai,"End-to-end AI data processing platform","data,google,ml",true,true
+1954,Meta Data AI Studio,meta-data-ai-studio,AI Data Platform,Free,https://ai.meta.com,"Data-centric AI tools for Llama ecosystem","data,meta,llm",true,true
+1955,Mistral Data API,mistral-data-api,AI Data Platform,Paid,https://mistral.ai,"Structured data processing API for LLM applications","data,llm,api",true,true
+
+1956,AWS Data AI Pipeline,aws-data-ai-pipeline,AI Data Platform,Paid,https://aws.amazon.com,"AI-powered data ingestion and processing pipeline","aws,data,ml",true,true
+1957,Azure Data AI Studio,azure-data-ai-studio,AI Data Platform,Paid,https://azure.microsoft.com,"Microsoft AI data processing and analytics platform","azure,data,ai",true,true
+1958,Databricks AI Data Engine,databricks-ai-data-engine,AI Data Platform,Paid,https://www.databricks.com,"Unified AI data engineering platform","data,ml,ai",true,true
+1959,Snowflake AI Data Cloud,snowflake-ai-data-cloud,AI Data Platform,Paid,https://www.snowflake.com,"AI-powered data warehouse and analytics cloud","data,ai,cloud",true,true
+1960,BigQuery AI Studio,bigquery-ai-studio,AI Data Platform,Paid,https://cloud.google.com/bigquery,"Google AI-powered data warehouse analytics","data,google,analytics",true,true
+
+1961,OpenAI Dataset Builder,openai-dataset-builder,AI Dataset Tool,Paid,https://platform.openai.com,"Dataset creation and labeling assistant for AI models","data,dataset,ai",true,true
+1962,Hugging Face Datasets Hub,hf-datasets-hub,AI Dataset Platform,Free,https://huggingface.co/datasets,"Central dataset repository for ML models","data,dataset,ml",true,true
+1963,Labelbox Dataset Engine,labelbox-dataset-engine,AI Dataset Platform,Paid,https://labelbox.com,"AI dataset labeling and management system","data,labeling,ml",true,true
+1964,Scale AI Dataset Platform,scale-ai-dataset-platform,AI Dataset Platform,Paid,https://scale.com,"High-quality AI training dataset platform","data,ml,ai",true,true
+1965,SuperAnnotate Dataset Studio,superannotate-dataset-studio,AI Dataset Tool,Paid,https://superannotate.com,"Dataset annotation and labeling platform","data,vision,ai",true,true
+
+1966,V7 Dataset AI,v7-dataset-ai,AI Dataset Platform,Paid,https://www.v7labs.com,"AI dataset creation and annotation platform","data,vision,ml",true,true
+1967,Roboflow Dataset Studio,roboflow-dataset-studio,AI Dataset Platform,Freemium,https://roboflow.com,"Computer vision dataset management platform","data,vision,ai",true,true
+1968,Edge Impulse Dataset AI,edge-impulse-dataset-ai,AI Edge Dataset Platform,Freemium,https://www.edgeimpulse.com,"Edge AI dataset collection and training platform","data,iot,ai",true,true
+1969,TensorFlow Dataset API,tensorflow-dataset-api,AI Dataset Framework,Free,https://www.tensorflow.org/datasets,"Dataset loading and processing framework","data,ml,google",true,true
+1970,PyTorch Dataset Hub,pytorch-dataset-hub,AI Dataset Framework,Free,https://pytorch.org,"Dataset utilities for PyTorch ML workflows","data,ml,ai",true,true
+
+1971,OpenAI Synthetic Data Studio,openai-synthetic-data-studio,AI Synthetic Data,Paid,https://platform.openai.com,"Synthetic data generation for AI training","data,synthetic,ai",true,true
+1972,Mostly AI Synthetic Data,mostly-ai-synthetic-data,AI Synthetic Data,Paid,https://mostly.ai,"Privacy-preserving synthetic data generation platform","data,synthetic,privacy",true,true
+1973,Tonic AI Data Generator,tonic-ai-data-generator,AI Synthetic Data,Paid,https://www.tonic.ai,"Synthetic data creation for software testing","data,synthetic,testing",true,true
+1974,Hazy AI Data Engine,hazy-ai-data-engine,AI Synthetic Data,Paid,https://hazy.com,"Enterprise synthetic data generation system","data,synthetic,enterprise",true,true
+1975,Gretel AI Synthetic Data,gretel-ai-synthetic-data,AI Synthetic Data,Paid,https://gretel.ai,"Synthetic data generation for ML models","data,synthetic,ml",true,true
+
+1976,Snowflake Synthetic Data,snowflake-synthetic-data,AI Data Platform,Paid,https://www.snowflake.com,"Synthetic data generation inside data cloud","data,snowflake,ai",true,true
+1977,Databricks Synthetic Engine,databricks-synthetic-engine,AI Data Platform,Paid,https://www.databricks.com,"Synthetic data generation for ML pipelines","data,ml,ai",true,true
+1978,Azure Synthetic Data Studio,azure-synthetic-data-studio,AI Data Platform,Paid,https://azure.microsoft.com,"Microsoft synthetic data generation tools","data,azure,ai",true,true
+1979,Google Synthetic Data API,google-synthetic-data-api,AI Data Platform,Paid,https://cloud.google.com,"Synthetic dataset generation API","data,google,ai",true,true
+1980,AWS Synthetic Data Generator,aws-synthetic-data-generator,AI Data Platform,Paid,https://aws.amazon.com,"Synthetic data generation service for ML training","data,aws,ai",true,true
+
+1981,OpenAI Data Cleaning API,openai-data-cleaning-api,AI Data Processing,Paid,https://platform.openai.com,"AI-powered dataset cleaning and normalization","data,cleaning,ai",true,true
+1982,Trifacta AI Data Prep,trifacta-ai-data-prep,AI Data Preparation,Paid,https://www.trifacta.com,"AI-assisted data cleaning and preparation platform","data,prep,analytics",true,true
+1983,Alteryx AI Data Engine,alteryx-ai-data-engine,AI Data Platform,Paid,https://www.alteryx.com,"AI-powered analytics and data transformation platform","data,analytics,ai",true,true
+1984,RapidMiner AI Studio,rapidminer-ai-studio,AI Data Science,Paid,https://rapidminer.com,"AI data science and analytics platform","data,ml,analytics",true,true
+1985,KNIME AI Platform,knime-ai-platform,AI Data Science,Free,https://www.knime.com,"Open-source AI analytics and workflow platform","data,ml,open-source",true,true
+
+1986,DataPrep AI Studio,dataprep-ai-studio,AI Data Cleaning Tool,Paid,https://cloud.google.com/dataprep,"AI data preparation and cleaning tool","data,cleaning,google",true,true
+1987,OpenRefine AI,openrefine-ai,AI Data Cleaning,Free,https://openrefine.org,"Open-source data cleaning and transformation tool","data,cleaning,open-source",true,true
+1988,Airbyte AI Sync,airbyte-ai-sync,AI Data Integration,Free,https://airbyte.com,"AI-powered data integration and ETL system","data,etl,ai",true,true
+1989,Fivetran AI Pipeline,fivetran-ai-pipeline,AI Data Integration,Paid,https://www.fivetran.com,"Automated data pipeline and integration system","data,etl,enterprise",true,true
+1990,Stitch AI Data Pipeline,stitch-ai-data-pipeline,AI Data Integration,Paid,https://www.stitchdata.com,"Cloud-based AI data ingestion pipeline","data,etl,cloud",true,true
+
+1991,OpenAI Knowledge Graph Studio,openai-knowledge-graph-studio,AI Knowledge Graph,Paid,https://platform.openai.com,"AI knowledge graph generation and reasoning system","knowledge,graph,ai",true,true
+1992,Neo4j AI Graph Studio,neo4j-ai-graph-studio,AI Graph Database,Paid,https://neo4j.com,"Graph database with AI reasoning capabilities","graph,ai,database",true,true
+1993,Stardog AI Graph,stardog-ai-graph,AI Knowledge Graph,Paid,https://www.stardog.com,"Enterprise AI knowledge graph platform","graph,knowledge,enterprise",true,true
+1994,Amazon Neptune AI,amazon-neptune-ai,AI Graph Database,Paid,https://aws.amazon.com/neptune,"AWS graph database for AI applications","aws,graph,ai",true,true
+1995,ArangoDB AI Graph,arangodb-ai-graph,AI Graph Database,Free,https://www.arangodb.com,"Multi-model graph database for AI systems","graph,database,open-source",true,true
+
+1996,Graphistry AI Platform,graphistry-ai-platform,AI Graph Visualization,Paid,https://www.graphistry.com,"AI-powered graph visualization platform","graph,visualization,ai",true,true
+1997,Linkurious AI Graph,linkurious-ai-graph,AI Graph Analytics,Paid,https://linkurious.com,"Graph analytics and visualization AI platform","graph,analytics,ai",true,true
+1998,TigerGraph AI Platform,tigergraph-ai-platform,Paid,https://www.tigergraph.com,"Real-time graph analytics for AI systems","graph,analytics,enterprise",true,true
+1999,Dgraph AI Engine,dgraph-ai-engine,AI Graph Database,Free,https://dgraph.io,"Distributed graph database for AI applications","graph,database,open-source",true,true
+2000,RedisGraph AI,redisgraph-ai,AI Graph Database,Free,https://redis.io,"Graph database module for Redis AI systems","graph,database,ai",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+801,CrowdStrike Falcon AI,crowdstrike-falcon-ai,AI Cybersecurity Platform,Paid,https://www.crowdstrike.com,"AI-powered endpoint protection and threat detection platform","security,endpoint,threat-detection",true,true
+802,Darktrace Immune System,darktrace-immune-system,AI Cyber Defense,Paid,https://darktrace.com,"Self-learning AI cybersecurity and anomaly detection system","security,network,ai",true,true
+803,SentinelOne AI,sentinelone-ai,AI Endpoint Security,Paid,https://www.sentinelone.com,"Autonomous AI endpoint protection and threat response","security,endpoint,automation",true,true
+804,Microsoft Defender AI,microsoft-defender-ai,AI Security Suite,Paid,https://www.microsoft.com/en-us/security,"AI-driven enterprise security and threat protection","security,enterprise,ai",true,true
+805,Palo Alto Cortex AI,palo-alto-cortex-ai,AI Security Operations,Paid,https://www.paloaltonetworks.com,"AI-powered SOC and threat intelligence platform","security,soc,analytics",true,true
+
+806,Fortinet FortiAI,fortinet-fortiai,AI Network Security,Paid,https://www.fortinet.com,"AI-based network security and threat prevention system","security,network,firewall",true,true
+807,Check Point AI,check-point-ai,AI Cybersecurity,Paid,https://www.checkpoint.com,"AI-powered threat prevention and security analytics","security,threat,enterprise",true,true
+808,IBM QRadar AI,ibm-qradar-ai,AI SIEM Platform,Paid,https://www.ibm.com,"AI-driven security information and event management system","security,siem,analytics",true,true
+809,Splunk AI,splunk-ai,AI Security Analytics,Paid,https://www.splunk.com,"AI-powered log analysis and security monitoring platform","security,logs,monitoring",true,true
+810,Elastic Security AI,elastic-security-ai,AI Threat Detection,Paid,https://www.elastic.co,"AI-based security analytics and threat detection system","security,search,monitoring",true,true
+
+811,BigID AI,bigid-ai,AI Data Privacy,Paid,https://www.bigid.com,"AI-powered data discovery and privacy compliance platform","privacy,data,compliance",true,true
+812,OneTrust AI,onetrust-ai,AI Compliance Platform,Paid,https://www.onetrust.com,"AI-driven privacy, risk and compliance management","compliance,privacy,governance",true,true
+813,Securiti AI,securiti-ai,AI Data Governance,Paid,https://www.securiti.ai,"AI data privacy and governance automation platform","data,privacy,governance",true,true
+814,TrustArc AI,trustarc-ai,AI Privacy Management,Paid,https://www.trustarc.com,"AI-powered privacy compliance and risk management","privacy,compliance,legal",true,true
+815,Privacera AI,privacera-ai,AI Data Security,Paid,https://www.privacera.com,"AI data access control and governance platform","security,data,enterprise",true,true
+
+816,DataVisor AI,datavisor-ai,AI Fraud Detection,Paid,https://www.datavisor.com,"AI-driven fraud detection and risk analytics platform","fraud,risk,finance",true,true
+817,Feedzai AI,feedzai-ai,AI Risk Management,Paid,https://www.feedzai.com,"AI-based fraud prevention and financial risk platform","finance,fraud,ai",true,true
+818,Sift AI,sift-ai,AI Fraud Prevention,Paid,https://sift.com,"AI fraud detection and digital trust platform","fraud,security,transactions",true,true
+819,Featurespace AI,featurespace-ai,AI Fraud Detection,Paid,https://www.featurespace.com,"Adaptive behavioral analytics for fraud prevention","fraud,analytics,ai",true,true
+820,SymphonyAI,symphony-ai,AI Enterprise Intelligence,Paid,https://www.symphonyai.com,"AI solutions for fraud detection and enterprise intelligence","ai,enterprise,intelligence",true,true
+
+821,Armis AI,armis-ai,AI Device Security,Paid,https://www.armis.com,"AI-based asset visibility and device security platform","iot,security,network",true,true
+822,Zscaler AI,zscaler-ai,AI Cloud Security,Paid,https://www.zscaler.com,"AI-powered cloud security and zero trust platform","security,cloud,zero-trust",true,true
+823,Netskope AI,netskope-ai,AI Cloud Security,Paid,https://www.netskope.com,"AI-driven cloud access security broker (CASB)","security,cloud,casb",true,true
+824,Cisco SecureX AI,cisco-securex-ai,AI Security Platform,Paid,https://www.cisco.com,"AI-enabled security orchestration and threat response","security,network,enterprise",true,true
+825,Okta AI,okta-ai,AI Identity Security,Paid,https://www.okta.com,"AI-powered identity and access management platform","identity,security,authentication",true,true
+
+826,Auth0 AI,auth0-ai,AI Authentication,Paid,https://auth0.com,"AI-based identity authentication and access control","security,auth,identity",true,true
+827,Cybereason AI,cybereason-ai,AI Threat Hunting,Paid,https://www.cybereason.com,"AI endpoint detection and threat hunting platform","security,endpoint,threat",true,true
+828,Vectra Cognito AI,vectra-cognito-ai,AI Threat Detection,Paid,https://www.vectra.ai,"AI-driven network threat detection and response","security,network,ai",true,true
+829,Exabeam Fusion AI,exabeam-fusion-ai,AI SIEM Analytics,Paid,https://www.exabeam.com,"AI-powered security analytics and SIEM automation","security,siem,analytics",true,true
+830,ReliaQuest GreyMatter AI,reliaquest-ai,AI Security Orchestration,Paid,https://www.reliaquest.com,"AI security operations platform for enterprises","security,soc,automation",true,true
+
+831,Recorded Future AI,recorded-future-ai,AI Threat Intelligence,Paid,https://www.recordedfuture.com,"AI-powered cyber threat intelligence platform","security,intelligence,threat",true,true
+832,Anomali AI,anomali-ai,AI Threat Intelligence,Paid,https://www.anomali.com,"AI threat detection and intelligence platform","security,intelligence,analytics",true,true
+833,Flashpoint AI,flashpoint-ai,AI Risk Intelligence,Paid,https://www.flashpoint.io,"AI-driven risk and threat intelligence platform","security,risk,intelligence",true,true
+834,ZeroFox AI,zerofox-ai,AI Digital Risk Protection,Paid,https://www.zerofox.com,"AI monitoring for digital threats and brand protection","security,brand,monitoring",true,true
+835,DarkOwl AI,darkowl-ai,AI Dark Web Intelligence,Paid,https://www.darkowl.com,"AI-powered dark web monitoring and intelligence","security,darkweb,intelligence",true,true
+
+836,Rapid7 Insight AI,rapid7-ai,AI Security Analytics,Paid,https://www.rapid7.com,"AI vulnerability management and security analytics","security,vulnerability,analytics",true,true
+837,Tenable.io AI,tenable-ai,AI Vulnerability Management,Paid,https://www.tenable.com,"AI-based exposure and vulnerability detection platform","security,vulnerability,cloud",true,true
+838,Qualys AI,qualys-ai,AI Security Compliance,Paid,https://www.qualys.com,"AI-driven vulnerability management and compliance monitoring","security,compliance,vulnerability",true,true
+839,Kenna Security AI,kenna-ai,AI Risk Prioritization,Paid,https://www.kennasecurity.com,"AI-based vulnerability prioritization and risk scoring","security,risk,vulnerability",true,true
+840,Arctic Wolf AI,arctic-wolf-ai,AI Managed Detection,Paid,https://arcticwolf.com,"AI-powered managed detection and response platform","security,mdr,ai",true,true
+
+841,PagerDuty AI,pagerduty-ai,AI Incident Management,Paid,https://www.pagerduty.com,"AI-driven incident response and alert automation","devops,incident,monitoring",true,true
+842,Datadog AI,datadog-ai,AI Monitoring Platform,Paid,https://www.datadoghq.com,"AI-powered infrastructure and application monitoring","monitoring,cloud,ai",true,true
+843,New Relic AI,new-relic-ai,AI Observability,Paid,https://newrelic.com,"AI observability and performance monitoring platform","monitoring,logs,ai",true,true
+844,Dynatrace AI,dynatrace-ai,AI Performance Monitoring,Paid,https://www.dynatrace.com,"AI-powered full-stack observability platform","monitoring,performance,ai",true,true
+845,LogicMonitor AI,logicmonitor-ai,AI Infrastructure Monitoring,Paid,https://www.logicmonitor.com,"AI-driven IT infrastructure monitoring platform","it,monitoring,cloud",true,true
+
+846,Elastic Observability AI,elastic-observability-ai,AI Log Analytics,Paid,https://www.elastic.co,"AI log analytics and system observability platform","logs,monitoring,ai",true,true
+847,Sumo Logic AI,sumo-logic-ai,AI Cloud Monitoring,Paid,https://www.sumologic.com,"AI-driven cloud log analytics and monitoring","cloud,logs,ai",true,true
+848,Splunk Observability AI,splunk-observability-ai,AI Data Observability,Paid,https://www.splunk.com,"AI observability and monitoring platform","monitoring,data,ai",true,true
+849,Coralogix AI,coralogix-ai,AI Log Analytics,Paid,https://coralogix.com,"AI-powered log analysis and monitoring system","logs,analytics,ai",true,true
+850,Observe AI,observe-ai,AI Data Observability,Paid,https://www.observeinc.com,"Modern AI observability platform for cloud data","data,monitoring,ai",true,true

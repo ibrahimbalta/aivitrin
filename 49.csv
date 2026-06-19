@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2401,OpenAI Automation Hub,openai-automation-hub,AI Automation Platform,Paid,https://platform.openai.com,"AI-powered end-to-end automation hub for workflows","automation,ai,workflow",true,true
+2402,Google Automation AI,google-automation-ai,AI Automation Platform,Paid,https://ai.google,"Google AI automation and workflow orchestration system","automation,google,llm",true,true
+2403,Microsoft Power Automate AI,power-automate-ai,AI Workflow Automation,Paid,https://powerautomate.microsoft.com,"AI-driven workflow automation for Microsoft ecosystem","automation,microsoft,workflow",true,true
+2404,Meta Automation AI,meta-automation-ai,AI Automation Platform,Free,https://ai.meta.com,"Meta AI automation and assistant systems","automation,meta,ai",true,true
+2405,Mistral Automation API,mistral-automation-api,AI Automation API,Paid,https://mistral.ai,"AI automation and workflow API for developers","automation,llm,api",true,true
+
+2406,Zapier AI Automation,zapier-ai-automation,AI Workflow Automation,Paid,https://zapier.com,"AI-powered workflow automation across apps","automation,workflow,ai",true,true
+2407,Make AI Workflows,make-ai-workflows,AI Automation Platform,Freemium,https://www.make.com,"Visual AI workflow automation builder","automation,workflow,ai",true,true
+2408,n8n AI Workflows Pro,n8n-ai-workflows-pro,AI Automation Tool,Free,https://n8n.io,"Open-source AI workflow automation system","automation,open-source,ai",true,true
+2409,IFTTT AI Pro,ifttt-ai-pro,AI Automation Tool,Freemium,https://ifttt.com,"Simple AI-based automation workflows across apps","automation,ai,tools",true,true
+2410,Workato AI,workato-ai,AI Integration Platform,Paid,https://www.workato.com,"Enterprise AI integration and automation platform","automation,enterprise,ai",true,true
+
+2411,Tray.io AI,tray-ai,AI Integration Platform,Paid,https://tray.io,"AI-powered automation and integration workflows","automation,api,ai",true,true
+2412,Pipedream AI,pipedream-ai,AI Developer Automation,Freemium,https://pipedream.com,"AI event-driven workflow automation platform","automation,dev,ai",true,true
+2413,Parabola AI,parabola-ai,AI Data Automation,Paid,https://parabola.io,"AI data workflow automation tool","automation,data,ai",true,true
+2414,Integrately AI,integrately-ai,AI Automation Tool,Freemium,https://integrately.com,"No-code AI automation platform","automation,nocode,ai",true,true
+2415,Albato AI,albato-ai,AI Integration Platform,Freemium,https://albato.com,"AI integration and automation platform","automation,apps,ai",true,true
+
+2416,OpenAI Workflow Engine,openai-workflow-engine,AI Workflow System,Paid,https://platform.openai.com,"AI-powered workflow orchestration engine","workflow,automation,llm",true,true
+2417,LangChain Workflows,langchain-workflows,AI Workflow Framework,Free,https://www.langchain.com,"LLM-based workflow orchestration framework","workflow,agents,llm",true,true
+2418,LangGraph Workflows,langgraph-workflows,AI Graph Workflow System,Free,https://langchain-ai.github.io/langgraph,"Graph-based AI workflow system","workflow,agents,llm",true,true
+2419,LlamaIndex Workflows,llamaindex-workflows,AI Data Workflow,Free,https://www.llamaindex.ai,"AI data workflow orchestration system","workflow,data,llm",true,true
+2420,CrewAI Workflows,crewai-workflows,AI Multi-Agent Workflow,Paid,https://www.crewai.com,"Multi-agent workflow automation system","workflow,agents,ai",true,true
+
+2421,SuperAGI Workflows,superagi-workflows,AI Agent Automation,Free,https://github.com/TransformerOptimus/SuperAGI,"Autonomous AI workflow automation system","workflow,agents,ai",true,true
+2422,Flowise AI Automation,flowise-ai-automation,AI Visual Workflow Builder,Free,https://flowiseai.com,"No-code AI workflow builder for LLM apps","workflow,nocode,ai",true,true
+2423,LangFlow Automation,langflow-automation,AI Visual Workflow Tool,Free,https://github.com,"Visual workflow builder for AI pipelines","workflow,visual,ai",true,true
+2424,AutoGPT Workflows,autogpt-workflows,AI Autonomous Workflow,Free,https://github.com/Significant-Gravitas/AutoGPT,"Autonomous AI workflow execution system","workflow,agents,ai",true,true
+2425,BabyAGI Workflows,babyagi-workflows,AI Task Workflow,Free,https://github.com/yoheinakajima/babyagi,"Task-based AI workflow automation system","workflow,task,ai",true,true
+
+2426,OpenAI Business Automation,openai-business-automation,AI Business Platform,Paid,https://platform.openai.com,"AI-driven business process automation system","business,automation,ai",true,true
+2427,Salesforce Einstein AI,salesforce-einstein-ai,AI CRM Platform,Paid,https://www.salesforce.com/products/einstein,"AI CRM automation and analytics system","crm,sales,ai",true,true
+2428,HubSpot AI Automation,hubspot-ai-automation,AI Marketing CRM,Paid,https://www.hubspot.com,"AI-powered marketing and sales automation platform","crm,marketing,ai",true,true
+2429,Zoho CRM AI,zoho-crm-ai,AI CRM System,Paid,https://www.zoho.com/crm,"AI CRM automation and sales insights system","crm,sales,ai",true,true
+2430,Freshworks AI CRM,freshworks-ai-crm,AI Customer Platform,Paid,https://www.freshworks.com,"AI-powered customer engagement platform","crm,support,ai",true,true
+
+2431,OpenAI Customer AI,openai-customer-ai,AI Customer Platform,Paid,https://platform.openai.com,"AI customer service and support automation system","support,ai,crm",true,true
+2432,Zendesk AI,zendesk-ai,AI Support Platform,Paid,https://www.zendesk.com,"AI customer support automation and ticketing system","support,crm,ai",true,true
+2433,Intercom AI,intercom-ai,AI Chat Support,Paid,https://www.intercom.com,"AI chat support and customer engagement system","support,chat,ai",true,true
+2434,Drift AI,drift-ai,AI Sales Chat,Paid,https://www.drift.com,"AI conversational sales and marketing platform","sales,chat,ai",true,true
+2435,Tidio AI,tidio-ai,AI Chatbot Platform,Freemium,https://www.tidio.com,"AI chatbot for customer support and sales","chat,support,ai",true,true
+
+2436,ManyChat AI,manychat-ai,AI Chat Automation,Freemium,https://manychat.com,"AI chatbot automation for social media and marketing","chat,marketing,ai",true,true
+2437,Chatfuel AI,chatfuel-ai,AI Chatbot Builder,Freemium,https://chatfuel.com,"No-code AI chatbot builder for businesses","chat,nocode,ai",true,true
+2438,Landbot AI,landbot-ai,AI Chat Builder,Freemium,https://landbot.io,"Conversational AI chatbot builder platform","chat,automation,ai",true,true
+2439,Botpress AI,botpress-ai,AI Chatbot Platform,Free,https://botpress.com,"Open-source AI chatbot development platform","chat,open-source,ai",true,true
+2440,Rasa AI,rasa-ai,AI Conversational Platform,Free,https://rasa.com,"Open-source conversational AI framework","chat,nlp,ai",true,true
+
+2441,OpenAI Enterprise AI,openai-enterprise-ai,AI Enterprise Platform,Paid,https://platform.openai.com,"Enterprise AI solutions and automation systems","enterprise,llm,ai",true,true
+2442,Google Cloud AI Platform,google-cloud-ai-platform,Paid,https://cloud.google.com,"Google enterprise AI infrastructure platform","enterprise,google,ai",true,true
+2443,Azure AI Foundry,azure-ai-foundry,AI Enterprise Platform,Paid,https://azure.microsoft.com,"Microsoft enterprise AI development platform","enterprise,microsoft,ai",true,true
+2444,AWS Bedrock AI,aws-bedrock-ai,AI Model Platform,Paid,https://aws.amazon.com/bedrock,"AWS foundation model hosting platform","enterprise,aws,llm",true,true
+2445,IBM Watson Enterprise AI,ibm-watson-enterprise-ai,AI Enterprise Platform,Paid,https://www.ibm.com/watson,"IBM enterprise AI and analytics platform","enterprise,ibm,ai",true,true
+
+2446,OpenAI DevOps AI,openai-devops-ai,AI DevOps Platform,Paid,https://platform.openai.com,"AI-powered DevOps automation system","devops,automation,ai",true,true
+2447,Datadog AI,datadog-ai,AI Monitoring Platform,Paid,https://www.datadoghq.com,"AI system monitoring and observability platform","devops,monitoring,ai",true,true
+2448,New Relic AI,newrelic-ai,AI Observability,Paid,https://newrelic.com,"AI application performance monitoring system","devops,observability,ai",true,true
+2449,Splunk AI,splunk-ai,AI Log Analytics,Paid,https://www.splunk.com,"AI log analysis and security monitoring platform","devops,logs,ai",true,true
+2450,Elastic Observability AI,elastic-observability-ai,Paid,https://www.elastic.co,"AI observability and search analytics system","devops,monitoring,ai",true,true

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Maliyet Hesaplayıcısı — AIvitrin</title>
+  <meta name="description" content="OpenAI, Anthropic, Gemini ve DeepSeek API maliyetlerini karşılaştırın. Girdi/çıktı token ve görsel üretim modelleri fiyat hesaplama aracı.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Calculator Specific Glassmorphism Styles */
+    .calculator-hero {
+      padding: 80px 0 40px;
+      text-align: center;
+    }
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 32px;
+      padding-bottom: 80px;
+    }
+    .calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-card);
+    }
+    .calc-card h3 {
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-group {
+      margin-bottom: 24px;
+    }
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .calc-label-row label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .calc-value-display {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-purple);
+      background: rgba(255,255,255,0.03);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .calc-input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .calc-slider {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-full);
+      outline: none;
+      -webkit-appearance: none;
+      accent-color: var(--accent-purple);
+    }
+    .calc-number-input {
+      width: 120px;
+      padding: 8px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      text-align: right;
+      font-family: inherit;
+      font-weight: 600;
+    }
+    
+    /* Comparison Table & Items */
+    .compare-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .exchange-rate-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .exchange-input {
+      width: 70px;
+      padding: 6px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .pricing-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .calc-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .calc-table th, .calc-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .calc-table th {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .calc-table tr.cheapest {
+      background: rgba(16, 185, 129, 0.04);
+    }
+    .calc-table tr.cheapest td {
+      border-bottom-color: rgba(16, 185, 129, 0.2);
+    }
+    .cheapest-badge {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 8px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .model-provider {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .cost-value-try {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .cost-value-usd {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      display: block;
+      margin-top: 2px;
+    }
+    
+    /* Toggle Tabs for Model Type */
+    .calc-tabs {
+      display: flex;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: 24px;
+    }
+    .calc-tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      color: var(--text-secondary);
+    }
+    .calc-tab.active {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    @media (max-width: 992px) {
+      .calculator-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Glowing Background Orbs & Grid Overlay -->
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <a href="/" class="logo">
+          <span class="logo-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                  <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-header)" opacity="0.85"></path>
+              <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-header)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-header)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+            </svg>
+          </span>
+          <span class="logo-text"><span class="logo-ai">AI</span><span class="logo-vitrin">vitrin</span></span>
+        </a>
+      </div>
+      
+                  <nav class="nav-links" id="nav-links">
+        <a href="/#tools-section">AI Araçları</a>
+        <a href="/alternatives">Alternatifler</a>
+        <a href="/compare">Karşılaştır</a>
+        <a href="/workflows">İş Akışları</a>
+        <a href="/stories">Hikayeler</a>
+        <a href="/calculator">Hesaplayıcı</a>
+        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link">🎒 Çantam <span class="toolkit-count" style="display:none">0</span></a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="btn-submit" id="btn-submit-tool">Projemi Vitrine Ekle</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+      <nav class="mobile-nav" id="mobile-nav">
+    <a href="/#tools-section">AI Araçları</a>
+    <a href="/alternatives">Alternatifler</a>
+    <a href="/compare">Karşılaştır</a>
+    <a href="/workflows">İş Akışları</a>
+    <a href="/stories">Hikayeler</a>
+    <a href="/calculator">Hesaplayıcı</a>
+    <a href="#" id="mobile-toolkit-btn">🎒 Çantam (<span class="toolkit-count">0</span>)</a>
+    <hr>
+    <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
+  </nav>
+
+  <!-- CALCULATOR HERO -->
+  <section class="calculator-hero">
+    <div class="container animate-on-scroll">
+      <h1 class="hero-title">
+        Yapay Zeka <span class="text-gradient">API Hesaplayıcı</span>
+      </h1>
+      <p class="hero-subtitle">
+        Projeniz için OpenAI, Anthropic, Gemini, Groq ve DeepSeek API entegrasyon maliyetlerini anlık kur çevrimiyle hesaplayın ve karşılaştırın.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR CONTENT -->
+  <section class="container">
+    <div class="calculator-layout">
+      <!-- Input Panel -->
+      <div class="calc-card">
+        <h3>🎛️ Kullanım Parametreleri</h3>
+        
+        <div class="calc-tabs">
+          <div class="calc-tab active" id="tab-llm">💬 Metin (LLM)</div>
+          <div class="calc-tab" id="tab-image">🎨 Görsel (Image)</div>
+        </div>
+
+        <!-- Text (LLM) inputs -->
+        <div id="llm-inputs-area">
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="input-tokens-slider">Girdi (Input) Token / İstek</label>
+              <span class="calc-value-display" id="val-input-tokens">1.000</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="range" id="input-tokens-slider" class="calc-slider" min="100" max="10000" step="100" value="1000">
+              <input type="number" id="input-tokens-num" class="calc-number-input" min="100" max="100000" value="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="output-tokens-slider">Çıktı (Output) Token / İstek</label>
+              <span class="calc-value-display" id="val-output-tokens">1.000</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="range" id="output-tokens-slider" class="calc-slider" min="100" max="10000" step="100" value="1000">
+              <input type="number" id="output-tokens-num" class="calc-number-input" min="100" max="100000" value="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="requests-slider">Aylık Toplam İstek Sayısı</label>
+              <span class="calc-value-display" id="val-requests">50.000</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="range" id="requests-slider" class="calc-slider" min="1000" max="1000000" step="1000" value="50000">
+              <input type="number" id="requests-num" class="calc-number-input" min="1000" max="10000000" value="50000">
+            </div>
+          </div>
+        </div>
+
+        <!-- Image inputs -->
+        <div id="image-inputs-area" style="display: none;">
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <label for="images-slider">Aylık Üretilecek Görsel Sayısı</label>
+              <span class="calc-value-display" id="val-images">1.000</span>
+            </div>
+            <div class="calc-input-row">
+              <input type="range" id="images-slider" class="calc-slider" min="100" max="100000" step="100" value="1000">
+              <input type="number" id="images-num" class="calc-number-input" min="100" max="1000000" value="1000">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Panel -->
+      <div class="calc-card">
+        <div class="compare-header-row">
+          <h3>📊 Karşılaştırmalı Tahmini Maliyet</h3>
+          <div class="exchange-rate-box">
+            <span>Dolar Kuru (USD/TRY):</span>
+            <input type="number" class="exchange-input" id="exchange-rate-input" value="34.50" step="0.01">
+          </div>
+        </div>
+
+        <div class="pricing-table-wrapper">
+          <table class="calc-table" id="pricing-results-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Maliyet (TRY / Aylık)</th>
+                <th>Maliyet (USD / Aylık)</th>
+              </tr>
+            </thead>
+            <tbody id="pricing-tbody">
+              <!-- JS dynamically inserts values -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Advisor Quiz Section -->
+    <div class="subscription-advisor-section" style="margin-top: 40px;">
+      <div class="calc-card" style="padding: 32px;">
+        <h2 style="font-family: 'Outfit', sans-serif; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; font-size: 1.6rem;">
+          <span>🧠</span> Abonelik Danışmanı (Subscription Advisor)
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.5;">
+          ChatGPT Plus, Claude Pro veya Gemini Advanced arasında kararsız mı kaldınız? 3 soruluk kısa testimizi çözün, kullanım alışkanlıklarınıza en uygun modeli anında bulun!
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="quiz-progress-wrapper" style="margin-bottom: 30px;">
+          <div class="quiz-progress-bar" style="height: 6px; background: rgba(255,255,255,0.05); border-radius: var(--radius-full); overflow: hidden;">
+            <div id="quiz-progress-fill" style="width: 33%; height: 100%; background: var(--gradient-primary); transition: width 0.3s ease;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>Soru <span id="current-step-label">1</span>/3</span>
+            <span id="step-name-label">Kullanım Amacı</span>
+          </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quiz-questions-container">
+          <!-- Step 1: Goal -->
+          <div class="quiz-step active" id="quiz-step-1">
+            <h4 style="margin-bottom: 18px; font-size: 1.05rem; font-weight: 600;">1. Yapay zeka modelini öncelikli olarak hangi alanda kullanacaksınız?</h4>
+            <div class="quiz-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+              <div class="quiz-option-card" data-question="1" data-value="coding" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">💻</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Yazılım & Kodlama</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Kod yazma, hata ayıklama, algoritmalar ve teknik geliştirme.</p>
+              </div>
+              <div class="quiz-option-card" data-question="1" data-value="writing" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">✍</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Metin & İçerik Üretimi</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Blog, makale, sosyal medya, yaratıcı yazarlık ve dil çevirileri.</p>
+              </div>
+              <div class="quiz-option-card" data-question="1" data-value="general" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">🔍</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Araştırma & Analiz</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Veri analizi, doküman okuma, akademik araştırma ve özetleme.</p>
+              </div>
+              <div class="quiz-option-card" data-question="1" data-value="daily" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">📅</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Günlük Asistan & Planlama</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">E-posta yönetimi, günlük iş planlaması, beyin fırtınası ve genel sohbet.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Critical Feature -->
+          <div class="quiz-step" id="quiz-step-2" style="display: none;">
+            <h4 style="margin-bottom: 18px; font-size: 1.05rem; font-weight: 600;">2. Sizin için en kritik gelişmiş özellik hangisidir?</h4>
+            <div class="quiz-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+              <div class="quiz-option-card" data-question="2" data-value="files" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">📁</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Büyük Dosya / Kod Tabanı Analizi</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Binlerce satırlık kod veya yüzlerce sayfalık PDF analiz edebilme gücü.</p>
+              </div>
+              <div class="quiz-option-card" data-question="2" data-value="voice" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">🎙</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Akıcı Sesli Asistan & Mobil Deneyim</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Doğal konuşan sesli mod, pratik mobil uygulama ve anlık yanıtlar.</p>
+              </div>
+              <div class="quiz-option-card" data-question="2" data-value="ecosystem" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">☁</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Google Workspace & Bulut Entegrasyonu</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Gmail, Docs ve Drive dosyalarıyla doğrudan entegrasyon ve bulut depolama.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Extra Ecosystem / Needs -->
+          <div class="quiz-step" id="quiz-step-3" style="display: none;">
+            <h4 style="margin-bottom: 18px; font-size: 1.05rem; font-weight: 600;">3. Aşağıdaki ek faydalardan hangisi kararınızı en çok etkiler?</h4>
+            <div class="quiz-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+              <div class="quiz-option-card" data-question="3" data-value="storage" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">💾</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">2 TB Ekstra Google One Depolama</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Fotoğraf, video ve Drive dosyalarım için geniş depolama alanına sahip olmak.</p>
+              </div>
+              <div class="quiz-option-card" data-question="3" data-value="projects" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">📊</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Proje/Bilgi Havuzu Oluşturma (Projects)</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Araca özel dökümanlar yükleyip belirli bir projeye odaklı çalışma alanı oluşturmak.</p>
+              </div>
+              <div class="quiz-option-card" data-question="3" data-value="voice_image" style="cursor: pointer; border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); background: rgba(255,255,255,0.01); transition: var(--transition-base);">
+                <div style="font-size: 1.8rem; margin-bottom: 12px;">⚡</div>
+                <h5 style="font-size: 0.95rem; margin-bottom: 6px; font-weight: 600;">Web'den Araştırma & DALL-E Entegrasyonu</h5>
+                <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Sürekli güncel web aramaları, çizim yapma, özel GPT'ler ve gelişmiş ses modu.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Results (hidden initially) -->
+          <div class="quiz-step" id="quiz-result-step" style="display: none;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <span style="font-size: 3.5rem;">🎉</span>
+              <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; margin-top: 15px; margin-bottom: 6px;">Analiz Tamamlandı!</h3>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Tercihlerinize göre en yüksek uyum gösteren abonelik modeli belirlendi.</p>
+            </div>
+
+            <!-- Result Cards Grid -->
+            <div class="result-cards-container" style="display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 35px;">
+              <!-- Winner Model Card -->
+              <div class="winner-model-card" style="background: rgba(99, 102, 241, 0.04); border: 2px solid var(--accent-purple); padding: 24px; border-radius: var(--radius-lg); text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 12px; right: 12px; background: var(--accent-purple); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">ÖNERİLEN MODEL</div>
+                <h4 style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 8px; font-weight: 500;">En İyi Eşleşme:</h4>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; margin-bottom: 12px;" id="winner-name">Claude Pro</h2>
+                <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 16px;">Uyum Oranı: %<span id="winner-percentage">95</span></div>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 600px; margin: 0 auto 20px;" id="winner-description">
+                  Yazılım ve kodlama konusundaki yüksek hassasiyetiniz, büyük dosya analizleri yapma ihtiyacınız ile Claude Pro modeli sizin için en doğru seçimdir.
+                </p>
+              </div>
+
+              <!-- Matching Scores -->
+              <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-lg);">
+                <h4 style="margin-bottom: 16px; font-size: 1rem; font-weight: 600;">Tüm Modellerin Eşleşme Oranları</h4>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600;">
+                      <span>Claude Pro</span>
+                      <span id="score-claude">%95</span>
+                    </div>
+                    <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div id="bar-claude" style="width: 95%; height:100%; background: var(--accent-purple); border-radius: 4px; transition: width 0.8s ease;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600;">
+                      <span>ChatGPT Plus</span>
+                      <span id="score-chatgpt">%70</span>
+                    </div>
+                    <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div id="bar-chatgpt" style="width: 70%; height:100%; background: var(--accent-cyan); border-radius: 4px; transition: width 0.8s ease;"></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 6px; font-size: 0.9rem; font-weight: 600;">
+                      <span>Gemini Advanced</span>
+                      <span id="score-gemini">%50</span>
+                    </div>
+                    <div style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div id="bar-gemini" style="width: 50%; height:100%; background: var(--accent-green); border-radius: 4px; transition: width 0.8s ease;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subscription Models Comparison Table -->
+            <div style="margin-bottom: 25px;">
+              <h4 style="margin-bottom: 16px; font-size: 1rem; font-weight: 600;">Abonelik Detay Karşılaştırması</h4>
+              <div class="pricing-table-wrapper">
+                <table class="calc-table">
+                  <thead>
+                    <tr>
+                      <th>Özellik / Detay</th>
+                      <th>ChatGPT Plus</th>
+                      <th>Claude Pro</th>
+                      <th>Gemini Advanced</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Aylık Üretim / Limitler</strong></td>
+                      <td>Dinamik limitler (günde ~40-80 mesaj)</td>
+                      <td>ChatGPT'ye kıyasla 5 kat limit</td>
+                      <td>Çok yüksek limitler + 2 TB bulut alan</td>
+                    </tr>
+                    <tr>
+                      <td><strong>En Güçlü Yönü</strong></td>
+                      <td>Akıcı sesli asistan, GPT market, DALL-E 3</td>
+                      <td>Yazılım/kodlama, analitik zeka, Projects</td>
+                      <td>2M context (büyük dosya analizi), Google Entegrasyonları</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Zayıf Yönü</strong></td>
+                      <td>Büyük dosya analizinde hafıza dolumu</td>
+                      <td>Ses asistanı yok, görsel oluşturma dolaylı</td>
+                      <td>Kreatif yazımda bazen tekrara düşebiliyor</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ekstra Faydalar</strong></td>
+                      <td>Web aramaları, Canvas kod/yazı arayüzü</td>
+                      <td>Artifacts (etkileşimli kod önizleme)</td>
+                      <td>2 TB Google One Depolama alanı dahil</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style="text-align: center;">
+              <button id="btn-restart-quiz" class="btn-primary" style="padding: 12px 24px; font-weight: 600; font-size: 0.9rem; background: var(--gradient-primary); border: none; color: white; border-radius: var(--radius-md); cursor: pointer; transition: var(--transition-base);">Testi Yeniden Çöz</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="quiz-nav-row" id="quiz-nav-row" style="display: flex; justify-content: space-between; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <button id="btn-quiz-prev" class="action-btn" style="padding: 8px 16px; font-size: 0.85rem; visibility: hidden;">&larr; Geri</button>
+          <button id="btn-quiz-next" class="action-btn" style="padding: 8px 16px; font-size: 0.85rem;" disabled>İleri &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                    <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+                  </linearGradient>
+                </defs>
+                <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-footer)" opacity="0.85"></path>
+                <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-footer)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-footer)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+              </svg>
+            </span>
+            <span class="logo-text"><span class="logo-ai">AI</span><span class="logo-vitrin">vitrin</span></span>
+          </a>
+          <p class="footer-description">
+            Yazma, kodlama, tasarım ve otomasyon gibi kategorilerde en iyi yapay zeka araçlarını keşfedin ve karşılaştırın.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AIvitrin. Tüm Hakları Saklıdır.</p>
+        <p>Türkiye'nin en kapsamlı AI araç dizini 🇹🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="back-to-top" aria-label="Yukarı çık">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
+
+  <!-- SCRIPTS -->
+  <script src="js/toolkit.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/subscription-advisor.js"></script>
+  <script src="js/advisor.js"></script>
+  
+  <script>
+    // Theme setup and light/dark toggling support
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme');
+        const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+    }
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>

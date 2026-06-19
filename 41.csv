@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2001,OpenAI Code Studio,openai-code-studio,AI Code Platform,Paid,https://platform.openai.com,"AI-powered code generation and development studio","code,llm,dev",true,true
+2002,Anthropic Code Assistant,anthropic-code-assistant,AI Code Tool,Paid,https://www.anthropic.com,"Claude-based AI coding assistant for developers","code,llm,dev",true,true
+2003,Google Gemini Code AI,gemini-code-ai,AI Code Platform,Paid,https://ai.google,"Gemini-powered AI coding and debugging system","code,google,llm",true,true
+2004,Meta Code Llama Studio,meta-code-llama-studio,AI Code Model,Free,https://ai.meta.com,"Code Llama-based AI coding assistant tools","code,llm,meta",true,true
+2005,Mistral Code API,mistral-code-api,AI Code API,Paid,https://mistral.ai,"Code generation and reasoning API for developers","code,llm,api",true,true
+
+2006,Github Copilot Studio,github-copilot-studio,AI Code Assistant,Paid,https://github.com/features/copilot,"AI-powered coding assistant for developers","code,github,ai",true,true
+2007,Cursor AI IDE,cursor-ai-ide,AI Code Editor,Freemium,https://www.cursor.com,"AI-first code editor with deep LLM integration","code,editor,ai",true,true
+2008,Windsurf AI IDE,windsurf-ai-ide,AI Code Editor,Freemium,https://windsurf.com,"AI-powered coding IDE for developers","code,ide,ai",true,true
+2009,Replit AI Studio,replit-ai-studio,AI Code Platform,Freemium,https://replit.com,"Cloud-based AI coding and deployment platform","code,cloud,ai",true,true
+2010,Codeium AI Assistant,codeium-ai-assistant,AI Code Tool,Freemium,https://codeium.com,"AI autocomplete and coding assistant tool","code,autocomplete,ai",true,true
+
+2011,Tabnine AI,tabnine-ai,AI Code Completion,Paid,https://www.tabnine.com,"AI-powered code completion engine","code,autocomplete,ai",true,true
+2012,Amazon CodeWhisperer,codewhisperer,AI Code Tool,Freemium,https://aws.amazon.com/codewhisperer,"AWS AI coding assistant for developers","code,aws,ai",true,true
+2013,JetBrains AI Assistant,jetbrains-ai-assistant,AI IDE Tool,Paid,https://www.jetbrains.com,"AI assistant integrated into JetBrains IDEs","code,ide,ai",true,true
+2014,Visual Studio IntelliCode,intellicode,AI Code Tool,Free,https://visualstudio.microsoft.com,"Microsoft AI code suggestions and completion tool","code,microsoft,ai",true,true
+2015,Google Project IDX AI,project-idx-ai,AI Code Platform,Free,https://idx.dev,"Cloud-based AI coding environment by Google","code,cloud,google",true,true
+
+2016,Sourcegraph Cody AI,sourcegraph-cody-ai,AI Code Search,Paid,https://sourcegraph.com,"AI code search and developer assistant","code,search,ai",true,true
+2017,Phind AI Code Search,phind-ai-code-search,AI Code Search,Freemium,https://www.phind.com,"AI-powered developer search engine","code,search,ai",true,true
+2018,Kite AI Code Assistant,kite-ai-code-assistant,AI Code Tool,Free,https://www.kite.com,"AI autocomplete and coding assistant tool","code,autocomplete,ai",true,true
+2019,Safurai AI Developer Tool,safurai-ai-developer-tool,AI Code Assistant,Freemium,https://www.safurai.com,"AI coding assistant for software development","code,dev,ai",true,true
+2020,Mutable AI Studio,mutable-ai-studio,AI Code Refactoring,Paid,https://mutable.ai,"AI code refactoring and generation platform","code,refactor,ai",true,true
+
+2021,AskCodi AI,askcodi-ai,AI Code Assistant,Freemium,https://www.askcodi.com,"AI assistant for coding and software development","code,assistant,ai",true,true
+2022,Blackbox AI,blackbox-ai,AI Code Search,Freemium,https://www.blackbox.ai,"AI code search and snippet generation tool","code,search,ai",true,true
+2023,DeepCode AI,deepcode-ai,AI Code Review,Paid,https://www.snyk.io,"AI-powered code review and security analysis","code,security,ai",true,true
+2024,Snyk Code AI,snyk-code-ai,AI Code Security,Paid,https://snyk.io,"AI code vulnerability detection system","code,security,ai",true,true
+2025,SonarQube AI,sonarqube-ai,AI Code Quality,Paid,https://www.sonarsource.com,"AI code quality and static analysis platform","code,quality,ai",true,true
+
+2026,CodeQL AI Engine,codeql-ai-engine,AI Code Analysis,Free,https://codeql.github.com,"Semantic code analysis engine for security","code,security,analysis",true,true
+2027,Semgrep AI,semgrep-ai,AI Code Security,Freemium,https://semgrep.dev,"AI static code analysis and security tool","code,security,ai",true,true
+2028,GitGuardian AI,gitguardian-ai,AI Security Tool,Paid,https://www.gitguardian.com,"AI-based secrets detection in code repositories","code,security,ai",true,true
+2029,Veracode AI,veracode-ai,AI App Security,Paid,https://www.veracode.com,"Application security scanning with AI","security,code,ai",true,true
+2030,Checkmarx AI,checkmarx-ai,AI Code Security,Paid,https://checkmarx.com,"AI application security and vulnerability scanning","security,code,enterprise",true,true
+
+2031,Amazon Q Developer,amazon-q-developer,AI Code Assistant,Paid,https://aws.amazon.com/q,"AWS AI assistant for developers and coding","code,aws,ai",true,true
+2032,OpenAI Dev Assistant API,openai-dev-assistant-api,AI Developer API,Paid,https://platform.openai.com,"Developer-focused AI assistant API","code,llm,api",true,true
+2033,Claude Dev Tools,claude-dev-tools,AI Developer Tool,Paid,https://www.anthropic.com,"Claude-based developer tools and APIs","code,llm,dev",true,true
+2034,Gemini Dev API,gemini-dev-api,AI Developer API,Paid,https://ai.google,"Google AI developer API for coding tasks","code,google,llm",true,true
+2035,Mistral Dev API,mistral-dev-api,AI Developer API,Paid,https://mistral.ai,"Developer API for code generation and reasoning","code,llm,api",true,true
+
+2036,LangChain Code Agent,langchain-code-agent,AI Code Agent,Free,https://www.langchain.com,"Agent framework for automated coding workflows","code,agents,llm",true,true
+2037,LlamaIndex Code Agent,llamaindex-code-agent,AI Code Agent,Free,https://www.llamaindex.ai,"AI agent for code and data workflows","code,agents,data",true,true
+2038,AutoGPT Code Engine,autogpt-code-engine,AI Autonomous Coding,Free,https://github.com/Significant-Gravitas/AutoGPT,"Autonomous coding agent system","code,agents,ai",true,true
+2039,BabyAGI Code System,babyagi-code-system,AI Coding Agent,Free,https://github.com/yoheinakajima/babyagi,"Lightweight autonomous coding agent","code,agents,ai",true,true
+2040,CrewAI Code Agents,crewai-code-agents,AI Multi-Agent Coding,Paid,https://www.crewai.com,"Multi-agent coding workflow system","code,agents,ai",true,true
+
+2041,LangGraph Code System,langgraph-code-system,AI Code Orchestration,Paid,https://langchain-ai.github.io/langgraph,"Graph-based coding agent orchestration","code,agents,workflow",true,true
+2042,Replit Agent AI,replit-agent-ai,AI Coding Agent,Freemium,https://replit.com,"AI agent that builds and deploys apps","code,agents,cloud",true,true
+2043,Cursor Agent Mode,cursor-agent-mode,AI Coding Agent,Freemium,https://www.cursor.com,"Agent-based AI coding inside IDE","code,agent,ide",true,true
+2044,Windsurf Agent AI,windsurf-agent-ai,AI Coding Agent,Freemium,https://windsurf.com,"Autonomous AI coding assistant in IDE","code,agent,ai",true,true
+2045,GitHub Copilot Agent,github-copilot-agent,AI Coding Agent,Paid,https://github.com/features/copilot,"Autonomous coding agent inside GitHub ecosystem","code,agents,github",true,true
+
+2046,OpenAI Code Interpreter API,code-interpreter-api,AI Code Execution,Paid,https://platform.openai.com,"AI code execution and analysis tool","code,execution,ai",true,true
+2047,Anthropic Code Runtime,anthropic-code-runtime,AI Code Execution,Paid,https://www.anthropic.com,"Code execution environment for Claude models","code,runtime,llm",true,true
+2048,Google Code Runtime API,google-code-runtime-api,AI Code Execution,Paid,https://ai.google,"Secure code execution API for Gemini models","code,runtime,google",true,true
+2049,Mistral Code Runtime,mistral-code-runtime,AI Code Execution,Paid,https://mistral.ai,"Code execution environment for AI apps","code,runtime,api",true,true
+2050,OpenAI Sandbox Studio,openai-sandbox-studio,AI Code Sandbox,Paid,https://platform.openai.com,"Secure sandbox environment for AI code testing","code,sandbox,ai",true,true

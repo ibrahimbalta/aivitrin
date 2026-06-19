@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+701,HubSpot AI,hubspot-ai,AI CRM & Marketing,Paid,https://www.hubspot.com,"AI-powered CRM with marketing, sales and automation tools","crm,marketing,sales",true,true
+702,Salesforce Einstein,salesforce-einstein,AI CRM Platform,Paid,https://www.salesforce.com,"AI for sales forecasting, automation and customer insights","crm,enterprise,analytics",true,true
+703,Zoho Zia,zoho-zia,AI Business Assistant,Freemium,https://www.zoho.com/zia,"AI assistant for Zoho CRM and business tools","crm,automation,business",true,true
+704,Pipedrive AI,pipedrive-ai,AI Sales CRM,Freemium,https://www.pipedrive.com,"AI sales pipeline automation and deal insights","crm,sales,automation",true,true
+705,Freshsales AI,freshsales-ai,AI CRM Assistant,Freemium,https://www.freshworks.com/freshsales-crm,"AI-powered sales and customer engagement platform","crm,sales,automation",true,true
+
+706,Monday Sales CRM,monday-sales-crm,AI Workflow CRM,Freemium,https://monday.com,"AI-powered CRM and sales workflow automation","crm,workflow,management",true,true
+707,ClickUp AI,clickup-ai,AI Productivity Platform,Freemium,https://clickup.com,"AI task management, docs and productivity assistant","productivity,tasks,ai",true,true
+708,Asana Intelligence,asana-intelligence,AI Project Management,Freemium,https://asana.com,"AI-driven project planning and task automation","project-management,workflow,ai",true,true
+709,Notion AI CRM,notion-ai-crm,AI Workspace CRM,Freemium,https://www.notion.so,"AI-powered workspace for CRM and knowledge management","crm,notes,workspace",true,true
+710,Bitrix24 AI,bitrix24-ai,AI Business Suite,Freemium,https://www.bitrix24.com,"AI CRM, collaboration and business automation suite","crm,business,automation",true,true
+
+711,Drift AI,drift-ai,AI Conversational Sales,Paid,https://www.drift.com,"AI chatbot for sales and customer engagement","chatbot,sales,marketing",true,true
+712,Intercom Fin AI,intercom-fin-ai,AI Support Agent,Paid,https://www.intercom.com/fin,"AI customer support assistant for businesses","support,chatbot,customer-service",true,true
+713,Zendesk AI,zendesk-ai,AI Customer Support,Paid,https://www.zendesk.com,"AI-powered helpdesk and customer support automation","support,crm,automation",true,true
+714,Help Scout AI,help-scout-ai,AI Support Inbox,Freemium,https://www.helpscout.com,"AI email support and customer service automation","support,email,crm",true,true
+715,Gainsight AI,gainsight-ai,AI Customer Success,Paid,https://www.gainsight.com,"AI-driven customer success and retention analytics","customer-success,crm,analytics",true,true
+
+716,Outreach AI,outreach-ai,AI Sales Engagement,Paid,https://www.outreach.io,"AI sales automation and customer engagement platform","sales,email,crm",true,true
+717,Salesloft AI,salesloft-ai,AI Sales Platform,Paid,https://salesloft.com,"AI-driven sales engagement and pipeline optimization","sales,crm,automation",true,true
+718,Apollo AI,apollo-ai,AI Sales Intelligence,Freemium,https://www.apollo.io,"AI lead generation and sales intelligence platform","sales,leads,b2b",true,true
+719,ZoomInfo Copilot,zoominfo-copilot,AI Sales Intelligence,Paid,https://www.zoominfo.com,"AI-powered B2B data and sales insights platform","sales,data,intelligence",true,true
+720,Lusha AI,lusha-ai,AI Lead Generation,Freemium,https://www.lusha.com,"AI contact and lead generation platform","leads,sales,b2b",true,true
+
+721,Clearbit AI,clearbit-ai,AI Marketing Data,Paid,https://clearbit.com,"AI-powered customer data enrichment and insights","data,marketing,b2b",true,true
+722,6sense AI,6sense-ai,AI Revenue Intelligence,Paid,https://6sense.com,"AI-driven revenue intelligence and buyer intent data","sales,intelligence,b2b",true,true
+723,Seamless AI,seamless-ai,AI Lead Generator,Freemium,https://www.seamless.ai,"AI-powered real-time B2B lead generation platform","sales,leads,b2b",true,true
+724,LeadIQ AI,leadiq-ai,AI Prospecting Tool,Freemium,https://leadiq.com,"AI prospecting and lead capture for sales teams","sales,prospecting,b2b",true,true
+725,Clay AI,clay-ai,AI Sales Automation,Freemium,https://www.clay.com,"AI workflow automation for sales and growth teams","sales,automation,crm",true,true
+
+726,Shopify Sidekick,shopify-sidekick,AI Ecommerce Assistant,Freemium,https://www.shopify.com,"AI assistant for ecommerce store management","ecommerce,shopify,assistant",true,true
+727,Gumloop,gumloop,AI Workflow Automation,Freemium,https://www.gumloop.com,"AI automation workflows for business processes","automation,no-code,workflow",true,true
+728,Make.com AI,make-com-ai,AI Automation Platform,Freemium,https://www.make.com,"Visual automation platform with AI integrations","automation,workflow,no-code",true,true
+729,Zapier AI,zapier-ai,AI Automation,Freemium,https://zapier.com,"AI-powered workflow automation between apps","automation,apps,workflow",true,true
+730,IFTTT AI,ifttt-ai,AI Automation Tool,Freemium,https://ifttt.com,"Simple automation platform with AI triggers","automation,smart-home,workflow",true,true
+
+731,QuickBooks AI,quickbooks-ai,AI Accounting,Freemium,https://quickbooks.intuit.com,"AI-powered accounting and financial automation","finance,accounting,small-business",true,true
+732,Xero AI,xero-ai,AI Accounting Platform,Freemium,https://www.xero.com,"AI bookkeeping and financial management tools","accounting,finance,business",true,true
+733,FreshBooks AI,freshbooks-ai,AI Invoicing,Freemium,https://www.freshbooks.com,"AI-powered invoicing and expense tracking","invoicing,finance,small-business",true,true
+734,Wave AI,wave-ai,AI Finance Tool,Free,https://www.waveapps.com,"Free AI accounting and invoicing software","finance,accounting,freelance",true,true
+735,Expensify AI,expensify-ai,AI Expense Management,Freemium,https://www.expensify.com,"AI expense tracking and receipt automation","expenses,finance,automation",true,true
+
+736,Stripe AI,stripe-ai,AI Payments Platform,Paid,https://stripe.com,"AI-powered fraud detection and payment optimization","payments,fintech,ai",true,true
+737,PayPal AI,paypal-ai,AI Payments,Paid,https://www.paypal.com,"AI fraud prevention and smart payment processing","payments,fintech,security",true,true
+738,Adyen AI,adyen-ai,AI Payment Analytics,Paid,https://www.adyen.com,"AI-driven payment optimization and fraud detection","payments,analytics,fintech",true,true
+739,Revolut AI,revolut-ai,AI Banking Assistant,Freemium,https://www.revolut.com,"AI financial insights and personal banking assistant","banking,finance,ai",true,true
+740,Nordigen AI,nordigen-ai,AI Banking API,Free,https://nordigen.com,"AI-powered banking data API for fintech applications","api,banking,finance",true,true
+
+741,Kavout AI,kavout-ai,AI Investment Platform,Paid,https://kavout.com,"AI-driven stock analysis and investment insights","finance,stocks,investment",true,true
+742,Alphasense AI,alphasense-ai,AI Financial Research,Paid,https://www.alpha-sense.com,"AI search engine for financial documents and research","finance,research,market",true,true
+743,Kensho AI,kensho-ai,AI Market Analytics,Paid,https://www.kensho.com,"AI analytics for financial markets and data insights","finance,data,analytics",true,true
+744,Zerodha Streak AI,zerodha-streak-ai,AI Trading Automation,Freemium,https://streak.zerodha.com,"AI-powered trading strategy automation platform","trading,finance,automation",true,true
+745,TradingView AI,tradingview-ai,AI Trading Assistant,Freemium,https://www.tradingview.com,"AI-based charting and market analysis tools","trading,stocks,analysis",true,true
+
+746,Notta AI Pro,notta-ai-pro,AI Transcription Pro,Freemium,https://www.notta.ai,"Advanced AI transcription and meeting notes platform","transcription,meetings,audio",true,true
+747,Sembly AI,sembly-ai,AI Meeting Intelligence,Freemium,https://www.sembly.ai,"AI meeting assistant with insights and summaries","meetings,analytics,productivity",true,true
+748,Fellow AI,fellow-ai,AI Meeting Management,Freemium,https://fellow.app,"AI-powered meeting agendas and notes management","meetings,productivity,notes",true,true
+749,Coda AI CRM,coda-ai-crm,AI Workspace CRM,Freemium,https://coda.io,"AI workspace combining documents, CRM and automation","workspace,crm,productivity",true,true
+750,Rows AI,rows-ai,AI Spreadsheet Tool,Freemium,https://rows.com,"AI-powered spreadsheet and data analysis tool","spreadsheet,data,analytics",true,true

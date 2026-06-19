@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tarayıcı — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    /* Specific switch toggle styling for crawler settings */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border-color);
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: var(--text-primary);
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--accent-purple);
+    }
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+    
+    .crawler-controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .control-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+    .control-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .control-row:last-child {
+      border-bottom: none;
+    }
+    .control-info h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .control-info p {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Loading spinner for crawler run */
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn-running {
+      opacity: 0.75;
+      pointer-events: none;
+    }
+    .btn-running .spinner {
+      display: inline-block;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-crawler" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-crawler)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-crawler)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-crawler)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a>
+        <a href="/admin/tools.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Araçlar</a>
+        <a href="/admin/categories.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg> Kategoriler</a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular <span class="badge-count" id="nav-sub-count" style="display:none;background:var(--accent-red);color:white;border-radius:10px;padding:2px 6px;font-size:11px;margin-left:auto;font-weight:600">0</span>
+        </a>
+        <a href="/admin/crawler.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Siteyi Görüntüle</a>
+      </nav>
+      <div class="sidebar-footer"><button class="btn-logout" id="btn-logout"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Çıkış Yap</button></div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">AIvitrin Web Tarayıcısı (Crawler)</h1>
+      </div>
+
+      <div class="crawler-controls" style="display:grid;grid-template-columns:1.5fr 1.5fr 1fr;gap:24px;margin-bottom:32px">
+        <!-- GENERAL SETTINGS -->
+        <div class="control-card" style="display:flex;flex-direction:column;gap:18px">
+          <h4 style="margin-bottom:4px">⚙️ Genel Tarayıcı Ayarları</h4>
+          <div class="control-row" style="padding:8px 0">
+            <div class="control-info">
+              <h4>Otomatik Onaylama (Auto-Approve)</h4>
+              <p>Aktif edilirse, taranan yeni yapay zeka araçları onay bekletilmeden doğrudan yayına alınır.</p>
+            </div>
+            <div>
+              <label class="switch">
+                <input type="checkbox" id="crawler-auto-approve-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="control-row" style="padding:8px 0;border-bottom:none">
+            <div class="control-info">
+              <h4>Manuel Tarama Tetikleme</h4>
+              <p>Product Hunt ve diğer entegre kaynakları şimdi tarar ve yeni araçları sisteme çeker.</p>
+            </div>
+            <div>
+              <button class="btn-primary" id="btn-run-crawler">
+                <div class="spinner"></div>
+                <span>Şimdi Tara</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI SETTINGS -->
+        <div class="control-card">
+          <h4 style="margin-bottom:12px;display:flex;align-items:center;gap:8px">🤖 AI Entegrasyon Ayarları</h4>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.875rem;color:var(--text-secondary)">AI ile Zenginleştirme</span>
+              <label class="switch">
+                <input type="checkbox" id="crawler-ai-enabled-toggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+            
+            <div class="form-group" style="gap:4px">
+              <label style="font-size:0.75rem;color:var(--text-muted)">API Sağlayıcı</label>
+              <select id="crawler-ai-provider" style="padding:8px;font-size:0.8125rem;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-primary);border-radius:var(--radius-sm)">
+                <option value="gemini">Google (Gemini)</option>
+                <option value="xai">xAI (Grok)</option>
+                <option value="openai">OpenAI (ChatGPT)</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="custom">Özel Endpoint</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="gap:4px">
+              <label style="font-size:0.75rem;color:var(--text-muted)">API Anahtarı (API Key)</label>
+              <input type="password" id="crawler-ai-api-key" placeholder="API anahtarını girin" style="padding:8px;font-size:0.8125rem;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-primary);border-radius:var(--radius-sm)">
+            </div>
+
+            <div class="form-group" style="gap:4px">
+              <label style="font-size:0.75rem;color:var(--text-muted)">Model</label>
+              <input type="text" id="crawler-ai-model" placeholder="grok-2" style="padding:8px;font-size:0.8125rem;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-primary);border-radius:var(--radius-sm)">
+            </div>
+
+            <div class="form-group" id="grp-custom-endpoint" style="gap:4px;display:none">
+              <label style="font-size:0.75rem;color:var(--text-muted)">Özel Endpoint Base URL</label>
+              <input type="text" id="crawler-ai-endpoint" placeholder="https://api.yourprovider.com/v1" style="padding:8px;font-size:0.8125rem;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-primary);border-radius:var(--radius-sm)">
+            </div>
+
+            <button class="btn-primary" id="btn-save-ai-settings" style="padding:10px;font-size:0.8125rem;font-weight:600;margin-top:4px;background:var(--gradient-primary);border:none;color:white">
+              Ayarları Kaydet
+            </button>
+          </div>
+        </div>
+
+        <!-- STATS CARD -->
+        <div class="control-card" style="display:flex;flex-direction:column;justify-content:center;gap:20px;text-align:center">
+          <div>
+            <div style="font-size:0.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:600">Toplam Bulunan Araç</div>
+            <strong style="font-size:2rem;color:var(--accent-purple)" id="stat-total-crawled">0</strong>
+          </div>
+          <div>
+            <div style="font-size:0.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:600">Son Çalışma Zamanı</div>
+            <span style="font-size:0.875rem;font-weight:500" id="stat-last-run">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI RAW TEXT ANALYSIS -->
+      <div class="control-card" style="margin-bottom:32px">
+        <div style="border-bottom:1px solid var(--border-color);padding-bottom:12px;margin-bottom:16px">
+          <h3 style="font-size:1.15rem;display:flex;align-items:center;gap:8px">🧠 Yapay Zeka Destekli Web Kazıma ve Analiz</h3>
+          <p style="font-size:0.8125rem;color:var(--text-secondary);margin-top:4px">Bir web sitesinin linkini (URL) girerek sayfadaki yapay zeka araçlarını kazıyın ve AI ile analiz edin veya ham metin yapıştırın.</p>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="form-group" style="display:flex;flex-direction:column;gap:6px">
+            <label for="ai-scrape-url" style="font-size:0.875rem;font-weight:500;color:var(--text-secondary)">Kazınacak Web Sayfası URL'si (Opsiyonel)</label>
+            <input type="url" id="ai-scrape-url" placeholder="https://example.com/yapay-zeka-listesi (Örn: Blog yazısı veya dizin sayfası)" style="background:var(--bg-input);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:12px 16px;color:var(--text-primary);font-size:0.9375rem;outline:none;font-family:inherit">
+          </div>
+
+          <div class="form-group" style="display:flex;flex-direction:column;gap:6px">
+            <label for="ai-raw-text" style="font-size:0.875rem;font-weight:500;color:var(--text-secondary)">Ham Metin Yapıştırın (Opsiyonel)</label>
+            <textarea id="ai-raw-text" placeholder="İçeriğinde yapay zeka araçları geçen ham metni buraya yapıştırın... (URL belirttiyseniz burası boş kalabilir veya ek metin olarak kullanılabilir)" style="background:var(--bg-input);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:16px;color:var(--text-primary);font-size:0.9375rem;min-height:120px;outline:none;resize:vertical;font-family:inherit"></textarea>
+          </div>
+          
+          <div style="display:flex;justify-content:flex-end">
+            <button class="btn-primary" id="btn-ai-extract" style="background:var(--gradient-primary);border:none;color:white;font-weight:600;display:flex;align-items:center;gap:8px">
+              <div class="spinner" id="ai-extract-spinner" style="width:16px;height:16px;border-width:2px;display:none"></div>
+              <span>AI ile Sayfayı Kazı ve Analiz Et</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- AI results table -->
+        <div id="ai-results-wrapper" style="display:none;margin-top:24px;border-top:1px solid var(--border-color);padding-top:24px">
+          <h4 style="margin-bottom:16px;color:var(--accent-cyan);font-size:1rem">Tespit Edilen Yapay Zeka Araçları</h4>
+          <div class="data-table-wrapper" style="border:none;border-radius:0">
+            <table class="data-table" style="font-size:0.875rem">
+              <thead>
+                <tr>
+                  <th>Araç Adı</th>
+                  <th>URL</th>
+                  <th>Kategori</th>
+                  <th>Fiyat</th>
+                  <th>Açıklama (Türkçe)</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="ai-extracted-tools-body">
+                <!-- Extracted tools will be injected -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSV BULK UPLOAD -->
+      <div class="control-card" style="margin-bottom:32px">
+        <div style="border-bottom:1px solid var(--border-color);padding-bottom:12px;margin-bottom:16px">
+          <h3 style="font-size:1.15rem;display:flex;align-items:center;gap:8px">📁 CSV Dosyası ile Toplu Ekleme / İçe Aktarım</h3>
+          <p style="font-size:0.8125rem;color:var(--text-secondary);margin-top:4px">
+            Excel veya CSV dosyanızdaki araçları topluca sisteme yükleyin. CSV dosyasında şu sütunlar bulunmalıdır: 
+            <code>ad, url, aciklama, kategori_id, fiyat, etiketler</code>
+          </p>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:6px;background:rgba(255,255,255,0.02);padding:8px;border-radius:4px;border:1px dashed var(--border-color)">
+            <strong>Örnek Satır:</strong> <code>MyTool,https://mytool.com,Harika bir araç,sohbet-asistan,freemium,"etiket1, etiket2"</code>
+          </div>
+        </div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:12px">
+            <input type="file" id="csv-file-input" accept=".csv" style="display:none">
+            <button class="btn-submit" id="btn-select-csv" style="border-color:var(--border-hover);color:var(--text-primary);padding:10px 18px">
+              📂 CSV Dosyası Seç
+            </button>
+            <span id="csv-file-name" style="font-size:0.875rem;color:var(--text-muted)">Dosya seçilmedi</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-primary" id="btn-csv-import-all-sub" style="display:none;background:hsla(155,80%,50%,0.1);color:var(--accent-green);border:1px solid hsla(155,80%,50%,0.25);font-weight:600">
+              Hepsini İncelemeye Gönder
+            </button>
+            <button class="btn-primary" id="btn-csv-import-all-direct" style="display:none;background:var(--gradient-primary);border:none;color:white;font-weight:600">
+              Hepsini Doğrudan Yayınla
+            </button>
+          </div>
+        </div>
+
+        <!-- CSV results table -->
+        <div id="csv-results-wrapper" style="display:none;margin-top:24px;border-top:1px solid var(--border-color);padding-top:24px">
+          <h4 style="margin-bottom:16px;color:var(--accent-cyan);font-size:1rem">CSV'den Okunan Yapay Zeka Araçları</h4>
+          <div class="data-table-wrapper" style="border:none;border-radius:0">
+            <table class="data-table" style="font-size:0.875rem">
+              <thead>
+                <tr>
+                  <th>Araç Adı</th>
+                  <th>URL</th>
+                  <th>Kategori</th>
+                  <th>Fiyat</th>
+                  <th>Açıklama / Etiketler</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="csv-extracted-tools-body">
+                <!-- CSV rows will be injected -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRAWLER LOGS -->
+      <div class="data-table-wrapper">
+        <div class="table-header">
+          <h3>Tarama Logları / Geçmişi</h3>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tarih</th>
+              <th>Taranan Araç</th>
+              <th>Sisteme Eklenen</th>
+              <th>Otomatik Onay</th>
+              <th>Durum / Eklenen Detayları</th>
+            </tr>
+          </thead>
+          <tbody id="crawler-logs-body">
+            <tr>
+              <td colspan="5" class="empty-state">Loglar yükleniyor...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    'use strict';
+    
+    var toggleApprove = document.getElementById('crawler-auto-approve-toggle');
+    var btnRun = document.getElementById('btn-run-crawler');
+    var statTotal = document.getElementById('stat-total-crawled');
+    var statLast = document.getElementById('stat-last-run');
+    var logsBody = document.getElementById('crawler-logs-body');
+
+    // AI Settings inputs
+    var aiEnabledToggle = document.getElementById('crawler-ai-enabled-toggle');
+    var aiProviderSelect = document.getElementById('crawler-ai-provider');
+    var aiApiKeyInput = document.getElementById('crawler-ai-api-key');
+    var aiModelInput = document.getElementById('crawler-ai-model');
+    var aiEndpointInput = document.getElementById('crawler-ai-endpoint');
+    var grpCustomEndpoint = document.getElementById('grp-custom-endpoint');
+    var btnSaveAiSettings = document.getElementById('btn-save-ai-settings');
+
+    // AI manual extraction inputs
+    var aiRawTextarea = document.getElementById('ai-raw-text');
+    var aiScrapeUrlInput = document.getElementById('ai-scrape-url');
+    var btnAiExtract = document.getElementById('btn-ai-extract');
+    var aiExtractSpinner = document.getElementById('ai-extract-spinner');
+    var aiResultsWrapper = document.getElementById('ai-results-wrapper');
+    var aiExtractedToolsBody = document.getElementById('ai-extracted-tools-body');
+
+    var allCategories = [];
+
+    // Toggle Custom Endpoint field based on provider
+    aiProviderSelect.addEventListener('change', function() {
+      if (this.value === 'custom') {
+        grpCustomEndpoint.style.display = 'block';
+      } else {
+        grpCustomEndpoint.style.display = 'none';
+      }
+    });
+
+    // Helper to slugify names on frontend
+    function slugify(text) {
+      return text.toString().toLowerCase().trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+    }
+
+    // Load Categories
+    async function loadCategories() {
+      try {
+        const res = await fetch('/api/categories');
+        allCategories = await res.json();
+      } catch(e) { console.error('Kategoriler yüklenemedi:', e); }
+    }
+
+    function getCatLabel(catId) {
+      const cat = allCategories.find(c => c.id === catId);
+      return cat ? `${cat.icon} ${cat.name}` : catId;
+    }
+
+    // Fetch Status and Logs
+    async function loadStatus() {
+      try {
+        const res = await fetch('/api/admin/crawler/status');
+        const data = await res.json();
+        
+        // Settings
+        toggleApprove.checked = !!data.settings.auto_approve;
+        statTotal.textContent = data.settings.total_crawled || 0;
+        
+        // Load AI Settings
+        aiEnabledToggle.checked = !!data.settings.ai_enabled;
+        aiProviderSelect.value = data.settings.ai_provider || 'xai';
+        aiApiKeyInput.value = data.settings.ai_api_key || '';
+        aiModelInput.value = data.settings.ai_model || 'grok-beta';
+        aiEndpointInput.value = data.settings.ai_custom_endpoint || '';
+        
+        // Toggle endpoint field visibility
+        if (aiProviderSelect.value === 'custom') {
+          grpCustomEndpoint.style.display = 'block';
+        } else {
+          grpCustomEndpoint.style.display = 'none';
+        }
+        
+        if (data.settings.last_run) {
+          statLast.textContent = new Date(data.settings.last_run).toLocaleDateString('tr-TR', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+          });
+        } else {
+          statLast.textContent = 'Hiç çalıştırılmadı';
+        }
+
+        // Render logs
+        if (data.logs.length === 0) {
+          logsBody.innerHTML = '<tr><td colspan="5" class="empty-state">Henüz tarama kaydı bulunmuyor.</td></tr>';
+          return;
+        }
+
+        logsBody.innerHTML = data.logs.map(log => {
+          const dateStr = new Date(log.timestamp).toLocaleDateString('tr-TR', {
+            month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit'
+          });
+          const autoAppLabel = log.auto_approved ? '✔️ Aktif' : '❌ Pasif';
+          const successLabel = log.success ? '✔️ Başarılı' : '❌ Hatalı';
+
+          return `
+            <tr>
+              <td><strong>${dateStr}</strong></td>
+              <td>${log.tools_found} araç</td>
+              <td><span class="badge badge-ucretsiz" style="background:hsla(155,80%,50%,0.1);color:var(--accent-green)">+${log.tools_added} yeni</span></td>
+              <td>${autoAppLabel}</td>
+              <td>
+                <div style="font-size:0.8125rem;color:var(--text-secondary);max-width:400px;word-break:break-all">${log.details || 'Yeni araç bulunamadı.'}</div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+      } catch(e) {
+        showToast('Tarayıcı durumu yüklenemedi.', 'error');
+      }
+    }
+
+    // Toggle switch handler (Auto Approve)
+    toggleApprove.addEventListener('change', async function() {
+      try {
+        const res = await fetch('/api/admin/crawler/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ auto_approve: this.checked })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Ayarlar başarıyla kaydedildi.', 'success');
+        } else {
+          showToast('Ayarlar kaydedilemedi.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    });
+
+    // Save AI Settings Button
+    btnSaveAiSettings.addEventListener('click', async function() {
+      btnSaveAiSettings.disabled = true;
+      btnSaveAiSettings.textContent = 'Kaydediliyor...';
+      
+      try {
+        const payload = {
+          ai_enabled: aiEnabledToggle.checked,
+          ai_provider: aiProviderSelect.value,
+          ai_api_key: aiApiKeyInput.value,
+          ai_model: aiModelInput.value,
+          ai_custom_endpoint: aiEndpointInput.value
+        };
+        
+        const res = await fetch('/api/admin/crawler/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('AI ayarları başarıyla kaydedildi.', 'success');
+          await loadStatus();
+        } else {
+          showToast(data.error || 'Ayarlar kaydedilemedi.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      } finally {
+        btnSaveAiSettings.disabled = false;
+        btnSaveAiSettings.textContent = 'Ayarları Kaydet';
+      }
+    });
+
+    // Run Crawler manually
+    btnRun.addEventListener('click', async function() {
+      this.classList.add('btn-running');
+      this.querySelector('span').textContent = 'Taranıyor...';
+      
+      try {
+        const res = await fetch('/api/admin/crawler/run', { method: 'POST' });
+        const data = await res.json();
+        
+        if (data.success) {
+          showToast(`Tarama tamamlandı! ${data.count} yeni araç bulundu.`, 'success');
+          await loadStatus();
+          if (typeof updateSidebarSubmissionsBadge === 'function') {
+            updateSidebarSubmissionsBadge();
+          }
+        } else {
+          showToast(data.error || 'Tarama hatası oluştu.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası veya zaman aşımı.', 'error');
+      } finally {
+        this.classList.remove('btn-running');
+        this.querySelector('span').textContent = 'Şimdi Tara';
+      }
+    });
+
+    // Manual AI Extract Button Handler
+    btnAiExtract.addEventListener('click', async function() {
+      const text = aiRawTextarea.value.trim();
+      let url = aiScrapeUrlInput ? aiScrapeUrlInput.value.trim() : '';
+
+      if (url && !/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+        if (aiScrapeUrlInput) aiScrapeUrlInput.value = url;
+      }
+
+      if (!text && !url) {
+        showToast('Lütfen analiz edilecek bir metin girin veya kazınacak bir URL belirtin.', 'error');
+        return;
+      }
+
+      btnAiExtract.disabled = true;
+      aiExtractSpinner.style.display = 'inline-block';
+      btnAiExtract.querySelector('span').textContent = 'AI Sayfayı Okuyor ve Analiz Ediyor...';
+      aiResultsWrapper.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/admin/crawler/ai-extract', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, url })
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Çözümleme başarısız.');
+        }
+
+        const tools = data.tools || [];
+        if (tools.length === 0) {
+          showToast('Metinde veya web sayfasında herhangi bir yapay zeka aracı tespit edilemedi.', 'warning');
+          return;
+        }
+
+        // Render results
+        aiExtractedToolsBody.innerHTML = tools.map((t, idx) => {
+          const pricingLabel = t.pricing === 'ucretsiz' ? 'Ücretsiz' : t.pricing === 'freemium' ? 'Freemium' : 'Ücretli';
+          const tagsStr = (t.tags || []).join(', ');
+
+          return `
+            <tr data-index="${idx}">
+              <td><strong class="t-name">${t.name}</strong></td>
+              <td><a href="${t.url}" target="_blank" class="t-url" style="color:var(--accent-cyan)">${t.url || 'Link yok'}</a></td>
+              <td><span class="t-cat" data-id="${t.category_id}">${getCatLabel(t.category_id)}</span></td>
+              <td><span class="badge badge-${t.pricing} t-pricing" data-val="${t.pricing}">${pricingLabel}</span></td>
+              <td><div class="t-desc" style="max-width:300px;line-height:1.4">${t.description}</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">Etiketler: ${tagsStr}</div></td>
+              <td class="table-actions">
+                <button class="btn-edit btn-add-sub" style="font-size:0.75rem;padding:6px 10px">İncelemeye Gönder</button>
+                <button class="btn-primary btn-add-direct" style="font-size:0.75rem;padding:6px 10px;background:var(--gradient-primary);border:none;color:white">Doğrudan Yayınla</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Attach listeners for actions
+        aiExtractedToolsBody.querySelectorAll('.btn-add-sub').forEach((btn, idx) => {
+          btn.addEventListener('click', () => addExtractedToSubmissions(tools[idx], btn));
+        });
+
+        aiExtractedToolsBody.querySelectorAll('.btn-add-direct').forEach((btn, idx) => {
+          btn.addEventListener('click', () => addExtractedDirectly(tools[idx], btn));
+        });
+
+        aiResultsWrapper.style.display = 'block';
+        showToast(`${tools.length} adet yapay zeka aracı başarıyla ayıklandı.`, 'success');
+
+      } catch(err) {
+        showToast(err.message, 'error');
+      } finally {
+        btnAiExtract.disabled = false;
+        aiExtractSpinner.style.display = 'none';
+        btnAiExtract.querySelector('span').textContent = 'AI ile Sayfayı Kazı ve Analiz Et';
+      }
+    });
+
+    // Action: Add extracted tool to submissions inbox
+    async function addExtractedToSubmissions(tool, button) {
+      button.disabled = true;
+      button.textContent = 'Gönderiliyor...';
+
+      try {
+        const res = await fetch('/api/submissions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: tool.name,
+            url: tool.url || '',
+            description: tool.description,
+            category_id: tool.category_id,
+            pricing: tool.pricing,
+            tags: tool.tags || []
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`${tool.name} başarıyla inceleme kutusuna gönderildi.`, 'success');
+          button.parentElement.innerHTML = '<span>✔️ İncelemede</span>';
+          if (typeof updateSidebarSubmissionsBadge === 'function') {
+            updateSidebarSubmissionsBadge();
+          }
+        } else {
+          showToast(data.error || 'İşlem başarısız.', 'error');
+          button.disabled = false;
+          button.textContent = 'İncelemeye Gönder';
+        }
+      } catch(e) {
+        showToast('Sunucu bağlantı hatası.', 'error');
+        button.disabled = false;
+        button.textContent = 'İncelemeye Gönder';
+      }
+    }
+
+    // Action: Publish extracted tool directly to directory
+    async function addExtractedDirectly(tool, button) {
+      button.disabled = true;
+      button.textContent = 'Yayınlanıyor...';
+
+      try {
+        const toolId = slugify(tool.name);
+        const res = await fetch('/api/tools', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: toolId,
+            name: tool.name,
+            description: tool.description,
+            category_id: tool.category_id,
+            pricing: tool.pricing,
+            tags: tool.tags || [],
+            rating: 4.5,
+            url: tool.url || '',
+            featured: false,
+            is_new: true
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast(`${tool.name} başarıyla doğrudan vitrinde yayınlandı!`, 'success');
+          button.parentElement.innerHTML = '<span>✔️ Yayında</span>';
+        } else {
+          showToast(data.error || 'Doğrudan ekleme başarısız oldu.', 'error');
+          button.disabled = false;
+          button.textContent = 'Doğrudan Yayınla';
+        }
+      } catch(e) {
+        showToast('Sunucu bağlantı hatası.', 'error');
+        button.disabled = false;
+        button.textContent = 'Doğrudan Yayınla';
+      }
+    }
+
+    // ─── CSV IMPORT LOGIC ───
+    var csvFileInput = document.getElementById('csv-file-input');
+    var btnSelectCsv = document.getElementById('btn-select-csv');
+    var csvFileName = document.getElementById('csv-file-name');
+    var csvResultsWrapper = document.getElementById('csv-results-wrapper');
+    var csvExtractedToolsBody = document.getElementById('csv-extracted-tools-body');
+    var btnCsvImportAllSub = document.getElementById('btn-csv-import-all-sub');
+    var btnCsvImportAllDirect = document.getElementById('btn-csv-import-all-direct');
+    
+    var csvParsedTools = [];
+
+    if (btnSelectCsv && csvFileInput) {
+      btnSelectCsv.addEventListener('click', function() {
+        csvFileInput.click();
+      });
+
+      csvFileInput.addEventListener('change', function() {
+        var file = this.files[0];
+        if (!file) return;
+        csvFileName.textContent = file.name;
+        
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var text = e.target.result;
+          processCSVText(text);
+        };
+        reader.readAsText(file, 'UTF-8');
+      });
+    }
+
+    function parseCSV(text) {
+      var lines = [];
+      var row = [""];
+      var inQuotes = false;
+
+      for (var i = 0; i < text.length; i++) {
+        var c = text[i];
+        var next = text[i+1];
+
+        if (c === '"') {
+          if (inQuotes && next === '"') {
+            row[row.length - 1] += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (c === ',') {
+          if (inQuotes) {
+            row[row.length - 1] += ',';
+          } else {
+            row.push("");
+          }
+        } else if (c === '\r' || c === '\n') {
+          if (inQuotes) {
+            row[row.length - 1] += c;
+          } else {
+            if (c === '\r' && next === '\n') {
+              i++;
+            }
+            lines.push(row);
+            row = [""];
+          }
+        } else {
+          row[row.length - 1] += c;
+        }
+      }
+      if (row.length > 1 || row[0] !== "") {
+        lines.push(row);
+      }
+      return lines;
+    }
+
+    function processCSVText(text) {
+      var csvRows = parseCSV(text);
+      if (csvRows.length < 2) {
+        showToast('CSV dosyası boş veya geçersiz formatta.', 'error');
+        return;
+      }
+
+      // Headers
+      var headers = csvRows[0].map(function(h) {
+        return h.trim().toLowerCase()
+          .replace(/ı/g,'i').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s').replace(/ö/g,'o').replace(/ç/g,'c');
+      });
+
+      function findHeaderIndex(keys, defaultIdx) {
+        for (var idx = 0; idx < headers.length; idx++) {
+          var h = headers[idx];
+          if (keys.indexOf(h) !== -1) return idx;
+        }
+        for (var idx = 0; idx < headers.length; idx++) {
+          var h = headers[idx];
+          for (var k = 0; k < keys.length; k++) {
+            if (h.indexOf(keys[k]) !== -1) return idx;
+          }
+        }
+        return defaultIdx;
+      }
+
+      var colName = findHeaderIndex(['ad', 'name', 'title', 'isim', 'baslik'], 0);
+      var colUrl = findHeaderIndex(['url', 'link', 'website', 'web', 'site', 'adres', 'website_url'], 1);
+      var colDesc = findHeaderIndex(['aciklama', 'description', 'desc', 'detay', 'summary', 'ozet'], 2);
+      var colCat = findHeaderIndex(['kategori_id', 'kategori', 'category_id', 'category', 'cat'], 3);
+      var colPricing = findHeaderIndex(['fiyat', 'pricing', 'pricing_type', 'fee', 'ucret'], 4);
+      var colTags = findHeaderIndex(['etiketler', 'tags', 'keywords', 'etiket'], 5);
+
+      csvParsedTools = [];
+      
+      for (var i = 1; i < csvRows.length; i++) {
+        var row = csvRows[i];
+        if (row.length < 2 || !row[colName]) continue; // Skip empty rows
+
+        var rawPricing = (row[colPricing] || 'freemium').trim().toLowerCase();
+        var pricing = 'freemium';
+        if (rawPricing.indexOf('ucretsiz') !== -1 || rawPricing.indexOf('free') !== -1 || rawPricing.indexOf('bedava') !== -1) {
+          pricing = 'ucretsiz';
+        } else if (rawPricing.indexOf('ucretli') !== -1 || rawPricing.indexOf('paid') !== -1 || rawPricing.indexOf('premium') !== -1) {
+          pricing = 'ucretli';
+        }
+
+        var tagsStr = row[colTags] || '';
+        var tags = tagsStr ? tagsStr.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
+
+        var category_id = (row[colCat] || '').trim();
+        var matchedCat = allCategories.find(function(c) {
+          return c.id === category_id || c.name.toLowerCase() === category_id.toLowerCase();
+        });
+        category_id = matchedCat ? matchedCat.id : (allCategories[0] ? allCategories[0].id : 'genel-ai-asistan');
+
+        var tName = row[colName].trim();
+        var rawUrl = (row[colUrl] || '').trim();
+        var finalUrl = rawUrl;
+
+        if (!finalUrl || finalUrl.toLowerCase() === tName.toLowerCase() || finalUrl.indexOf(' ') !== -1 || finalUrl.indexOf('.') === -1) {
+          var mapping = {
+            'chatgpt': 'https://chat.openai.com',
+            'claude': 'https://claude.ai',
+            'gemini': 'https://gemini.google.com',
+            'perplexity': 'https://www.perplexity.ai',
+            'midjourney': 'https://www.midjourney.com',
+            'leonardo ai': 'https://leonardo.ai',
+            'runway': 'https://runwayml.com',
+            'copilot': 'https://copilot.microsoft.com',
+            'microsoft copilot': 'https://copilot.microsoft.com',
+            'dall-e': 'https://openai.com/dall-e-3',
+            'flux': 'https://flux.ai',
+            'stable diffusion': 'https://stability.ai',
+            'canva': 'https://www.canva.com',
+            'elevenlabs': 'https://elevenlabs.io',
+            'suno': 'https://suno.com',
+            'udio': 'https://www.udio.com',
+            'viggle': 'https://viggle.ai',
+            'luma dream machine': 'https://lumalabs.ai/dream-machine',
+            'clipdrop': 'https://clipdrop.co',
+            'photoroom': 'https://www.photoroom.com',
+            'pixlr': 'https://pixlr.com',
+            'fotor': 'https://www.fotor.com',
+            'dreamstudio': 'https://dreamstudio.ai',
+            'nightcafe': 'https://creator.nightcafe.studio',
+            'artbreeder': 'https://www.artbreeder.com',
+            'playground ai': 'https://playground.com',
+            'lexica': 'https://lexica.art',
+            'kaiber': 'https://kaiber.ai',
+            'adobe firefly': 'https://firefly.adobe.com',
+            'ideogram': 'https://ideogram.ai',
+            'pika': 'https://pika.art'
+          };
+          var nameLower = tName.toLowerCase();
+          var matchedUrl = '';
+          for (var key in mapping) {
+            if (mapping.hasOwnProperty(key)) {
+              if (nameLower === key || nameLower.indexOf(key) !== -1) {
+                matchedUrl = mapping[key];
+                break;
+              }
+            }
+          }
+          if (matchedUrl) {
+            finalUrl = matchedUrl;
+          } else {
+            finalUrl = 'https://www.google.com/search?q=' + encodeURIComponent(tName) + '+AI';
+          }
+        } else if (!/^https?:\/\//i.test(finalUrl)) {
+          finalUrl = 'https://' + finalUrl;
+        }
+
+        csvParsedTools.push({
+          name: tName,
+          url: finalUrl,
+          description: (row[colDesc] || '').trim(),
+          category_id: category_id,
+          pricing: pricing,
+          tags: tags
+        });
+      }
+
+      if (csvParsedTools.length === 0) {
+        showToast('CSV dosyasından geçerli araç okunamadı.', 'error');
+        return;
+      }
+
+      renderCSVTools();
+    }
+
+    function renderCSVTools() {
+      if (!csvExtractedToolsBody) return;
+      csvExtractedToolsBody.innerHTML = csvParsedTools.map(function(t, idx) {
+        var pricingLabel = t.pricing === 'ucretsiz' ? 'Ücretsiz' : t.pricing === 'freemium' ? 'Freemium' : 'Ücretli';
+        var tagsStr = (t.tags || []).join(', ');
+
+        return `
+          <tr data-csv-index="${idx}">
+            <td><strong class="t-name">${t.name}</strong></td>
+            <td><a href="${t.url}" target="_blank" class="t-url" style="color:var(--accent-cyan)">${t.url || 'Link yok'}</a></td>
+            <td><span class="t-cat" data-id="${t.category_id}">${getCatLabel(t.category_id)}</span></td>
+            <td><span class="badge badge-${t.pricing} t-pricing" data-val="${t.pricing}">${pricingLabel}</span></td>
+            <td><div class="t-desc" style="max-width:300px;line-height:1.4">${t.description}</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">Etiketler: ${tagsStr}</div></td>
+            <td class="table-actions">
+              <button class="btn-edit btn-csv-add-sub" style="font-size:0.75rem;padding:6px 10px">İncelemeye Gönder</button>
+              <button class="btn-primary btn-csv-add-direct" style="font-size:0.75rem;padding:6px 10px;background:var(--gradient-primary);border:none;color:white">Doğrudan Yayınla</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      csvExtractedToolsBody.querySelectorAll('.btn-csv-add-sub').forEach(function(btn, idx) {
+        btn.addEventListener('click', function() {
+          addExtractedToSubmissions(csvParsedTools[idx], btn);
+        });
+      });
+
+      csvExtractedToolsBody.querySelectorAll('.btn-csv-add-direct').forEach(function(btn, idx) {
+        btn.addEventListener('click', function() {
+          addExtractedDirectly(csvParsedTools[idx], btn);
+        });
+      });
+
+      if (csvResultsWrapper) csvResultsWrapper.style.display = 'block';
+      if (btnCsvImportAllSub) btnCsvImportAllSub.style.display = 'inline-block';
+      if (btnCsvImportAllDirect) btnCsvImportAllDirect.style.display = 'inline-block';
+      
+      showToast(csvParsedTools.length + ' araç CSV dosyasından yüklendi.', 'success');
+    }
+
+    if (btnCsvImportAllSub) {
+      btnCsvImportAllSub.addEventListener('click', async function() {
+        var buttons = csvExtractedToolsBody.querySelectorAll('.btn-csv-add-sub');
+        if (buttons.length === 0) {
+          showToast('İncelemeye gönderilecek araç kalmadı.', 'warning');
+          return;
+        }
+        
+        btnCsvImportAllSub.disabled = true;
+        btnCsvImportAllSub.textContent = 'İşleniyor...';
+        
+        var count = 0;
+        for (var i = 0; i < csvParsedTools.length; i++) {
+          var btn = csvExtractedToolsBody.querySelectorAll('tr')[i].querySelector('.btn-csv-add-sub');
+          if (btn && !btn.disabled && btn.textContent !== '✔️ İncelemede') {
+            try {
+              await addExtractedToSubmissions(csvParsedTools[i], btn);
+              count++;
+            } catch(e) {}
+          }
+        }
+        
+        btnCsvImportAllSub.disabled = false;
+        btnCsvImportAllSub.textContent = 'Hepsini İncelemeye Gönder';
+        showToast(count + ' araç incelemeye gönderildi.', 'success');
+      });
+    }
+
+    if (btnCsvImportAllDirect) {
+      btnCsvImportAllDirect.addEventListener('click', async function() {
+        var buttons = csvExtractedToolsBody.querySelectorAll('.btn-csv-add-direct');
+        if (buttons.length === 0) {
+          showToast('Doğrudan yayınlanacak araç kalmadı.', 'warning');
+          return;
+        }
+        
+        btnCsvImportAllDirect.disabled = true;
+        btnCsvImportAllDirect.textContent = 'İşleniyor...';
+        
+        var count = 0;
+        for (var i = 0; i < csvParsedTools.length; i++) {
+          var btn = csvExtractedToolsBody.querySelectorAll('tr')[i].querySelector('.btn-csv-add-direct');
+          if (btn && !btn.disabled && btn.textContent !== '✔️ Yayında') {
+            try {
+              await addExtractedDirectly(csvParsedTools[i], btn);
+              count++;
+            } catch(e) {}
+          }
+        }
+        
+        btnCsvImportAllDirect.disabled = false;
+        btnCsvImportAllDirect.textContent = 'Hepsini Doğrudan Yayınla';
+        showToast(count + ' araç doğrudan yayınlandı.', 'success');
+      });
+    }
+
+    // Initial load sequence
+    (async () => {
+      await loadCategories();
+      await loadStatus();
+    })();
+  </script>
+</body>
+</html>

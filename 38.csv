@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1851,OpenAI Fine-Tuning Studio,openai-finetuning-studio,AI Model Training,Paid,https://platform.openai.com,"Studio for customizing and fine-tuning GPT models","llm,training,api",true,true
+1852,Anthropic Model Tuning,anthropic-model-tuning,AI Model Training,Paid,https://www.anthropic.com,"Claude model customization and tuning tools","llm,training,enterprise",true,true
+1853,Google Vertex Tuning Studio,vertex-tuning-studio,AI Model Training,Paid,https://cloud.google.com/vertex-ai,"Gemini model fine-tuning platform","ml,google,training",true,true
+1854,Meta Llama Tuning Suite,meta-llama-tuning-suite,AI Model Training,Free,https://ai.meta.com,"Llama model fine-tuning and adaptation tools","llm,training,meta",true,true
+1855,Mistral Fine-Tune API,mistral-finetune-api,AI Model Training,Paid,https://mistral.ai,"Mistral model fine-tuning API for enterprise","llm,training,api",true,true
+
+1856,Hugging Face Training Hub,hf-training-hub,AI Model Training,Free,https://huggingface.co,"Central hub for training transformer models","ml,training,ai",true,true
+1857,Axolotl Training Framework,axolotl-training-framework,AI LLM Training,Free,https://github.com,"Efficient open-source LLM training framework","llm,training,open-source",true,true
+1858,PEFT Training Library,peft-training-library,AI Efficient Training,Free,https://huggingface.co,"Parameter-efficient fine-tuning library","ml,training,ai",true,true
+1859,DeepSpeed Training Engine,deepspeed-training-engine,AI Training Optimization,Free,https://www.deepspeed.ai,"Distributed large-scale model training engine","ml,training,distributed",true,true
+1860,PyTorch Training Studio,pytorch-training-studio,AI ML Training,Free,https://pytorch.org,"PyTorch-based model training environment","ml,training,ai",true,true
+
+1861,TensorFlow Training Hub,tensorflow-training-hub,AI ML Training,Free,https://www.tensorflow.org,"TensorFlow model training ecosystem","ml,training,google",true,true
+1862,JAX Training Engine,jax-training-engine,AI Research Training,Free,https://jax.readthedocs.io,"High-performance ML research training engine","ml,research,training",true,true
+1863,Flax Training Framework,flax-training-framework,AI Neural Training,Free,https://flax.readthedocs.io,"Neural network training library on JAX","ml,training,ai",true,true
+1864,Lightning AI Training,lightning-ai-training,AI Training Platform,Paid,https://lightning.ai,"Simplified AI model training platform","ml,training,cloud",true,true
+1865,Weights & Biases Training,wandb-training,AI Experiment Platform,Paid,https://wandb.ai,"ML training tracking and experiment logging","ml,tracking,ai",true,true
+
+1866,Neptune Training Tracker,neptune-training-tracker,AI Experiment Tracking,Paid,https://neptune.ai,"ML training experiment monitoring system","ml,tracking,ai",true,true
+1867,Comet Training Studio,comet-training-studio,AI Experiment Tracking,Paid,https://www.comet.com,"AI model training tracking and analytics","ml,tracking,ai",true,true
+1868,ClearML Training Hub,clearml-training-hub,AI MLOps Training,Free,https://clear.ml,"MLOps training automation platform","ml,training,ops",true,true
+1869,MLflow Training Studio,mlflow-training-studio,AI ML Lifecycle,Paid,https://mlflow.org,"ML training lifecycle management system","ml,training,devops",true,true
+1870,Kubeflow Training Pipelines,kubeflow-training-pipelines,AI ML Pipelines,Paid,https://kubeflow.org,"Kubernetes-based ML training pipelines","ml,kubernetes,training",true,true
+
+1871,SageMaker Training Studio,sagemaker-training-studio,AI ML Platform,Paid,https://aws.amazon.com/sagemaker,"AWS training environment for ML models","aws,ml,training",true,true
+1872,Vertex AI Training Engine,vertex-ai-training-engine,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Google AI model training infrastructure","google,ml,training",true,true
+1873,Azure ML Training Studio,azure-ml-training-studio,AI ML Platform,Paid,https://azure.microsoft.com,"Microsoft cloud ML training environment","azure,ml,training",true,true
+1874,Databricks Training Engine,databricks-training-engine,AI Data ML Platform,Paid,https://www.databricks.com,"Unified data and ML training platform","data,ml,training",true,true
+1875,Snowflake Training AI,snowflake-training-ai,AI Data Platform,Paid,https://www.snowflake.com,"AI-powered data training and analytics system","data,ai,training",true,true
+
+1876,Dataiku Training Studio,dataiku-training-studio,AI Data Science,Paid,https://www.dataiku.com,"End-to-end AI training and data workflow platform","data,ml,training",true,true
+1877,DataRobot Training Cloud,datarobot-training-cloud,AI AutoML Training,Paid,https://www.datarobot.com,"Automated machine learning training platform","ml,auto,training",true,true
+1878,H2O Training Cloud,h2o-training-cloud,AI AutoML Platform,Paid,https://www.h2o.ai,"AutoML model training cloud system","ml,auto,training",true,true
+1879,Domino Training Cloud,domino-training-cloud,AI MLOps Training,Paid,https://www.dominodatalab.com,"Enterprise ML training lifecycle system","ml,ops,training",true,true
+1880,Anyscale Training Cloud,anyscale-training-cloud,AI Distributed Training,Paid,https://www.anyscale.com,"Distributed AI training infrastructure using Ray","ml,distributed,training",true,true
+
+1881,Ray Training Engine,ray-training-engine,AI Distributed ML,Free,https://www.ray.io,"Distributed training engine for AI workloads","ml,distributed,training",true,true
+1882,OpenAI RLHF Studio,openai-rlhf-studio,AI Alignment Training,Paid,https://platform.openai.com,"Reinforcement learning from human feedback training tools","rlhf,training,llm",true,true
+1883,Anthropic RLHF Tools,anthropic-rlhf-tools,AI Alignment Training,Paid,https://www.anthropic.com,"AI alignment and RLHF training system","rlhf,training,ai",true,true
+1884,Google RLHF Engine,google-rlhf-engine,AI Alignment Training,Paid,https://ai.google,"Reinforcement learning training for Gemini models","rlhf,training,google",true,true
+1885,Meta RLHF Suite,meta-rlhf-suite,AI Alignment Training,Free,https://ai.meta.com,"Llama RLHF training and alignment tools","rlhf,training,meta",true,true
+
+1886,Mistral RLHF API,mistral-rlhf-api,AI Alignment Training,Paid,https://mistral.ai,"RLHF training API for Mistral models","rlhf,training,api",true,true
+1887,OpenAI Eval Studio,openai-eval-studio,AI Evaluation System,Paid,https://platform.openai.com,"Model evaluation and benchmarking tools","eval,llm,training",true,true
+1888,LangChain Eval Framework,langchain-eval-framework,AI Evaluation Tools,Free,https://www.langchain.com,"Framework for evaluating LLM outputs","llm,eval,framework",true,true
+1889,LlamaIndex Eval Engine,llamaindex-eval-engine,AI Evaluation System,Free,https://www.llamaindex.ai,"Evaluation tools for LLM pipelines","llm,eval,data",true,true
+1890,Haystack Eval System,haystack-eval-system,AI NLP Evaluation,Free,https://haystack.deepset.ai,"Open-source NLP evaluation framework","nlp,eval,open-source",true,true
+
+1891,Weights & Biases Eval,wandb-eval,AI Experiment Evaluation,Paid,https://wandb.ai,"ML experiment evaluation and tracking system","ml,eval,tracking",true,true
+1892,Neptune Eval System,neptune-eval-system,AI Model Evaluation,Paid,https://neptune.ai,"Model evaluation tracking platform","ml,eval,ai",true,true
+1893,Comet Eval Studio,comet-eval-studio,AI Model Evaluation,Paid,https://www.comet.com,"AI evaluation and experiment comparison platform","ml,eval,ai",true,true
+1894,ClearML Eval Hub,clearml-eval-hub,AI MLOps Evaluation,Free,https://clear.ml,"MLOps evaluation automation system","ml,eval,ops",true,true
+1895,MLflow Eval Studio,mlflow-eval-studio,AI ML Lifecycle,Paid,https://mlflow.org,"ML evaluation lifecycle management system","ml,eval,devops",true,true
+
+1896,Kubeflow Eval Pipelines,kubeflow-eval-pipelines,AI ML Pipelines,Paid,https://kubeflow.org,"ML evaluation pipelines on Kubernetes","ml,kubernetes,eval",true,true
+1897,SageMaker Eval Studio,sagemaker-eval-studio,AI ML Platform,Paid,https://aws.amazon.com/sagemaker,"AWS ML evaluation and testing system","aws,ml,eval",true,true
+1898,Vertex AI Eval Engine,vertex-ai-eval-engine,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Google AI model evaluation system","google,ml,eval",true,true
+1899,Azure ML Eval Studio,azure-ml-eval-studio,AI ML Platform,Paid,https://azure.microsoft.com,"Microsoft ML evaluation platform","azure,ml,eval",true,true
+1900,Databricks Eval Engine,databricks-eval-engine,AI Data ML Platform,Paid,https://www.databricks.com,"AI model evaluation on data platform","data,ml,eval",true,true

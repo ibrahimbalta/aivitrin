@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+851,OpenAI API Platform,openai-api-platform,AI Model API,Paid,https://openai.com/api,"Access to GPT models and multimodal AI APIs for developers","llm,api,models",true,true
+852,Anthropic Claude API,anthropic-claude-api,AI LLM API,Paid,https://www.anthropic.com,"Large language model API for Claude models","llm,api,assistant",true,true
+853,Google Gemini API,google-gemini-api,AI Model API,Paid,https://ai.google.dev,"Google's multimodal AI model API platform","llm,api,google",true,true
+854,Cohere API,cohere-api,AI NLP API,Paid,https://cohere.com,"Natural language processing and embeddings API","nlp,embeddings,api",true,true
+855,Mistral AI API,mistral-ai-api,AI LLM API,Paid,https://mistral.ai,"High-performance open-weight LLM API platform","llm,open-source,api",true,true
+
+856,Together AI,together-ai,AI Model Hosting,Paid,https://www.together.ai,"Run and fine-tune open-source AI models at scale","llm,hosting,models",true,true
+857,Replicate AI,replicate-ai,AI Model Hosting,Paid,https://replicate.com,"Deploy and run machine learning models via API","ml,api,hosting",true,true
+858,Fireworks AI,fireworks-ai,AI Inference Platform,Paid,https://fireworks.ai,"Fast inference platform for large language models","llm,inference,api",true,true
+859,Baselime AI,baselime-ai,AI Observability,Paid,https://baselime.io,"Observability platform for serverless and AI systems","observability,cloud,monitoring",true,true
+860,Modal AI,modal-ai,AI Serverless Compute,Paid,https://modal.com,"Run AI workloads on serverless GPU infrastructure","gpu,serverless,compute",true,true
+
+861,Lambda Labs AI,lambda-labs-ai,AI GPU Cloud,Paid,https://lambdalabs.com,"GPU cloud infrastructure for AI training and inference","gpu,cloud,ml",true,true
+862,Paperspace AI,paperspace-ai,AI Compute Platform,Paid,https://www.paperspace.com,"Cloud GPUs for machine learning and AI development","gpu,ml,cloud",true,true
+863,RunPod AI,runpod-ai,AI GPU Hosting,Paid,https://www.runpod.io,"Affordable GPU cloud for AI training and inference","gpu,cloud,ai",true,true
+864,CoreWeave AI,coreweave-ai,AI Cloud Infrastructure,Paid,https://www.coreweave.com,"High-performance cloud infrastructure for AI workloads","cloud,gpu,ai",true,true
+865,Crusoe AI Cloud,crusoe-ai-cloud,AI Compute Platform,Paid,https://www.crusoe.ai,"Sustainable compute infrastructure for AI training","cloud,compute,ai",true,true
+
+866,Weights & Biases,wandb-ai,AI Experiment Tracking,Freemium,https://wandb.ai,"ML experiment tracking and model monitoring platform","ml,tracking,experiments",true,true
+867,Comet ML,comet-ml,AI Experiment Tracking,Paid,https://www.comet.com,"Track, compare and optimize machine learning experiments","ml,tracking,ai",true,true
+868,Neptune AI,neptune-ai,AI Experiment Management,Paid,https://neptune.ai,"ML experiment tracking and metadata management platform","ml,tracking,data",true,true
+869,ClearML,clearml,AI MLOps Platform,Free,https://clear.ml,"Open-source MLOps and experiment tracking platform","ml,open-source,devops",true,true
+870,DVC AI,dvc-ai,AI Data Versioning,Free,https://dvc.org,"Data and model version control for machine learning projects","ml,versioning,data",true,true
+
+871,MLflow AI,mlflow-ai,AI ML Lifecycle,Free,https://mlflow.org,"Open-source ML lifecycle and experiment tracking tool","ml,devops,tracking",true,true
+872,Kubeflow AI,kubeflow-ai,AI ML Platform,Free,https://www.kubeflow.org,"Machine learning workflows on Kubernetes","ml,kubernetes,workflow",true,true
+873,SageMaker AI,sagemaker-ai,AI ML Platform,Paid,https://aws.amazon.com/sagemaker,"Amazon ML platform for building and deploying models","aws,ml,cloud",true,true
+874,Vertex AI,vertex-ai,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Google unified ML platform for training and deployment","google,ml,cloud",true,true
+875,Azure ML,azure-ml,AI ML Platform,Paid,https://azure.microsoft.com/en-us/products/machine-learning,"Microsoft AI platform for model training and deployment","azure,ml,enterprise",true,true
+
+876,OpenRouter AI,openrouter-ai,AI LLM Router,Paid,https://openrouter.ai,"Unified API gateway for multiple LLM providers","llm,api,router",true,true
+877,Portkey AI,portkey-ai,AI LLM Gateway,Paid,https://portkey.ai,"Control and route LLM requests across providers","llm,gateway,api",true,true
+878,LlamaIndex,llamaindex,AI Data Framework,Free,https://www.llamaindex.ai,"Framework for connecting LLMs with external data","llm,data,framework",true,true
+879,LangChain,langchain,AI Agent Framework,Free,https://www.langchain.com,"Build LLM-powered applications and agents","llm,agents,framework",true,true
+880,LangGraph,langgraph,AI Agent Orchestration,Free,https://www.langchain.com/langgraph,"Graph-based orchestration for AI agent workflows","agents,workflow,llm",true,true
+
+881,AutoGen AI,autogen-ai,AI Agent Framework,Free,https://github.com/microsoft/autogen,"Multi-agent conversation framework by Microsoft","agents,automation,llm",true,true
+882,CrewAI,crewai,AI Agent System,Free,https://www.crewai.com,"Framework for building multi-agent AI systems","agents,automation,llm",true,true
+883,Semantic Kernel,semantic-kernel,AI Orchestration,Free,https://github.com/microsoft/semantic-kernel,"Microsoft SDK for AI orchestration and plugins","agents,framework,ai",true,true
+884,Haystack AI,haystack-ai,AI Search Framework,Free,https://haystack.deepset.ai,"Open-source framework for building LLM search systems","search,llm,nlp",true,true
+885,Vercel AI SDK,vercel-ai-sdk,AI Developer SDK,Free,https://sdk.vercel.ai,"Build AI-powered web apps with Vercel SDK","sdk,web,llm",true,true
+
+886,DeepSpeed AI,deepspeed-ai,AI Training Optimization,Free,https://www.deepspeed.ai,"Microsoft framework for large-scale model training","training,llm,optimization",true,true
+887,FasterTransformer,fastertransformer,AI Inference Engine,Free,https://github.com/NVIDIA/FasterTransformer,"Optimized transformer inference library by NVIDIA","inference,gpu,llm",true,true
+888,Text Generation Inference,tgi,AI Model Serving,Free,https://github.com/huggingface/text-generation-inference,"Hugging Face inference server for LLMs","llm,serving,inference",true,true
+889,vLLM,vllm,AI LLM Serving,Free,https://github.com/vllm-project/vllm,"High-performance LLM inference engine","llm,inference,performance",true,true
+890,Ollama,ollama,AI Local LLM,Free,https://ollama.com,"Run large language models locally on your machine","llm,local,offline",true,true
+
+891,LM Studio,lm-studio,AI Local LLM Tool,Free,https://lmstudio.ai,"Run and test LLMs locally with GUI interface","llm,local,gui",true,true
+892,Flowise AI,flowise-ai,AI Visual LLM Builder,Free,https://flowiseai.com,"No-code visual builder for LLM applications","no-code,llm,agents",true,true
+893,Langflow,langflow,AI Workflow Builder,Free,https://www.langflow.org,"Visual tool for building LangChain applications","no-code,llm,workflow",true,true
+894,PromptLayer,promptlayer,AI Prompt Management,Freemium,https://promptlayer.com,"Track and manage prompts for LLM applications","prompts,llm,devtools",true,true
+895,Helicone AI,helicone-ai,AI API Monitoring,Freemium,https://helicone.ai,"Observability platform for LLM API usage","llm,monitoring,api",true,true
+
+896,Litellm,litellm,AI API Proxy,Free,https://github.com/BerriAI/litellm,"Unified proxy for multiple LLM APIs","llm,proxy,api",true,true
+897,Guardrails AI,guardrails-ai,AI Safety Framework,Free,https://www.guardrailsai.com,"LLM output validation and safety controls","llm,safety,validation",true,true
+898,Rebuff AI,rebuff-ai,AI Prompt Security,Free,https://github.com/woop/rebuff,"Protect LLM apps from prompt injection attacks","security,llm,ai",true,true
+899,LangSmith,langsmith,AI Debugging Platform,Paid,https://smith.langchain.com,"Debug, test and monitor LLM applications","llm,debugging,observability",true,true
+900,Humanloop,humanloop,AI Prompt Engineering,Paid,https://humanloop.com,"Platform for prompt engineering and LLM evaluation","llm,prompts,eval",true,true

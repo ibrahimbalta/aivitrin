@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1151,Midjourney,midjourney,AI Image Generator,Paid,https://www.midjourney.com,"High-quality AI image generation via prompt-based diffusion models","image,art,generative",true,true
+1152,DALL·E 3,dalle-3,AI Image Generation,Paid,https://openai.com/dall-e-3,"OpenAI advanced text-to-image generation model","image,openai,generative",true,true
+1153,Stable Diffusion,stable-diffusion,AI Image Model,Free,https://stability.ai,"Open-source image generation model for developers","image,open-source,ml",true,true
+1154,Adobe Firefly,adobe-firefly,AI Design Tool,Freemium,https://firefly.adobe.com,"AI design and generative image creation tool","design,image,creative",true,true
+1155,Leonardo AI,leonardo-ai,AI Art Generator,Freemium,https://leonardo.ai,"AI image generation platform for game assets and art","image,art,game",true,true
+
+1156,Playground AI,playground-ai,AI Image Generator,Freemium,https://playgroundai.com,"Easy-to-use AI image generation platform","image,art,creative",true,true
+1157,Canva AI,canva-ai,AI Design Platform,Freemium,https://www.canva.com,"AI-powered design, branding and content creation tools","design,ai,marketing",true,true
+1158,Figma AI,figma-ai,AI UI Design Tool,Freemium,https://www.figma.com,"AI-assisted UI/UX design platform","design,ui,product",true,true
+1159,Uizard AI,uizard-ai,AI UI Generator,Freemium,https://uizard.io,"Turn sketches into UI designs using AI","ui,design,prototype",true,true
+1160,Framer AI,framer-ai,AI Website Builder,Freemium,https://www.framer.com,"AI-powered website and landing page generator","web,design,no-code",true,true
+
+1161,Durable AI,durable-ai,AI Website Builder,Freemium,https://durable.co,"AI website builder for small businesses","web,automation,business",true,true
+1162,Wix ADI,wix-adi,AI Website Builder,Freemium,https://www.wix.com/adi,"AI-powered website creation platform","web,no-code,design",true,true
+1163,10Web AI,10web-ai,AI WordPress Builder,Freemium,https://10web.io,"AI WordPress website builder and optimization tool","web,wordpress,automation",true,true
+1164,Hostinger AI Builder,hostinger-ai,AI Website Builder,Freemium,https://www.hostinger.com,"AI-powered website creation tool","web,hosting,no-code",true,true
+1165,Bookmark AI,bookmark-ai,AI Website Builder,Freemium,https://www.bookmark.com,"AI website builder with design assistant","web,design,no-code",true,true
+
+1166,Looka AI,looka-ai,AI Logo Generator,Freemium,https://looka.com,"AI logo design and branding tool","logo,branding,design",true,true
+1167,Brandmark AI,brandmark-ai,AI Branding Tool,Freemium,https://brandmark.io,"AI logo and brand identity generator","branding,logo,design",true,true
+1168,Designs.ai,designs-ai,AI Design Suite,Freemium,https://designs.ai,"AI-powered branding, video and design platform","design,branding,creative",true,true
+1169,Khroma AI,khroma-ai,AI Color Tool,Free,https://khroma.co,"AI color palette generator for designers","design,color,ui",true,true
+1170,ColorMind AI,colormind-ai,AI Color Generator,Free,https://colormind.io,"Deep learning color palette generator","design,color,art",true,true
+
+1171,Remove BG Pro,remove-bg-pro,AI Background Removal,Freemium,https://www.remove.bg,"Advanced AI background removal tool","image,editing,background",true,true
+1172,ClipDrop AI,clipdrop-ai,AI Image Editing,Freemium,https://clipdrop.co,"AI image editing and object removal tool","image,editing,ai",true,true
+1173,PhotoRoom AI,photoroom-ai,AI Image Editor,Freemium,https://www.photoroom.com,"AI photo editing and background replacement tool","image,editing,ecommerce",true,true
+1174,Pixelcut AI,pixelcut-ai,AI Photo Editor,Freemium,https://www.pixelcut.ai,"AI image editing and product photo enhancement","image,editing,product",true,true
+1175,Let’s Enhance Pro,lets-enhance-pro,AI Image Upscaler,Freemium,https://letsenhance.io,"Advanced AI image upscaling and enhancement tool","image,upscale,quality",true,true
+
+1176,Topaz Photo AI,topaz-photo-ai,AI Image Enhancement,Paid,https://www.topazlabs.com,"Professional AI image enhancement software","image,enhancement,pro",true,true
+1177,Upscale.media,upscale-media,AI Image Upscaler,Freemium,https://www.upscale.media,"AI-powered image upscaling tool","image,upscale,quality",true,true
+1178,BigJPG AI,bigjpg-ai,AI Image Upscaler,Free,https://bigjpg.com,"AI image enlargement without quality loss","image,upscale,anime",true,true
+1179,Waifu2x AI,waifu2x-ai,AI Image Upscaler,Free,https://waifu2x.udp.jp,"AI image upscaling for anime-style images","image,upscale,anime",true,true
+1180,Remini Pro,remini-pro,AI Photo Enhancement,Freemium,https://www.remini.ai,"AI photo restoration and enhancement tool","image,enhancement,photo",true,true
+
+1181,Remove Objects AI,remove-objects-ai,AI Image Cleanup,Freemium,https://clipdrop.co,"Remove unwanted objects from images using AI","image,editing,cleanup",true,true
+1182,Cleanup.pictures,cleanup-pictures,AI Image Cleanup,Freemium,https://cleanup.pictures,"AI tool to erase objects from photos","image,editing,remove",true,true
+1183,Inpaint AI,inpaint-ai,AI Image Repair,Freemium,https://theinpaint.com,"AI-powered image restoration and object removal","image,repair,editing",true,true
+1184,Magic Eraser AI,magic-eraser-ai,AI Image Editor,Freemium,https://magicstudio.com/magiceraser,"AI tool for removing objects from images","image,editing,cleanup",true,true
+1185,PhotoFix AI,photofix-ai,AI Image Repair,Freemium,https://photofix.io,"AI photo restoration and enhancement tool","image,repair,photo",true,true
+
+1186,RunDiffusion Studio,rundiffusion-studio,AI Image Cloud,Paid,https://rundiffusion.com,"Cloud platform for running diffusion models","image,cloud,ml",true,true
+1187,Tensor Art Studio,tensor-art-studio,AI Art Platform,Freemium,https://tensor.art,"AI art generation and model hosting platform","image,art,models",true,true
+1188,SeaArt Studio,seaart-studio,AI Art Generator,Freemium,https://www.seaart.ai,"AI image generation community platform","image,art,generative",true,true
+1189,Artbreeder Pro,artbreeder-pro,AI Art Generator,Freemium,https://www.artbreeder.com,"AI image blending and generation tool","image,art,creative",true,true
+1190,Deep Dream Pro,deep-dream-pro,AI Art Generator,Freemium,https://deepdreamgenerator.com,"AI surreal artwork generator","image,art,creative",true,true
+
+1191,Stable Canvas AI,stable-canvas-ai,AI Design Tool,Free,https://stability.ai,"Canvas-based AI image generation tool","image,design,stable-diffusion",true,true
+1192,Adobe Express AI,adobe-express-ai,AI Design Platform,Freemium,https://www.adobe.com/express,"AI-powered quick design and content creation tool","design,marketing,social",true,true
+1193,Microsoft Designer AI,microsoft-designer-ai,AI Design Tool,Freemium,https://designer.microsoft.com,"AI graphic design and social content generator","design,ai,creative",true,true
+1194,Kittl AI,kittl-ai,AI Design Platform,Freemium,https://www.kittl.com,"AI-powered design tool for branding and posters","design,branding,creative",true,true
+1195,Visme AI,visme-ai,AI Presentation Tool,Freemium,https://www.visme.co,"AI presentations and visual content creation tool","design,presentation,marketing",true,true
+
+1196,Beautiful AI,beautiful-ai,AI Presentation Tool,Freemium,https://www.beautiful.ai,"AI-powered slide and presentation design tool","presentation,design,business",true,true
+1197,Pitch AI,pitch-ai,AI Presentation Maker,Freemium,https://pitch.com,"AI presentation and pitch deck creation platform","presentation,business,design",true,true
+1198,Tome AI,tome-ai,AI Storytelling Tool,Freemium,https://tome.app,"AI storytelling and presentation generator","presentation,story,ai",true,true
+1199,Gamma AI,gamma-ai,AI Presentation Generator,Freemium,https://gamma.app,"AI-powered document and presentation builder","presentation,docs,ai",true,true
+1200,Decktopus AI,decktopus-ai,AI Presentation Builder,Freemium,https://www.decktopus.com,"AI-driven presentation creation platform","presentation,business,automation",true,true

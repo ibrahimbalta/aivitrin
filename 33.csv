@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1601,OpenAI GPT Store,gpt-store,AI App Marketplace,Freemium,https://chat.openai.com/gpts,"Marketplace for custom GPT applications","llm,apps,marketplace",true,true
+1602,Anthropic Claude Apps,claude-apps,AI App Ecosystem,Paid,https://www.anthropic.com,"Ecosystem for Claude-based AI applications","llm,apps,enterprise",true,true
+1603,Google Gemini Apps,gemini-apps,AI App Ecosystem,Paid,https://ai.google,"Gemini-based AI application ecosystem","llm,google,apps",true,true
+1604,Microsoft Copilot Studio,copilot-studio,AI App Builder,Paid,https://www.microsoft.com,"Build enterprise AI copilots and workflows","copilot,enterprise,ai",true,true
+1605,Apple Intelligence Platform,apple-intelligence,AI Ecosystem,Free,https://www.apple.com,"Apple ecosystem AI features and integrations","ai,apple,ecosystem",true,true
+
+1606,Meta AI Studio,meta-ai-studio,AI App Platform,Free,https://ai.meta.com,"Meta AI assistant and app ecosystem tools","llm,meta,apps",true,true
+1607,Amazon AI AppFlow,amazon-ai-appflow,AI Integration Platform,Paid,https://aws.amazon.com/appflow,"AWS AI-powered app integration system","aws,ai,integration",true,true
+1608,Salesforce Einstein Studio,einstein-studio,AI CRM Platform,Paid,https://www.salesforce.com,"Build AI models inside Salesforce ecosystem","crm,ai,enterprise",true,true
+1609,HubSpot AI Studio,hubspot-ai-studio,AI Marketing Platform,Paid,https://www.hubspot.com,"AI-powered marketing automation studio","marketing,ai,crm",true,true
+1610,Zoho AI Studio,zoho-ai-studio,AI Business Platform,Paid,https://www.zoho.com,"AI app builder for business workflows","crm,ai,workflow",true,true
+
+1611,Notion AI Studio,notion-ai-studio,AI Workspace Tool,Freemium,https://www.notion.so,"AI-powered workspace automation and writing tools","notes,ai,productivity",true,true
+1612,Airtable AI Studio,airtable-ai-studio,AI Database Tool,Freemium,https://airtable.com,"AI automation for database workflows","database,ai,automation",true,true
+1613,ClickUp AI Studio,clickup-ai-studio,AI Productivity Tool,Freemium,https://clickup.com,"AI task and project automation studio","tasks,ai,productivity",true,true
+1614,Miro AI Studio,miro-ai-studio,AI Collaboration Tool,Freemium,https://miro.com,"AI-powered whiteboard and collaboration tools","collaboration,ai,design",true,true
+1615,Figma AI Studio,figma-ai-studio,AI Design Platform,Paid,https://www.figma.com,"AI-assisted UI/UX design and prototyping tools","design,ui,ai",true,true
+
+1616,Canva AI Studio,canva-ai-studio,AI Design Platform,Freemium,https://www.canva.com,"AI-powered content and design creation suite","design,marketing,ai",true,true
+1617,Adobe Firefly Studio,firefly-studio,AI Creative Suite,Paid,https://firefly.adobe.com,"Adobe generative AI creative studio","design,creative,ai",true,true
+1618,Runway Studio,runway-studio,AI Video Studio,Paid,https://runwayml.com,"AI video generation and editing studio platform","video,ai,creative",true,true
+1619,Pika Studio,pika-studio,AI Video Generator,Freemium,https://pika.art,"AI video generation studio for creators","video,generative,ai",true,true
+1620,Synthesia Studio,synthesia-studio,AI Avatar Video,Paid,https://www.synthesia.io,"AI avatar video creation studio for enterprises","video,avatar,ai",true,true
+
+1621,HeyGen Studio,heygen-studio,AI Avatar Video,Paid,https://www.heygen.com,"AI talking avatar video creation platform","video,avatar,ai",true,true
+1622,D-ID Studio,d-id-studio,AI Talking Avatar,Paid,https://www.d-id.com,"AI face animation and talking avatar studio","video,avatar,ai",true,true
+1623,DeepBrain Studio,deepbrain-studio,AI Human Avatar,Paid,https://www.deepbrain.io,"AI human presenter video generation studio","video,avatar,enterprise",true,true
+1624,Hour One Studio,hour-one-studio,AI Video Presenter,Paid,https://hourone.ai,"AI presenter video generation studio platform","video,ai,enterprise",true,true
+1625,Colossyan Studio,colossyan-studio,AI Video Platform,Paid,https://www.colossyan.com,"AI training and corporate video studio","video,training,ai",true,true
+
+1626,Fliki Studio,fliki-studio,AI Content Video,Freemium,https://fliki.ai,"AI text-to-video and voiceover creation studio","video,tts,ai",true,true
+1627,Pictory Studio,pictory-studio,AI Video Automation,Paid,https://pictory.ai,"AI video generation from articles and scripts","video,automation,ai",true,true
+1628,Lumen5 Studio,lumen5-studio,AI Marketing Video,Paid,https://lumen5.com,"AI marketing video creation platform","video,marketing,ai",true,true
+1629,VEED Studio,veed-studio,AI Video Editing,Freemium,https://www.veed.io,"AI-powered video editing and subtitle tools","video,editing,ai",true,true
+1630,CapCut AI Studio,capcut-ai-studio,AI Video Editor,Freemium,https://www.capcut.com,"AI video editing and social content creation platform","video,editing,social",true,true
+
+1631,Descript AI Studio,descript-ai-studio,AI Audio/Video Editor,Freemium,https://www.descript.com,"AI editing for audio and video content","audio,video,ai",true,true
+1632,Adobe Podcast AI,adobe-podcast-ai,AI Audio Tool,Freemium,https://podcast.adobe.com,"AI audio enhancement and podcast editing tool","audio,podcast,ai",true,true
+1633,Audacity AI,audacity-ai,AI Audio Editor,Free,https://www.audacityteam.org,"Open-source AI audio editing enhancements","audio,open-source,ai",true,true
+1634,ElevenLabs Studio,elevenlabs-studio,AI Voice Studio,Paid,https://elevenlabs.io,"AI voice cloning and speech generation studio","voice,tts,ai",true,true
+1635,PlayHT Studio,playht-studio,AI Voice Studio,Freemium,https://play.ht,"AI voice generation and narration studio","voice,tts,ai",true,true
+
+1636,Murf Studio,murf-studio,AI Voice Studio,Paid,https://murf.ai,"Professional AI voiceover creation platform","voice,tts,ai",true,true
+1637,Lovo Studio,lovo-studio,AI Voice Platform,Freemium,https://lovo.ai,"AI voice synthesis and dubbing studio","voice,tts,ai",true,true
+1638,WellSaid Studio,wellsaid-studio,AI Voice Generator,Paid,https://wellsaidlabs.com,"High-quality AI voice production studio","voice,tts,ai",true,true
+1639,Resemble Studio,resemble-studio,AI Voice Cloning,Paid,https://www.resemble.ai,"AI voice cloning and audio generation studio","voice,cloning,ai",true,true
+1640,Speechify Studio,speechify-studio,AI Reading Tool,Freemium,https://speechify.com,"AI text-to-speech reading and narration studio","voice,reader,ai",true,true
+
+1641,Deepgram Studio,deepgram-studio,AI Speech Platform,Paid,https://deepgram.com,"AI speech-to-text and audio intelligence platform","stt,voice,ai",true,true
+1642,AssemblyAI Studio,assemblyai-studio,AI Speech Intelligence,Paid,https://www.assemblyai.com,"AI speech recognition and audio analysis studio","stt,analysis,ai",true,true
+1643,Rev Studio,rev-studio,AI Transcription Tool,Paid,https://www.rev.ai,"AI transcription and caption generation platform","stt,transcription,ai",true,true
+1644,Sonix Studio,sonix-studio,AI Subtitle Tool,Freemium,https://sonix.ai,"AI subtitle and transcription studio platform","stt,video,ai",true,true
+1645,Otter Studio,otter-studio,AI Meeting Assistant,Freemium,https://otter.ai,"AI meeting transcription and notes studio","meetings,ai,productivity",true,true
+
+1646,Fireflies Studio,fireflies-studio,AI Meeting Intelligence,Freemium,https://fireflies.ai,"AI meeting recording and summary studio","meetings,ai,notes",true,true
+1647,Fathom Studio,fathom-studio,AI Meeting Notes,Freemium,https://fathom.video,"AI meeting highlights and summaries studio","meetings,ai,productivity",true,true
+1648,Grain Studio,grain-studio,AI Video Clips,Freemium,https://grain.com,"AI meeting clip extraction and sharing studio","meetings,video,ai",true,true
+1649,Avoma Studio,avoma-studio,AI Meeting Intelligence,Paid,https://www.avoma.com,"AI meeting analytics and coaching platform","meetings,sales,ai",true,true
+1650,Sembly Studio,sembly-studio,AI Meeting Assistant,Paid,https://www.sembly.ai,"AI meeting transcription and insight studio","meetings,analysis,ai",true,true

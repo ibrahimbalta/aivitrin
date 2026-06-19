@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2201,OpenAI Audio Studio,openai-audio-studio,AI Audio Generation,Paid,https://platform.openai.com,"AI audio generation and voice synthesis studio","audio,tts,ai",true,true
+2202,Google AudioLM Studio,audiolm-studio,AI Audio Generation,Paid,https://ai.google,"Google AI audio generation and music synthesis system","audio,google,ai",true,true
+2203,Meta Audio AI Studio,meta-audio-ai-studio,AI Audio Platform,Free,https://ai.meta.com,"Meta AI audio generation and voice tools","audio,meta,ai",true,true
+2204,Mistral Audio API,mistral-audio-api,AI Audio API,Paid,https://mistral.ai,"Audio processing and speech generation API","audio,llm,api",true,true
+2205,Anthropic Voice System,anthropic-voice-system,AI Voice Platform,Paid,https://www.anthropic.com,"Voice-enabled AI interaction system","voice,llm,ai",true,true
+
+2206,ElevenLabs AI Voice,elevenlabs-ai-voice,AI Voice Generator,Freemium,https://elevenlabs.io,"High-quality AI voice cloning and synthesis","voice,tts,ai",true,true
+2207,PlayHT AI Voice,playht-ai-voice,AI Voice Generator,Freemium,https://play.ht,"AI text-to-speech voice generation platform","voice,tts,ai",true,true
+2208,WellSaid Labs AI,wellsaid-labs-ai,AI Voice Generator,Paid,https://wellsaidlabs.com,"Professional AI voiceover generation tool","voice,tts,ai",true,true
+2209,Murf AI Voice,murf-ai-voice,AI Voice Generator,Freemium,https://murf.ai,"AI voiceover and narration platform","voice,tts,ai",true,true
+2210,Speechify AI,speechify-ai,AI Voice Reader,Freemium,https://speechify.com,"AI text-to-speech reading assistant","voice,reader,ai",true,true
+
+2211,Amazon Polly AI,amazon-polly-ai,AI Voice API,Paid,https://aws.amazon.com/polly,"AWS AI text-to-speech voice synthesis system","voice,aws,tts",true,true
+2212,Google Text-to-Speech AI,google-tts-ai,AI Voice API,Paid,https://cloud.google.com/text-to-speech,"Google AI speech synthesis API","voice,google,tts",true,true
+2213,Microsoft Azure Speech,azure-speech-ai,AI Voice API,Paid,https://azure.microsoft.com,"Microsoft speech-to-text and text-to-speech API","voice,azure,ai",true,true
+2214,IBM Watson Speech AI,ibm-watson-speech-ai,AI Voice API,Paid,https://www.ibm.com/cloud/watson-speech-to-text,"IBM AI speech recognition and synthesis system","voice,ibm,ai",true,true
+2215,Descript Overdub AI,descript-overdub-ai,AI Voice Cloning,Paid,https://www.descript.com,"AI voice cloning and editing system","voice,cloning,ai",true,true
+
+2216,Resemble AI Voice,resemble-ai-voice,AI Voice Cloning,Paid,https://www.resemble.ai,"AI voice cloning and synthetic speech platform","voice,cloning,ai",true,true
+2217,LOVO AI Voice,lovo-ai-voice,AI Voice Generator,Freemium,https://www.lovo.ai,"AI voiceover and dubbing platform","voice,tts,ai",true,true
+2218,FakeYou AI Voice,fakeyou-ai-voice,AI Voice Generator,Free,https://fakeyou.com,"Community-driven AI voice generation platform","voice,tts,ai",true,true
+2219,Voicemod AI Voice,voicemod-ai-voice,AI Voice Changer,Freemium,https://www.voicemod.net,"Real-time AI voice changer software","voice,changer,ai",true,true
+2220,Rispecher AI Voice,rispecher-ai-voice,AI Voice Tool,Paid,https://rispecher.ai,"AI multilingual voice synthesis system","voice,tts,ai",true,true
+
+2221,Sonantic AI Voice,sonantic-ai-voice,AI Voice Emotion,Paid,https://www.sonantic.io,"Emotion-rich AI voice generation platform","voice,emotion,ai",true,true
+2222,Altered AI Voice,altered-ai-voice,AI Voice Modulation,Freemium,https://www.altered.ai,"AI voice transformation and modulation tool","voice,modulation,ai",true,true
+2223,Voice.ai,voice-ai,AI Voice Changer,Freemium,https://voice.ai,"Real-time AI voice changer for gaming and streaming","voice,streaming,ai",true,true
+2224,CereVoice AI,cerevoice-ai,AI Voice Engine,Paid,https://www.cereproc.com,"High-quality AI voice synthesis engine","voice,tts,ai",true,true
+2225,iSpeech AI,ispeech-ai,AI Voice API,Freemium,https://www.ispeech.org,"Text-to-speech AI voice API system","voice,api,ai",true,true
+
+2226,OpenAI Music Studio,openai-music-studio,AI Music Generation,Paid,https://platform.openai.com,"AI music generation and composition studio","music,ai,genai",true,true
+2227,Suno AI Music,suno-ai-music,AI Music Generator,Freemium,https://suno.com,"AI song and music generation platform","music,ai,genai",true,true
+2228,Udio AI Music,udio-ai-music,AI Music Generator,Freemium,https://udio.com,"AI music creation and songwriting platform","music,ai,genai",true,true
+2229,AIVA AI Music,aiva-ai-music,AI Composer,Paid,https://www.aiva.ai,"AI music composition and orchestration tool","music,composer,ai",true,true
+2230,Soundraw AI,soundraw-ai,AI Music Generator,Freemium,https://soundraw.io,"AI-generated royalty-free music platform","music,ai,creative",true,true
+
+2231,Amper Music AI,amper-music-ai,AI Music Generator,Paid,https://www.ampermusic.com,"AI music creation platform for content creators","music,ai,genai",true,true
+2232,Ecrett Music AI,ecrett-music-ai,AI Music Generator,Freemium,https://ecrettmusic.com,"Simple AI music generation tool for videos","music,ai,video",true,true
+2233,Boomy AI Music,boomy-ai-music,AI Music Generator,Freemium,https://boomy.com,"AI music creation and distribution platform","music,ai,genai",true,true
+2234,Mubert AI Music,mubert-ai-music,AI Music Generator,Freemium,https://mubert.com,"AI-generated streaming music platform","music,ai,streaming",true,true
+2235,Loudly AI Music,loudly-ai-music,AI Music Generator,Freemium,https://www.loudly.com,"AI-powered music creation and licensing platform","music,ai,license",true,true
+
+2236,Endel AI Sound,endel-ai-sound,AI Sound Generator,Freemium,https://endel.io,"AI-generated personalized soundscapes","audio,sound,ai",true,true
+2237,Brain.fm AI Music,brainfm-ai-music,AI Focus Music,Freemium,https://www.brain.fm,"AI-generated focus and productivity music","audio,focus,ai",true,true
+2238,Soundful AI,oundful-ai,AI Music Generator,Freemium,https://soundful.com,"AI music generation for creators and businesses","music,ai,genai",true,true
+2239,Audius AI Music,audius-ai-music,AI Music Platform,Free,https://audius.co,"Decentralized AI music streaming platform","music,ai,web3",true,true
+2240,Stability Audio AI,stability-audio-ai,AI Audio Model,Free,https://stability.ai,"Open-source AI audio generation model","audio,genai,ai",true,true
+
+2241,ElevenLabs Music AI,elevenlabs-music-ai,AI Music Tool,Paid,https://elevenlabs.io,"AI voice and music generation system","music,voice,ai",true,true
+2242,Riffusion AI,riffusion-ai,AI Music Generator,Free,https://www.riffusion.com,"Spectrogram-based AI music generation tool","music,ai,open-source",true,true
+2243,Stable Audio AI,stable-audio-ai,AI Audio Generator,Freemium,https://stability.ai,"Text-to-audio and music generation model","audio,genai,ai",true,true
+2244,Meta MusicGen,meta-musicgen,AI Music Model,Free,https://ai.meta.com,"Meta open-source AI music generation model","music,meta,ai",true,true
+2245,Google MusicLM AI,musiclm-ai,AI Music Model,Free,https://ai.google,"Google AI music generation system","music,google,ai",true,true
+
+2246,OpenAI Sound FX Studio,openai-sound-fx-studio,AI Sound Effects,Paid,https://platform.openai.com,"AI-generated sound effects and audio design tool","audio,sfx,ai",true,true
+2247,Boomy Distribution AI,boomy-distribution-ai,AI Music Distribution,Freemium,https://boomy.com,"AI-assisted music publishing and distribution","music,ai,distribution",true,true
+2248,LALAL.AI Audio Splitter,lalal-ai-audio-splitter,AI Audio Separation,Freemium,https://www.lalal.ai,"AI stem separation and audio splitting tool","audio,ai,editing",true,true
+2249,Moises AI Music,moises-ai-music,AI Music Separation,Freemium,https://moises.ai,"AI audio stem separation and practice tool","audio,music,ai",true,true
+2250,Descript Audio AI,descript-audio-ai,AI Audio Editor,Paid,https://www.descript.com,"AI audio editing and voice manipulation platform","audio,editing,ai",true,true

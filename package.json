@@ -1,0 +1,15 @@
+{
+  "name": "aivitrin",
+  "version": "1.0.0",
+  "description": "AIvitrin — Türkçe AI Araç Dizini",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node db/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "bcryptjs": "^2.4.3"
+  }
+}

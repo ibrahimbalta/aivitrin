@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1551,OpenAI Enterprise GPT-5 API,openai-enterprise-gpt5-api,AI LLM Platform,Paid,https://platform.openai.com,"Enterprise access to next-gen GPT models for organizations","llm,api,enterprise",true,true
+1552,Anthropic Claude Enterprise,anthropic-claude-enterprise,AI LLM Platform,Paid,https://www.anthropic.com,"Enterprise Claude model access for secure AI workflows","llm,enterprise,ai",true,true
+1553,Google Gemini Enterprise,google-gemini-enterprise,AI LLM Platform,Paid,https://ai.google,"Enterprise Gemini AI model suite for business use","llm,google,enterprise",true,true
+1554,Meta Llama Enterprise,meta-llama-enterprise,AI Model Platform,Free,https://ai.meta.com,"Enterprise deployment of Llama models for organizations","llm,open-source,enterprise",true,true
+1555,Mistral Enterprise AI,mistral-enterprise-ai,AI LLM Platform,Paid,https://mistral.ai,"Enterprise-grade Mistral model access and deployment","llm,enterprise,ai",true,true
+
+1556,Cohere Enterprise AI,cohere-enterprise-ai,AI NLP Platform,Paid,https://cohere.com,"Enterprise NLP and LLM platform for business applications","llm,nlp,enterprise",true,true
+1557,Together AI Enterprise,together-ai-enterprise,AI Model Platform,Paid,https://www.together.ai,"Enterprise open-source model hosting and inference platform","llm,models,enterprise",true,true
+1558,Fireworks AI Enterprise,fireworks-ai-enterprise,AI Inference Platform,Paid,https://fireworks.ai,"High-speed enterprise LLM inference platform","llm,inference,enterprise",true,true
+1559,Replicate Enterprise,replicate-enterprise,AI Model Hosting,Paid,https://replicate.com,"Enterprise model deployment and API platform","ml,models,enterprise",true,true
+1560,OpenRouter Enterprise,openrouter-enterprise,AI LLM Gateway,Paid,https://openrouter.ai,"Enterprise unified API gateway for multiple LLM providers","llm,gateway,enterprise",true,true
+
+1561,Pinecone Enterprise,pinecone-enterprise,AI Vector Database,Paid,https://www.pinecone.io,"Enterprise vector database for AI search systems","vector,search,enterprise",true,true
+1562,Weaviate Enterprise,weaviate-enterprise,AI Vector DB,Paid,https://weaviate.io,"Enterprise vector search and retrieval platform","vector,db,enterprise",true,true
+1563,Milvus Enterprise,milvus-enterprise,AI Vector Database,Paid,https://milvus.io,"Scalable enterprise vector database for AI","vector,db,enterprise",true,true
+1564,Qdrant Enterprise,qdrant-enterprise,AI Vector Search,Paid,https://qdrant.tech,"Enterprise vector similarity search engine","vector,search,enterprise",true,true
+1565,Chroma Enterprise,chroma-enterprise,AI Vector DB,Paid,https://www.trychroma.com,"Enterprise lightweight vector database system","vector,db,enterprise",true,true
+
+1566,LangChain Cloud Enterprise,langchain-cloud-enterprise,AI Agent Platform,Paid,https://www.langchain.com,"Enterprise LLM app and agent orchestration platform","agents,llm,enterprise",true,true
+1567,LlamaIndex Cloud Enterprise,llamaindex-cloud-enterprise,AI Data Platform,Paid,https://www.llamaindex.ai,"Enterprise LLM data indexing and retrieval platform","llm,data,enterprise",true,true
+1568,Dify Cloud Enterprise,dify-cloud-enterprise,AI App Platform,Paid,https://dify.ai,"Enterprise no-code AI application builder platform","apps,llm,enterprise",true,true
+1569,Flowise Cloud Enterprise,flowise-cloud-enterprise,AI Workflow Platform,Paid,https://flowiseai.com,"Enterprise visual LLM workflow orchestration platform","workflow,llm,enterprise",true,true
+1570,LangGraph Cloud,langgraph-cloud,AI Agent Workflow,Paid,https://langchain-ai.github.io/langgraph,"Cloud-based AI agent graph orchestration system","agents,workflow,enterprise",true,true
+
+1571,AutoGen Enterprise,autogen-enterprise,AI Multi-Agent System,Paid,https://github.com/microsoft/autogen,"Enterprise multi-agent AI orchestration framework","agents,llm,enterprise",true,true
+1572,CrewAI Enterprise,crewai-enterprise,AI Agent Platform,Paid,https://www.crewai.com,"Enterprise multi-agent AI collaboration system","agents,workflow,enterprise",true,true
+1573,AgentOps Enterprise,agentops-enterprise,AI Agent Monitoring,Paid,https://agentops.ai,"Enterprise monitoring for AI agents and workflows","agents,monitoring,enterprise",true,true
+1574,Langfuse Enterprise,langfuse-enterprise,AI Observability,Paid,https://langfuse.com,"Enterprise LLM observability and tracing platform","llm,monitoring,enterprise",true,true
+1575,Helicone Enterprise,helicone-enterprise,AI LLM Analytics,Paid,https://helicone.ai,"Enterprise LLM usage analytics and monitoring system","llm,analytics,enterprise",true,true
+
+1576,PromptLayer Enterprise,promptlayer-enterprise,AI Prompt Ops,Paid,https://promptlayer.com,"Enterprise prompt management and tracking system","prompts,llm,enterprise",true,true
+1577,Humanloop Enterprise,humanloop-enterprise,AI Prompt Platform,Paid,https://humanloop.com,"Enterprise prompt engineering and evaluation platform","prompts,llm,enterprise",true,true
+1578,Weights & Biases Enterprise,wandb-enterprise,AI ML Platform,Paid,https://wandb.ai,"Enterprise ML experiment tracking and model monitoring","ml,tracking,enterprise",true,true
+1579,Neptune Enterprise AI,neptune-enterprise-ai,AI Experiment Tracking,Paid,https://neptune.ai,"Enterprise ML metadata and experiment tracking system","ml,tracking,enterprise",true,true
+1580,Comet Enterprise AI,comet-enterprise-ai,AI ML Monitoring,Paid,https://www.comet.com,"Enterprise ML experiment tracking and analytics platform","ml,monitoring,enterprise",true,true
+
+1581,ClearML Enterprise,clearml-enterprise,AI MLOps Platform,Paid,https://clear.ml,"Enterprise MLOps automation and pipeline platform","ml,devops,enterprise",true,true
+1582,MLflow Enterprise,mlflow-enterprise,AI ML Lifecycle,Paid,https://mlflow.org,"Enterprise ML lifecycle management system","ml,devops,enterprise",true,true
+1583,Kubeflow Enterprise,kubeflow-enterprise,AI Kubernetes ML,Paid,https://kubeflow.org,"Enterprise Kubernetes-based ML workflow system","ml,kubernetes,enterprise",true,true
+1584,Seldon Enterprise,seldon-enterprise,AI Model Deployment,Paid,https://www.seldon.io,"Enterprise ML model deployment and serving platform","ml,enterprise,deploy",true,true
+1585,BentoML Enterprise,bentoml-enterprise,AI Model Serving,Paid,https://bentoml.com,"Enterprise ML model API serving platform","ml,api,enterprise",true,true
+
+1586,RunPod Enterprise GPU,runpod-enterprise-gpu,AI GPU Cloud,Paid,https://www.runpod.io,"Enterprise GPU cloud infrastructure for AI workloads","gpu,cloud,enterprise",true,true
+1587,Modal Enterprise Cloud,modal-enterprise-cloud,AI Compute Platform,Paid,https://modal.com,"Enterprise serverless compute for AI applications","cloud,compute,enterprise",true,true
+1588,AWS Bedrock Enterprise,aws-bedrock-enterprise,AI Model Platform,Paid,https://aws.amazon.com/bedrock,"Enterprise foundation model access via AWS","aws,llm,enterprise",true,true
+1589,Azure OpenAI Enterprise,azure-openai-enterprise,AI LLM Cloud,Paid,https://azure.microsoft.com,"Enterprise OpenAI model hosting via Microsoft Azure","azure,llm,enterprise",true,true
+1590,Google Vertex AI Enterprise,vertex-ai-enterprise,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Enterprise Google AI model training and deployment","google,ml,enterprise",true,true
+
+1591,IBM Watson Enterprise AI,ibm-watson-enterprise-ai,AI Platform,Paid,https://www.ibm.com,"Enterprise IBM AI assistant and analytics platform","ibm,ai,enterprise",true,true
+1592,Snowflake AI,snowflake-ai,AI Data Platform,Paid,https://www.snowflake.com,"Enterprise AI-powered data warehouse and analytics","data,ai,enterprise",true,true
+1593,Databricks AI,databricks-ai,AI Data Platform,Paid,https://www.databricks.com,"Enterprise AI data engineering and analytics platform","data,ml,enterprise",true,true
+1594,Palantir AI,palantir-ai,AI Analytics Platform,Paid,https://www.palantir.com,"Enterprise AI analytics and decision-making platform","analytics,ai,enterprise",true,true
+1595,DataRobot AI,datarobot-ai,AI AutoML Platform,Paid,https://www.datarobot.com,"Enterprise automated machine learning platform","ml,auto,enterprise",true,true
+
+1596,H2O.ai Enterprise,h2o-ai-enterprise,AI AutoML Platform,Paid,https://www.h2o.ai,"Enterprise AI and automated machine learning platform","ml,auto,enterprise",true,true
+1597,Dataiku Enterprise,dataiku-enterprise,AI Data Science Platform,Paid,https://www.dataiku.com,"Enterprise data science and AI workflow platform","data,ml,enterprise",true,true
+1598,Domino Data Lab,domino-data-lab,AI MLOps Platform,Paid,https://www.dominodatalab.com,"Enterprise MLOps and model lifecycle platform","ml,enterprise,ops",true,true
+1599,Anyscale Enterprise,anyscale-enterprise,AI Distributed Compute,Paid,https://www.anyscale.com,"Enterprise Ray-based distributed AI compute platform","ml,distributed,enterprise",true,true
+1600,Ray Enterprise,ray-enterprise,AI Distributed System,Paid,https://www.ray.io,"Enterprise distributed AI training and serving framework","ml,distributed,enterprise",true,true

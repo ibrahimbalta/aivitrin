@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+201,SE Ranking AI,se-ranking-ai,AI SEO Tool,Freemium,https://seranking.com,"AI-powered SEO analysis, keyword research and optimization platform","seo,keywords,analysis",true,true
+202,Rank Math AI,rank-math-ai,AI SEO Assistant,Freemium,https://rankmath.com,"AI content assistant for WordPress SEO optimization","seo,wordpress,content",true,true
+203,Alli AI,alli-ai,AI SEO Automation,Paid,https://www.alliai.com,"Automated AI SEO optimization platform","seo,automation,marketing",true,true
+204,Outranking,outranking,AI SEO Writer,Freemium,https://www.outranking.io,"AI-powered SEO content research and writing","seo,writing,content",true,true
+205,Clearscope,clearscope,AI SEO Platform,Paid,https://www.clearscope.io,"AI content optimization and keyword intelligence","seo,content,optimization",true,true
+
+206,INK,ink,AI Writing & SEO,Freemium,https://inkforall.com,"AI writing assistant focused on SEO and marketing content","writing,seo,marketing",true,true
+207,Content at Scale,content-at-scale,AI Content Generator,Paid,https://contentatscale.ai,"Long-form AI content creation and SEO publishing platform","writing,seo,blogs",true,true
+208,Writer,writer,AI Enterprise Writing,Freemium,https://writer.com,"Enterprise-grade generative AI writing assistant","writing,enterprise,content",true,true
+209,Wordtune,wordtune,AI Writing Assistant,Freemium,https://www.wordtune.com,"AI rewriting and text enhancement assistant","writing,editing,grammar",true,true
+210,HyperWrite,hyperwrite,AI Writing Assistant,Freemium,https://www.hyperwriteai.com,"AI assistant for writing, research and productivity","writing,research,assistant",true,true
+
+211,Sudowrite,sudowrite,AI Creative Writing,Paid,https://www.sudowrite.com,"AI writing tool for fiction authors and storytellers","writing,fiction,storytelling",true,true
+212,NovelAI,novel-ai,AI Story Generator,Paid,https://novelai.net,"AI storytelling, writing and image generation platform","story,writing,anime",true,true
+213,ShortlyAI,shortly-ai,AI Writing Assistant,Paid,https://www.shortlyai.com,"AI-powered long-form writing assistant","writing,blogs,creative",true,true
+214,Peppertype,peppertype,AI Copywriting,Freemium,https://www.peppertype.ai,"AI content creation for marketing and businesses","copywriting,marketing,content",true,true
+215,TextCortex,textcortex,AI Writing Assistant,Freemium,https://textcortex.com,"AI assistant for writing, rewriting and knowledge tasks","writing,productivity,assistant",true,true
+
+216,Originality.ai,originality-ai,AI Content Detection,Paid,https://originality.ai,"AI plagiarism and AI-generated content detector","detection,plagiarism,content",true,true
+217,GPTZero,gptzero,AI Detection,Freemium,https://gptzero.me,"Detect AI-generated writing and analyze text originality","detection,education,writing",true,true
+218,ZeroGPT,zero-gpt,AI Detection,Freemium,https://www.zerogpt.com,"AI content detector and plagiarism checker","detection,content,analysis",true,true
+219,Winston AI,winston-ai,AI Detection,Freemium,https://gowinston.ai,"AI-generated text detection for educators and publishers","detection,education,analysis",true,true
+220,Copyleaks AI Detector,copyleaks-ai-detector,AI Detection,Freemium,https://copyleaks.com,"AI content detection and plagiarism prevention platform","detection,plagiarism,education",true,true
+
+221,DataRobot,datarobot,AI Machine Learning Platform,Paid,https://www.datarobot.com,"Enterprise AI platform for building and deploying ML models","machine-learning,enterprise,analytics",true,true
+222,H2O.ai,h2o-ai,AI Machine Learning,Freemium,https://h2o.ai,"Open-source and enterprise AI and machine learning platform","ml,data-science,opensource",true,true
+223,Dataiku,dataiku,AI Analytics Platform,Paid,https://www.dataiku.com,"AI and analytics platform for enterprise data teams","analytics,data,enterprise",true,true
+224,Alteryx AI,alteryx-ai,AI Data Analytics,Paid,https://www.alteryx.com,"AI-powered data preparation and analytics platform","analytics,data,automation",true,true
+225,RapidMiner,rapidminer,AI Data Science,Freemium,https://rapidminer.com,"Low-code data science and machine learning platform","data-science,ml,automation",true,true
+
+226,MonkeyLearn,monkeylearn,AI Text Analysis,Paid,https://monkeylearn.com,"AI text classification and sentiment analysis tools","nlp,text,analytics",true,true
+227,Obviously AI,obviously-ai,AI Predictive Analytics,Freemium,https://obviously.ai,"No-code machine learning and predictive analytics platform","ml,nocode,data",true,true
+228,Obviously AI Chat,obviously-ai-chat,AI Data Assistant,Freemium,https://obviously.ai,"AI assistant for data analysis and business insights","data,assistant,analytics",false,false
+229,Akkio,akkio,AI Analytics,Freemium,https://www.akkio.com,"No-code AI analytics and forecasting platform","analytics,prediction,business",true,true
+230,Polymer,polymer,AI Data Dashboard,Freemium,https://www.polymersearch.com,"AI-powered business intelligence dashboards","dashboard,analytics,data",true,true
+
+231,Tableau GPT,tableau-gpt,AI Business Intelligence,Paid,https://www.tableau.com,"AI-powered analytics and visualization assistant","business-intelligence,data,analytics",true,true
+232,Power BI Copilot,power-bi-copilot,AI Business Intelligence,Paid,https://powerbi.microsoft.com,"AI assistant for Microsoft Power BI analytics","bi,analytics,microsoft",true,true
+233,Qlik Answers,qlik-answers,AI Analytics Assistant,Paid,https://www.qlik.com,"Generative AI assistant for business data exploration","analytics,enterprise,data",true,true
+234,ThoughtSpot Sage,thoughtspot-sage,AI Analytics Assistant,Paid,https://www.thoughtspot.com,"AI-powered search and analytics assistant","analytics,search,bi",true,true
+235,Hex AI,hex-ai,AI Data Workspace,Freemium,https://hex.tech,"Collaborative data analysis with AI assistance","data,sql,analytics",true,true
+
+236,Deepnote AI,deepnote-ai,AI Data Notebook,Freemium,https://deepnote.com,"AI-powered collaborative notebook for data science","notebook,data,python",true,true
+237,Noteable,noteable,AI Data Notebook,Freemium,https://noteable.io,"Collaborative notebook with AI tools for analysts","data,notebook,analytics",true,true
+238,Julius AI,julius-ai,AI Data Analyst,Freemium,https://julius.ai,"AI data analysis and visualization assistant","data,charts,analysis",true,true
+239,Rows AI,rows-ai,AI Spreadsheet,Freemium,https://rows.com,"Spreadsheet platform with integrated AI features","spreadsheet,data,automation",true,true
+240,SheetAI,sheet-ai,AI Spreadsheet,Freemium,https://sheetai.app,"AI assistant for Google Sheets workflows","sheets,automation,productivity",true,true
+
+241,Beautiful.ai Designer,beautiful-ai-designer,AI Design Assistant,Freemium,https://www.beautiful.ai,"AI design enhancement for presentations","design,presentation,assistant",false,false
+242,Canva Magic Studio,canva-magic-studio,AI Design Suite,Freemium,https://www.canva.com/magic,"AI-powered creative tools inside Canva","design,image,video",true,true
+243,Microsoft Designer,microsoft-designer,AI Design Tool,Free,https://designer.microsoft.com,"Create graphics and visuals using generative AI","design,graphics,image",true,true
+244,Designs.ai,designs-ai,AI Design Suite,Freemium,https://designs.ai,"AI tools for logos, videos and marketing materials","design,logo,video",true,true
+245,Khroma,khroma,AI Color Tool,Free,https://www.khroma.co,"AI color palette generator for designers","design,color,branding",true,true
+
+246,Fontjoy,fontjoy,AI Typography Tool,Free,https://fontjoy.com,"AI-powered font pairing generator","design,fonts,typography",true,true
+247,Uizard,uizard,AI UI Designer,Freemium,https://uizard.io,"AI tool for generating UI mockups and app designs","ui,wireframe,design",true,true
+248,Galileo AI,galileo-ai,AI UI Generator,Freemium,https://www.usegalileo.ai,"Generate user interface designs from text prompts","ui,design,prototype",true,true
+249,Visily,visily,AI UI Design,Freemium,https://www.visily.ai,"AI-assisted wireframe and interface design platform","ui,wireframe,prototype",true,true
+250,Framer AI,framer-ai,AI Website Builder,Freemium,https://framer.com,"AI-powered website generation and design platform","website,design,nocode",true,true

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-index" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-index)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-index)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-index)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/tools.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Araçlar
+        </a>
+        <a href="/admin/categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          Kategoriler
+        </a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular <span class="badge-count" id="nav-sub-count" style="display:none;background:var(--accent-red);color:white;border-radius:10px;padding:2px 6px;font-size:11px;margin-left:auto;font-weight:600">0</span>
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Siteyi Görüntüle
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="btn-logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Çıkış Yap
+        </button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Dashboard</h1>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-card-icon">🛠️</div><div class="stat-card-value" id="dash-total-tools">0</div><div class="stat-card-label">Toplam Araç</div></div>
+        <div class="stat-card"><div class="stat-card-icon">📂</div><div class="stat-card-value" id="dash-total-cats">0</div><div class="stat-card-label">Kategori</div></div>
+        <div class="stat-card"><div class="stat-card-icon">🆓</div><div class="stat-card-value" id="dash-free">0</div><div class="stat-card-label">Ücretsiz Araç</div></div>
+        <div class="stat-card"><div class="stat-card-icon">⭐</div><div class="stat-card-value" id="dash-featured">0</div><div class="stat-card-label">Öne Çıkan</div></div>
+      </div>
+
+      <div class="data-table-wrapper" style="margin-top:32px">
+        <div class="table-header"><h3>Son Eklenen Araçlar</h3></div>
+        <table class="data-table">
+          <thead><tr><th>Araç Adı</th><th>Kategori</th><th>Fiyat</th><th>Puan</th><th>Durum</th></tr></thead>
+          <tbody id="recent-tools-body"></tbody>
+        </table>
+      </div>
+
+      <div class="data-table-wrapper" style="margin-top:32px">
+        <div class="table-header"><h3>Bülten Aboneleri</h3></div>
+        <table class="data-table">
+          <thead><tr><th>E-posta Adresi</th><th>Kayıt Tarihi</th><th style="text-align:right">İşlem</th></tr></thead>
+          <tbody id="subscribers-body"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    async function loadDashboard() {
+      try {
+        const [sRes, tRes, nRes] = await Promise.all([
+          fetch('/api/stats'),
+          fetch('/api/tools?sort=newest&limit=10'),
+          fetch('/api/admin/newsletter')
+        ]);
+        const stats = await sRes.json();
+        const tData = await tRes.json();
+        const subscribers = await nRes.json();
+
+        document.getElementById('dash-total-tools').textContent = stats.totalTools || 0;
+        document.getElementById('dash-total-cats').textContent = stats.totalCategories || 0;
+        document.getElementById('dash-free').textContent = stats.freeTools || 0;
+        document.getElementById('dash-featured').textContent = stats.featuredTools || 0;
+
+        const tools = tData.tools || tData;
+        document.getElementById('recent-tools-body').innerHTML = tools.slice(0,10).map(t => `
+          <tr>
+            <td><strong>${t.name}</strong></td>
+            <td>${t.category_name || ''}</td>
+            <td><span class="badge badge-${t.pricing}">${t.pricing==='ucretsiz'?'Ücretsiz':t.pricing==='freemium'?'Freemium':'Ücretli'}</span></td>
+            <td>⭐ ${t.rating}</td>
+            <td>${t.featured?'⭐ Öne Çıkan':''}${t.is_new?' 🆕 Yeni':''}</td>
+          </tr>`).join('');
+
+        renderSubscribers(subscribers);
+      } catch(e) { console.error('Dashboard yüklenemedi:', e); }
+    }
+
+    function renderSubscribers(subs) {
+      const tbody = document.getElementById('subscribers-body');
+      if (!subs || subs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="empty-state" style="text-align:center;padding:24px;color:var(--text-muted)">Kayıtlı abone bulunmuyor.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = subs.map(sub => {
+        const dateStr = sub.subscribed_at ? new Date(sub.subscribed_at).toLocaleDateString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '-';
+        return `
+          <tr>
+            <td><strong>${sub.email}</strong></td>
+            <td>${dateStr}</td>
+            <td style="text-align:right" class="table-actions">
+              <button class="btn-delete btn-delete-sub" data-email="${sub.email}" style="color:var(--accent-red);background:none;border:none;cursor:pointer;font-size:0.875rem">Sil</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      tbody.querySelectorAll('.btn-delete-sub').forEach(btn => {
+        btn.addEventListener('click', async function() {
+          const email = this.dataset.email;
+          if (confirm(email + ' bülten aboneliğinden silinecek. Emin misiniz?')) {
+            try {
+              const res = await fetch('/api/admin/newsletter/' + encodeURIComponent(email), {
+                method: 'DELETE'
+              });
+              const data = await res.json();
+              if (data.success) {
+                showToast('Abone başarıyla silindi.', 'success');
+                loadDashboard();
+              } else {
+                showToast(data.error || 'Silinirken hata oluştu.', 'error');
+              }
+            } catch(err) {
+              showToast('Bağlantı hatası oluştu.', 'error');
+            }
+          }
+        });
+      });
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>

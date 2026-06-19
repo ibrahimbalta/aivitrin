@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+601,Midjourney,midjourney,AI Image Generator,Paid,https://www.midjourney.com,"Advanced AI image generation platform known for artistic and realistic visuals","image,art,design",true,true
+602,DALL·E,dall-e,AI Image Generator,Freemium,https://openai.com/dall-e,"AI model for generating images from natural language prompts","image,generative,art",true,true
+603,Stable Diffusion,stable-diffusion,AI Image Model,Free,https://stability.ai,"Open-source AI image generation model and ecosystem","image,opensource,model",true,true
+604,Adobe Firefly,adobe-firefly,AI Creative Suite,Freemium,https://firefly.adobe.com,"AI-powered image generation and creative editing tools","image,editing,adobe",true,true
+605,Leonardo AI,leonardo-ai,AI Image Generator,Freemium,https://leonardo.ai,"AI platform for generating game assets, artwork and images","image,art,gaming",true,true
+
+606,Ideogram,ideogram,AI Image Generator,Freemium,https://ideogram.ai,"AI image generation specialized in text rendering and graphic design","image,text,design",true,true
+607,Playground AI,playground-ai,AI Image Editor,Freemium,https://playground.com,"AI image generation and editing platform","image,editing,design",true,true
+608,Clipdrop,clipdrop,AI Image Editing,Freemium,https://clipdrop.co,"AI tools for background removal, cleanup and image enhancement","image,editing,cleanup",true,true
+609,PhotoRoom,photoroom,AI Photo Editor,Freemium,https://www.photoroom.com,"AI product photography and background editing tool","photo,ecommerce,background",true,true
+610,Fotor AI,fotor-ai,AI Photo Editor,Freemium,https://www.fotor.com,"AI-powered photo enhancement, generation and design","photo,editing,design",true,true
+
+611,Pixlr AI,pixlr-ai,AI Photo Editor,Freemium,https://pixlr.com,"Online AI photo editing and design suite","photo,editor,graphics",true,true
+612,Img.Upscaler,img-upscaler,AI Image Upscaler,Freemium,https://imgupscaler.com,"AI image enlargement and quality enhancement","image,upscale,enhance",true,true
+613,Upscale.media,upscale-media,AI Image Upscaler,Freemium,https://www.upscale.media,"AI-powered image upscaling and enhancement","image,quality,photo",true,true
+614,HitPaw Photo AI,hitpaw-photo-ai,AI Photo Enhancer,Freemium,https://www.hitpaw.com,"AI photo restoration and enhancement software","photo,restore,enhance",true,true
+615,AVCLabs PhotoPro AI,avclabs-photopro-ai,AI Image Enhancement,Freemium,https://www.avclabs.com,"AI image denoising, sharpening and restoration","image,enhancement,restore",true,true
+
+616,Looka,looka,AI Logo Generator,Freemium,https://looka.com,"Create logos and brand identities with AI","logo,branding,design",true,true
+617,LogoAI,logo-ai,AI Logo Generator,Freemium,https://www.logoai.com,"AI-powered logo design and branding platform","logo,brand,graphics",true,true
+618,Brandmark,brandmark,AI Brand Designer,Freemium,https://brandmark.io,"Generate logos, business cards and brand assets using AI","branding,logo,identity",true,true
+619,Hatchful AI,hatchful-ai,AI Logo Creator,Free,https://www.shopify.com/tools/logo-maker,"Free AI-assisted logo creation tool by Shopify","logo,business,branding",true,true
+620,DesignEvo,designevo,AI Logo Maker,Freemium,https://www.designevo.com,"Online logo design tool with intelligent templates","logo,templates,design",true,true
+
+621,Mokker AI,mokker-ai,AI Product Photography,Freemium,https://mokker.ai,"Generate professional product photos using AI","product,photo,ecommerce",true,true
+622,Flair AI,flair-ai,AI Product Design,Freemium,https://flair.ai,"AI-powered product photography and brand content creation","product,marketing,design",true,true
+623,Booth AI,booth-ai,AI Product Photography,Freemium,https://www.booth.ai,"Create product marketing images with AI","product,images,ecommerce",true,true
+624,Pebblely,pebblely,AI Product Photos,Freemium,https://pebblely.com,"Generate product backgrounds and advertising visuals","product,ecommerce,marketing",true,true
+625,Claid AI,claid-ai,AI Product Images,Freemium,https://claid.ai,"AI image enhancement for product catalogs and marketplaces","product,photos,retail",true,true
+
+626,Luma AI,luma-ai,AI 3D Generation,Freemium,https://lumalabs.ai,"Generate realistic 3D models and scenes using AI","3d,model,video",true,true
+627,Meshy AI,meshy-ai,AI 3D Model Generator,Freemium,https://www.meshy.ai,"Create 3D assets from text or images with AI","3d,assets,gaming",true,true
+628,Spline AI,spline-ai,AI 3D Design,Freemium,https://spline.design,"AI-assisted 3D design and interactive experiences","3d,design,web",true,true
+629,Masterpiece X,masterpiece-x,AI 3D Creation,Freemium,https://www.masterpiecex.com,"AI-powered 3D modeling and digital content creation","3d,modeling,creator",true,true
+630,Kaedim,kaedim,AI 3D Asset Generator,Paid,https://www.kaedim3d.com,"Convert 2D images into production-ready 3D models","3d,gaming,assets",true,true
+
+631,Interior AI,interior-ai,AI Interior Design,Freemium,https://interiorai.com,"Redesign rooms and interior spaces with AI","interior,architecture,home",true,true
+632,RoomGPT,roomgpt,AI Room Designer,Freemium,https://www.roomgpt.io,"Generate room redesign ideas from photos","interior,home,design",true,true
+633,Homestyler AI,homestyler-ai,AI Home Design,Freemium,https://www.homestyler.com,"AI-assisted home planning and 3D interior design","interior,3d,architecture",true,true
+634,Planner 5D AI,planner-5d-ai,AI Home Planner,Freemium,https://planner5d.com,"AI-powered floor plans and interior visualization","home,3d,architecture",true,true
+635,REimagine Home,reimagine-home,AI Virtual Staging,Freemium,https://www.reimaginehome.ai,"AI staging and renovation ideas for real estate","real-estate,interior,design",true,true
+
+636,Archi AI,archi-ai,AI Architecture Design,Freemium,https://archi.ai,"AI-generated architectural concepts and building designs","architecture,building,concept",true,false
+637,Veras AI,veras-ai,AI Architectural Rendering,Paid,https://www.evolvelab.io/veras,"AI rendering plugin for architects and designers","architecture,rendering,bim",true,true
+638,Finch 3D,finch-3d,AI Architectural Design,Paid,https://finch3d.com,"Generative AI tool for building layout optimization","architecture,planning,design",true,true
+639,TestFit AI,testfit-ai,AI Real Estate Design,Paid,https://www.testfit.io,"AI-assisted site planning and feasibility analysis","architecture,real-estate,planning",true,true
+640,Spacemaker AI,spacemaker-ai,AI Urban Planning,Paid,https://www.autodesk.com/solutions/spacemaker,"AI-powered urban design and building optimization","urban,architecture,planning",true,true
+
+641,GetFloorPlan AI,getfloorplan-ai,AI Floor Plan Generator,Freemium,https://getfloorplan.com,"Generate 2D and 3D floor plans with AI","floorplan,3d,real-estate",true,true
+642,DecorMatters AI,decor-matters-ai,AI Interior Decor,Freemium,https://decormatters.com,"AI room decorating and furniture visualization","interior,furniture,design",true,true
+643,Collov AI,collov-ai,AI Interior Visualization,Freemium,https://collov.ai,"AI-powered interior rendering and home visualization","interior,rendering,design",true,true
+644,Coohom AI,coohom-ai,AI Interior Design,Freemium,https://www.coohom.com,"3D interior design and AI rendering platform","interior,3d,rendering",true,true
+645,Foyr Neo AI,foyr-neo-ai,AI Interior Design,Paid,https://foyr.com,"Professional interior design and visualization software","interior,rendering,home",true,true
+
+646,Visual Electric,visual-electric,AI Design Studio,Freemium,https://visualelectric.com,"AI image generation built for professional designers","design,image,creative",true,true
+647,Krea AI,krea-ai,AI Creative Tool,Freemium,https://www.krea.ai,"Real-time AI image and video generation platform","image,video,creative",true,true
+648,Magnific AI,magnific-ai,AI Image Upscaler,Paid,https://magnific.ai,"High-detail AI image enhancement and upscaling","image,upscale,detail",true,true
+649,Recraft AI,recraft-ai,AI Vector Generator,Freemium,https://www.recraft.ai,"Generate vector graphics, illustrations and brand assets","vector,illustration,branding",true,true
+650,Vectorizer AI,vectorizer-ai,AI Vector Conversion,Freemium,https://vectorizer.ai,"Convert raster images into editable vector graphics","vector,svg,design",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+451,Superhuman AI,superhuman-ai,AI Email Assistant,Freemium,https://superhuman.com,"AI-powered email writing, summarization and inbox management","email,productivity,writing",true,true
+452,Shortwave,shortwave,AI Email Client,Freemium,https://www.shortwave.com,"AI email organization, search and writing assistant","email,gmail,productivity",true,true
+453,SaneBox AI,sanebox-ai,AI Email Management,Freemium,https://www.sanebox.com,"AI email filtering and inbox organization platform","email,inbox,automation",true,true
+454,MailMaestro,mailmaestro,AI Email Assistant,Freemium,https://www.maestrolabs.com,"AI assistant for writing and replying to emails","email,writing,office",true,true
+455,Missive AI,missive-ai,AI Team Email,Freemium,https://missiveapp.com,"Collaborative inbox with AI writing assistance","email,team,collaboration",true,true
+
+456,Mailbutler AI,mailbutler-ai,AI Email Assistant,Freemium,https://www.mailbutler.io,"AI email drafting, tracking and productivity features","email,tracking,assistant",true,true
+457,Mailmodo AI,mailmodo-ai,AI Email Marketing,Freemium,https://www.mailmodo.com,"AI tools for interactive email creation and marketing","email,marketing,campaigns",true,true
+458,Lavender Email AI,lavender-email-ai,AI Sales Email Assistant,Freemium,https://www.lavender.ai,"AI email coaching for sales professionals","sales,email,writing",true,true
+459,Smartwriter AI,smartwriter-ai,AI Sales Outreach,Freemium,https://www.smartwriter.ai,"Personalized cold emails and outreach using AI","sales,email,lead-generation",true,true
+460,Warmer.ai,warmer-ai,AI Email Personalization,Paid,https://warmer.ai,"AI-powered personalized email generation for sales","sales,email,automation",true,true
+
+461,Brand24 AI,brand24-ai,AI Social Listening,Freemium,https://brand24.com,"AI-powered brand monitoring and social media insights","social-media,analytics,marketing",true,true
+462,Sprout Social AI,sprout-social-ai,AI Social Media Management,Paid,https://sproutsocial.com,"Social media scheduling, analytics and AI assistance","social-media,analytics,marketing",true,true
+463,Lately AI,lately-ai,AI Content Repurposing,Freemium,https://www.lately.ai,"Convert long-form content into social media posts","content,social-media,marketing",true,true
+464,Buffer AI Assistant,buffer-ai-assistant,AI Social Media,Freemium,https://buffer.com/ai-assistant,"AI writing assistant for social media content","social-media,writing,marketing",true,true
+465,SocialBee AI,socialbee-ai,AI Social Media,Freemium,https://socialbee.com,"AI content creation and scheduling for social channels","social-media,scheduling,content",true,true
+
+466,CopySmith,copysmith,AI Copywriting,Freemium,https://copysmith.ai,"AI-generated marketing copy and ecommerce content","writing,marketing,ecommerce",true,true
+467,Anyword Data-Driven Editor,anyword-data-driven-editor,AI Copywriting,Paid,https://anyword.com,"AI writing optimized with performance predictions","writing,marketing,conversion",true,true
+468,Hypotenuse AI,hypotenuse-ai,AI Content Generator,Freemium,https://www.hypotenuse.ai,"Generate articles, product descriptions and marketing content","writing,seo,ecommerce",true,true
+469,ContentBot,contentbot,AI Writing Assistant,Freemium,https://contentbot.ai,"AI content generation for blogs and marketing","writing,blog,marketing",true,true
+470,ClosersCopy,closerscopy,AI Copywriting,Paid,https://www.closerscopy.com,"AI writing for advertising and persuasive content","copywriting,ads,sales",true,true
+
+471,PhotoAI,photoai,AI Photo Generator,Freemium,https://photoai.com,"Create AI-generated photos and virtual photoshoots","photo,avatar,images",true,true
+472,Remini,remini,AI Photo Enhancement,Freemium,https://remini.ai,"AI-powered image restoration and enhancement","photo,upscaling,restoration",true,true
+473,Facetune AI,facetune-ai,AI Photo Editor,Freemium,https://www.facetuneapp.com,"AI tools for portrait editing and enhancement","photo,face,beauty",true,true
+474,Lensa AI,lensa-ai,AI Avatar Generator,Freemium,https://prisma-ai.com/lensa,"AI avatar creation and photo enhancement application","avatar,photo,portrait",true,true
+475,Pixelcut,pixelcut,AI Product Photo,Freemium,https://www.pixelcut.ai,"AI product photography and background editing","ecommerce,photo,design",true,true
+
+476,PixVerse AI,pixverse-ai,AI Video Generator,Freemium,https://pixverse.ai,"Generate videos from text and images using AI","video,generative,text-to-video",true,true
+477,Synthesys AI,synthesys-ai,AI Video & Voice,Freemium,https://synthesys.io,"Create AI voices, avatars and videos","video,voice,avatar",true,true
+478,Elai.io,elai-io,AI Avatar Video,Freemium,https://elai.io,"Generate training and business videos with AI avatars","avatar,video,education",true,true
+479,Colossyan AI,colossyan-ai,AI Avatar Video,Freemium,https://www.colossyan.com,"AI presenter and video creation platform","avatar,video,training",true,true
+480,Hour One AI,hour-one-ai,AI Avatar Video,Freemium,https://hourone.ai,"Create realistic AI human presenter videos","avatar,video,virtual-human",true,true
+
+481,Kapwing AI,kapwing-ai,AI Video Editor,Freemium,https://www.kapwing.com,"AI-powered online video editing platform","video,editing,subtitles",true,true
+482,Descript Overdub,descript-overdub,AI Voice Cloning,Freemium,https://www.descript.com/overdub,"AI voice cloning technology for audio production","voice,cloning,audio",true,true
+483,Filmora AI,filmora-ai,AI Video Editor,Freemium,https://filmora.wondershare.com,"Video editing with AI effects and automation","video,editing,creator",true,true
+484,Adobe Premiere Pro AI,adobe-premiere-pro-ai,AI Video Editing,Paid,https://www.adobe.com/products/premiere.html,"Adobe video editing tools powered by AI features","video,adobe,editing",true,true
+485,Topaz Video AI,topaz-video-ai,AI Video Enhancement,Paid,https://www.topazlabs.com/topaz-video-ai,"AI video upscaling, stabilization and enhancement","video,upscaling,restoration",true,true
+
+486,Runway Gen-3,runway-gen-3,AI Video Model,Paid,https://runwayml.com,"Advanced generative video model by Runway","video,generative,model",true,true
+487,Kling AI,kling-ai,AI Video Generator,Freemium,https://klingai.com,"AI text-to-video model for realistic videos","video,text-to-video,generative",true,true
+488,Hailuo AI,hailuo-ai,AI Video Generator,Freemium,https://hailuoai.video,"AI video generation and creative video tools","video,generation,creative",true,true
+489,Vidu AI,vidu-ai,AI Video Generator,Freemium,https://www.vidu.studio,"AI cinematic video creation platform","video,movie,generative",true,true
+490,Haiper AI,haiper-ai,AI Video Generator,Freemium,https://haiper.ai,"AI video creation from text, images and animations","video,animation,generative",true,true
+
+491,Arc Browser AI,arc-browser-ai,AI Browser Assistant,Freemium,https://arc.net,"Browser with integrated AI search and productivity tools","browser,search,assistant",true,true
+492,Opera Aria,opera-aria,AI Browser Assistant,Free,https://www.opera.com/aria,"AI assistant integrated into Opera browser","browser,chat,assistant",true,true
+493,Brave Leo,brave-leo,AI Browser Assistant,Freemium,https://brave.com/leo,"Privacy-focused AI assistant inside Brave browser","browser,privacy,chat",true,true
+494,Perplexity Spaces,perplexity-spaces,AI Research Workspace,Freemium,https://www.perplexity.ai,"Collaborative AI research and knowledge organization","research,workspace,documents",true,true
+495,NotebookLM Plus,notebooklm-plus,AI Research Assistant,Paid,https://notebooklm.google,"Premium AI research and document understanding assistant","research,notes,documents",true,true
+
+496,Gamma AI Docs,gamma-ai-docs,AI Document Generator,Freemium,https://gamma.app,"Create AI-powered documents and presentations","documents,slides,writing",true,true
+497,Humata AI,humata-ai,AI PDF Assistant,Freemium,https://www.humata.ai,"Chat with PDFs and analyze documents using AI","pdf,documents,chat",true,true
+498,ChatPDF,chatpdf,AI PDF Assistant,Freemium,https://www.chatpdf.com,"Ask questions and extract insights from PDF files","pdf,documents,research",true,true
+499,AskYourPDF,askyourpdf,AI PDF Assistant,Freemium,https://askyourpdf.com,"AI document chat and PDF analysis platform","pdf,chat,knowledge",true,true
+500,Documind,documind,AI Document Assistant,Freemium,https://documind.chat,"Create AI chatbots from PDF documents","pdf,chatbot,documents",true,true

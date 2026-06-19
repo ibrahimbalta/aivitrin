@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+251,Shopify Magic,shopify-magic,AI Ecommerce,Freemium,https://www.shopify.com/magic,"AI tools for product descriptions, emails and online store management","ecommerce,marketing,content",true,true
+252,Shopify Sidekick,shopify-sidekick,AI Ecommerce Assistant,Freemium,https://www.shopify.com/sidekick,"AI assistant for Shopify merchants and store optimization","ecommerce,assistant,sales",true,true
+253,Adobe Sensei,adobe-sensei,AI Marketing Platform,Paid,https://business.adobe.com/products/sensei.html,"AI technology powering Adobe personalization and marketing solutions","marketing,analytics,enterprise",true,true
+254,Persado,persado,AI Marketing Copy,Paid,https://www.persado.com,"AI-generated marketing language and messaging optimization","marketing,copywriting,conversion",true,true
+255,Phrasee,phrasee,AI Marketing,Enterprise,https://phrasee.co,"AI-powered brand language and marketing content optimization","marketing,email,enterprise",true,true
+
+256,Albert AI,albert-ai,AI Advertising,Paid,https://albert.ai,"Autonomous AI platform for digital advertising campaigns","ads,marketing,automation",true,true
+257,Pattern89,pattern89,AI Advertising Analytics,Paid,https://pattern89.com,"AI creative intelligence and advertising performance analytics","ads,analytics,optimization",true,false
+258,Crayon,crayon,AI Competitive Intelligence,Freemium,https://www.crayon.co,"AI-driven market and competitor intelligence platform","market,research,business",true,true
+259,People.ai,people-ai,AI Sales Intelligence,Paid,https://people.ai,"AI revenue intelligence and sales analytics platform","sales,crm,analytics",true,true
+260,Salesloft AI,salesloft-ai,AI Sales Assistant,Paid,https://www.salesloft.com,"AI-powered sales engagement and automation platform","sales,email,crm",true,true
+
+261,Outreach AI,outreach-ai,AI Sales Platform,Paid,https://www.outreach.io,"AI sales execution and customer engagement platform","sales,automation,crm",true,true
+262,Apollo AI,apollo-ai,AI Sales Intelligence,Freemium,https://www.apollo.io,"AI-powered prospecting, lead discovery and sales automation","sales,leads,b2b",true,true
+263,Lavender,lavender,AI Email Assistant,Freemium,https://www.lavender.ai,"AI email coaching and sales communication assistant","email,sales,writing",true,true
+264,Regie.ai,regie-ai,AI Sales Automation,Paid,https://www.regie.ai,"AI platform for sales outreach and content generation","sales,automation,content",true,true
+265,Clay,clay,AI Sales Intelligence,Freemium,https://www.clay.com,"AI-powered prospecting and data enrichment platform","sales,data,automation",true,true
+
+266,Zoho Zia,zoho-zia,AI CRM Assistant,Freemium,https://www.zoho.com/zia,"AI assistant integrated into Zoho business applications","crm,assistant,business",true,true
+267,Pipedrive AI,pipedrive-ai,AI CRM,Freemium,https://www.pipedrive.com,"AI-powered sales CRM and deal management","crm,sales,automation",true,true
+268,Salesforce Agentforce,salesforce-agentforce,AI Sales Agent,Paid,https://www.salesforce.com/agentforce,"AI agents for sales, service and business operations","agents,crm,enterprise",true,true
+269,Nutshell AI,nutshell-ai,AI CRM Assistant,Freemium,https://www.nutshell.com,"AI CRM features for sales teams and customer management","crm,sales,productivity",true,true
+270,Freshsales Freddy AI,freddy-ai,AI CRM Assistant,Freemium,https://www.freshworks.com/freshsales-crm,"AI assistant for sales insights and automation","crm,sales,analytics",true,true
+
+271,Drift AI,drift-ai,AI Conversational Marketing,Paid,https://www.drift.com,"AI chatbots for lead generation and customer engagement","chatbot,marketing,sales",true,true
+272,Qualified,qualified,AI Sales Chatbot,Paid,https://www.qualified.com,"AI-powered pipeline generation and website conversations","sales,chatbot,b2b",true,true
+273,Tars,tars,AI Chatbot Builder,Freemium,https://hellotars.com,"No-code chatbot and conversational AI builder","chatbot,nocode,automation",true,true
+274,Landbot,landbot,AI Chatbot Builder,Freemium,https://landbot.io,"Create conversational experiences and AI chatbots without coding","chatbot,website,automation",true,true
+275,Botpress,botpress,AI Chatbot Platform,Freemium,https://botpress.com,"Build AI agents and enterprise chatbots","agents,chatbot,developer",true,true
+
+276,Paradox,paradox,AI Recruiting Assistant,Paid,https://www.paradox.ai,"AI assistant for recruiting and candidate communication","hr,recruitment,automation",true,true
+277,Eightfold AI,eightfold-ai,AI Talent Intelligence,Paid,https://eightfold.ai,"AI platform for hiring, talent management and workforce planning","hr,talent,enterprise",true,true
+278,HireVue,hirevue,AI Hiring Platform,Paid,https://www.hirevue.com,"AI-powered interviews, assessments and recruitment workflows","hr,interviews,recruitment",true,true
+279,SeekOut,seekout,AI Recruiting Tool,Paid,https://www.seekout.com,"AI talent sourcing and candidate search platform","hr,sourcing,recruitment",true,true
+280,Fetcher,fetcher,AI Recruiting Assistant,Freemium,https://fetcher.ai,"AI-based candidate sourcing and outreach automation","hr,recruitment,automation",true,true
+
+281,Textio,textio,AI HR Writing,Paid,https://textio.com,"AI writing assistant for job descriptions and HR communication","hr,writing,recruitment",true,true
+282,Leena AI,leena-ai,AI HR Assistant,Paid,https://leena.ai,"AI virtual assistant for employee support and HR operations","hr,chatbot,enterprise",true,true
+283,Workday AI,workday-ai,AI HR Platform,Paid,https://www.workday.com,"AI-powered human capital and financial management tools","hr,finance,enterprise",true,true
+284,Oracle HCM AI,oracle-hcm-ai,AI HR Platform,Paid,https://www.oracle.com/human-capital-management,"AI features for HR, workforce and talent management","hr,enterprise,management",true,true
+285,Beamery,beamery,AI Talent Platform,Paid,https://beamery.com,"AI-powered talent lifecycle management platform","hr,talent,analytics",true,true
+
+286,Klarna AI Assistant,klarna-ai-assistant,AI Customer Service,Free,https://www.klarna.com,"AI assistant for shopping support and customer interactions","commerce,support,assistant",true,true
+287,Kasisto,kasisto,AI Banking Assistant,Paid,https://kasisto.com,"Conversational AI platform for banks and financial institutions","finance,banking,chatbot",true,true
+288,Upstart,upstart,AI Lending Platform,Paid,https://www.upstart.com,"AI-based lending and credit risk assessment platform","finance,credit,analytics",true,true
+289,Zest AI,zest-ai,AI Finance Analytics,Paid,https://www.zest.ai,"AI models for credit underwriting and risk analysis","finance,risk,ml",true,true
+290,Kensho,kensho,AI Financial Intelligence,Paid,https://kensho.com,"AI analytics and data solutions for financial markets","finance,data,analytics",true,true
+
+291,AlphaSense,alpha-sense,AI Market Intelligence,Paid,https://www.alpha-sense.com,"AI search and market intelligence platform for enterprises","finance,research,search",true,true
+292,BloombergGPT,bloomberg-gpt,AI Financial Model,Paid,https://www.bloomberg.com/company/artificial-intelligence,"Financial large language model developed by Bloomberg","finance,llm,analysis",true,true
+293,FinChat,finchat,AI Investment Research,Freemium,https://finchat.io,"AI-powered stock and company research assistant","finance,stocks,research",true,true
+294,StockGPT,stockgpt,AI Investment Assistant,Freemium,https://www.stockgpt.com,"AI search engine for company filings and financial reports","finance,search,investing",true,true
+295,Tickeron,tickeron,AI Trading Assistant,Freemium,https://tickeron.com,"AI-powered stock analysis and trading signals","finance,trading,analytics",true,true
+
+296,Numerai,numerai,AI Hedge Fund,Free,https://numer.ai,"Crowdsourced AI-driven hedge fund and data science platform","finance,ml,trading",true,true
+297,Trade Ideas,trade-ideas,AI Trading Platform,Paid,https://www.trade-ideas.com,"AI stock scanning and trading opportunity analysis","trading,stocks,analytics",true,true
+298,Danelfin,danelfin,AI Stock Analysis,Freemium,https://danelfin.com,"AI scores and analytics for stock investment decisions","stocks,investment,ai-score",true,true
+299,TrendSpider,trendspider,AI Trading Platform,Paid,https://trendspider.com,"AI-assisted technical analysis and trading automation","trading,charts,automation",true,true
+300,Composer,composer,AI Investing Platform,Freemium,https://www.composer.trade,"AI-powered automated investing strategies","investing,automation,finance",true,true

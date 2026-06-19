@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+101,OpenRouter,openrouter,AI Model API Platform,Freemium,https://openrouter.ai,"Access multiple AI models through a unified API","api,llm,developer",true,true
+102,Together AI,together-ai,AI Model Platform,Freemium,https://together.ai,"Cloud platform for training and running open-source AI models","llm,models,cloud",true,true
+103,Groq,groq,AI Inference Platform,Freemium,https://groq.com,"High-speed AI inference platform for LLM applications","llm,inference,hardware",true,true
+104,Anthropic API,anthropic-api,AI API Platform,Paid,https://anthropic.com/api,"API access to Claude AI models","api,claude,llm",true,true
+105,OpenAI API,openai-api,AI API Platform,Paid,https://platform.openai.com,"API platform for GPT models and AI services","api,gpt,developer",true,true
+
+106,Cohere,cohere,AI Language Model Platform,Freemium,https://cohere.com,"Enterprise AI models for text generation and search","llm,enterprise,nlp",true,true
+107,Mistral AI,mistral-ai,AI Language Model Platform,Freemium,https://mistral.ai,"Open and commercial large language models","llm,models,opensource",true,true
+108,AI21 Labs,ai21-labs,AI Language Model Platform,Freemium,https://www.ai21.com,"Developer platform for advanced language models","llm,writing,api",true,true
+109,Perplexity API,perplexity-api,AI API Platform,Paid,https://www.perplexity.ai,"API access to AI search and answer services","api,search,research",true,true
+110,DeepSeek,deepseek,AI Language Model,Freemium,https://www.deepseek.com,"Advanced AI models for coding and reasoning","llm,coding,reasoning",true,true
+
+111,HuggingChat,huggingchat,AI Chatbot,Free,https://huggingface.co/chat,"Open-source AI chatbot by Hugging Face","chatbot,opensource,llm",true,true
+112,You.com AI,you-com-ai,AI Search Assistant,Freemium,https://you.com,"AI-powered search engine and assistant","search,chat,productivity",true,true
+113,Andi,andi,AI Search Engine,Free,https://andisearch.com,"Conversational AI search assistant","search,chat,answers",true,true
+114,Phind,phind,AI Developer Search,Freemium,https://www.phind.com,"AI search engine built for developers","coding,search,developer",true,true
+115,Elicit,elicit,AI Research Assistant,Freemium,https://elicit.com,"AI assistant for academic research and literature reviews","research,science,analysis",true,true
+
+116,Consensus,consensus,AI Research Assistant,Freemium,https://consensus.app,"Search scientific papers using AI","research,science,search",true,true
+117,Scite,scite,AI Research Tool,Freemium,https://scite.ai,"AI-powered citation and research assistant","research,papers,citations",true,true
+118,Semantic Scholar AI,semantic-scholar-ai,AI Research Tool,Free,https://www.semanticscholar.org,"Academic search engine with AI capabilities","research,papers,science",true,true
+119,Connected Papers,connected-papers,AI Research Visualization,Freemium,https://www.connectedpapers.com,"Visualize relationships between scientific papers","research,visualization,academic",true,true
+120,ResearchRabbit,research-rabbit,AI Research Assistant,Free,https://www.researchrabbit.ai,"Discover and organize academic research using AI","research,papers,discovery",true,true
+
+121,NotebookLM,notebooklm,AI Note Assistant,Free,https://notebooklm.google,"Google AI notebook for documents and research","notes,research,documents",true,true
+122,Mem0,mem0,AI Memory Platform,Freemium,https://mem0.ai,"AI memory layer for personalized assistants and agents","memory,agents,llm",true,true
+123,Glean,glean,AI Enterprise Search,Paid,https://www.glean.com,"Enterprise AI search across company knowledge","enterprise,search,knowledge",true,true
+124,Read AI,read-ai,AI Meeting Assistant,Freemium,https://www.read.ai,"AI meeting summaries and productivity insights","meeting,notes,analytics",true,true
+125,Sana AI,sana-ai,AI Knowledge Assistant,Freemium,https://sana.ai,"AI assistant for learning and company knowledge","learning,knowledge,enterprise",true,true
+
+126,Beautiful.ai,beautiful-ai,AI Presentation,Freemium,https://www.beautiful.ai,"Create professional presentations with AI","presentation,slides,design",true,true
+127,SlidesAI,slidesai,AI Presentation,Freemium,https://www.slidesai.io,"Generate Google Slides presentations from text","presentation,google,slides",true,true
+128,Presentations.ai,presentations-ai,AI Presentation,Freemium,https://www.presentations.ai,"AI-powered business presentation generator","presentation,business,design",true,true
+129,Decktopus,decktopus,AI Presentation,Freemium,https://www.decktopus.com,"AI presentation and slide creation tool","presentation,slides,education",true,true
+130,Pitch,pitch,AI Presentation Software,Freemium,https://pitch.com,"Collaborative presentation software with AI features","presentation,team,design",true,true
+
+131,Descript AI,descript-ai,AI Audio & Video Editor,Freemium,https://www.descript.com,"AI editing tools for podcasts and videos","audio,video,editing",true,true
+132,Auphonic,auphonic,AI Audio Enhancement,Freemium,https://auphonic.com,"Automatic audio cleanup and mastering with AI","audio,podcast,enhancement",true,true
+133,Krisp,krisp,AI Noise Cancellation,Freemium,https://krisp.ai,"Remove background noise from calls using AI","audio,meeting,noise",true,true
+134,Cleanvoice AI,cleanvoice-ai,AI Audio Editor,Freemium,https://cleanvoice.ai,"Remove filler words and improve recordings with AI","audio,editing,podcast",true,true
+135,Adobe Podcast,adobe-podcast,AI Audio Tool,Freemium,https://podcast.adobe.com,"AI-powered podcast recording and enhancement","podcast,voice,editing",true,true
+
+136,Recraft,recraft,AI Image Generator,Freemium,https://www.recraft.ai,"AI design tool for images, icons and illustrations","image,vector,design",true,true
+137,Krea AI,krea-ai,AI Image Generator,Freemium,https://www.krea.ai,"Real-time AI image and video generation platform","image,video,creative",true,true
+138,Scenario,scenario,AI Game Asset Generator,Freemium,https://scenario.com,"Create AI-generated game assets and characters","gaming,image,assets",true,true
+139,BlueWillow,bluewillow,AI Image Generator,Free,https://www.bluewillow.ai,"Free AI image generation platform","image,art,creative",true,true
+140,Mage Space,mage-space,AI Image Generator,Freemium,https://www.mage.space,"Online Stable Diffusion image generation tool","image,stable-diffusion,art",true,true
+
+141,Meshy AI,meshy-ai,AI 3D Generator,Freemium,https://www.meshy.ai,"Generate 3D models and textures using AI","3d,game,design",true,true
+142,Spline AI,spline-ai,AI 3D Design,Freemium,https://spline.design,"Create 3D scenes and objects with AI assistance","3d,design,web",true,true
+143,Kaedim,kaedim,AI 3D Model Generator,Paid,https://www.kaedim3d.com,"Convert images into production-ready 3D models","3d,game,modeling",true,true
+144,Luma Dream Machine,luma-dream-machine,AI Video Generator,Freemium,https://lumalabs.ai/dream-machine,"High-quality AI video generation model","video,generative,text-to-video",true,true
+145,Wonder Dynamics,wonder-dynamics,AI Animation,Freemium,https://wonderdynamics.com,"AI character animation and VFX automation","animation,vfx,film",true,true
+
+146,AgentOps,agentops,AI Agent Monitoring,Freemium,https://agentops.ai,"Monitoring and debugging platform for AI agents","agents,analytics,developer",true,true
+147,LangSmith,langsmith,AI LLM Development,Freemium,https://smith.langchain.com,"Debug, test and monitor LLM applications","llm,testing,developer",true,true
+148,Portkey AI,portkey-ai,AI Gateway,Freemium,https://portkey.ai,"AI gateway for managing multiple LLM APIs","api,llm,developer",true,true
+149,Vercel AI SDK,vercel-ai-sdk,AI Developer SDK,Free,https://sdk.vercel.ai,"Build AI applications using Vercel AI tools","sdk,developer,typescript",true,true
+150,Dify,dify,AI App Builder,Freemium,https://dify.ai,"Open-source platform for building AI applications and agents","app-builder,agents,opensource",true,true

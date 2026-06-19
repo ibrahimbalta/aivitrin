@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2751,OpenAI Robotics AI,openai-robotics-ai,AI Robotics Platform,Paid,https://platform.openai.com,"AI robotics control and automation intelligence system","robotics,automation,ai",true,true
+2752,Google Robotics AI,google-robotics-ai,AI Robotics Platform,Paid,https://ai.google,"Google AI robotics research and control systems","robotics,google,ai",true,true
+2753,Boston Dynamics AI,atlas-ai,AI Robotics System,Paid,https://www.bostondynamics.com,"Advanced AI-powered humanoid and industrial robotics system","robotics,automation,ai",true,true
+2754,Tesla Optimus AI,tesla-optimus-ai,AI Humanoid Robot,Paid,https://www.tesla.com/ai,"Tesla humanoid robot AI control system","robotics,tesla,ai",true,true
+2755,NVIDIA Isaac AI,nvidia-isaac-ai,AI Robotics Platform,Paid,https://developer.nvidia.com/isaac,"AI robotics simulation and development platform","robotics,nvidia,ai",true,true
+
+2756,OpenAI Robot Control AI,openai-robot-control-ai,AI Robotics API,Paid,https://platform.openai.com,"AI robotic motion control and automation API","robotics,control,ai",true,true
+2757,ROS AI Framework,ros-ai-framework,AI Robotics Framework,Free,https://www.ros.org,"Robot Operating System AI integration framework","robotics,opensource,ai",true,true
+2758,DeepMind Robotics AI,deepmind-robotics-ai,AI Robotics Research,Paid,https://deepmind.google,"AI robotics research and autonomous systems","robotics,research,ai",true,true
+2759,OpenAI Embodied AI,openai-embodied-ai,AI Embodied Intelligence,Paid,https://platform.openai.com,"AI embodied intelligence and physical interaction systems","robotics,embodied,ai",true,true
+2760,Amazon Robotics AI,amazon-robotics-ai,AI Warehouse Robotics,Paid,https://www.amazon.science/robotics,"AI warehouse automation and logistics robotics system","robotics,amazon,ai",true,true
+
+2761,OpenAI Automation Robotics,openai-automation-robotics,AI Industrial Automation,Paid,https://platform.openai.com,"AI industrial robotics automation system","robotics,industry,ai",true,true
+2762,ABB Robotics AI,abb-robotics-ai,AI Industrial Robots,Paid,https://new.abb.com/robotics,"AI industrial robotics control system","robotics,industry,ai",true,true
+2763,KUKA AI Robotics,kuka-ai-robotics,AI Manufacturing Robots,Paid,https://www.kuka.com,"AI manufacturing and industrial robotics system","robotics,manufacturing,ai",true,true
+2764,Fanuc AI Robotics,fanuc-ai-robotics,AI Factory Automation,Paid,https://www.fanuc.eu,"AI factory automation robotics system","robotics,factory,ai",true,true
+2765,Siemens Industrial AI,siemens-industrial-ai,AI Industrial Automation,Paid,https://www.siemens.com,"AI industrial automation and control systems","robotics,siemens,ai",true,true
+
+2766,OpenAI Drone AI,openai-drone-ai,AI Drone Control,Paid,https://platform.openai.com,"AI autonomous drone navigation and control system","drones,ai,automation",true,true
+2767,DJI AI,dji-ai,AI Drone Platform,Paid,https://www.dji.com,"AI-powered drone navigation and imaging system","drones,ai,imaging",true,true
+2768,Skydio AI,skydio-ai,AI Autonomous Drone,Paid,https://www.skydio.com,"AI autonomous drone flight and tracking system","drones,autonomy,ai",true,true
+2769,Parrot AI Drone,parrot-ai-drone,AI Drone System,Paid,https://www.parrot.com,"AI drone imaging and automation system","drones,ai,imaging",true,true
+2770,Auterion AI,auterion-ai,AI Drone OS,Paid,https://auterion.com,"AI drone operating system for autonomous fleets","drones,os,ai",true,true
+
+2771,OpenAI Autonomous Vehicles AI,openai-autonomous-vehicles-ai,AI Self-Driving Platform,Paid,https://platform.openai.com,"AI autonomous vehicle control system","autonomous,vehicles,ai",true,true
+2772,Tesla Full Self Driving AI,tesla-fsd-ai,AI Driving System,Paid,https://www.tesla.com/autopilot,"AI self-driving car system by Tesla","autonomous,tesla,ai",true,true
+2773,Waymo AI,waymo-ai,AI Self-Driving System,Paid,https://waymo.com,"Google AI autonomous driving platform","autonomous,google,ai",true,true
+2774,Cruise AI,cruise-ai,AI Robotaxi System,Paid,https://www.getcruise.com,"AI autonomous robotaxi platform","autonomous,transport,ai",true,true
+2775,Mobileye AI,mobileye-ai,AI Driving Assistance,Paid,https://www.mobileye.com,"AI driver assistance and autonomous driving system","autonomous,driving,ai",true,true
+
+2776,OpenAI Logistics AI,openai-logistics-ai,AI Logistics Platform,Paid,https://platform.openai.com,"AI logistics optimization and supply chain automation","logistics,supply-chain,ai",true,true
+2777,Flexport AI,flexport-ai,AI Logistics Platform,Paid,https://www.flexport.com,"AI freight and logistics optimization system","logistics,shipping,ai",true,true
+2778,Project44 AI,project44-ai,AI Supply Chain Visibility,Paid,https://www.project44.com,"AI supply chain tracking and analytics platform","logistics,tracking,ai",true,true
+2779,FourKites AI,fourkites-ai,AI Logistics Tracking,Paid,https://www.fourkites.com,"AI real-time supply chain visibility system","logistics,supply-chain,ai",true,true
+2780,ShipBob AI,shipbob-ai,AI Fulfillment Platform,Paid,https://www.shipbob.com,"AI warehouse and fulfillment automation system","logistics,ecommerce,ai",true,true
+
+2781,OpenAI Smart City AI,openai-smart-city-ai,AI Urban Systems,Paid,https://platform.openai.com,"AI smart city planning and infrastructure system","smart-city,urban,ai",true,true
+2782,Siemens Smart City AI,siemens-smart-city-ai,AI Urban Infrastructure,Paid,https://www.siemens.com,"AI smart city infrastructure management system","smart-city,siemens,ai",true,true
+2783,IBM Smart City AI,ibm-smart-city-ai,AI Urban Analytics,Paid,https://www.ibm.com/smart-cities,"AI urban analytics and city management system","smart-city,ibm,ai",true,true
+2784,Cisco Smart City AI,cisco-smart-city-ai,AI Urban Network,Paid,https://www.cisco.com,"AI smart city networking and IoT system","smart-city,iot,ai",true,true
+2785,Hitachi Smart City AI,hitachi-smart-city-ai,AI Urban Systems,Paid,https://www.hitachi.com,"AI infrastructure and smart city platform","smart-city,infra,ai",true,true
+
+2786,OpenAI IoT AI,openai-iot-ai,AI IoT Platform,Paid,https://platform.openai.com,"AI IoT device management and automation system","iot,automation,ai",true,true
+2787,AWS IoT AI,aws-iot-ai,AI IoT Platform,Paid,https://aws.amazon.com/iot,"AWS AI IoT device management system","iot,aws,ai",true,true
+2788,Azure IoT AI,azure-iot-ai,AI IoT Platform,Paid,https://azure.microsoft.com/iot,"Microsoft AI IoT cloud platform","iot,azure,ai",true,true
+2789,Google IoT AI,google-iot-ai,AI IoT Platform,Paid,https://cloud.google.com/iot,"Google AI IoT analytics and management system","iot,google,ai",true,true
+2790,Particle IoT AI,particle-iot-ai,AI IoT Platform,Paid,https://www.particle.io,"AI IoT device connectivity and management platform","iot,devices,ai",true,true
+
+2791,OpenAI Edge AI,openai-edge-ai,AI Edge Computing,Paid,https://platform.openai.com,"AI edge computing and distributed intelligence system","edge,computing,ai",true,true
+2792,NVIDIA Edge AI,nvidia-edge-ai,AI Edge Platform,Paid,https://www.nvidia.com/en-us/edge-computing,"AI edge computing and inference platform","edge,nvidia,ai",true,true
+2793,Intel Edge AI,intel-edge-ai,AI Edge System,Paid,https://www.intel.com/edge-ai,"AI edge computing and hardware acceleration system","edge,intel,ai",true,true
+2794,Qualcomm Edge AI,qualcomm-edge-ai,AI Mobile Edge,Paid,https://www.qualcomm.com,"AI edge computing for mobile and IoT devices","edge,mobile,ai",true,true
+2795,Edge Impulse AI,edge-impulse-ai,AI Edge ML Platform,Paid,https://www.edgeimpulse.com,"AI machine learning for edge devices","edge,ml,ai",true,true
+
+2796,OpenAI Spatial AI,openai-spatial-ai,AI Spatial Computing,Paid,https://platform.openai.com,"AI spatial computing and 3D intelligence system","spatial,3d,ai",true,true
+2797,Niantic Spatial AI,niantic-spatial-ai,AI AR Mapping,Paid,https://www.nianticlabs.com,"AI spatial mapping and augmented reality system","ar,spatial,ai",true,true
+2798,Magic Leap AI,magic-leap-ai,AI AR Platform,Paid,https://www.magicleap.com,"AI augmented reality spatial computing system","ar,spatial,ai",true,true
+2799,Meta Horizon AI,meta-horizon-ai,AI Metaverse Platform,Free,https://www.meta.com/horizon-worlds,"AI-powered metaverse and virtual environment system","metaverse,ar,ai",true,true
+2800,Microsoft Mesh AI,microsoft-mesh-ai,AI Mixed Reality Platform,Paid,https://www.microsoft.com/en-us/mesh,"AI mixed reality collaboration platform","ar,vr,ai",true,true

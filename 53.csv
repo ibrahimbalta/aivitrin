@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2601,OpenAI Finance AI,openai-finance-ai,AI Finance Platform,Paid,https://platform.openai.com,"AI-powered financial analysis and decision support system","finance,ai,analytics",true,true
+2602,Google Finance AI,google-finance-ai,AI Finance Platform,Paid,https://ai.google,"Google AI financial forecasting and analytics system","finance,google,ai",true,true
+2603,Microsoft Finance Copilot,microsoft-finance-copilot,AI Finance Assistant,Paid,https://www.microsoft.com,"AI financial planning and enterprise finance assistant","finance,microsoft,ai",true,true
+2604,Meta Finance AI,meta-finance-ai,AI Finance System,Free,https://ai.meta.com,"Meta AI financial insights and analytics system","finance,meta,ai",true,true
+2605,Mistral Finance API,mistral-finance-api,AI Finance API,Paid,https://mistral.ai,"AI financial data processing and analysis API","finance,llm,api",true,true
+
+2606,Bloomberg AI,bloomberg-ai,AI Financial Analytics,Paid,https://www.bloomberg.com,"AI-powered financial data and market intelligence system","finance,market,ai",true,true
+2607,Reuters AI Finance,reuters-ai-finance,AI Market Intelligence,Paid,https://www.reuters.com,"AI financial news and market analysis system","finance,news,ai",true,true
+2608,Yahoo Finance AI,yahoo-finance-ai,AI Stock Analytics,Free,https://finance.yahoo.com,"AI-powered stock and market analysis tool","finance,stocks,ai",true,true
+2609,TradingView AI,tradingview-ai,AI Trading Platform,Freemium,https://www.tradingview.com,"AI technical analysis and trading insights platform","finance,trading,ai",true,true
+2610,MetaTrader AI,metatrader-ai,AI Trading System,Freemium,https://www.metatrader5.com,"AI-powered forex and trading automation system","finance,trading,ai",true,true
+
+2611,OpenAI Trading Bot AI,openai-trading-bot-ai,AI Trading Bot,Paid,https://platform.openai.com,"AI algorithmic trading and portfolio management system","finance,trading,ai",true,true
+2612,Alpaca AI Trading,alpaca-ai-trading,AI Stock Trading API,Freemium,https://alpaca.markets,"AI-driven stock trading API platform","finance,trading,ai",true,true
+2613,QuantConnect AI,quantconnect-ai,AI Quant Trading,Paid,https://www.quantconnect.com,"AI quantitative trading and algorithm development platform","finance,quant,ai",true,true
+2614,Quantopian AI,quantopian-ai,AI Algorithmic Trading,Free,https://www.quantopian.com,"AI algorithmic trading research platform","finance,quant,ai",true,true
+2615,Robinhood AI,robinhood-ai,AI Investing Platform,Free,https://robinhood.com,"AI-assisted investing and trading platform","finance,investing,ai",true,true
+
+2616,OpenAI Risk AI,openai-risk-ai,AI Risk Analysis,Paid,https://platform.openai.com,"AI financial risk analysis and forecasting system","finance,risk,ai",true,true
+2617,BlackRock Aladdin AI,blackrock-aladdin-ai,AI Investment Platform,Paid,https://www.blackrock.com/aladdin,"AI portfolio risk and investment management system","finance,investment,ai",true,true
+2618,Goldman Sachs AI,gs-ai,AI Banking Platform,Paid,https://www.goldmansachs.com,"AI investment banking and market analytics system","finance,banking,ai",true,true
+2619,JPMorgan AI,jpmorgan-ai,AI Banking System,Paid,https://www.jpmorgan.com,"AI banking and financial intelligence platform","finance,banking,ai",true,true
+2620,Citi AI Analytics,citi-ai-analytics,AI Banking Analytics,Paid,https://www.citi.com,"AI financial analytics and banking intelligence system","finance,banking,ai",true,true
+
+2621,OpenAI Crypto AI,openai-crypto-ai,AI Crypto Analytics,Paid,https://platform.openai.com,"AI cryptocurrency analysis and forecasting system","crypto,finance,ai",true,true
+2622,Coinbase AI,coinbase-ai,AI Crypto Platform,Freemium,https://www.coinbase.com,"AI crypto trading and portfolio system","crypto,exchange,ai",true,true
+2623,Binance AI,binance-ai,AI Crypto Exchange,Paid,https://www.binance.com,"AI crypto trading and market analytics system","crypto,exchange,ai",true,true
+2624,Kraken AI,kraken-ai,AI Crypto Trading,Paid,https://www.kraken.com,"AI cryptocurrency trading platform","crypto,trading,ai",true,true
+2625,Crypto.com AI,crypto-com-ai,AI Crypto Platform,Paid,https://crypto.com,"AI crypto investment and payment system","crypto,finance,ai",true,true
+
+2626,OpenAI DeFi AI,openai-defi-ai,AI DeFi Analytics,Paid,https://platform.openai.com,"AI decentralized finance analytics system","defi,crypto,ai",true,true
+2627,Aave AI,aave-ai,AI DeFi Protocol,Free,https://aave.com,"AI-powered decentralized lending platform","defi,crypto,ai",true,true
+2628,Uniswap AI,uniswap-ai,AI DeFi Exchange,Free,https://uniswap.org,"AI decentralized crypto exchange system","defi,crypto,ai",true,true
+2629,Compound AI,compound-ai,AI DeFi Lending,Free,https://compound.finance,"AI algorithmic lending protocol","defi,crypto,ai",true,true
+2630,MakerDAO AI,makerdao-ai,AI Stablecoin System,Free,https://makerdao.com,"AI stablecoin and decentralized governance system","defi,crypto,ai",true,true
+
+2631,OpenAI Accounting AI,openai-accounting-ai,AI Accounting Platform,Paid,https://platform.openai.com,"AI financial accounting automation system","accounting,finance,ai",true,true
+2632,QuickBooks AI,quickbooks-ai,AI Accounting Software,Paid,https://quickbooks.intuit.com,"AI bookkeeping and accounting automation tool","accounting,finance,ai",true,true
+2633,Xero AI,xero-ai,AI Accounting Platform,Paid,https://www.xero.com,"AI small business accounting system","accounting,finance,ai",true,true
+2634,Sage AI,sage-ai,AI Accounting Software,Paid,https://www.sage.com,"AI enterprise accounting and finance platform","accounting,enterprise,ai",true,true
+2635,Zoho Books AI,zoho-books-ai,AI Accounting Tool,Paid,https://www.zoho.com/books,"AI bookkeeping and invoice automation system","accounting,finance,ai",true,true
+
+2636,OpenAI Invoice AI,openai-invoice-ai,AI Billing System,Paid,https://platform.openai.com,"AI invoice generation and billing automation system","billing,finance,ai",true,true
+2637,FreshBooks AI,freshbooks-ai,AI Invoicing Software,Paid,https://www.freshbooks.com,"AI invoicing and expense tracking system","billing,finance,ai",true,true
+2638,Wave AI Accounting,wave-ai-accounting,AI Accounting Tool,Free,https://www.waveapps.com,"AI free accounting and bookkeeping platform","accounting,finance,ai",true,true
+2639,Expensify AI,expensify-ai,AI Expense Tracking,Paid,https://www.expensify.com,"AI expense management and reporting system","finance,expenses,ai",true,true
+2640,Receipt Bank AI,dext-ai,AI Receipt Processing,Paid,https://dext.com,"AI receipt scanning and bookkeeping automation system","finance,receipts,ai",true,true
+
+2641,OpenAI Tax AI,openai-tax-ai,AI Tax Assistant,Paid,https://platform.openai.com,"AI tax calculation and compliance system","tax,finance,ai",true,true
+2642,TurboTax AI,turbotax-ai,AI Tax Software,Paid,https://turbotax.intuit.com,"AI tax filing and optimization system","tax,finance,ai",true,true
+2643,H&R Block AI,hrblock-ai,AI Tax Assistant,Paid,https://www.hrblock.com,"AI tax preparation and filing platform","tax,finance,ai",true,true
+2644,TaxJar AI,taxjar-ai,AI Tax Automation,Paid,https://www.taxjar.com,"AI sales tax automation system","tax,ecommerce,ai",true,true
+2645,Vertex AI Tax,vertex-ai-tax,AI Enterprise Tax,Paid,https://www.vertexinc.com,"AI enterprise tax compliance system","tax,enterprise,ai",true,true
+
+2646,OpenAI Payroll AI,openai-payroll-ai,AI Payroll System,Paid,https://platform.openai.com,"AI payroll automation and salary management system","payroll,finance,ai",true,true
+2647,Gusto AI,gusto-ai,AI Payroll Platform,Paid,https://gusto.com,"AI payroll and HR management system","payroll,hr,ai",true,true
+2648,ADP AI,adp-ai,AI HR Payroll,Paid,https://www.adp.com,"AI enterprise payroll and HR system","payroll,hr,ai",true,true
+2649,Paychex AI,paychex-ai,AI Payroll Platform,Paid,https://www.paychex.com,"AI payroll and workforce management system","payroll,hr,ai",true,true
+2650,Remote AI Payroll,remote-ai-payroll,AI Global Payroll,Paid,https://remote.com,"AI global payroll and contractor management system","payroll,finance,ai",true,true

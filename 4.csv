@@ -1,0 +1,62 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+151,Bolt.new,bolt-new,AI App Builder,Freemium,https://bolt.new,"Build full-stack applications using AI prompts","coding,app-builder,no-code",true,true
+152,v0,v0,AI UI Generator,Freemium,https://v0.dev,"Generate React interfaces and components from prompts","ui,react,frontend",true,true
+153,Loveable,loveable,AI App Builder,Freemium,https://lovable.dev,"Create complete web applications using natural language","app-builder,full-stack,coding",true,true
+154,Builder.io AI,builder-io-ai,AI Website Builder,Freemium,https://builder.io,"AI-powered visual development platform","website,design,no-code",true,true
+155,TeleportHQ,teleporthq,AI Web Builder,Freemium,https://teleporthq.io,"Generate websites and UI components with AI","website,frontend,design",true,true
+
+156,Blackbox AI,blackbox-ai,AI Coding Assistant,Freemium,https://www.blackbox.ai,"AI assistant for coding and software development","coding,developer,code-search",true,true
+157,Aider,aider,AI Coding Assistant,Free,https://aider.chat,"Open-source AI pair programming tool for terminal","coding,opensource,terminal",true,true
+158,Amazon Q,amazon-q,AI Coding Assistant,Freemium,https://aws.amazon.com/q,"AI assistant for AWS and software development","aws,coding,cloud",true,true
+159,Qodo,qodo,AI Code Quality,Freemium,https://www.qodo.ai,"AI tools for code review, testing and quality","coding,testing,review",true,true
+160,Sweep AI,sweep-ai,AI Coding Agent,Freemium,https://sweep.dev,"AI software engineer that handles GitHub issues","github,agent,coding",true,true
+
+161,TabbyML,tabbyml,AI Code Completion,Free,https://tabbyml.com,"Open-source self-hosted coding assistant","coding,opensource,developer",true,true
+162,CodeGPT,codegpt,AI Coding Assistant,Freemium,https://codegpt.co,"AI assistant for IDEs and developers","coding,ide,assistant",true,true
+163,AskCodi,askcodi,AI Coding Assistant,Freemium,https://www.askcodi.com,"Generate and improve source code with AI","coding,developer,generation",true,true
+164,Cody AI,cody-ai,AI Business Assistant,Freemium,https://meetcody.ai,"AI assistant trained on company knowledge","business,knowledge,chatbot",true,true
+165,Continue.dev,continue-dev,AI Coding Assistant,Free,https://continue.dev,"Open-source AI assistant for VS Code and JetBrains","coding,ide,opensource",true,true
+
+166,Adey,adey,AI Productivity,Freemium,https://adey.com,"AI workflow and productivity assistant","productivity,automation,assistant",false,false
+167,Motion,motion,AI Productivity,Paid,https://www.usemotion.com,"AI calendar and task scheduling assistant","calendar,tasks,productivity",true,true
+168,Reclaim AI,reclaim-ai,AI Calendar Assistant,Freemium,https://reclaim.ai,"Automatic AI scheduling and time management"
+id,name,slug,category,pricing,website,description,tags,featured,verified
+168,Reclaim AI,reclaim-ai,AI Calendar Assistant,Freemium,https://reclaim.ai,"Automatic AI scheduling and time management assistant","calendar,scheduling,productivity",true,true
+169,Clockwise,clockwise,AI Calendar Assistant,Freemium,https://www.getclockwise.com,"AI calendar optimization and meeting scheduling tool","calendar,meetings,productivity",true,true
+170,Magical,magical,AI Productivity,Freemium,https://www.getmagical.com,"AI autofill and workflow automation assistant","automation,workflow,text",true,true
+171,Bardeen,bardeen,AI Automation,Freemium,https://www.bardeen.ai,"AI browser automation and workflow assistant","automation,browser,no-code",true,true
+172,Zapier Central,zapier-central,AI Agent,Freemium,https://zapier.com/ai,"AI agents for business workflows and automation","agents,workflow,business",true,true
+
+173,ClickUp AI,clickup-ai,AI Productivity,Freemium,https://clickup.com/ai,"AI assistant for project and task management","project,team,productivity",true,true
+174,Asana AI,asana-ai,AI Productivity,Freemium,https://asana.com/ai,"AI features for project management and teamwork","project,management,team",true,true
+175,Monday AI,monday-ai,AI Productivity,Freemium,https://monday.com/ai,"AI-powered work management and automation platform","work,automation,team",true,true
+176,Todoist AI,todoist-ai,AI Task Management,Freemium,https://todoist.com,"AI-assisted task organization and productivity","tasks,productivity,planning",true,true
+177,Taskade AI,taskade-ai,AI Productivity,Freemium,https://www.taskade.com,"AI agents, notes and collaboration workspace","notes,agents,team",true,true
+
+178,Harvey AI,harvey-ai,AI Legal Assistant,Paid,https://www.harvey.ai,"AI assistant for lawyers and legal professionals","legal,documents,law",true,true
+179,DoNotPay,donotpay,AI Legal Assistant,Paid,https://donotpay.com,"AI-based legal help and consumer assistance platform","legal,consumer,documents",true,true
+180,Spellbook,spellbook,AI Legal Assistant,Paid,https://www.spellbook.legal,"AI contract drafting and legal review assistant","contracts,law,documents",true,true
+181,Ironclad AI,ironclad-ai,AI Contract Management,Paid,https://ironcladapp.com,"AI contract lifecycle management platform","contracts,enterprise,legal",true,true
+182,Lawgeex,lawgeex,AI Legal Review,Paid,https://www.lawgeex.com,"AI contract analysis and legal review platform","legal,contracts,review",true,true
+
+183,Salesforce Einstein,salesforce-einstein,AI CRM,Paid,https://www.salesforce.com/products/einstein,"AI-powered CRM insights and automation","crm,sales,enterprise",true,true
+184,HubSpot AI,hubspot-ai,AI Marketing,Freemium,https://www.hubspot.com/artificial-intelligence,"AI tools for marketing, sales and customer service","marketing,crm,sales",true,true
+185,Drift,drift,AI Sales Assistant,Paid,https://www.drift.com,"Conversational AI platform for sales and customer engagement","sales,chatbot,marketing",true,true
+186,Gong,gong,AI Sales Intelligence,Paid,https://www.gong.io,"AI analysis of sales conversations and revenue insights","sales,analytics,crm",true,true
+187,Clari,clari,AI Revenue Platform,Paid,https://www.clari.com,"AI forecasting and revenue operations platform","sales,forecasting,analytics",true,true
+
+188,Intercom Fin,intercom-fin,AI Customer Support,Paid,https://www.intercom.com/fin,"AI customer support agent for businesses","support,chatbot,service",true,true
+189,Zendesk AI,zendesk-ai,AI Customer Support,Paid,https://www.zendesk.com/ai,"AI customer service automation tools","support,helpdesk,automation",true,true
+190,Freshdesk AI,freshdesk-ai,AI Customer Support,Freemium,https://www.freshworks.com/freshdesk,"AI-powered help desk and support platform","support,tickets,service",true,true
+191,Tidio AI,tidio-ai,AI Chatbot,Freemium,https://www.tidio.com,"AI chatbot for websites and online stores","chatbot,ecommerce,support",true,true
+192,Forethought,forethought,AI Support Automation,Paid,https://forethought.ai,"AI automation for customer support teams","support,automation,enterprise",true,true
+
+193,AdCreative.ai,adcreative-ai,AI Advertising,Freemium,https://www.adcreative.ai,"AI-generated advertising creatives and banners","ads,marketing,design",true,true
+194,Ocoya,ocoya,AI Social Media,Freemium,https://www.ocoya.com,"AI social media content creation and scheduling","social,marketing,content",true,true
+195,Predis.ai,predis-ai,AI Social Media,Freemium,https://predis.ai,"AI content generation for social media marketing","social,marketing,posts",true,true
+196,FeedHive,feedhive,AI Social Media,Freemium,https://www.feedhive.io,"AI-assisted social media management platform","social,scheduling,marketing",true,true
+197,Hootsuite AI,hootsuite-ai,AI Social Media,Paid,https://www.hootsuite.com,"AI-powered social media management tools","social,analytics,marketing",true,true
+
+198,Surfer AI,surfer-ai,AI SEO,Freemium,https://surferseo.com,"AI content generation and SEO optimization","seo,content,writing",true,true
+199,MarketMuse,marketmuse,AI SEO,Freemium,https://www.marketmuse.com,"AI content strategy and SEO planning platform","seo,content,strategy",true,true
+200,NeuronWriter,neuronwriter,AI SEO,Freemium,https://neuronwriter.com,"AI writing assistant focused on SEO optimization","seo,writing,content",true,true

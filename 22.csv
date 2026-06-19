@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1051,ElevenLabs,elevenlabs,AI Voice Generation,Freemium,https://elevenlabs.io,"Advanced AI voice synthesis and cloning platform","voice,tts,audio",true,true
+1052,PlayHT,playht,AI Text to Speech,Freemium,https://play.ht,"Realistic AI voice generation and TTS platform","voice,tts,audio",true,true
+1053,Murf AI,murf-ai,AI Voice Over,Paid,https://murf.ai,"AI voice generator for videos and presentations","voice,tts,media",true,true
+1054,Lovo AI,lovo-ai,AI Voice Generator,Freemium,https://lovo.ai,"AI voiceover and speech synthesis platform","voice,tts,content",true,true
+1055,WellSaid Labs,wellsaid-labs,AI Voice Studio,Paid,https://wellsaidlabs.com,"Professional AI voice generation for businesses","voice,tts,enterprise",true,true
+
+1056,Resemble AI,resemble-ai,AI Voice Cloning,Paid,https://www.resemble.ai,"AI voice cloning and synthetic speech generation","voice,cloning,ai",true,true
+1057,Speechify,speechify,AI Text Reader,Freemium,https://speechify.com,"AI text-to-speech reader for documents and web","voice,reader,accessibility",true,true
+1058,NaturalReader AI,naturalreader-ai,AI Voice Reader,Freemium,https://www.naturalreaders.com,"AI-powered text to speech reading tool","voice,tts,reading",true,true
+1059,Descript Overdub,descript-overdub,AI Voice Cloning,Freemium,https://www.descript.com/overdub,"Clone and generate realistic voices for editing","voice,editing,audio",true,true
+1060,SpeechGen AI,speechgen-ai,AI Voice Generator,Freemium,https://speechgen.io,"Online AI text-to-speech generator","voice,tts,audio",true,true
+
+1061,Amazon Polly,amazon-polly,AI Speech Service,Paid,https://aws.amazon.com/polly,"AWS neural text-to-speech service","voice,aws,tts",true,true
+1062,Google Cloud TTS,google-cloud-tts,AI Speech API,Paid,https://cloud.google.com/text-to-speech,"Google AI text-to-speech API service","voice,google,tts",true,true
+1063,Microsoft Azure TTS,azure-tts,AI Speech Service,Paid,https://azure.microsoft.com/services/cognitive-services/text-to-speech,"Microsoft neural speech synthesis service","voice,azure,tts",true,true
+1064,IBM Watson TTS,ibm-watson-tts,AI Voice API,Paid,https://www.ibm.com/cloud/text-to-speech,"IBM AI speech synthesis platform","voice,ibm,tts",true,true
+1065,OpenAI Whisper API,whisper-api,AI Speech Recognition,Paid,https://openai.com,"AI speech-to-text transcription model","stt,audio,api",true,true
+
+1066,Deepgram AI,deepgram-ai,AI Speech API,Paid,https://deepgram.com,"AI speech recognition and transcription platform","stt,voice,api",true,true
+1067,AssemblyAI,assemblyai,AI Speech Intelligence,Paid,https://www.assemblyai.com,"AI transcription and audio intelligence API","stt,audio,analysis",true,true
+1068,Rev AI,rev-ai,AI Transcription API,Paid,https://www.rev.ai,"High accuracy speech-to-text API service","stt,transcription,audio",true,true
+1069,Sonix AI,sonix-ai,AI Transcription Tool,Freemium,https://sonix.ai,"Automated AI transcription and subtitles","stt,video,audio",true,true
+1070,Otter AI,otter-ai,AI Meeting Transcription,Freemium,https://otter.ai,"AI meeting transcription and note-taking assistant","meetings,stt,productivity",true,true
+
+1071,Fireflies AI,fireflies-ai,AI Meeting Assistant,Freemium,https://fireflies.ai,"AI meeting recorder and transcription assistant","meetings,notes,ai",true,true
+1072,Fathom AI,fathom-ai,AI Meeting Notes,Freemium,https://fathom.video,"AI meeting summaries and highlights tool","meetings,summary,ai",true,true
+1073,Sembly AI Voice,sembly-ai-voice,AI Meeting Intelligence,Paid,https://www.sembly.ai,"AI meeting transcription and insights platform","meetings,analytics,voice",true,true
+1074,Avoma AI,avoma-ai,AI Meeting Assistant,Paid,https://www.avoma.com,"AI meeting recording, transcription and coaching","meetings,sales,ai",true,true
+1075,Grain AI,grain-ai,AI Meeting Clips,Freemium,https://grain.com,"AI tool for recording and clipping meetings","meetings,video,ai",true,true
+
+1076,Podcastle AI,podcastle-ai,AI Podcast Studio,Freemium,https://podcastle.ai,"AI podcast recording, editing and voice tools","podcast,audio,ai",true,true
+1077,Descript AI Audio,descript-ai-audio,AI Audio Editor,Freemium,https://www.descript.com,"AI audio and video editing platform","audio,editing,ai",true,true
+1078,Adobe Podcast AI,adobe-podcast-ai,AI Audio Enhancement,Freemium,https://podcast.adobe.com,"AI-powered audio enhancement and cleanup","audio,enhancement,podcast",true,true
+1079,Auphonic AI,auphonic-ai,AI Audio Processing,Freemium,https://auphonic.com,"AI audio post-production and leveling tool","audio,processing,podcast",true,true
+1080,Cleanvoice AI,cleanvoice-ai,AI Audio Cleanup,Freemium,https://cleanvoice.ai,"Remove filler words and noise from audio using AI","audio,cleanup,podcast",true,true
+
+1081,Podcastle Voice AI,podcastle-voice-ai,AI Voice Studio,Freemium,https://podcastle.ai,"AI voice generation and podcast production tool","voice,podcast,tts",true,true
+1082,Voicemod AI,voicemod-ai,AI Voice Changer,Freemium,https://www.voicemod.net,"Real-time AI voice changing software","voice,modulation,gaming",true,true
+1083,Voicify AI,voicify-ai,AI Voice Clone,Freemium,https://voicify.ai,"AI voice cloning for music and content creation","voice,cloning,music",true,true
+1084,Uberduck AI,uberduck-ai,AI Voice Synthesis,Freemium,https://uberduck.ai,"AI voice generation and rap voice synthesis tool","voice,tts,creative",true,true
+1085,Respeecher AI,respeecher-ai,AI Voice Cloning,Paid,https://www.respeecher.com,"Professional AI voice cloning for media production","voice,film,ai",true,true
+
+1086,Altered Studio,altered-studio,AI Voice Editing,Paid,https://www.altered.ai,"AI voice morphing and editing platform","voice,editing,audio",true,true
+1087,LOVO Studio,lovo-studio,AI Voice Studio,Freemium,https://lovo.ai,"AI voiceover studio for content creators","voice,tts,studio",true,true
+1088,Speechmatics AI,speechmatics-ai,AI Speech Recognition,Paid,https://www.speechmatics.com,"High accuracy multilingual speech-to-text AI","stt,voice,translation",true,true
+1089,Vosk AI,vosk-ai,AI Offline Speech Recognition,Free,https://alphacephei.com/vosk,"Offline speech recognition toolkit","stt,offline,open-source",true,true
+1090,Kaldi AI,kaldi-ai,AI Speech Toolkit,Free,https://kaldi-asr.org,"Open-source speech recognition toolkit","stt,research,voice",true,true
+
+1091,Coqui TTS,coqui-tts,AI Voice Synthesis,Free,https://coqui.ai,"Open-source neural text-to-speech system","tts,open-source,voice",true,true
+1092,Piper TTS,piper-tts,AI Lightweight TTS,Free,https://github.com/rhasspy/piper,"Fast offline neural text-to-speech engine","tts,offline,voice",true,true
+1093,Tacotron 2,tacotron-2,AI Speech Model,Free,https://github.com/tensorflow/tacotron,"Neural speech synthesis model from Google","tts,research,voice",true,true
+1094,WaveNet AI,wavenet-ai,AI Voice Model,Free,https://deepmind.google/discover/blog/wavenet,"DeepMind neural speech synthesis model","tts,research,voice",true,true
+1095,FastSpeech AI,fastspeech-ai,AI Speech Model,Free,https://arxiv.org/abs/1905.09263,"Fast neural text-to-speech synthesis model","tts,research,voice",true,true
+
+1096,SpeechBrain,speechbrain,AI Speech Toolkit,Free,https://speechbrain.github.io,"Open-source speech processing toolkit","stt,tts,voice",true,true
+1097,NVIDIA Riva,nvidia-riva,AI Speech Platform,Paid,https://developer.nvidia.com/riva,"GPU-accelerated speech AI platform","stt,tts,gpu",true,true
+1098,Picovoice AI,picovoice-ai,AI Voice SDK,Freemium,https://picovoice.ai,"On-device voice AI SDK for developers","voice,edge,ai",true,true
+1099,DeepZen AI,deepzen-ai,AI Voice Production,Paid,https://www.deepzen.io,"AI voice production for media and audiobooks","voice,media,tts",true,true
+1100,SpeechKit AI,speechkit-ai,AI Voice API,Paid,https://www.ispeech.org,"Text-to-speech API for applications","voice,api,tts",true,true

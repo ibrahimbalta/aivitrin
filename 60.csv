@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2951,OpenAI Education Platform AI,openai-education-platform-ai,AI Education Platform,Paid,https://platform.openai.com,"AI-powered full education platform and learning ecosystem","education,ai,platform",true,true
+2952,Google Education Suite AI,google-education-suite-ai,AI Education Platform,Paid,https://edu.google.com,"Google AI-powered education ecosystem and classroom tools","education,google,ai",true,true
+2953,Microsoft Education Cloud AI,microsoft-education-cloud-ai,AI Education Platform,Paid,https://www.microsoft.com/education,"AI cloud-based education and school management system","education,microsoft,ai",true,true
+2954,Meta Education AI,meta-education-ai,AI Learning Platform,Free,https://ai.meta.com,"Meta AI-powered immersive learning and training system","education,meta,ai",true,true
+2955,Mistral Learning AI,mistral-learning-ai,AI Learning API,Paid,https://mistral.ai,"AI learning and tutoring API system","education,llm,ai",true,true
+
+2956,Khan Academy AI,khan-academy-ai,AI Tutor Platform,Free,https://www.khanacademy.org,"AI-powered personalized tutoring system","education,tutor,ai",true,true
+2957,Coursera AI Learning,coursera-ai-learning,AI Learning Platform,Paid,https://www.coursera.org,"AI-guided course recommendations and learning assistant","education,learning,ai",true,true
+2958,Udacity AI Coach,udacity-ai-coach,AI Education Platform,Paid,https://www.udacity.com,"AI career learning and skill development platform","education,career,ai",true,true
+2959,edX AI Tutor,edx-ai-tutor,AI Learning Platform,Paid,https://www.edx.org,"AI online course learning and tutoring system","education,online,ai",true,true
+2960,Skillshare AI Studio,skillshare-ai-studio,AI Creative Learning,Freemium,https://www.skillshare.com,"AI creative learning and content generation platform","education,creative,ai",true,true
+
+2961,OpenAI Exam AI,openai-exam-ai,AI Exam Prep,Paid,https://platform.openai.com,"AI exam preparation and testing system","education,exam,ai",true,true
+2962,Quizlet AI Learning,quizlet-ai-learning,AI Study Tool,Freemium,https://quizlet.com,"AI flashcards and adaptive learning system","education,study,ai",true,true
+2963,Anki AI,anki-ai,AI Memory System,Free,https://apps.ankiweb.net,"AI spaced repetition learning system","education,study,ai",true,true
+2964,Brilliant AI Learning,brilliant-ai-learning,AI STEM Platform,Freemium,https://brilliant.org,"AI-powered interactive STEM learning platform","education,stem,ai",true,true
+2965,Photomath Plus AI,photomath-plus-ai,AI Math Tutor,Freemium,https://photomath.com,"AI math solving and step-by-step explanation system","education,math,ai",true,true
+
+2966,OpenAI Academic AI,openai-academic-ai,AI Research Education,Paid,https://platform.openai.com,"AI academic research and education assistant system","education,research,ai",true,true
+2967,ResearchGate AI,researchgate-ai,AI Academic Network,Free,https://www.researchgate.net,"AI academic research discovery platform","education,research,ai",true,true
+2968,Google Scholar AI,google-scholar-ai,AI Research Search,Free,https://scholar.google.com,"AI academic paper search engine","education,research,google",true,true
+2969,Semantic Scholar AI Search,semantic-scholar-ai-search,AI Research Tool,Free,https://www.semanticscholar.org,"AI academic paper intelligence system","education,research,ai",true,true
+2970,Elicit AI Research,elicit-ai-research,AI Research Assistant,Freemium,https://elicit.org,"AI research paper summarization and analysis system","education,research,ai",true,true
+
+2971,OpenAI LMS Platform AI,openai-lms-platform-ai,AI Learning System,Paid,https://platform.openai.com,"AI learning management system for institutions","education,lms,ai",true,true
+2972,Moodle AI LMS,moodle-ai-lms,AI LMS Platform,Free,https://moodle.org,"AI-enhanced open-source learning management system","education,lms,ai",true,true
+2973,Canvas LMS AI,canvas-lms-ai,AI Education Platform,Paid,https://www.instructure.com/canvas,"AI-powered learning management system","education,lms,ai",true,true
+2974,Blackboard Learn AI,blackboard-learn-ai,AI LMS System,Paid,https://www.blackboard.com,"AI digital learning platform for schools","education,lms,ai",true,true
+2975,D2L Brightspace AI LMS,d2l-brightspace-ai-lms,AI LMS Platform,Paid,https://www.d2l.com,"AI adaptive learning management system","education,lms,ai",true,true
+
+2976,OpenAI Knowledge Learning AI,openai-knowledge-learning-ai,AI Knowledge System,Paid,https://platform.openai.com,"AI structured knowledge learning system","knowledge,education,ai",true,true
+2977,Wikipedia AI Knowledge,wikipedia-ai-knowledge,AI Knowledge Platform,Free,https://www.wikipedia.org,"AI-enhanced knowledge base system","knowledge,ai,search",true,true
+2978,Perplexity AI Learn,perplexity-ai-learn,AI Search Learning,Freemium,https://www.perplexity.ai,"AI research and learning search assistant","education,search,ai",true,true
+2979,You.com AI Learn,you-ai-learn,AI Search Engine,Freemium,https://you.com,"AI-powered learning search engine","education,search,ai",true,true
+2980,Consensus AI Search,consensus-ai-search,AI Research Engine,Freemium,https://consensus.app,"AI academic consensus and paper analysis system","education,research,ai",true,true
+
+2981,OpenAI Productivity Learning AI,openai-productivity-learning-ai,AI Productivity Education,Paid,https://platform.openai.com,"AI productivity and learning optimization system","productivity,education,ai",true,true
+2982,Notion AI Learning,notion-ai-learning,AI Knowledge Tool,Freemium,https://www.notion.so,"AI knowledge management and learning workspace","productivity,notes,ai",true,true
+2983,Roam AI Knowledge,roam-ai-knowledge,AI Knowledge Graph,Paid,https://roamresearch.com,"AI-linked knowledge graph system","knowledge,graph,ai",true,true
+2984,Obsidian AI Notes,obsidian-ai-notes,AI Note System,Freemium,https://obsidian.md,"AI personal knowledge and note system","knowledge,notes,ai",true,true
+2985,Tana AI Workspace,tana-ai-workspace,AI Knowledge Platform,Paid,https://tana.inc,"AI structured knowledge workspace system","knowledge,workspace,ai",true,true
+
+2986,OpenAI Student AI,openai-student-ai,AI Student Assistant,Paid,https://platform.openai.com,"AI student learning and study assistant system","education,students,ai",true,true
+2987,Duolingo AI Tutor,duolingo-ai-tutor,AI Language Learning,Freemium,https://www.duolingo.com,"AI language learning and tutoring system","education,language,ai",true,true
+2988,Babbel AI,babbel-ai,AI Language Platform,Paid,https://www.babbel.com,"AI language learning and conversation system","education,language,ai",true,true
+2989,Rosetta Stone AI,rosetta-stone-ai,AI Language Learning,Paid,https://www.rosettastone.com,"AI immersive language learning platform","education,language,ai",true,true
+2990,Memrise AI,memrise-ai,AI Language Learning,Freemium,https://www.memrise.com,"AI vocabulary and language learning system","education,language,ai",true,true
+
+2991,OpenAI Teaching AI,openai-teaching-ai,AI Teaching Assistant,Paid,https://platform.openai.com,"AI teacher assistant and classroom support system","education,teaching,ai",true,true
+2992,ClassPoint AI,classpoint-ai,AI Classroom Tool,Freemium,https://www.classpoint.io,"AI interactive classroom presentation system","education,classroom,ai",true,true
+2993,Nearpod AI Learning,nearpod-ai-learning,AI Classroom Platform,Paid,https://nearpod.com,"AI interactive classroom engagement system","education,classroom,ai",true,true
+2994,Padlet AI Collaboration,padlet-ai-collaboration,AI Collaboration Tool,Freemium,https://padlet.com,"AI collaborative learning and brainstorming platform","education,collaboration,ai",true,true
+2995,Edmodo AI School,edmodo-ai-school,AI School Platform,Free,https://new.edmodo.com,"AI school communication and learning system","education,school,ai",true,true
+
+2996,OpenAI Assessment AI,openai-assessment-ai,AI Assessment Platform,Paid,https://platform.openai.com,"AI student assessment and evaluation system","education,assessment,ai",true,true
+2997,Turnitin AI Detection,turnitin-ai-detection,AI Plagiarism Detection,Paid,https://www.turnitin.com,"AI academic integrity and plagiarism detection system","education,plagiarism,ai",true,true
+2998,Grammarly Edu AI,grammarly-edu-ai,AI Writing Assistant,Freemium,https://www.grammarly.com/edu,"AI writing improvement tool for education","education,writing,ai",true,true
+2999,Writefull Academic AI,writefull-academic-ai,AI Academic Writing,Paid,https://www.writefull.com,"AI academic writing and language correction system","education,academic,ai",true,true
+3000,Pearson Learning AI,pearson-learning-ai,AI Education Platform,Paid,https://www.pearson.com,"AI-powered digital learning ecosystem","education,learning,ai",true,true

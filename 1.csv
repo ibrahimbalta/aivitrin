@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1,ChatGPT,chatgpt,AI Chatbot,Freemium,https://chatgpt.com,"AI assistant for writing, coding, research and productivity","chatbot,gpt,writing,coding",true,true
+2,Claude,claude,AI Chatbot,Freemium,https://claude.ai,"AI assistant focused on reasoning, analysis and document tasks","chatbot,reasoning,documents",true,true
+3,Gemini,gemini,AI Chatbot,Freemium,https://gemini.google.com,"Google AI assistant for work, creativity and research","chatbot,google,assistant",true,true
+4,Microsoft Copilot,microsoft-copilot,AI Chatbot,Freemium,https://copilot.microsoft.com,"AI assistant integrated with Microsoft services","chatbot,office,productivity",true,true
+5,Perplexity,perplexity,AI Search Engine,Freemium,https://www.perplexity.ai,"AI-powered answer and research search engine","search,research,chat",true,true
+
+6,Midjourney,midjourney,AI Image Generator,Paid,https://www.midjourney.com,"AI image generation from text prompts","image,art,design",true,true
+7,Leonardo AI,leonardo-ai,AI Image Generator,Freemium,https://leonardo.ai,"AI image generation platform for creators and designers","image,art,gaming",true,true
+8,Ideogram,ideogram,AI Image Generator,Freemium,https://ideogram.ai,"AI image generation with advanced text rendering","image,text,design",true,true
+9,Adobe Firefly,adobe-firefly,AI Image Generator,Freemium,https://firefly.adobe.com,"Adobe AI tools for generating and editing images","image,adobe,creative",true,true
+10,DALL-E,dall-e,AI Image Generator,Paid,https://openai.com/dall-e,"AI model for creating images from text descriptions","image,generation,art",true,true
+
+11,Runway,runway,AI Video Generator,Freemium,https://runwayml.com,"AI video creation, editing and generative video tools","video,editing,generative",true,true
+12,Pika,pika,AI Video Generator,Freemium,https://pika.art,"Text-to-video and AI animation platform","video,animation,text-to-video",true,true
+13,Synthesia,synthesia,AI Avatar Video,Paid,https://www.synthesia.io,"Create videos using AI avatars and voices","avatar,video,training",true,true
+14,HeyGen,heygen,AI Avatar Video,Freemium,https://www.heygen.com,"AI avatar and talking video generation platform","avatar,video,marketing",true,true
+15,Luma AI,luma-ai,AI Video Generator,Freemium,https://lumalabs.ai,"AI video generation and 3D creation tools","video,3d,creative",true,true
+
+16,ElevenLabs,elevenlabs,AI Voice Generator,Freemium,https://elevenlabs.io,"AI voice synthesis and voice cloning platform","voice,audio,tts",true,true
+17,Murf AI,murf-ai,AI Voice Generator,Freemium,https://murf.ai,"AI voiceovers for presentations and videos","voice,narration,audio",true,true
+18,PlayHT,playht,AI Voice Generator,Freemium,https://play.ht,"AI text-to-speech and voice cloning service","voice,tts,cloning",true,true
+19,Descript,descript,AI Audio Editor,Freemium,https://www.descript.com,"Audio and video editing with AI features","audio,editing,podcast",true,true
+20,Otter.ai,otter-ai,AI Transcription,Freemium,https://otter.ai,"AI meeting notes and speech transcription","meeting,notes,transcription",true,true
+
+21,Jasper,jasper,AI Writing,Paid,https://www.jasper.ai,"AI content writing platform for marketing teams","writing,marketing,copywriting",true,true
+22,Copy.ai,copy-ai,AI Writing,Freemium,https://www.copy.ai,"AI writing and sales content generation","writing,sales,marketing",true,true
+23,Writesonic,writesonic,AI Writing,Freemium,https://writesonic.com,"AI writer for blogs, ads and SEO content","writing,seo,content",true,true
+24,Grammarly,grammarly,AI Writing Assistant,Freemium,https://www.grammarly.com,"AI writing improvement and grammar assistant","grammar,writing,editing",true,true
+25,QuillBot,quillbot,AI Writing Assistant,Freemium,https://quillbot.com,"AI paraphrasing and writing enhancement tool","writing,paraphrase,editing",true,true
+
+26,Gamma,gamma,AI Presentation,Freemium,https://gamma.app,"Create presentations and documents using AI","presentation,slides,documents",true,true
+27,Tome,tome,AI Presentation,Freemium,https://tome.app,"AI storytelling and presentation creation","presentation,storytelling,slides",true,true
+28,Beautiful.ai,beautiful-ai,AI Presentation,Freemium,https://www.beautiful.ai,"AI-powered professional presentation maker","presentation,design,business",true,true
+29,Canva AI,canva-ai,AI Design,Freemium,https://www.canva.com,"AI tools integrated into Canva design platform","design,image,marketing",true,true
+30,Looka,looka,AI Logo Generator,Paid,https://looka.com,"AI logo and brand identity generator","logo,branding,design",true,true
+
+31,GitHub Copilot,github-copilot,AI Coding Assistant,Paid,https://github.com/features/copilot,"AI pair programmer for developers","coding,developer,programming",true,true
+32,Cursor,cursor,AI Code Editor,Freemium,https://cursor.com,"AI-powered code editor built for developers","coding,editor,developer",true,true
+33,Codeium,codeium,AI Coding Assistant,Freemium,https://codeium.com,"AI code completion and developer tools","coding,autocomplete",true,true
+34,Tabnine,tabnine,AI Coding Assistant,Freemium,https://www.tabnine.com,"AI assistant for software development","coding,developer,autocomplete",true,true
+35,Replit AI,replit-ai,AI Coding Assistant,Freemium,https://replit.com,"AI coding assistant integrated with Replit","coding,cloud,development",true,true
+
+36,Notion AI,notion-ai,AI Productivity,Freemium,https://www.notion.com/product/ai,"AI assistant for notes, documents and knowledge management","notes,productivity,documents",true,true
+37,n8n,n8n,AI Automation,Freemium,https://n8n.io,"Workflow automation with AI integrations","automation,workflow,no-code",true,true
+38,Zapier AI,zapier-ai,AI Automation,Freemium,https://zapier.com/ai,"AI-powered workflow automation platform","automation,integration,workflow",true,true
+39,Taskade,taskade,AI Productivity,Freemium,https://www.taskade.com,"AI workspace for tasks, notes and collaboration","tasks,notes,team",true,true
+40,Mem,mem,AI Note Taking,Freemium,https://mem.ai,"AI-powered personal knowledge management","notes,knowledge,productivity",true,true
+
+41,DeepL,deepl,AI Translation,Freemium,https://www.deepl.com,"AI translation and language writing assistant","translation,language,writing",true,true
+42,Character.AI,character-ai,AI Character Chat,Freemium,https://character.ai,"Create and chat with AI personalities","chat,characters,entertainment",true,true
+43,Pi AI,pi-ai,AI Chatbot,Freemium,https://pi.ai,"Personal AI companion focused on conversation","assistant,conversation,personal",true,true
+44,Poe,poe,AI Chat Platform,Freemium,https://poe.com,"Access multiple AI models in one interface","chat,multiple-models",true,true
+45,Hugging Face,hugging-face,AI Model Platform,Freemium,https://huggingface.co,"Open AI model community and machine learning platform","models,opensource,ml",true,true
+
+46,Replicate,replicate,AI API Platform,Freemium,https://replicate.com,"Run and deploy machine learning models via API","api,models,developer",true,true
+47,Stability AI,stability-ai,AI Image Platform,Freemium,https://stability.ai,"Generative AI models including image generation","image,models,generative",true,true
+48,Civitai,civitai,AI Model Marketplace,Freemium,https://civitai.com,"Community platform for AI image models and resources","models,stable-diffusion,art",true,true
+49,Remove.bg,remove-bg,AI Photo Editor,Freemium,https://remove.bg,"AI tool for automatic background removal","photo,editing,background",true,true
+50,Topaz Labs,topaz-labs,AI Photo Enhancement,Paid,https://www.topazlabs.com,"AI-powered image and video enhancement tools","photo,upscaling,enhancement",true,true

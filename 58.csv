@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2851,OpenAI Developer Tools AI,openai-devtools-ai,AI Developer Platform,Paid,https://platform.openai.com,"AI-powered developer tooling and code assistance platform","developer,ai,tools",true,true
+2852,GitHub Copilot AI,github-copilot-ai,AI Code Assistant,Paid,https://github.com/features/copilot,"AI pair programming and code generation tool","code,github,ai",true,true
+2853,Amazon CodeWhisperer AI,amazon-codewhisperer-ai,AI Coding Assistant,Free,https://aws.amazon.com/codewhisperer,"AI code generation and developer assistant","code,aws,ai",true,true
+2854,Google Gemini Code AI,gemini-code-ai,AI Coding Tool,Paid,https://ai.google.dev,"Google AI coding and developer assistance system","code,google,ai",true,true
+2855,Microsoft Copilot AI,microsoft-copilot-ai,AI Assistant,Paid,https://copilot.microsoft.com,"AI productivity and coding assistant ecosystem","productivity,microsoft,ai",true,true
+
+2856,OpenAI Code Interpreter AI,openai-code-interpreter-ai,AI Programming Tool,Paid,https://platform.openai.com,"AI code execution and data analysis environment","code,analysis,ai",true,true
+2857,Replit AI,replit-ai,AI Coding Platform,Freemium,https://replit.com,"AI cloud coding and development environment","code,cloud,ai",true,true
+2858,Codeium AI,codeium-ai,AI Code Assistant,Free,https://codeium.com,"AI code autocomplete and generation tool","code,autocomplete,ai",true,true
+2859,Tabnine AI,tabnine-ai,AI Code Completion,Freemium,https://www.tabnine.com,"AI code prediction and autocomplete assistant","code,ai,dev",true,true
+2860,Cursor AI,cursor-ai,AI Code Editor,Paid,https://cursor.com,"AI-powered code editor with assistant integration","code,editor,ai",true,true
+
+2861,OpenAI Debug AI,openai-debug-ai,AI Debugging Tool,Paid,https://platform.openai.com,"AI debugging and error analysis system","code,debug,ai",true,true
+2862,Snyk AI,snyk-ai,AI Security Tool,Paid,https://snyk.io,"AI code security and vulnerability detection platform","security,code,ai",true,true
+2863,SonarQube AI,sonarqube-ai,AI Code Quality,Paid,https://www.sonarqube.org,"AI code quality and analysis system","code,quality,ai",true,true
+2864,DeepCode AI,deepcode-ai,AI Code Review,Paid,https://www.deepcode.ai,"AI code review and bug detection system","code,review,ai",true,true
+2865,Sourcegraph AI,sourcegraph-ai,AI Code Search,Paid,https://sourcegraph.com,"AI code search and understanding platform","code,search,ai",true,true
+
+2866,OpenAI API Tools AI,openai-api-tools-ai,AI API Platform,Paid,https://platform.openai.com,"AI API development and integration tools","api,developer,ai",true,true
+2867,Postman AI,postman-ai,AI API Testing,Paid,https://www.postman.com,"AI API testing and development platform","api,testing,ai",true,true
+2868,Insomnia AI,insomnia-ai,AI API Client,Freemium,https://insomnia.rest,"AI API design and testing tool","api,developer,ai",true,true
+2869,Swagger AI,swagger-ai,AI API Documentation,Paid,https://swagger.io,"AI API documentation and testing system","api,docs,ai",true,true
+2870,Apigee AI,apigee-ai,AI API Management,Paid,https://cloud.google.com/apigee,"Google AI API management platform","api,google,ai",true,true
+
+2871,OpenAI DevOps AI,openai-devops-ai,AI DevOps Platform,Paid,https://platform.openai.com,"AI DevOps automation and infrastructure management","devops,cloud,ai",true,true
+2872,Docker AI,docker-ai,AI Container Platform,Paid,https://www.docker.com,"AI container management and deployment system","devops,containers,ai",true,true
+2873,Kubernetes AI,kubernetes-ai,AI Orchestration System,Free,https://kubernetes.io,"AI container orchestration and scaling system","devops,k8s,ai",true,true
+2874,Terraform AI,terraform-ai,AI Infrastructure Tool,Paid,https://www.terraform.io,"AI infrastructure as code automation system","devops,iac,ai",true,true
+2875,Ansible AI,ansible-ai,AI Automation Tool,Free,https://www.ansible.com,"AI IT automation and configuration management","devops,automation,ai",true,true
+
+2876,OpenAI Cloud AI,openai-cloud-ai,AI Cloud Platform,Paid,https://platform.openai.com,"AI cloud computing and infrastructure system","cloud,ai,infrastructure",true,true
+2877,AWS AI Platform,aws-ai-platform,AI Cloud Services,Paid,https://aws.amazon.com/ai,"Amazon AI cloud services ecosystem","cloud,aws,ai",true,true
+2878,Azure AI Studio,azure-ai-studio,AI Development Platform,Paid,https://azure.microsoft.com,"Microsoft AI cloud development platform","cloud,azure,ai",true,true
+2879,Google Cloud AI,google-cloud-ai,AI Cloud Platform,Paid,https://cloud.google.com/ai,"Google AI cloud computing platform","cloud,google,ai",true,true
+2880,IBM Cloud AI,ibm-cloud-ai,AI Enterprise Cloud,Paid,https://www.ibm.com/cloud/ai,"IBM AI enterprise cloud system","cloud,ibm,ai",true,true
+
+2881,OpenAI Data AI,openai-data-ai,AI Data Platform,Paid,https://platform.openai.com,"AI data processing and analytics system","data,ai,analytics",true,true
+2882,Databricks AI,databricks-ai,AI Data Platform,Paid,https://www.databricks.com,"AI big data analytics and machine learning platform","data,ml,ai",true,true
+2883,Snowflake AI,snowflake-ai,AI Data Cloud,Paid,https://www.snowflake.com,"AI data warehouse and analytics platform","data,cloud,ai",true,true
+2884,BigQuery AI,bigquery-ai,AI Data Warehouse,Paid,https://cloud.google.com/bigquery,"Google AI data warehouse system","data,google,ai",true,true
+2885,Tableau AI,tableau-ai,AI Data Visualization,Paid,https://www.tableau.com,"AI data visualization and analytics tool","data,visualization,ai",true,true
+
+2886,OpenAI BI AI,openai-bi-ai,AI Business Intelligence,Paid,https://platform.openai.com,"AI business intelligence and reporting system","bi,analytics,ai",true,true
+2887,Power BI AI,power-bi-ai,AI Analytics Tool,Paid,https://powerbi.microsoft.com,"Microsoft AI business analytics platform","bi,microsoft,ai",true,true
+2888,Looker AI,looker-ai,AI Data Analytics,Paid,https://cloud.google.com/looker,"Google AI business analytics system","bi,google,ai",true,true
+2889,Qlik AI,qlik-ai,AI BI Platform,Paid,https://www.qlik.com,"AI business intelligence and analytics platform","bi,data,ai",true,true
+2890,ThoughtSpot AI,thoughtspot-ai,AI Search Analytics,Paid,https://www.thoughtspot.com,"AI search-driven analytics platform","bi,search,ai",true,true
+
+2891,OpenAI Automation AI,openai-automation-ai,AI Automation Platform,Paid,https://platform.openai.com,"AI workflow automation system","automation,ai,workflows",true,true
+2892,Zapier AI,zapier-ai,AI Automation Tool,Freemium,https://zapier.com,"AI no-code workflow automation platform","automation,no-code,ai",true,true
+2893,Make AI,make-ai,AI Workflow Automation,Paid,https://www.make.com,"AI visual automation and integration platform","automation,workflow,ai",true,true
+2894,IFTTT AI,ifttt-ai,AI Automation Tool,Freemium,https://ifttt.com,"AI simple automation and app integration system","automation,apps,ai",true,true
+2895,N8N AI,n8n-ai,AI Automation Platform,Free,https://n8n.io,"AI open-source workflow automation tool","automation,open-source,ai",true,true
+
+2896,OpenAI Productivity AI,openai-productivity-ai,AI Productivity Platform,Paid,https://platform.openai.com,"AI productivity and task management system","productivity,ai,tools",true,true
+2897,Notion Calendar AI,notion-calendar-ai,AI Scheduling Tool,Freemium,https://www.notion.so/product/calendar,"AI calendar and scheduling assistant","productivity,scheduling,ai",true,true
+2898,Motion AI,motion-ai,AI Scheduling Assistant,Paid,https://www.usemotion.com,"AI task and calendar optimization system","productivity,calendar,ai",true,true
+2899,ClickUp AI,clickup-ai,AI Project Management,Paid,https://clickup.com,"AI project and task management platform","productivity,project,ai",true,true
+2900,Trello AI,trello-ai,AI Task Management,Freemium,https://trello.com,"AI kanban board and task organization system","productivity,task,ai",true,true

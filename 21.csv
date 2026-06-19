@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1001,RunPod Serverless,runpod-serverless,AI Serverless GPU,Paid,https://www.runpod.io,"Serverless GPU inference and AI workload execution platform","gpu,serverless,compute",true,true
+1002,Modal Serverless AI,modal-serverless-ai,AI Cloud Compute,Paid,https://modal.com,"Run scalable AI workloads with serverless infrastructure","cloud,gpu,ai",true,true
+1003,BentoML Cloud,bentoml-cloud,AI Model Serving,Paid,https://www.bentoml.com,"Deploy and serve machine learning models in production","ml,serving,api",true,true
+1004,Seldon Deploy AI,seldon-deploy-ai,AI MLOps Platform,Paid,https://www.seldon.io,"Enterprise MLOps platform for model deployment and monitoring","ml,devops,enterprise",true,true
+1005,KServe Platform,kserve-platform,AI Model Serving,Free,https://kserve.github.io,"Kubernetes-based scalable ML inference platform","ml,kubernetes,serving",true,true
+
+1006,Ray Serve AI,ray-serve-ai,AI Distributed Serving,Free,https://www.ray.io,"Distributed system for scalable AI model serving","ml,distributed,serving",true,true
+1007,MLServer,mlserver,AI Model Server,Free,https://github.com/SeldonIO/MLServer,"Open-source model server for ML deployment","ml,api,serving",true,true
+1008,Triton Cloud AI,triton-cloud-ai,AI Inference Cloud,Free,https://developer.nvidia.com,"NVIDIA inference server for AI model deployment","gpu,inference,ai",true,true
+1009,vLLM Cloud,vllm-cloud,AI LLM Serving,Free,https://github.com/vllm-project/vllm,"High-performance LLM inference engine for production","llm,inference,performance",true,true
+1010,Ollama Cloud,ollama-cloud,AI Local + Cloud LLM,Free,https://ollama.com,"Run LLMs locally or via cloud APIs","llm,local,cloud",true,true
+
+1011,Hugging Face Inference API,huggingface-inference-api,AI Model API,Paid,https://huggingface.co,"Access thousands of open-source AI models via API","ml,api,models",true,true
+1012,Hugging Face Spaces,hf-spaces,AI App Hosting,Freemium,https://huggingface.co/spaces,"Deploy AI apps and demos easily in the cloud","ml,apps,hosting",true,true
+1013,Hugging Face AutoTrain,autotrain,AI Model Training,Paid,https://huggingface.co/autotrain,"No-code AI model training platform","ml,training,no-code",true,true
+1014,Replicate Serverless,replicate-serverless,AI Model Hosting,Paid,https://replicate.com,"Run and deploy ML models via simple API calls","ml,api,hosting",true,true
+1015,Fireworks Inference API,fireworks-inference-api,AI LLM API,Paid,https://fireworks.ai,"Fast LLM inference optimized for production","llm,api,inference",true,true
+
+1016,Together Inference,together-inference,AI Model API,Paid,https://www.together.ai,"Run and fine-tune open-source AI models at scale","llm,api,models",true,true
+1017,OpenRouter Gateway,openrouter-gateway,AI LLM Router,Paid,https://openrouter.ai,"Unified API for multiple LLM providers","llm,api,router",true,true
+1018,Portkey Gateway,portkey-gateway,AI LLM Proxy,Paid,https://portkey.ai,"Control and monitor LLM API requests across providers","llm,gateway,api",true,true
+1019,LiteLLM Proxy,litellm-proxy,AI API Proxy,Free,https://github.com/BerriAI/litellm,"Open-source LLM API gateway and proxy layer","llm,proxy,api",true,true
+1020,Helicone Dashboard,helicone-dashboard,AI API Observability,Freemium,https://helicone.ai,"Monitor and analyze LLM API usage and performance","llm,monitoring,analytics",true,true
+
+1021,PromptLayer AI,promptlayer-ai,AI Prompt Tracking,Freemium,https://promptlayer.com,"Track, version and optimize AI prompts","prompts,llm,devtools",true,true
+1022,LangSmith Platform,langsmith-platform,AI Debugging Tool,Paid,https://smith.langchain.com,"Debug and evaluate LLM applications","llm,debugging,observability",true,true
+1023,Humanloop Platform,humanloop-platform,AI Prompt Engineering,Paid,https://humanloop.com,"Build and evaluate prompts for LLM applications","prompts,llm,eval",true,true
+1024,Guardrails Studio,guardrails-studio,AI Safety Tool,Free,https://www.guardrailsai.com,"Validate and secure LLM outputs","llm,safety,validation",true,true
+1025,Rebuff Security,rebuff-security,AI Prompt Security,Free,https://github.com/woop/rebuff,"Protect against prompt injection attacks","security,llm,ai",true,true
+
+1026,LangChain Cloud,langchain-cloud,AI Agent Platform,Paid,https://www.langchain.com,"Cloud platform for building AI agents and apps","agents,llm,framework",true,true
+1027,LangGraph Cloud,langgraph-cloud,AI Workflow Orchestration,Paid,https://www.langchain.com/langgraph,"Cloud-based agent workflow orchestration system","agents,workflow,llm",true,true
+1028,CrewAI Cloud,crewai-cloud,AI Agent Platform,Paid,https://www.crewai.com,"Deploy multi-agent AI systems in production","agents,llm,automation",true,true
+1029,AutoGen Cloud,autogen-cloud,AI Multi-Agent Platform,Paid,https://github.com/microsoft/autogen,"Microsoft multi-agent AI orchestration system","agents,llm,automation",true,true
+1030,SuperAGI Cloud,superagi-cloud,AI Autonomous Agents,Paid,https://github.com/TransformerOptimus/SuperAGI,"Deploy autonomous AI agents at scale","agents,automation,llm",true,true
+
+1031,AgentOps AI,agentops-ai,AI Agent Monitoring,Freemium,https://agentops.ai,"Monitor and debug AI agent workflows","agents,monitoring,llm",true,true
+1032,Langfuse AI,langfuse-ai,AI Observability,Freemium,https://langfuse.com,"Open-source LLM observability platform","llm,monitoring,debugging",true,true
+1033,Promptfoo,promptfoo,AI Prompt Testing,Free,https://github.com/promptfoo/promptfoo,"Test and evaluate prompts systematically","prompts,llm,testing",true,true
+1034,Evals AI,evals-ai,AI Evaluation Framework,Free,https://github.com/openai/evals,"Framework for evaluating LLM performance","llm,evaluation,testing",true,true
+1035,DeepEval,deepeval,AI Evaluation Tool,Free,https://github.com/confident-ai/deepeval,"Unit testing framework for LLM applications","llm,testing,evaluation",true,true
+
+1036,OpenAI Evals Cloud,openai-evals-cloud,AI Evaluation Platform,Paid,https://openai.com,"Evaluate and benchmark AI models at scale","llm,evaluation,benchmarks",true,true
+1037,Scale AI Platform,scale-ai-platform,AI Data Labeling,Paid,https://scale.com,"AI data labeling and training data platform","data,labeling,ml",true,true
+1038,Lablab.ai,lablab-ai,AI Hackathon Platform,Freemium,https://lablab.ai,"AI hackathons and model experimentation platform","ml,hackathon,community",true,true
+1039,Weights & Biases Cloud,wandb-cloud,AI Experiment Platform,Paid,https://wandb.ai,"Track and manage ML experiments in cloud","ml,tracking,cloud",true,true
+1040,Neptune Cloud,neptune-cloud,AI Experiment Tracking,Paid,https://neptune.ai,"ML experiment tracking and metadata management","ml,tracking,data",true,true
+
+1041,Comet Cloud,comet-cloud,AI ML Tracking,Paid,https://www.comet.com,"Track and compare machine learning experiments","ml,tracking,experiments",true,true
+1042,ClearML Cloud,clearml-cloud,AI MLOps Platform,Free,https://clear.ml,"Open-source MLOps and model management platform","ml,devops,open-source",true,true
+1043,MLflow Cloud,mlflow-cloud,AI ML Lifecycle,Free,https://mlflow.org,"ML lifecycle management and tracking system","ml,devops,tracking",true,true
+1044,Kubeflow Cloud,kubeflow-cloud,AI ML Platform,Free,https://kubeflow.org,"ML workflows on Kubernetes cloud infrastructure","ml,kubernetes,workflow",true,true
+1045,SageMaker Studio,sagemaker-studio,AI ML Platform,Paid,https://aws.amazon.com/sagemaker,"AWS AI model development and deployment studio","aws,ml,cloud",true,true
+
+1046,Vertex AI Studio,vertex-ai-studio,AI ML Platform,Paid,https://cloud.google.com/vertex-ai,"Google AI platform for training and deployment","google,ml,ai",true,true
+1047,Azure AI Studio,azure-ai-studio,AI ML Platform,Paid,https://azure.microsoft.com,"Microsoft AI development and deployment platform","azure,ml,enterprise",true,true
+1048,OpenAI Studio,openai-studio,AI Development Platform,Paid,https://platform.openai.com,"Build and test AI applications with OpenAI models","llm,api,devtools",true,true
+1049,Hugging Face Studio,hf-studio,AI Model Studio,Freemium,https://huggingface.co,"Build, train and deploy AI models easily","ml,models,studio",true,true
+1050,Together Studio,together-studio,AI Model Studio,Paid,https://www.together.ai,"Train and deploy open-source AI models at scale","llm,training,studio",true,true

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kullanıcılar — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-users" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-users)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-users)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-users)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a>
+        <a href="/admin/tools.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Araçlar</a>
+        <a href="/admin/categories.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg> Kategoriler</a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular <span class="badge-count" id="nav-sub-count" style="display:none;background:var(--accent-red);color:white;border-radius:10px;padding:2px 6px;font-size:11px;margin-left:auto;font-weight:600">0</span>
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/users.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Siteyi Görüntüle</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="btn-logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Çıkış Yap
+        </button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Kayıtlı Kullanıcılar</h1>
+      </div>
+
+      <div class="data-table-wrapper">
+        <div class="table-header">
+          <h3>Kullanıcı Listesi</h3>
+          <span class="tools-count" id="users-count">0 kayıtlı kullanıcı</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kullanıcı Adı</th>
+              <th>Kayıt Tarihi</th>
+              <th>Çanta Yer İmleri</th>
+              <th>Rol</th>
+              <th style="text-align:right">İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <tr>
+              <td colspan="6" class="empty-state">Yükleniyor...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    'use strict';
+    
+    var usersTableBody = document.getElementById('users-table-body');
+    var usersCountEl = document.getElementById('users-count');
+
+    // Load registered users
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/admin/users');
+        const users = await res.json();
+        
+        usersCountEl.textContent = `${users.length} kayıtlı kullanıcı`;
+        
+        if (users.length === 0) {
+          usersTableBody.innerHTML = '<tr><td colspan="6" class="empty-state"><p>Kayıtlı kullanıcı bulunamadı.</p></td></tr>';
+          return;
+        }
+
+        usersTableBody.innerHTML = users.map(u => {
+          const dateStr = u.created_at ? new Date(u.created_at).toLocaleDateString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '-';
+          const isSystemAdmin = u.username === 'admin' || u.id === 1;
+          const roleBadge = isSystemAdmin
+            ? '<span class="badge" style="background:hsla(25,95%,55%,0.15);color:var(--accent-amber);border:1px solid hsla(25,95%,55%,0.3)">👑 Yönetici</span>'
+            : '<span class="badge" style="background:hsla(195,90%,55%,0.15);color:var(--accent-cyan);border:1px solid hsla(195,90%,55%,0.3)">👤 Kullanıcı</span>';
+
+          const deleteButton = isSystemAdmin
+            ? '<button class="btn-delete" disabled style="opacity:0.4;cursor:not-allowed;font-size:0.875rem">Silinemez</button>'
+            : `<button class="btn-delete btn-delete-user" data-id="${u.id}" data-username="${u.username}" style="color:var(--accent-red);background:none;border:none;cursor:pointer;font-size:0.875rem">Kullanıcıyı Sil</button>`;
+
+          return `
+            <tr>
+              <td><code>#${u.id}</code></td>
+              <td><strong>${u.username}</strong></td>
+              <td>${dateStr}</td>
+              <td>🎒 ${u.bookmarks_count} araç ekli</td>
+              <td>${roleBadge}</td>
+              <td style="text-align:right" class="table-actions">
+                ${deleteButton}
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Wire delete buttons
+        usersTableBody.querySelectorAll('.btn-delete-user').forEach(btn => {
+          btn.addEventListener('click', async function() {
+            const id = this.dataset.id;
+            const username = this.dataset.username;
+            if (confirm(`"${username}" kullanıcısını ve çantasını kalıcı olarak silmek istediğinizden emin misiniz?`)) {
+              try {
+                const res = await fetch(`/api/admin/users/${id}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                  showToast('Kullanıcı başarıyla silindi.', 'success');
+                  loadUsers();
+                } else {
+                  showToast(data.error || 'Silinirken hata oluştu.', 'error');
+                }
+              } catch(err) {
+                showToast('Bağlantı hatası oluştu.', 'error');
+              }
+            }
+          });
+        });
+
+      } catch(e) {
+        showToast('Kullanıcılar yüklenemedi.', 'error');
+      }
+    }
+
+    // Sync submissions sidebar count
+    async function syncSubCount() {
+      try {
+        const res = await fetch('/api/submissions');
+        const subs = await res.json();
+        const badge = document.getElementById('nav-sub-count');
+        if (badge) {
+          if (subs.length > 0) {
+            badge.textContent = subs.length;
+            badge.style.display = 'inline-block';
+          } else {
+            badge.style.display = 'none';
+          }
+        }
+      } catch(e) {}
+    }
+
+    // Init page
+    (async () => {
+      await loadUsers();
+      await syncSubCount();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+901,AutoGPT,auto-gpt,AI Autonomous Agent,Free,https://github.com/Significant-Gravitas/AutoGPT,"Autonomous AI agent that can execute multi-step tasks","agents,autonomous,llm",true,true
+902,BabyAGI,babyagi,AI Task Automation,Free,https://github.com/yoheinakajima/babyagi,"Task-driven autonomous AI agent framework","agents,automation,llm",true,true
+903,AgentGPT,agentgpt,AI Agent Platform,Freemium,https://agentgpt.reworkd.ai,"Deploy autonomous AI agents in browser","agents,web,llm",true,true
+904,MetaGPT,metagpt,AI Multi-Agent System,Free,https://github.com/geekan/MetaGPT,"Multi-agent framework simulating software teams","agents,software,llm",true,true
+905,Camel AI,camel-ai,AI Multi-Agent Framework,Free,https://github.com/camel-ai/camel,"Framework for role-playing AI agents","agents,research,llm",true,true
+
+906,AutoGen Studio,autogen-studio,AI Agent Builder,Free,https://github.com/microsoft/autogen,"Visual interface for Microsoft AutoGen agents","agents,visual,automation",true,true
+907,CrewAI Studio,crewai-studio,AI Agent Builder,Free,https://www.crewai.com,"Visual platform for designing multi-agent workflows","agents,no-code,llm",true,true
+908,SuperAGI,superagi,AI Autonomous Platform,Free,https://github.com/TransformerOptimus/SuperAGI,"Open-source autonomous AI agent framework","agents,automation,llm",true,true
+909,LangGraph Studio,langgraph-studio,AI Agent Workflow,Free,https://www.langchain.com/langgraph,"Visual orchestration tool for AI agents","agents,workflow,llm",true,true
+910,OpenAgents,openagents,AI Agent Platform,Free,https://github.com/xlang-ai/OpenAgents,"Framework for building tool-using AI agents","agents,tools,llm",true,true
+
+911,FlowGPT,flowgpt,AI Prompt Marketplace,Freemium,https://flowgpt.com,"Marketplace for AI prompts and workflows","prompts,marketplace,llm",true,true
+912,PromptBase,promptbase,AI Prompt Marketplace,Freemium,https://promptbase.com,"Buy and sell optimized AI prompts","prompts,marketplace,ai",true,true
+913,AIPRM,aiprm,AI Prompt Library,Freemium,https://www.aiprm.com,"Prompt library extension for ChatGPT","prompts,chrome,llm",true,true
+914,PromptHero,prompthero,AI Prompt Search,Freemium,https://prompthero.com,"Search engine for AI art and text prompts","prompts,image,llm",true,true
+915,PromptLayer Hub,promptlayer-hub,AI Prompt Management,Freemium,https://promptlayer.com,"Track, version and manage AI prompts","prompts,devtools,llm",true,true
+
+916,Perplexity Labs,perplexity-labs,AI Research Assistant,Freemium,https://www.perplexity.ai,"Advanced AI research and reasoning system","search,research,llm",true,true
+917,YouChat AI,youchat-ai,AI Chat Search,Freemium,https://you.com,"AI chat integrated with web search results","search,chat,llm",true,true
+918,Phind AI,phind-ai,AI Developer Search,Freemium,https://www.phind.com,"AI search engine optimized for developers","search,coding,llm",true,true
+919,Consensus AI Pro,consensus-pro,AI Academic Assistant,Freemium,https://consensus.app,"Advanced scientific paper search and synthesis","research,science,llm",true,true
+920,Elicit Pro,elicit-pro,AI Research Automation,Freemium,https://elicit.com,"Automated literature review and research assistant","research,academic,llm",true,true
+
+921,GPT Engineer,gpt-engineer,AI Code Generator,Free,https://github.com/AntonOsika/gpt-engineer,"Generate full applications from natural language prompts","coding,automation,llm",true,true
+922,Devin AI,devin-ai,AI Software Engineer,Paid,https://www.cognition.ai,"Autonomous AI software engineering agent","coding,agents,llm",true,true
+923,Replit Agent,replit-agent,AI Coding Assistant,Freemium,https://replit.com,"AI agent for building and deploying applications","coding,cloud,llm",true,true
+924,Cursor AI,cursor-ai,AI Code Editor,Freemium,https://cursor.sh,"AI-powered code editor with advanced completion tools","coding,editor,llm",true,true
+925,Windsurf AI,windsurf-ai,AI Code Assistant,Freemium,https://codeium.com/windsurf,"AI-native IDE for software development","coding,ide,llm",true,true
+
+926,Codeium,codeium,AI Code Autocomplete,Free,https://codeium.com,"Free AI code completion tool for developers","coding,autocomplete,llm",true,true
+927,Tabnine,tabnine,AI Code Assistant,Freemium,https://www.tabnine.com,"AI code completion and developer assistant","coding,ai,devtools",true,true
+928,GitHub Copilot,github-copilot,AI Coding Assistant,Paid,https://github.com/features/copilot,"AI pair programmer for code generation and suggestions","coding,github,llm",true,true
+929,Amazon CodeWhisperer,codewhisperer,AI Coding Assistant,Free,https://aws.amazon.com/codewhisperer,"AI coding assistant from Amazon AWS","coding,aws,llm",true,true
+930,Sourcegraph Cody,sourcegraph-cody,AI Code Search,Freemium,https://sourcegraph.com/cody,"AI code search and understanding assistant","coding,search,llm",true,true
+
+931,Photor AI,photor-ai,AI Image Enhancement,Freemium,https://photor.ai,"AI-powered photo enhancement and restoration","image,enhancement,photo",true,true
+932,Remini AI,remini-ai,AI Photo Restoration,Freemium,https://www.remini.ai,"Enhance and restore old photos using AI","photo,enhancement,restore",true,true
+933,Let's Enhance,lets-enhance,AI Image Upscaler,Freemium,https://letsenhance.io,"AI image upscaling and enhancement platform","image,upscale,quality",true,true
+934,Upscayl,upscayl,AI Image Upscaler,Free,https://www.upscayl.org,"Open-source AI image upscaling tool","image,open-source,upscale",true,true
+935,Topaz Gigapixel AI,gigapixel-ai,AI Image Upscaler,Paid,https://www.topazlabs.com/gigapixel-ai,"Professional AI image upscaling software","image,upscale,pro",true,true
+
+936,Remove.bg,remove-bg,AI Background Removal,Freemium,https://www.remove.bg,"Automatically remove image backgrounds using AI","image,background,editing",true,true
+937,Erase.bg,erase-bg,AI Background Removal,Freemium,https://www.erase.bg,"AI tool for removing backgrounds from images","image,editing,background",true,true
+938,Slazzer,slazzer,AI Background Removal,Freemium,https://www.slazzer.com,"AI background removal and image editing tool","image,background,editing",true,true
+939,PhotoScissors,photoscissors,AI Image Cutout,Freemium,https://photoscissors.com,"AI tool for removing backgrounds and objects","image,editing,cutout",true,true
+940,Pixian AI,pixian-ai,AI Image Cleanup,Freemium,https://pixian.ai,"AI-powered background removal and cleanup tool","image,cleanup,editing",true,true
+
+941,RunDiffusion,rundiffusion,AI Image Generation Cloud,Paid,https://rundiffusion.com,"Cloud platform for running Stable Diffusion models","image,cloud,stable-diffusion",true,true
+942,SeaArt AI,seaart-ai,AI Image Generator,Freemium,https://www.seaart.ai,"AI image generation platform with community models","image,art,generative",true,true
+943,TensorArt,tensorart,AI Image Platform,Freemium,https://tensor.art,"AI art generation and model hosting platform","image,models,art",true,true
+944,Artbreeder,artbreeder,AI Image Creator,Freemium,https://www.artbreeder.com,"Blend and evolve images using AI genetics","image,art,creative",true,true
+945,Deep Dream Generator,deep-dream-generator,AI Art Generator,Freemium,https://deepdreamgenerator.com,"Create surreal AI-generated artwork","image,art,creative",true,true
+
+946,Runway Gen-2,runway-gen2,AI Video Generation,Freemium,https://runwayml.com,"Text-to-video generation model by Runway","video,generative,llm",true,true
+947,Pika Labs 1.5,pika-1-5,AI Video Generator,Freemium,https://pika.art,"Advanced AI video generation from prompts","video,animation,ai",true,true
+948,Kaiber Studio,kaiber-studio,AI Video Art,Freemium,https://kaiber.ai,"AI video creation for music and visual storytelling","video,art,music",true,true
+949,Genmo AI,genmo-ai,AI Video Generator,Freemium,https://www.genmo.ai,"Generate videos and animations from text prompts","video,generative,animation",true,true
+950,Sora AI,sora-ai,AI Video Model,Not Public,https://openai.com/sora,"Advanced text-to-video AI model by OpenAI","video,llm,generative",true,true

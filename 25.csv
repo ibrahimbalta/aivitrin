@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1201,Notion AI,notion-ai,AI Productivity Assistant,Freemium,https://www.notion.so/product/ai,"AI writing, summarization and workspace automation inside Notion","productivity,writing,notes",true,true
+1202,Microsoft Copilot,microsoft-copilot,AI Productivity Assistant,Freemium,https://copilot.microsoft.com,"AI assistant integrated into Microsoft ecosystem","productivity,office,ai",true,true
+1203,Google Gemini,google-gemini,AI Assistant,Freemium,https://gemini.google.com,"Google’s AI assistant for search, writing and tasks","assistant,google,llm",true,true
+1204,ChatGPT,chatgpt,AI Assistant,Freemium,https://chat.openai.com,"Conversational AI assistant for writing, coding and reasoning","assistant,llm,chat",true,true
+1205,Claude AI,claude-ai,AI Assistant,Freemium,https://claude.ai,"Advanced AI assistant for reasoning and writing tasks","assistant,llm,reasoning",true,true
+
+1206,Perplexity AI,perplexity-ai,AI Search Assistant,Freemium,https://www.perplexity.ai,"AI-powered answer engine with citations","search,assistant,research",true,true
+1207,You.com AI,you-ai,AI Search Assistant,Freemium,https://you.com,"AI search engine with chat capabilities","search,assistant,llm",true,true
+1208,Phind AI,phind-ai,AI Developer Assistant,Freemium,https://www.phind.com,"AI search engine optimized for developers","search,coding,dev",true,true
+1209,Andi AI,andi-ai,AI Search Engine,Free,https://andisearch.com,"Conversational AI search engine","search,assistant,llm",true,true
+1210,Brave Leo,brave-leo,AI Browser Assistant,Freemium,https://brave.com/leo,"AI assistant integrated into Brave browser","browser,assistant,ai",true,true
+
+1211,Rewind AI,rewind-ai,AI Memory Assistant,Paid,https://www.rewind.ai,"Personal AI memory assistant that records and searches your digital life","productivity,memory,assistant",true,true
+1212,Motion AI,motion-ai,AI Calendar Assistant,Paid,https://www.usemotion.com,"AI-powered scheduling and task planning tool","calendar,productivity,scheduling",true,true
+1213,Sunsama AI,sunsama-ai,AI Planning Tool,Paid,https://sunsama.com,"AI daily planning and productivity scheduling assistant","planning,productivity,calendar",true,true
+1214,Clockwise AI,clockwise-ai,AI Calendar Optimization,Freemium,https://www.getclockwise.com,"AI calendar optimization and meeting scheduling tool","calendar,optimization,productivity",true,true
+1215,Reclaim AI,reclaim-ai,AI Scheduling Assistant,Freemium,https://reclaim.ai,"AI smart scheduling and task blocking tool","calendar,scheduling,productivity",true,true
+
+1216,Calendly AI,calendly-ai,AI Scheduling Tool,Freemium,https://calendly.com,"AI-enhanced meeting scheduling platform","calendar,meetings,automation",true,true
+1217,Fellow AI,fellow-ai,AI Meeting Notes,Freemium,https://fellow.app,"AI meeting notes and agenda assistant","meetings,notes,productivity",true,true
+1218,Sembly AI,sembly-ai,AI Meeting Assistant,Paid,https://www.sembly.ai,"AI meeting transcription and insights platform","meetings,transcription,ai",true,true
+1219,Avoma AI,avoma-ai,AI Meeting Intelligence,Paid,https://www.avoma.com,"AI meeting recording, coaching and analytics tool","meetings,sales,ai",true,true
+1220,Fireflies AI,fireflies-ai,AI Meeting Recorder,Freemium,https://fireflies.ai,"AI meeting transcription and summarization assistant","meetings,notes,ai",true,true
+
+1221,Otter AI Pro,otter-ai-pro,AI Transcription Assistant,Freemium,https://otter.ai,"AI meeting transcription and collaboration tool","meetings,transcription,productivity",true,true
+1222,Fathom AI Pro,fathom-ai-pro,AI Meeting Summarizer,Freemium,https://fathom.video,"AI meeting highlights and summaries tool","meetings,summaries,ai",true,true
+1223,Grain AI Pro,grain-ai-pro,AI Video Clips,Freemium,https://grain.com,"AI tool for recording and sharing meeting clips","meetings,video,collaboration",true,true
+1224,Supernormal AI,supernormal-ai,AI Meeting Notes,Freemium,https://supernormal.com,"AI meeting notes and summaries automation tool","meetings,notes,ai",true,true
+1225,tl;dv AI,tl-dv-ai,AI Meeting Recorder,Freemium,https://tldv.io,"AI meeting recording and highlight extraction tool","meetings,video,ai",true,true
+
+1226,Shortwave AI,shortwave-ai,AI Email Assistant,Freemium,https://www.shortwave.com,"AI-powered email productivity and organization tool","email,productivity,ai",true,true
+1227,Superhuman AI,superhuman-ai,AI Email Client,Paid,https://superhuman.com,"Fast AI-enhanced email management system","email,productivity,ai",true,true
+1228,Missive AI,missive-ai,AI Email Collaboration,Freemium,https://missiveapp.com,"Team email collaboration with AI assistance","email,team,productivity",true,true
+1229,SaneBox AI,sanebox-ai,AI Email Sorting,Paid,https://www.sanebox.com,"AI email filtering and inbox organization tool","email,filtering,productivity",true,true
+1230,EmailTree AI,emailtree-ai,AI Email Automation,Paid,https://emailtree.ai,"AI email automation and response generation tool","email,automation,business",true,true
+
+1231,Bardeen AI,bardeen-ai,AI Workflow Automation,Freemium,https://www.bardeen.ai,"AI automation for repetitive web tasks and workflows","automation,workflow,productivity",true,true
+1232,Zapier AI,zapier-ai,AI Automation Platform,Freemium,https://zapier.com,"AI-powered automation between apps and services","automation,workflow,no-code",true,true
+1233,Make AI,make-ai,AI Workflow Builder,Freemium,https://www.make.com,"Visual AI workflow automation platform","automation,workflow,no-code",true,true
+1234,IFTTT AI,ifttt-ai,AI Automation Tool,Freemium,https://ifttt.com,"AI-enhanced automation between apps and devices","automation,smart,workflow",true,true
+1235,Pipedream AI,pipedream-ai,AI Integration Platform,Freemium,https://pipedream.com,"AI-powered API and workflow integration tool","automation,api,workflow",true,true
+
+1236,Taskade AI,taskade-ai,AI Productivity Workspace,Freemium,https://www.taskade.com,"AI task management and collaboration platform","productivity,tasks,ai",true,true
+1237,ClickUp AI,clickup-ai,AI Project Management,Freemium,https://clickup.com,"AI project management and productivity suite","productivity,projects,ai",true,true
+1238,Asana AI,asana-ai,AI Project Management,Paid,https://asana.com,"AI-enhanced project and task management platform","productivity,projects,ai",true,true
+1239,Monday AI,monday-ai,AI Work OS,Freemium,https://monday.com,"AI-powered work management platform","productivity,workflow,ai",true,true
+1240,Notion Calendar AI,notion-calendar-ai,AI Scheduling Tool,Freemium,https://www.notion.so/product/calendar,"AI calendar and planning assistant","calendar,productivity,ai",true,true
+
+1241,Trello AI,trello-ai,AI Task Manager,Freemium,https://trello.com,"AI-powered kanban task management tool","tasks,productivity,ai",true,true
+1242,Todoist AI,todoist-ai,AI Task Assistant,Freemium,https://todoist.com,"AI task planning and productivity assistant","tasks,productivity,ai",true,true
+1243,Any.do AI,anydo-ai,AI Task Manager,Freemium,https://www.any.do,"AI daily planning and task management app","tasks,planning,ai",true,true
+1244,Motion Tasks AI,motion-tasks-ai,AI Task Scheduler,Paid,https://www.usemotion.com,"AI task scheduling and productivity optimization","tasks,scheduling,ai",true,true
+1245,Reclaim Tasks AI,reclaim-tasks-ai,AI Task Planner,Freemium,https://reclaim.ai,"AI task scheduling and time blocking tool","tasks,calendar,ai",true,true
+
+1246,Mem AI,mem-ai,AI Knowledge Assistant,Freemium,https://mem.ai,"AI-powered personal knowledge base and memory tool","notes,knowledge,ai",true,true
+1247,Reflect AI,reflect-ai,AI Note Taking,Freemium,https://reflect.app,"AI note-taking and knowledge organization tool","notes,productivity,ai",true,true
+1248,Roam Research AI,roam-ai,AI Knowledge Graph,Freemium,https://roamresearch.com,"AI-enhanced networked note-taking system","notes,knowledge,graph",true,true
+1249,Obsidian AI,obsidian-ai,AI Knowledge Management,Free,https://obsidian.md,"AI plugins for personal knowledge management system","notes,knowledge,ai",true,true
+1250,Notability AI,notability-ai,AI Note Taking,Freemium,https://www.gingerlabs.com,"AI-enhanced note-taking and handwriting tool","notes,education,ai",true,true

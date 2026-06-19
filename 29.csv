@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1401,Perplexity Labs,perplexity-labs,AI Research Platform,Freemium,https://www.perplexity.ai,"Advanced AI research and deep search workspace","search,research,llm",true,true
+1402,Consensus AI,consensus-ai,AI Research Search,Freemium,https://consensus.app,"AI-powered scientific paper search engine","research,science,search",true,true
+1403,Elicit AI,elicit-ai,AI Research Assistant,Freemium,https://elicit.com,"AI literature review and paper summarization tool","research,papers,llm",true,true
+1404,SciSpace AI,scispace-ai,AI Research Tool,Freemium,https://typeset.io,"AI tool for understanding scientific papers","research,pdf,ai",true,true
+1405,Semantic Scholar AI,semantic-scholar-ai,AI Academic Search,Free,https://www.semanticscholar.org,"AI-powered academic paper search engine","research,academic,search",true,true
+
+1406,Connected Papers,connected-papers,AI Research Visualization,Freemium,https://www.connectedpapers.com,"Graph-based research paper discovery tool","research,graph,ai",true,true
+1407,ResearchRabbit,researchrabbit,AI Paper Discovery,Free,https://www.researchrabbit.ai,"AI tool for discovering academic research networks","research,academic,graph",true,true
+1408,Lens AI,lens-ai,AI Patent Search,Freemium,https://www.lens.org,"AI-powered patent and scholarly search engine","patent,research,search",true,true
+1409,OpenAlex AI,openalex-ai,AI Knowledge Graph,Free,https://openalex.org,"Open academic knowledge graph for research data","research,graph,academic",true,true
+1410,Scite AI,scite-ai,AI Citation Analysis,Freemium,https://scite.ai,"Smart citation analysis and paper validation tool","research,citations,ai",true,true
+
+1411,Wolfram AI Notebook,wolfram-ai-notebook,AI Computational Notebook,Paid,https://www.wolfram.com,"AI-enhanced computational research notebooks","math,science,ai",true,true
+1412,Notion Research AI,notion-research-ai,AI Knowledge Tool,Freemium,https://www.notion.so,"AI research and knowledge organization workspace","notes,research,ai",true,true
+1413,Obsidian Research AI,obsidian-research-ai,AI Knowledge Graph,Free,https://obsidian.md,"AI plugins for research and note linking","notes,graph,research",true,true
+1414,Roam AI Research,roam-ai-research,AI Knowledge Graph,Freemium,https://roamresearch.com,"AI-enhanced networked research notes system","notes,graph,ai",true,true
+1415,Memex AI,memex-ai,AI Research Workspace,Freemium,https://getmemex.com,"AI-powered personal research and bookmarking tool","research,knowledge,ai",true,true
+
+1416,Scholarcy AI,scholarcy-ai,AI Paper Summarizer,Freemium,https://www.scholarcy.com,"AI summarization tool for academic papers","research,summarization,ai",true,true
+1417,Paperpile AI,paperpile-ai,AI Reference Manager,Paid,https://paperpile.com,"AI-powered reference and citation manager","research,academic,ai",true,true
+1418,Zotero AI,zotero-ai,AI Reference Tool,Free,https://www.zotero.org,"Open-source reference management with AI plugins","research,citations,ai",true,true
+1419,Mendeley AI,mendeley-ai,AI Academic Tool,Freemium,https://www.mendeley.com,"AI-assisted academic research and citations tool","research,academic,ai",true,true
+1420,EndNote AI,endnote-ai,AI Citation Manager,Paid,https://endnote.com,"AI-powered reference management software","research,citations,ai",true,true
+
+1421,Quivr AI,quivr-ai,AI Knowledge Base,Freemium,https://www.quivr.app,"AI personal knowledge management system","knowledge,ai,notes",true,true
+1422,AnythingLLM,anything-llm,AI Knowledge Assistant,Free,https://github.com/Mintplex-Labs/anything-llm,"Private LLM workspace for documents and chat","llm,knowledge,ai",true,true
+1423,Dify AI,dify-ai,AI App Builder,Freemium,https://dify.ai,"Build AI applications with no-code/low-code platform","apps,llm,ai",true,true
+1424,Flowise Chat,flowise-chat,AI Visual LLM Builder,Freemium,https://flowiseai.com,"Drag-and-drop AI workflow and chatbot builder","chatbot,visual,llm",true,true
+1425,Lobe Chat,lobe-chat,AI Chat UI,Free,https://github.com/lobehub/lobe-chat,"Open-source ChatGPT-like interface for LLMs","chat,ui,llm",true,true
+
+1426,Open WebUI,open-webui,AI Chat Interface,Free,https://github.com/open-webui/open-webui,"Self-hosted AI chat UI for local LLMs","chat,ui,open-source",true,true
+1427,LibreChat,librechat,AI Chat Platform,Free,https://github.com/danny-avila/LibreChat,"Open-source ChatGPT alternative platform","chat,llm,open-source",true,true
+1428,Jan AI,jan-ai,AI Desktop Chat,Free,https://jan.ai,"Offline local AI assistant for desktop","chat,offline,llm",true,true
+1429,Ollama AI,ollama-ai,AI Local LLM,Free,https://ollama.com,"Run large language models locally","llm,local,ai",true,true
+1430,Llama.cpp,llama-cpp,AI Local Inference,Free,https://github.com/ggerganov/llama.cpp,"Efficient local inference for LLaMA models","llm,local,cpp",true,true
+
+1431,GPT4All,gpt4all,AI Local Chatbot,Free,https://gpt4all.io,"Offline chat models for local use","llm,local,chat",true,true
+1432,LM Studio,lm-studio,AI Desktop LLM,Free,https://lmstudio.ai,"Run LLMs locally with GUI interface","llm,desktop,ai",true,true
+1433,Text Generation WebUI,text-gen-webui,AI LLM UI,Free,https://github.com/oobabooga/text-generation-webui,"Web interface for running local LLMs","llm,ui,local",true,true
+1434,FastChat AI,fastchat-ai,AI Chat Framework,Free,https://github.com/lm-sys/FastChat,"Open-source ChatGPT-style system framework","chat,llm,framework",true,true
+1435,OpenLLM,openllm,AI Model Serving,Free,https://github.com/bentoml/OpenLLM,"Deploy and serve open-source LLMs easily","llm,api,serving",true,true
+
+1436,Vercel AI SDK,vercel-ai-sdk,AI Developer SDK,Freemium,https://sdk.vercel.ai,"Build AI-powered web apps easily","sdk,llm,web",true,true
+1437,LangServe AI,langserve-ai,AI API Deployment,Free,https://github.com/langchain-ai/langserve,"Deploy LangChain apps as APIs","llm,api,framework",true,true
+1438,LlamaIndex Server,llamaindex-server,AI Data API,Freemium,https://www.llamaindex.ai,"Serve LLM applications as APIs","llm,data,api",true,true
+1439,PromptLayer Cloud,promptlayer-cloud,AI Prompt Ops,Freemium,https://promptlayer.com,"Track and manage LLM prompts at scale","prompts,ops,llm",true,true
+1440,Helicone Cloud,helicone-cloud,AI LLM Analytics,Freemium,https://helicone.ai,"Analytics and monitoring for LLM usage","llm,analytics,api",true,true
+
+1441,Langfuse Cloud,langfuse-cloud,AI Observability,Freemium,https://langfuse.com,"LLM observability and tracing platform","llm,monitoring,analytics",true,true
+1442,TruLens AI,trulens-ai,AI Evaluation Tool,Free,https://github.com/truera/trulens,"Evaluate and monitor LLM applications","llm,evaluation,ai",true,true
+1443,Ragas AI,ragas-ai,AI Evaluation Framework,Free,https://github.com/explodinggradients/ragas,"Framework for evaluating RAG systems","llm,rag,evaluation",true,true
+1444,Llama Guard,llama-guard,AI Safety Model,Free,https://ai.meta.com,"Meta AI safety filtering model","safety,llm,moderation",true,true
+1445,Guardrails AI,guardrails-ai,AI Safety Framework,Freemium,https://www.guardrailsai.com,"Validate and secure LLM outputs","safety,llm,validation",true,true
+
+1446,Rebuff AI,rebuff-ai,AI Security Layer,Free,https://github.com/protectai/rebuff,"Prompt injection detection system for LLMs","security,llm,ai",true,true
+1447,Prompt Injection Guard,prompt-injection-guard,AI Security Tool,Free,https://github.com,"Detect and prevent prompt injection attacks","security,llm,ai",true,true
+1448,OpenAI Moderation API,openai-moderation-api,AI Safety API,Paid,https://platform.openai.com,"Content moderation API for safe AI outputs","safety,api,llm",true,true
+1449,Azure Content Safety,azure-content-safety,AI Safety API,Paid,https://azure.microsoft.com,"AI content safety and moderation system","safety,api,ai",true,true
+1450,Perspective API,perspective-api,AI Toxicity Detection API,Free,https://perspectiveapi.com,"Google API for toxicity and content analysis","safety,api,nlp",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2701,OpenAI Design AI,openai-design-ai,AI Design Platform,Paid,https://platform.openai.com,"AI-powered design generation and creative automation system","design,ai,creative",true,true
+2702,Adobe Firefly AI,adobe-firefly-ai,AI Design Tool,Paid,https://www.adobe.com/sensei/generative-ai/firefly.html,"Adobe AI image and design generation platform","design,adobe,ai",true,true
+2703,Canva AI,canva-ai,AI Design Platform,Freemium,https://www.canva.com,"AI-powered graphic design and content creation tool","design,graphic,ai",true,true
+2704,Figma AI,figma-ai,AI UI Design Tool,Paid,https://www.figma.com,"AI-assisted UI/UX design collaboration platform","design,ui,ai",true,true
+2705,Midjourney AI,midjourney-ai,AI Image Generator,Paid,https://www.midjourney.com,"AI image generation and creative art platform","image,generation,ai",true,true
+
+2706,DALL·E AI,dalle-ai,AI Image Generator,Paid,https://openai.com/dall-e,"AI image generation model by OpenAI","image,openai,ai",true,true
+2707,Stable Diffusion AI,stable-diffusion-ai,AI Image Generator,Free,https://stability.ai,"Open-source AI image generation model","image,open-source,ai",true,true
+2708,Leonardo AI,leonardo-ai,AI Image Generator,Freemium,https://leonardo.ai,"AI creative image generation platform","image,design,ai",true,true
+2709,Runway ML,runway-ml,AI Video & Image Tool,Freemium,https://runwayml.com,"AI video and image generation platform","video,image,ai",true,true
+2710,Playground AI,playground-ai,AI Image Generator,Freemium,https://playgroundai.com,"AI image generation and editing platform","image,creative,ai",true,true
+
+2711,OpenAI Video AI,openai-video-ai,AI Video Generation,Paid,https://platform.openai.com,"AI video generation and editing system","video,generation,ai",true,true
+2712,Sora AI,sora-ai,AI Video Generator,Paid,https://openai.com/sora,"OpenAI text-to-video generation model","video,openai,ai",true,true
+2713,Pika Labs AI,pika-labs-ai,AI Video Generator,Freemium,https://pika.art,"AI video generation and animation tool","video,animation,ai",true,true
+2714,Synthesia AI,synthesia-ai,AI Avatar Video,Paid,https://www.synthesia.io,"AI avatar-based video creation platform","video,avatar,ai",true,true
+2715,HeyGen AI,heygen-ai,AI Video Avatar,Paid,https://www.heygen.com,"AI talking avatar video generation platform","video,avatar,ai",true,true
+
+2716,DeepBrain AI,deepbrain-ai,AI Video Avatar,Paid,https://www.deepbrain.io,"AI human avatar video generation system","video,avatar,ai",true,true
+2717,Colossyan AI,colossyan-ai,AI Video Generator,Paid,https://www.colossyan.com,"AI video creation with virtual presenters","video,education,ai",true,true
+2718,Hour One AI,hour-one-ai,AI Video Creation,Paid,https://hourone.ai,"AI realistic avatar video generation platform","video,avatar,ai",true,true
+2719,Elai AI,elai-ai,AI Video Platform,Paid,https://elai.io,"AI text-to-video presenter system","video,automation,ai",true,true
+2720,InVideo AI,invideo-ai,AI Video Editor,Freemium,https://invideo.io,"AI video creation and editing platform","video,editing,ai",true,true
+
+2721,OpenAI Audio AI,openai-audio-ai,AI Audio Platform,Paid,https://platform.openai.com,"AI audio generation and speech processing system","audio,speech,ai",true,true
+2722,ElevenLabs AI,elevenlabs-ai,AI Voice Generator,Freemium,https://elevenlabs.io,"AI voice synthesis and cloning platform","voice,audio,ai",true,true
+2723,Murf AI,murf-ai,AI Voice Generator,Paid,https://murf.ai,"AI text-to-speech voice generation platform","voice,audio,ai",true,true
+2724,Play.ht AI,play-ht-ai,AI Voice Generator,Paid,https://play.ht,"AI realistic voice synthesis system","voice,audio,ai",true,true
+2725,WellSaid Labs AI,wellsai-ai,AI Voice Platform,Paid,https://wellsaidlabs.com,"AI professional voiceover generation system","voice,audio,ai",true,true
+
+2726,Lovo AI,lovo-ai,AI Voice Generator,Freemium,https://www.lovo.ai,"AI voice cloning and narration platform","voice,audio,ai",true,true
+2727,Resemble AI,resemble-ai,AI Voice Cloning,Paid,https://www.resemble.ai,"AI voice cloning and speech synthesis system","voice,cloning,ai",true,true
+2728,Speechify AI,speechify-ai,AI Text-to-Speech,Freemium,https://speechify.com,"AI reading and text-to-speech assistant","voice,reading,ai",true,true
+2729,Descript AI,descript-ai,AI Audio Editor,Paid,https://www.descript.com,"AI audio and video editing platform","audio,editing,ai",true,true
+2730,Audo AI,audo-ai,AI Audio Cleanup,Paid,https://audo.ai,"AI noise reduction and audio enhancement tool","audio,cleanup,ai",true,true
+
+2731,OpenAI Music AI,openai-music-ai,AI Music Generator,Paid,https://platform.openai.com,"AI music generation and composition system","music,audio,ai",true,true
+2732,Suno AI,suno-ai,AI Music Generator,Freemium,https://suno.com,"AI song and music generation platform","music,generation,ai",true,true
+2733,Udio AI,udio-ai,AI Music Generator,Freemium,https://udio.com,"AI music creation and songwriting tool","music,ai,creative",true,true
+2734,AIVA AI,aiva-ai,AI Composer,Paid,https://www.aiva.ai,"AI orchestral music composition system","music,composition,ai",true,true
+2735,Boomy AI,boomy-ai,AI Music Creation,Freemium,https://boomy.com,"AI instant music generation platform","music,ai,creative",true,true
+
+2736,OpenAI Podcast AI,openai-podcast-ai,AI Podcast Tool,Paid,https://platform.openai.com,"AI podcast generation and editing system","podcast,audio,ai",true,true
+2737,Podcastle AI,podcastle-ai,AI Podcast Platform,Freemium,https://podcastle.ai,"AI podcast recording and editing platform","podcast,editing,ai",true,true
+2738,Resound AI,resound-ai,AI Podcast Editing,Paid,https://resound.fm,"AI podcast editing and enhancement tool","podcast,audio,ai",true,true
+2739,Alitu AI,alitu-ai,AI Podcast Maker,Paid,https://alitu.com,"AI automated podcast production platform","podcast,automation,ai",true,true
+2740,Wondercraft AI,wondercraft-ai,AI Audio Content,Paid,https://wondercraft.ai,"AI audio storytelling and podcast generation tool","podcast,audio,ai",true,true
+
+2741,OpenAI Creative Studio,openai-creative-studio,AI Creative Platform,Paid,https://platform.openai.com,"AI creative content production studio","creative,design,ai",true,true
+2742,Adobe Express AI,adobe-express-ai,AI Design Tool,Freemium,https://www.adobe.com/express,"AI quick design and content creation tool","design,adobe,ai",true,true
+2743,Pixlr AI,pixlr-ai,AI Image Editor,Freemium,https://pixlr.com,"AI photo editing and image enhancement tool","image,editing,ai",true,true
+2744,Fotor AI,fotor-ai,AI Photo Editor,Freemium,https://www.fotor.com,"AI image editing and enhancement platform","image,photo,ai",true,true
+2745,Remove.bg AI,remove-bg-ai,AI Background Removal,Freemium,https://www.remove.bg,"AI background removal tool for images","image,editing,ai",true,true
+
+2746,Clipdrop AI,clipdrop-ai,AI Image Tool,Freemium,https://clipdrop.co,"AI image editing and generation toolkit","image,editing,ai",true,true
+2747,Topaz AI,topaz-ai,AI Image Enhancement,Paid,https://www.topazlabs.com,"AI image upscaling and enhancement software","image,enhancement,ai",true,true
+2748,Upscale AI,upscale-ai,AI Image Upscaler,Freemium,https://upscale.media,"AI image resolution enhancement tool","image,enhancement,ai",true,true
+2749,PhotoRoom AI,photoroom-ai,AI Photo Editing,Freemium,https://www.photoroom.com,"AI product photo and background editing tool","image,ecommerce,ai",true,true
+2750,Designify AI,designify-ai,AI Design Automation,Freemium,https://www.designify.com,"AI automated design and image creation tool","design,automation,ai",true,true

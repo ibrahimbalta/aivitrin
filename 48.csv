@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2351,OpenAI Data Insights Studio,openai-data-insights-studio,AI Analytics Platform,Paid,https://platform.openai.com,"AI-powered data analysis and insight generation platform","data,analytics,ai",true,true
+2352,Google Looker AI,looker-ai,AI Analytics Platform,Paid,https://looker.com,"Google AI-driven business intelligence and analytics system","data,google,analytics",true,true
+2353,Microsoft Power BI AI,powerbi-ai,AI Analytics Tool,Paid,https://powerbi.microsoft.com,"AI-powered business intelligence dashboard system","data,microsoft,analytics",true,true
+2354,Meta Analytics AI,meta-analytics-ai,AI Data Platform,Free,https://ai.meta.com,"Meta AI data analytics and insights system","data,meta,ai",true,true
+2355,Mistral Analytics API,mistral-analytics-api,AI Analytics API,Paid,https://mistral.ai,"AI analytics and data processing API","data,llm,api",true,true
+
+2356,Tableau AI,tableau-ai,AI Data Visualization,Paid,https://www.tableau.com,"AI-powered data visualization and BI platform","data,visualization,ai",true,true
+2357,Looker Studio AI,looker-studio-ai,AI BI Tool,Free,https://lookerstudio.google.com,"Google AI-powered dashboard and reporting tool","data,bi,ai",true,true
+2358,ThoughtSpot AI,thoughtspot-ai,AI Analytics Platform,Paid,https://www.thoughtspot.com,"Search-driven AI analytics platform","data,analytics,ai",true,true
+2359,Qlik Sense AI,qlik-sense-ai,AI Analytics Platform,Paid,https://www.qlik.com,"AI business intelligence and analytics platform","data,bi,ai",true,true
+2360,Snowflake Cortex AI,snowflake-cortex-ai,AI Data Cloud,Paid,https://www.snowflake.com,"AI-native data cloud analytics system","data,cloud,ai",true,true
+
+2361,Databricks AI Analytics,databricks-ai-analytics,AI Data Platform,Paid,https://www.databricks.com,"Unified AI analytics and data engineering platform","data,analytics,ai",true,true
+2362,BigQuery ML AI,bigquery-ml-ai,AI Data Warehouse,Paid,https://cloud.google.com/bigquery,"Google AI-based data warehouse and ML system","data,google,ml",true,true
+2363,Azure Synapse AI,azure-synapse-ai,AI Data Platform,Paid,https://azure.microsoft.com,"Microsoft AI data analytics and warehousing platform","data,azure,analytics",true,true
+2364,AWS Redshift AI,aws-redshift-ai,AI Data Warehouse,Paid,https://aws.amazon.com/redshift,"AWS AI-powered data warehouse system","data,aws,analytics",true,true
+2365,ClickHouse AI,clickhouse-ai,AI Database Analytics,Free,https://clickhouse.com,"High-performance analytics database with AI support","data,database,ai",true,true
+
+2366,OpenAI Dashboard AI,openai-dashboard-ai,AI Analytics Tool,Paid,https://platform.openai.com,"AI dashboard and analytics visualization tool","analytics,ai,data",true,true
+2367,Amplitude AI,amplitude-ai,AI Product Analytics,Paid,https://amplitude.com,"AI-driven product analytics platform","analytics,product,ai",true,true
+2368,Mixpanel AI,mixpanel-ai,AI Analytics Platform,Paid,https://mixpanel.com,"AI product analytics and user tracking system","analytics,product,ai",true,true
+2369,Heap AI,heap-ai,AI Behavioral Analytics,Paid,https://heap.io,"AI behavioral analytics platform","analytics,behavior,ai",true,true
+2370,PostHog AI,posthog-ai,AI Product Analytics,Freemium,https://posthog.com,"Open-source AI product analytics platform","analytics,product,ai",true,true
+
+2371,Hotjar AI,hotjar-ai,AI UX Analytics,Paid,https://www.hotjar.com,"AI user behavior and heatmap analytics tool","analytics,ux,ai",true,true
+2372,FullStory AI,fullstory-ai,AI UX Analytics,Paid,https://www.fullstory.com,"AI session replay and user analytics platform","analytics,ux,ai",true,true
+2373,Mouseflow AI,mouseflow-ai,AI UX Analytics,Paid,https://mouseflow.com,"AI heatmap and user interaction analytics","analytics,ux,ai",true,true
+2374,Crazy Egg AI,crazy-egg-ai,AI UX Analytics,Paid,https://www.crazyegg.com,"AI website heatmap and behavior analytics","analytics,ux,ai",true,true
+2375,Smartlook AI,smartlook-ai,AI UX Analytics,Paid,https://www.smartlook.com,"AI user behavior tracking and analytics system","analytics,ux,ai",true,true
+
+2376,OpenAI Forecast AI,openai-forecast-ai,AI Prediction Engine,Paid,https://platform.openai.com,"AI forecasting and predictive analytics system","forecasting,ai,data",true,true
+2377,Google Forecast AI,google-forecast-ai,AI Prediction Platform,Paid,https://ai.google,"Google AI forecasting and prediction engine","forecasting,google,ai",true,true
+2378,Amazon Forecast AI,amazon-forecast-ai,AI Time Series Forecast,Paid,https://aws.amazon.com/forecast,"AWS AI forecasting and prediction system","forecasting,aws,ai",true,true
+2379,Azure Forecast AI,azure-forecast-ai,AI Prediction Platform,Paid,https://azure.microsoft.com,"Microsoft AI forecasting and prediction tools","forecasting,azure,ai",true,true
+2380,Meta Forecast AI,meta-forecast-ai,AI Prediction System,Free,https://ai.meta.com,"Meta AI predictive analytics system","forecasting,meta,ai",true,true
+
+2381,Prophet AI,prophet-ai,AI Time Series Tool,Free,https://facebook.github.io/prophet,"Open-source forecasting tool by Meta","forecasting,open-source,ai",true,true
+2382,Darts AI Forecast,darts-ai-forecast,AI Forecast Library,Free,https://github.com/unit8co/darts,"Time series forecasting AI library","forecasting,ml,ai",true,true
+2383,NeuralProphet AI,neuralprophet-ai,AI Forecast Tool,Free,https://neuralprophet.com,"Deep learning forecasting framework","forecasting,ai,ml",true,true
+2384,AutoTS AI,autots-ai,AI Forecast Tool,Free,https://github.com/winedarksea/AutoTS,"Automated time series forecasting system","forecasting,ml,ai",true,true
+2385,GluonTS AI,gluon-ts-ai,AI Forecast Library,Free,https://ts.gluon.ai,"Deep learning time series forecasting toolkit","forecasting,ai,aws",true,true
+
+2386,OpenAI Business Intelligence AI,openai-bi-ai,AI BI Platform,Paid,https://platform.openai.com,"AI business intelligence automation system","bi,analytics,ai",true,true
+2387,Sisense AI,sisense-ai,AI BI Platform,Paid,https://www.sisense.com,"AI-powered business intelligence platform","bi,data,ai",true,true
+2388,Domo AI Analytics,domo-ai-analytics,Paid,https://www.domo.com,"Cloud AI analytics and BI platform","bi,cloud,ai",true,true
+2389,Zoho Analytics AI,zoho-analytics-ai,AI BI Tool,Paid,https://www.zoho.com/analytics,"AI-powered business analytics platform","bi,analytics,ai",true,true
+2390,GoodData AI,gooddata-ai,AI Analytics Platform,Paid,https://www.gooddata.com,"AI-driven embedded analytics platform","bi,analytics,ai",true,true
+
+2391,OpenAI KPI Tracker,openai-kpi-tracker,AI Metrics Platform,Paid,https://platform.openai.com,"AI KPI tracking and performance analytics system","kpi,analytics,ai",true,true
+2392,Geckoboard AI,geckoboard-ai,AI Dashboard Tool,Paid,https://www.geckoboard.com,"AI real-time KPI dashboard system","dashboard,kpi,ai",true,true
+2393,Databox AI,databox-ai,AI Business Dashboard,Paid,https://databox.com,"AI business performance dashboard platform","dashboard,analytics,ai",true,true
+2394,Klipfolio AI,klipfolio-ai,AI Dashboard Platform,Paid,https://www.klipfolio.com,"AI KPI dashboard and reporting tool","dashboard,bi,ai",true,true
+2395,Whatagraph AI,whatagraph-ai,AI Marketing Analytics,Paid,https://whatagraph.com,"AI marketing reporting and analytics platform","marketing,analytics,ai",true,true
+
+2396,OpenAI Insight Engine,openai-insight-engine,AI Insights Platform,Paid,https://platform.openai.com,"AI-driven business insights generation system","insights,analytics,ai",true,true
+2397,Cognos AI,ibm-cognos-ai,AI BI Platform,Paid,https://www.ibm.com/products/cognos-analytics,"IBM AI business analytics platform","bi,ibm,ai",true,true
+2398,TIBCO Spotfire AI,tibco-spotfire-ai,AI Analytics Platform,Paid,https://www.tibco.com/products/spotfire,"AI data analytics and visualization platform","analytics,data,ai",true,true
+2399,Oracle Analytics AI,oracle-analytics-ai,AI BI Platform,Paid,https://www.oracle.com/analytics,"Oracle AI analytics and BI system","bi,oracle,ai",true,true
+2400,SAP Analytics Cloud AI,sap-analytics-cloud-ai,AI Enterprise BI,Paid,https://www.sap.com/products/analytics-cloud,"SAP AI-powered enterprise analytics platform","bi,enterprise,ai",true,true

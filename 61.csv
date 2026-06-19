@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+3001,OpenAI Finance AI,openai-finance-ai,AI Finance Platform,Paid,https://platform.openai.com,"AI financial analysis and investment intelligence system","finance,ai,analytics",true,true
+3002,Bloomberg AI,bloomberg-ai,AI Financial Analytics,Paid,https://www.bloomberg.com,"AI-powered financial data and market analysis platform","finance,markets,ai",true,true
+3003,Refinitiv AI,refinitiv-ai,AI Market Data,Paid,https://www.refinitiv.com,"AI financial data and trading intelligence system","finance,data,ai",true,true
+3004,TradingView AI,tradingview-ai,AI Trading Platform,Freemium,https://www.tradingview.com,"AI charting and financial analysis platform","finance,trading,ai",true,true
+3005,Alpha Vantage AI,alpha-vantage-ai,AI Financial API,Freemium,https://www.alphavantage.co,"AI stock market data and analytics API","finance,api,ai",true,true
+
+3006,OpenAI Trading AI,openai-trading-ai,AI Trading System,Paid,https://platform.openai.com,"AI algorithmic trading and market prediction system","finance,trading,ai",true,true
+3007,QuantConnect AI,quantconnect-ai,AI Quant Trading,Paid,https://www.quantconnect.com,"AI quantitative trading strategy platform","finance,quant,ai",true,true
+3008,MetaTrader AI,metatrader-ai,AI Forex Trading,Paid,https://www.metatrader5.com,"AI forex trading and automation platform","finance,forex,ai",true,true
+3009,Alpaca AI Trading,alpaca-ai-trading,AI Stock Trading API,Freemium,https://alpaca.markets,"AI commission-free stock trading API","finance,stocks,ai",true,true
+3010,Robinhood AI,robinhood-ai,AI Retail Trading,Paid,https://www.robinhood.com,"AI-powered retail investment platform","finance,stocks,ai",true,true
+
+3011,OpenAI Crypto AI,openai-crypto-ai,AI Crypto Analytics,Paid,https://platform.openai.com,"AI cryptocurrency analysis and prediction system","crypto,finance,ai",true,true
+3012,Coinbase AI,coinbase-ai,AI Crypto Platform,Paid,https://www.coinbase.com,"AI crypto trading and portfolio system","crypto,exchange,ai",true,true
+3013,Binance AI,binance-ai,AI Crypto Exchange,Paid,https://www.binance.com,"AI-powered crypto trading and analytics system","crypto,exchange,ai",true,true
+3014,Kraken AI,kraken-ai,AI Crypto Trading,Paid,https://www.kraken.com,"AI cryptocurrency trading platform","crypto,finance,ai",true,true
+3015,Crypto.com AI,crypto-com-ai,AI Crypto App,Paid,https://crypto.com,"AI crypto investment and wallet system","crypto,finance,ai",true,true
+
+3016,OpenAI Banking AI,openai-banking-ai,AI Banking System,Paid,https://platform.openai.com,"AI banking automation and financial intelligence system","banking,finance,ai",true,true
+3017,JPMorgan AI,jpmorgan-ai,AI Banking Platform,Paid,https://www.jpmorganchase.com,"AI banking and investment analytics system","banking,finance,ai",true,true
+3018,Goldman Sachs AI,goldman-sachs-ai,AI Financial Intelligence,Paid,https://www.goldmansachs.com,"AI investment banking and trading system","banking,finance,ai",true,true
+3019,HSBC AI,hsbc-ai,AI Banking Platform,Paid,https://www.hsbc.com,"AI global banking and financial system","banking,finance,ai",true,true
+3020,PayPal AI,paypal-ai,AI Payments Platform,Paid,https://www.paypal.com,"AI payment fraud detection and processing system","payments,finance,ai",true,true
+
+3021,OpenAI Accounting AI,openai-accounting-ai,AI Accounting System,Paid,https://platform.openai.com,"AI accounting automation and bookkeeping system","accounting,finance,ai",true,true
+3022,QuickBooks AI,quickbooks-ai,AI Accounting Software,Paid,https://quickbooks.intuit.com,"AI bookkeeping and accounting automation system","accounting,finance,ai",true,true
+3023,Xero AI,xero-ai,AI Accounting Platform,Paid,https://www.xero.com,"AI small business accounting system","accounting,finance,ai",true,true
+3024,Sage AI,sage-ai,AI Accounting System,Paid,https://www.sage.com,"AI enterprise accounting and finance platform","accounting,finance,ai",true,true
+3025,FreshBooks AI,freshbooks-ai,AI Invoicing System,Paid,https://www.freshbooks.com,"AI invoicing and accounting automation system","accounting,finance,ai",true,true
+
+3026,OpenAI Tax AI,openai-tax-ai,AI Tax Platform,Paid,https://platform.openai.com,"AI tax preparation and optimization system","tax,finance,ai",true,true
+3027,TurboTax AI,turbotax-ai,AI Tax Filing,Paid,https://turbotax.intuit.com,"AI tax filing and deduction optimization system","tax,finance,ai",true,true
+3028,H&R Block AI,hrblock-ai,AI Tax Service,Paid,https://www.hrblock.com,"AI tax preparation and filing assistance system","tax,finance,ai",true,true
+3029,TaxSlayer AI,taxslayer-ai,AI Tax Platform,Paid,https://www.taxslayer.com,"AI tax filing and optimization system","tax,finance,ai",true,true
+3030,FreeTaxUSA AI,freetaxusa-ai,AI Tax Filing,Freemium,https://www.freetaxusa.com,"AI low-cost tax filing system","tax,finance,ai",true,true
+
+3031,OpenAI Insurance AI,openai-insurance-ai,AI Insurance Platform,Paid,https://platform.openai.com,"AI insurance underwriting and claims system","insurance,finance,ai",true,true
+3032,Lemonade AI,lemonade-ai,AI Insurance Platform,Paid,https://www.lemonade.com,"AI insurance claims and underwriting system","insurance,ai,finance",true,true
+3033,Progressive AI,progressive-ai,AI Insurance Pricing,Paid,https://www.progressive.com,"AI auto insurance pricing and risk system","insurance,auto,ai",true,true
+3034,Allianz AI,allianz-ai,AI Insurance Platform,Paid,https://www.allianz.com,"AI global insurance analytics system","insurance,finance,ai",true,true
+3035,AXA AI,axa-ai,AI Insurance System,Paid,https://www.axa.com,"AI insurance risk and claims processing system","insurance,finance,ai",true,true
+
+3036,OpenAI Real Estate AI,openai-realestate-ai,AI Real Estate Platform,Paid,https://platform.openai.com,"AI real estate valuation and market analysis system","realestate,finance,ai",true,true
+3037,Zillow AI,zillow-ai,AI Property Platform,Paid,https://www.zillow.com,"AI property valuation and housing market system","realestate,housing,ai",true,true
+3038,Redfin AI,redfin-ai,AI Real Estate Search,Paid,https://www.redfin.com,"AI real estate search and pricing system","realestate,housing,ai",true,true
+3039,Realtor AI,realtor-ai,AI Property Platform,Paid,https://www.realtor.com,"AI property listing and search system","realestate,housing,ai",true,true
+3040,Compass AI,compass-ai,AI Real Estate Brokerage,Paid,https://www.compass.com,"AI real estate brokerage and analytics system","realestate,brokerage,ai",true,true
+
+3041,OpenAI Investment AI,openai-investment-ai,AI Investment Platform,Paid,https://platform.openai.com,"AI investment portfolio management system","investment,finance,ai",true,true
+3042,Wealthfront AI,wealthfront-ai,AI Robo Advisor,Paid,https://www.wealthfront.com,"AI automated investment advisor system","investment,finance,ai",true,true
+3043,Betterment AI,betterment-ai,AI Investment Advisor,Paid,https://www.betterment.com,"AI robo-advisor investment platform","investment,finance,ai",true,true
+3044,Schwab AI,schwab-ai,AI Investment Platform,Paid,https://www.schwab.com,"AI investment and portfolio management system","investment,finance,ai",true,true
+3045,Fidelity AI,fidelity-ai,AI Investment System,Paid,https://www.fidelity.com,"AI financial investment and trading system","investment,finance,ai",true,true
+
+3046,OpenAI Budget AI,openai-budget-ai,AI Budget Planner,Paid,https://platform.openai.com,"AI personal budgeting and financial planning system","budget,finance,ai",true,true
+3047,YNAB AI,ynab-ai,AI Budgeting Tool,Paid,https://www.youneedabudget.com,"AI budgeting and expense tracking system","budget,finance,ai",true,true
+3048,Monarch Money AI,monarch-money-ai,AI Finance Tracker,Paid,https://www.monarchmoney.com,"AI personal finance and budgeting system","budget,finance,ai",true,true
+3049,PocketGuard AI,pocketguard-ai,AI Expense Tracker,Freemium,https://pocketguard.com,"AI expense tracking and savings optimization system","budget,finance,ai",true,true
+3050,Clearly AI Finance,clearly-ai-finance,AI Financial Assistant,Paid,https://www.clearly.ai,"AI personal finance management and insights system","budget,finance,ai",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1251,Salesforce Einstein,salesforce-einstein,AI CRM Assistant,Paid,https://www.salesforce.com/products/einstein,"AI-powered CRM analytics and automation assistant","crm,sales,ai",true,true
+1252,HubSpot AI,hubspot-ai,AI Marketing Assistant,Freemium,https://www.hubspot.com,"AI tools for marketing, sales and customer automation","marketing,sales,ai",true,true
+1253,Zoho Zia,zoho-zia,AI Business Assistant,Freemium,https://www.zoho.com/zia,"AI assistant for CRM insights and business automation","crm,business,ai",true,true
+1254,Intercom Fin,intercom-fin,AI Support Bot,Paid,https://www.intercom.com/fin,"AI customer support chatbot for businesses","support,chatbot,ai",true,true
+1255,Drift AI,drift-ai,AI Sales Chatbot,Paid,https://www.drift.com,"AI conversational sales and marketing chatbot","sales,chatbot,ai",true,true
+
+1256,Freshdesk AI,freshdesk-ai,AI Customer Support,Freemium,https://freshdesk.com,"AI-powered customer service and ticket automation","support,helpdesk,ai",true,true
+1257,Zendesk AI,zendesk-ai,AI Support Platform,Paid,https://www.zendesk.com,"AI customer support automation and ticketing system","support,crm,ai",true,true
+1258,Tidio AI,tidio-ai,AI Chatbot,Freemium,https://www.tidio.com,"AI chatbot for customer support and sales","chatbot,support,ai",true,true
+1259,ManyChat AI,manychat-ai,AI Chat Automation,Freemium,https://manychat.com,"AI chatbot automation for social media and messaging","chatbot,marketing,ai",true,true
+1260,Chatfuel AI,chatfuel-ai,AI Messenger Bot,Freemium,https://chatfuel.com,"AI chatbot builder for Facebook Messenger and WhatsApp","chatbot,social,ai",true,true
+
+1261,Landbot AI,landbot-ai,AI Chatbot Builder,Freemium,https://landbot.io,"No-code AI chatbot builder for websites","chatbot,no-code,ai",true,true
+1262,Flow XO AI,flowxo-ai,AI Chat Automation,Freemium,https://flowxo.com,"Automated chatbot and workflow builder","chatbot,automation,ai",true,true
+1263,HubSpot Chat AI,hubspot-chat-ai,AI Sales Chatbot,Freemium,https://www.hubspot.com/products/crm/live-chat,"AI live chat and sales assistant for websites","chatbot,sales,ai",true,true
+1264,LivePerson AI,liveperson-ai,AI Conversational Platform,Paid,https://www.liveperson.com,"AI conversational commerce and customer engagement platform","chatbot,enterprise,ai",true,true
+1265,Ada AI,ada-ai,AI Customer Support Bot,Paid,https://www.ada.cx,"AI automation platform for customer support chatbots","support,chatbot,ai",true,true
+
+1266,OpenAI Assistants API,openai-assistants-api,AI Developer API,Paid,https://platform.openai.com,"Build custom AI assistants using OpenAI models","api,llm,developer",true,true
+1267,Anthropic API,anthropic-api,AI LLM API,Paid,https://www.anthropic.com,"API access to Claude models for developers","llm,api,ai",true,true
+1268,Google AI Studio,google-ai-studio,AI Developer Platform,Freemium,https://aistudio.google.com,"Google platform for building AI applications","developer,ai,llm",true,true
+1269,Azure OpenAI Service,azure-openai-service,AI Cloud API,Paid,https://azure.microsoft.com,"Microsoft cloud API for OpenAI models","cloud,llm,api",true,true
+1270,AWS Bedrock,aws-bedrock,AI Model API,Paid,https://aws.amazon.com/bedrock,"Access foundation models via AWS cloud platform","aws,llm,cloud",true,true
+
+1271,Cohere AI,cohere-ai,AI NLP Platform,Paid,https://cohere.com,"Large language model API for text generation and embeddings","llm,nlp,api",true,true
+1272,Together AI,together-ai,AI Model API,Paid,https://www.together.ai,"Run and fine-tune open-source AI models","llm,api,models",true,true
+1273,Fireworks AI API,fireworks-ai-api,AI Inference API,Paid,https://fireworks.ai,"High-speed LLM inference API service","llm,api,inference",true,true
+1274,Replicate API,replicate-api,AI Model API,Paid,https://replicate.com,"Run machine learning models via simple API calls","ml,api,models",true,true
+1275,OpenRouter AI,openrouter-ai,AI LLM Gateway,Paid,https://openrouter.ai,"Unified API gateway for multiple LLM providers","llm,api,gateway",true,true
+
+1276,Portkey AI,portkey-ai,AI API Gateway,Paid,https://portkey.ai,"Manage and monitor LLM API traffic across providers","llm,api,monitoring",true,true
+1277,LiteLLM Cloud,litellm-cloud,AI API Proxy,Free,https://github.com/BerriAI/litellm,"Open-source LLM proxy and API router","llm,proxy,api",true,true
+1278,Helicone AI,helicone-ai,AI API Analytics,Freemium,https://helicone.ai,"Monitor LLM usage and performance analytics","llm,analytics,api",true,true
+1279,LangSmith AI,langsmith-ai,AI Debugging Platform,Paid,https://smith.langchain.com,"Debug and evaluate LLM applications","llm,debugging,devtools",true,true
+1280,Humanloop AI,humanloop-ai,AI Prompt Platform,Paid,https://humanloop.com,"Prompt engineering and evaluation platform","prompts,llm,ai",true,true
+
+1281,PromptLayer Pro,promptlayer-pro,AI Prompt Tracking,Freemium,https://promptlayer.com,"Track and manage prompts for LLM applications","prompts,devtools,llm",true,true
+1282,Langfuse Pro,langfuse-pro,AI Observability,Freemium,https://langfuse.com,"Open-source LLM observability and logging tool","llm,monitoring,analytics",true,true
+1283,AgentOps Pro,agentops-pro,AI Agent Monitoring,Freemium,https://agentops.ai,"Monitor and debug AI agent workflows","agents,monitoring,llm",true,true
+1284,Weights & Biases AI,wandb-ai,AI ML Platform,Paid,https://wandb.ai,"Track ML experiments and model performance","ml,tracking,ai",true,true
+1285,Neptune AI,neptune-ai,AI Experiment Tracking,Paid,https://neptune.ai,"ML experiment tracking and metadata management","ml,tracking,ai",true,true
+
+1286,Comet ML,comet-ml,AI Experiment Platform,Paid,https://www.comet.com,"Track and compare machine learning experiments","ml,experiments,ai",true,true
+1287,ClearML AI,clearml-ai,AI MLOps Platform,Free,https://clear.ml,"Open-source MLOps platform for AI workflows","ml,devops,ai",true,true
+1288,MLflow AI,mlflow-ai,AI ML Lifecycle,Free,https://mlflow.org,"ML lifecycle tracking and model management system","ml,devops,ai",true,true
+1289,Kubeflow AI,kubeflow-ai,AI ML Platform,Free,https://kubeflow.org,"ML workflows on Kubernetes infrastructure","ml,kubernetes,ai",true,true
+1290,SageMaker AI,sagemaker-ai,AI Cloud ML,Paid,https://aws.amazon.com/sagemaker,"AWS machine learning platform for training and deployment","aws,ml,ai",true,true
+
+1291,Vertex AI Pro,vertex-ai-pro,AI Cloud ML,Paid,https://cloud.google.com/vertex-ai,"Google AI platform for building and deploying models","google,ml,ai",true,true
+1292,Azure AI ML,azure-ai-ml,AI Cloud Platform,Paid,https://azure.microsoft.com,"Microsoft AI and machine learning platform","azure,ml,ai",true,true
+1293,Hugging Face Hub,hf-hub,AI Model Hub,Freemium,https://huggingface.co,"Hub for AI models, datasets and apps","ml,models,ai",true,true
+1294,Replicate Studio,replicate-studio,AI Model Hosting,Paid,https://replicate.com,"Deploy and run ML models easily via cloud","ml,hosting,ai",true,true
+1295,RunPod AI,runpod-ai,AI GPU Cloud,Paid,https://www.runpod.io,"GPU cloud platform for AI workloads","gpu,cloud,ai",true,true
+
+1296,Modal AI,modal-ai,AI Serverless Compute,Paid,https://modal.com,"Serverless infrastructure for AI workloads","cloud,compute,ai",true,true
+1297,BentoML AI,bentoml-ai,AI Model Serving,Paid,https://www.bentoml.com,"Deploy ML models into production APIs","ml,api,ai",true,true
+1298,Seldon AI,seldon-ai,AI MLOps Platform,Paid,https://www.seldon.io,"Enterprise AI model deployment platform","ml,enterprise,ai",true,true
+1299,KServe AI,kserve-ai,AI Model Serving,Free,https://kserve.github.io,"Kubernetes-based ML inference system","ml,kubernetes,ai",true,true
+1300,Ray Serve AI Pro,ray-serve-ai-pro,AI Distributed Serving,Free,https://www.ray.io,"Distributed AI model serving framework","ml,distributed,ai",true,true

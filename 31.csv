@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1501,Runway Enterprise,runway-enterprise,AI Video Platform,Paid,https://runwayml.com,"Enterprise AI video generation and editing platform","video,enterprise,generative",true,true
+1502,Pika Enterprise,pika-enterprise,AI Video Generation,Freemium,https://pika.art,"Advanced AI video generation for professional creators","video,generative,ai",true,true
+1503,Synthesia Enterprise,synthesia-enterprise,AI Avatar Video,Paid,https://www.synthesia.io,"Enterprise AI avatar video creation platform","video,avatar,enterprise",true,true
+1504,HeyGen Enterprise,heygen-enterprise,AI Video Avatar,Paid,https://www.heygen.com,"AI avatar video generation for businesses","video,avatar,ai",true,true
+1505,Colossyan Enterprise,colossyan-enterprise,AI Video Platform,Paid,https://www.colossyan.com,"AI presenter video generation for enterprises","video,training,ai",true,true
+
+1506,DeepBrain Enterprise,deepbrain-enterprise,AI Avatar Studio,Paid,https://www.deepbrain.io,"Enterprise AI human avatar video production platform","video,avatar,enterprise",true,true
+1507,D-ID Enterprise,d-id-enterprise,AI Talking Avatar,Paid,https://www.d-id.com,"Enterprise talking avatar and video generation system","video,avatar,ai",true,true
+1508,Hour One Enterprise,hour-one-enterprise,AI Video Presenter,Paid,https://hourone.ai,"AI presenter video platform for enterprises","video,enterprise,ai",true,true
+1509,Elai Enterprise,elai-enterprise,AI Video Generator,Paid,https://elai.io,"Enterprise AI video creation platform with avatars","video,marketing,ai",true,true
+1510,Fliki Enterprise,fliki-enterprise,AI Content Video,Paid,https://fliki.ai,"Enterprise AI text-to-video content platform","video,tts,ai",true,true
+
+1511,InVideo Enterprise,invideo-enterprise,AI Video Creator,Paid,https://invideo.io,"Enterprise AI video creation and marketing platform","video,marketing,ai",true,true
+1512,Pictory Enterprise,pictory-enterprise,AI Video Automation,Paid,https://pictory.ai,"Enterprise AI video generation from scripts and blogs","video,automation,ai",true,true
+1513,Lumen5 Enterprise,lumen5-enterprise,AI Marketing Video,Paid,https://lumen5.com,"Enterprise AI video marketing platform","video,marketing,ai",true,true
+1514,VEED Enterprise,veed-enterprise,AI Video Editing,Paid,https://www.veed.io,"Enterprise AI video editing and subtitle tools","video,editing,ai",true,true
+1515,CapCut Pro AI,capcut-pro-ai,AI Video Editor,Freemium,https://www.capcut.com,"Advanced AI video editing tools for professionals","video,editing,social",true,true
+
+1516,Adobe Premiere Pro AI,premiere-pro-ai,AI Video Editing,Paid,https://www.adobe.com/products/premiere.html,"AI-powered professional video editing suite","video,editing,adobe",true,true
+1517,Adobe After Effects AI,after-effects-ai,AI Motion Graphics,Paid,https://www.adobe.com/products/aftereffects.html,"AI-enhanced motion graphics and VFX tools","video,vfx,ai",true,true
+1518,Adobe Express Enterprise,adobe-express-enterprise,AI Design Platform,Paid,https://www.adobe.com/express,"Enterprise AI design and content creation tool","design,marketing,ai",true,true
+1519,Canva Enterprise AI,canva-enterprise-ai,AI Design Suite,Paid,https://www.canva.com,"Enterprise AI design and branding platform","design,branding,ai",true,true
+1520,Figma Enterprise AI,figma-enterprise-ai,AI UI Design,Paid,https://www.figma.com,"Enterprise AI-powered UI/UX design platform","design,ui,ai",true,true
+
+1521,Uizard Enterprise,uizard-enterprise,AI UI Generator,Paid,https://uizard.io,"Enterprise AI UI design and prototyping tool","ui,design,ai",true,true
+1522,Framer Enterprise AI,framer-enterprise-ai,AI Website Builder,Paid,https://www.framer.com,"Enterprise AI website generation platform","web,design,ai",true,true
+1523,Wix Enterprise AI,wix-enterprise-ai,AI Website Builder,Paid,https://www.wix.com,"Enterprise AI website creation platform","web,design,ai",true,true
+1524,10Web Enterprise,10web-enterprise,AI WordPress Platform,Paid,https://10web.io,"Enterprise AI WordPress automation platform","web,wordpress,ai",true,true
+1525,Hostinger Enterprise AI,hostinger-enterprise-ai,AI Hosting Platform,Paid,https://www.hostinger.com,"Enterprise AI website hosting and builder system","hosting,web,ai",true,true
+
+1526,Shopify Magic AI,shopify-magic-ai,AI Ecommerce Assistant,Freemium,https://www.shopify.com,"AI-powered ecommerce content and product generation","ecommerce,marketing,ai",true,true
+1527,Amazon AI Seller Tools,amazon-ai-seller,AI Ecommerce Platform,Paid,https://www.amazon.com,"AI tools for product listings and seller optimization","ecommerce,sales,ai",true,true
+1528,eBay AI Tools,ebay-ai-tools,AI Marketplace Assistant,Freemium,https://www.ebay.com,"AI listing and pricing optimization tools","ecommerce,marketplace,ai",true,true
+1529,Etsy AI Tools,etsy-ai-tools,AI Creative Commerce,Freemium,https://www.etsy.com,"AI tools for product descriptions and shop optimization","ecommerce,creative,ai",true,true
+1530,WooCommerce AI,woocommerce-ai,AI Ecommerce Plugin,Freemium,https://woocommerce.com,"AI-powered WooCommerce store automation tools","ecommerce,wordpress,ai",true,true
+
+1531,Salesforce AI Cloud,salesforce-ai-cloud,AI CRM Platform,Paid,https://www.salesforce.com,"Enterprise AI CRM and analytics platform","crm,sales,ai",true,true
+1532,HubSpot AI Pro,hubspot-ai-pro,AI Marketing Platform,Paid,https://www.hubspot.com,"Advanced AI marketing and sales automation suite","marketing,sales,ai",true,true
+1533,Zoho AI Cloud,zoho-ai-cloud,AI Business Suite,Paid,https://www.zoho.com,"AI-powered business management platform","crm,business,ai",true,true
+1534,Freshworks AI,freshworks-ai,AI Customer Platform,Paid,https://www.freshworks.com,"AI customer engagement and support platform","crm,support,ai",true,true
+1535,Zendesk Enterprise AI,zendesk-enterprise-ai,AI Support Platform,Paid,https://www.zendesk.com,"Enterprise AI customer support automation system","support,crm,ai",true,true
+
+1536,Intercom AI Pro,intercom-ai-pro,AI Support Platform,Paid,https://www.intercom.com,"AI-powered customer support automation suite","support,chatbot,ai",true,true
+1537,Drift Enterprise AI,drift-enterprise-ai,AI Sales Platform,Paid,https://www.drift.com,"AI conversational sales platform for enterprises","sales,chatbot,ai",true,true
+1538,Ada Enterprise AI,ada-enterprise-ai,AI Support Bot,Paid,https://www.ada.cx,"Enterprise AI customer support automation system","support,chatbot,ai",true,true
+1539,LivePerson Enterprise,liveperson-enterprise,AI Messaging Platform,Paid,https://www.liveperson.com,"AI conversational commerce platform","chatbot,enterprise,ai",true,true
+1540,Tidio Enterprise AI,tidio-enterprise-ai,AI Chatbot Platform,Paid,https://www.tidio.com,"Enterprise AI chatbot and automation system","chatbot,sales,ai",true,true
+
+1541,Botpress Enterprise AI,botpress-enterprise-ai,AI Chatbot Platform,Paid,https://botpress.com,"Enterprise conversational AI chatbot builder","chatbot,enterprise,ai",true,true
+1542,Dialogflow Enterprise,dialogflow-enterprise,AI Conversational AI,Paid,https://cloud.google.com/dialogflow,"Google enterprise conversational AI platform","chatbot,google,ai",true,true
+1543,Amazon Lex Enterprise,amazon-lex-enterprise,AI Chatbot Service,Paid,https://aws.amazon.com/lex,"AWS enterprise conversational AI system","chatbot,aws,ai",true,true
+1544,IBM Watson Enterprise,ibm-watson-enterprise,AI Assistant Platform,Paid,https://www.ibm.com,"Enterprise AI assistant and chatbot platform","chatbot,ibm,ai",true,true
+1545,Rasa Enterprise,rasa-enterprise,AI Chatbot Framework,Paid,https://rasa.com,"Enterprise open-source conversational AI framework","chatbot,nlp,ai",true,true
+
+1546,LangChain Enterprise,langchain-enterprise,AI Agent Platform,Paid,https://www.langchain.com,"Enterprise AI agent orchestration platform","agents,llm,ai",true,true
+1547,LlamaIndex Enterprise,llamaindex-enterprise,AI Data Platform,Paid,https://www.llamaindex.ai,"Enterprise LLM data integration platform","llm,data,ai",true,true
+1548,Dify Enterprise,dify-enterprise,AI App Platform,Paid,https://dify.ai,"Enterprise AI application builder platform","apps,llm,ai",true,true
+1549,Flowise Enterprise,flowise-enterprise,AI Workflow Builder,Paid,https://flowiseai.com,"Enterprise visual LLM workflow builder","workflow,llm,ai",true,true
+1550,OpenAI Enterprise API,openai-enterprise-api,AI LLM Platform,Paid,https://platform.openai.com,"Enterprise-grade OpenAI API access for organizations","llm,api,enterprise",true,true

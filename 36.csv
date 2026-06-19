@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1751,OpenAI GPT Memory API,gpt-memory-api,AI Memory System,Paid,https://platform.openai.com,"Persistent memory layer for AI applications","llm,memory,api",true,true
+1752,Anthropic Memory Layer,anthropic-memory-layer,AI Memory System,Paid,https://www.anthropic.com,"Long-context memory system for Claude-based apps","llm,memory,enterprise",true,true
+1753,Google Gemini Memory,gemini-memory,AI Memory System,Paid,https://ai.google,"Persistent context memory for Gemini AI systems","llm,memory,google",true,true
+1754,Meta AI Memory System,meta-ai-memory,AI Memory Platform,Free,https://ai.meta.com,"Memory-enabled AI assistant ecosystem","llm,memory,meta",true,true
+1755,Mistral Memory API,mistral-memory-api,AI Memory System,Paid,https://mistral.ai,"Memory-enabled LLM API for enterprise apps","llm,memory,api",true,true
+
+1756,Pinecone Memory Layer,pinecone-memory-layer,AI Vector Memory,Paid,https://www.pinecone.io,"Vector database memory system for AI applications","vector,memory,ai",true,true
+1757,Weaviate Memory System,weaviate-memory-system,AI Vector Memory,Paid,https://weaviate.io,"Semantic memory and retrieval system for AI","vector,memory,search",true,true
+1758,Milvus Memory DB,milvus-memory-db,AI Vector Memory,Paid,https://milvus.io,"High-scale vector memory database system","vector,memory,db",true,true
+1759,Qdrant Memory Engine,qdrant-memory-engine,AI Vector Memory,Paid,https://qdrant.tech,"Vector-based semantic memory engine","vector,memory,ai",true,true
+1760,Chroma Memory Store,chroma-memory-store,AI Vector Memory,Free,https://www.trychroma.com,"Lightweight vector memory storage system","vector,memory,open-source",true,true
+
+1761,LangChain Memory Framework,langchain-memory-framework,AI Memory Framework,Free,https://www.langchain.com,"Framework for building AI memory systems","llm,memory,framework",true,true
+1762,LlamaIndex Memory System,llamaindex-memory-system,AI Memory Framework,Free,https://www.llamaindex.ai,"Data indexing and memory retrieval system for LLMs","llm,memory,data",true,true
+1763,Haystack Memory AI,haystack-memory-ai,AI Memory Framework,Free,https://haystack.deepset.ai,"Open-source NLP memory and retrieval system","nlp,memory,open-source",true,true
+1764,AutoGPT Memory Layer,autogpt-memory-layer,AI Agent Memory,Free,https://github.com/Significant-Gravitas/AutoGPT,"Memory system for autonomous AI agents","agents,memory,ai",true,true
+1765,BabyAGI Memory System,babyagi-memory-system,AI Agent Memory,Free,https://github.com/yoheinakajima/babyagi,"Lightweight AI agent memory architecture","agents,memory,ai",true,true
+
+1766,CrewAI Memory Engine,crewai-memory-engine,AI Agent Memory,Paid,https://www.crewai.com,"Memory system for multi-agent collaboration","agents,memory,ai",true,true
+1767,LangGraph Memory Layer,langgraph-memory-layer,AI Agent Memory,Paid,https://langchain-ai.github.io/langgraph,"Stateful memory system for AI agent graphs","agents,memory,workflow",true,true
+1768,OpenAI Agent Memory,openai-agent-memory,AI Agent Memory,Paid,https://platform.openai.com,"Memory persistence layer for AI agents","agents,memory,api",true,true
+1769,Google Agent Memory,google-agent-memory,AI Agent Memory,Paid,https://ai.google,"Memory system for Gemini-based agents","agents,memory,google",true,true
+1770,Microsoft Copilot Memory,microsoft-copilot-memory,AI Assistant Memory,Paid,https://www.microsoft.com,"Persistent memory for Copilot assistants","copilot,memory,enterprise",true,true
+
+1771,Claude Context Engine,claude-context-engine,AI Context System,Paid,https://www.anthropic.com,"Extended context management system for Claude","llm,context,ai",true,true
+1772,GPT Context Window API,gpt-context-window-api,AI Context System,Paid,https://platform.openai.com,"Extended context handling API for GPT models","llm,context,api",true,true
+1773,Gemini Context Engine,gemini-context-engine,AI Context System,Paid,https://ai.google,"Large context window system for Gemini AI","llm,context,google",true,true
+1774,Mistral Context API,mistral-context-api,AI Context System,Paid,https://mistral.ai,"High context LLM API for enterprise workloads","llm,context,api",true,true
+1775,Meta Context Engine,meta-context-engine,AI Context System,Free,https://ai.meta.com,"Context-aware AI system for Llama models","llm,context,meta",true,true
+
+1776,LangChain Context Manager,langchain-context-manager,AI Context Framework,Free,https://www.langchain.com,"Framework for managing LLM context windows","llm,context,framework",true,true
+1777,LlamaIndex Context Layer,llamaindex-context-layer,AI Context System,Free,https://www.llamaindex.ai,"Context management and retrieval layer for LLMs","llm,context,data",true,true
+1778,Haystack Context System,haystack-context-system,AI Context Engine,Free,https://haystack.deepset.ai,"Context-aware NLP retrieval system","nlp,context,open-source",true,true
+1779,AutoGPT Context Engine,autogpt-context-engine,AI Agent Context,Free,https://github.com/Significant-Gravitas/AutoGPT,"Context management for autonomous agents","agents,context,ai",true,true
+1780,BabyAGI Context System,babyagi-context-system,AI Agent Context,Free,https://github.com/yoheinakajima/babyagi,"Simple context system for AI agents","agents,context,ai",true,true
+
+1781,CrewAI Context Layer,crewai-context-layer,AI Multi-Agent Context,Paid,https://www.crewai.com,"Shared context system for multi-agent AI workflows","agents,context,ai",true,true
+1782,LangGraph Context Engine,langgraph-context-engine,AI Agent Context,Paid,https://langchain-ai.github.io/langgraph,"Graph-based context system for AI agents","agents,context,workflow",true,true
+1783,OpenAI Assistant Context,openai-assistant-context,AI Assistant Context,Paid,https://platform.openai.com,"Context management for OpenAI assistants","assistant,context,api",true,true
+1784,Google Assistant Context,google-assistant-context,AI Assistant Context,Paid,https://ai.google,"Context system for Google AI assistants","assistant,context,google",true,true
+1785,Microsoft Copilot Context,microsoft-copilot-context,AI Assistant Context,Paid,https://www.microsoft.com,"Context-aware Copilot assistant system","copilot,context,enterprise",true,true
+
+1786,Vector Memory Cloud,pinecone-vector-memory-cloud,AI Vector Cloud Memory,Paid,https://www.pinecone.io,"Cloud-based vector memory system for AI apps","vector,memory,cloud",true,true
+1787,Weaviate Cloud Memory,weaviate-cloud-memory,AI Vector Cloud Memory,Paid,https://weaviate.io,"Cloud semantic memory database system","vector,memory,cloud",true,true
+1788,Qdrant Cloud Memory,qdrant-cloud-memory,AI Vector Cloud Memory,Paid,https://qdrant.tech,"Cloud vector memory and search engine","vector,memory,cloud",true,true
+1789,Milvus Cloud Memory,milvus-cloud-memory,AI Vector Cloud Memory,Paid,https://milvus.io,"Cloud-native vector memory platform","vector,memory,cloud",true,true
+1790,Chroma Cloud Memory,chroma-cloud-memory,AI Vector Cloud Memory,Free,https://www.trychroma.com,"Lightweight cloud vector memory system","vector,memory,cloud",true,true
+
+1791,OpenAI RAG Engine,openai-rag-engine,AI Retrieval System,Paid,https://platform.openai.com,"Retrieval-augmented generation engine","rag,llm,api",true,true
+1792,LangChain RAG Framework,langchain-rag-framework,AI RAG System,Free,https://www.langchain.com,"Framework for building RAG applications","rag,llm,framework",true,true
+1793,LlamaIndex RAG Engine,llamaindex-rag-engine,AI RAG System,Free,https://www.llamaindex.ai,"RAG pipeline and data retrieval system","rag,llm,data",true,true
+1794,Haystack RAG System,haystack-rag-system,AI RAG Engine,Free,https://haystack.deepset.ai,"Open-source RAG pipeline system","rag,nlp,open-source",true,true
+1795,Weaviate RAG Engine,weaviate-rag-engine,AI RAG System,Paid,https://weaviate.io,"Vector-based RAG system for AI apps","rag,vector,search",true,true
+
+1796,Pinecone RAG Cloud,pinecone-rag-cloud,AI RAG Cloud,Paid,https://www.pinecone.io,"Cloud RAG infrastructure for AI apps","rag,vector,cloud",true,true
+1797,Qdrant RAG Cloud,qdrant-rag-cloud,AI RAG Cloud,Paid,https://qdrant.tech,"Cloud semantic RAG search engine","rag,vector,cloud",true,true
+1798,Milvus RAG Cloud,milvus-rag-cloud,AI RAG Cloud,Paid,https://milvus.io,"Large-scale RAG vector infrastructure","rag,vector,cloud",true,true
+1799,Chroma RAG Cloud,chroma-rag-cloud,AI RAG Cloud,Free,https://www.trychroma.com,"Lightweight RAG vector database cloud","rag,vector,cloud",true,true
+1800,AutoGPT RAG Engine,autogpt-rag-engine,AI Agent RAG,Free,https://github.com/Significant-Gravitas/AutoGPT,"RAG system integrated into autonomous agents","agents,rag,ai",true,true

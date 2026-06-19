@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+301,PathAI,path-ai,AI Healthcare Diagnostics,Paid,https://www.pathai.com,"AI-powered pathology diagnostics and medical research platform","healthcare,diagnostics,medical",true,true
+302,Tempus,tempus,AI Precision Medicine,Paid,https://www.tempus.com,"AI platform for genomic data analysis and personalized healthcare","healthcare,genomics,data",true,true
+303,Butterfly Network AI,butterfly-network-ai,AI Medical Imaging,Paid,https://www.butterflynetwork.com,"AI-enhanced ultrasound imaging technology","medical,imaging,ultrasound",true,true
+304,Aidoc,aidoc,AI Radiology,Paid,https://www.aidoc.com,"AI solutions for radiology workflow and medical imaging analysis","radiology,medical,imaging",true,true
+305,Zebra Medical Vision,zebra-medical-vision,AI Medical Imaging,Paid,https://www.nanox.vision,"AI algorithms for medical imaging analysis and diagnosis support","healthcare,imaging,diagnosis",true,true
+
+306,Med-PaLM,med-palm,AI Medical Language Model,Research,https://health.google,"Medical large language model developed for healthcare applications","llm,medical,research",true,true
+307,Glass AI,glass-ai,AI Clinical Assistant,Freemium,https://glass.health,"AI assistant for creating clinical notes and differential diagnoses","medical,doctor,notes",true,true
+308,Suki AI,suki-ai,AI Medical Assistant,Paid,https://www.suki.ai,"AI voice assistant for healthcare professionals","medical,voice,documentation",true,true
+309,DeepScribe,deepscribe,AI Medical Scribe,Paid,https://www.deepscribe.ai,"Automatically creates medical documentation from conversations","medical,transcription,notes",true,true
+310,Nabla,nabla,AI Medical Assistant,Freemium,https://www.nabla.com,"AI assistant for clinicians and healthcare documentation","healthcare,doctor,notes",true,true
+
+311,Khanmigo,khanmigo,AI Education Assistant,Freemium,https://www.khanacademy.org/khan-labs,"AI tutor from Khan Academy for personalized learning","education,tutor,learning",true,true
+312,Duolingo Max,duolingo-max,AI Language Learning,Paid,https://www.duolingo.com/max,"AI-powered language learning with conversational practice","education,languages,tutor",true,true
+313,Coursera Coach,coursera-coach,AI Learning Assistant,Freemium,https://www.coursera.org,"AI assistant for online courses and learning guidance","education,courses,assistant",true,true
+314,Quizlet Q-Chat,quizlet-q-chat,AI Study Assistant,Freemium,https://quizlet.com,"AI tutor for studying and exam preparation","education,flashcards,learning",true,true
+315,Socratic by Google,socratic-by-google,AI Homework Assistant,Free,https://socratic.org,"AI-powered homework help and problem solving","education,students,learning",true,true
+
+316,ELSA Speak,elsa-speak,AI Language Coach,Freemium,https://elsaspeak.com,"AI English pronunciation and speaking coach","language,speaking,education",true,true
+317,Speak,speak,AI Language Tutor,Freemium,https://www.speak.com,"AI-powered conversation practice for language learners","language,conversation,learning",true,true
+318,Memrise AI,memrise-ai,AI Language Learning,Freemium,https://www.memrise.com,"AI language learning with personalized practice","education,language,learning",true,true
+319,DeepL Write,deepl-write,AI Writing Assistant,Freemium,https://www.deepl.com/write,"AI writing and translation improvement assistant","writing,translation,grammar",true,true
+320,Google Translate AI,google-translate-ai,AI Translation,Free,https://translate.google.com,"AI-powered multilingual translation service","translation,languages,communication",true,true
+
+321,Riffusion,riffusion,AI Music Generator,Free,https://www.riffusion.com,"Generate music and audio from text prompts","music,audio,generative",true,true
+322,Suno,suno,AI Music Generator,Freemium,https://suno.com,"Create complete songs with AI vocals and music","music,songs,vocals",true,true
+323,Udio,udio,AI Music Generator,Freemium,https://www.udio.com,"AI platform for generating high-quality songs","music,audio,composition",true,true
+324,AIVA,aiva,AI Music Composer,Freemium,https://www.aiva.ai,"AI composer for cinematic and professional music","music,composer,film",true,true
+325,Soundraw,soundraw,AI Music Generator,Paid,https://soundraw.io,"Generate royalty-free AI music for creators","music,royalty-free,creator",true,true
+
+326,Beatoven.ai,beatoven-ai,AI Music Generator,Freemium,https://www.beatoven.ai,"AI-generated background music for videos and podcasts","music,background,video",true,true
+327,Soundful,soundful,AI Music Generator,Freemium,https://soundful.com,"AI music creation platform for creators and brands","music,creator,commercial",true,true
+328,Boomy,boomy,AI Music Generator,Freemium,https://boomy.com,"Create and publish AI-generated songs","music,songs,streaming",true,true
+329,Amper Music,amper-music,AI Music Platform,Paid,https://www.shutterstock.com/discover/amper-music,"AI music composition technology for media production","music,production,media",true,true
+330,Voicemod AI,voicemod-ai,AI Voice Changer,Freemium,https://www.voicemod.net,"Real-time AI voice effects and voice changing software","voice,gaming,audio",true,true
+
+331,Inworld AI,inworld-ai,AI Game Development,Freemium,https://inworld.ai,"AI characters and NPCs for games and virtual worlds","gaming,npc,characters",true,true
+332,Scenario GG,scenario-gg,AI Game Assets,Freemium,https://scenario.gg,"AI-generated game assets and visual content","gaming,assets,image",true,true
+333,Modl.ai,modl-ai,AI Game Testing,Paid,https://modl.ai,"AI-powered automated game testing platform","gaming,testing,automation",true,true
+334,Ludo AI,ludo-ai,AI Game Design,Freemium,https://ludo.ai,"AI assistant for game ideas and design concepts","gaming,ideas,design",true,true
+335,Layer AI,layer-ai,AI Game Art,Freemium,https://www.layer.ai,"AI tools for creating game art and assets","gaming,art,design",true,true
+
+336,Promethean AI,promethean-ai,AI 3D World Building,Freemium,https://prometheanai.com,"AI assistant for creating virtual environments and 3D worlds","3d,game,environment",true,true
+337,Charisma AI,charisma-ai,AI Interactive Characters,Freemium,https://charisma.ai,"Create AI-powered interactive characters and stories","characters,storytelling,interactive",true,true
+338,Latitude AI,latitude-ai,AI Story Gaming,Freemium,https://latitude.io,"AI-powered interactive storytelling and gaming experiences","gaming,story,interactive",true,true
+339,Latitude Voyage,latitude-voyage,AI Game Storytelling,Freemium,https://latitude.io,"AI-driven narrative experiences and adventures","story,gaming,ai",false,false
+340,AI Dungeon,ai-dungeon,AI Interactive Story Game,Freemium,https://aidungeon.com,"AI-generated text adventure and role-playing game","gaming,rpg,story",true,true
+
+341,Roboflow,roboflow,AI Computer Vision,Freemium,https://roboflow.com,"Build and deploy computer vision models and datasets","vision,ml,images",true,true
+342,Ultralytics,ultralytics,AI Computer Vision,Free,https://ultralytics.com,"YOLO-based computer vision models and tools","vision,yolo,opensource",true,true
+343,Landing AI,landing-ai,AI Vision Platform,Paid,https://landing.ai,"Computer vision solutions for industrial applications","vision,industry,inspection",true,true
+344,Clarifai,clarifai,AI Vision API,Freemium,https://www.clarifai.com,"AI platform for image, video and language recognition","vision,api,ml",true,true
+345,Amazon Rekognition,amazon-rekognition,AI Vision Service,Paid,https://aws.amazon.com/rekognition,"AWS image and video analysis service using AI","vision,aws,recognition",true,true
+
+346,Azure AI Vision,azure-ai-vision,AI Vision Service,Paid,https://azure.microsoft.com/products/ai-services/ai-vision,"Microsoft computer vision and image analysis service","vision,microsoft,cloud",true,true
+347,Google Cloud Vision AI,google-cloud-vision-ai,AI Vision API,Paid,https://cloud.google.com/vision,"Google image recognition and OCR AI service","vision,ocr,api",true,true
+348,Face++,face-plus-plus,AI Facial Recognition,Freemium,https://www.faceplusplus.com,"Face detection and recognition technology platform","face,recognition,vision",true,true
+349,Remove Watermark AI,remove-watermark-ai,AI Image Editing,Freemium,https://www.watermarkremover.io,"AI tool for removing watermarks from images","image,editing,cleanup",true,true
+350,Let's Enhance,lets-enhance,AI Image Upscaler,Freemium,https://letsenhance.io,"AI-powered image enhancement and upscaling platform","image,upscaling,photo",true,true

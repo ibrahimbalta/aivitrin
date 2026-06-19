@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+51,Stable Diffusion,stable-diffusion,AI Image Model,Free,https://stability.ai,"Open-source AI image generation model","image,open-source,generative",true,true
+52,Clipdrop,clipdrop,AI Photo Editor,Freemium,https://clipdrop.co,"AI tools for image editing, cleanup and generation","photo,editing,background",true,true
+53,PhotoRoom,photoroom,AI Photo Editor,Freemium,https://www.photoroom.com,"AI product photo creation and background editing","photo,ecommerce,design",true,true
+54,Pixlr,pixlr,AI Photo Editor,Freemium,https://pixlr.com,"Online photo editor with AI tools","photo,editor,design",true,true
+55,Fotor,fotor,AI Photo Editor,Freemium,https://www.fotor.com,"AI photo editing and graphic design platform","photo,design,image",true,true
+
+56,DreamStudio,dreamstudio,AI Image Generator,Freemium,https://dreamstudio.ai,"Official Stable Diffusion image generation platform","image,text-to-image,art",true,true
+57,NightCafe,nightcafe,AI Image Generator,Freemium,https://creator.nightcafe.studio,"AI artwork creation community and generator","image,art,community",true,true
+58,Artbreeder,artbreeder,AI Image Generator,Freemium,https://www.artbreeder.com,"Create and remix AI-generated images and characters","image,characters,art",true,true
+59,Playground AI,playground-ai,AI Image Generator,Freemium,https://playground.com,"AI image creation and editing platform","image,design,creative",true,true
+60,Lexica,lexica,AI Image Search,Free,https://lexica.art,"Search engine and generator for AI images and prompts","image,prompts,search",true,true
+
+61,Kaiber,kaiber,AI Video Generator,Freemium,https://kaiber.ai,"AI video generation for artists and creators","video,music,animation",true,true
+62,InVideo AI,invideo-ai,AI Video Generator,Freemium,https://invideo.io,"Create videos from text prompts using AI","video,marketing,content",true,true
+63,VEED AI,veed-ai,AI Video Editor,Freemium,https://www.veed.io,"Online video editor with AI tools","video,editing,subtitles",true,true
+64,CapCut AI,capcut-ai,AI Video Editor,Freemium,https://www.capcut.com,"AI-powered video editing and effects","video,editing,social-media",true,true
+65,Opus Clip,opus-clip,AI Video Repurposing,Freemium,https://www.opus.pro,"Convert long videos into viral short clips","video,shorts,marketing",true,true
+
+66,Speechify,speechify,AI Text To Speech,Freemium,https://speechify.com,"Convert text into natural sounding voices","voice,tts,audio",true,true
+67,Resemble AI,resemble-ai,AI Voice Generator,Freemium,https://www.resemble.ai,"AI voice cloning and speech synthesis platform","voice,cloning,audio",true,true
+68,LOVO AI,lovo-ai,AI Voice Generator,Freemium,https://lovo.ai,"AI voices for videos, ads and content","voice,tts,narration",true,true
+69,WellSaid Labs,wellsaid-labs,AI Voice Generator,Paid,https://wellsaidlabs.com,"Professional AI voice generation platform","voice,enterprise,tts",true,true
+70,Voice.ai,voice-ai,AI Voice Changer,Freemium,https://voice.ai,"Real-time AI voice changing software","voice,changer,gaming",true,true
+
+71,Rytr,rytr,AI Writing,Freemium,https://rytr.me,"AI writing assistant for blogs and marketing","writing,copywriting,seo",true,true
+72,Anyword,anyword,AI Copywriting,Freemium,https://anyword.com,"AI content generation optimized for marketing","writing,ads,marketing",true,true
+73,Frase,frase,AI SEO Writing,Freemium,https://www.frase.io,"AI SEO content research and writing platform","seo,content,writing",true,true
+74,Surfer SEO,surfer-seo,AI SEO Tool,Paid,https://surferseo.com,"SEO optimization and AI content assistance","seo,marketing,analysis",true,true
+75,Scalenut,scalenut,AI SEO Tool,Freemium,https://www.scalenut.com,"AI-powered SEO and content marketing platform","seo,writing,marketing",true,true
+
+76,Durable,durable,AI Website Builder,Freemium,https://durable.co,"Generate complete websites using AI","website,no-code,business",true,true
+77,10Web AI Builder,10web-ai-builder,AI Website Builder,Freemium,https://10web.io,"AI WordPress website creation platform","website,wordpress,builder",true,true
+78,Hostinger AI Builder,hostinger-ai-builder,AI Website Builder,Paid,https://www.hostinger.com,"AI website generator and hosting tools","website,hosting,builder",true,true
+79,Webflow AI,webflow-ai,AI Website Builder,Freemium,https://webflow.com,"AI tools integrated into Webflow website platform","website,design,nocode",true,true
+80,Bookmark AIDA,bookmark-aida,AI Website Builder,Freemium,https://www.bookmark.com,"AI assistant for building websites quickly","website,builder,automation",true,true
+
+81,GitLab Duo,gitlab-duo,AI Coding Assistant,Paid,https://about.gitlab.com/gitlab-duo,"AI-powered development assistant from GitLab","coding,developer,devops",true,true
+82,Amazon CodeWhisperer,amazon-codewhisperer,AI Coding Assistant,Free,https://aws.amazon.com/codewhisperer,"AI coding assistant from Amazon AWS","coding,aws,developer",true,true
+83,Sourcegraph Cody,sourcegraph-cody,AI Coding Assistant,Freemium,https://sourcegraph.com/cody,"AI code assistant with repository awareness","coding,search,developer",true,true
+84,Continue,continue,AI Coding Assistant,Free,https://continue.dev,"Open-source AI coding assistant for IDEs","coding,opensource,ide",true,true
+85,MutableAI,mutableai,AI Coding Assistant,Freemium,https://mutable.ai,"AI software development and code generation tools","coding,automation,developer",true,true
+
+86,Fireflies.ai,fireflies-ai,AI Meeting Assistant,Freemium,https://fireflies.ai,"Record, transcribe and summarize meetings with AI","meeting,notes,transcription",true,true
+87,Fathom,fathom,AI Meeting Assistant,Freemium,https://fathom.video,"AI meeting recording and note generation","meeting,productivity,notes",true,true
+88,Avoma,avoma,AI Meeting Assistant,Freemium,https://www.avoma.com,"AI meeting intelligence and conversation insights","meeting,sales,analytics",true,true
+89,tl;dv,tldv,AI Meeting Assistant,Freemium,https://tldv.io,"AI meeting summaries and searchable recordings","meeting,zoom,notes",true,true
+90,Supernormal,supernormal,AI Meeting Assistant,Freemium,https://supernormal.com,"Automatic AI meeting notes and summaries","meeting,notes,automation",true,true
+
+91,LangChain,langchain,AI Developer Framework,Free,https://langchain.com,"Framework for building LLM applications and agents","llm,framework,agents",true,true
+92,LlamaIndex,llamaindex,AI Data Framework,Free,https://www.llamaindex.ai,"Data framework for connecting LLMs with external data","llm,data,rag",true,true
+93,Pinecone,pinecone,AI Vector Database,Freemium,https://www.pinecone.io,"Vector database for AI applications and semantic search","vector,rag,developer",true,true
+94,Weaviate,weaviate,AI Vector Database,Free,https://weaviate.io,"Open-source vector database for AI systems","vector,opensource,search",true,true
+95,Chroma,chroma,AI Vector Database,Free,https://www.trychroma.com,"Open-source embedding database for AI applications","vector,embeddings,rag",true,true
+
+96,AutoGPT,autogpt,AI Agent,Free,https://agpt.co,"Autonomous AI agent platform","agents,automation,opensource",true,true
+97,CrewAI,crewai,AI Agent Framework,Free,https://www.crewai.com,"Multi-agent AI orchestration framework","agents,automation,developer",true,true
+98,AgentGPT,agentgpt,AI Agent,Freemium,https://agentgpt.reworkd.ai,"Build and deploy autonomous AI agents online","agents,automation,llm",true,true
+99,BabyAGI,babyagi,AI Agent Framework,Free,https://babyagi.org,"Experimental autonomous AI task management system","agents,opensource,research",true,true
+100,Flowise,flowise,AI Workflow Builder,Free,https://flowiseai.com,"Visual open-source builder for LLM workflows","workflow,rag,opensource",true,true

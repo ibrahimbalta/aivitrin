@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1301,Stability AI API,stability-ai-api,AI Image API,Paid,https://stability.ai,"API access to Stable Diffusion and generative image models","image,api,generative",true,true
+1302,Midjourney API,midjourney-api,AI Image Generation API,Paid,https://www.midjourney.com,"High-quality AI image generation via API access","image,api,art",true,true
+1303,Leonardo API,leonardo-api,AI Art API,Freemium,https://leonardo.ai,"AI image generation API for games and creative assets","image,api,game",true,true
+1304,Playground API,playground-api,AI Image API,Freemium,https://playgroundai.com,"Text-to-image API for creative generation","image,api,creative",true,true
+1305,Adobe Firefly API,firefly-api,AI Design API,Paid,https://firefly.adobe.com,"Generative AI API for design and image creation","design,api,creative",true,true
+
+1306,DALL·E API,dalle-api,AI Image API,Paid,https://openai.com/dall-e-3,"OpenAI image generation API","image,openai,api",true,true
+1307,OpenAI Image API,openai-image-api,AI Vision API,Paid,https://platform.openai.com,"Image generation and vision API from OpenAI","image,vision,api",true,true
+1308,ClipDrop API,clipdrop-api,AI Image Editing API,Paid,https://clipdrop.co,"AI image editing and background removal API","image,editing,api",true,true
+1309,Remove.bg API,remove-bg-api,AI Background API,Freemium,https://www.remove.bg/api,"Automatic background removal API","image,background,api",true,true
+1310,Photoroom API,photoroom-api,AI Photo Editing API,Paid,https://www.photoroom.com/api,"AI product photo editing API","image,editing,ecommerce",true,true
+
+1311,Replicate Image API,replicate-image-api,AI Model API,Paid,https://replicate.com,"Run image generation models via API","ml,image,api",true,true
+1312,RunDiffusion API,rundiffusion-api,AI Image Cloud API,Paid,https://rundiffusion.com,"Cloud API for Stable Diffusion workloads","image,cloud,api",true,true
+1313,TensorArt API,tensorart-api,AI Art Platform API,Freemium,https://tensor.art,"AI model hosting and image generation API","image,models,api",true,true
+1314,SeaArt API,seaart-api,AI Image Generation API,Freemium,https://www.seaart.ai,"Community-driven AI image generation API","image,community,api",true,true
+1315,Artbreeder API,artbreeder-api,AI Art API,Freemium,https://www.artbreeder.com,"AI image blending and evolution API","image,art,api",true,true
+
+1316,Topaz API,topaz-api,AI Image Enhancement API,Paid,https://www.topazlabs.com,"AI image and video enhancement API services","image,enhancement,api",true,true
+1317,Let’s Enhance API,lets-enhance-api,AI Upscaling API,Freemium,https://letsenhance.io,"AI image upscaling and enhancement API","image,upscale,api",true,true
+1318,Upscale.media API,upscale-media-api,AI Upscaling API,Freemium,https://www.upscale.media,"AI-powered image upscaling API","image,upscale,api",true,true
+1319,BigJPG API,bigjpg-api,AI Image Upscaling API,Free,https://bigjpg.com/api,"AI image enlargement API without quality loss","image,upscale,api",true,true
+1320,Remini API,remini-api,AI Photo Enhancement API,Freemium,https://www.remini.ai/api,"AI photo restoration and enhancement API","image,enhancement,api",true,true
+
+1321,ElevenLabs API,elevenlabs-api,AI Voice API,Paid,https://elevenlabs.io,"Advanced AI voice synthesis and cloning API","voice,tts,api",true,true
+1322,PlayHT API,playht-api,AI Voice API,Freemium,https://play.ht,"Text-to-speech AI voice generation API","voice,tts,api",true,true
+1323,Murf API,murf-api,AI Voice API,Paid,https://murf.ai,"AI voiceover generation API","voice,tts,api",true,true
+1324,Lovo API,lovo-api,AI Voice API,Freemium,https://lovo.ai,"AI voice synthesis and dubbing API","voice,tts,api",true,true
+1325,WellSaid API,wellsaid-api,AI Voice API,Paid,https://wellsaidlabs.com,"Professional AI voice generation API","voice,tts,api",true,true
+
+1326,Resemble API,resemble-api,AI Voice Cloning API,Paid,https://www.resemble.ai,"AI voice cloning and synthesis API","voice,cloning,api",true,true
+1327,Speechify API,speechify-api,AI Voice Reader API,Freemium,https://speechify.com,"Text-to-speech reading API","voice,reader,api",true,true
+1328,Amazon Polly API,amazon-polly-api,AI Speech API,Paid,https://aws.amazon.com/polly,"AWS neural text-to-speech API","voice,aws,api",true,true
+1329,Google TTS API,google-tts-api,AI Speech API,Paid,https://cloud.google.com/text-to-speech,"Google text-to-speech API service","voice,google,api",true,true
+1330,Azure Speech API,azure-speech-api,AI Speech API,Paid,https://azure.microsoft.com,"Microsoft neural speech synthesis API","voice,azure,api",true,true
+
+1331,Deepgram API,deepgram-api,AI Speech-to-Text API,Paid,https://deepgram.com,"High accuracy speech-to-text API","stt,voice,api",true,true
+1332,AssemblyAI API,assemblyai-api,AI Speech API,Paid,https://www.assemblyai.com,"Speech recognition and audio intelligence API","stt,analysis,api",true,true
+1333,Rev AI API,rev-ai-api,AI Transcription API,Paid,https://www.rev.ai,"Speech-to-text transcription API","stt,transcription,api",true,true
+1334,Sonix API,sonix-api,AI Transcription API,Freemium,https://sonix.ai,"AI transcription and subtitle generation API","stt,video,api",true,true
+1335,Otter API,otter-api,AI Meeting API,Freemium,https://otter.ai,"AI meeting transcription API","meetings,stt,api",true,true
+
+1336,Fireflies API,fireflies-api,AI Meeting API,Freemium,https://fireflies.ai,"Meeting transcription and notes API","meetings,api,ai",true,true
+1337,Fathom API,fathom-api,AI Meeting Summary API,Freemium,https://fathom.video,"AI meeting highlights API","meetings,summary,api",true,true
+1338,Grain API,grain-api,AI Video Clips API,Freemium,https://grain.com,"Meeting clip extraction API","meetings,video,api",true,true
+1339,Avoma API,avoma-api,AI Meeting Intelligence API,Paid,https://www.avoma.com,"Meeting analytics and coaching API","meetings,sales,api",true,true
+1340,Sembly API,sembly-api,AI Meeting API,Paid,https://www.sembly.ai,"Meeting transcription and insights API","meetings,analysis,api",true,true
+
+1341,Zoom AI API,zoom-ai-api,AI Meeting Platform API,Paid,https://zoom.us,"AI-powered meeting transcription and summaries","meetings,zoom,api",true,true
+1342,Google Meet AI,google-meet-ai,AI Meeting Assistant,Freemium,https://meet.google.com,"AI meeting notes and transcription system","meetings,google,ai",true,true
+1343,Microsoft Teams AI,teams-ai,AI Collaboration Tool,Paid,https://www.microsoft.com/microsoft-teams,"AI meeting summaries and collaboration tools","meetings,teams,ai",true,true
+1344,Slack AI,slack-ai,AI Productivity Assistant,Freemium,https://slack.com,"AI-powered messaging and workflow assistant","chat,productivity,ai",true,true
+1345,Discord AI Bot,discord-ai-bot,AI Chatbot,Freemium,https://discord.com,"AI bots and automation for Discord servers","chat,bot,ai",true,true
+
+1346,Notion API AI,notion-api-ai,AI Workspace API,Freemium,https://www.notion.so,"AI automation and workspace API integration","notes,api,ai",true,true
+1347,Airtable AI,airtable-ai,AI Database Tool,Freemium,https://airtable.com,"AI-powered database and automation platform","database,automation,ai",true,true
+1348,Smartsheet AI,smartsheet-ai,AI Project Platform,Paid,https://www.smartsheet.com,"AI project and workflow management platform","projects,workflow,ai",true,true
+1349,ClickUp API AI,clickup-api-ai,AI Task API,Freemium,https://clickup.com,"AI task and productivity API system","tasks,api,ai",true,true
+1350,Monday API AI,monday-api-ai,AI Work OS API,Freemium,https://monday.com,"AI workflow and project management API","workflow,api,ai",true,true

@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+2301,OpenAI Agent Studio,openai-agent-studio,AI Agent Platform,Paid,https://platform.openai.com,"AI agent creation and orchestration studio","agents,llm,automation",true,true
+2302,Anthropic Agent System,anthropic-agent-system,AI Agent Platform,Paid,https://www.anthropic.com,"Claude-based autonomous agent framework","agents,llm,reasoning",true,true
+2303,Google Agent Builder,google-agent-builder,AI Agent Platform,Paid,https://ai.google,"Google AI agent development platform","agents,google,llm",true,true
+2304,Meta Agent AI,meta-agent-ai,AI Agent Platform,Free,https://ai.meta.com,"Meta autonomous AI agent ecosystem","agents,meta,llm",true,true
+2305,Mistral Agent API,mistral-agent-api,AI Agent API,Paid,https://mistral.ai,"AI agent building and orchestration API","agents,llm,api",true,true
+
+2306,AutoGPT Next,autogpt-next,AI Autonomous Agent,Free,https://github.com/Significant-Gravitas/AutoGPT,"Next-gen autonomous AI agent system","agents,automation,ai",true,true
+2307,BabyAGI Pro,babyagi-pro,AI Task Agent,Free,https://github.com/yoheinakajima/babyagi,"Autonomous task-driven AI agent system","agents,task,ai",true,true
+2308,CrewAI Studio,crewai-studio,AI Multi-Agent System,Paid,https://www.crewai.com,"Multi-agent collaboration and workflow system","agents,multi-agent,ai",true,true
+2309,LangGraph Agents,langgraph-agents,AI Agent Framework,Free,https://langchain-ai.github.io/langgraph,"Graph-based AI agent orchestration framework","agents,workflow,llm",true,true
+2310,LlamaIndex Agents,llamaindex-agents,AI Agent Framework,Free,https://www.llamaindex.ai,"Data-aware AI agent framework","agents,data,llm",true,true
+
+2311,ReAct AI Framework,react-ai-framework,AI Reasoning Agents,Free,https://github.com,"Reasoning + acting AI agent architecture","agents,reasoning,llm",true,true
+2312,AutoGen AI,autogen-ai,AI Multi-Agent Framework,Free,https://github.com/microsoft/autogen,"Microsoft multi-agent conversation framework","agents,microsoft,ai",true,true
+2313,HuggingGPT AI,hugginggpt-ai,AI Agent System,Free,https://huggingface.co,"AI model orchestration agent system","agents,huggingface,llm",true,true
+2314,OpenAI Swarm AI,openai-swarm-ai,AI Agent Network,Free,https://platform.openai.com,"Multi-agent coordination system","agents,network,llm",true,true
+2315,DeepMind Agent System,deepmind-agent-system,AI Research Agent,Paid,https://deepmind.google,"Advanced AI research agent system","agents,google,research",true,true
+
+2316,AgentGPT Cloud,agentgpt-cloud,AI Agent Platform,Freemium,https://agentgpt.reworkd.ai,"Browser-based autonomous AI agent builder","agents,automation,ai",true,true
+2317,SuperAGI Platform,superagi-platform,AI Agent Framework,Free,https://github.com/TransformerOptimus/SuperAGI,"Open-source AI agent automation platform","agents,automation,ai",true,true
+2318,OpenAgents AI,openagents-ai,AI Agent Marketplace,Free,https://github.com,"Open-source AI agent ecosystem","agents,marketplace,ai",true,true
+2319,AgentVerse AI,agentverse-ai,AI Agent Simulation,Free,https://github.com,"AI agent simulation environment","agents,simulation,llm",true,true
+2320,CogAgent AI,cogagent-ai,AI Vision Agent,Free,https://github.com,"Vision-based autonomous AI agent system","agents,vision,llm",true,true
+
+2321,MetaGPT AI,metagpt-ai,AI Software Agent,Free,https://github.com/FoundationAgents/MetaGPT,"AI software development agent framework","agents,software,ai",true,true
+2322,Devika AI,devika-ai,AI Coding Agent,Free,https://github.com/stitionai/devika,"Autonomous AI software engineer agent","agents,code,llm",true,true
+2323,SWE-Agent AI,swe-agent-ai,AI Coding Agent,Free,https://github.com/princeton-nlp/SWE-agent,"AI software engineering autonomous agent","agents,engineering,llm",true,true
+2324,OpenDevin AI,opendevin-ai,AI Developer Agent,Free,https://github.com/OpenDevin/OpenDevin,"AI autonomous software developer agent","agents,developer,ai",true,true
+2325,Devin AI (Cognition),devin-ai,AI Software Engineer,Paid,https://www.cognition.ai,"Fully autonomous AI software engineering agent","agents,software,llm",true,true
+
+2326,OpenAI Task Runner,openai-task-runner,AI Automation Agent,Paid,https://platform.openai.com,"Task automation and execution AI system","agents,tasks,automation",true,true
+2327,Zapier AI Agents,zapier-ai-agents,AI Workflow Automation,Paid,https://zapier.com,"AI-powered workflow automation platform","automation,agents,workflow",true,true
+2328,Make AI Scenarios,make-ai-scenarios,AI Automation Platform,Freemium,https://www.make.com,"Visual AI automation workflow builder","automation,workflow,ai",true,true
+2329,n8n AI Workflows,n8n-ai-workflows,AI Automation Tool,Free,https://n8n.io,"Open-source AI automation workflow platform","automation,workflow,ai",true,true
+2330,IFTTT AI Automations,ifttt-ai-automations,AI Automation Tool,Freemium,https://ifttt.com,"Simple AI-based automation workflows","automation,ai,tools",true,true
+
+2331,LangChain Agents Pro,langchain-agents-pro,AI Agent Framework,Free,https://www.langchain.com,"Advanced agent orchestration framework","agents,llm,framework",true,true
+2332,LlamaCloud Agents,llamacloud-agents,AI Agent Cloud,Paid,https://www.llamaindex.ai,"Cloud-based AI agent infrastructure","agents,cloud,llm",true,true
+2333,Weaviate Agents,weaviate-agents,AI Vector Agent System,Paid,https://weaviate.io,"Vector database-powered AI agents","agents,vector,ai",true,true
+2334,Pinecone Agents,pinecone-agents,AI RAG Agent System,Paid,https://www.pinecone.io,"RAG-based AI agent infrastructure","agents,rag,ai",true,true
+2335,Qdrant Agents,qdrant-agents,AI Vector Agent System,Paid,https://qdrant.tech,"Vector search AI agent system","agents,vector,ai",true,true
+
+2336,AutoRAG AI,autorag-ai,AI RAG Agent,Free,https://github.com,"Automated RAG pipeline agent system","agents,rag,llm",true,true
+2337,Haystack Agents,haystack-agents,AI Search Agent,Free,https://haystack.deepset.ai,"RAG-based search agent framework","agents,search,llm",true,true
+2338,OpenAI Retrieval Agent,openai-retrieval-agent,AI Knowledge Agent,Paid,https://platform.openai.com,"Retrieval-based AI reasoning agent","agents,knowledge,llm",true,true
+2339,Anthropic Retrieval Agent,anthropic-retrieval-agent,AI Knowledge Agent,Paid,https://www.anthropic.com,"Claude retrieval augmented agent system","agents,knowledge,llm",true,true
+2340,Google Retrieval Agent,google-retrieval-agent,AI Knowledge Agent,Paid,https://ai.google,"Google retrieval AI agent system","agents,search,llm",true,true
+
+2341,Meta Retrieval Agent,meta-retrieval-agent,AI Knowledge Agent,Free,https://ai.meta.com,"Meta AI retrieval agent system","agents,knowledge,llm",true,true
+2342,Mistral Retrieval Agent,mistral-retrieval-agent,AI Knowledge Agent,Paid,https://mistral.ai,"Mistral retrieval augmented agent API","agents,knowledge,llm",true,true
+2343,AgentOS AI,agentos-ai,AI Agent Operating System,Free,https://github.com,"Operating system for AI agents","agents,os,llm",true,true
+2344,OpenAgent Studio,openagent-studio,AI Agent Builder,Paid,https://platform.openai.com,"AI agent creation studio environment","agents,builder,llm",true,true
+2345,Flowise AI Agents,flowise-ai-agents,AI Visual Agent Builder,Free,https://flowiseai.com,"No-code AI agent builder platform","agents,nocode,ai",true,true
+
+2346,LangFlow Agents,langflow-agents,AI Visual Workflow,Free,https://github.com,"Visual LangChain workflow builder for agents","agents,visual,llm",true,true
+2347,AgentOps AI,agentops-ai,AI Agent Monitoring,Paid,https://www.agentops.ai,"AI agent observability and tracking system","agents,monitoring,llm",true,true
+2348,LangSmith Agents,langsmith-agents,AI Debugging Tool,Paid,https://smith.langchain.com,"AI agent debugging and evaluation platform","agents,debugging,llm",true,true
+2349,Helicone AI Agents,helicone-ai-agents,AI Observability,Paid,https://www.helicone.ai,"AI agent monitoring and analytics system","agents,analytics,llm",true,true
+2350,PromptLayer Agents,promptlayer-agents,AI Prompt Ops,Paid,https://promptlayer.com,"Prompt tracking and AI agent management platform","agents,prompts,llm",true,true

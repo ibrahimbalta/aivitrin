@@ -1,0 +1,60 @@
+id,name,slug,category,pricing,website,description,tags,featured,verified
+1101,Runway AI Video Editor,runway-ai-video-editor,AI Video Editing,Freemium,https://runwayml.com,"AI-powered video editing and generative video tools","video,editing,generative",true,true
+1102,Pika Video AI,pika-video-ai,AI Video Generation,Freemium,https://pika.art,"Text-to-video AI generation platform","video,generative,animation",true,true
+1103,CapCut AI,capcut-ai,AI Video Editor,Freemium,https://www.capcut.com,"AI video editing with auto captions and effects","video,editing,social",true,true
+1104,Descript Video AI,descript-video-ai,AI Video Editing,Freemium,https://www.descript.com,"AI video editing by editing text transcripts","video,editing,audio",true,true
+1105,VEED AI,veed-ai,AI Video Editor,Freemium,https://www.veed.io,"Online AI video editing and subtitle generation","video,editing,subtitles",true,true
+
+1106,InVideo AI,invideo-ai,AI Video Creator,Freemium,https://invideo.io,"AI video creation from text prompts","video,marketing,creator",true,true
+1107,Pictory AI,pictory-ai,AI Video Generator,Freemium,https://pictory.ai,"Turn scripts and blogs into videos using AI","video,automation,content",true,true
+1108,Lumen5 AI,lumen5-ai,AI Video Maker,Freemium,https://lumen5.com,"AI video creation for marketing and social media","video,marketing,social",true,true
+1109,Synthesia AI,synthesia-ai,AI Avatar Video,Paid,https://www.synthesia.io,"AI avatars for corporate video generation","video,avataar,enterprise",true,true
+1110,HeyGen AI,heygen-ai,AI Avatar Video,Freemium,https://www.heygen.com,"AI talking avatars and video generation platform","video,avataar,tts",true,true
+
+1111,Colossyan AI,colossyan-ai,AI Video Avatar,Paid,https://www.colossyan.com,"Create AI presenter videos with avatars","video,avatar,training",true,true
+1112,DeepBrain AI Studios,deepbrain-ai,AI Video Avatar,Paid,https://www.deepbrain.io,"AI human avatars for video production","video,avatar,ai",true,true
+1113,D-ID AI,d-id-ai,AI Talking Head,Freemium,https://www.d-id.com,"Turn images into talking AI avatars","video,avatar,animation",true,true
+1114,Hour One AI,hour-one-ai,AI Video Presenter,Paid,https://hourone.ai,"AI presenters for business video content","video,avatar,enterprise",true,true
+1115,Elai AI,elai-ai,AI Video Generator,Freemium,https://elai.io,"AI video creation with avatars and scripts","video,avatar,marketing",true,true
+
+1116,Fliki AI,fliki-ai,AI Video Creator,Freemium,https://fliki.ai,"Convert text into videos with AI voiceovers","video,tts,content",true,true
+1117,Steve AI,steve-ai,AI Animation Video,Freemium,https://www.steve.ai,"AI animation and explainer video creation tool","video,animation,marketing",true,true
+1118,Animoto AI,animoto-ai,AI Video Maker,Freemium,https://animoto.com,"AI-assisted video creation for marketing content","video,marketing,social",true,true
+1119,Clipchamp AI,clipchamp-ai,AI Video Editor,Freemium,https://clipchamp.com,"Microsoft AI video editor with templates and tools","video,editing,windows",true,true
+1120,Wave.video AI,wave-video-ai,AI Video Marketing,Freemium,https://wave.video,"AI video creation and marketing platform","video,marketing,social",true,true
+
+1121,Splice AI,splice-ai,AI Video Editor,Freemium,https://splice.com,"AI-assisted mobile video editing tool","video,mobile,editing",true,true
+1122,Magisto AI,magisto-ai,AI Video Editing,Paid,https://www.magisto.com,"AI-powered automated video editing platform","video,automation,editing",true,true
+1123,Filmora AI,filmora-ai,AI Video Editor,Freemium,https://filmora.wondershare.com,"AI video editing software with effects and templates","video,editing,creator",true,true
+1124,Adobe Premiere AI,premiere-ai,AI Video Editing,Paid,https://www.adobe.com/products/premiere.html,"AI-enhanced professional video editing suite","video,editing,adobe",true,true
+1125,Adobe Firefly Video,firefly-video,AI Video Generation,Paid,https://firefly.adobe.com,"Adobe generative AI video and creative tools","video,generative,creative",true,true
+
+1126,Runway Gen-3,runway-gen-3,AI Video Generation,Paid,https://runwayml.com,"Advanced generative video model by Runway","video,generative,ai",true,true
+1127,Pika Labs 2.0,pika-labs-2,AI Video Generator,Freemium,https://pika.art,"Next-gen AI video generation platform","video,generative,animation",true,true
+1128,Genmo Video AI,genmo-video-ai,AI Video Generation,Freemium,https://www.genmo.ai,"Text-to-video AI creation platform","video,generative,creative",true,true
+1129,Kaiber AI Video,kaiber-ai-video,AI Video Art,Freemium,https://kaiber.ai,"AI-generated video for music and storytelling","video,art,music",true,true
+1130,Stable Video Diffusion,stable-video-diffusion,AI Video Model,Free,https://stability.ai,"Open AI video generation model by Stability AI","video,open-source,generative",true,true
+
+1131,Runway Motion Brush,runway-motion-brush,AI Motion Editing,Freemium,https://runwayml.com,"AI tool for editing motion in videos","video,editing,motion",true,true
+1132,Topaz Video AI,topaz-video-ai,AI Video Enhancement,Paid,https://www.topazlabs.com,"AI video upscaling and enhancement software","video,enhancement,upscale",true,true
+1133,AVCLabs Video AI,avclabs-video-ai,AI Video Upscaler,Paid,https://www.avclabs.com,"AI video enhancement and restoration tool","video,enhancement,restore",true,true
+1134,Wondershare UniConverter AI,uniconverter-ai,AI Video Converter,Freemium,https://videoconverter.wondershare.com,"AI video conversion and editing suite","video,converter,editing",true,true
+1135,HitPaw Video Enhancer,hitpaw-video-ai,AI Video Enhancement,Freemium,https://www.hitpaw.com,"AI-powered video quality enhancement tool","video,enhancement,ai",true,true
+
+1136,Opus Clip AI,opus-clip-ai,AI Video Repurposing,Freemium,https://www.opus.pro,"Turn long videos into viral short clips using AI","video,repurpose,social",true,true
+1137,Vidyo AI,vidyo-ai,AI Video Repurposing,Freemium,https://vidyo.ai,"AI tool for converting long videos into shorts","video,social,automation",true,true
+1138,Minvo AI,minvo-ai,AI Video Clips,Freemium,https://minvo.ai,"AI-powered short video creation from long content","video,clips,automation",true,true
+1139,Klap AI,klap-ai,AI Short Video Generator,Freemium,https://klap.app,"Convert long videos into social media shorts","video,social,editing",true,true
+1140,2short AI,2short-ai,AI Video Shorts,Freemium,https://2short.ai,"AI tool for generating short-form videos","video,shorts,automation",true,true
+
+1141,Runway Storyboard AI,runway-storyboard-ai,AI Video Planning,Freemium,https://runwayml.com,"AI storyboard and video planning tool","video,planning,creative",true,true
+1142,Descript Storyboard,descript-storyboard,AI Video Planning,Freemium,https://www.descript.com,"Plan and edit videos using AI transcripts","video,planning,editing",true,true
+1143,Pika Story Mode,pika-story-mode,AI Video Storytelling,Freemium,https://pika.art,"AI storytelling video generation mode","video,story,creative",true,true
+1144,Genmo Story AI,genmo-story-ai,AI Video Storytelling,Freemium,https://www.genmo.ai,"AI-generated cinematic storytelling videos","video,story,generative",true,true
+1145,Kaiber Storyboard,kaiber-storyboard,AI Video Planning,Freemium,https://kaiber.ai,"AI tool for planning music-driven videos","video,planning,music",true,true
+
+1146,Sora Video Model,sora-video-model,AI Video Model,Not Public,https://openai.com/sora,"Advanced text-to-video AI model by OpenAI","video,generative,llm",true,true
+1147,Make-A-Video,make-a-video,AI Video Generation,Free,https://about.meta.com,"Meta AI text-to-video generation research model","video,research,generative",true,true
+1148,Phenaki AI,phenaki-ai,AI Video Generation,Free,https://research.google,"Google AI long-form video generation model","video,research,generative",true,true
+1149,CogVideo AI,cogvideo-ai,AI Video Generation,Free,https://github.com/THUDM/CogVideo,"Open-source text-to-video generation model","video,open-source,generative",true,true
+1150,ModelScope Video AI,modelscope-video-ai,AI Video Generation,Free,https://modelscope.cn,"Open-source AI video generation framework","video,open-source,ml",true,true
