@@ -280,7 +280,7 @@ router.get('/tools/:id/analysis', async function (req, res) {
 
     const settings = db.crawler_settings || {};
     // If AI is not configured or disabled, fallback to mockup pros/cons
-    if (!settings.ai_api_key) {
+    if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
       const fallback = generateFallbackProsCons(tool, db);
       return res.json({ success: true, pros: fallback.pros, cons: fallback.cons });
     }
@@ -798,7 +798,7 @@ router.post('/admin/crawler/ai-extract', requireAuth, async function (req, res) 
 
     const db = readDB();
     const settings = db.crawler_settings || {};
-    if (!settings.ai_api_key) {
+    if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
       return res.status(400).json({ error: 'Yapay zeka API anahtarı ayarlanmamış. Lütfen AI ayarlarını yapın.' });
     }
 
@@ -1598,7 +1598,7 @@ router.post('/workflows/generate', async function (req, res) {
       };
     };
 
-    if (!settings.ai_api_key) {
+    if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
       const fallback = getFallbackWorkflow(goal);
       return res.json({ success: true, workflow: fallback });
     }
@@ -1695,7 +1695,7 @@ router.post('/stories/submit', async function (req, res) {
 
     let parsedStory = null;
 
-    if (settings.ai_api_key && settings.ai_enabled) {
+    if ((settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY) && settings.ai_enabled) {
       const { callLLM } = require('../services/ai');
       
       const systemPrompt = `Verilen yapay zeka başarı hikayesini (raw story) analiz et ve aşağıdaki JSON formatında özetle.

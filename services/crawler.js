@@ -235,7 +235,7 @@ async function runCrawler() {
 
   // ─── AI ile Türkçe Zenginleştirme ve Sınıflandırma ───
   let processedTools = [];
-  if (settings.ai_enabled && settings.ai_api_key) {
+  if (settings.ai_enabled && (settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY)) {
     console.log(`🤖 AI Entegrasyonu aktif. Taranan araçlar yapay zeka ile Türkçeleştiriliyor ve analiz ediliyor...`);
     const chunkSize = 8;
     for (let i = 0; i < filteredTools.length; i += chunkSize) {

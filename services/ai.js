@@ -7,7 +7,43 @@ const https = require('https');
  */
 function callLLM(systemPrompt, userPrompt, settings) {
   return new Promise((resolve, reject) => {
-    const { ai_provider, ai_api_key, ai_model, ai_custom_endpoint } = settings;
+    let { ai_provider, ai_api_key, ai_model, ai_custom_endpoint } = settings;
+
+    // Load local .env if it exists
+    const fs = require('fs');
+    const pathModule = require('path');
+    const envPath = pathModule.join(__dirname, '../.env');
+    let envVars = {};
+    if (fs.existsSync(envPath)) {
+      try {
+        const envContent = fs.readFileSync(envPath, 'utf8');
+        envContent.split(/\r?\n/).forEach(line => {
+          const parts = line.split('=');
+          if (parts.length >= 2) {
+            const key = parts[0].trim();
+            const val = parts.slice(1).join('=').trim();
+            envVars[key] = val;
+          }
+        });
+      } catch (e) {
+        console.error('Error reading .env file:', e.message);
+      }
+    }
+
+    const keyFromEnv = envVars.AI_API_KEY || envVars.GROQ_API_KEY || process.env.AI_API_KEY || process.env.GROQ_API_KEY;
+    const providerFromEnv = envVars.AI_PROVIDER || process.env.AI_PROVIDER;
+    const modelFromEnv = envVars.AI_MODEL || process.env.AI_MODEL;
+
+    if (!ai_api_key && keyFromEnv) {
+      ai_api_key = keyFromEnv;
+    }
+    if ((!ai_provider || ai_provider === 'xai') && providerFromEnv) {
+      ai_provider = providerFromEnv;
+    }
+    if (!ai_model && modelFromEnv) {
+      ai_model = modelFromEnv;
+    }
+
     if (!ai_api_key) {
       return reject(new Error('API Anahtarı bulunamadı. Lütfen ayarlardan kaydedin.'));
     }
@@ -21,6 +57,9 @@ function callLLM(systemPrompt, userPrompt, settings) {
     } else if (ai_provider === 'gemini') {
       host = 'generativelanguage.googleapis.com';
       path = '/v1beta/openai/chat/completions';
+    } else if (ai_provider === 'groq') {
+      host = 'api.groq.com';
+      path = '/openai/v1/chat/completions';
     } else if (ai_provider === 'openrouter') {
       host = 'openrouter.ai';
       path = '/api/v1/chat/completions';
@@ -50,6 +89,8 @@ function callLLM(systemPrompt, userPrompt, settings) {
         modelName = 'gemini-2.5-flash';
       } else if (ai_provider === 'openai') {
         modelName = 'gpt-4o-mini';
+      } else if (ai_provider === 'groq') {
+        modelName = 'llama-3.3-70b-versatile';
       } else {
         modelName = 'grok-2';
       }

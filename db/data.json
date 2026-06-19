@@ -73317,12 +73317,12 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-19T06:13:43.500Z",
+    "last_run": "2026-06-19T06:51:12.604Z",
     "total_crawled": 58,
     "ai_enabled": true,
-    "ai_provider": "gemini",
+    "ai_provider": "groq",
     "ai_api_key": "",
-    "ai_model": "gemini-2.5-flash",
+    "ai_model": "llama-3.3-70b-versatile",
     "ai_custom_endpoint": ""
   },
   "crawler_logs": [
@@ -73685,6 +73685,30 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T06:44:15.563Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T06:49:34.236Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-19T06:51:12.606Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -73872,6 +73896,37 @@
       },
       "approved": false,
       "created_at": "2026-06-19T06:01:40.299Z"
+    },
+    {
+      "id": "story_1781851779633_6n0cb",
+      "name": "Tasarımcı Hande",
+      "role": "Arayüz Tasarımcısı — Bursa",
+      "avatar": "T",
+      "color_accent": "linear-gradient(135deg, hsl(15, 95%, 55%), hsl(35, 90%, 50%))",
+      "title": "Tasarımcı Hande Yapay Zeka ile İş Süreçlerini Dönüştürdü",
+      "quote": "AI araçlarını kullanmaya başladıktan sonra işlerim çok daha verimli bir şekilde ilerliyor.",
+      "stats": [
+        {
+          "value": "AI",
+          "label": "Dijital Dönüşüm"
+        },
+        {
+          "value": "2x",
+          "label": "Hız Artışı"
+        }
+      ],
+      "tools": [
+        "Midjourney",
+        "ChatGPT",
+        "Figma"
+      ],
+      "content": {
+        "challenge": "Tasarımcı Hande günlük iş yükü içindeki rutin süreçlerde yavaşlık yaşıyordu.",
+        "solution": "Figma projelerinde ikon ve görseller hazırlarken çok yavaş kalıyordum. Midjourney kullanarak 5 dakikada müşteriye uygun 20 farklı alternatif logo ve ikon taslakları çıkardım. ChatGPT ile de sunum metnini yazdım. Bu sayede normalde 3 gün süren tasarım teslimini sadece 4 saate indirdim ve müşteri inanılmaz mutlu oldu.",
+        "result": "Yapay zeka araçlarının kullanılmasıyla birlikte verimlilik ve kalite artışı gözlemlendi."
+      },
+      "approved": false,
+      "created_at": "2026-06-19T06:49:39.633Z"
     }
   ]
 }

@@ -1,5 +1,28 @@
 'use strict';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+// Load local .env file manually into process.env
+try {
+  const fs = require('fs');
+  const path = require('path');
+  const envPath = path.join(__dirname, '.env');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    envContent.split(/\r?\n/).forEach(line => {
+      const parts = line.split('=');
+      if (parts.length >= 2) {
+        const key = parts[0].trim();
+        const val = parts.slice(1).join('=').trim();
+        if (!process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    });
+  }
+} catch (e) {
+  console.error('Error loading .env file:', e.message);
+}
+
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
