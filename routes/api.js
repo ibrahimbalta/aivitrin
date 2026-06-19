@@ -1311,7 +1311,7 @@ router.post('/advisor', async function (req, res) {
     const settings = db.crawler_settings || {};
     
     // Check if API key is set in DB or local environment
-    const apiKey = settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY || process.env.AI_API_KEY || settings.ai_api_key;
     if (apiKey) {
       try {
         const { callLLM } = require('../services/ai');
@@ -1367,6 +1367,17 @@ Yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin 
   "recommended_tool_ids": ["uygun-arac-id-1", "uygun-arac-id-2", ...]
 }
 
+ÖNEMLİ KURALLAR:
+1. Eğer kullanıcının özel ihtiyacına (örneğin: iş güvenliği raporu yazma, sunum hazırlama, yazılım test senaryosu üretme, öğretmenler için ders planlama vb.) doğrudan uyan spesifik bir yapay zeka aracı listede yoksa, listedeki genel amaçlı metin/asistan araçlarını (örn: ChatGPT, Gemini, Claude vb.) seç ve öner.
+2. Bu genel amaçlı araçları bu görev için nasıl kullanabileceğini (nasıl prompt yazması gerektiğini) açıklayarak rehberlik et.
+3. Genel amaçlı popüler araçlar ve ID'leri şunlardır:
+   - ChatGPT: ID'si "chatgpt"
+   - Claude: ID'si "claude"
+   - Gemini: ID'si "gemini"
+   Özelleşmiş bir araç yoksa, bu genel amaçlı araçların ID'lerini (örn: "chatgpt", "claude") "recommended_tool_ids" dizisinde mutlaka döndür.
+4. Vitrinimizde 'binlerce araç' olduğunu kesinlikle söyleme. Sitemizde yaklaşık 100-200 seçkin yapay zeka aracı yer almaktadır.
+5. Kullanıcının sorusuna veya aradığı göreve yönelik (örneğin yazılım testi, sunum hazırlama, raporlama vb.) genel asistanları nasıl prompt ederek kullanabileceğini yanıtında açıkça anlat.
+
 Mevcut Araçlar Listesi:
 ${JSON.stringify(availableTools)}
 
@@ -1384,14 +1395,28 @@ Geçerli Kategoriler:
           advisorReply = JSON.parse(cleanJson);
         }
         
-        // Filter recommended tool ids to make sure they exist in tools list
-        const matched = (advisorReply.recommended_tool_ids || [])
-          .map(id => db.tools.find(t => t.id === id))
+        // Filter recommended tool ids to make sure they exist in tools list (case-insensitive and matching name or id)
+        let matched = (advisorReply.recommended_tool_ids || [])
+          .map(id => {
+            const cleanId = String(id).toLowerCase().trim();
+            return db.tools.find(t => t.id === cleanId || t.name.toLowerCase() === cleanId);
+          })
           .filter(Boolean)
           .map(t => {
             const cat = db.categories.find(c => c.id === t.category_id);
             return { ...t, category_name: cat ? cat.name : '', category_icon: cat ? cat.icon : '' };
           });
+          
+        // Safety Fallback: If no tools matched, automatically append general-purpose assistants
+        if (matched.length === 0) {
+          matched = db.tools
+            .filter(t => t.category_id === 'genel-ai-asistan')
+            .slice(0, 3)
+            .map(t => {
+              const cat = db.categories.find(c => c.id === t.category_id);
+              return { ...t, category_name: cat ? cat.name : '', category_icon: cat ? cat.icon : '' };
+            });
+        }
           
         return res.json({
           reply: advisorReply.reply,
@@ -1416,16 +1441,16 @@ function localHeuristicAdvisor(tools, categories, message) {
   const msg = message.toLowerCase();
   
   const rules = [
-    { keys: ['resim', 'görsel', 'çizim', 'tasarım', 'fotoğraf', 'photo', 'art', 'çiz'], cat: 'yaratici-ai', text: 'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:' },
-    { keys: ['kod', 'yazılım', 'geliştirici', 'code', 'program', 'python', 'javascript', 'html'], cat: 'yazilim-kod-ai', text: 'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:' },
-    { keys: ['yazı', 'metin', 'yazar', 'makale', 'blog', 'text', 'write', 'copywriting'], cat: 'is-uretkenlik-ai', text: 'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:' },
-    { keys: ['ses', 'konuşma', 'müzik', 'audio', 'voice', 'sound', 'music', 'podcast'], cat: 'yaratici-ai', text: 'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:' },
-    { keys: ['video', 'film', 'klip', 'editing', 'kurgu', 'animasyon'], cat: 'yaratici-ai', text: 'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:' },
-    { keys: ['asistan', 'sohbet', 'chat', 'chatbot', 'gpt', 'yardımcı'], cat: 'genel-ai-asistan', text: 'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:' }
+    { keys: ['resim', 'görsel', 'çizim', 'tasarım', 'fotoğraf', 'photo', 'art', 'çiz', 'görselleştir'], cat: 'yaratici-ai', text: 'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:' },
+    { keys: ['kod', 'yazılım', 'geliştirici', 'code', 'program', 'python', 'javascript', 'html', 'yazılımcı'], cat: 'yazilim-kod-ai', text: 'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:' },
+    { keys: ['yazı', 'metin', 'yazar', 'makale', 'blog', 'text', 'write', 'copywriting', 'makale', 'editör'], cat: 'is-uretkenlik-ai', text: 'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:' },
+    { keys: ['ses', 'konuşma', 'müzik', 'audio', 'voice', 'sound', 'music', 'podcast', 'seslendir'], cat: 'yaratici-ai', text: 'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:' },
+    { keys: ['video', 'film', 'klip', 'editing', 'kurgu', 'animasyon', 'montaj'], cat: 'yaratici-ai', text: 'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:' },
+    { keys: ['asistan', 'sohbet', 'chat', 'chatbot', 'gpt', 'yardımcı', 'danışman'], cat: 'genel-ai-asistan', text: 'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:' }
   ];
 
   let matchedCatId = null;
-  let replyText = 'Size yardımcı olmaktan mutluluk duyarım. Belirttiğiniz konuda vitrinimizde binlerce yapay zeka aracı bulunmaktadır. İşte göz atabileceğiniz popüler araçlardan bazıları:';
+  let replyText = null;
   
   for (const r of rules) {
     if (r.keys.some(k => msg.includes(k))) {
@@ -1439,15 +1464,50 @@ function localHeuristicAdvisor(tools, categories, message) {
   if (matchedCatId) {
     matchedTools = tools.filter(t => t.category_id === matchedCatId);
   } else {
-    // Search tags or names directly
-    matchedTools = tools.filter(t => {
-      const name = t.name.toLowerCase();
-      const desc = t.description.toLowerCase();
-      return name.includes(msg) || desc.includes(msg);
-    });
+    // Search tags, description or names using keyword tokenization
+    const stopWords = new Set(['bana', 'bir', 've', 'en', 'için', 'olan', 'araçlar', 'araç', 'yapay', 'zeka', 'bul', 'öner', 'tavsiye', 'et', 'mi', 'mu', 'nedir', 'listele', 'hangileri', 'nasıl']);
+    const keywords = msg
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+      .split(/\s+/)
+      .filter(word => word.length > 1 && !stopWords.has(word));
+
+    if (keywords.length > 0) {
+      const scoredTools = tools.map(t => {
+        let score = 0;
+        const name = String(t.name || '').toLowerCase();
+        const desc = String(t.description || '').toLowerCase();
+        const tags = (Array.isArray(t.tags) ? t.tags.join(' ') : String(t.tags || '')).toLowerCase();
+        const catId = String(t.category_id || '').toLowerCase();
+
+        keywords.forEach(keyword => {
+          if (name === keyword) score += 25;
+          else if (name.includes(keyword)) score += 10;
+          if (desc.includes(keyword)) score += 4;
+          if (tags.includes(keyword)) score += 6;
+          if (catId.includes(keyword)) score += 5;
+        });
+
+        return { tool: t, score };
+      });
+
+      matchedTools = scoredTools
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map(item => item.tool);
+    }
   }
 
-  // Get top 3 tools sorted by rating/featured
+  // Fallback to general assistants if no matches found
+  if (matchedTools.length === 0) {
+    replyText = 'Doğrudan bu göreve özel spesifik bir araç bulamadım. Ancak genel amaçlı yapay zeka asistanları (örn: ChatGPT, Claude, Gemini) ile işinizi, detayları ve parametreleri belirterek kolayca halledebilirsiniz. İşte deneyebileceğiniz en gelişmiş genel asistanlar:';
+    matchedTools = tools.filter(t => t.category_id === 'genel-ai-asistan');
+  }
+
+  if (!replyText) {
+    replyText = 'İhtiyacınıza yönelik olarak vitrinimizdeki en uygun yapay zeka araçlarını listeledim:';
+  }
+
+  // Sort and select top 3
   matchedTools.sort((a, b) => (b.featured || 0) - (a.featured || 0) || b.rating - a.rating);
   const selected = matchedTools.slice(0, 3).map(t => {
     const cat = categories.find(c => c.id === t.category_id);
