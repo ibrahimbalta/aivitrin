@@ -656,13 +656,18 @@
       button.disabled = true;
       button.textContent = 'Gönderiliyor...';
 
+      let cleanUrl = (tool.url || '').trim();
+      if (!cleanUrl || cleanUrl === 'Link yok' || cleanUrl.toLowerCase().startsWith('link-yok')) {
+        cleanUrl = 'https://www.google.com/search?q=' + encodeURIComponent(tool.name + ' AI');
+      }
+
       try {
         const res = await fetch('/api/submissions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             name: tool.name,
-            url: tool.url || '',
+            url: cleanUrl,
             description: tool.description,
             category_id: tool.category_id,
             pricing: tool.pricing,
@@ -693,6 +698,11 @@
       button.disabled = true;
       button.textContent = 'Yayınlanıyor...';
 
+      let cleanUrl = (tool.url || '').trim();
+      if (!cleanUrl || cleanUrl === 'Link yok' || cleanUrl.toLowerCase().startsWith('link-yok')) {
+        cleanUrl = 'https://www.google.com/search?q=' + encodeURIComponent(tool.name + ' AI');
+      }
+
       try {
         const toolId = slugify(tool.name);
         const res = await fetch('/api/tools', {
@@ -706,7 +716,7 @@
             pricing: tool.pricing,
             tags: tool.tags || [],
             rating: 4.5,
-            url: tool.url || '',
+            url: cleanUrl,
             featured: false,
             is_new: true
           })
