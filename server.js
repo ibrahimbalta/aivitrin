@@ -46,12 +46,23 @@ app.use(async (req, res, next) => {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-app.use(session({
+const sessionOptions = {
   secret: process.env.SESSION_SECRET || 'yapayzekavitrini-gizli-anahtar-2026',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 24 * 60 * 60 * 1000, httpOnly: true, secure: false }
-}));
+};
+
+if (process.env.MONGODB_URI) {
+  const { MongoStore } = require('connect-mongo');
+  sessionOptions.store = MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions',
+    ttl: 24 * 60 * 60 // 1 day
+  });
+}
+
+app.use(session(sessionOptions));
 
 // ─── Static Files ───
 app.use(express.static(path.join(__dirname, 'public')));
