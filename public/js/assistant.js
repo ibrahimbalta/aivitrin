@@ -11,6 +11,22 @@ document.addEventListener('DOMContentLoaded', async function () {
   const chatForm = document.getElementById('assistant-chat-form');
   const chatInput = document.getElementById('assistant-chat-input');
   const btnNewChat = document.getElementById('btn-new-chat-sidebar');
+  const btnToggleSidebar = document.getElementById('btn-toggle-assistant-sidebar');
+  const sidebar = document.querySelector('.assistant-sidebar');
+
+  if (btnToggleSidebar && sidebar) {
+    btnToggleSidebar.addEventListener('click', function (e) {
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+    });
+
+    // Close sidebar on click outside
+    document.addEventListener('click', function (e) {
+      if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !btnToggleSidebar.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  }
 
   // API'den Araçları ve Kategorileri Yükle
   async function loadData() {
@@ -124,7 +140,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     chatInput.focus();
   }
 
-  if (btnNewChat) btnNewChat.addEventListener('click', startNewChat);
+  if (btnNewChat) {
+    btnNewChat.addEventListener('click', function() {
+      startNewChat();
+      if (sidebar) sidebar.classList.remove('open');
+    });
+  }
 
   // Öneri kartları ve Sidebar öğeleri dinleyicileri
   const suggestions = document.querySelectorAll('.suggestion-card, .history-item');
@@ -136,6 +157,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         chatInput.style.height = 'auto';
         chatInput.style.height = (chatInput.scrollHeight - 10) + 'px';
         chatForm.dispatchEvent(new Event('submit'));
+        if (sidebar) sidebar.classList.remove('open');
       }
     });
   });

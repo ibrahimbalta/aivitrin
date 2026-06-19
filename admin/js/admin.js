@@ -1,6 +1,55 @@
 // Yapay Zeka Vitrini — Admin Panel
 'use strict';
 
+// ─── MOBILE LAYOUT INTEGRATION ───────────────
+(function () {
+  var layout = document.querySelector('.admin-layout');
+  if (!layout) return;
+
+  // Create mobile header bar
+  var mobileHeader = document.createElement('div');
+  mobileHeader.className = 'admin-mobile-header';
+  mobileHeader.innerHTML = `
+    <button id="admin-menu-toggle" aria-label="Menüyü Aç">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <div class="mobile-logo-text">AIvitrin Yönetim</div>
+    <div style="width:24px;"></div>
+  `;
+
+  // Insert mobile header at the beginning of document.body
+  document.body.insertBefore(mobileHeader, document.body.firstChild);
+
+  // Bind toggle action
+  var toggleBtn = document.getElementById('admin-menu-toggle');
+  var sidebar = document.querySelector('.admin-sidebar');
+  
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+    });
+
+    // Close sidebar on click outside
+    document.addEventListener('click', function (e) {
+      if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+
+    // Close sidebar on click of sidebar link
+    sidebar.querySelectorAll('.sidebar-nav a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        sidebar.classList.remove('open');
+      });
+    });
+  }
+})();
+
 // ─── AUTH & LOGOUT ──────────────────────────
 fetch('/auth/check').then(function(r){return r.json()}).then(function(d){
   if(!d.authenticated) window.location.href='/admin/login.html';

@@ -481,12 +481,59 @@
   40% { transform: scale(1); }
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE & MOBILE APPLIANCE */
+.assistant-chat-header-bar {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .assistant-page-layout {
     grid-template-columns: 1fr;
   }
+  
+  .assistant-chat-header-bar {
+    display: flex;
+  }
+
   .assistant-sidebar {
-    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    background: var(--bg-secondary);
+  }
+
+  .assistant-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .chat-messages-container {
+    padding: 20px 16px;
+  }
+
+  .suggestion-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .msg-bubble {
+    max-width: 85%;
+  }
+
+  .assistant-tool-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .tool-card-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
