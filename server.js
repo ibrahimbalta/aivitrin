@@ -107,6 +107,10 @@ app.get('/professions', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'professions.html'));
 });
 
+app.get('/asistan', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'assistant.html'));
+});
+
 app.get('/stories', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'stories.html'));
 });

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Yol Arkadaşı (Yapay Zeka Asistanı) — AIvitrin</title>
+  <meta name="description" content="İhtiyacınızı anlatın, size en uygun Türkçe incelemeli yapay zeka araçlarını, maliyetlerini ve nasıl kullanacağınızı adım adım çıkarsın.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/assistant.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner container">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <a href="/" class="logo">
+          <span class="logo-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad-header" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                  <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-header)" opacity="0.85"></path>
+              <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-header)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-header)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+            </svg>
+          </span>
+          <span class="logo-text"><span class="logo-ai">AI</span><span class="logo-vitrin">vitrin</span></span>
+        </a>
+      </div>
+      
+      <nav class="nav-links" id="nav-links">
+        <a href="/#tools-section">AI Araçları</a>
+        <a href="/alternatives">Alternatifler</a>
+        <a href="/compare">Karşılaştır</a>
+        <a href="/workflows">İş Akışları</a>
+        <a href="/asistan" class="active">AI Asistanı</a>
+        <a href="/professions">Meslekler</a>
+        <a href="/stories">Hikayeler</a>
+        <a href="/calculator">Hesaplayıcı</a>
+        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link">🎒 Çantam <span class="toolkit-count" style="display:none">0</span></a>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="btn-submit" id="btn-submit-tool">Projemi Vitrine Ekle</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="/#tools-section">AI Araçları</a>
+    <a href="/alternatives">Alternatifler</a>
+    <a href="/compare">Karşılaştır</a>
+    <a href="/workflows">İş Akışları</a>
+    <a href="/asistan" class="active">AI Asistanı</a>
+    <a href="/professions">Meslekler</a>
+    <a href="/stories">Hikayeler</a>
+    <a href="/calculator">Hesaplayıcı</a>
+    <a href="#" id="mobile-toolkit-btn">🎒 Çantam (<span class="toolkit-count">0</span>)</a>
+    <hr>
+    <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
+  </nav>
+
+  <!-- MAIN ASSISTANT LAYOUT -->
+  <main class="assistant-page-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="assistant-sidebar">
+      <button class="btn-new-chat" id="btn-new-chat-sidebar">
+        <span>➕</span> Yeni Sohbet
+      </button>
+      
+      <div class="sidebar-section">
+        <h4>Örnek Senaryolar</h4>
+        <button class="history-item" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">🏠 Emlakçı Video İlan Seti</button>
+        <button class="history-item" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">📱 Sosyal Medya Şablonları</button>
+        <button class="history-item" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">💻 Yazılımcı Kod Asistanları</button>
+        <button class="history-item" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">💬 Müşteri Destek Botu</button>
+      </div>
+
+      <div class="sidebar-section" style="margin-top:auto;">
+        <h4>Çantamdaki Araçlar</h4>
+        <div id="sidebar-toolkit-list" style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:8px;">
+          <!-- Loaded by JS -->
+          <span style="color:var(--text-muted); font-style:italic;">Çantanız boş.</span>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- CHAT INTERFACE PANEL -->
+    <section class="assistant-chat-panel">
+      
+      <!-- CHAT MESSAGE THREAD -->
+      <div class="chat-messages-container" id="assistant-chat-thread">
+        
+        <!-- Welcome view if chat is empty -->
+        <div class="chat-welcome-screen" id="chat-welcome-screen">
+          <span class="welcome-logo">🧠</span>
+          <h2 class="welcome-title">AIvitrin Yol Arkadaşı</h2>
+          <p class="welcome-subtitle">
+            Hangi işi yaptığınızı veya neyi otomatize etmek istediğinizi söyleyin. 
+            Yapay zeka asistanımız vitrinimizdeki en iyi araçları sizin için seçsin, 
+            kullanım adımlarını ve bütçesini anında listelesin.
+          </p>
+          
+          <div class="suggestion-grid">
+            <div class="suggestion-card" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">
+              <h5>🏠 Emlakçı Video Seti</h5>
+              <p>"Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı"</p>
+            </div>
+            <div class="suggestion-card" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">
+              <h5>📱 Sosyal Medya</h5>
+              <p>"Haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçlar..."</p>
+            </div>
+            <div class="suggestion-card" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">
+              <h5>💻 Kod Asistanı</h5>
+              <p>"Kod yazarken bana yardımcı olacak ve hataları bulacak yapay zekalar..."</p>
+            </div>
+            <div class="suggestion-card" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">
+              <h5>💬 Müşteri Destek Botu</h5>
+              <p>"AI Chatbot müşteri temsilcisi kurmak için hangi platformları kullanabilirim?"</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- BOTTOM INPUT CONTAINER -->
+      <div class="chat-input-wrapper">
+        <div class="chat-input-box">
+          <form class="chat-input-form" id="assistant-chat-form">
+            <textarea class="chat-textarea" id="assistant-chat-input" placeholder="Yapay zeka danışmanınıza sorun... (örn: Emlakçıyım video ilan yapmak istiyorum)" required></textarea>
+            <button type="submit" class="btn-send-message" id="btn-assistant-send" title="Gönder">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+          <div class="chat-input-disclaimer">
+            💡 AIvitrin Yol Arkadaşı, vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur.
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/toolkit.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/assistant.js"></script>
+  <script>
+    // Theme toggle initialization (standard for all pages)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileMenuBtn && mobileNav) {
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileNav.classList.toggle('active');
+      });
+      document.addEventListener('click', function(e) {
+        if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+          mobileNav.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
