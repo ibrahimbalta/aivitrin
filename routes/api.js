@@ -2552,6 +2552,176 @@ router.get('/admin/quizzes', requireAuth, function (req, res) {
   }
 });
 
+// ─── ADMIN ACADEMY VIDEOS ───────────────────────
+router.get('/admin/academy/videos', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.academy_videos || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Videolar listelenemedi.' });
+  }
+});
+
+router.post('/admin/academy/videos', requireAuth, function (req, res) {
+  try {
+    const { title, youtubeId, channel, category, categoryId, duration, level, description } = req.body;
+    if (!title || !youtubeId || !channel) {
+      return res.status(400).json({ error: 'Başlık, YouTube ID ve Kanal adı gereklidir.' });
+    }
+    
+    const db = readDB();
+    if (!db.academy_videos) db.academy_videos = [];
+    
+    const newVideo = {
+      id: 'vid-' + Date.now(),
+      title,
+      youtubeId,
+      channel,
+      category: category || 'Genel',
+      categoryId: categoryId || 'giris',
+      duration: duration || '00:00',
+      level: level || 'Başlangıç',
+      description: description || ''
+    };
+    
+    db.academy_videos.push(newVideo);
+    writeDB(db);
+    
+    res.status(201).json({ success: true, message: 'Video başarıyla eklendi.', video: newVideo });
+  } catch (err) {
+    res.status(500).json({ error: 'Video eklenemedi.' });
+  }
+});
+
+router.put('/admin/academy/videos/:id', requireAuth, function (req, res) {
+  try {
+    const { title, youtubeId, channel, category, categoryId, duration, level, description } = req.body;
+    const db = readDB();
+    if (!db.academy_videos) db.academy_videos = [];
+    
+    const idx = db.academy_videos.findIndex(v => v.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Video bulunamadı.' });
+    
+    db.academy_videos[idx] = {
+      ...db.academy_videos[idx],
+      title: title || db.academy_videos[idx].title,
+      youtubeId: youtubeId || db.academy_videos[idx].youtubeId,
+      channel: channel || db.academy_videos[idx].channel,
+      category: category || db.academy_videos[idx].category,
+      categoryId: categoryId || db.academy_videos[idx].categoryId,
+      duration: duration || db.academy_videos[idx].duration,
+      level: level || db.academy_videos[idx].level,
+      description: description || db.academy_videos[idx].description
+    };
+    
+    writeDB(db);
+    res.json({ success: true, message: 'Video güncellendi.', video: db.academy_videos[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Video güncellenemedi.' });
+  }
+});
+
+router.delete('/admin/academy/videos/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.academy_videos) db.academy_videos = [];
+    
+    const before = db.academy_videos.length;
+    db.academy_videos = db.academy_videos.filter(v => v.id !== req.params.id);
+    
+    if (db.academy_videos.length === before) {
+      return res.status(404).json({ error: 'Video bulunamadı.' });
+    }
+    
+    writeDB(db);
+    res.json({ success: true, message: 'Video başarıyla silindi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Video silinemedi.' });
+  }
+});
+
+// ─── ADMIN ACADEMY RESOURCES ────────────────────
+router.get('/admin/academy/resources', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.academy_resources || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Kaynaklar listelenemedi.' });
+  }
+});
+
+router.post('/admin/academy/resources', requireAuth, function (req, res) {
+  try {
+    const { title, description, url, badge, icon } = req.body;
+    if (!title || !description || !url) {
+      return res.status(400).json({ error: 'Başlık, açıklama ve URL gereklidir.' });
+    }
+    
+    const db = readDB();
+    if (!db.academy_resources) db.academy_resources = [];
+    
+    const newResource = {
+      id: 'res-' + Date.now(),
+      title,
+      description,
+      url,
+      badge: badge || 'Eğitim',
+      icon: icon || '🔗'
+    };
+    
+    db.academy_resources.push(newResource);
+    writeDB(db);
+    
+    res.status(201).json({ success: true, message: 'Kaynak başarıyla eklendi.', resource: newResource });
+  } catch (err) {
+    res.status(500).json({ error: 'Kaynak eklenemedi.' });
+  }
+});
+
+router.put('/admin/academy/resources/:id', requireAuth, function (req, res) {
+  try {
+    const { title, description, url, badge, icon } = req.body;
+    const db = readDB();
+    if (!db.academy_resources) db.academy_resources = [];
+    
+    const idx = db.academy_resources.findIndex(r => r.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Kaynak bulunamadı.' });
+    
+    db.academy_resources[idx] = {
+      ...db.academy_resources[idx],
+      title: title || db.academy_resources[idx].title,
+      description: description || db.academy_resources[idx].description,
+      url: url || db.academy_resources[idx].url,
+      badge: badge || db.academy_resources[idx].badge,
+      icon: icon || db.academy_resources[idx].icon
+    };
+    
+    writeDB(db);
+    res.json({ success: true, message: 'Kaynak güncellendi.', resource: db.academy_resources[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Kaynak güncellenemedi.' });
+  }
+});
+
+router.delete('/admin/academy/resources/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.academy_resources) db.academy_resources = [];
+    
+    const before = db.academy_resources.length;
+    db.academy_resources = db.academy_resources.filter(r => r.id !== req.params.id);
+    
+    if (db.academy_resources.length === before) {
+      return res.status(404).json({ error: 'Kaynak bulunamadı.' });
+    }
+    
+    writeDB(db);
+    res.json({ success: true, message: 'Kaynak başarıyla silindi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Kaynak silinemedi.' });
+  }
+});
+
 router.post('/admin/quizzes', requireAuth, function (req, res) {
   try {
     const { title, description, badge, badgeIcon, questions } = req.body;
