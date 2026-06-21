@@ -2523,6 +2523,25 @@ router.post('/quizzes/:id/submit', function (req, res) {
   }
 });
 
+// ─── ACADEMY API ────────────────────────────────
+router.get('/academy/videos', function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.academy_videos || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Eğitim videoları yüklenemedi.' });
+  }
+});
+
+router.get('/academy/resources', function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.academy_resources || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Kaynaklar yüklenemedi.' });
+  }
+});
+
 // Admin-only management routes
 router.get('/admin/quizzes', requireAuth, function (req, res) {
   try {

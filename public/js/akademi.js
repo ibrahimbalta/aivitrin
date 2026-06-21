@@ -1,10 +1,12 @@
-// public/js/akademi.js - Yapay Zeka Testleri ve Rozet Kazanımı Mantığı
+// public/js/akademi.js - Yapay Zeka Testleri, Videoları ve Kaynakları Mantığı
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
   var quizzesGrid = document.getElementById('quizzes-grid-list');
+  var videosGrid = document.getElementById('videos-grid-list');
+  var resourcesGrid = document.getElementById('resources-grid-list');
   
-  // Modal Elements
+  // Modal Elements for Quizzes
   var quizModalOverlay = document.getElementById('quiz-modal-overlay');
   var btnCloseModal = document.getElementById('btn-close-quiz-modal');
   
@@ -32,21 +34,165 @@ document.addEventListener('DOMContentLoaded', function () {
   var earnedBadgesArea = document.getElementById('earned-badges-area');
   var earnedBadgesList = document.getElementById('earned-badges-list');
 
-  // Quiz State
+  // Video Modal Elements
+  var videoModalOverlay = document.getElementById('video-modal-overlay');
+  var btnCloseVideoModal = document.getElementById('btn-close-video-modal');
+  var videoModalTitle = document.getElementById('video-modal-title');
+  var videoPlayerIframe = document.getElementById('video-player-iframe');
+
+  // State
   var quizzesList = [];
+  var videosList = [];
   var activeQuiz = null;
   var currentQuestionIndex = 0;
   var userAnswers = [];
 
   // Initialize
   loadQuizzes();
+  loadVideos();
+  loadResources();
   renderEarnedBadges();
 
-  // Close modal
+  // Close modals
   if (btnCloseModal) btnCloseModal.addEventListener('click', closeQuizModal);
   if (btnCloseSuccess) btnCloseSuccess.addEventListener('click', closeQuizModal);
+  if (btnCloseVideoModal) btnCloseVideoModal.addEventListener('click', closeVideoModal);
+  if (videoModalOverlay) {
+    videoModalOverlay.addEventListener('click', function(e) {
+      if (e.target === videoModalOverlay) closeVideoModal();
+    });
+  }
 
+  // ─── VIDEOS LOGIC ──────────────────────────────
+  async function loadVideos() {
+    if (!videosGrid) return;
+    try {
+      var res = await fetch('/api/academy/videos');
+      videosList = await res.json();
+      renderVideos('all');
+    } catch (e) {
+      console.error('Error loading videos:', e);
+      videosGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Eğitim videoları yüklenemedi.</p>';
+    }
+  }
+
+  function renderVideos(category) {
+    var filtered = category === 'all' 
+      ? videosList 
+      : videosList.filter(v => v.categoryId === category);
+      
+    if (filtered.length === 0) {
+      videosGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Bu kategoride henüz video eklenmemiş.</p>';
+      return;
+    }
+    
+    videosGrid.innerHTML = filtered.map(function(v) {
+      return `
+        <article class="video-card" data-youtube-id="${v.youtubeId}" data-title="${v.title}">
+          <div class="video-thumbnail-container">
+            <img class="video-thumbnail" src="https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg" alt="${v.title}" loading="lazy">
+            <div class="video-play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span class="video-duration">${v.duration}</span>
+          </div>
+          <div class="video-info">
+            <div class="video-meta-top">
+              <span class="video-channel">${v.channel}</span>
+              <span class="video-level">${v.level}</span>
+            </div>
+            <h3 class="video-card-title">${v.title}</h3>
+            <p class="video-card-desc">${v.description}</p>
+            <span class="video-watch-link">
+              Videoyu İzle 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </div>
+        </article>
+      `;
+    }).join('');
+    
+    // Bind click events to video cards
+    videosGrid.querySelectorAll('.video-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var youtubeId = this.getAttribute('data-youtube-id');
+        var title = this.getAttribute('data-title');
+        openVideoModal(youtubeId, title);
+      });
+    });
+  }
+
+  // Category filter tabs
+  var filterButtons = document.querySelectorAll('#video-category-filters .filter-btn');
+  filterButtons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      filterButtons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      var category = this.getAttribute('data-category');
+      renderVideos(category);
+    });
+  });
+
+  function openVideoModal(youtubeId, title) {
+    if (!videoModalOverlay || !videoPlayerIframe) return;
+    videoModalTitle.textContent = title;
+    videoPlayerIframe.src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1';
+    videoModalOverlay.style.display = 'flex';
+  }
+  
+  function closeVideoModal() {
+    if (!videoModalOverlay || !videoPlayerIframe) return;
+    videoModalOverlay.style.display = 'none';
+    videoPlayerIframe.src = '';
+  }
+
+  // ─── RESOURCES LOGIC ────────────────────────────
+  async function loadResources() {
+    if (!resourcesGrid) return;
+    try {
+      var res = await fetch('/api/academy/resources');
+      var resources = await res.json();
+      
+      if (resources.length === 0) {
+        resourcesGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Yakında yeni kaynaklar eklenecektir!</p>';
+        return;
+      }
+      
+      resourcesGrid.innerHTML = resources.map(function(r) {
+        return `
+          <a href="${r.url}" target="_blank" rel="noopener" class="resource-card">
+            <div class="resource-header">
+              <span class="resource-icon-box">${r.icon}</span>
+              <span class="resource-badge">${r.badge}</span>
+            </div>
+            <h3 class="resource-title">${r.title}</h3>
+            <p class="resource-desc">${r.description}</p>
+            <span class="resource-link">
+              Kaynağa Git 
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </span>
+          </a>
+        `;
+      }).join('');
+    } catch (e) {
+      console.error('Error loading resources:', e);
+      resourcesGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Kaynaklar yüklenemedi.</p>';
+    }
+  }
+
+  // ─── QUIZZES LOGIC ──────────────────────────────
   async function loadQuizzes() {
+    if (!quizzesGrid) return;
     try {
       var res = await fetch('/api/quizzes');
       var quizzes = await res.json();
@@ -58,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       quizzesGrid.innerHTML = quizzes.map(function (quiz) {
-        // Check if already passed
         var earned = isQuizPassed(quiz.id);
         var cardClass = earned ? 'quiz-card passed' : 'quiz-card';
         var borderStyle = earned ? 'border-color: rgba(20, 219, 212, 0.3); background: rgba(20, 219, 212, 0.02);' : '';
@@ -78,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
       }).join('');
 
-      // Bind click events to start button
       quizzesGrid.querySelectorAll('.btn-open-quiz').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.preventDefault();
@@ -101,14 +245,12 @@ document.addEventListener('DOMContentLoaded', function () {
     modalTitle.textContent = quiz.title;
     modalDesc.textContent = quiz.description;
     
-    // Reset screens
     screenIntro.style.display = 'block';
     screenQuestion.style.display = 'none';
     screenResult.style.display = 'none';
     
     quizModalOverlay.style.display = 'flex';
 
-    // Start quiz button listener
     btnStartQuiz.onclick = function () {
       startQuizWizard();
     };
@@ -128,14 +270,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var question = activeQuiz.questions[currentQuestionIndex];
     var totalQuestions = activeQuiz.questions.length;
 
-    // Progress Bar
     var progressPercent = ((currentQuestionIndex) / totalQuestions) * 100;
     progressBar.style.width = progressPercent + '%';
 
     questionIndexLabel.textContent = 'Soru: ' + (currentQuestionIndex + 1) + '/' + totalQuestions;
     questionText.textContent = question.questionText;
 
-    // Render options
     optionsContainer.innerHTML = question.options.map(function (option, idx) {
       var isSelected = userAnswers[currentQuestionIndex] === idx;
       var selectedClass = isSelected ? 'selected' : '';
@@ -146,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
     }).join('');
 
-    // Bind option click
     optionsContainer.querySelectorAll('.quiz-option-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         optionsContainer.querySelectorAll('.quiz-option-btn').forEach(b => b.classList.remove('selected'));
@@ -155,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Navigation buttons
     if (currentQuestionIndex > 0) {
       btnPrev.style.display = 'block';
       btnPrev.onclick = function () {
@@ -227,7 +365,6 @@ document.addEventListener('DOMContentLoaded', function () {
       resultTitle.style.color = 'var(--accent-cyan)';
       resultDesc.innerHTML = `Tüm sorulara (<strong>${data.score}/${data.total}</strong>) doğru yanıt verdiniz ve başarıyla <strong>${data.badge.title}</strong> rozetini kazandınız!`;
       
-      // Save badge to local storage
       saveBadge({
         quizId: activeQuiz.id,
         title: data.badge.title,
@@ -235,11 +372,9 @@ document.addEventListener('DOMContentLoaded', function () {
         date: new Date().toLocaleDateString('tr-TR')
       });
       
-      // Reload UI elements
       renderEarnedBadges();
       loadQuizzes();
 
-      // Configure share button
       btnShare.style.display = 'block';
       btnShare.onclick = function () {
         var text = `AIvitrin Akademi'de "${activeQuiz.title}" testini başarıyla tamamladım ve "${data.badge.icon} ${data.badge.title}" rozetini kazandım! Sen de test et: ${window.location.origin}/akademi`;
@@ -257,9 +392,6 @@ document.addEventListener('DOMContentLoaded', function () {
       resultTitle.style.color = 'var(--accent-red)';
       resultDesc.innerHTML = `Maalesef testten tam puan alamadınız (<strong>${data.score}/${data.total}</strong>). Rozet kazanmak için tüm soruları doğru cevaplamalısınız.`;
       
-      btnShare.style.display = 'none';
-      
-      // Configure retry button
       btnShare.style.display = 'block';
       btnShare.textContent = 'Yeniden Dene';
       btnShare.onclick = function () {
@@ -273,7 +405,6 @@ document.addEventListener('DOMContentLoaded', function () {
     activeQuiz = null;
   }
 
-  // Local storage badge helpers
   function isQuizPassed(quizId) {
     var badges = JSON.parse(localStorage.getItem('earned_badges') || '[]');
     return badges.some(b => b.quizId === quizId);
@@ -284,13 +415,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!badges.some(b => b.quizId === badgeObj.quizId)) {
       badges.push(badgeObj);
       localStorage.setItem('earned_badges', JSON.stringify(badges));
-      
-      // Sync badge to user's toolkit bookmarks if logged in
       syncBadgeToToolkit(badgeObj);
     }
   }
 
   function renderEarnedBadges() {
+    if (!earnedBadgesArea) return;
     var badges = JSON.parse(localStorage.getItem('earned_badges') || '[]');
     if (badges.length === 0) {
       earnedBadgesArea.style.display = 'none';
@@ -311,14 +441,10 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function syncBadgeToToolkit(badgeObj) {
-    // If the user has a toolkit list in localStorage, we can append a custom badge category or just store it.
-    // For now, storing badges in 'earned_badges' local storage matches index page and toolkit drawers.
-    // We can also trigger a custom event
     var event = new CustomEvent('badgeEarned', { detail: badgeObj });
     document.dispatchEvent(event);
   }
 
-  // Toast Helper
   function showToast(message, type) {
     var toast = document.createElement('div');
     toast.className = 'toast toast-' + (type || 'success');

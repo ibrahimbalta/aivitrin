@@ -112453,7 +112453,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-21T15:47:39.164Z",
+    "last_run": "2026-06-21T16:04:42.342Z",
     "total_crawled": 58,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -112957,6 +112957,14 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-21T16:04:42.342Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -113442,6 +113450,108 @@
           "correctOptionIndex": 0
         }
       ]
+    }
+  ],
+  "academy_videos": [
+    {
+      "id": "vid-1",
+      "title": "Yapay Zeka Nedir? 10 Dakikada Yapay Zekanın Temelleri",
+      "youtubeId": "cQ54GDm1eL0",
+      "channel": "Barış Özcan",
+      "category": "Temel Eğitim",
+      "categoryId": "giris",
+      "duration": "12:15",
+      "level": "Başlangıç",
+      "description": "Yapay zeka teknolojisinin tarihçesi, çalışma mantığı ve hayatımızı nasıl etkilediğine dair anlaşılır bir başlangıç rehberi."
+    },
+    {
+      "id": "vid-2",
+      "title": "Prompt Engineering Nedir? Yapay Zeka ile Doğru Konuşma Sanatı",
+      "youtubeId": "hI3o7B37dM0",
+      "channel": "Yazılım Bilimi",
+      "category": "Prompt Mühendisliği",
+      "categoryId": "prompt",
+      "duration": "22:40",
+      "level": "Başlangıç",
+      "description": "ChatGPT, Claude ve diğer büyük dil modellerinden en verimli yanıtları almak için kullanabileceğiniz profesyonel prompt teknikleri."
+    },
+    {
+      "id": "vid-3",
+      "title": "Cursor AI Kullanımı: 30 Dakikada Sıfırdan Web Uygulaması Geliştirin",
+      "youtubeId": "13p86mO1Cqg",
+      "channel": "Eser Kababulut",
+      "category": "Yazılım & Geliştirme",
+      "categoryId": "kodlama",
+      "duration": "32:10",
+      "level": "Orta",
+      "description": "Yapay zeka destekli kod editörü Cursor'ı kullanarak hiç kod yazmadan veya çok az kodla modern web projeleri geliştirme rehberi."
+    },
+    {
+      "id": "vid-4",
+      "title": "Python ile Yapay Zeka Geliştirme: TensorFlow ve PyTorch Giriş",
+      "youtubeId": "wV01T5kHnSw",
+      "channel": "Kaan Academy Türkçe",
+      "category": "Yazılım & Geliştirme",
+      "categoryId": "kodlama",
+      "duration": "45:15",
+      "level": "İleri",
+      "description": "Python programlama dili kullanarak basit bir makine öğrenmesi modelinin TensorFlow kütüphanesi ile sıfırdan eğitilmesi."
+    },
+    {
+      "id": "vid-5",
+      "title": "Midjourney ve Stable Diffusion ile Profesyonel Görsel Üretimi",
+      "youtubeId": "v08kK372Wk4",
+      "channel": "Tasarım Kanalı",
+      "category": "Tasarım & Kreatif",
+      "categoryId": "tasarim",
+      "duration": "18:30",
+      "level": "Başlangıç",
+      "description": "Yapay zeka ile görsel oluşturma araçlarının (Midjourney, Stable Diffusion) parametre kullanımları ve yaratıcı görsel teknikleri."
+    },
+    {
+      "id": "vid-6",
+      "title": "Make.com ve ChatGPT ile Yapay Zeka Tabanlı İş Otomasyonu Kurmak",
+      "youtubeId": "2Fm9c23s43Q",
+      "channel": "Dijital Dönüşüm",
+      "category": "İş & Otomasyon",
+      "categoryId": "is-uretkenlik",
+      "duration": "25:50",
+      "level": "Orta",
+      "description": "E-postaları otomatik yanıtlayan, verileri analiz edip rapor hazırlayan ChatGPT entegreli Make.com otomasyon senaryoları."
+    }
+  ],
+  "academy_resources": [
+    {
+      "id": "res-1",
+      "title": "Google Bulut Yapay Zeka Kursları",
+      "description": "Google Cloud tarafından sunulan Üretken Yapay Zeka (Generative AI) temelleri üzerine ücretsiz ve sertifikalı 10 adet eğitim modülü.",
+      "url": "https://cloud.google.com/learn/training/machine-learning-generative-ai",
+      "badge": "Sertifikalı Kurs",
+      "icon": "☁️"
+    },
+    {
+      "id": "res-2",
+      "title": "Hugging Face Transformatör Kursu",
+      "description": "Açık kaynaklı yapay zeka modellerini (BERT, GPT, Llama vb.) projelerinize entegre etmeyi öğrenmek için mükemmel bir NLP rehberi.",
+      "url": "https://huggingface.co/course",
+      "badge": "NLP & LLM",
+      "icon": "🤗"
+    },
+    {
+      "id": "res-3",
+      "title": "DeepLearning.AI Kısa Eğitimleri",
+      "description": "Andrew Ng tarafından hazırlanan, prompt mühendisliği, AI ajanları ve LLM geliştirme üzerine odaklanmış 1-2 saatlik ücretsiz uzmanlık eğitimleri.",
+      "url": "https://www.deeplearning.ai/short-courses/",
+      "badge": "Geliştirici Eğitimi",
+      "icon": "🧠"
+    },
+    {
+      "id": "res-4",
+      "title": "Kaggle Machine Learning Kursları",
+      "description": "Python, Pandas, Veri Görselleştirme ve Makine Öğrenmesi temellerini tarayıcı üzerinden uygulamalı olarak öğreten etkileşimli kurslar.",
+      "url": "https://www.kaggle.com/learn",
+      "badge": "Uygulamalı Veri Bilimi",
+      "icon": "📊"
     }
   ]
 }
