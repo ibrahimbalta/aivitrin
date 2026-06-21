@@ -889,6 +889,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     applyFilters();
     renderDirectoryIndex(categories, tools);
 
+    // Günün Promptu ve Haberleri yükle
+    initHomepageFeatures();
+
     // İstatistikler
     var statsBar = document.querySelector('.stats-bar');
     if (statsBar && 'IntersectionObserver' in window) {
@@ -1089,4 +1092,103 @@ document.addEventListener('DOMContentLoaded', async function () {
     var toolsSection = document.querySelector('#tools-section');
     if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
   };
+
+  async function initHomepageFeatures() {
+    // Günün Promptu Yükleme
+    var promptWidget = document.getElementById('homepage-prompt-widget');
+    if (promptWidget) {
+      try {
+        var res = await fetch('/api/prompts/day');
+        var prompt = await res.json();
+        if (prompt) {
+          document.getElementById('widget-prompt-title').textContent = prompt.title;
+          document.getElementById('widget-prompt-category').textContent = prompt.category;
+          document.getElementById('widget-prompt-tool').textContent = prompt.targetTool;
+          document.getElementById('widget-prompt-desc').textContent = prompt.description;
+          document.getElementById('widget-prompt-text').textContent = prompt.promptText;
+          document.getElementById('widget-prompt-votes-count').textContent = prompt.votes || 0;
+          
+          var copyBtn = document.getElementById('btn-copy-widget-prompt');
+          if (copyBtn) {
+            copyBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              navigator.clipboard.writeText(prompt.promptText).then(function() {
+                var originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✅ Kopyalandı!';
+                setTimeout(function() {
+                  copyBtn.innerHTML = originalText;
+                }, 2000);
+              });
+            });
+          }
+
+          var voteBtn = document.getElementById('widget-prompt-vote');
+          if (voteBtn) {
+            voteBtn.addEventListener('click', async function(e) {
+              e.preventDefault();
+              var votedPrompts = JSON.parse(localStorage.getItem('voted_prompts') || '[]');
+              if (votedPrompts.indexOf(prompt.id) !== -1) {
+                showToast('Bu promptu zaten beğendiniz!', 'error');
+                return;
+              }
+
+              try {
+                var voteRes = await fetch('/api/prompts/' + prompt.id + '/vote', { method: 'POST' });
+                var voteData = await voteRes.json();
+                if (voteData.success) {
+                  document.getElementById('widget-prompt-votes-count').textContent = voteData.votes;
+                  votedPrompts.push(prompt.id);
+                  localStorage.setItem('voted_prompts', JSON.stringify(votedPrompts));
+                  showToast('Beğeniniz kaydedildi!', 'success');
+                }
+              } catch (e) {
+                showToast('Oy verilemedi.', 'error');
+              }
+            });
+          }
+
+          promptWidget.style.display = 'block';
+        }
+      } catch (err) {
+        console.error('Günün promptu yükleme hatası:', err);
+      }
+    }
+
+    // Son Haberleri Yükleme
+    var newsGrid = document.getElementById('homepage-news-grid');
+    if (newsGrid) {
+      try {
+        var res = await fetch('/api/news');
+        var data = await res.json();
+        var news = data.news || [];
+        if (news.length === 0) {
+          newsGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Henüz haber eklenmemiş.</p>';
+          return;
+        }
+
+        // Show last 3 news
+        var recentNews = news.slice(0, 3);
+        newsGrid.innerHTML = recentNews.map(function(item) {
+          var imgUrl = item.imageUrl || '/uploads/ads/ad_1782015572826_609.png'; // fallback placeholder image
+          return `
+            <div class="tool-card" onclick="window.location.href='/haber-detay?id=${item.id}'" style="cursor:pointer">
+              <div style="height: 180px; overflow: hidden; border-radius: var(--radius-md); margin-bottom: 16px; background: rgba(0,0,0,0.2); position: relative;">
+                <img src="${imgUrl}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                <span style="position: absolute; left: 12px; bottom: 12px; background: rgba(0,0,0,0.6); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">${item.publishDate}</span>
+              </div>
+              <h3 class="tool-name" style="font-size: 1.1rem; margin-bottom: 8px;">${item.title}</h3>
+              <p class="tool-description" style="-webkit-line-clamp: 2; height: auto; margin-bottom: 12px;">${item.summary}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; font-size: 0.8rem; color: var(--text-secondary);">
+                <span>Kaynak: ${item.source || 'AIvitrin'}</span>
+                <span style="color: var(--accent-cyan); font-weight:600">Devamını Oku &rarr;</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error('Haber yükleme hatası:', err);
+        newsGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Haberler yüklenirken bir hata oluştu.</p>';
+      }
+    }
+  }
 });

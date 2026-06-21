@@ -26,6 +26,8 @@
   --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 12px 40px 0 rgba(235, 100, 65, 0.15), 0 0 20px 0 rgba(99, 102, 241, 0.12);
   --shadow-glow: 0 0 30px hsla(235, 100%, 65%, 0.3);
+  --bg-dropdown: rgba(14, 16, 29, 0.95);
+  --border-dropdown: rgba(255, 255, 255, 0.08);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -43,6 +45,8 @@
   --bg-secondary: hsl(220, 20%, 93%);
   --bg-card: rgba(255, 255, 255, 0.85);
   --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --bg-dropdown: rgba(255, 255, 255, 0.98);
+  --border-dropdown: rgba(0, 0, 0, 0.08);
   --bg-input: hsl(220, 20%, 95%);
   --text-primary: hsl(245, 50%, 10%);
   --text-secondary: hsl(240, 15%, 42%);
@@ -3932,6 +3936,177 @@ img {
   .ai-promo-banner-btn {
     justify-content: center;
     width: 100%;
+  }
+}
+
+/* ---- Header Dropdown Menu Styling ---- */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.nav-dropdown-trigger {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-fast);
+  user-select: none;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-trigger {
+  color: var(--text-primary);
+}
+
+.dropdown-chevron {
+  transition: transform var(--transition-fast);
+  margin-top: 1px;
+}
+
+.nav-item-dropdown:hover .dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-dropdown);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-dropdown);
+  border-radius: var(--radius-md);
+  min-width: 200px;
+  padding: 8px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 1000;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block !important;
+  padding: 10px 20px !important;
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+  position: relative !important;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--accent-cyan) !important;
+  padding-left: 24px !important;
+}
+
+[data-theme="light"] .nav-dropdown-menu a:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+.nav-dropdown-menu a::after {
+  display: none !important;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* Active states for dropdown items and triggers */
+.nav-dropdown-menu a.active {
+  color: var(--accent-cyan) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  font-weight: 600 !important;
+  padding-left: 22px !important;
+}
+
+[data-theme="light"] .nav-dropdown-menu a.active {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+.nav-item-dropdown:has(a.active) .nav-dropdown-trigger {
+  color: var(--accent-cyan);
+}
+
+/* Header Assistant Button Styling */
+.header-assistant-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 60px;
+  border-radius: var(--radius-md);
+  color: var(--accent-cyan);
+  border: 1.5px solid rgba(20, 219, 212, 0.4);
+  background: rgba(20, 219, 212, 0.05);
+  transition: all var(--transition-fast);
+  text-decoration: none !important;
+  line-height: 1 !important;
+  animation: assistantGlow 2.5s infinite ease-in-out;
+}
+
+.header-assistant-link:hover {
+  background: rgba(20, 219, 212, 0.12);
+  border-color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+
+.header-assistant-link span {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+  background: linear-gradient(135deg, #14dbd4 0%, #8a4bf5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .header-assistant-link {
+  background: rgba(20, 219, 212, 0.08);
+  border-color: rgba(20, 219, 212, 0.5);
+}
+
+[data-theme="light"] .header-assistant-link:hover {
+  background: rgba(20, 219, 212, 0.15);
+}
+
+.header-assistant-link.active {
+  border-color: var(--accent-cyan) !important;
+  background: rgba(20, 219, 212, 0.15) !important;
+  box-shadow: 0 0 20px rgba(20, 219, 212, 0.4) !important;
+}
+
+@keyframes assistantGlow {
+  0% {
+    box-shadow: 0 0 6px rgba(20, 219, 212, 0.15);
+    border-color: rgba(20, 219, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(20, 219, 212, 0.45);
+    border-color: rgba(20, 219, 212, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(20, 219, 212, 0.15);
+    border-color: rgba(20, 219, 212, 0.3);
   }
 }
 

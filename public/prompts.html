@@ -3,23 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Yol Arkadaşı (Yapay Zeka Asistanı) — AIvitrin</title>
-  <meta name="description" content="İhtiyacınızı anlatın, size en uygun Türkçe incelemeli yapay zeka araçlarını, maliyetlerini ve nasıl kullanacağınızı adım adım çıkarsın.">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Fonts -->
+  <title>Türkçe Prompt Kütüphanesi — AIvitrin</title>
+  <meta name="description" content="ChatGPT, Claude, Midjourney ve diğer yapay zeka araçları için en etkili Türkçe hazır prompt şablonlarını keşfedin.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/assistant.css">
+  <style>
+    .prompt-hero {
+      padding: 80px 0 40px;
+      text-align: center;
+    }
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .prompt-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
+    .prompt-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(138, 75, 245, 0.3);
+      box-shadow: 0 12px 30px rgba(138, 75, 245, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .prompt-text-area {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      max-height: 150px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .chip.active, .chip:hover {
+      background: var(--gradient-primary);
+      border-color: transparent;
+      color: white;
+    }
+    .search-bar-wrapper {
+      max-width: 600px;
+      margin: 24px auto 0;
+      position: relative;
+    }
+    .search-bar-wrapper input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      padding: 14px 24px;
+      color: white;
+      font-size: 0.95rem;
+    }
+    .search-bar-wrapper input:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 15px rgba(138, 75, 245, 0.2);
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Glowing Background Orbs & Grid Overlay -->
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
   <!-- HEADER -->
-  <header class="header" id="header">
+  <header class="site-header" id="site-header">
     <div class="header-inner container">
       <div class="header-left">
         <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
@@ -71,7 +157,7 @@
           </span>
           <div class="nav-dropdown-menu">
             <a href="/workflows">İş Akışları</a>
-            <a href="/asistan" class="active">AI Asistanı</a>
+            <a href="/asistan">AI Asistanı</a>
             <a href="/calculator">Hesaplayıcı</a>
           </div>
         </div>
@@ -82,7 +168,7 @@
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
-            <a href="/prompts">Günün Promptu</a>
+            <a href="/prompts" class="active">Günün Promptu</a>
             <a href="/haberler">Haberler</a>
             <a href="/akademi">Akademi</a>
           </div>
@@ -92,7 +178,7 @@
       </nav>
       
       <div class="header-actions">
-        <a href="/asistan" class="header-assistant-link active" title="Akıllı Yapay Zeka Asistanı">
+        <a href="/asistan" class="header-assistant-link" title="Akıllı Yapay Zeka Asistanı">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="robot-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -138,7 +224,10 @@
     <a href="/alternatives">Alternatifler</a>
     <a href="/compare">Karşılaştır</a>
     <a href="/workflows">İş Akışları</a>
-    <a href="/asistan" class="active">AI Asistanı</a>
+    <a href="/prompts" class="active">Günün Promptu</a>
+    <a href="/haberler">Haberler</a>
+    <a href="/akademi">Akademi</a>
+    <a href="/asistan">AI Asistanı</a>
     <a href="/professions">Meslekler</a>
     <a href="/stories">Hikayeler</a>
     <a href="/calculator">Hesaplayıcı</a>
@@ -147,119 +236,64 @@
     <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
   </nav>
 
-  <!-- MAIN ASSISTANT LAYOUT -->
-  <main class="assistant-page-layout">
+  <!-- MAIN CONTENT -->
+  <main class="container" style="padding-top: 100px; padding-bottom: 80px;">
     
-    <!-- LEFT SIDEBAR -->
-    <aside class="assistant-sidebar">
-      <button class="btn-new-chat" id="btn-new-chat-sidebar">
-        <span>➕</span> Yeni Sohbet
-      </button>
-      
-      <div class="sidebar-section">
-        <h4>Örnek Senaryolar</h4>
-        <button class="history-item" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">🏠 Emlakçı Video İlan Seti</button>
-        <button class="history-item" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">📱 Sosyal Medya Şablonları</button>
-        <button class="history-item" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">💻 Yazılımcı Kod Asistanları</button>
-        <button class="history-item" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">💬 Müşteri Destek Botu</button>
+    <section class="prompt-hero">
+      <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 12px;">
+        Hazır Türkçe <span class="text-gradient">Prompt Kütüphanesi</span>
+      </h1>
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+        Günlük işlerinizde, derslerinizde veya tasarım süreçlerinizde yapay zeka araçlarından en iyi sonuçları alabilmeniz için optimize edilmiş promptlar.
+      </p>
+
+      <div class="search-bar-wrapper">
+        <input type="text" id="prompt-search" placeholder="İhtiyacınız olan promptu arayın... (ör: makale yazma, görsel çizme)">
       </div>
 
-      <div class="sidebar-section" style="margin-top:auto;">
-        <h4>Çantamdaki Araçlar</h4>
-        <div id="sidebar-toolkit-list" style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:8px;">
-          <!-- Loaded by JS -->
-          <span style="color:var(--text-muted); font-style:italic;">Çantanız boş.</span>
-        </div>
+      <div class="prompt-chips">
+        <button class="chip active" data-category="all">Tüm Kategoriler</button>
+        <button class="chip" data-category="Pazarlama">Pazarlama</button>
+        <button class="chip" data-category="Kodlama">Kodlama</button>
+        <button class="chip" data-category="Tasarım">Tasarım</button>
+        <button class="chip" data-category="Yazarlık">Yazarlık</button>
+        <button class="chip" data-category="İş">İş</button>
       </div>
-    </aside>
-    
-    <!-- CHAT INTERFACE PANEL -->
-    <section class="assistant-chat-panel">
-      
-      <!-- Mobile sub-header bar for sidebar toggle -->
-      <div class="assistant-chat-header-bar" style="display:none; align-items:center; padding:12px 20px; background:rgba(255,255,255,0.02); border-bottom:1px solid var(--border-color);">
-        <button class="btn-secondary" id="btn-toggle-assistant-sidebar" style="padding:6px 12px; font-size:0.8rem; display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <span>☰</span> Senaryolar & Çanta
-        </button>
-        <span style="font-weight:600; font-size:0.9rem; color:var(--text-primary); margin-left:auto;">AI Yol Arkadaşı</span>
-      </div>
-      
-      <!-- CHAT MESSAGE THREAD -->
-      <div class="chat-messages-container" id="assistant-chat-thread">
-        
-        <!-- Welcome view if chat is empty -->
-        <div class="chat-welcome-screen" id="chat-welcome-screen">
-          <span class="welcome-logo">🧠</span>
-          <h2 class="welcome-title">AIvitrin Yol Arkadaşı</h2>
-          <p class="welcome-subtitle">
-            Hangi işi yaptığınızı veya neyi otomatize etmek istediğinizi söyleyin. 
-            Yapay zeka asistanımız vitrinimizdeki en iyi araçları sizin için seçsin, 
-            kullanım adımlarını ve bütçesini anında listelesin.
-          </p>
-          
-          <div class="suggestion-grid">
-            <div class="suggestion-card" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">
-              <h5>🏠 Emlakçı Video Seti</h5>
-              <p>"Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı"</p>
-            </div>
-            <div class="suggestion-card" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">
-              <h5>📱 Sosyal Medya</h5>
-              <p>"Haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçlar..."</p>
-            </div>
-            <div class="suggestion-card" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">
-              <h5>💻 Kod Asistanı</h5>
-              <p>"Kod yazarken bana yardımcı olacak ve hataları bulacak yapay zekalar..."</p>
-            </div>
-            <div class="suggestion-card" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">
-              <h5>💬 Müşteri Destek Botu</h5>
-              <p>"AI Chatbot müşteri temsilcisi kurmak için hangi platformları kullanabilirim?"</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      
-      <!-- BOTTOM INPUT CONTAINER -->
-      <div class="chat-input-wrapper">
-        <div class="chat-input-box">
-          <form class="chat-input-form" id="assistant-chat-form">
-            <textarea class="chat-textarea" id="assistant-chat-input" placeholder="Yapay zeka danışmanınıza sorun... (örn: Emlakçıyım video ilan yapmak istiyorum)" required></textarea>
-            <button type="submit" class="btn-send-message" id="btn-assistant-send" title="Gönder">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            </button>
-          </form>
-          <div class="chat-input-disclaimer">
-            💡 AIvitrin Yol Arkadaşı, vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur.
-          </div>
-        </div>
-      </div>
-      
     </section>
-    
+
+    <!-- GÜNÜN PROMPTU ÖNE ÇIKARILAN ALAN -->
+    <div id="day-prompt-section" style="margin-bottom: 40px; display: none;">
+      <!-- Renders dynamically -->
+    </div>
+
+    <!-- REKLAM ALANI -->
+    <div class="ad-slot" data-position="hero-banner" style="margin-bottom: 40px;"></div>
+
+    <section>
+      <h2 style="font-family: var(--font-title); font-size: 1.8rem; color: var(--text-primary); margin-bottom: 16px;">Tüm Promptlar</h2>
+      <div class="prompt-grid" id="prompts-grid-list">
+        <p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Yükleniyor...</p>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Scripts -->
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 AIvitrin. Tüm hakları saklıdır.</p>
+        <div class="footer-links">
+          <a href="/iletisim">İletişim</a>
+          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+          <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/prompts.js"></script>
   <script src="js/toolkit.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/assistant.js"></script>
-  <script>
-    // Theme toggle initialization (standard for all pages)
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileMenuBtn && mobileNav) {
-      mobileMenuBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        mobileNav.classList.toggle('active');
-      });
-      document.addEventListener('click', function(e) {
-        if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-          mobileNav.classList.remove('active');
-        }
-      });
-    }
-  </script>
+  <script src="js/ads.js"></script>
 </body>
 </html>

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIvitrin — Yapay Zeka Karşılaştırma Matrisi</title>
-  <meta name="description" content="Yapay zeka araçlarını yan yana karşılaştırın. ChatGPT, Claude ve diğer AI rakiplerini özellikleri, fiyatları ve Türkçe dil destekleriyle inceleyin.">
+  <title>İletişim — AIvitrin</title>
+  <meta name="description" content="AIvitrin ile iletişime geçin. Görüş, öneri, sponsorluk ve reklam işbirlikleri için mesaj gönderebilirsiniz.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aivitrin.com/iletisim">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +15,179 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .contact-hero {
+      padding: calc(var(--header-height) + 60px) 0 40px;
+      text-align: center;
+    }
+    .contact-hero-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .contact-hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .contact-content-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+
+    @media (max-width: 992px) {
+      .contact-content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-form-group {
+      margin-bottom: 24px;
+    }
+
+    .contact-form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .contact-input, .contact-textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .contact-input:focus, .contact-textarea:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .contact-textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn-contact-submit {
+      width: 100%;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-weight: 600;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: var(--shadow-glow);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .btn-contact-submit:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-contact-submit:active {
+      transform: translateY(0);
+    }
+
+    .info-column {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+
+    .info-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+
+    .info-box p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .info-link {
+      color: var(--accent-cyan);
+      font-weight: 500;
+      transition: opacity var(--transition-fast);
+    }
+
+    .info-link:hover {
+      text-decoration: underline;
+    }
+
+    .faq-section {
+      margin-top: 20px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,7 +229,7 @@
         </a>
       </div>
       
-                        <nav class="nav-links" id="nav-links">
+            <nav class="nav-links" id="nav-links">
         <a href="/#tools-section">AI Araçları</a>
         
         <div class="nav-item-dropdown">
@@ -65,7 +239,7 @@
           </span>
           <div class="nav-dropdown-menu">
             <a href="/alternatives">Alternatifler</a>
-            <a href="/compare" class="active">Karşılaştır</a>
+            <a href="/compare">Karşılaştır</a>
             <a href="/professions">Meslekler</a>
             <a href="/stories">Hikayeler</a>
           </div>
@@ -134,13 +308,12 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button class="btn-submit" id="btn-submit-tool">Projemi Vitrine Ekle</button>
       </div>
     </div>
   </header>
 
   <!-- MOBILE NAV -->
-      <nav class="mobile-nav" id="mobile-nav">
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
     <a href="/alternatives">Alternatifler</a>
     <a href="/compare">Karşılaştır</a>
@@ -154,47 +327,80 @@
     <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
   </nav>
 
-  <!-- COMPARE HERO -->
-  <section class="compare-hero">
-    <div class="container">
-      <div class="compare-hero-content animate-on-scroll">
-        <h1 class="compare-title">Yapay Zeka <span class="text-gradient">Karşılaştırma Matrisi</span></h1>
-        <p class="compare-subtitle">En fazla 3 adet yapay zeka aracını yan yana koyarak özelliklerini, Türkçe dil desteğini ve fiyatlarını karşılaştırın.</p>
-        
-        <!-- Search and Add Area -->
-        <div class="compare-add-container">
-          <div class="alt-search-container" style="max-width: 500px; margin: 0 auto;">
-            <div class="alt-search-box">
-              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.34-4.34"></path>
-              </svg>
-              <input type="text" id="compare-search-input" placeholder="Karşılaştırmaya araç ekleyin..." autocomplete="off">
-              <button class="btn-alt-clear" id="btn-compare-clear" style="display: none;">&times;</button>
-            </div>
-            <div class="alt-autocomplete-dropdown" id="compare-autocomplete-dropdown" style="display: none;">
-              <!-- autocomplete results -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Selected Tools List -->
-        <div class="compare-selected-bar" id="compare-selected-bar">
-          <!-- Render selected tools chips with remove action -->
-        </div>
-      </div>
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="container animate-on-scroll">
+      <h1 class="contact-hero-title">
+        Bizimle<br>
+        <span class="text-gradient">İletişime Geçin</span>
+      </h1>
+      <p class="contact-hero-subtitle">
+        Sorularınız, reklam/sponsorluk teklifleriniz ya da işbirliği önerileriniz için form veya e-posta yoluyla bize ulaşabilirsiniz.
+      </p>
     </div>
   </section>
 
-  <!-- MATRIX TABLE SECTION -->
-  <section class="section compare-table-section">
-    <div class="container">
-      <div class="compare-table-wrapper animate-on-scroll" id="compare-table-wrapper">
-        <!-- Render detailed comparison matrix table here -->
-        <div class="compare-empty-state">
-          <div class="empty-icon">📊</div>
-          <h3>Karşılaştırma Listesi Boş</h3>
-          <p>Yukarıdaki arama kutusunu kullanarak veya anasayfadaki araç kartlarının altındaki karşılaştırma butonuna basarak araç ekleyin.</p>
+  <!-- CONTENT GRID -->
+  <section class="container">
+    <div class="contact-content-grid">
+      <!-- Contact Form -->
+      <div class="contact-card animate-on-scroll">
+        <form id="contact-form">
+          <div class="contact-form-group">
+            <label for="contact-name">Adınız Soyadınız *</label>
+            <input type="text" id="contact-name" class="contact-input" placeholder="Adınızı girin" required>
+          </div>
+          
+          <div class="contact-form-group">
+            <label for="contact-email">E-posta Adresiniz *</label>
+            <input type="email" id="contact-email" class="contact-input" placeholder="ornek@domain.com" required>
+          </div>
+
+          <div class="contact-form-group">
+            <label for="contact-subject">Konu *</label>
+            <input type="text" id="contact-subject" class="contact-input" placeholder="Mesajınızın konusu" required>
+          </div>
+
+          <div class="contact-form-group">
+            <label for="contact-message">Mesajınız *</label>
+            <textarea id="contact-message" class="contact-textarea" placeholder="Mesajınızı buraya yazın..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-contact-submit">
+            <span>✉️</span> Gönder
+          </button>
+        </form>
+      </div>
+
+      <!-- Info Column -->
+      <div class="info-column animate-on-scroll">
+        <div class="info-box">
+          <h3><span>📧</span> E-posta İletişimi</h3>
+          <p>
+            Her türlü genel soru, sponsorluk ve reklam talepleri için doğrudan e-posta adresimizden bize ulaşabilirsiniz:<br><br>
+            <a href="mailto:destek@aivitrin.com" class="info-link">destek@aivitrin.com</a>
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3><span>🚀</span> Proje Ekleme</h3>
+          <p>
+            Kendi yapay zeka aracınızı dizinimize eklemek istiyorsanız, sağ üstte bulunan "Projemi Vitrine Ekle" butonuna tıklayarak formu doldurmanız yeterlidir.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>⚡ Sıkça Sorulan Sorular</h3>
+          <div class="faq-section">
+            <div class="faq-item">
+              <div class="faq-question">Araç eklemek ücretli mi? <span>+</span></div>
+              <div class="faq-answer">Temel listeleme tamamen ücretsizdir. Projenizin öne çıkanlar alanında yer almasını isterseniz sponsorluk paketlerimiz mevcuttur.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Onay süreci ne kadar sürer? <span>+</span></div>
+              <div class="faq-answer">Eklediğiniz araçlar editörlerimiz tarafından 24-48 saat içerisinde incelenerek onaylanır.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -223,18 +429,23 @@
             <span class="logo-text"><span class="logo-ai">AI</span><span class="logo-vitrin">vitrin</span></span>
           </a>
           <p class="footer-description">
-            Yazma, kodlama, tasarım ve otomasyon gibi kategorilerde en iyi yapay zeka araçlarını keşfedin ve karşılaştırın.
+            Yazma, kodlama, tasarım and otomasyon gibi kategorilerde en iyi yapay zeka araçlarını keşfedin ve karşılaştırın.
           </p>
         </div>
-        
         <div class="footer-column">
           <h4>Hızlı Erişim</h4>
           <a href="/#tools-section">AI Araçları</a>
-          <a href="/#categories-section">Kategoriler</a>
           <a href="/alternatives">Alternatifler</a>
-          <a href="/compare">Karşılaştır</a>
-          <a href="/workflows">İş Akışları</a>
+          <a href="/professions">Meslekler</a>
           <a href="/stories">Başarı Hikayeleri</a>
+        </div>
+        <div class="footer-column">
+          <h4>Bilgi</h4>
+          <a href="/stories">Başarı Hikayeleri</a>
+          <a href="#">Hakkımızda</a>
+          <a href="/iletisim">İletişim</a>
+          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+          <a href="/kullanim-kosullari">Kullanım Koşulları</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -279,87 +490,126 @@
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.482 20.455 12 20.455 12 20.455s7.518 0 9.388-.511a3.003 3.003 0 0 0 2.11-2.107C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- SUBMIT TOOL MODAL -->
-  <div class="modal-overlay" id="submit-tool-modal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>🚀 Vitrine Yapay Zeka Aracı Ekle</h3>
-        <button class="modal-close" id="submit-modal-close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form class="modal-form" id="submit-tool-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sub-name">Araç Adı *</label>
-              <input type="text" id="sub-name" required placeholder="ör: ChatGPT, Midjourney" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="sub-url">Website URL *</label>
-              <input type="url" id="sub-url" required placeholder="https://example.com" maxlength="150">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sub-description">Açıklama *</label>
-            <textarea id="sub-description" required placeholder="Bu yapay zeka aracı ne işe yarıyor? (En az 10 karakter)" maxlength="300"></textarea>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sub-category">Kategori *</label>
-              <select id="sub-category" required>
-                <option value="">Kategori Seçin</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="sub-pricing">Fiyatlandırma *</label>
-              <select id="sub-pricing" required>
-                <option value="ucretsiz">Ücretsiz</option>
-                <option value="freemium" selected>Freemium</option>
-                <option value="ucretli">Ücretli</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sub-tags">Etiketler (Virgülle ayırın)</label>
-            <input type="text" id="sub-tags" placeholder="ör: sohbet, metin üretimi, yapay zeka">
-          </div>
-          <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-top:15px; margin-bottom:10px;">
-            <input type="checkbox" id="sub-featured" style="width:18px; height:18px; cursor:pointer;">
-            <label for="sub-featured" style="font-size:0.85rem; color:var(--text-primary); cursor:pointer; user-select:none; line-height:1.4;">
-              ⭐ <strong>Öne Çıkanlar (Featured)</strong> alanında listelenmesini istiyorum (Yıllık sponsorluk paketi: 5.000 TL)
-            </label>
-          </div>
-          <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-bottom:10px;">
-            <input type="checkbox" id="sub-made-in-turkey" style="width:18px; height:18px; cursor:pointer;">
-            <label for="sub-made-in-turkey" style="font-size:0.85rem; color:var(--text-primary); cursor:pointer; user-select:none; line-height:1.4;">
-              🇹🇷 Bu araç <strong>Türkiye'de geliştirilmiş</strong> yerli bir teknolojidir
-            </label>
-          </div>
-          <p style="font-size:0.75rem;color:var(--text-secondary);margin-top:8px">
-            * Gönderilen araçlar editör onayından geçtikten sonra Türkçe açıklama ve etiketler ile vitrinde listelenecektir.
-          </p>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" id="submit-modal-cancel">İptal</button>
-        <button class="btn-primary" id="btn-submit-save" style="background:var(--gradient-primary);border:none;color:white;font-weight:600">Gönder</button>
-      </div>
-    </div>
-  </div>
-
   <!-- SCRIPTS -->
-  <script src="js/compare.js"></script>
-  <script src="js/toolkit.js"></script>
-  <script src="js/advisor.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    'use strict';
+    document.addEventListener('DOMContentLoaded', function () {
+      // Theme toggle
+      var themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        var savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      // Mobile menu
+      var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      var mobileNav = document.getElementById('mobile-nav');
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', function () {
+          mobileNav.classList.toggle('active');
+        });
+      }
+
+      // FAQ accordion
+      var faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(function (q) {
+        q.addEventListener('click', function () {
+          var parent = this.parentElement;
+          parent.classList.toggle('active');
+          var span = this.querySelector('span');
+          if (span) {
+            span.textContent = parent.classList.contains('active') ? '−' : '+';
+          }
+        });
+      });
+
+      // Animate on scroll
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Contact Form submission
+      var contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          var name = document.getElementById('contact-name').value;
+          var email = document.getElementById('contact-email').value;
+          var subject = document.getElementById('contact-subject').value;
+          var message = document.getElementById('contact-message').value;
+
+          if (!name || !email || !subject || !message) {
+            if (typeof window.showToast === 'function') {
+              window.showToast('Lütfen tüm zorunlu (*) alanları doldurun.', 'error');
+            } else {
+              alert('Lütfen tüm zorunlu alanları doldurun.');
+            }
+            return;
+          }
+
+          var submitBtn = contactForm.querySelector('.btn-contact-submit');
+          var originalBtnText = submitBtn.innerHTML;
+          try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>⏳</span> Gönderiliyor...';
+
+            var response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ name: name, email: email, subject: subject, message: message })
+            });
+
+            var data = await response.json();
+            if (response.ok && data.success) {
+              if (typeof window.showToast === 'function') {
+                window.showToast('Mesajınız başarıyla iletildi! En kısa sürede dönüş yapacağız.', 'success');
+              } else {
+                alert('Mesajınız başarıyla iletildi!');
+              }
+              contactForm.reset();
+            } else {
+              if (typeof window.showToast === 'function') {
+                window.showToast(data.error || 'Mesaj iletilirken bir hata oluştu.', 'error');
+              } else {
+                alert(data.error || 'Hata oluştu.');
+              }
+            }
+          } catch (err) {
+            if (typeof window.showToast === 'function') {
+              window.showToast('Sunucu bağlantı hatası oluştu.', 'error');
+            } else {
+              alert('Bağlantı hatası oluştu.');
+            }
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

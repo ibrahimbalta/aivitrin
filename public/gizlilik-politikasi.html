@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIvitrin — Yapay Zeka Karşılaştırma Matrisi</title>
-  <meta name="description" content="Yapay zeka araçlarını yan yana karşılaştırın. ChatGPT, Claude ve diğer AI rakiplerini özellikleri, fiyatları ve Türkçe dil destekleriyle inceleyin.">
+  <title>Gizlilik Politikası — AIvitrin</title>
+  <meta name="description" content="AIvitrin Gizlilik Politikası. Kişisel verilerinizin nasıl toplandığı, korunduğu ve işlendiği hakkında detaylı bilgi edinin.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aivitrin.com/gizlilik-politikasi">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +15,84 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .legal-hero {
+      padding: calc(var(--header-height) + 60px) 0 40px;
+      text-align: center;
+    }
+    .legal-hero-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .legal-hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .legal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 80px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .legal-content {
+        padding: 30px 20px;
+      }
+    }
+
+    .legal-text h2 {
+      font-size: 1.5rem;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .legal-text h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-text p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .legal-text ul {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+
+    .legal-text li {
+      margin-bottom: 8px;
+    }
+
+    .last-updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,7 +134,7 @@
         </a>
       </div>
       
-                        <nav class="nav-links" id="nav-links">
+            <nav class="nav-links" id="nav-links">
         <a href="/#tools-section">AI Araçları</a>
         
         <div class="nav-item-dropdown">
@@ -65,7 +144,7 @@
           </span>
           <div class="nav-dropdown-menu">
             <a href="/alternatives">Alternatifler</a>
-            <a href="/compare" class="active">Karşılaştır</a>
+            <a href="/compare">Karşılaştır</a>
             <a href="/professions">Meslekler</a>
             <a href="/stories">Hikayeler</a>
           </div>
@@ -134,13 +213,12 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button class="btn-submit" id="btn-submit-tool">Projemi Vitrine Ekle</button>
       </div>
     </div>
   </header>
 
   <!-- MOBILE NAV -->
-      <nav class="mobile-nav" id="mobile-nav">
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
     <a href="/alternatives">Alternatifler</a>
     <a href="/compare">Karşılaştır</a>
@@ -154,49 +232,64 @@
     <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
   </nav>
 
-  <!-- COMPARE HERO -->
-  <section class="compare-hero">
-    <div class="container">
-      <div class="compare-hero-content animate-on-scroll">
-        <h1 class="compare-title">Yapay Zeka <span class="text-gradient">Karşılaştırma Matrisi</span></h1>
-        <p class="compare-subtitle">En fazla 3 adet yapay zeka aracını yan yana koyarak özelliklerini, Türkçe dil desteğini ve fiyatlarını karşılaştırın.</p>
-        
-        <!-- Search and Add Area -->
-        <div class="compare-add-container">
-          <div class="alt-search-container" style="max-width: 500px; margin: 0 auto;">
-            <div class="alt-search-box">
-              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.34-4.34"></path>
-              </svg>
-              <input type="text" id="compare-search-input" placeholder="Karşılaştırmaya araç ekleyin..." autocomplete="off">
-              <button class="btn-alt-clear" id="btn-compare-clear" style="display: none;">&times;</button>
-            </div>
-            <div class="alt-autocomplete-dropdown" id="compare-autocomplete-dropdown" style="display: none;">
-              <!-- autocomplete results -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Selected Tools List -->
-        <div class="compare-selected-bar" id="compare-selected-bar">
-          <!-- Render selected tools chips with remove action -->
-        </div>
-      </div>
+  <!-- HERO -->
+  <section class="legal-hero">
+    <div class="container animate-on-scroll">
+      <h1 class="legal-hero-title">
+        Gizlilik<br>
+        <span class="text-gradient">Politikası</span>
+      </h1>
+      <p class="legal-hero-subtitle">
+        AIvitrin olarak gizliliğinize önem veriyoruz. Kişisel verilerinizin toplanma, işlenme ve saklanma süreçleri hakkında detaylı bilgi.
+      </p>
     </div>
   </section>
 
-  <!-- MATRIX TABLE SECTION -->
-  <section class="section compare-table-section">
-    <div class="container">
-      <div class="compare-table-wrapper animate-on-scroll" id="compare-table-wrapper">
-        <!-- Render detailed comparison matrix table here -->
-        <div class="compare-empty-state">
-          <div class="empty-icon">📊</div>
-          <h3>Karşılaştırma Listesi Boş</h3>
-          <p>Yukarıdaki arama kutusunu kullanarak veya anasayfadaki araç kartlarının altındaki karşılaştırma butonuna basarak araç ekleyin.</p>
-        </div>
-      </div>
+  <!-- CONTENT -->
+  <section class="container">
+    <div class="legal-content legal-text animate-on-scroll">
+      <span class="last-updated">Son Güncelleme: 21 Haziran 2026</span>
+      
+      <h2>1. Giriş</h2>
+      <p>
+        AIvitrin ("biz", "bize" veya "bizim"), aivitrin.com web sitesini ("Site") ziyaret eden kullanıcıların gizliliğini korumayı taahhüt eder. Bu Gizlilik Politikası, web sitemizi ziyaret ettiğinizde veya sunduğumuz hizmetleri kullandığınızda hakkınızda toplanan bilgilerin nasıl kullanıldığını, paylaşıldığını ve korunduğunu açıklamaktadır.
+      </p>
+
+      <h2>2. Toplanan Veriler</h2>
+      <p>
+        Sitemizi verimli şekilde kullanabilmeniz ve sizlere daha iyi bir deneyim sunabilmemiz için aşağıdaki verileri toplayabiliriz:
+      </p>
+      <ul>
+        <li><strong>Kişisel Bilgiler:</strong> Bizimle doğrudan paylaştığınız isim, soyisim, e-posta adresi ve iletişim mesajları.</li>
+        <li><strong>Kullanım Verileri:</strong> Sitemizi nasıl kullandığınıza ilişkin teknik detaylar (IP adresiniz, tarayıcı türünüz, ziyaret ettiğiniz sayfalar ve ziyaret süreleri).</li>
+        <li><strong>Çerezler:</strong> Site deneyimini kişiselleştirmek ve analitik veriler toplamak amacıyla kullandığımız küçük veri dosyaları.</li>
+      </ul>
+
+      <h2>3. Verilerin Kullanım Amaçları</h2>
+      <p>
+        Toplanan verileriniz yalnızca aşağıdaki amaçlar doğrultusunda işlenmektedir:
+      </p>
+      <ul>
+        <li>Size daha iyi ve kişiselleştirilmiş bir kullanıcı deneyimi sunmak,</li>
+        <li>Sitenin güvenliğini, performansını ve analitiğini geliştirmek,</li>
+        <li>İletişim formu aracılığıyla gönderdiğiniz soru ve taleplerinize cevap vermek,</li>
+        <li>Bültenimize kaydolmanız durumunda en yeni yapay zeka araçları ve duyurular hakkında bilgilendirmeler göndermek.</li>
+      </ul>
+
+      <h2>4. Çerez Politikası</h2>
+      <p>
+        Çerezler, Sitemizi ziyaret ettiğinizde tarayıcınıza yerleştirilen metin dosyalarıdır. Çerezleri, giriş tercihlerinizi hatırlamak, site trafiğini analiz etmek ve reklamların etkinliğini ölçmek için kullanırız. Tarayıcı ayarlarınız üzerinden çerez kullanımını kısıtlayabilir veya tamamen devre dışı bırakabilirsiniz.
+      </p>
+
+      <h2>5. Veri Güvenliği</h2>
+      <p>
+        Toplanan kişisel verilerinizin güvenliğini sağlamak için endüstri standartlarına uygun teknik ve idari güvenlik önlemleri almaktayız. Verileriniz, yetkisiz erişim, kayıp veya kötüye kullanıma karşı şifrelenmiş sunucularda güvenli bir şekilde saklanmaktadır.
+      </p>
+
+      <h2>6. Haklarınız</h2>
+      <p>
+        KVKK ve ilgili mevzuat uyarınca, hakkınızda sakladığımız kişisel verilere erişme, bu verileri güncelleme, düzeltme veya tamamen silinmesini talep etme hakkına sahipsiniz. Bu haklarınızı kullanmak için dilediğiniz zaman bizimle <a href="/iletisim" style="color: var(--accent-cyan); text-decoration: underline;">İletişim</a> sayfamız üzerinden irtibata geçebilirsiniz.
+      </p>
     </div>
   </section>
 
@@ -226,15 +319,20 @@
             Yazma, kodlama, tasarım ve otomasyon gibi kategorilerde en iyi yapay zeka araçlarını keşfedin ve karşılaştırın.
           </p>
         </div>
-        
         <div class="footer-column">
           <h4>Hızlı Erişim</h4>
           <a href="/#tools-section">AI Araçları</a>
-          <a href="/#categories-section">Kategoriler</a>
           <a href="/alternatives">Alternatifler</a>
-          <a href="/compare">Karşılaştır</a>
-          <a href="/workflows">İş Akışları</a>
+          <a href="/professions">Meslekler</a>
           <a href="/stories">Başarı Hikayeleri</a>
+        </div>
+        <div class="footer-column">
+          <h4>Bilgi</h4>
+          <a href="/stories">Başarı Hikayeleri</a>
+          <a href="#">Hakkımızda</a>
+          <a href="/iletisim">İletişim</a>
+          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+          <a href="/kullanim-kosullari">Kullanım Koşulları</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -279,87 +377,52 @@
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.482 20.455 12 20.455 12 20.455s7.518 0 9.388-.511a3.003 3.003 0 0 0 2.11-2.107C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- SUBMIT TOOL MODAL -->
-  <div class="modal-overlay" id="submit-tool-modal">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>🚀 Vitrine Yapay Zeka Aracı Ekle</h3>
-        <button class="modal-close" id="submit-modal-close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form class="modal-form" id="submit-tool-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sub-name">Araç Adı *</label>
-              <input type="text" id="sub-name" required placeholder="ör: ChatGPT, Midjourney" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="sub-url">Website URL *</label>
-              <input type="url" id="sub-url" required placeholder="https://example.com" maxlength="150">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sub-description">Açıklama *</label>
-            <textarea id="sub-description" required placeholder="Bu yapay zeka aracı ne işe yarıyor? (En az 10 karakter)" maxlength="300"></textarea>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="sub-category">Kategori *</label>
-              <select id="sub-category" required>
-                <option value="">Kategori Seçin</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="sub-pricing">Fiyatlandırma *</label>
-              <select id="sub-pricing" required>
-                <option value="ucretsiz">Ücretsiz</option>
-                <option value="freemium" selected>Freemium</option>
-                <option value="ucretli">Ücretli</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sub-tags">Etiketler (Virgülle ayırın)</label>
-            <input type="text" id="sub-tags" placeholder="ör: sohbet, metin üretimi, yapay zeka">
-          </div>
-          <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-top:15px; margin-bottom:10px;">
-            <input type="checkbox" id="sub-featured" style="width:18px; height:18px; cursor:pointer;">
-            <label for="sub-featured" style="font-size:0.85rem; color:var(--text-primary); cursor:pointer; user-select:none; line-height:1.4;">
-              ⭐ <strong>Öne Çıkanlar (Featured)</strong> alanında listelenmesini istiyorum (Yıllık sponsorluk paketi: 5.000 TL)
-            </label>
-          </div>
-          <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-bottom:10px;">
-            <input type="checkbox" id="sub-made-in-turkey" style="width:18px; height:18px; cursor:pointer;">
-            <label for="sub-made-in-turkey" style="font-size:0.85rem; color:var(--text-primary); cursor:pointer; user-select:none; line-height:1.4;">
-              🇹🇷 Bu araç <strong>Türkiye'de geliştirilmiş</strong> yerli bir teknolojidir
-            </label>
-          </div>
-          <p style="font-size:0.75rem;color:var(--text-secondary);margin-top:8px">
-            * Gönderilen araçlar editör onayından geçtikten sonra Türkçe açıklama ve etiketler ile vitrinde listelenecektir.
-          </p>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" id="submit-modal-cancel">İptal</button>
-        <button class="btn-primary" id="btn-submit-save" style="background:var(--gradient-primary);border:none;color:white;font-weight:600">Gönder</button>
-      </div>
-    </div>
-  </div>
-
   <!-- SCRIPTS -->
-  <script src="js/compare.js"></script>
-  <script src="js/toolkit.js"></script>
-  <script src="js/advisor.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    'use strict';
+    document.addEventListener('DOMContentLoaded', function () {
+      // Theme toggle
+      var themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        var savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', function () {
+          var current = document.documentElement.getAttribute('data-theme');
+          var next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      // Mobile menu
+      var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      var mobileNav = document.getElementById('mobile-nav');
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', function () {
+          mobileNav.classList.toggle('active');
+        });
+      }
+
+      // Animate on scroll
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+        observer.observe(el);
+      });
+    });
+  </script>
 </body>
 </html>

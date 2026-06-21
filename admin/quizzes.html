@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akademi/Quiz Yönetimi — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+    .question-builder {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.01);
+    }
+    .question-builder-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-quizzes" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-quizzes)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-quizzes)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-quizzes)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/tools.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Araçlar
+        </a>
+        <a href="/admin/categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          Kategoriler
+        </a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular
+        </a>
+        <a href="/admin/prompts.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Prompt Yönetimi
+        </a>
+        <a href="/admin/news.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"/></svg>
+          Haber Yönetimi
+        </a>
+        <a href="/admin/quizzes.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Akademi/Quiz
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/messages.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Mesajlar
+        </a>
+        <a href="/admin/ads.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="21" y1="9" x2="3" y2="9"/><line x1="21" y1="15" x2="3" y2="15"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          Reklam Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Siteyi Görüntüle
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="btn-logout">Çıkış Yap</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Eğitim & Quiz Yönetimi</h1>
+        <button class="btn-primary" id="btn-new-quiz">+ Yeni Quiz Oluştur</button>
+      </div>
+
+      <!-- Add/Edit Quiz Modal -->
+      <div class="modal-overlay" id="quiz-modal" style="display:none">
+        <div class="modal" style="max-width: 750px; max-height: 90vh; overflow-y: auto;">
+          <div class="modal-header">
+            <h3 id="modal-title">Yeni Quiz Oluştur</h3>
+            <button class="modal-close" id="btn-close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="quiz-form">
+              <input type="hidden" id="quiz-id">
+              
+              <div class="form-group">
+                <label for="quiz-title">Quiz Başlığı</label>
+                <input type="text" id="quiz-title" required placeholder="Örn: Yapay Zeka Okuryazarlığı Testi">
+              </div>
+              <div class="form-group">
+                <label for="quiz-desc">Kısa Tanıtım / Açıklama</label>
+                <textarea id="quiz-desc" rows="2" required placeholder="Bu testin içeriğini ve hedefini açıklayın..."></textarea>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group" style="flex:1">
+                  <label for="quiz-badge">Ödül Rozet Unvanı</label>
+                  <input type="text" id="quiz-badge" required placeholder="Örn: AI Okuryazarı">
+                </div>
+                <div class="form-group" style="flex:1">
+                  <label for="quiz-badge-icon">Rozet Emojisi (Simge)</label>
+                  <input type="text" id="quiz-badge-icon" required placeholder="Örn: 🧠 veya ✍️">
+                </div>
+              </div>
+
+              <!-- Question List Builder -->
+              <h4 style="margin: 20px 0 10px; color:var(--text-primary);">Soru Yapılandırıcı (3 Soru Tavsiye Edilir)</h4>
+              <div id="questions-builder-list">
+                <!-- Question cards render here -->
+              </div>
+              
+              <button type="button" class="btn-secondary" id="btn-add-question-builder" style="margin-bottom: 24px; width: 100%;">+ Soru Ekle</button>
+
+              <div style="display:flex; justify-content:flex-end; gap:12px; border-top:1px solid rgba(255,255,255,0.05); padding-top:16px;">
+                <button type="button" class="btn-secondary" id="btn-cancel">İptal</button>
+                <button type="submit" class="btn-primary" id="btn-save">Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quizzes List Table -->
+      <div class="data-table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Simge</th>
+              <th>Quiz Başlığı</th>
+              <th>Soru Sayısı</th>
+              <th>Ödül Rozeti</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="quizzes-table-body">
+            <tr><td colspan="5" style="text-align:center">Yükleniyor...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var quizzesTableBody = document.getElementById('quizzes-table-body');
+      var quizModal = document.getElementById('quiz-modal');
+      var btnNewQuiz = document.getElementById('btn-new-quiz');
+      var btnCloseModal = document.getElementById('btn-close-modal');
+      var btnCancel = document.getElementById('btn-cancel');
+      var quizForm = document.getElementById('quiz-form');
+      var modalTitle = document.getElementById('modal-title');
+      var questionsBuilderList = document.getElementById('questions-builder-list');
+      var btnAddQuestionBuilder = document.getElementById('btn-add-question-builder');
+
+      var isEditing = false;
+      var questionIndex = 0;
+
+      // Load all quizzes on mount
+      loadQuizzes();
+
+      // Add a question block to the form builder
+      btnAddQuestionBuilder.addEventListener('click', function () {
+        addQuestionBlock();
+      });
+
+      function addQuestionBlock(data) {
+        var idx = questionIndex++;
+        var qText = data ? data.questionText : '';
+        var opt0 = data && data.options ? data.options[0] : '';
+        var opt1 = data && data.options ? data.options[1] : '';
+        var opt2 = data && data.options ? data.options[2] : '';
+        var opt3 = data && data.options ? data.options[3] : '';
+        var correctIdx = data ? data.correctOptionIndex : 0;
+
+        var div = document.createElement('div');
+        div.className = 'question-builder';
+        div.innerHTML = `
+          <div class="question-builder-header">
+            <strong>Soru #${idx + 1}</strong>
+            <button type="button" class="btn-danger btn-remove-q-block" style="background:var(--accent-red); color:white; border:none; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;">Sil</button>
+          </div>
+          <div class="form-group">
+            <label>Soru Cümlesi</label>
+            <input type="text" class="q-text" required value="${qText.replace(/"/g, '&quot;')}" placeholder="Soru metni...">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>A Seçeneği</label>
+              <input type="text" class="q-opt-0" required value="${opt0.replace(/"/g, '&quot;')}" placeholder="Seçenek A">
+            </div>
+            <div class="form-group">
+              <label>B Seçeneği</label>
+              <input type="text" class="q-opt-1" required value="${opt1.replace(/"/g, '&quot;')}" placeholder="Seçenek B">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>C Seçeneği</label>
+              <input type="text" class="q-opt-2" required value="${opt2.replace(/"/g, '&quot;')}" placeholder="Seçenek C">
+            </div>
+            <div class="form-group">
+              <label>D Seçeneği</label>
+              <input type="text" class="q-opt-3" required value="${opt3.replace(/"/g, '&quot;')}" placeholder="Seçenek D">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 8px;">
+            <label>Doğru Cevap Seçeneği</label>
+            <select class="q-correct" required>
+              <option value="0" ${correctIdx === 0 ? 'selected' : ''}>A Seçeneği</option>
+              <option value="1" ${correctIdx === 1 ? 'selected' : ''}>B Seçeneği</option>
+              <option value="2" ${correctIdx === 2 ? 'selected' : ''}>C Seçeneği</option>
+              <option value="3" ${correctIdx === 3 ? 'selected' : ''}>D Seçeneği</option>
+            </select>
+          </div>
+        `;
+
+        div.querySelector('.btn-remove-q-block').addEventListener('click', function () {
+          div.remove();
+          reIndexQuestionBlocks();
+        });
+
+        questionsBuilderList.appendChild(div);
+      }
+
+      function reIndexQuestionBlocks() {
+        var blocks = questionsBuilderList.querySelectorAll('.question-builder');
+        blocks.forEach(function (block, idx) {
+          block.querySelector('.question-builder-header strong').textContent = 'Soru #' + (idx + 1);
+        });
+      }
+
+      // Modal open/close
+      btnNewQuiz.addEventListener('click', function () {
+        isEditing = false;
+        modalTitle.textContent = 'Yeni Quiz Oluştur';
+        quizForm.reset();
+        document.getElementById('quiz-id').value = '';
+        questionsBuilderList.innerHTML = '';
+        questionIndex = 0;
+        
+        // Add 3 default questions
+        addQuestionBlock();
+        addQuestionBlock();
+        addQuestionBlock();
+
+        quizModal.style.display = 'flex';
+      });
+
+      btnCloseModal.addEventListener('click', closeModal);
+      btnCancel.addEventListener('click', closeModal);
+
+      function closeModal() {
+        quizModal.style.display = 'none';
+        quizForm.reset();
+        questionsBuilderList.innerHTML = '';
+        questionIndex = 0;
+      }
+
+      // Save Quiz Form
+      quizForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var id = document.getElementById('quiz-id').value;
+        
+        // Parse questions
+        var qBlocks = questionsBuilderList.querySelectorAll('.question-builder');
+        var questions = [];
+        var isValid = true;
+
+        qBlocks.forEach(function (block) {
+          var text = block.querySelector('.q-text').value.trim();
+          var o0 = block.querySelector('.q-opt-0').value.trim();
+          var o1 = block.querySelector('.q-opt-1').value.trim();
+          var o2 = block.querySelector('.q-opt-2').value.trim();
+          var o3 = block.querySelector('.q-opt-3').value.trim();
+          var correct = parseInt(block.querySelector('.q-correct').value);
+
+          if (!text || !o0 || !o1 || !o2 || !o3) {
+            isValid = false;
+            return;
+          }
+
+          questions.push({
+            questionText: text,
+            options: [o0, o1, o2, o3],
+            correctOptionIndex: correct
+          });
+        });
+
+        if (!isValid || questions.length === 0) {
+          alert('Lütfen tüm soru alanlarını eksiksiz doldurun.');
+          return;
+        }
+
+        var body = {
+          title: document.getElementById('quiz-title').value.trim(),
+          description: document.getElementById('quiz-desc').value.trim(),
+          badge: document.getElementById('quiz-badge').value.trim(),
+          badgeIcon: document.getElementById('quiz-badge-icon').value.trim(),
+          questions: questions
+        };
+
+        try {
+          var url = isEditing ? '/api/admin/quizzes/' + id : '/api/admin/quizzes';
+          var method = isEditing ? 'PUT' : 'POST';
+
+          var res = await fetch(url, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          var data = await res.json();
+          if (data.success) {
+            alert(isEditing ? 'Quiz başarıyla güncellendi.' : 'Quiz başarıyla oluşturuldu.');
+            closeModal();
+            loadQuizzes();
+          } else {
+            alert(data.error || 'İşlem başarısız.');
+          }
+        } catch (err) {
+          alert('Bağlantı hatası.');
+        }
+      });
+
+      async function loadQuizzes() {
+        try {
+          var res = await fetch('/api/admin/quizzes');
+          var quizzes = await res.json();
+
+          if (quizzes.length === 0) {
+            quizzesTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center">Hiç quiz bulunamadı.</td></tr>';
+            return;
+          }
+
+          quizzesTableBody.innerHTML = quizzes.map(function (q) {
+            return `
+              <tr>
+                <td style="font-size:1.5rem">${q.badgeIcon}</td>
+                <td><strong>${q.title}</strong></td>
+                <td>${q.questions ? q.questions.length : 0} Soru</td>
+                <td>${q.badge}</td>
+                <td>
+                  <div style="display:flex; gap:8px;">
+                    <button class="btn-secondary btn-edit" data-id="${q.id}" style="font-size:0.75rem; padding:4px 8px;">Düzenle</button>
+                    <button class="btn-danger btn-delete" data-id="${q.id}" style="font-size:0.75rem; padding:4px 8px; background:var(--accent-red); border:none; color:white; border-radius:4px; cursor:pointer;">Sil</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+
+          // Bind Edit & Delete Triggers
+          quizzesTableBody.querySelectorAll('.btn-edit').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = this.getAttribute('data-id');
+              openEditModal(id);
+            });
+          });
+
+          quizzesTableBody.querySelectorAll('.btn-delete').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = this.getAttribute('data-id');
+              if (confirm('Bu quizi silmek istediğinize emin misiniz?')) {
+                deleteQuiz(id);
+              }
+            });
+          });
+
+        } catch (err) {
+          console.error(err);
+          quizzesTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--accent-red);">Quizler yüklenemedi.</td></tr>';
+        }
+      }
+
+      async function openEditModal(id) {
+        try {
+          var res = await fetch('/api/admin/quizzes');
+          var quizzes = await res.json();
+          var q = quizzes.find(item => item.id === id);
+
+          if (!q) return alert('Quiz bulunamadı.');
+
+          isEditing = true;
+          modalTitle.textContent = 'Quizi Düzenle';
+          document.getElementById('quiz-id').value = q.id;
+          document.getElementById('quiz-title').value = q.title;
+          document.getElementById('quiz-desc').value = q.description;
+          document.getElementById('quiz-badge').value = q.badge;
+          document.getElementById('quiz-badge-icon').value = q.badgeIcon;
+          
+          questionsBuilderList.innerHTML = '';
+          questionIndex = 0;
+
+          if (q.questions && q.questions.length > 0) {
+            q.questions.forEach(function (question) {
+              addQuestionBlock(question);
+            });
+          } else {
+            addQuestionBlock();
+          }
+
+          quizModal.style.display = 'flex';
+        } catch (e) {
+          alert('Quiz yüklenemedi.');
+        }
+      }
+
+      async function deleteQuiz(id) {
+        try {
+          var res = await fetch('/api/admin/quizzes/' + id, { method: 'DELETE' });
+          var data = await res.json();
+          if (data.success) {
+            loadQuizzes();
+          } else {
+            alert(data.error);
+          }
+        } catch (e) {
+          alert('Quiz silinemedi.');
+        }
+      }
+
+      // Logout handler
+      var btnLogout = document.getElementById('btn-logout');
+      if (btnLogout) {
+        btnLogout.addEventListener('click', function () {
+          fetch('/auth/logout', { method: 'POST' })
+            .then(() => window.location.href = '/admin/login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

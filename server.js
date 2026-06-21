@@ -115,6 +115,34 @@ app.get('/stories', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'stories.html'));
 });
 
+app.get('/prompts', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'prompts.html'));
+});
+
+app.get('/haberler', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'haberler.html'));
+});
+
+app.get('/haber-detay', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'haber-detay.html'));
+});
+
+app.get('/akademi', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'akademi.html'));
+});
+
+app.get('/iletisim', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'iletisim.html'));
+});
+
+app.get('/gizlilik-politikasi', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'gizlilik-politikasi.html'));
+});
+
+app.get('/kullanim-kosullari', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'kullanim-kosullari.html'));
+});
+
 // ─── Start ───
 if (!process.env.VERCEL) {
   app.listen(PORT, function () {

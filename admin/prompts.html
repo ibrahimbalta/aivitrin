@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Yönetimi — AIvitrin Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad-sb-prompts" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-prompts)" opacity="0.85"></path>
+            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-prompts)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-prompts)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/tools.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Araçlar
+        </a>
+        <a href="/admin/categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          Kategoriler
+        </a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular
+        </a>
+        <a href="/admin/prompts.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Prompt Yönetimi
+        </a>
+        <a href="/admin/news.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"/></svg>
+          Haber Yönetimi
+        </a>
+        <a href="/admin/quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Akademi/Quiz
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/messages.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Mesajlar
+        </a>
+        <a href="/admin/ads.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="21" y1="9" x2="3" y2="9"/><line x1="21" y1="15" x2="3" y2="15"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          Reklam Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+        <a href="/" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Siteyi Görüntüle
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="btn-logout">Çıkış Yap</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Prompt Kütüphanesi Yönetimi</h1>
+        <button class="btn-primary" id="btn-new-prompt">+ Yeni Prompt Ekle</button>
+      </div>
+
+      <!-- Add/Edit Prompt Modal -->
+      <div class="modal-overlay" id="prompt-modal" style="display:none">
+        <div class="modal" style="max-width: 600px;">
+          <div class="modal-header">
+            <h3 id="modal-title">Yeni Prompt Ekle</h3>
+            <button class="modal-close" id="btn-close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="prompt-form">
+              <input type="hidden" id="prompt-id">
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label for="prompt-title">Başlık</label>
+                <input type="text" id="prompt-title" required placeholder="Örn: E-ticaret Ürün Açıklaması Yazıcı">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prompt-category">Kategori</label>
+                  <select id="prompt-category" required>
+                    <option value="Pazarlama">Pazarlama</option>
+                    <option value="Kodlama">Kodlama</option>
+                    <option value="Tasarım">Tasarım</option>
+                    <option value="Yazarlık">Yazarlık</option>
+                    <option value="İş">İş</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="prompt-tool">Hedef Yapay Zeka Aracı</label>
+                  <input type="text" id="prompt-tool" required placeholder="Örn: ChatGPT / Claude / Midjourney">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label for="prompt-desc">Kısa Açıklama</label>
+                <input type="text" id="prompt-desc" required placeholder="Promptun ne işe yaradığını kısaca açıklayın.">
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="prompt-text">Prompt Metni</label>
+                <textarea id="prompt-text" rows="8" required placeholder="Yapay zekaya verilecek talimatı yazın."></textarea>
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:12px;">
+                <button type="button" class="btn-secondary" id="btn-cancel">İptal</button>
+                <button type="submit" class="btn-primary" id="btn-save">Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prompts Table -->
+      <div class="data-table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Başlık</th>
+              <th>Kategori</th>
+              <th>Hedef Araç</th>
+              <th>Beğeni (Oy)</th>
+              <th>Günün Promptu?</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="prompts-table-body">
+            <tr><td colspan="6" style="text-align:center">Yükleniyor...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var promptsTableBody = document.getElementById('prompts-table-body');
+      var promptModal = document.getElementById('prompt-modal');
+      var btnNewPrompt = document.getElementById('btn-new-prompt');
+      var btnCloseModal = document.getElementById('btn-close-modal');
+      var btnCancel = document.getElementById('btn-cancel');
+      var promptForm = document.getElementById('prompt-form');
+      var modalTitle = document.getElementById('modal-title');
+      
+      var isEditing = false;
+
+      // Load prompts
+      loadPrompts();
+
+      // Modal triggers
+      btnNewPrompt.addEventListener('click', function () {
+        isEditing = false;
+        modalTitle.textContent = 'Yeni Prompt Ekle';
+        promptForm.reset();
+        document.getElementById('prompt-id').value = '';
+        promptModal.style.display = 'flex';
+      });
+
+      btnCloseModal.addEventListener('click', closeModal);
+      btnCancel.addEventListener('click', closeModal);
+
+      function closeModal() {
+        promptModal.style.display = 'none';
+        promptForm.reset();
+      }
+
+      // Save prompt
+      promptForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var id = document.getElementById('prompt-id').value;
+        var body = {
+          title: document.getElementById('prompt-title').value.trim(),
+          category: document.getElementById('prompt-category').value,
+          targetTool: document.getElementById('prompt-tool').value.trim(),
+          description: document.getElementById('prompt-desc').value.trim(),
+          promptText: document.getElementById('prompt-text').value.trim()
+        };
+
+        try {
+          var url = isEditing ? '/api/prompts/' + id : '/api/prompts';
+          var method = isEditing ? 'PUT' : 'POST';
+
+          var res = await fetch(url, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          var data = await res.json();
+          if (data.success) {
+            alert(isEditing ? 'Prompt güncellendi.' : 'Prompt eklendi.');
+            closeModal();
+            loadPrompts();
+          } else {
+            alert(data.error || 'İşlem başarısız.');
+          }
+        } catch (err) {
+          alert('Bağlantı hatası.');
+        }
+      });
+
+      async function loadPrompts() {
+        try {
+          var res = await fetch('/api/prompts');
+          var data = await res.json();
+          var prompts = data.prompts || [];
+
+          if (prompts.length === 0) {
+            promptsTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center">Hiç prompt bulunamadı.</td></tr>';
+            return;
+          }
+
+          promptsTableBody.innerHTML = prompts.map(function (p) {
+            return `
+              <tr>
+                <td><strong>${p.title}</strong></td>
+                <td><span class="badge" style="background:rgba(255,255,255,0.05); color:var(--accent-cyan);">${p.category}</span></td>
+                <td>${p.targetTool}</td>
+                <td>👍 ${p.votes || 0}</td>
+                <td>
+                  ${p.isPromptOfTheDay 
+                    ? '<span class="badge" style="background:var(--gradient-primary); color:white">🔥 Günün Promptu</span>' 
+                    : `<button class="btn-secondary btn-set-day" data-id="${p.id}" style="font-size:0.75rem; padding:4px 8px;">Günün Promptu Yap</button>`
+                  }
+                </td>
+                <td>
+                  <div style="display:flex; gap:8px;">
+                    <button class="btn-secondary btn-edit" data-id="${p.id}" style="font-size:0.75rem; padding:4px 8px;">Düzenle</button>
+                    <button class="btn-danger btn-delete" data-id="${p.id}" style="font-size:0.75rem; padding:4px 8px; background:var(--accent-red); border:none; color:white; border-radius:4px; cursor:pointer;">Sil</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+
+          // Bind edit & delete triggers
+          promptsTableBody.querySelectorAll('.btn-edit').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = this.getAttribute('data-id');
+              openEditModal(id);
+            });
+          });
+
+          promptsTableBody.querySelectorAll('.btn-delete').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = this.getAttribute('data-id');
+              if (confirm('Bu promptu silmek istediğinize emin misiniz?')) {
+                deletePrompt(id);
+              }
+            });
+          });
+
+          promptsTableBody.querySelectorAll('.btn-set-day').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var id = this.getAttribute('data-id');
+              setPromptOfTheDay(id);
+            });
+          });
+
+        } catch (err) {
+          console.error(err);
+          promptsTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--accent-red);">Promptlar yüklenemedi.</td></tr>';
+        }
+      }
+
+      async function openEditModal(id) {
+        try {
+          var res = await fetch('/api/prompts/' + id);
+          var p = await res.json();
+          if (p.error) return alert(p.error);
+
+          isEditing = true;
+          modalTitle.textContent = 'Promptu Düzenle';
+          document.getElementById('prompt-id').value = p.id;
+          document.getElementById('prompt-title').value = p.title;
+          document.getElementById('prompt-category').value = p.category;
+          document.getElementById('prompt-tool').value = p.targetTool;
+          document.getElementById('prompt-desc').value = p.description;
+          document.getElementById('prompt-text').value = p.promptText;
+
+          promptModal.style.display = 'flex';
+        } catch (e) {
+          alert('Veri yüklenemedi.');
+        }
+      }
+
+      async function deletePrompt(id) {
+        try {
+          var res = await fetch('/api/prompts/' + id, { method: 'DELETE' });
+          var data = await res.json();
+          if (data.success) {
+            loadPrompts();
+          } else {
+            alert(data.error);
+          }
+        } catch (e) {
+          alert('Silme hatası.');
+        }
+      }
+
+      async function setPromptOfTheDay(id) {
+        try {
+          var res = await fetch('/api/prompts/' + id + '/set-day', { method: 'POST' });
+          var data = await res.json();
+          if (data.success) {
+            loadPrompts();
+          } else {
+            alert(data.error);
+          }
+        } catch (e) {
+          alert('Günün promptu ayarlanamadı.');
+        }
+      }
+
+      // Logout handler
+      var btnLogout = document.getElementById('btn-logout');
+      if (btnLogout) {
+        btnLogout.addEventListener('click', function () {
+          fetch('/auth/logout', { method: 'POST' })
+            .then(() => window.location.href = '/admin/login.html');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

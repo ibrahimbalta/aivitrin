@@ -853,6 +853,234 @@ router.post('/admin/crawler/run', requireAuth, async function (req, res) {
   }
 });
 
+// ─── CONTACT MESSAGES (İLETİŞİM MESAJLARI) ──────
+
+router.post('/contact', function (req, res) {
+  try {
+    const { name, email, subject, message } = req.body;
+    if (!name || !email || !subject || !message) {
+      return res.status(400).json({ error: 'Lütfen tüm alanları doldurun.' });
+    }
+
+    const cleanName = name.trim();
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanSubject = subject.trim();
+    const cleanMessage = message.trim();
+
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(cleanEmail)) {
+      return res.status(400).json({ error: 'Geçersiz e-posta formatı.' });
+    }
+
+    const db = readDB();
+    if (!db.messages) {
+      db.messages = [];
+    }
+
+    const newMessage = {
+      id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+      name: cleanName,
+      email: cleanEmail,
+      subject: cleanSubject,
+      message: cleanMessage,
+      created_at: new Date().toISOString()
+    };
+
+    db.messages.push(newMessage);
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: 'Mesajınız başarıyla iletildi.' });
+  } catch (err) {
+    console.error('Contact message save error:', err);
+    res.status(500).json({ error: 'Mesaj iletilemedi.' });
+  }
+});
+
+router.get('/admin/messages', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.messages || []);
+  } catch (err) {
+    console.error('Get contact messages error:', err);
+    res.status(500).json({ error: 'Mesajlar yüklenemedi.' });
+  }
+});
+
+router.delete('/admin/messages/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.messages) db.messages = [];
+    const beforeLen = db.messages.length;
+    db.messages = db.messages.filter(m => m.id !== req.params.id);
+
+    if (db.messages.length === beforeLen) {
+      return res.status(404).json({ error: 'Mesaj bulunamadı.' });
+    }
+
+    writeDB(db);
+    res.json({ success: true, message: 'Mesaj başarıyla silindi.' });
+  } catch (err) {
+    console.error('Delete contact message error:', err);
+    res.status(500).json({ error: 'Mesaj silinemedi.' });
+  }
+});
+
+// ─── ADVERTISING & SETTINGS (REKLAM VE AYARLAR) ──
+
+router.get('/ads', function (req, res) {
+  try {
+    const db = readDB();
+    const activeAds = (db.ads || []).filter(ad => ad.active === true);
+    res.json(activeAds);
+  } catch (err) {
+    console.error('Get active ads error:', err);
+    res.status(500).json({ error: 'Reklamlar yüklenemedi.' });
+  }
+});
+
+router.get('/settings', function (req, res) {
+  try {
+    const db = readDB();
+    res.json({
+      adsense_code: db.adsense_code || ""
+    });
+  } catch (err) {
+    console.error('Get settings error:', err);
+    res.status(500).json({ error: 'Ayarlar yüklenemedi.' });
+  }
+});
+
+router.put('/admin/settings', requireAuth, function (req, res) {
+  try {
+    const { adsense_code } = req.body;
+    const db = readDB();
+    db.adsense_code = typeof adsense_code === 'string' ? adsense_code : "";
+    writeDB(db);
+    res.json({ success: true, message: 'Ayarlar başarıyla güncellendi.' });
+  } catch (err) {
+    console.error('Update settings error:', err);
+    res.status(500).json({ error: 'Ayarlar güncellenemedi.' });
+  }
+});
+
+router.get('/admin/ads', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.ads || []);
+  } catch (err) {
+    console.error('Get all ads error:', err);
+    res.status(500).json({ error: 'Reklamlar yüklenemedi.' });
+  }
+});
+
+router.post('/admin/ads', requireAuth, function (req, res) {
+  try {
+    const { title, target_url, position, image_base64 } = req.body;
+    if (!title || !target_url || !position || !image_base64) {
+      return res.status(400).json({ error: 'Lütfen tüm alanları doldurun (Başlık, Hedef URL, Pozisyon, Görsel).' });
+    }
+
+    // Process base64 image
+    const matches = image_base64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches || matches.length !== 3) {
+      return res.status(400).json({ error: 'Geçersiz görsel formatı.' });
+    }
+
+    const imageBuffer = Buffer.from(matches[2], 'base64');
+    const uploadDir = path.join(__dirname, '../public/uploads/ads');
+    
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    // Extract file extension or default to png
+    let ext = 'png';
+    const mimeType = matches[1];
+    if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') ext = 'jpg';
+    else if (mimeType === 'image/gif') ext = 'gif';
+    else if (mimeType === 'image/webp') ext = 'webp';
+
+    const fileName = 'ad_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+    const filePath = path.join(uploadDir, fileName);
+    fs.writeFileSync(filePath, imageBuffer);
+
+    const imageUrl = '/uploads/ads/' + fileName;
+
+    const db = readDB();
+    if (!db.ads) db.ads = [];
+
+    const newAd = {
+      id: 'ad_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+      title: title.trim(),
+      target_url: target_url.trim(),
+      position: position,
+      image_url: imageUrl,
+      active: true,
+      created_at: new Date().toISOString()
+    };
+
+    db.ads.push(newAd);
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: 'Reklam başarıyla eklendi.', ad: newAd });
+  } catch (err) {
+    console.error('Save ad error:', err);
+    res.status(500).json({ error: 'Reklam kaydedilemedi.' });
+  }
+});
+
+router.delete('/admin/ads/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.ads) db.ads = [];
+    
+    const adIdx = db.ads.findIndex(a => a.id === req.params.id);
+    if (adIdx === -1) {
+      return res.status(404).json({ error: 'Reklam bulunamadı.' });
+    }
+
+    const ad = db.ads[adIdx];
+    
+    // Delete image file from local uploads
+    if (ad.image_url && ad.image_url.startsWith('/uploads/')) {
+      const filePath = path.join(__dirname, '../public', ad.image_url);
+      if (fs.existsSync(filePath)) {
+        try {
+          fs.unlinkSync(filePath);
+        } catch (e) {
+          console.error('Ad image file delete error:', e.message);
+        }
+      }
+    }
+
+    db.ads.splice(adIdx, 1);
+    writeDB(db);
+    res.json({ success: true, message: 'Reklam başarıyla silindi.' });
+  } catch (err) {
+    console.error('Delete ad error:', err);
+    res.status(500).json({ error: 'Reklam silinemedi.' });
+  }
+});
+
+router.put('/admin/ads/:id/toggle', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.ads) db.ads = [];
+    const ad = db.ads.find(a => a.id === req.params.id);
+    if (!ad) {
+      return res.status(404).json({ error: 'Reklam bulunamadı.' });
+    }
+
+    ad.active = !ad.active;
+    writeDB(db);
+    res.json({ success: true, message: 'Reklam durumu güncellendi.', active: ad.active });
+  } catch (err) {
+    console.error('Toggle ad status error:', err);
+    res.status(500).json({ error: 'Reklam durumu güncellenemedi.' });
+  }
+});
+
 // ─── NEWSLETTER (BÜLTEN ABONELİĞİ) ─────────────
 
 router.post('/newsletter/subscribe', function (req, res) {
@@ -1888,6 +2116,500 @@ JSON Formatı:
   } catch (err) {
     console.error('Submit story error:', err);
     res.status(500).json({ error: 'Başarı hikayesi gönderilemedi.' });
+  }
+});
+
+// ─── PROMPTS API ───────────────────────────────
+router.get('/prompts', function (req, res) {
+  try {
+    const db = readDB();
+    let prompts = db.prompts || [];
+    const { category, search } = req.query;
+
+    if (category && category !== 'all') {
+      prompts = prompts.filter(p => p.category === category);
+    }
+
+    if (search) {
+      const q = search.toLowerCase();
+      prompts = prompts.filter(p => 
+        p.title.toLowerCase().includes(q) || 
+        p.description.toLowerCase().includes(q) || 
+        p.promptText.toLowerCase().includes(q)
+      );
+    }
+
+    // Sort by votes desc
+    prompts.sort((a, b) => (b.votes || 0) - (a.votes || 0));
+
+    res.json({ prompts, total: prompts.length });
+  } catch (err) {
+    res.status(500).json({ error: 'Promptlar yüklenemedi.' });
+  }
+});
+
+router.get('/prompts/day', function (req, res) {
+  try {
+    const db = readDB();
+    const prompts = db.prompts || [];
+    let dayPrompt = prompts.find(p => p.isPromptOfTheDay);
+    if (!dayPrompt && prompts.length > 0) {
+      dayPrompt = prompts[0];
+    }
+    res.json(dayPrompt || null);
+  } catch (err) {
+    res.status(500).json({ error: 'Günün promptu yüklenemedi.' });
+  }
+});
+
+router.get('/prompts/:id', function (req, res) {
+  try {
+    const db = readDB();
+    const prompt = (db.prompts || []).find(p => p.id === req.params.id);
+    if (!prompt) return res.status(404).json({ error: 'Prompt bulunamadı.' });
+    res.json(prompt);
+  } catch (err) {
+    res.status(500).json({ error: 'Prompt yüklenemedi.' });
+  }
+});
+
+router.post('/prompts', requireAuth, function (req, res) {
+  try {
+    const { title, category, targetTool, description, promptText } = req.body;
+    if (!title || !category || !targetTool || !promptText) {
+      return res.status(400).json({ error: 'Lütfen zorunlu alanları doldurun.' });
+    }
+
+    const db = readDB();
+    if (!db.prompts) db.prompts = [];
+
+    const newPrompt = {
+      id: 'prompt_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+      title: title.trim(),
+      category: category.trim(),
+      targetTool: targetTool.trim(),
+      description: (description || '').trim(),
+      promptText: promptText.trim(),
+      isPromptOfTheDay: false,
+      votes: 0,
+      created_at: new Date().toISOString()
+    };
+
+    db.prompts.push(newPrompt);
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: 'Prompt başarıyla eklendi.', prompt: newPrompt });
+  } catch (err) {
+    res.status(500).json({ error: 'Prompt eklenemedi.' });
+  }
+});
+
+router.put('/prompts/:id', requireAuth, function (req, res) {
+  try {
+    const { title, category, targetTool, description, promptText } = req.body;
+    const db = readDB();
+    if (!db.prompts) db.prompts = [];
+
+    const idx = db.prompts.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Prompt bulunamadı.' });
+
+    db.prompts[idx] = {
+      ...db.prompts[idx],
+      title: title ? title.trim() : db.prompts[idx].title,
+      category: category ? category.trim() : db.prompts[idx].category,
+      targetTool: targetTool ? targetTool.trim() : db.prompts[idx].targetTool,
+      description: description !== undefined ? description.trim() : db.prompts[idx].description,
+      promptText: promptText ? promptText.trim() : db.prompts[idx].promptText
+    };
+
+    writeDB(db);
+    res.json({ success: true, message: 'Prompt güncellendi.', prompt: db.prompts[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Prompt güncellenemedi.' });
+  }
+});
+
+router.delete('/prompts/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.prompts) db.prompts = [];
+
+    const before = db.prompts.length;
+    db.prompts = db.prompts.filter(p => p.id !== req.params.id);
+
+    if (db.prompts.length === before) {
+      return res.status(404).json({ error: 'Prompt bulunamadı.' });
+    }
+
+    writeDB(db);
+    res.json({ success: true, message: 'Prompt silindi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Prompt silinemedi.' });
+  }
+});
+
+router.post('/prompts/:id/vote', function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.prompts) db.prompts = [];
+
+    const idx = db.prompts.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Prompt bulunamadı.' });
+
+    db.prompts[idx].votes = (db.prompts[idx].votes || 0) + 1;
+    writeDB(db);
+
+    res.json({ success: true, votes: db.prompts[idx].votes });
+  } catch (err) {
+    res.status(500).json({ error: 'Oy kaydedilemedi.' });
+  }
+});
+
+router.post('/prompts/:id/set-day', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.prompts) db.prompts = [];
+
+    const idx = db.prompts.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Prompt bulunamadı.' });
+
+    // Set all other prompts isPromptOfTheDay to false
+    db.prompts.forEach(p => { p.isPromptOfTheDay = false; });
+    db.prompts[idx].isPromptOfTheDay = true;
+
+    writeDB(db);
+    res.json({ success: true, message: 'Günün promptu güncellendi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Günün promptu ayarlanamadı.' });
+  }
+});
+
+
+// ─── NEWS API ──────────────────────────────────
+router.get('/news', function (req, res) {
+  try {
+    const db = readDB();
+    const news = db.news || [];
+    // Sort by publishDate desc
+    const sortedNews = [...news].sort((a, b) => b.publishDate.localeCompare(a.publishDate));
+    res.json({ news: sortedNews, total: sortedNews.length });
+  } catch (err) {
+    res.status(500).json({ error: 'Haberler yüklenemedi.' });
+  }
+});
+
+router.get('/news/:id', function (req, res) {
+  try {
+    const db = readDB();
+    const item = (db.news || []).find(n => n.id === req.params.id);
+    if (!item) return res.status(404).json({ error: 'Haber bulunamadı.' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ error: 'Haber yüklenemedi.' });
+  }
+});
+
+router.post('/news', requireAuth, function (req, res) {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const { title, summary, content, source, sourceUrl, publishDate, image_base64 } = req.body;
+    if (!title || !summary || !content || !publishDate) {
+      return res.status(400).json({ error: 'Lütfen zorunlu alanları doldurun (Başlık, Özet, İçerik, Yayın Tarihi).' });
+    }
+
+    let imageUrl = '';
+    if (image_base64) {
+      const matches = image_base64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+      if (matches && matches.length === 3) {
+        const imageBuffer = Buffer.from(matches[2], 'base64');
+        const uploadDir = path.join(__dirname, '../public/uploads/news');
+        
+        if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        let ext = 'png';
+        const mimeType = matches[1];
+        if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') ext = 'jpg';
+        else if (mimeType === 'image/gif') ext = 'gif';
+        else if (mimeType === 'image/webp') ext = 'webp';
+
+        const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+        const filePath = path.join(uploadDir, fileName);
+        fs.writeFileSync(filePath, imageBuffer);
+        imageUrl = '/uploads/news/' + fileName;
+      }
+    }
+
+    const db = readDB();
+    if (!db.news) db.news = [];
+
+    const newNews = {
+      id: 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+      title: title.trim(),
+      summary: summary.trim(),
+      content: content.trim(),
+      source: (source || '').trim(),
+      sourceUrl: (sourceUrl || '').trim(),
+      publishDate: publishDate,
+      imageUrl: imageUrl,
+      created_at: new Date().toISOString()
+    };
+
+    db.news.push(newNews);
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: 'Haber başarıyla eklendi.', news: newNews });
+  } catch (err) {
+    console.error('Save news error:', err);
+    res.status(500).json({ error: 'Haber eklenemedi.' });
+  }
+});
+
+router.put('/news/:id', requireAuth, function (req, res) {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const { title, summary, content, source, sourceUrl, publishDate, image_base64 } = req.body;
+    const db = readDB();
+    if (!db.news) db.news = [];
+
+    const idx = db.news.findIndex(n => n.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Haber bulunamadı.' });
+
+    let imageUrl = db.news[idx].imageUrl;
+    if (image_base64) {
+      const matches = image_base64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+      if (matches && matches.length === 3) {
+        const imageBuffer = Buffer.from(matches[2], 'base64');
+        const uploadDir = path.join(__dirname, '../public/uploads/news');
+        
+        if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        let ext = 'png';
+        const mimeType = matches[1];
+        if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') ext = 'jpg';
+        else if (mimeType === 'image/gif') ext = 'gif';
+        else if (mimeType === 'image/webp') ext = 'webp';
+
+        const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+        const filePath = path.join(uploadDir, fileName);
+        fs.writeFileSync(filePath, imageBuffer);
+        imageUrl = '/uploads/news/' + fileName;
+
+        // Delete old image if it was a local file
+        if (db.news[idx].imageUrl && db.news[idx].imageUrl.startsWith('/uploads/news/')) {
+          try {
+            const oldPath = path.join(__dirname, '../public', db.news[idx].imageUrl);
+            if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+          } catch (e) {
+            console.error('Delete old news image error:', e.message);
+          }
+        }
+      }
+    }
+
+    db.news[idx] = {
+      ...db.news[idx],
+      title: title ? title.trim() : db.news[idx].title,
+      summary: summary ? summary.trim() : db.news[idx].summary,
+      content: content ? content.trim() : db.news[idx].content,
+      source: source !== undefined ? source.trim() : db.news[idx].source,
+      sourceUrl: sourceUrl !== undefined ? sourceUrl.trim() : db.news[idx].sourceUrl,
+      publishDate: publishDate || db.news[idx].publishDate,
+      imageUrl: imageUrl
+    };
+
+    writeDB(db);
+    res.json({ success: true, message: 'Haber güncellendi.', news: db.news[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Haber güncellenemedi.' });
+  }
+});
+
+router.delete('/news/:id', requireAuth, function (req, res) {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const db = readDB();
+    if (!db.news) db.news = [];
+
+    const idx = db.news.findIndex(n => n.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Haber bulunamadı.' });
+
+    const item = db.news[idx];
+    if (item.imageUrl && item.imageUrl.startsWith('/uploads/news/')) {
+      try {
+        const filePath = path.join(__dirname, '../public', item.imageUrl);
+        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      } catch (e) {
+        console.error('Delete news image error:', e.message);
+      }
+    }
+
+    db.news.splice(idx, 1);
+    writeDB(db);
+
+    res.json({ success: true, message: 'Haber başarıyla silindi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Haber silinemedi.' });
+  }
+});
+
+
+// ─── QUIZZES API ────────────────────────────────
+router.get('/quizzes', function (req, res) {
+  try {
+    const db = readDB();
+    const quizzes = db.quizzes || [];
+    // Return quizzes without correctOptionIndex for public view to prevent cheating
+    const publicQuizzes = quizzes.map(q => ({
+      id: q.id,
+      title: q.title,
+      description: q.description,
+      badge: q.badge,
+      badgeIcon: q.badgeIcon,
+      questions: q.questions.map(question => ({
+        questionText: question.questionText,
+        options: question.options
+      }))
+    }));
+    res.json(publicQuizzes);
+  } catch (err) {
+    res.status(500).json({ error: 'Quizler yüklenemedi.' });
+  }
+});
+
+router.post('/quizzes/:id/submit', function (req, res) {
+  try {
+    const { answers } = req.body; // e.g. [1, 2, 0] (array of selected indexes)
+    if (!Array.isArray(answers)) {
+      return res.status(400).json({ error: 'Geçersiz cevap formatı.' });
+    }
+
+    const db = readDB();
+    const quiz = (db.quizzes || []).find(q => q.id === req.params.id);
+    if (!quiz) return res.status(404).json({ error: 'Quiz bulunamadı.' });
+
+    let correctCount = 0;
+    const totalQuestions = quiz.questions.length;
+    const results = quiz.questions.map((q, idx) => {
+      const selected = answers[idx];
+      const isCorrect = selected === q.correctOptionIndex;
+      if (isCorrect) correctCount++;
+      return {
+        questionText: q.questionText,
+        selectedOptionIndex: selected,
+        correctOptionIndex: q.correctOptionIndex,
+        isCorrect
+      };
+    });
+
+    const passed = correctCount === totalQuestions; // 100% correct required for badge
+    
+    res.json({
+      success: true,
+      score: correctCount,
+      total: totalQuestions,
+      passed,
+      results,
+      badge: passed ? { title: quiz.badge, icon: quiz.badgeIcon } : null
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Quiz değerlendirilemedi.' });
+  }
+});
+
+// Admin-only management routes
+router.get('/admin/quizzes', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.quizzes || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Yönetim quizleri yüklenemedi.' });
+  }
+});
+
+router.post('/admin/quizzes', requireAuth, function (req, res) {
+  try {
+    const { title, description, badge, badgeIcon, questions } = req.body;
+    if (!title || !description || !badge || !badgeIcon || !Array.isArray(questions)) {
+      return res.status(400).json({ error: 'Lütfen tüm alanları doldurun.' });
+    }
+
+    const db = readDB();
+    if (!db.quizzes) db.quizzes = [];
+
+    const newQuiz = {
+      id: 'quiz_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+      title: title.trim(),
+      description: description.trim(),
+      badge: badge.trim(),
+      badgeIcon: badgeIcon.trim(),
+      questions: questions.map(q => ({
+        questionText: q.questionText.trim(),
+        options: q.options.map(o => o.trim()),
+        correctOptionIndex: parseInt(q.correctOptionIndex)
+      }))
+    };
+
+    db.quizzes.push(newQuiz);
+    writeDB(db);
+
+    res.status(201).json({ success: true, message: 'Quiz başarıyla oluşturuldu.', quiz: newQuiz });
+  } catch (err) {
+    res.status(500).json({ error: 'Quiz oluşturulamadı.' });
+  }
+});
+
+router.put('/admin/quizzes/:id', requireAuth, function (req, res) {
+  try {
+    const { title, description, badge, badgeIcon, questions } = req.body;
+    const db = readDB();
+    if (!db.quizzes) db.quizzes = [];
+
+    const idx = db.quizzes.findIndex(q => q.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Quiz bulunamadı.' });
+
+    db.quizzes[idx] = {
+      ...db.quizzes[idx],
+      title: title ? title.trim() : db.quizzes[idx].title,
+      description: description ? description.trim() : db.quizzes[idx].description,
+      badge: badge ? badge.trim() : db.quizzes[idx].badge,
+      badgeIcon: badgeIcon ? badgeIcon.trim() : db.quizzes[idx].badgeIcon,
+      questions: Array.isArray(questions) ? questions.map(q => ({
+        questionText: q.questionText.trim(),
+        options: q.options.map(o => o.trim()),
+        correctOptionIndex: parseInt(q.correctOptionIndex)
+      })) : db.quizzes[idx].questions
+    };
+
+    writeDB(db);
+    res.json({ success: true, message: 'Quiz güncellendi.', quiz: db.quizzes[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Quiz güncellenemedi.' });
+  }
+});
+
+router.delete('/admin/quizzes/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.quizzes) db.quizzes = [];
+
+    const before = db.quizzes.length;
+    db.quizzes = db.quizzes.filter(q => q.id !== req.params.id);
+
+    if (db.quizzes.length === before) {
+      return res.status(404).json({ error: 'Quiz bulunamadı.' });
+    }
+
+    writeDB(db);
+    res.json({ success: true, message: 'Quiz silindi.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Quiz silinemedi.' });
   }
 });
 
