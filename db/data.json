@@ -112453,7 +112453,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-21T04:47:40.138Z",
+    "last_run": "2026-06-21T15:47:39.164Z",
     "total_crawled": 58,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -112941,6 +112941,22 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-21T15:43:50.200Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-21T15:47:39.169Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -113126,7 +113142,7 @@
         "solution": "Figma projelerinde ikon ve görseller hazırlarken çok yavaş kalıyordum. Midjourney kullanarak 5 dakikada müşteriye uygun 20 farklı alternatif logo ve ikon taslakları çıkardım. ChatGPT ile de sunum metnini yazdım. Bu sayede normalde 3 gün süren tasarım teslimini sadece 4 saate indirdim ve müşteri inanılmaz mutlu oldu.",
         "result": "Yapay zeka araçlarının kullanılmasıyla birlikte verimlilik ve kalite artışı gözlemlendi."
       },
-      "approved": false,
+      "approved": true,
       "created_at": "2026-06-19T06:01:40.299Z"
     },
     {
@@ -113157,7 +113173,7 @@
         "solution": "Figma projelerinde ikon ve görseller hazırlarken çok yavaş kalıyordum. Midjourney kullanarak 5 dakikada müşteriye uygun 20 farklı alternatif logo ve ikon taslakları çıkardım. ChatGPT ile de sunum metnini yazdım. Bu sayede normalde 3 gün süren tasarım teslimini sadece 4 saate indirdim ve müşteri inanılmaz mutlu oldu.",
         "result": "Yapay zeka araçlarının kullanılmasıyla birlikte verimlilik ve kalite artışı gözlemlendi."
       },
-      "approved": false,
+      "approved": true,
       "created_at": "2026-06-19T06:49:39.633Z"
     },
     {
@@ -113191,8 +113207,113 @@
         "solution": "Midjourney ile logo ve ikon taslakları, ChatGPT ile sunum metni",
         "result": "Tasarım teslim süresi 3 günden 4 saate düştü"
       },
-      "approved": false,
+      "approved": true,
       "created_at": "2026-06-19T09:03:20.503Z"
+    },
+    {
+      "id": "story_melis",
+      "name": "İçerik Yazarı Melis",
+      "role": "Serbest İçerik Yazarı & SEO Uzmanı — İstanbul",
+      "avatar": "M",
+      "color_accent": "linear-gradient(135deg, hsl(320, 85%, 55%), hsl(340, 80%, 50%))",
+      "title": "Copy.ai ve Grammarly ile ayda 40 blog yazısı hazırlayarak gelirini 2 katına çıkardı",
+      "quote": "Eskiden araştırma ve yazım süreçleri günlerimi alırdı. Şimdi yapay zeka ile araştırma yapıp, taslakları saniyeler içinde oluşturarak sadece editörlüğe odaklanıyorum.",
+      "stats": [
+        {
+          "value": "2x",
+          "label": "Gelir Artışı"
+        },
+        {
+          "value": "40+",
+          "label": "Aylık Blog Yazısı"
+        },
+        {
+          "value": "%60",
+          "label": "Zaman Kazanımı"
+        }
+      ],
+      "tools": [
+        "Copy.ai",
+        "Grammarly",
+        "ChatGPT"
+      ],
+      "content": {
+        "challenge": "Melis, birden fazla marka için SEO uyumlu blog yazıları yazıyordu. Her yazı için araştırma yapmak, taslak çıkarmak ve dilbilgisi kontrolü saatlerini alıyordu, bu da alabileceği iş miktarını sınırlıyordu.",
+        "solution": "Copy.ai ile SEO odaklı blog taslakları ve giriş paragrafları oluşturuyor. ChatGPT ile derinlemesine konu araştırmaları yapıp alt başlıkları besliyor. Grammarly kullanarak son okuma ve dilbilgisi düzeltmelerini saniyeler içinde tamamlıyor.",
+        "result": "Yazı yazma hızı %60 arttı. Ayda en fazla 15 yazı yazabilirken, bu sayıyı 40'ın üzerine çıkardı. İş kapasitesi arttığı için aylık geliri ikiye katlandı."
+      },
+      "approved": true,
+      "created_at": "2026-06-21T15:47:58.995Z"
+    },
+    {
+      "id": "story_mert",
+      "name": "Yazılımcı Mert",
+      "role": "Full Stack Geliştirici — Ankara",
+      "avatar": "M",
+      "color_accent": "linear-gradient(135deg, hsl(200, 90%, 50%), hsl(220, 85%, 45%))",
+      "title": "GitHub Copilot ve SonarQube ile kod yazma hızını %50 artırdı, hata oranını sıfırladı",
+      "quote": "Rutin fonksiyonları yazmayı tamamen Copilot'a bıraktım. Ben sadece mimari tasarımı ve karmaşık algoritmaları düşünüyorum. Kod kalitem hiç olmadığı kadar yüksek.",
+      "stats": [
+        {
+          "value": "%50",
+          "label": "Kodlama Hızı"
+        },
+        {
+          "value": "0",
+          "label": "Kritik Hata"
+        },
+        {
+          "value": "20 saat",
+          "label": "Haftalık Tasarruf"
+        }
+      ],
+      "tools": [
+        "GitHub Copilot",
+        "ChatGPT",
+        "SonarQube"
+      ],
+      "content": {
+        "challenge": "Mert, yoğun iş temposunda sürekli boilerplate (basmakalıp) kodlar yazmak zorunda kalıyor ve biriken işler nedeniyle projeleri zamanında teslim etmekte zorlanıyordu.",
+        "solution": "VS Code üzerinde GitHub Copilot kullanarak test senaryolarını ve rutin API endpoint'lerini otomatik üretiyor. SonarQube AI ile kod analizleri yapıp güvenlik açıklarını canlı olarak kapatıyor.",
+        "result": "Haftalık rutin işlerinden 20 saat tasarruf etti. Proje teslim süreleri yarı yarıya kısaldı ve üretim ortamına çıkan kodlardaki hata oranı neredeyse sıfıra indi."
+      },
+      "approved": true,
+      "created_at": "2026-06-21T15:47:58.996Z"
+    },
+    {
+      "id": "story_elif",
+      "name": "E-Ticaret Yöneticisi Elif",
+      "role": "E-Ticaret Girişimcisi — İzmir",
+      "avatar": "E",
+      "color_accent": "linear-gradient(135deg, hsl(45, 95%, 50%), hsl(25, 90%, 55%))",
+      "title": "Midjourney ve ChatGPT ile ürün görsellerini ve açıklamalarını otomatikleştirerek satış dönüşümünü %40 artırdı",
+      "quote": "Stüdyo fotoğrafçılığı ve ürün açıklamaları için binlerce lira harcardık. Şimdi Midjourney ile saniyeler içinde profesyonel stüdyo çekimi kalitesinde görseller hazırlıyoruz.",
+      "stats": [
+        {
+          "value": "%40",
+          "label": "Dönüşüm Oranı"
+        },
+        {
+          "value": "%80",
+          "label": "Maliyet Azalışı"
+        },
+        {
+          "value": "15 dk",
+          "label": "Görsel Hazırlama"
+        }
+      ],
+      "tools": [
+        "Midjourney",
+        "ChatGPT",
+        "Photoroom"
+      ],
+      "content": {
+        "challenge": "Elif'in takı ve aksesuar satan butik bir e-ticaret sitesi var. Yeni gelen yüzlerce ürünün fotoğraflarını çekmek, düzenlemek ve SEO uyumlu açıklamalar yazmak yüksek maliyet ve zaman gerektiriyordu.",
+        "solution": "Midjourney kullanarak modeller üzerinde takı takılmış gibi gerçekçi lifestyle görseller üretiyor. ChatGPT ile ürün özelliklerini girerek saniyeler içinde ikna edici ve SEO uyumlu ürün açıklamaları hazırlıyor.",
+        "result": "Görsel ve açıklama hazırlama maliyeti %80 düştü. Profesyonel ve estetik görseller sayesinde web sitesindeki satın alma dönüşüm oranı %40 artış gösterdi."
+      },
+      "approved": true,
+      "created_at": "2026-06-21T15:47:58.996Z"
     }
   ],
   "prompts": [

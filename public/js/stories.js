@@ -90,8 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = document.createElement('article');
         card.className = 'story-card';
         card.id = story.id;
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
 
         let statsHtml = '';
         if (Array.isArray(story.stats)) {
