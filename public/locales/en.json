@@ -155,5 +155,10 @@
   "scenarios_and_bag": "Scenarios & Bag",
   "assistant_welcome_subtitle": "Tell us what job you do or what you want to automate. Our AI assistant will select the best tools from our directory for you, listing usage steps and budget instantly.",
   "assistant_textarea_placeholder": "Ask your AI companion... (e.g. I am a realtor, I want to make video ads)",
-  "assistant_disclaimer_text": "scans the current AI tools in our directory to create a custom budget and guide for you."
+  "assistant_disclaimer_text": "scans the current AI tools in our directory to create a custom budget and guide for you.",
+  "added_to_compare_confirm": "Added to the comparison list. Would you like to go to the comparison page now?",
+  "confirm_ok": "OK",
+  "confirm_cancel": "Cancel",
+  "delete_collection_confirm": "Are you sure you want to delete this collection? (Tools inside will not be removed from your bookmarks)",
+  "compare_search_placeholder": "Add a tool to compare..."
 }

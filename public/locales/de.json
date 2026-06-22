@@ -155,5 +155,10 @@
   "scenarios_and_bag": "Szenarien & Tasche",
   "assistant_welcome_subtitle": "Sagen Sie uns, welche Arbeit Sie tun oder was Sie automatisieren möchten. Unser KI-Assistent wählt die besten Tools aus unserem Verzeichnis für Sie aus und listet Nutzungsschritte und Budget sofort auf.",
   "assistant_textarea_placeholder": "Fragen Sie Ihren KI-Wegbegleiter... (z. B. Ich bin Makler, ich möchte Videoanzeigen erstellen)",
-  "assistant_disclaimer_text": "scannt die aktuellen KI-Tools in unserem Verzeichnis, um ein individuelles Budget und einen Leitfaden für Sie zu erstellen."
+  "assistant_disclaimer_text": "scannt die aktuellen KI-Tools in unserem Verzeichnis, um ein individuelles Budget und einen Leitfaden für Sie zu erstellen.",
+  "added_to_compare_confirm": "Zur Vergleichsliste hinzugefügt. Möchten Sie jetzt zur Vergleichsseite gehen?",
+  "confirm_ok": "OK",
+  "confirm_cancel": "Abbrechen",
+  "delete_collection_confirm": "Sind Sie sicher, dass Sie diese Sammlung löschen möchten? (Darin enthaltene Tools werden nicht aus Ihren Lesezeichen entfernt)",
+  "compare_search_placeholder": "Tool zum Vergleichen hinzufügen..."
 }

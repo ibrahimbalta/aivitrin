@@ -155,5 +155,10 @@
   "scenarios_and_bag": "Senaryolar & Çanta",
   "assistant_welcome_subtitle": "Hangi işi yaptığınızı veya neyi otomatize etmek istediğinizi söyleyin. Yapay zeka asistanımız vitrinimizdeki en iyi araçları sizin için seçsin, kullanım adımlarını ve bütçesini anında listelesin.",
   "assistant_textarea_placeholder": "Yapay zeka danışmanınıza sorun... (örn: Emlakçıyım video ilan yapmak istiyorum)",
-  "assistant_disclaimer_text": "vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur."
+  "assistant_disclaimer_text": "vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur.",
+  "added_to_compare_confirm": "Karşılaştırma listesine eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?",
+  "confirm_ok": "Tamam",
+  "confirm_cancel": "İptal",
+  "delete_collection_confirm": "Bu koleksiyonu silmek istediğinize emin misiniz? (İçindeki araçlar yer imlerinizden silinmez)",
+  "compare_search_placeholder": "Karşılaştırmaya araç ekleyin..."
 }

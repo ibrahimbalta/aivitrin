@@ -62,7 +62,16 @@
       }
     });
 
-    // 3. Update HTML lang attribute
+    // 3. data-i18n-title elements
+    const titleElements = document.querySelectorAll('[data-i18n-title]');
+    titleElements.forEach(el => {
+      const key = el.getAttribute('data-i18n-title');
+      if (translations[key]) {
+        el.setAttribute('title', translations[key]);
+      }
+    });
+
+    // 4. Update HTML lang attribute
     document.documentElement.setAttribute('lang', currentLang);
   }
 
@@ -117,11 +126,63 @@
     loadTranslations(currentLang);
   });
 
+  // Global Premium Custom Confirm Modal Dialog
+  window.showConfirm = function (messageKeyOrText, confirmKeyOrText = 'confirm_ok', cancelKeyOrText = 'confirm_cancel') {
+    return new Promise((resolve) => {
+      const getVal = (keyOrText) => {
+        if (!keyOrText) return '';
+        return translations[keyOrText] || keyOrText;
+      };
+
+      const msg = getVal(messageKeyOrText);
+      const confirmText = getVal(confirmKeyOrText) || 'Tamam';
+      const cancelText = getVal(cancelKeyOrText) || 'İptal';
+
+      // Create modal elements
+      const overlay = document.createElement('div');
+      overlay.className = 'confirm-overlay';
+
+      overlay.innerHTML = `
+        <div class="confirm-modal">
+          <div class="confirm-content">${msg}</div>
+          <div class="confirm-actions">
+            <button class="btn-confirm-cancel">${cancelText}</button>
+            <button class="btn-confirm-ok">${confirmText}</button>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+
+      const btnCancel = overlay.querySelector('.btn-confirm-cancel');
+      const btnOk = overlay.querySelector('.btn-confirm-ok');
+
+      const close = (result) => {
+        overlay.style.animation = 'confirmFadeOut 0.2s ease forwards';
+        overlay.querySelector('.confirm-modal').style.animation = 'confirmScaleOut 0.2s ease forwards';
+        setTimeout(() => {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+          resolve(result);
+        }, 200);
+      };
+
+      btnCancel.addEventListener('click', () => close(false));
+      btnOk.addEventListener('click', () => close(true));
+
+      // Close on overlay click
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          close(false);
+        }
+      });
+    });
+  };
+
   // Export globally if needed
   window.i18n = {
     loadLanguage: loadTranslations,
     getLanguage: () => currentLang,
-    t: (key) => translations[key] || key,
+    t: (key, fallback) => translations[key] || fallback || key,
     applyTranslations: applyTranslations
   };
 })();

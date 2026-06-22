@@ -341,9 +341,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.setItem('compare_tools', JSON.stringify(compareList));
         showToast('Araç karşılaştırma listesine eklendi.', 'success');
         
-        if (confirm('Karşılaştırma listesine eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?')) {
-          window.location.href = '/compare';
-        }
+        window.showConfirm('added_to_compare_confirm', 'confirm_ok', 'confirm_cancel').then(function (confirmed) {
+          if (confirmed) {
+            window.location.href = '/compare';
+          }
+        });
       });
     });
   }

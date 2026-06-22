@@ -580,13 +580,15 @@ document.addEventListener('DOMContentLoaded', function () {
     drawerBody.querySelectorAll('.btn-delete-col').forEach(btn => {
       btn.addEventListener('click', function () {
         const id = this.getAttribute('data-id');
-        if (confirm('Bu koleksiyonu silmek istediğinize emin misiniz? (İçindeki araçlar yer imlerinizden silinmez)')) {
-          let currentCollections = JSON.parse(localStorage.getItem('toolkit_collections') || '[]');
-          currentCollections = currentCollections.filter(c => c.id !== id);
-          localStorage.setItem('toolkit_collections', JSON.stringify(currentCollections));
-          window.dispatchEvent(new CustomEvent('toolkitUpdated'));
-          renderToolkitItems();
-        }
+        window.showConfirm('delete_collection_confirm', 'confirm_ok', 'confirm_cancel').then(function (confirmed) {
+          if (confirmed) {
+            let currentCollections = JSON.parse(localStorage.getItem('toolkit_collections') || '[]');
+            currentCollections = currentCollections.filter(c => c.id !== id);
+            localStorage.setItem('toolkit_collections', JSON.stringify(currentCollections));
+            window.dispatchEvent(new CustomEvent('toolkitUpdated'));
+            renderToolkitItems();
+          }
+        });
       });
     });
 

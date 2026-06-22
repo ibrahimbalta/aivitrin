@@ -444,9 +444,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     compareList.push(toolId);
     localStorage.setItem('compare_tools', JSON.stringify(compareList));
     showToast(t('added_to_compare', 'Karşılaştırma listesine eklendi.'), 'success');
-    if (confirm(t('added_to_compare_confirm', 'Karşılaştırmaya eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?'))) {
-      window.location.href = '/compare';
-    }
+    window.showConfirm('added_to_compare_confirm', 'confirm_ok', 'confirm_cancel').then(function (confirmed) {
+      if (confirmed) {
+        window.location.href = '/compare';
+      }
+    });
   });
 
   // Listen to external toolkit updates
