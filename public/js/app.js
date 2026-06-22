@@ -714,14 +714,16 @@ document.addEventListener('DOMContentLoaded', async function () {
   var footerCategories = document.querySelectorAll('#footer-categories a');
   footerCategories.forEach(function (link) {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var selectedCategory = this.getAttribute('data-category');
-      activeCategory = selectedCategory;
-      currentPage = 1;
-      renderCategories(window._categories);
-      applyFilters();
       var toolsSection = document.querySelector('#tools-section');
-      if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+      if (toolsSection) {
+        e.preventDefault();
+        var selectedCategory = this.getAttribute('data-category');
+        activeCategory = selectedCategory;
+        currentPage = 1;
+        renderCategories(window._categories);
+        applyFilters();
+        toolsSection.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
