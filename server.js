@@ -106,6 +106,64 @@ app.use('/admin', requireAuth, express.static(path.join(__dirname, 'admin')));
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
 
+// ─── Dynamic Sitemap Generator for Google SEO ───
+app.get('/sitemap.xml', function (req, res) {
+  try {
+    const { readDB } = require('./db/database');
+    const db = readDB();
+    const tools = db.tools || [];
+    
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    
+    const staticPages = [
+      { path: '', priority: '1.0', changefreq: 'daily' },
+      { path: 'alternatives', priority: '0.8', changefreq: 'daily' },
+      { path: 'compare', priority: '0.8', changefreq: 'daily' },
+      { path: 'workflows', priority: '0.8', changefreq: 'weekly' },
+      { path: 'collection', priority: '0.8', changefreq: 'weekly' },
+      { path: 'calculator', priority: '0.8', changefreq: 'weekly' },
+      { path: 'professions', priority: '0.8', changefreq: 'weekly' },
+      { path: 'stories', priority: '0.8', changefreq: 'daily' },
+      { path: 'prompts', priority: '0.8', changefreq: 'daily' },
+      { path: 'haberler', priority: '0.8', changefreq: 'daily' },
+      { path: 'akademi', priority: '0.8', changefreq: 'weekly' },
+      { path: 'iletisim', priority: '0.5', changefreq: 'monthly' }
+    ];
+    
+    const todayStr = new Date().toISOString().split('T')[0];
+    
+    staticPages.forEach(p => {
+      xml += `  <url>\n`;
+      xml += `    <loc>https://aiklavuz.com/${p.path}</loc>\n`;
+      xml += `    <lastmod>${todayStr}</lastmod>\n`;
+      xml += `    <changefreq>${p.changefreq}</changefreq>\n`;
+      xml += `    <priority>${p.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    });
+    
+    tools.forEach(t => {
+      if (t.id) {
+        const lastmod = (t.updated_at || t.created_at || new Date().toISOString()).split('T')[0];
+        xml += `  <url>\n`;
+        xml += `    <loc>https://aiklavuz.com/tool/${t.id}</loc>\n`;
+        xml += `    <lastmod>${lastmod}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.7</priority>\n`;
+        xml += `  </url>\n`;
+      }
+    });
+    
+    xml += '</urlset>';
+    
+    res.header('Content-Type', 'application/xml');
+    res.send(xml);
+  } catch (err) {
+    console.error('Error generating sitemap:', err.message);
+    res.status(500).end();
+  }
+});
+
 app.get('/alternatives', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'alternatives.html'));
 });
@@ -145,14 +203,41 @@ app.get('/tool/:id', function (req, res) {
       const ogImageUrl = `https://image.thum.io/get/width/1200/crop/800/maxAge/168/${tool.url}`;
       const pageUrl = `https://aiklavuz.com/tool/${tool.id}`;
       
+      // Prepare JSON-LD Structured Data for rich search snippets
+      const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": tool.name,
+        "description": cleanDesc || description,
+        "url": pageUrl,
+        "applicationCategory": tool.category_name || "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      };
+
+      if (tool.rating && tool.votes) {
+        schemaData.aggregateRating = {
+          "@type": "AggregateRating",
+          "ratingValue": tool.rating.toString(),
+          "reviewCount": tool.votes.toString(),
+          "bestRating": "5",
+          "worstRating": "1"
+        };
+      }
+      
       // Replace generic meta tags in <head>
       htmlContent = htmlContent
         .replace(/<title>.*?<\/title>/gi, `<title>${title}</title>`)
         .replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gi, `<meta name="description" content="${description}">`);
         
-      // Inject Open Graph & Twitter Cards before </head>
+      // Inject Open Graph, Twitter Cards, Canonical URL, and JSON-LD before </head>
       const seoTags = `
   <!-- Dinamik SEO & Open Graph Tags -->
+  <link rel="canonical" href="${pageUrl}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="website">
@@ -164,7 +249,12 @@ app.get('/tool/:id', function (req, res) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
-  <meta name="twitter:image" content="${ogImageUrl}">`;
+  <meta name="twitter:image" content="${ogImageUrl}">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  ${JSON.stringify(schemaData, null, 2)}
+  </script>`;
       
       htmlContent = htmlContent.replace('</head>', `${seoTags}\n</head>`);
       return res.send(htmlContent);
