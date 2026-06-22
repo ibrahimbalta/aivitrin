@@ -375,13 +375,6 @@
         "Yüksek Hesaplama Kaynak İhtiyac��: Büyük işlem gücü ve bellek gerektirebilir.",
         "Karmaşık Entegrasyon ve Optimizasyon: Farklı veri türlerini yönetmek zorlayıcı olabilir.",
         "Potansiyel Veri Önyargıları: Geniş veri setlerinden öğrenme önyargı riskini artırır."
-      ],
-      "description_de": "Googles mehrmodales KI-Modell, ausgestattet mit Fähigkeiten zum Verstehen von Text, Bildern und Code.",
-      "tags_de": [
-        "Unterhaltung",
-        "mehrmodale",
-        "Google",
-        "Suche"
       ]
     },
     {
@@ -112845,7 +112838,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-22T14:58:19.012Z",
+    "last_run": "2026-06-22T16:15:46.123Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -113408,6 +113401,14 @@
     },
     {
       "timestamp": "2026-06-22T14:58:19.014Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T16:15:46.123Z",
       "success": true,
       "tools_found": 50,
       "tools_added": 0,
@@ -114009,5 +114010,6 @@
       "badge": "Test Badge",
       "icon": "🚀"
     }
-  ]
+  ],
+  "pageViews": 45281
 }

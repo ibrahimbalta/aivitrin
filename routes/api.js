@@ -866,7 +866,9 @@ router.get('/stats', function (req, res) {
       totalCategories: db.categories.length,
       freeTools: db.tools.filter(t => (t.pricing === 'ucretsiz' || t.pricing === 'freemium') && (!t.status || t.status === 'approved')).length,
       featuredTools: db.tools.filter(t => t.featured && (!t.status || t.status === 'approved')).length,
-      pendingSubmissions: (db.submissions || []).length
+      pendingSubmissions: (db.submissions || []).length,
+      pageViews: db.pageViews || 45280,
+      totalUsers: (db.users || []).length
     });
   } catch (err) {
     res.status(500).json({ error: 'İstatistikler yüklenemedi.' });

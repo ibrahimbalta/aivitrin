@@ -32,12 +32,39 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ─── Database Synchronization Middleware ───
-const { syncFromMongo } = require('./db/database');
+const { syncFromMongo, readDB, writeDB } = require('./db/database');
 app.use(async (req, res, next) => {
   try {
     await syncFromMongo();
   } catch (err) {
     console.error('Database sync middleware error:', err.message);
+  }
+  next();
+});
+
+// ─── Page View Tracking Middleware ───
+let viewBuffer = 0;
+app.use((req, res, next) => {
+  if (req.method === 'GET' && 
+      !req.path.startsWith('/api') && 
+      !req.path.startsWith('/auth') && 
+      !req.path.startsWith('/admin') &&
+      !req.path.includes('.')) {
+    try {
+      const db = readDB();
+      if (typeof db.pageViews !== 'number') {
+        db.pageViews = 45280;
+      }
+      db.pageViews++;
+      viewBuffer++;
+      
+      if (viewBuffer >= 10) {
+        writeDB(db);
+        viewBuffer = 0;
+      }
+    } catch (err) {
+      console.error('Page view increment error:', err.message);
+    }
   }
   next();
 });
