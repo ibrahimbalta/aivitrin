@@ -33,6 +33,31 @@ const PORT = process.env.PORT || 3000;
 
 // ─── Database Synchronization Middleware ───
 const { syncFromMongo, readDB, writeDB } = require('./db/database');
+
+// Helper to serve HTML files with AdSense code injected server-side
+function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+      
+      let headTags = extraHeadTags || '';
+      if (db.adsense_code) {
+        headTags = `${db.adsense_code}\n${headTags}`;
+      }
+      
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      return res.send(htmlContent);
+    }
+  } catch (err) {
+    console.error('Error serving HTML with AdSense:', err.message);
+  }
+  res.sendFile(filePath);
+}
+
 app.use(async (req, res, next) => {
   try {
     await syncFromMongo();
@@ -90,6 +115,11 @@ if (process.env.MONGODB_URI) {
 }
 
 app.use(session(sessionOptions));
+
+// ─── Serve index.html dynamically to inject AdSense code server-side ───
+app.get('/', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'index.html'));
+});
 
 // ─── Static Files ───
 app.use(express.static(path.join(__dirname, 'public')));
@@ -165,23 +195,23 @@ app.get('/sitemap.xml', function (req, res) {
 });
 
 app.get('/alternatives', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'alternatives.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'alternatives.html'));
 });
 
 app.get('/compare', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'compare.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'compare.html'));
 });
 
 app.get('/workflows', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'workflows.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'workflows.html'));
 });
 
 app.get('/collection', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'collection.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'collection.html'));
 });
 
 app.get('/calculator', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'calculator.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'calculator.html'));
 });
 
 app.get('/tool/:id', function (req, res) {
@@ -235,7 +265,7 @@ app.get('/tool/:id', function (req, res) {
         .replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gi, `<meta name="description" content="${description}">`);
         
       // Inject Open Graph, Twitter Cards, Canonical URL, and JSON-LD before </head>
-      const seoTags = `
+      let seoTags = `
   <!-- Dinamik SEO & Open Graph Tags -->
   <link rel="canonical" href="${pageUrl}">
   <meta property="og:title" content="${title}">
@@ -256,6 +286,10 @@ app.get('/tool/:id', function (req, res) {
   ${JSON.stringify(schemaData, null, 2)}
   </script>`;
       
+      if (db.adsense_code) {
+        seoTags = `${db.adsense_code}\n${seoTags}`;
+      }
+      
       htmlContent = htmlContent.replace('</head>', `${seoTags}\n</head>`);
       return res.send(htmlContent);
     }
@@ -268,43 +302,43 @@ app.get('/tool/:id', function (req, res) {
 });
 
 app.get('/professions', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'professions.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'professions.html'));
 });
 
 app.get('/asistan', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'assistant.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'assistant.html'));
 });
 
 app.get('/stories', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'stories.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'stories.html'));
 });
 
 app.get('/prompts', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'prompts.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'prompts.html'));
 });
 
 app.get('/haberler', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'haberler.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'haberler.html'));
 });
 
 app.get('/haber-detay', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'haber-detay.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'haber-detay.html'));
 });
 
 app.get('/akademi', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'akademi.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'akademi.html'));
 });
 
 app.get('/iletisim', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'iletisim.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'iletisim.html'));
 });
 
 app.get('/gizlilik-politikasi', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'gizlilik-politikasi.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'gizlilik-politikasi.html'));
 });
 
 app.get('/kullanim-kosullari', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'kullanim-kosullari.html'));
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'kullanim-kosullari.html'));
 });
 
 // ─── Start ───
