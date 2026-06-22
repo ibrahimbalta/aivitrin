@@ -4176,3 +4176,18 @@ img {
   }
 }
 
+/* ---- 16. Prompt Widget Responsive Grid ---- */
+.prompt-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .prompt-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
