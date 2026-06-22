@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#0d0e12"/>
+  <!-- Glowing effect -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#7a00ff" stroke-width="2" opacity="0.3"/>
+  <!-- Logo container with padding -->
+  <g transform="translate(106, 106) scale(1.5)">
+    <defs>
+      <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0099ff" />
+        <stop offset="100%" stop-color="#7a00ff" />
+      </linearGradient>
+      <linearGradient id="logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0066cc" />
+        <stop offset="100%" stop-color="#5500cc" />
+      </linearGradient>
+    </defs>
+    <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+    <polygon points="100,42 94,30 106,30" fill="url(#logo-grad-primary)" />
+    <polygon points="100,138 94,150 106,150" fill="url(#logo-grad-primary)" />
+    <polygon points="42,90 30,84 30,96" fill="url(#logo-grad-primary)" />
+    <polygon points="138,90 150,84 150,96" fill="url(#logo-grad-primary)" />
+    <g>
+      <polygon points="100,90 142,48 115,105" fill="url(#logo-grad-primary)" />
+      <polygon points="100,90 142,48 85,75" fill="url(#logo-grad-needle-dark)" opacity="0.8" />
+      <polygon points="100,90 58,132 85,75" fill="url(#logo-grad-primary)" />
+      <polygon points="100,90 58,132 115,105" fill="url(#logo-grad-needle-dark)" opacity="0.8" />
+    </g>
+    <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
+  </g>
+</svg>
