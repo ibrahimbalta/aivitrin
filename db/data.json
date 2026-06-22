@@ -112453,7 +112453,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-21T16:04:42.342Z",
+    "last_run": "2026-06-22T10:44:51.600Z",
     "total_crawled": 58,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -112960,6 +112960,30 @@
     },
     {
       "timestamp": "2026-06-21T16:04:42.342Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-21T16:10:44.686Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T10:32:39.478Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T10:44:51.601Z",
       "success": true,
       "tools_found": 50,
       "tools_added": 0,
@@ -113552,6 +113576,14 @@
       "url": "https://www.kaggle.com/learn",
       "badge": "Uygulamalı Veri Bilimi",
       "icon": "📊"
+    },
+    {
+      "id": "res-1782058305303",
+      "title": "Test Resource by Antigravity",
+      "description": "This is a test resource description.",
+      "url": "https://example.com/test-resource",
+      "badge": "Test Badge",
+      "icon": "🚀"
     }
   ]
 }

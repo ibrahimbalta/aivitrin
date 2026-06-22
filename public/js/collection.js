@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       
       renderCollection({
         name: 'Paylaşılan AI Çantam',
-        description: 'AIvitrin üzerinde biriktirdiğim yapay zeka araçları koleksiyonu.',
+        description: 'AiHubTR üzerinde biriktirdiğim yapay zeka araçları koleksiyonu.',
         owner: 'Paylaşan Üye',
         tools: matchedTools
       });

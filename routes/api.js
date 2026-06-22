@@ -1196,7 +1196,7 @@ router.post('/admin/newsletter/send-ai', requireAuth, async function (req, res) 
         const { callLLM } = require('../services/ai');
         const availableTools = db.tools.slice(0, 30).map(t => ({ name: t.name, description: t.description, url: t.url }));
 
-        const systemPrompt = `Sen AIvitrin yapay zeka dizininin bülten yazarı yapay zekasısın.
+        const systemPrompt = `Sen AiHubTR yapay zeka dizininin bülten yazarı yapay zekasısın.
 Kullanıcının belirttiği konu başlığı çerçevesinde Türkçe ve ilgi çekici bir e-posta bülteni taslağı hazırlamalısın.
 Bülten içeriğinde mevcut araçlar listesinden uygun olanları önermeli ve sitemize yönlendirme yapmalısın.
 Lütfen yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin veya açıklama ekleme):
@@ -1219,7 +1219,7 @@ ${JSON.stringify(availableTools)}`;
           parsed = JSON.parse(cleanJson);
         }
 
-        subject = parsed.subject || `AIvitrin Haftalık Bülten: ${topic}`;
+        subject = parsed.subject || `AiHubTR Haftalık Bülten: ${topic}`;
         content = parsed.content || 'Bülten içeriği oluşturulamadı.';
       } catch (err) {
         console.error('LLM Newsletter generation error, falling back to heuristic:', err);
@@ -1228,8 +1228,8 @@ ${JSON.stringify(availableTools)}`;
 
     // Fallback if AI fails or key not set
     if (!subject || !content) {
-      subject = `AIvitrin Haftalık Bülten: ${topic}`;
-      content = `Merhaba AIvitrin Takipçisi!\n\nBu haftaki bültenimizde sizler için "${topic}" konusunu ele aldık.\n\nBu kapsamda vitrinimizdeki en popüler araçları inceleyebilir, detaylı karşılaştırmalar yapabilirsiniz. Ayrıca yeni eklenen AI Danışman Chatbot'umuza dilediğiniz soruları sorarak ihtiyacınız olan yapay zeka araçlarını anında bulabilirsiniz.\n\nDaha fazla detay ve yeni çıkan araçları keşfetmek için sitemizi ziyaret etmeyi unutmayın.\n\nSağlıklı ve verimli bir hafta dileriz,\nAIvitrin Ekibi\n🌐 https://aivitrin.com`;
+      subject = `AiHubTR Haftalık Bülten: ${topic}`;
+      content = `Merhaba AiHubTR Takipçisi!\n\nBu haftaki bültenimizde sizler için "${topic}" konusunu ele aldık.\n\nBu kapsamda vitrinimizdeki en popüler araçları inceleyebilir, detaylı karşılaştırmalar yapabilirsiniz. Ayrıca yeni eklenen AI Danışman Chatbot'umuza dilediğiniz soruları sorarak ihtiyacınız olan yapay zeka araçlarını anında bulabilirsiniz.\n\nDaha fazla detay ve yeni çıkan araçları keşfetmek için sitemizi ziyaret etmeyi unutmayın.\n\nSağlıklı ve verimli bir hafta dileriz,\nAiHubTR Ekibi\n🌐 https://aihubtr.com`;
     }
 
     const newLog = {
@@ -1586,7 +1586,7 @@ router.post('/advisor', async function (req, res) {
           return { id: t.id, name: t.name, description: t.description.substring(0, 100), category_id: t.category_id, pricing: t.pricing };
         });
 
-        const systemPrompt = `Sen AIvitrin yapay zeka dizini için akıllı bir yapay zeka danışmanısın (AI Advisor). Kullanıcıların Türkçe dilindeki yapay zeka aracı bulma, tavsiye alma veya soru sorma isteklerini yanıtla.
+        const systemPrompt = `Sen AiHubTR yapay zeka dizini için akıllı bir yapay zeka danışmanısın (AI Advisor). Kullanıcıların Türkçe dilindeki yapay zeka aracı bulma, tavsiye alma veya soru sorma isteklerini yanıtla.
 Sana verilen araç listesinden en uygun olanları seç ve öner. Yanıtını dost canlısi, profesyonel ve kısa bir dille ver.
 
 Yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin ekleme):

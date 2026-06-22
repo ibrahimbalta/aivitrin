@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       btnShare.style.display = 'block';
       btnShare.onclick = function () {
-        var text = `AIvitrin Akademi'de "${activeQuiz.title}" testini başarıyla tamamladım ve "${data.badge.icon} ${data.badge.title}" rozetini kazandım! Sen de test et: ${window.location.origin}/akademi`;
+        var text = `AiHubTR Akademi'de "${activeQuiz.title}" testini başarıyla tamamladım ve "${data.badge.icon} ${data.badge.title}" rozetini kazandım! Sen de test et: ${window.location.origin}/akademi`;
         navigator.clipboard.writeText(text).then(function () {
           btnShare.textContent = '✅ Paylaşım Metni Kopyalandı!';
           setTimeout(() => {

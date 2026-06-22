@@ -1,7 +1,7 @@
 {
-  "name": "aivitrin",
+  "name": "aihubtr",
   "version": "1.0.0",
-  "description": "AIvitrin — Türkçe AI Araç Dizini",
+  "description": "AiHubTR — Türkçe Yapay Zeka Araçları Merkezi",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

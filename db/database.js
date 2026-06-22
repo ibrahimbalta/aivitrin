@@ -60,7 +60,7 @@ const defaultData = {
       title: "DeepSeek R1 Çıktı! Sektörde Kartlar Yeniden Dağıtılıyor",
       summary: "Çin merkezli yapay zeka girişimi DeepSeek, akıl yürütme yetenekleriyle OpenAI o1 modeline rakip olan yeni açık kaynaklı modeli R1'i duyurdu.",
       content: "<p>Yapay zeka dünyasında rekabet tüm hızıyla sürüyor. Çinli yapay zeka şirketi DeepSeek, yeni açık kaynaklı ve gelişmiş akıl yürütme (reasoning) yeteneklerine sahip olan DeepSeek R1 modelini yayınladı.</p><p>Model, özellikle matematik, kodlama ve bilimsel problem çözme testlerinde OpenAI'ın o1 ve o3-mini modelleriyle başa baş performans gösteriyor. En dikkat çekici unsur ise modelin açık kaynaklı olması ve geliştiriciler tarafından yerel bilgisayarlarda çalıştırılabilmesi.</p><p>Sektör temsilcileri, bu modelin yapay zeka pazarındaki dengeleri değiştireceğini ve açık kaynaklı ekosistemi çok daha güçlü kılacağını öngörüyor.</p>",
-      source: "AIvitrin Özel",
+      source: "AiHubTR Özel",
       sourceUrl: "",
       publishDate: "2026-06-21",
       imageUrl: "",

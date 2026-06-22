@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="news-card-body">
               <div class="news-meta">
                 <span>📅 ${item.publishDate}</span>
-                <span>👤 ${item.source || 'AIvitrin'}</span>
+                <span>👤 ${item.source || 'AiHubTR'}</span>
               </div>
               <h3 class="news-title">${item.title}</h3>
               <p class="news-summary">${item.summary}</p>
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <h1 class="article-title">${item.title}</h1>
           <div class="article-meta">
             <span>📅 Yayın Tarihi: <strong>${item.publishDate}</strong></span>
-            <span>👤 Kaynak: <strong>${item.source || 'AIvitrin'}</strong></span>
+            <span>👤 Kaynak: <strong>${item.source || 'AiHubTR'}</strong></span>
             ${item.sourceUrl ? `<span>🔗 <a href="${item.sourceUrl}" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">Kaynak Siteye Git</a></span>` : ''}
           </div>
         </div>

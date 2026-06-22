@@ -703,7 +703,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(exportData, null, 2))}`;
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute('href', jsonString);
-    downloadAnchor.setAttribute('download', 'aivitrin-cantam.json');
+    downloadAnchor.setAttribute('download', 'aihubtr-cantam.json');
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();

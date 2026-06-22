@@ -124,8 +124,8 @@ function callLLM(systemPrompt, userPrompt, settings) {
 
     // OpenRouter and some custom APIs require extra headers
     if (ai_provider === 'openrouter') {
-      options.headers['HTTP-Referer'] = 'https://aivitrin.com';
-      options.headers['X-Title'] = 'AIvitrin';
+      options.headers['HTTP-Referer'] = 'https://aihubtr.com';
+      options.headers['X-Title'] = 'AiHubTR';
     }
 
     const req = https.request(options, (res) => {

@@ -1179,7 +1179,7 @@ document.addEventListener('DOMContentLoaded', async function () {
               <h3 class="tool-name" style="font-size: 1.1rem; margin-bottom: 8px;">${item.title}</h3>
               <p class="tool-description" style="-webkit-line-clamp: 2; height: auto; margin-bottom: 12px;">${item.summary}</p>
               <div style="display:flex; justify-content:space-between; align-items:center; font-size: 0.8rem; color: var(--text-secondary);">
-                <span>Kaynak: ${item.source || 'AIvitrin'}</span>
+                <span>Kaynak: ${item.source || 'AiHubTR'}</span>
                 <span style="color: var(--accent-cyan); font-weight:600">Devamını Oku &rarr;</span>
               </div>
             </div>
