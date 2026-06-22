@@ -47,7 +47,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 const sessionOptions = {
-  secret: process.env.SESSION_SECRET || 'aihubtr-gizli-anahtar-2026',
+  secret: process.env.SESSION_SECRET || 'aiklavuz-gizli-anahtar-2026',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 24 * 60 * 60 * 1000, httpOnly: true, secure: false }
@@ -154,7 +154,7 @@ if (!process.env.VERCEL) {
 
     console.log('');
     console.log('⚡ ═══════════════════════════════════════════');
-    console.log('   AiHubTR Sunucusu Çalışıyor!');
+    console.log('   AiKlavuz Sunucusu Çalışıyor!');
     console.log('   🌐 Site:  http://localhost:' + PORT);
     console.log('   🔧 Admin: http://localhost:' + PORT + '/admin/login.html');
     console.log('   👤 Admin: admin / admin123');

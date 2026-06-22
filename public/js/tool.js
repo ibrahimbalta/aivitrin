@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   function showEmptyState() {
-    document.title = 'Araç Bulunamadı — AiHubTR';
+    document.title = 'Araç Bulunamadı — AiKlavuz';
     toolNameEl.textContent = 'Araç Bulunamadı';
     toolDescEl.textContent = 'Aradığınız yapay zeka aracı vitrinimizde bulunmuyor veya yayından kaldırılmış.';
     const detailsLayout = document.querySelector('.tool-detail-layout');
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   function renderToolDetails() {
     // Page Title Update
-    document.title = `${toolData.name} — Türkçe Detaylı İnceleme & Alternatifleri | AiHubTR`;
+    document.title = `${toolData.name} — Türkçe Detaylı İnceleme & Alternatifleri | AiKlavuz`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', `${toolData.name} yapay zeka aracının detayları, kullanıcı yorumları, Türkçe dil desteği, fiyat modelleri ve en iyi alternatif rakipleri.`);

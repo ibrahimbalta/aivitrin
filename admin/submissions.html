@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başvurular — AiHubTR Yönetim</title>
+  <title>Başvurular — AiKlavuz Yönetim</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
@@ -14,18 +14,30 @@
     <aside class="admin-sidebar">
       <div class="sidebar-logo">
         <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
-          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="logo-grad-sb-global" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="var(--accent-purple)"></stop>
-                <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
-              </linearGradient>
-            </defs>
-            <path d="M14 3L4 8L14 13L24 8L14 3Z" fill="url(#logo-grad-sb-global)" opacity="0.85"></path>
-            <path d="M4 14L14 19L24 14" stroke="url(#logo-grad-sb-global)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M4 20L14 25L24 20" stroke="url(#logo-grad-sb-global)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <circle cx="14" cy="8" r="2" fill="#ffffff"></circle>
-          </svg>
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+                <linearGradient id="logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0066cc" />
+                  <stop offset="100%" stop-color="#5500cc" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad-primary)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad-primary)" />
+              <polygon points="42,90 30,84 30,96" fill="url(#logo-grad-primary)" />
+              <polygon points="138,90 150,84 150,96" fill="url(#logo-grad-primary)" />
+              <g class="compass-needle">
+                <polygon points="100,90 142,48 115,105" fill="url(#logo-grad-primary)" />
+                <polygon points="100,90 142,48 85,75" fill="url(#logo-grad-needle-dark)" opacity="0.8" />
+                <polygon points="100,90 58,132 85,75" fill="url(#logo-grad-primary)" />
+                <polygon points="100,90 58,132 115,105" fill="url(#logo-grad-needle-dark)" opacity="0.8" />
+              </g>
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
+            </svg>
         </span>
         <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
       </div>

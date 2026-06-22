@@ -269,6 +269,13 @@
         "Eğitim verisi kesim tarihi sonrası bilgi eksikliği ve doğruluk sorunları.",
         "Yanlış bilgi üretme ve etik dışı kullanım potansiyeli riskleri.",
         "Gerçek insan yaratıcılığı ve özgün düşünce yeteneğinden yoksundur."
+      ],
+      "description_en": "A powerful AI assistant developed by OpenAI, capable of conversing in natural language and generating text.",
+      "tags_en": [
+        "chat",
+        "text generation",
+        "artificial intelligence",
+        "GPT"
       ]
     },
     {
@@ -314,6 +321,13 @@
         "Diğer modellere kıyasla daha sınırlı entegrasyon veya erişim imkanları olabilir.",
         "Uzun bağlam penceresi kullanımı nedeniyle maliyet potansiyelinin yüksekliği.",
         "Aşırı güvenlik odaklı yaklaşım, bazı durumlarda yanıtları kısıtlayabilir."
+      ],
+      "description_en": "A safe and helpful AI assistant created by Anthropic, distinguished by its long context window.",
+      "tags_en": [
+        "chat",
+        "analysis",
+        "writing",
+        "security"
       ]
     },
     {
@@ -354,6 +368,13 @@
         "Yüksek Hesaplama Kaynak İhtiyac��: Büyük işlem gücü ve bellek gerektirebilir.",
         "Karmaşık Entegrasyon ve Optimizasyon: Farklı veri türlerini yönetmek zorlayıcı olabilir.",
         "Potansiyel Veri Önyargıları: Geniş veri setlerinden öğrenme önyargı riskini artırır."
+      ],
+      "description_en": "Google's multimodal artificial intelligence model; equipped with capabilities to understand text, visuals, and code.",
+      "tags_en": [
+        "chat",
+        "multimodal",
+        "Google",
+        "search"
       ]
     },
     {
@@ -384,7 +405,14 @@
       "turkish_supported": "partial",
       "pricing_try": "150 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-powered search engine; accelerates your research process by providing sourced and up-to-date answers.",
+      "tags_en": [
+        "search",
+        "research",
+        "source",
+        "information"
+      ]
     },
     {
       "id": "microsoft-copilot",
@@ -478,6 +506,13 @@
       "made_in_turkey": false,
       "professions": [
         "tasarimci"
+      ],
+      "description_en": "Popular artificial intelligence visual generator producing high-quality, artistic visuals from text descriptions.",
+      "tags_en": [
+        "visual production",
+        "art",
+        "design",
+        "AI art"
       ]
     },
     {
@@ -575,6 +610,13 @@
         "emlakci",
         "tasarimci",
         "pazarlamaci"
+      ],
+      "description_en": "Canva's AI features include automatic design suggestions, visual production, and text editing tools.",
+      "tags_en": [
+        "design",
+        "template",
+        "social media",
+        "easy to use"
       ]
     },
     {
@@ -790,6 +832,13 @@
       "made_in_turkey": false,
       "professions": [
         "avukat"
+      ],
+      "description_en": "Artificial intelligence-powered grammar and spell checker; offers tone adjustment and text rewriting features.",
+      "tags_en": [
+        "grammar",
+        "spelling",
+        "editing",
+        "English"
       ]
     },
     {
@@ -820,7 +869,14 @@
       "turkish_supported": "partial",
       "pricing_try": "150 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Manages project and generates summaries and content in your knowledge base with artificial intelligence and automates tasks.",
+      "tags_en": [
+        "project management",
+        "wiki",
+        "summarization",
+        "automation"
+      ]
     },
     {
       "id": "rytr",
@@ -912,6 +968,13 @@
       "made_in_turkey": false,
       "professions": [
         "yazilimci"
+      ],
+      "description_en": "An artificial intelligence code assistant developed in partnership with GitHub and OpenAI; provides real-time code suggestions.",
+      "tags_en": [
+        "code completion",
+        "GitHub",
+        "IDE",
+        "developer"
       ]
     },
     {
@@ -944,6 +1007,13 @@
       "made_in_turkey": false,
       "professions": [
         "yazilimci"
+      ],
+      "description_en": "AI-focused code editor; you can write, edit, and debug code with natural language.",
+      "tags_en": [
+        "editor",
+        "code writing",
+        "debugging",
+        "AI-first"
       ]
     },
     {
@@ -1191,6 +1261,13 @@
       "made_in_turkey": false,
       "professions": [
         "pazarlamaci"
+      ],
+      "description_en": "Highly realistic artificial intelligence voiceover and voice cloning technology; produces multi-lingual voice synthesis.",
+      "tags_en": [
+        "voiceover",
+        "voice cloning",
+        "multi-lingual",
+        "TTS"
       ]
     },
     {
@@ -1371,7 +1448,14 @@
       "turkish_supported": "full",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Comprehensive digital marketing platform; performs SEO, advertising, and competitor analysis with artificial intelligence.",
+      "tags_en": [
+        "SEO",
+        "advertising",
+        "competitor analysis",
+        "digital marketing"
+      ]
     },
     {
       "id": "hubspot-ai",
@@ -2754,7 +2838,12 @@
       "turkish_supported": "full",
       "pricing_try": "150 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "An AIOps platform that uses AI to detect anomalies, correlate events, and troubleshoot issues from logs and alerts for enterprise IT teams.",
+      "tags_en": [
+        "crawled",
+        "AIDIRECTORY"
+      ]
     },
     {
       "id": "front-ai",
@@ -4522,7 +4611,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI code assistant with repository awareness",
+      "tags_en": [
+        "coding",
+        "search",
+        "developer"
+      ]
     },
     {
       "id": "continue",
@@ -9690,7 +9785,13 @@
       "turkish_supported": "full",
       "pricing_try": "390 TL/ay",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Generate royalty-free AI music for creators",
+      "tags_en": [
+        "music",
+        "royalty-free",
+        "creator"
+      ]
     },
     {
       "id": "beatovenai",
@@ -9748,7 +9849,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI music creation platform for creators and brands",
+      "tags_en": [
+        "music",
+        "creator",
+        "commercial"
+      ]
     },
     {
       "id": "boomy",
@@ -11345,7 +11452,13 @@
       "turkish_supported": "partial",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Otomatik ses ve video yazılması ile Yapay Zeka",
+      "tags_en": [
+        "transkript",
+        "alt yazı",
+        "ses"
+      ]
     },
     {
       "id": "trint",
@@ -11751,7 +11864,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "OpenAI uyumlu, yerel modelleri çalıştırmak için API",
+      "tags_en": [
+        "büyük dil modeli",
+        "api",
+        "kendin-barındır"
+      ]
     },
     {
       "id": "open-interpreter",
@@ -13696,7 +13815,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI content creation and scheduling for social channels",
+      "tags_en": [
+        "social-media",
+        "scheduling",
+        "content"
+      ]
     },
     {
       "id": "copysmith",
@@ -15646,7 +15771,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Build complete applications using AI prompts",
+      "tags_en": [
+        "no-code",
+        "app-builder",
+        "developer"
+      ]
     },
     {
       "id": "v0-by-vercel",
@@ -16989,7 +17120,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-powered logo design and branding platform",
+      "tags_en": [
+        "logo",
+        "brand",
+        "graphics"
+      ]
     },
     {
       "id": "brandmark",
@@ -17656,7 +17793,13 @@
       "turkish_supported": "full",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-powered urban design and building optimization",
+      "tags_en": [
+        "urban",
+        "architecture",
+        "planning"
+      ]
     },
     {
       "id": "getfloorplan-ai",
@@ -19110,7 +19253,13 @@
       "turkish_supported": "partial",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-driven revenue intelligence and buyer intent data",
+      "tags_en": [
+        "sales",
+        "intelligence",
+        "b2b"
+      ]
     },
     {
       "id": "seamless-ai",
@@ -19777,7 +19926,13 @@
       "turkish_supported": "none",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI destekli veri keşfi ve iş zekası",
+      "tags_en": [
+        "iş zekası",
+        "google",
+        "veri"
+      ]
     },
     {
       "id": "qlik-sense-ai",
@@ -19922,7 +20077,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Açık kaynaklı BI ve veri görselleştirme platformu",
+      "tags_en": [
+        "bi",
+        "açık kaynaklı",
+        "veri"
+      ]
     },
     {
       "id": "apache-superset-ai",
@@ -22271,7 +22432,13 @@
       "turkish_supported": "partial",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-driven IT infrastructure monitoring platform",
+      "tags_en": [
+        "it",
+        "monitoring",
+        "cloud"
+      ]
     },
     {
       "id": "elastic-observability-ai",
@@ -24167,7 +24334,13 @@
       "turkish_supported": "partial",
       "pricing_try": "290 TL/ay",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Advanced text-to-video AI model by OpenAI",
+      "tags_en": [
+        "video",
+        "llm",
+        "generative"
+      ]
     },
     {
       "id": "cheggmate",
@@ -25102,7 +25275,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-powered English speaking practice assistant",
+      "tags_en": [
+        "education",
+        "english",
+        "tutor"
+      ]
     },
     {
       "id": "talkpal-ai",
@@ -28474,7 +28653,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI tool for generating short-form videos",
+      "tags_en": [
+        "video",
+        "shorts",
+        "automation"
+      ]
     },
     {
       "id": "runway-storyboard-ai",
@@ -28621,7 +28806,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz Plan Mevcut",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "İleri düzey metin-videya AI modeli OpenAI tarafından",
+      "tags_en": [
+        "video",
+        "oluşturucu",
+        "büyük dil modeli"
+      ]
     },
     {
       "id": "make-a-video",
@@ -31041,7 +31232,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI model hosting and image generation API",
+      "tags_en": [
+        "image",
+        "models",
+        "api"
+      ]
     },
     {
       "id": "seaart-api",
@@ -31652,7 +31849,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI transcription and subtitle generation API",
+      "tags_en": [
+        "stt",
+        "video",
+        "api"
+      ]
     },
     {
       "id": "otter-api",
@@ -34762,7 +34965,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Low-Rank Adaptation fine-tuning method toolkit",
+      "tags_en": [
+        "llm",
+        "training",
+        "ai"
+      ]
     },
     {
       "id": "qlora-ai",
@@ -34965,7 +35174,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "End-to-end ML pipeline framework",
+      "tags_en": [
+        "ml",
+        "google",
+        "ai"
+      ]
     },
     {
       "id": "pytorch-lightning",
@@ -38937,7 +39152,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Subtitle and Transcription Studio Platform",
+      "tags_en": [
+        "Speech-to-Text",
+        "Video",
+        "Artificial Intelligence"
+      ]
     },
     {
       "id": "otter-studio",
@@ -41590,7 +41811,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI subtitle generation automation agents",
+      "tags_en": [
+        "stt",
+        "video",
+        "agents"
+      ]
     },
     {
       "id": "otter-ai-agents",
@@ -49444,7 +49671,13 @@
       "turkish_supported": "full",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Code Vulnerability Detection System",
+      "tags_en": [
+        "code",
+        "security",
+        "ai"
+      ]
     },
     {
       "id": "sonarqube-ai",
@@ -49473,7 +49706,13 @@
       "turkish_supported": "none",
       "pricing_try": "390 TL/ay",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI code quality and static analysis platform",
+      "tags_en": [
+        "code",
+        "quality",
+        "ai"
+      ]
     },
     {
       "id": "codeql-ai-engine",
@@ -53578,7 +53817,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Voiceover and Dubbing Platform",
+      "tags_en": [
+        "voice",
+        "tts",
+        "ai"
+      ]
     },
     {
       "id": "fakeyou-ai-voice",
@@ -53694,7 +53939,13 @@
       "turkish_supported": "full",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Emotion-rich AI voice generation platform",
+      "tags_en": [
+        "voice",
+        "emotion",
+        "ai"
+      ]
     },
     {
       "id": "altered-ai-voice",
@@ -54013,7 +54264,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI-powered music creation and licensing platform",
+      "tags_en": [
+        "music",
+        "ai",
+        "license"
+      ]
     },
     {
       "id": "endel-ai-sound",
@@ -55697,7 +55954,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Cloud-based AI agent infrastructure",
+      "tags_en": [
+        "agents",
+        "cloud",
+        "llm"
+      ]
     },
     {
       "id": "weaviate-agents",
@@ -59434,7 +59697,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Google AI homework help and learning assistant",
+      "tags_en": [
+        "education",
+        "google",
+        "ai"
+      ]
     },
     {
       "id": "openai-exam-prep-ai",
@@ -62285,7 +62554,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI destekli merkeziyetsiz kredi platformu",
+      "tags_en": [
+        "merkeziyetsiz finans",
+        "kripto para",
+        "yapay zeka"
+      ]
     },
     {
       "id": "uniswap-ai",
@@ -64984,7 +65259,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI self-driving car system by Tesla",
+      "tags_en": [
+        "autonomous",
+        "tesla",
+        "ai"
+      ]
     },
     {
       "id": "waymo-ai",
@@ -66840,7 +67121,13 @@
       "turkish_supported": "partial",
       "pricing_try": "390 TL/ay",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI OCR and document processing system",
+      "tags_en": [
+        "ocr",
+        "documents",
+        "ai"
+      ]
     },
     {
       "id": "openai-knowledge-ai",
@@ -67014,7 +67301,13 @@
       "turkish_supported": "full",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Code Arama ve Anlama Platformu",
+      "tags_en": [
+        "kod",
+        "arama",
+        "yapay zeka"
+      ]
     },
     {
       "id": "openai-api-tools-ai",
@@ -70474,7 +70767,14 @@
       ],
       "featured": 0,
       "is_new": 0,
-      "updated_at": "2026-06-19T12:09:28.362Z"
+      "updated_at": "2026-06-19T12:09:28.362Z",
+      "description_en": "AI assistant for lawyers that performs case law search, drafts lawsuit petitions, and analyzes contracts.",
+      "tags_en": [
+        "law",
+        "analysis",
+        "petition",
+        "local"
+      ]
     },
     {
       "id": "promptmonitor",
@@ -70847,7 +71147,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-18T17:18:07.224Z",
-      "updated_at": "2026-06-18T17:18:07.224Z"
+      "updated_at": "2026-06-18T17:18:07.224Z",
+      "description_en": "An artificial intelligence tool that creates full-stack production-ready applications from simple English texts.",
+      "tags_en": [
+        "application-development",
+        "code-generation",
+        "full-stack",
+        "ai-developer"
+      ]
     },
     {
       "id": "evyai",
@@ -71180,7 +71487,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T12:54:45.694Z",
-      "updated_at": "2026-06-19T12:54:45.694Z"
+      "updated_at": "2026-06-19T12:54:45.694Z",
+      "description_en": "Lifelike digital workers",
+      "tags_en": [
+        "digital workers",
+        "lifelike"
+      ]
     },
     {
       "id": "receiptor-ai",
@@ -71640,7 +71952,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T12:55:49.983Z",
-      "updated_at": "2026-06-19T12:55:49.983Z"
+      "updated_at": "2026-06-19T12:55:49.983Z",
+      "description_en": "Real-time analytics",
+      "tags_en": [
+        "real",
+        "real-time"
+      ]
     },
     {
       "id": "sentry",
@@ -72367,7 +72684,13 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T12:57:58.213Z",
-      "updated_at": "2026-06-19T12:57:58.213Z"
+      "updated_at": "2026-06-19T12:57:58.213Z",
+      "description_en": "AI Code Review",
+      "tags_en": [
+        "code",
+        "review",
+        "ai"
+      ]
     },
     {
       "id": "testmu-ai",
@@ -73497,7 +73820,13 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T13:01:05.854Z",
-      "updated_at": "2026-06-19T13:01:05.854Z"
+      "updated_at": "2026-06-19T13:01:05.854Z",
+      "description_en": "Create textured 3D models from text or images in minutes",
+      "tags_en": [
+        "3D",
+        "model",
+        "creation"
+      ]
     },
     {
       "id": "cloudairy",
@@ -74686,7 +75015,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T13:04:51.470Z",
-      "updated_at": "2026-06-19T13:04:51.470Z"
+      "updated_at": "2026-06-19T13:04:51.470Z",
+      "description_en": "Quick Invoice Scanning and Tax Preparation",
+      "tags_en": [
+        "Invoice Scanning",
+        "Tax Preparation"
+      ]
     },
     {
       "id": "lyruno",
@@ -76557,7 +76891,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T13:42:52.145Z",
-      "updated_at": "2026-06-19T13:42:52.145Z"
+      "updated_at": "2026-06-19T13:42:52.145Z",
+      "description_en": "Multi-purpose content tool that produces voiceovers, visuals, and videos from text or files.",
+      "tags_en": [
+        "content creation",
+        "voiceover",
+        "visual",
+        "video"
+      ]
     },
     {
       "id": "ridley",
@@ -78647,7 +78988,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T13:51:05.743Z",
-      "updated_at": "2026-06-19T13:51:05.743Z"
+      "updated_at": "2026-06-19T13:51:05.743Z",
+      "description_en": "Automates sales calls, follow-ups, and qualification on a large scale.",
+      "tags_en": [
+        "sales automation",
+        "calling",
+        "follow-up",
+        "lead"
+      ]
     },
     {
       "id": "postiz",
@@ -81925,7 +82273,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:15:58.424Z",
-      "updated_at": "2026-06-19T14:15:58.424Z"
+      "updated_at": "2026-06-19T14:15:58.424Z",
+      "description_en": "Enterprise cybersecurity platform that creates security applications with prompts.",
+      "tags_en": [
+        "security",
+        "application development",
+        "prompt",
+        "enterprise"
+      ]
     },
     {
       "id": "talknotes",
@@ -82387,7 +82742,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:16:55.067Z",
-      "updated_at": "2026-06-19T14:16:55.067Z"
+      "updated_at": "2026-06-19T14:16:55.067Z",
+      "description_en": "Plans, publishes, and analyzes social content from a single panel.",
+      "tags_en": [
+        "social media",
+        "planning",
+        "analytics",
+        "content"
+      ]
     },
     {
       "id": "octolens",
@@ -84386,7 +84748,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:20:39.687Z",
-      "updated_at": "2026-06-19T14:20:39.687Z"
+      "updated_at": "2026-06-19T14:20:39.687Z",
+      "description_en": "Manages shared inboxes and workflows within Gmail.",
+      "tags_en": [
+        "Gmail",
+        "workflow",
+        "inbox",
+        "teamwork"
+      ]
     },
     {
       "id": "messync",
@@ -86190,7 +86559,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:24:22.098Z",
-      "updated_at": "2026-06-19T14:24:22.098Z"
+      "updated_at": "2026-06-19T14:24:22.098Z",
+      "description_en": "AI tool that produces custom sound effects from text or images.",
+      "tags_en": [
+        "sound effect",
+        "production",
+        "text-to-speech",
+        "creative"
+      ]
     },
     {
       "id": "dart",
@@ -86652,7 +87028,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:29:25.728Z",
-      "updated_at": "2026-06-19T14:29:25.728Z"
+      "updated_at": "2026-06-19T14:29:25.728Z",
+      "description_en": "Creates AI-powered portals and internal tools without coding.",
+      "tags_en": [
+        "no-code",
+        "portal",
+        "internal tool",
+        "application"
+      ]
     },
     {
       "id": "t-rex",
@@ -91558,7 +91941,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:52:38.302Z",
-      "updated_at": "2026-06-19T14:52:38.302Z"
+      "updated_at": "2026-06-19T14:52:38.302Z",
+      "description_en": "Automated SEO content creation tool that researches, writes, and publishes.",
+      "tags_en": [
+        "SEO",
+        "content",
+        "publishing",
+        "marketing"
+      ]
     },
     {
       "id": "fullreviews",
@@ -95738,7 +96128,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:03:09.261Z",
-      "updated_at": "2026-06-19T15:03:09.261Z"
+      "updated_at": "2026-06-19T15:03:09.261Z",
+      "description_en": "Rapidly analyzes user conversations with transcription and AI insights.",
+      "tags_en": [
+        "user research",
+        "transcription",
+        "insight",
+        "analysis"
+      ]
     },
     {
       "id": "chartpixel",
@@ -95870,7 +96267,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:03:23.911Z",
-      "updated_at": "2026-06-19T15:03:23.911Z"
+      "updated_at": "2026-06-19T15:03:23.911Z",
+      "description_en": "An AI platform that creates and hosts WordPress sites from prompts or URLs.",
+      "tags_en": [
+        "WordPress",
+        "site creation",
+        "hosting",
+        "no-code"
+      ]
     },
     {
       "id": "cuppa-ai",
@@ -97344,7 +97748,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:07:56.123Z",
-      "updated_at": "2026-06-19T15:07:56.123Z"
+      "updated_at": "2026-06-19T15:07:56.123Z",
+      "description_en": "AI tool that creates production-ready logo designs from text or images.",
+      "tags_en": [
+        "logo",
+        "design",
+        "visual production",
+        "branding"
+      ]
     },
     {
       "id": "rainbow-weather",
@@ -99566,7 +99977,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:16:50.092Z",
-      "updated_at": "2026-06-19T15:16:50.092Z"
+      "updated_at": "2026-06-19T15:16:50.092Z",
+      "description_en": "Homework, notes, flashcards, and exam preparation all in one place, powered by AI learning tool.",
+      "tags_en": [
+        "homework",
+        "notes",
+        "flashcards",
+        "exam"
+      ]
     },
     {
       "id": "tavily",
@@ -99610,7 +100028,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:16:53.673Z",
-      "updated_at": "2026-06-19T15:16:53.673Z"
+      "updated_at": "2026-06-19T15:16:53.673Z",
+      "description_en": "Produces downloadable logos in seconds based on style and color preferences.",
+      "tags_en": [
+        "logo",
+        "design",
+        "brand",
+        "production"
+      ]
     },
     {
       "id": "saufter",
@@ -100336,7 +100761,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:18:15.950Z",
-      "updated_at": "2026-06-19T15:18:15.950Z"
+      "updated_at": "2026-06-19T15:18:15.950Z",
+      "description_en": "Manages email and calendar workflows with approval-focused artificial intelligence.",
+      "tags_en": [
+        "email",
+        "calendar",
+        "workflow",
+        "approval"
+      ]
     },
     {
       "id": "gigasheet",
@@ -100578,7 +101010,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:18:56.108Z",
-      "updated_at": "2026-06-19T15:18:56.108Z"
+      "updated_at": "2026-06-19T15:18:56.108Z",
+      "description_en": "A design tool that creates custom logos from text prompts within minutes.",
+      "tags_en": [
+        "logo",
+        "design",
+        "text-to-product",
+        "branding"
+      ]
     },
     {
       "id": "xtiles",
@@ -101919,7 +102358,13 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:23:54.303Z",
-      "updated_at": "2026-06-19T15:23:54.303Z"
+      "updated_at": "2026-06-19T15:23:54.303Z",
+      "description_en": "Facilitates publishing on different platforms by writing content once with AI adaptive posts.",
+      "tags_en": [
+        "content marketing",
+        "social media",
+        "automation"
+      ]
     },
     {
       "id": "deepai",
@@ -102866,7 +103311,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:25:51.733Z",
-      "updated_at": "2026-06-19T15:25:51.733Z"
+      "updated_at": "2026-06-19T15:25:51.733Z",
+      "description_en": "Combines research and writing with citation support in a single workspace.",
+      "tags_en": [
+        "research",
+        "writing",
+        "citation",
+        "validation"
+      ]
     },
     {
       "id": "podsqueeze",
@@ -107618,7 +108070,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:47:56.862Z",
-      "updated_at": "2026-06-19T15:47:56.862Z"
+      "updated_at": "2026-06-19T15:47:56.862Z",
+      "description_en": "Collects and verifies potential customer emails from maps and social networks.",
+      "tags_en": [
+        "lead generation",
+        "email verification",
+        "social media",
+        "sales"
+      ]
     },
     {
       "id": "nichesss",
@@ -108036,7 +108495,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:49:52.171Z",
-      "updated_at": "2026-06-19T15:49:52.171Z"
+      "updated_at": "2026-06-19T15:49:52.171Z",
+      "description_en": "Tool for finding highlighted ideas for YouTube and optimizing titles and thumbnails.",
+      "tags_en": [
+        "YouTube",
+        "title optimization",
+        "thumbnail",
+        "content"
+      ]
     },
     {
       "id": "dokkio",
@@ -109686,7 +110152,14 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:53:12.630Z",
-      "updated_at": "2026-06-19T15:53:12.630Z"
+      "updated_at": "2026-06-19T15:53:12.630Z",
+      "description_en": "AI platform providing instant feedback and automatic assessment in language learning.",
+      "tags_en": [
+        "language learning",
+        "feedback",
+        "assessment",
+        "education"
+      ]
     },
     {
       "id": "earmark",
@@ -112449,12 +112922,28 @@
       "featured": false,
       "made_in_turkey": false,
       "created_at": "2026-06-19T12:54:33.291Z"
+    },
+    {
+      "id": "sub_crawled_1782136167251_edssz",
+      "name": "PoweredByAI",
+      "url": "https://aidirectory.com/poweredbyai?utm_source=aidirectory.com&amp;utm_medium=rss",
+      "description": "10.000+ AI aracı keşfetme platformu",
+      "category_id": "bilgi-arastirma-ai",
+      "pricing": "ucretsiz",
+      "tags": [
+        "AI Araçları",
+        "Keşif",
+        "Karşılaştırma"
+      ],
+      "rating": 4.5,
+      "source": "crawler",
+      "created_at": "2026-06-22T13:49:27.251Z"
     }
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-22T10:44:51.600Z",
-    "total_crawled": 58,
+    "last_run": "2026-06-22T13:49:27.254Z",
+    "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
     "ai_api_key": "",
@@ -112989,6 +113478,30 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T13:05:04.522Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T13:39:28.754Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-22T13:49:27.254Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 1,
+      "auto_approved": false,
+      "details": "PoweredByAI (pending_review)"
     }
   ],
   "newsletter": [

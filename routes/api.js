@@ -5,17 +5,203 @@ const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// ─── i18n Translation Support ──────────────────
+const categoryTranslations = {
+  en: {
+    'Genel AI Asistan': 'General AI Assistant',
+    'Yazılım & Kod AI': 'Software & Code AI',
+    'Görsel & Tasarım AI': 'Image & Design AI',
+    'Bilgi & Araştırma AI': 'Knowledge & Research AI',
+    'Veri & Analitik AI': 'Data & Analytics AI',
+    'İş & Üretkenlik AI': 'Business & Productivity AI',
+    'Pazarlama & Satış AI': 'Marketing & Sales AI',
+    'E-ticaret AI': 'E-commerce AI',
+    'Finans AI': 'Finance AI',
+    'Hukuk & Uyum AI': 'Law & Compliance AI',
+    'Siber Güvenlik AI': 'Cybersecurity AI',
+    'Sağlık AI': 'Healthcare AI',
+    'Eğitim AI': 'Education AI',
+    'Kurumsal AI': 'Enterprise AI',
+    'Endüstri & Robotik AI': 'Industry & Robotics AI',
+    'Mobilite AI': 'Mobility AI',
+    'Altyapı AI': 'Infrastructure AI',
+    'Oyun & Eğlence AI': 'Gaming & Entertainment AI',
+    'Bilim & Akademik AI': 'Science & Academic AI',
+    'Donanım & IoT AI': 'Hardware & IoT AI'
+  },
+  de: {
+    'Genel AI Asistan': 'Allgemeiner KI-Assistent',
+    'Yazılım & Kod AI': 'Software & Code KI',
+    'Görsel & Tasarım AI': 'Bild & Design KI',
+    'Bilgi & Araştırma AI': 'Wissen & Forschung KI',
+    'Veri & Analitik AI': 'Daten & Analytik KI',
+    'İş & Üretkenlik AI': 'Geschäft & Produktivität KI',
+    'Pazarlama & Satış AI': 'Marketing & Vertrieb KI',
+    'E-ticaret AI': 'E-Commerce KI',
+    'Finans AI': 'Finanzen KI',
+    'Hukuk & Uyum AI': 'Recht & Compliance KI',
+    'Sağlık AI': 'Gesundheit KI',
+    'Eğitim AI': 'Bildung KI',
+    'Kurumsal AI': 'Unternehmen KI',
+    'Endüstri & Robotik AI': 'Industrie & Robotik KI',
+    'Mobilite AI': 'Mobilität KI',
+    'Altyapı AI': 'Infrastruktur KI',
+    'Oyun & Eğlence AI': 'Gaming & Unterhaltung KI',
+    'Bilim & Akademik AI': 'Wissenschaft & Akademische KI',
+    'Donanım & IoT AI': 'Hardware & IoT KI'
+  }
+};
+
+const translatingIds = new Set();
+
+async function translateInBackground(toolId, lang) {
+  const cacheKey = toolId + '_' + lang;
+  if (translatingIds.has(cacheKey)) return;
+  translatingIds.add(cacheKey);
+
+  try {
+    const db = readDB();
+    const idx = db.tools.findIndex(t => t.id === toolId);
+    if (idx === -1) return;
+
+    const tool = db.tools[idx];
+    const descKey = 'description_' + lang;
+    const tagsKey = 'tags_' + lang;
+
+    if (tool[descKey]) return; // Already translated by another process
+
+    const settings = db.crawler_settings || {};
+    if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
+      return;
+    }
+
+    const { callLLM } = require('../services/ai');
+    const systemPrompt = "You are a professional translator. Translate the following AI tool description and tags from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
+      "Keep the same tone, professional terminology, and style.\n" +
+      "Return the result strictly as a JSON object with \"description\" and \"tags\" keys. Do not output anything else.\n\n" +
+      "JSON Format:\n{\n  \"description\": \"translated description\",\n  \"tags\": [\"tag1\", \"tag2\", ...]\n}";
+    const userPrompt = 'Description: "' + tool.description + '"\nTags: ' + JSON.stringify(tool.tags);
+    const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+    
+    let translated = { description: '', tags: [] };
+    try {
+      translated = JSON.parse(llmResponse);
+    } catch (e) {
+      const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+      translated = JSON.parse(cleanJson);
+    }
+
+    if (translated.description) {
+      const currentDb = readDB();
+      const currentIdx = currentDb.tools.findIndex(t => t.id === toolId);
+      if (currentIdx !== -1) {
+        currentDb.tools[currentIdx][descKey] = translated.description;
+        currentDb.tools[currentIdx][tagsKey] = translated.tags;
+        writeDB(currentDb);
+        console.log('[Translation] Cached translation for tool "' + tool.name + '" in ' + lang);
+      }
+    }
+  } catch (err) {
+    console.error('[Translation Failed] for ' + toolId + ' to ' + lang + ':', err.message);
+  } finally {
+    translatingIds.delete(cacheKey);
+  }
+}
+
+async function translateToolIfNeeded(tool, lang, db) {
+  if (!lang || lang === 'tr') return tool;
+  const descKey = 'description_' + lang;
+  const tagsKey = 'tags_' + lang;
+
+  if (tool[descKey]) {
+    return {
+      ...tool,
+      description: tool[descKey],
+      tags: tool[tagsKey] || tool.tags
+    };
+  }
+
+  // Fallback to original Turkish, but translate in background
+  translateInBackground(tool.id, lang).catch(err => {});
+  return tool;
+}
+
+async function getTranslatedToolSync(tool, lang, db) {
+  const descKey = 'description_' + lang;
+  const tagsKey = 'tags_' + lang;
+
+  if (tool[descKey]) {
+    return {
+      ...tool,
+      description: tool[descKey],
+      tags: tool[tagsKey] || tool.tags
+    };
+  }
+
+  const settings = db.crawler_settings || {};
+  if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
+    return tool;
+  }
+
+  try {
+    const { callLLM } = require('../services/ai');
+    const systemPrompt = "You are a professional translator. Translate the following AI tool description and tags from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
+      "Keep the same tone, professional terminology, and style.\n" +
+      "Return the result strictly as a JSON object with \"description\" and \"tags\" keys. Do not output anything else.\n\n" +
+      "JSON Format:\n{\n  \"description\": \"translated description\",\n  \"tags\": [\"tag1\", \"tag2\", ...]\n}";
+    const userPrompt = 'Description: "' + tool.description + '"\nTags: ' + JSON.stringify(tool.tags);
+    const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+    
+    let translated = { description: '', tags: [] };
+    try {
+      translated = JSON.parse(llmResponse);
+    } catch (e) {
+      const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+      translated = JSON.parse(cleanJson);
+    }
+
+    if (translated.description) {
+      const currentDb = readDB();
+      const currentIdx = currentDb.tools.findIndex(t => t.id === tool.id);
+      if (currentIdx !== -1) {
+        currentDb.tools[currentIdx][descKey] = translated.description;
+        currentDb.tools[currentIdx][tagsKey] = translated.tags;
+        writeDB(currentDb);
+        
+        tool[descKey] = translated.description;
+        tool[tagsKey] = translated.tags;
+      }
+    }
+  } catch (err) {
+    console.error('[Sync Translation Failed] for ' + tool.id + ' to ' + lang + ':', err.message);
+  }
+
+  return {
+    ...tool,
+    description: tool[descKey] || tool.description,
+    tags: tool[tagsKey] || tool.tags
+  };
+}
+
 // ─── CATEGORIES ───────────────────────────────
 
 router.get('/categories', function (req, res) {
   try {
+    const { lang } = req.query;
     const db = readDB();
     const cats = db.categories
       .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
-      .map(c => ({
-        ...c,
-        count: db.tools.filter(t => t.category_id === c.id).length
-      }));
+      .map(c => {
+        let name = c.name;
+        if (lang && categoryTranslations[lang] && categoryTranslations[lang][c.name]) {
+          name = categoryTranslations[lang][c.name];
+        }
+        return {
+          ...c,
+          name,
+          count: db.tools.filter(t => t.category_id === c.id).length
+        };
+      });
     res.json(cats);
   } catch (err) {
     res.status(500).json({ error: 'Kategoriler yüklenemedi.' });
@@ -67,14 +253,18 @@ router.delete('/categories/:id', requireAuth, function (req, res) {
 
 // ─── TOOLS ────────────────────────────────────
 
-router.get('/tools', function (req, res) {
+router.get('/tools', async function (req, res) {
   try {
-    const { search, category, pricing, sort, limit, made_in_turkey, profession } = req.query;
+    const { search, category, pricing, sort, limit, made_in_turkey, profession, lang } = req.query;
     const db = readDB();
 
     let tools = db.tools.map(t => {
       const cat = db.categories.find(c => c.id === t.category_id);
-      return { ...t, category_name: cat ? cat.name : '', category_icon: cat ? cat.icon : '' };
+      let catName = cat ? cat.name : '';
+      if (lang && categoryTranslations[lang] && cat && categoryTranslations[lang][cat.name]) {
+        catName = categoryTranslations[lang][cat.name];
+      }
+      return { ...t, category_name: catName, category_icon: cat ? cat.icon : '' };
     });
 
     if (search) {
@@ -135,6 +325,10 @@ router.get('/tools', function (req, res) {
 
     if (limit) tools = tools.slice(0, parseInt(limit));
 
+    if (lang && lang !== 'tr') {
+      tools = await Promise.all(tools.map(t => translateToolIfNeeded(t, lang, db)));
+    }
+
     res.json({ tools, total: tools.length });
   } catch (err) {
     console.error(err);
@@ -142,20 +336,32 @@ router.get('/tools', function (req, res) {
   }
 });
 
-router.get('/tools/:id', function (req, res) {
+router.get('/tools/:id', async function (req, res) {
   try {
+    const { lang } = req.query;
     const db = readDB();
-    const tool = db.tools.find(t => t.id === req.params.id);
+    let tool = db.tools.find(t => t.id === req.params.id);
     if (!tool) return res.status(404).json({ error: 'Araç bulunamadı.' });
+
+    if (lang && lang !== 'tr') {
+      tool = await getTranslatedToolSync(tool, lang, db);
+    }
+
     const cat = db.categories.find(c => c.id === tool.category_id);
+    let catName = cat ? cat.name : '';
+    if (lang && categoryTranslations[lang] && cat && categoryTranslations[lang][cat.name]) {
+      catName = categoryTranslations[lang][cat.name];
+    }
+
     const reviews = (db.reviews || []).filter(r => r.tool_id === tool.id);
     res.json({ 
       ...tool, 
-      category_name: cat ? cat.name : '', 
+      category_name: catName, 
       category_icon: cat ? cat.icon : '',
       reviews: reviews
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Araç yüklenemedi.' });
   }
 });
@@ -271,7 +477,47 @@ router.get('/tools/:id/analysis', async function (req, res) {
     const toolIdx = db.tools.findIndex(t => t.id === req.params.id);
     if (toolIdx === -1) return res.status(404).json({ error: 'Araç bulunamadı.' });
 
+    const { lang } = req.query;
     const tool = db.tools[toolIdx];
+    
+    if (lang && lang !== 'tr') {
+      const prosKey = 'pros_' + lang;
+      const consKey = 'cons_' + lang;
+      if (tool[prosKey] && tool[consKey]) {
+        return res.json({ success: true, pros: tool[prosKey], cons: tool[consKey] });
+      }
+      
+      if (tool.pros && tool.cons && tool.pros.length > 0) {
+        try {
+          const settings = db.crawler_settings || {};
+          if (settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY) {
+            const { callLLM } = require('../services/ai');
+            const systemPrompt = "You are a professional translator. Translate the following pros and cons list of an AI tool from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
+              "Keep the points short (max 80 chars) and return strictly as a JSON object with \"pros\" and \"cons\" arrays. Do not output anything else.\n\n" +
+              "JSON Format:\n{\n  \"pros\": [\"translated pro 1\", \"translated pro 2\", ...],\n  \"cons\": [\"translated con 1\", \"translated con 2\", ...]\n}";
+            const userPrompt = 'Pros: ' + JSON.stringify(tool.pros) + '\nCons: ' + JSON.stringify(tool.cons);
+            const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+            
+            let translated = { pros: [], cons: [] };
+            try {
+              translated = JSON.parse(llmResponse);
+            } catch(e) {
+              const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+              translated = JSON.parse(cleanJson);
+            }
+            
+            if (translated.pros && translated.pros.length > 0) {
+              db.tools[toolIdx][prosKey] = translated.pros;
+              db.tools[toolIdx][consKey] = translated.cons;
+              writeDB(db);
+              return res.json({ success: true, pros: translated.pros, cons: translated.cons });
+            }
+          }
+        } catch(err) {
+          console.error('[Pros/Cons Translation Failed]:', err.message);
+        }
+      }
+    }
     
     // If already has pros/cons, return them
     if (tool.pros && tool.cons && tool.pros.length > 0) {
@@ -1196,7 +1442,7 @@ router.post('/admin/newsletter/send-ai', requireAuth, async function (req, res) 
         const { callLLM } = require('../services/ai');
         const availableTools = db.tools.slice(0, 30).map(t => ({ name: t.name, description: t.description, url: t.url }));
 
-        const systemPrompt = `Sen AiHubTR yapay zeka dizininin bülten yazarı yapay zekasısın.
+        const systemPrompt = `Sen AiKlavuz yapay zeka dizininin bülten yazarı yapay zekasısın.
 Kullanıcının belirttiği konu başlığı çerçevesinde Türkçe ve ilgi çekici bir e-posta bülteni taslağı hazırlamalısın.
 Bülten içeriğinde mevcut araçlar listesinden uygun olanları önermeli ve sitemize yönlendirme yapmalısın.
 Lütfen yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin veya açıklama ekleme):
@@ -1219,7 +1465,7 @@ ${JSON.stringify(availableTools)}`;
           parsed = JSON.parse(cleanJson);
         }
 
-        subject = parsed.subject || `AiHubTR Haftalık Bülten: ${topic}`;
+        subject = parsed.subject || `AiKlavuz Haftalık Bülten: ${topic}`;
         content = parsed.content || 'Bülten içeriği oluşturulamadı.';
       } catch (err) {
         console.error('LLM Newsletter generation error, falling back to heuristic:', err);
@@ -1228,8 +1474,8 @@ ${JSON.stringify(availableTools)}`;
 
     // Fallback if AI fails or key not set
     if (!subject || !content) {
-      subject = `AiHubTR Haftalık Bülten: ${topic}`;
-      content = `Merhaba AiHubTR Takipçisi!\n\nBu haftaki bültenimizde sizler için "${topic}" konusunu ele aldık.\n\nBu kapsamda vitrinimizdeki en popüler araçları inceleyebilir, detaylı karşılaştırmalar yapabilirsiniz. Ayrıca yeni eklenen AI Danışman Chatbot'umuza dilediğiniz soruları sorarak ihtiyacınız olan yapay zeka araçlarını anında bulabilirsiniz.\n\nDaha fazla detay ve yeni çıkan araçları keşfetmek için sitemizi ziyaret etmeyi unutmayın.\n\nSağlıklı ve verimli bir hafta dileriz,\nAiHubTR Ekibi\n🌐 https://aihubtr.com`;
+      subject = `AiKlavuz Haftalık Bülten: ${topic}`;
+      content = `Merhaba AiKlavuz Takipçisi!\n\nBu haftaki bültenimizde sizler için "${topic}" konusunu ele aldık.\n\nBu kapsamda vitrinimizdeki en popüler araçları inceleyebilir, detaylı karşılaştırmalar yapabilirsiniz. Ayrıca yeni eklenen AI Danışman Chatbot'umuza dilediğiniz soruları sorarak ihtiyacınız olan yapay zeka araçlarını anında bulabilirsiniz.\n\nDaha fazla detay ve yeni çıkan araçları keşfetmek için sitemizi ziyaret etmeyi unutmayın.\n\nSağlıklı ve verimli bir hafta dileriz,\nAiKlavuz Ekibi\n🌐 https://aiklavuz.com`;
     }
 
     const newLog = {
@@ -1586,7 +1832,7 @@ router.post('/advisor', async function (req, res) {
           return { id: t.id, name: t.name, description: t.description.substring(0, 100), category_id: t.category_id, pricing: t.pricing };
         });
 
-        const systemPrompt = `Sen AiHubTR yapay zeka dizini için akıllı bir yapay zeka danışmanısın (AI Advisor). Kullanıcıların Türkçe dilindeki yapay zeka aracı bulma, tavsiye alma veya soru sorma isteklerini yanıtla.
+        const systemPrompt = `Sen AiKlavuz yapay zeka dizini için akıllı bir yapay zeka danışmanısın (AI Advisor). Kullanıcıların Türkçe dilindeki yapay zeka aracı bulma, tavsiye alma veya soru sorma isteklerini yanıtla.
 Sana verilen araç listesinden en uygun olanları seç ve öner. Yanıtını dost canlısi, profesyonel ve kısa bir dille ver.
 
 Yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin ekleme):

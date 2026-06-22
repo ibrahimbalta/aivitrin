@@ -17,7 +17,7 @@
         <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg>
     </button>
-    <div class="mobile-logo-text">AiHubTR Yönetim</div>
+    <div class="mobile-logo-text">AiKlavuz Yönetim</div>
     <div style="width:24px;"></div>
   `;
 

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       <div class="chatbox-body" id="chatbox-body">
         <div class="chat-message system">
-          <p>Merhaba! Ben AiHubTR'in akıllı danışmanıyım. 🤖</p>
+          <p>Merhaba! Ben AiKlavuz'in akıllı danışmanıyım. 🤖</p>
           <p>İhtiyacınız olan yapay zeka aracı türünü yazın, size en popüler ve uygun alternatifleri hemen önereyim. (Örn: <em>"Resim çizen ücretsiz araçlar"</em> veya <em>"Kod yazma asistanı"</em>)</p>
         </div>
       </div>

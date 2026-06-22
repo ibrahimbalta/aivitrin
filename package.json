@@ -1,7 +1,7 @@
 {
-  "name": "aihubtr",
+  "name": "aiklavuz",
   "version": "1.0.0",
-  "description": "AiHubTR — Türkçe Yapay Zeka Araçları Merkezi",
+  "description": "AiKlavuz — Türkçe Yapay Zeka Araçları Merkezi",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
