@@ -2190,6 +2190,108 @@ router.get('/collections/:id', function (req, res) {
 
 // POST /api/workflows/generate
 router.post('/workflows/generate', async function (req, res) {
+  // Fallback generator helper
+  const getFallbackWorkflow = (userGoal) => {
+    const g = (userGoal || '').toLocaleLowerCase('tr-TR');
+    if (g.includes('video') || g.includes('film') || g.includes('youtube') || g.includes('tiktok') || g.includes('sinema')) {
+      return {
+        title: 'Yapay Zeka Destekli Video Üretim Akışı',
+        icon: '🎥',
+        tag: 'Video & Tasarım',
+        description: `"${userGoal}" hedefiniz için video senaryosu yazmaktan, AI ile klip ve seslendirme üretmeye uzanan iş akışı.`,
+        steps: [
+          { num: 1, name: 'Claude AI', desc: 'İstediğiniz video konusu için profesyonel bir senaryo hazırlar.' },
+          { num: 2, name: 'Runway Gen-2', desc: 'Senaryodaki sahnelere uygun sinematik yapay zeka videoları üretir.' },
+          { num: 3, name: 'ElevenLabs', desc: 'Senaryoyu son derece doğal, insan taklidi seslerle seslendirir.' },
+          { num: 4, name: 'CapCut AI', desc: 'Tüm video, ses ve efektleri otomatik altyazıyla birleştirip kurgular.' }
+        ]
+      };
+    }
+    if (g.includes('kod') || g.includes('yazılım') || g.includes('web') || g.includes('app') || g.includes('mobil') || g.includes('developer') || g.includes('program')) {
+      return {
+        title: 'Hızlı Yazılım Prototipleme & Kod Akışı',
+        icon: '💻',
+        tag: 'Yazılım & Web Geliştirme',
+        description: `"${userGoal}" hedefiniz için arayüz prototipleme, yapay zekayla kod geliştirme ve otomatik test iş akışı.`,
+        steps: [
+          { num: 1, name: 'v0.dev', desc: 'Doğal dil açıklamalarıyla modern web arayüzleri (React, Tailwind) prototipler.' },
+          { num: 2, name: 'Cursor', desc: 'Prototiplenen kodları yerel projenize entegre edip yapay zeka yardımıyla geliştirir.' },
+          { num: 3, name: 'GitHub Copilot', desc: 'Kod yazarken gerçek zamanlı satır içi tamamlamalar ve hata düzeltmeleri sunar.' },
+          { num: 4, name: 'SonarCloud', desc: 'Geliştirilen kodun güvenlik açıklarını ve kod kalitesini otomatik denetler.' }
+        ]
+      };
+    }
+    if (g.includes('pazarlama') || g.includes('sosyal') || g.includes('reklam') || g.includes('medya') || g.includes('marketing') || g.includes('satış')) {
+      return {
+        title: 'Sosyal Medya & İçerik Pazarlaması Akışı',
+        icon: '📈',
+        tag: 'Pazarlama & Sosyal Medya',
+        description: `"${userGoal}" hedefiniz için blog fikirleri üretip, bunları görsellere ve sese dönüştürme iş akışı.`,
+        steps: [
+          { num: 1, name: 'ChatGPT veya Claude', desc: 'İçerik fikri, blog taslağı ve sosyal medya kopyaları hazırlar.' },
+          { num: 2, name: 'Midjourney veya Canva AI', desc: 'Metin açıklamalarına uygun çarpıcı pazarlama görselleri üretir.' },
+          { num: 3, name: 'ElevenLabs', desc: 'Metinleri seslendirerek sosyal medya videoları veya reklamlar için ses dosyaları hazırlar.' },
+          { num: 4, name: 'Buffer', desc: 'Oluşturulan tüm materyalleri planlayıp sosyal medyada otomatik yayınlar.' }
+        ]
+      };
+    }
+    if (g.includes('yazı') || g.includes('makale') || g.includes('kitap') || g.includes('editör') || g.includes('içerik')) {
+      return {
+        title: 'Yapay Zeka ile Dijital Yayıncılık Akışı',
+        icon: '📖',
+        tag: 'Yayıncılık & Yazım',
+        description: `"${userGoal}" hedefiniz için kitap yazma, imla düzeltme, kapak oluşturma ve mizanpaj iş akışı.`,
+        steps: [
+          { num: 1, name: 'ChatGPT veya Claude', desc: 'Kitap konusu, ana hatları (outline) ve her bölümün taslak metinlerini yazar.' },
+          { num: 2, name: 'Grammarly AI', desc: 'Metindeki anlatım bozukluklarını, imla hatalarını giderir ve akıcılığı optimize eder.' },
+          { num: 3, name: 'Midjourney', desc: 'Kitabın konusuna uygun, dikkat çekici profesyonel kitap kapak tasarımları üretir.' },
+          { num: 4, name: 'Notion', desc: 'Tüm bölümleri ve görselleri e-kitap formatında mizanpaj edip hazırlar.' }
+        ]
+      };
+    }
+    if (g.includes('tasarım') || g.includes('logo') || g.includes('görsel') || g.includes('resim') || g.includes('grafik') || g.includes('marka')) {
+      return {
+        title: 'Grafik Tasarım & Marka Kimliği Akışı',
+        icon: '🎨',
+        tag: 'Tasarım & Yaratıcılık',
+        description: `"${userGoal}" hedefiniz için logo tasarlama, vektörleştirme ve şablon oluşturma iş akışı.`,
+        steps: [
+          { num: 1, name: 'Midjourney veya DALL-E', desc: 'Marka ruhunu yansıtan logo, ikon ve marka tarzı görselleri üretir.' },
+          { num: 2, name: 'Vectorizer.ai', desc: 'Üretilen piksel tabanlı logoları yüksek kaliteli, sonsuz ölçeklenebilir SVG formatına çevirir.' },
+          { num: 3, name: 'Coolors AI', desc: 'Markaya en uygun uyumlu renk paletlerini ve tipografi taslaklarını hazırlar.' },
+          { num: 4, name: 'Figma veya Canva AI', desc: 'Tüm bu varlıkları kullanarak kurumsal kimlik, kartvizit ve sosyal medya şablonları oluşturur.' }
+        ]
+      };
+    }
+    if (g.includes('veri') || g.includes('analiz') || g.includes('rapor') || g.includes('excel') || g.includes('tablo')) {
+      return {
+        title: 'Veri Analitiği & Raporlama Akışı',
+        icon: '📊',
+        tag: 'Analiz & Raporlama',
+        description: `"${userGoal}" hedefiniz için veri temizleme, istatistiksel analiz ve görsel raporlama iş akışı.`,
+        steps: [
+          { num: 1, name: 'Julius AI', desc: 'CSV veya Excel tablolarınızı tarar, eksik verileri temizler ve temel istatistikleri çıkarır.' },
+          { num: 2, name: 'ChatGPT Advanced Data Analysis', desc: 'Veriler üzerinde gelişmiş korelasyon analizleri yapar ve iş fırsatlarını yorumlar.' },
+          { num: 3, name: 'PowerBI AI', desc: 'Verilerden dinamik ve etkileşimli görsel grafikler ve paneller oluşturur.' },
+          { num: 4, name: 'Gamma', desc: 'Analiz sonuçlarını şık bir yönetim kurulu rapor sunumuna dönüştürür.' }
+        ]
+      };
+    }
+
+    // Default digital productivity
+    return {
+      title: 'Dijital Verimlilik & Asistan Akışı',
+      icon: '⚡',
+      tag: 'Verimlilik & Asistan',
+      description: `"${userGoal}" hedefiniz için günlük planlama, metin şablonlama ve dökümantasyon iş akışı.`,
+      steps: [
+        { num: 1, name: 'ChatGPT', desc: 'Günlük hedefler, e-posta taslakları ve yapılacaklar listesi hazırlar.' },
+        { num: 2, name: 'Canva AI', desc: 'Toplantı sunumları ve rapor kapakları için hızlı görsel şablonlar oluşturur.' },
+        { num: 3, name: 'Notion AI', desc: 'Tüm bu bilgileri kaynakçasıyla birlikte düzenli bir arşiv haline getirir ve özetler.' }
+      ]
+    };
+  };
+
   try {
     const { goal } = req.body;
     if (!goal || goal.trim().length < 3) {
@@ -2198,108 +2300,6 @@ router.post('/workflows/generate', async function (req, res) {
 
     const db = readDB();
     const settings = db.crawler_settings || {};
-    
-    // Fallback generator helper
-    const getFallbackWorkflow = (userGoal) => {
-      const g = userGoal.toLowerCase('tr-TR');
-      if (g.includes('video') || g.includes('film') || g.includes('youtube') || g.includes('tiktok') || g.includes('sinema')) {
-        return {
-          title: 'Yapay Zeka Destekli Video Üretim Akışı',
-          icon: '🎥',
-          tag: 'Video & Tasarım',
-          description: `"${userGoal}" hedefiniz için video senaryosu yazmaktan, AI ile klip ve seslendirme üretmeye uzanan iş akışı.`,
-          steps: [
-            { num: 1, name: 'Claude AI', desc: 'İstediğiniz video konusu için profesyonel bir senaryo hazırlar.' },
-            { num: 2, name: 'Runway Gen-2', desc: 'Senaryodaki sahnelere uygun sinematik yapay zeka videoları üretir.' },
-            { num: 3, name: 'ElevenLabs', desc: 'Senaryoyu son derece doğal, insan taklidi seslerle seslendirir.' },
-            { num: 4, name: 'CapCut AI', desc: 'Tüm video, ses ve efektleri otomatik altyazıyla birleştirip kurgular.' }
-          ]
-        };
-      }
-      if (g.includes('kod') || g.includes('yazılım') || g.includes('web') || g.includes('app') || g.includes('mobil') || g.includes('developer') || g.includes('program')) {
-        return {
-          title: 'Hızlı Yazılım Prototipleme & Kod Akışı',
-          icon: '💻',
-          tag: 'Yazılım & Web Geliştirme',
-          description: `"${userGoal}" hedefiniz için arayüz prototipleme, yapay zekayla kod geliştirme ve otomatik test iş akışı.`,
-          steps: [
-            { num: 1, name: 'v0.dev', desc: 'Doğal dil açıklamalarıyla modern web arayüzleri (React, Tailwind) prototipler.' },
-            { num: 2, name: 'Cursor', desc: 'Prototiplenen kodları yerel projenize entegre edip yapay zeka yardımıyla geliştirir.' },
-            { num: 3, name: 'GitHub Copilot', desc: 'Kod yazarken gerçek zamanlı satır içi tamamlamalar ve hata düzeltmeleri sunar.' },
-            { num: 4, name: 'SonarCloud', desc: 'Geliştirilen kodun güvenlik açıklarını ve kod kalitesini otomatik denetler.' }
-          ]
-        };
-      }
-      if (g.includes('pazarlama') || g.includes('sosyal') || g.includes('reklam') || g.includes('medya') || g.includes('marketing') || g.includes('satış')) {
-        return {
-          title: 'Sosyal Medya & İçerik Pazarlaması Akışı',
-          icon: '📈',
-          tag: 'Pazarlama & Sosyal Medya',
-          description: `"${userGoal}" hedefiniz için blog fikirleri üretip, bunları görsellere ve sese dönüştürme iş akışı.`,
-          steps: [
-            { num: 1, name: 'ChatGPT veya Claude', desc: 'İçerik fikri, blog taslağı ve sosyal medya kopyaları hazırlar.' },
-            { num: 2, name: 'Midjourney veya Canva AI', desc: 'Metin açıklamalarına uygun çarpıcı pazarlama görselleri üretir.' },
-            { num: 3, name: 'ElevenLabs', desc: 'Metinleri seslendirerek sosyal medya videoları veya reklamlar için ses dosyaları hazırlar.' },
-            { num: 4, name: 'Buffer', desc: 'Oluşturulan tüm materyalleri planlayıp sosyal medyada otomatik yayınlar.' }
-          ]
-        };
-      }
-      if (g.includes('yazı') || g.includes('makale') || g.includes('kitap') || g.includes('editör') || g.includes('içerik')) {
-        return {
-          title: 'Yapay Zeka ile Dijital Yayıncılık Akışı',
-          icon: '📖',
-          tag: 'Yayıncılık & Yazım',
-          description: `"${userGoal}" hedefiniz için kitap yazma, imla düzeltme, kapak oluşturma ve mizanpaj iş akışı.`,
-          steps: [
-            { num: 1, name: 'ChatGPT veya Claude', desc: 'Kitap konusu, ana hatları (outline) ve her bölümün taslak metinlerini yazar.' },
-            { num: 2, name: 'Grammarly AI', desc: 'Metindeki anlatım bozukluklarını, imla hatalarını giderir ve akıcılığı optimize eder.' },
-            { num: 3, name: 'Midjourney', desc: 'Kitabın konusuna uygun, dikkat çekici profesyonel kitap kapak tasarımları üretir.' },
-            { num: 4, name: 'Notion', desc: 'Tüm bölümleri ve görselleri e-kitap formatında mizanpaj edip hazırlar.' }
-          ]
-        };
-      }
-      if (g.includes('tasarım') || g.includes('logo') || g.includes('görsel') || g.includes('resim') || g.includes('grafik') || g.includes('marka')) {
-        return {
-          title: 'Grafik Tasarım & Marka Kimliği Akışı',
-          icon: '🎨',
-          tag: 'Tasarım & Yaratıcılık',
-          description: `"${userGoal}" hedefiniz için logo tasarlama, vektörleştirme ve şablon oluşturma iş akışı.`,
-          steps: [
-            { num: 1, name: 'Midjourney veya DALL-E', desc: 'Marka ruhunu yansıtan logo, ikon ve marka tarzı görselleri üretir.' },
-            { num: 2, name: 'Vectorizer.ai', desc: 'Üretilen piksel tabanlı logoları yüksek kaliteli, sonsuz ölçeklenebilir SVG formatına çevirir.' },
-            { num: 3, name: 'Coolors AI', desc: 'Markaya en uygun uyumlu renk paletlerini ve tipografi taslaklarını hazırlar.' },
-            { num: 4, name: 'Figma veya Canva AI', desc: 'Tüm bu varlıkları kullanarak kurumsal kimlik, kartvizit ve sosyal medya şablonları oluşturur.' }
-          ]
-        };
-      }
-      if (g.includes('veri') || g.includes('analiz') || g.includes('rapor') || g.includes('excel') || g.includes('tablo')) {
-        return {
-          title: 'Veri Analitiği & Raporlama Akışı',
-          icon: '📊',
-          tag: 'Analiz & Raporlama',
-          description: `"${userGoal}" hedefiniz için veri temizleme, istatistiksel analiz ve görsel raporlama iş akışı.`,
-          steps: [
-            { num: 1, name: 'Julius AI', desc: 'CSV veya Excel tablolarınızı tarar, eksik verileri temizler ve temel istatistikleri çıkarır.' },
-            { num: 2, name: 'ChatGPT Advanced Data Analysis', desc: 'Veriler üzerinde gelişmiş korelasyon analizleri yapar ve iş fırsatlarını yorumlar.' },
-            { num: 3, name: 'PowerBI AI', desc: 'Verilerden dinamik ve etkileşimli görsel grafikler ve paneller oluşturur.' },
-            { num: 4, name: 'Gamma', desc: 'Analiz sonuçlarını şık bir yönetim kurulu rapor sunumuna dönüştürür.' }
-          ]
-        };
-      }
-
-      // Default digital productivity
-      return {
-        title: 'Dijital Verimlilik & Asistan Akışı',
-        icon: '⚡',
-        tag: 'Verimlilik & Asistan',
-        description: `"${userGoal}" hedefiniz için günlük planlama, metin şablonlama ve dökümantasyon iş akışı.`,
-        steps: [
-          { num: 1, name: 'ChatGPT', desc: 'Günlük hedefler, e-posta taslakları ve yapılacaklar listesi hazırlar.' },
-          { num: 2, name: 'Canva AI', desc: 'Toplantı sunumları ve rapor kapakları için hızlı görsel şablonlar oluşturur.' },
-          { num: 3, name: 'Notion AI', desc: 'Tüm bu bilgileri kaynakçasıyla birlikte düzenli bir arşiv haline getirir ve özetler.' }
-        ]
-      };
-    };
 
     if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
       const fallback = getFallbackWorkflow(goal);
