@@ -127,6 +127,53 @@ app.get('/calculator', function (req, res) {
 });
 
 app.get('/tool/:id', function (req, res) {
+  const toolId = req.params.id;
+  try {
+    const db = readDB();
+    const tool = db.tools.find(t => t.id === toolId);
+    
+    if (tool) {
+      const fs = require('fs');
+      const htmlPath = path.join(__dirname, 'public', 'tool.html');
+      let htmlContent = fs.readFileSync(htmlPath, 'utf8');
+      
+      const title = `${tool.name} — Türkçe Detaylı İnceleme & Alternatifleri | AiKlavuz`;
+      // Clean and trim description to be SEO safe (max 160 chars)
+      const cleanDesc = (tool.description || '').replace(/"/g, '&quot;').replace(/\n/g, ' ').trim();
+      const description = `${tool.name} yapay zeka aracının özellikleri, fiyatlandırması, kullanıcı yorumları, Türkçe dil desteği ve en iyi alternatif rakipleri. ${cleanDesc}`.substring(0, 160);
+      
+      const ogImageUrl = `https://image.thum.io/get/width/1200/crop/800/maxAge/168/${tool.url}`;
+      const pageUrl = `https://aiklavuz.com/tool/${tool.id}`;
+      
+      // Replace generic meta tags in <head>
+      htmlContent = htmlContent
+        .replace(/<title>.*?<\/title>/gi, `<title>${title}</title>`)
+        .replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gi, `<meta name="description" content="${description}">`);
+        
+      // Inject Open Graph & Twitter Cards before </head>
+      const seoTags = `
+  <!-- Dinamik SEO & Open Graph Tags -->
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${pageUrl}">
+  <meta property="og:image" content="${ogImageUrl}">
+  <meta property="og:site_name" content="AiKlavuz">
+  <meta property="og:locale" content="tr_TR">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${ogImageUrl}">`;
+      
+      htmlContent = htmlContent.replace('</head>', `${seoTags}\n</head>`);
+      return res.send(htmlContent);
+    }
+  } catch (err) {
+    console.error('Error injecting dynamic SEO tags:', err.message);
+  }
+  
+  // Fallback to sending standard static file
   res.sendFile(path.join(__dirname, 'public', 'tool.html'));
 });
 
