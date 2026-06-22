@@ -86,9 +86,9 @@
     switcherContainer.className = 'lang-switcher';
     switcherContainer.innerHTML = `
       <select class="lang-select-element" aria-label="Select Language">
-        <option value="tr">Türkçe</option>
-        <option value="en">English</option>
-        <option value="de">Deutsch</option>
+        <option value="tr">TR</option>
+        <option value="en">EN</option>
+        <option value="de">DE</option>
       </select>
     `;
 
