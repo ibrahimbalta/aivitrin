@@ -99,20 +99,24 @@ document.addEventListener('DOMContentLoaded', async function () {
           <div class="empty-icon" style="font-size: 3rem; margin-bottom: 20px;">🔍</div>
           <h3>${title}</h3>
           <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">${message}</p>
-          <a href="/" class="btn-primary" style="display: inline-block; margin-top: 24px; padding: 10px 20px; text-decoration: none; border-radius: var(--radius-md); background: var(--gradient-primary); color: white; font-weight: 600;">Ana Sayfaya Git</a>
+          <a href="/" class="btn-primary" style="display: inline-block; margin-top: 24px; padding: 10px 20px; text-decoration: none; border-radius: var(--radius-md); background: var(--gradient-primary); color: white; font-weight: 600;" data-i18n="collection_go_home">${(window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t('collection_go_home') : 'Ana Sayfaya Git'}</a>
         </div>
       `;
     }
   }
 
   function getPricingLabel(pricing) {
+    if (window.i18n && typeof window.i18n.t === 'function') {
+      if (pricing === 'ucretsiz') return window.i18n.t('free');
+      if (pricing === 'ucretli') return window.i18n.t('paid');
+    }
     const labels = { ucretsiz: 'Ücretsiz', ucretli: 'Ücretli', freemium: 'Freemium' };
     return labels[pricing] || pricing;
   }
 
-  function renderCollection(data) {
+    const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
     collectionTitle.textContent = data.name;
-    collectionDesc.textContent = data.description || 'Bu koleksiyon için bir açıklama girilmemiş.';
+    collectionDesc.textContent = data.description || t('collection_no_desc', 'Bu koleksiyon için bir açıklama girilmemiş.');
     collectionOwner.textContent = data.owner || 'Anonim';
     collectionMeta.style.display = 'inline-flex';
 
@@ -121,8 +125,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       collectionGrid.innerHTML = `
         <div class="empty-collection-state" style="grid-column: 1/-1;">
           <div class="empty-icon" style="font-size: 3rem; margin-bottom: 20px;">📂</div>
-          <h3>Bu Koleksiyon Boş</h3>
-          <p style="color: var(--text-secondary);">Bu koleksiyonda henüz hiçbir yapay zeka aracı listelenmemiş.</p>
+          <h3 data-i18n="collection_empty_title">${t('collection_empty_title', 'Bu Koleksiyon Boş')}</h3>
+          <p style="color: var(--text-secondary);" data-i18n="collection_empty_desc">${t('collection_empty_desc', 'Bu koleksiyonda henüz hiçbir yapay zeka aracı listelenmemiş.')}</p>
         </div>
       `;
       return;
@@ -136,25 +140,25 @@ document.addEventListener('DOMContentLoaded', async function () {
       const stars = '★'.repeat(Math.round(tool.rating || 4));
       const pricingLabel = getPricingLabel(tool.pricing);
 
-      let badges = '';
+      var badges = '';
       if (tool.featured) {
-        badges += '<span class="badge badge-featured">⭐ Öne Çıkan</span>';
+        badges += '<span class="badge badge-featured">' + t('badge_featured', '⭐ Öne Çıkan') + '</span>';
       }
       if (tool.is_new || tool.isNew) {
-        badges += '<span class="badge badge-new">🆕 Yeni</span>';
+        badges += '<span class="badge badge-new">' + t('badge_new', '🆕 Yeni') + '</span>';
       }
 
       if (tool.turkish_supported === 'full') {
-        badges += '<span class="badge badge-tr full">🇹🇷 Türkçe</span>';
+        badges += '<span class="badge badge-tr full">' + t('badge_tr_full', '🇹🇷 Türkçe') + '</span>';
       } else if (tool.turkish_supported === 'partial') {
-        badges += '<span class="badge badge-tr partial">🇹🇷 Kısmi</span>';
+        badges += '<span class="badge badge-tr partial">' + t('badge_tr_partial', '🇹🇷 Kısmi') + '</span>';
       } else if (tool.turkish_supported === 'none') {
-        badges += '<span class="badge badge-tr none">🇬🇧 İngilizce</span>';
+        badges += '<span class="badge badge-tr none">' + t('badge_tr_none', '🇬🇧 İngilizce') + '</span>';
       }
 
       // Yerli Teknoloji Rozeti
       if (tool.made_in_turkey) {
-        badges += '<span class="badge badge-yerli">🇹🇷 Yerli</span>';
+        badges += '<span class="badge badge-yerli">' + t('badge_yerli', '🇹🇷 Yerli') + '</span>';
       }
 
       let tags = tool.tags || [];

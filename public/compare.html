@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AiKlavuz — <span data-i18n="compare_title">Yapay Zeka Karşılaştırma Matrisi</span></title>
+  <title>AiKlavuz — <span data-i18n="compare_title">Yapay Zeka <span data-i18n="menu_compare">Karşılaştır</span>ma Matrisi</span></title>
   <meta name="description" content="Yapay zeka araçlarını yan yana karşılaştırın. ChatGPT, Claude ve diğer AI rakiplerini özellikleri, fiyatları ve Türkçe dil destekleriyle inceleyin.">
   <meta name="robots" content="index, follow">
   
@@ -73,12 +73,12 @@
         
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Keşfet 
+            <span data-i18n="menu_explore">Keşfet</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
             <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-            <a href="/compare" class="active">Karşılaştır</a>
+            <a href="/compare" class="active"><span data-i18n="menu_compare">Karşılaştır</span></a>
             <a href="/professions" data-i18n="menu_professions">Meslekler</a>
             <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
           </div>
@@ -86,7 +86,7 @@
 
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Çözümler 
+            <span data-i18n="menu_solutions">Çözümler</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
@@ -98,7 +98,7 @@
 
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Akademi & Trend 
+            <span data-i18n="menu_academy_trend">Akademi & Trend</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
@@ -156,7 +156,7 @@
       <nav class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
     <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-    <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
+    <a href="/compare" data-i18n="menu_compare"><span data-i18n="menu_compare">Karşılaştır</span></a>
     <a href="/workflows" data-i18n="menu_workflows">İş Akışları</a>
     <a href="/asistan" data-i18n="menu_assistant">AI Asistanı</a>
     <a href="/professions" data-i18n="menu_professions">Meslekler</a>
@@ -171,7 +171,7 @@
   <section class="compare-hero">
     <div class="container">
       <div class="compare-hero-content animate-on-scroll">
-        <h1 class="compare-title">Yapay Zeka <span class="text-gradient">Karşılaştırma Matrisi</span></h1>
+        <h1 class="compare-title">Yapay Zeka <span class="text-gradient"><span data-i18n="menu_compare">Karşılaştır</span>ma Matrisi</span></h1>
         <p class="compare-subtitle">En fazla 3 adet yapay zeka aracını yan yana koyarak özelliklerini, Türkçe dil desteğini ve fiyatlarını karşılaştırın.</p>
         
         <!-- Search and Add Area -->
@@ -182,7 +182,7 @@
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.34-4.34"></path>
               </svg>
-              <input type="text" id="compare-search-input" placeholder="Karşılaştırmaya araç ekleyin..." autocomplete="off">
+              <input type="text" id="compare-search-input" placeholder="<span data-i18n="menu_compare">Karşılaştır</span>maya araç ekleyin..." autocomplete="off">
               <button class="btn-alt-clear" id="btn-compare-clear" style="display: none;">&times;</button>
             </div>
             <div class="alt-autocomplete-dropdown" id="compare-autocomplete-dropdown" style="display: none;">
@@ -206,7 +206,7 @@
         <!-- Render detailed comparison matrix table here -->
         <div class="compare-empty-state">
           <div class="empty-icon">📊</div>
-          <h3>Karşılaştırma Listesi Boş</h3>
+          <h3><span data-i18n="menu_compare">Karşılaştır</span>ma Listesi Boş</h3>
           <p>Yukarıdaki arama kutusunu kullanarak veya anasayfadaki araç kartlarının altındaki karşılaştırma butonuna basarak araç ekleyin.</p>
         </div>
       </div>
@@ -257,7 +257,7 @@
           <a href="/#tools-section">AI Araçları</a>
           <a href="/#categories-section">Kategoriler</a>
           <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-          <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
+          <a href="/compare" data-i18n="menu_compare"><span data-i18n="menu_compare">Karşılaştır</span></a>
           <a href="/workflows" data-i18n="menu_workflows">İş Akışları</a>
           <a href="/stories">Başarı Hikayeleri</a>
         </div>
@@ -361,7 +361,7 @@
           <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-top:15px; margin-bottom:10px;">
             <input type="checkbox" id="sub-featured" style="width:18px; height:18px; cursor:pointer;">
             <label for="sub-featured" style="font-size:0.85rem; color:var(--text-primary); cursor:pointer; user-select:none; line-height:1.4;">
-              ⭐ <strong>Öne Çıkanlar (Featured)</strong> alanında listelenmesini istiyorum (Yıllık sponsorluk paketi: 5.000 TL)
+              ⭐ <strong><span data-i18n="featured">Öne Çıkan</span>lar (Featured)</strong> alanında listelenmesini istiyorum (Yıllık sponsorluk paketi: 5.000 TL)
             </label>
           </div>
           <div class="form-group" style="flex-direction:row; align-items:center; gap:8px; margin-bottom:10px;">

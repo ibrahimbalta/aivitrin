@@ -32,6 +32,7 @@
       localStorage.setItem('lang', lang);
       applyTranslations();
       updateSelectValue(lang);
+      window.dispatchEvent(new CustomEvent('i18nLoaded', { detail: { lang } }));
     } catch (err) {
       console.error('Error loading language ' + lang + ':', err);
     }
@@ -120,6 +121,7 @@
   window.i18n = {
     loadLanguage: loadTranslations,
     getLanguage: () => currentLang,
-    t: (key) => translations[key] || key
+    t: (key) => translations[key] || key,
+    applyTranslations: applyTranslations
   };
 })();

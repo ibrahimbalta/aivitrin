@@ -66,12 +66,12 @@
         
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Keşfet 
+            <span data-i18n="menu_explore">Keşfet</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
             <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-            <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
+            <a href="/compare" data-i18n="menu_compare"><span data-i18n="menu_compare">Karşılaştır</span></a>
             <a href="/professions" data-i18n="menu_professions">Meslekler</a>
             <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
           </div>
@@ -79,7 +79,7 @@
 
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Çözümler 
+            <span data-i18n="menu_solutions">Çözümler</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
@@ -91,7 +91,7 @@
 
         <div class="nav-item-dropdown">
           <span class="nav-dropdown-trigger">
-            Akademi & Trend 
+            <span data-i18n="menu_academy_trend">Akademi & Trend</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu">
@@ -149,7 +149,7 @@
   <nav class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
     <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-    <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
+    <a href="/compare" data-i18n="menu_compare"><span data-i18n="menu_compare">Karşılaştır</span></a>
     <a href="/workflows" data-i18n="menu_workflows">İş Akışları</a>
     <a href="/asistan" class="active">AI Asistanı</a>
     <a href="/professions" data-i18n="menu_professions">Meslekler</a>
@@ -160,28 +160,25 @@
     <a href="#" id="mobile-btn-submit-tool" data-i18n="menu_submit_tool">Projemi Vitrine Ekle</a>
   </nav>
 
-  <!-- MAIN ASSISTANT LAYOUT -->
-  <main class="assistant-page-layout">
-    
-    <!-- LEFT SIDEBAR -->
+      <!-- LEFT SIDEBAR -->
     <aside class="assistant-sidebar">
       <button class="btn-new-chat" id="btn-new-chat-sidebar">
-        <span>➕</span> Yeni Sohbet
+        <span>➕</span> <span data-i18n="new_chat">Yeni Sohbet</span>
       </button>
       
       <div class="sidebar-section">
-        <h4>Örnek Senaryolar</h4>
-        <button class="history-item" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">🏠 Emlakçı Video İlan Seti</button>
-        <button class="history-item" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">📱 Sosyal Medya Şablonları</button>
-        <button class="history-item" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">💻 Yazılımcı Kod Asistanları</button>
-        <button class="history-item" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">💬 Müşteri Destek Botu</button>
+        <h4 data-i18n="example_scenarios">Örnek Senaryolar</h4>
+        <button class="history-item" data-i18n="scenario_realestate" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">🏠 Emlakçı Video İlan Seti</button>
+        <button class="history-item" data-i18n="scenario_socialmedia" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">📱 Sosyal Medya Şablonları</button>
+        <button class="history-item" data-i18n="scenario_developer" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">💻 Yazılımcı Kod Asistanları</button>
+        <button class="history-item" data-i18n="scenario_support" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">💬 Müşteri Destek Botu</button>
       </div>
 
       <div class="sidebar-section" style="margin-top:auto;">
-        <h4>Çantamdaki Araçlar</h4>
+        <h4 data-i18n="tools_in_my_bag">Çantamdaki Araçlar</h4>
         <div id="sidebar-toolkit-list" style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:8px;">
           <!-- Loaded by JS -->
-          <span style="color:var(--text-muted); font-style:italic;">Çantanız boş.</span>
+          <span style="color:var(--text-muted); font-style:italic;" data-i18n="empty_bag_text">Çantanız boş.</span>
         </div>
       </div>
     </aside>
@@ -192,9 +189,9 @@
       <!-- Mobile sub-header bar for sidebar toggle -->
       <div class="assistant-chat-header-bar" style="display:none; align-items:center; padding:12px 20px; background:rgba(255,255,255,0.02); border-bottom:1px solid var(--border-color);">
         <button class="btn-secondary" id="btn-toggle-assistant-sidebar" style="padding:6px 12px; font-size:0.8rem; display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <span>☰</span> Senaryolar & Çanta
+          <span>☰</span> <span data-i18n="scenarios_and_bag">Senaryolar & Çanta</span>
         </button>
-        <span style="font-weight:600; font-size:0.9rem; color:var(--text-primary); margin-left:auto;">AI Yol Arkadaşı</span>
+        <span style="font-weight:600; font-size:0.9rem; color:var(--text-primary); margin-left:auto;" data-i18n="assistant_title">AI Yol Arkadaşı</span>
       </div>
       
       <!-- CHAT MESSAGE THREAD -->
@@ -204,7 +201,7 @@
         <div class="chat-welcome-screen" id="chat-welcome-screen">
           <span class="welcome-logo">🧠</span>
           <h2 class="welcome-title"><span data-i18n="assistant_title">AiKlavuz Yol Arkadaşı</span></h2>
-          <p class="welcome-subtitle">
+          <p class="welcome-subtitle" data-i18n="assistant_welcome_subtitle">
             Hangi işi yaptığınızı veya neyi otomatize etmek istediğinizi söyleyin. 
             Yapay zeka asistanımız vitrinimizdeki en iyi araçları sizin için seçsin, 
             kullanım adımlarını ve bütçesini anında listelesin.
@@ -212,20 +209,20 @@
           
           <div class="suggestion-grid">
             <div class="suggestion-card" data-prompt="Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı">
-              <h5>🏠 Emlakçı Video Seti</h5>
-              <p>"Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı"</p>
+              <h5 data-i18n="scenario_realestate_mini">🏠 Emlakçı Video Seti</h5>
+              <p data-i18n="prompt_realestate">"Ben bir emlakçıyım, seslendirmeli video ilanlar hazırlamak istiyorum ve bütçem kısıtlı"</p>
             </div>
             <div class="suggestion-card" data-prompt="Sosyal medya hesabı yönetiyorum, haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçları önerir misin?">
-              <h5>📱 Sosyal Medya</h5>
-              <p>"Haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçlar..."</p>
+              <h5 data-i18n="scenario_socialmedia_mini">📱 Sosyal Medya</h5>
+              <p data-i18n="prompt_socialmedia_short">"Haftalık 10 gönderi (görsel + metin) hazırlamak için en iyi araçlar..."</p>
             </div>
             <div class="suggestion-card" data-prompt="Yazılım geliştiriciyim, kod yazarken bana yardımcı olacak ve kod hatalarını bulacak yapay zekaları listele.">
-              <h5>💻 Kod Asistanı</h5>
-              <p>"Kod yazarken bana yardımcı olacak ve hataları bulacak yapay zekalar..."</p>
+              <h5 data-i18n="scenario_developer_mini">💻 Kod Asistanı</h5>
+              <p data-i18n="prompt_developer_short">"Kod yazarken bana yardımcı olacak ve hataları bulacak yapay zekalar..."</p>
             </div>
             <div class="suggestion-card" data-prompt="Kendi şirketim için bir AI Chatbot müşteri temsilcisi kurmak istiyorum. Hangi no-code platformları kullanabilirim?">
-              <h5>💬 Müşteri Destek Botu</h5>
-              <p>"AI Chatbot müşteri temsilcisi kurmak için hangi platformları kullanabilirim?"</p>
+              <h5 data-i18n="scenario_support_mini">💬 Müşteri Destek Botu</h5>
+              <p data-i18n="prompt_support_short">"AI Chatbot müşteri temsilcisi kurmak için hangi platformları kullanabilirim?"</p>
             </div>
           </div>
         </div>
@@ -236,8 +233,8 @@
       <div class="chat-input-wrapper">
         <div class="chat-input-box">
           <form class="chat-input-form" id="assistant-chat-form">
-            <textarea class="chat-textarea" id="assistant-chat-input" placeholder="Yapay zeka danışmanınıza sorun... (örn: Emlakçıyım video ilan yapmak istiyorum)" required></textarea>
-            <button type="submit" class="btn-send-message" id="btn-assistant-send" title="Gönder">
+            <textarea class="chat-textarea" id="assistant-chat-input" data-i18n-placeholder="assistant_textarea_placeholder" placeholder="Yapay zeka danışmanınıza sorun... (örn: Emlakçıyım video ilan yapmak istiyorum)" required></textarea>
+            <button type="submit" class="btn-send-message" id="btn-assistant-send" data-i18n-title="advisor_send_title" title="Gönder">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -245,7 +242,7 @@
             </button>
           </form>
           <div class="chat-input-disclaimer">
-            💡 <span data-i18n="assistant_title">AiKlavuz Yol Arkadaşı</span>, vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur.
+            💡 <span data-i18n="assistant_title">AiKlavuz Yol Arkadaşı</span> <span data-i18n="assistant_disclaimer_text">vitrinimizdeki güncel AI araçlarını tarayarak size özel bütçe ve rehber oluşturur.</span>
           </div>
         </div>
       </div>

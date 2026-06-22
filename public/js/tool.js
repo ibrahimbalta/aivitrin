@@ -2,6 +2,8 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', async function () {
+  const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
+
   // Global Toast Notification System
   window.showToast = window.showToast || function (message, type) {
     var toast = document.createElement('div');
@@ -95,47 +97,58 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   function showEmptyState() {
-    document.title = 'Araç Bulunamadı — AiKlavuz';
-    toolNameEl.textContent = 'Araç Bulunamadı';
-    toolDescEl.textContent = 'Aradığınız yapay zeka aracı vitrinimizde bulunmuyor veya yayından kaldırılmış.';
+    document.title = t('tool_not_found_title', 'Araç Bulunamadı') + ' — AiKlavuz';
+    toolNameEl.textContent = t('tool_not_found_title', 'Araç Bulunamadı');
+    toolDescEl.textContent = t('tool_not_found_desc', 'Aradığınız yapay zeka aracı vitrinimizde bulunmuyor veya yayından kaldırılmış.');
     const detailsLayout = document.querySelector('.tool-detail-layout');
     if (detailsLayout) {
       detailsLayout.innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 100px 20px;">
           <div style="font-size: 3.5rem; margin-bottom: 20px;">🔍</div>
-          <h2>Aradığınız Yapay Zeka Aracı Bulunamadı</h2>
-          <p style="color: var(--text-secondary); margin-top: 10px; max-width: 500px; margin-left: auto; margin-right: auto;">Aradığınız araç silinmiş veya hatalı bir bağlantı kullanılmış olabilir.</p>
-          <a href="/" class="btn-primary" style="display: inline-block; margin-top: 24px; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 8px; background: var(--gradient-primary); color: white;">Ana Sayfaya Dön</a>
+          <h2>${t('tool_not_found_title', 'Aradığınız Yapay Zeka Aracı Bulunamadı')}</h2>
+          <p style="color: var(--text-secondary); margin-top: 10px; max-width: 500px; margin-left: auto; margin-right: auto;">${t('tool_not_found_sub', 'Aradığınız araç silinmiş veya hatalı bir bağlantı kullanılmış olabilir.')}</p>
+          <a href="/" class="btn-primary" style="display: inline-block; margin-top: 24px; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 8px; background: var(--gradient-primary); color: white;">${t('back_to_home', 'Ana Sayfaya Dön')}</a>
         </div>
       `;
     }
   }
 
   function getPricingLabel(pricing) {
+    if (window.i18n && typeof window.i18n.t === 'function') {
+      if (pricing === 'ucretsiz') return window.i18n.t('free');
+      if (pricing === 'ucretli') return window.i18n.t('paid');
+    }
     const labels = { ucretsiz: 'Ücretsiz', ucretli: 'Ücretli', freemium: 'Freemium' };
     return labels[pricing] || pricing;
   }
 
   function getTrSupportLabel(support) {
+    if (window.i18n && typeof window.i18n.t === 'function') {
+      if (support === 'full') return window.i18n.t('tr_support_full');
+      if (support === 'partial') return window.i18n.t('tr_support_partial');
+      if (support === 'none') return window.i18n.t('tr_support_none');
+    }
     const labels = { full: 'Tam Türkçe Desteği', partial: 'Kısmi Türkçe Desteği', none: 'Yalnızca İngilizce' };
     return labels[support] || 'Bilinmiyor';
   }
 
   function renderToolDetails() {
     // Page Title Update
-    document.title = `${toolData.name} — Türkçe Detaylı İnceleme & Alternatifleri | AiKlavuz`;
+    const titleSuffix = t('tool_detail_title_suffix', 'Türkçe Detaylı İnceleme & Alternatifleri');
+    document.title = `${toolData.name} — ${titleSuffix} | AiKlavuz`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', `${toolData.name} yapay zeka aracının detayları, kullanıcı yorumları, Türkçe dil desteği, fiyat modelleri ve en iyi alternatif rakipleri.`);
+      const metaContent = t('tool_detail_meta_desc', '{name} yapay zeka aracının detayları, kullanıcı yorumları, Türkçe dil desteği, fiyat modelleri ve en iyi alternatif rakipleri.').replace('{name}', toolData.name);
+      metaDescription.setAttribute('content', metaContent);
     }
 
     toolNameEl.textContent = toolData.name;
-    toolCategoryEl.textContent = toolData.category_name ? `${toolData.category_icon} ${toolData.category_name}` : 'Yapay Zeka';
+    toolCategoryEl.textContent = toolData.category_name ? `${toolData.category_icon} ${toolData.category_name}` : t('ai_category_fallback', 'Yapay Zeka');
     
     // Rating
     toolRatingVal.textContent = toolData.rating.toFixed(1);
     toolRatingStars.textContent = '★'.repeat(Math.round(toolData.rating));
-    toolVotesEl.textContent = `${toolData.votes || 0} oy`;
+    toolVotesEl.textContent = t('votes_count', '{count} oy').replace('{count}', toolData.votes || 0);
     voteCountLabel.textContent = toolData.votes || 0;
 
     // Desc & Link
@@ -174,22 +187,23 @@ document.addEventListener('DOMContentLoaded', async function () {
   function syncButtonStates() {
     // Vote State
     const votedList = JSON.parse(localStorage.getItem('voted_tools') || '[]');
+    const votesNum = toolData.votes || 0;
     if (votedList.indexOf(toolId) !== -1) {
       btnVote.classList.add('voted');
-      btnVote.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> Beğenildi (${toolData.votes || 0})`;
+      btnVote.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> ${t('button_liked', 'Beğenildi ({count})').replace('{count}', votesNum)}`;
     } else {
       btnVote.classList.remove('voted');
-      btnVote.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> Beğen (${toolData.votes || 0})`;
+      btnVote.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> ${t('button_like', 'Beğen ({count})').replace('{count}', votesNum)}`;
     }
 
     // Bookmark State
     const bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
     if (bookmarks.indexOf(toolId) !== -1) {
       btnBookmark.classList.add('active');
-      btnBookmark.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg> Çantamda`;
+      btnBookmark.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg> ${t('button_in_bag', 'Çantamda')}`;
     } else {
       btnBookmark.classList.remove('active');
-      btnBookmark.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg> Çantama Ekle`;
+      btnBookmark.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg> ${t('button_add_bag', 'Çantama Ekle')}`;
     }
   }
 
@@ -197,7 +211,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (reviews.length === 0) {
       reviewsContainer.innerHTML = `
         <div style="text-align: center; padding: 24px; color: var(--text-muted); background: rgba(255,255,255,0.01); border: 1px dashed var(--border-color); border-radius: 8px;">
-          Henüz inceleme yapılmamış. Bu aracı değerlendiren ilk kişi siz olun!
+          ${t('reviews_empty', 'Henüz inceleme yapılmamış. Bu aracı değerlendiren ilk kişi siz olun!')}
         </div>
       `;
       return;
@@ -206,8 +220,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Sort newest first
     reviews.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
+    const langCode = window.i18n ? window.i18n.getLanguage() : 'tr';
+    const localeMap = { 'tr': 'tr-TR', 'en': 'en-US', 'de': 'de-DE' };
+
     reviewsContainer.innerHTML = reviews.map(rev => {
-      const dateStr = rev.created_at ? new Date(rev.created_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : '-';
+      const dateStr = rev.created_at ? new Date(rev.created_at).toLocaleDateString(localeMap[langCode] || 'tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : '-';
       const stars = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
       return `
         <div class="review-item">
@@ -279,7 +296,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       const comment = commentInput.value.trim();
 
       if (selectedRating === 0) {
-        showToast('Lütfen bir yıldız puanı seçin.', 'error');
+        showToast(t('please_select_rating', 'Lütfen bir yıldız puanı seçin.'), 'error');
         return;
       }
 
@@ -302,10 +319,10 @@ document.addEventListener('DOMContentLoaded', async function () {
           toolData.votes = (toolData.votes || 0) + 1;
           renderToolDetails();
         } else {
-          showToast(data.error || 'İnceleme gönderilemedi.', 'error');
+          showToast(data.error || t('review_submit_failed', 'İnceleme gönderilemedi.'), 'error');
         }
       } catch (err) {
-        showToast('Bağlantı hatası oluştu.', 'error');
+        showToast(t('connection_error_occurred', 'Bağlantı hatası oluştu.'), 'error');
       }
     });
   }
@@ -321,7 +338,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
       const list = await res.json();
       if (list.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted); grid-column:1/-1;">Bu araç için benzer alternatif bulunamadı.</p>';
+        grid.innerHTML = `<p style="color:var(--text-muted); grid-column:1/-1;">${t('no_alternatives_found', 'Bu araç için benzer alternatif bulunamadı.')}</p>`;
         return;
       }
 
@@ -366,7 +383,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     e.preventDefault();
     const votedList = JSON.parse(localStorage.getItem('voted_tools') || '[]');
     if (votedList.indexOf(toolId) !== -1) {
-      showToast('Bu araca zaten oy verdiniz!', 'error');
+      showToast(t('already_voted', 'Bu araca zaten oy verdiniz!'), 'error');
       return;
     }
 
@@ -378,12 +395,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.setItem('voted_tools', JSON.stringify(votedList));
         toolData.votes = data.votes;
         renderToolDetails();
-        showToast('Oyunuz kaydedildi!', 'success');
+        showToast(t('vote_saved', 'Oyunuz kaydedildi!'), 'success');
       } else {
-        showToast('Oy verilemedi.', 'error');
+        showToast(t('vote_failed', 'Oy verilemedi.'), 'error');
       }
     } catch (err) {
-      showToast('Bağlantı hatası.', 'error');
+      showToast(t('connection_error_short', 'Bağlantı hatası.'), 'error');
     }
   });
 
@@ -401,10 +418,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (idx === -1) {
       bookmarks.push(toolId);
-      showToast('AI Çantama eklendi!', 'success');
+      showToast(t('added_to_bag_toast', 'AI Çantama eklendi!'), 'success');
     } else {
       bookmarks.splice(idx, 1);
-      showToast('AI Çantamdan çıkarıldı.', 'success');
+      showToast(t('removed_from_bag_toast', 'AI Çantamdan çıkarıldı.'), 'success');
     }
     localStorage.setItem('toolkit', JSON.stringify(bookmarks));
     window.dispatchEvent(new CustomEvent('toolkitUpdated'));
@@ -415,19 +432,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     e.preventDefault();
     const compareList = JSON.parse(localStorage.getItem('compare_tools') || '[]');
     if (compareList.indexOf(toolId) !== -1) {
-      showToast('Bu araç zaten karşılaştırma listesinde.', 'error');
+      showToast(t('already_in_compare', 'Bu araç zaten karşılaştırma listesinde.'), 'error');
       return;
     }
 
     if (compareList.length >= 3) {
-      showToast('En fazla 3 aracı karşılaştırabilirsiniz.', 'error');
+      showToast(t('max_compare_limit', 'En fazla 3 aracı karşılaştırabilirsiniz.'), 'error');
       return;
     }
 
     compareList.push(toolId);
     localStorage.setItem('compare_tools', JSON.stringify(compareList));
-    showToast('Karşılaştırma listesine eklendi.', 'success');
-    if (confirm('Karşılaştırmaya eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?')) {
+    showToast(t('added_to_compare', 'Karşılaştırma listesine eklendi.'), 'success');
+    if (confirm(t('added_to_compare_confirm', 'Karşılaştırmaya eklendi. Şimdi karşılaştırma sayfasına gitmek ister misiniz?'))) {
       window.location.href = '/compare';
     }
   });

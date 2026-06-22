@@ -109,25 +109,27 @@ document.addEventListener('DOMContentLoaded', async function () {
       tableWrapper.innerHTML = `
         <div class="compare-empty-state">
           <div class="empty-icon">📊</div>
-          <h3>Karşılaştırma Listesi Boş</h3>
-          <p>Yukarıdaki arama kutusunu kullanarak veya anasayfadaki araç kartlarının altındaki karşılaştırma butonuna basarak araç ekleyin.</p>
+          <h3 data-i18n="compare_empty_title">${(window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t('compare_empty_title') : 'Karşılaştırma Listesi Boş'}</h3>
+          <p data-i18n="compare_empty_desc">${(window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t('compare_empty_desc') : 'Yukarıdaki arama kutusunu kullanarak veya anasayfadaki araç kartlarının altındaki karşılaştırma butonuna basarak araç ekleyin.'}</p>
         </div>
       `;
       return;
     }
 
+    const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
+
     let html = '<table class="compare-table">';
-    html += '<thead><tr><th>Özellik / Karşılaştırma</th>';
+    html += '<thead><tr><th data-i18n="compare_features_col">' + t('compare_features_col', 'Özellik / Karşılaştırma') + '</th>';
     
-    toolsToCompare.forEach(t => {
-      const firstLetter = t.name.charAt(0).toUpperCase();
+    toolsToCompare.forEach(toolItem => {
+      const firstLetter = toolItem.name.charAt(0).toUpperCase();
       html += `
         <th>
           <div class="compare-th-header">
             <div class="tool-icon">${firstLetter}</div>
             <div class="compare-th-title">
-              <h4>${t.name}</h4>
-              <button class="btn-remove-compare" data-id="${t.id}" title="Listeden Çıkar">&times;</button>
+              <h4>${toolItem.name}</h4>
+              <button class="btn-remove-compare" data-id="${toolItem.id}" title="Listeden Çıkar">&times;</button>
             </div>
           </div>
         </th>
@@ -136,43 +138,46 @@ document.addEventListener('DOMContentLoaded', async function () {
     html += '</tr></thead><tbody>';
 
     const getTrBadge = val => {
-      if (val === 'full') return '<span class="badge badge-tr full">🇹🇷 Tam Destek</span>';
-      if (val === 'partial') return '<span class="badge badge-tr partial">🇹🇷 Kısmi</span>';
-      return '<span class="badge badge-tr none">🇬🇧 İngilizce</span>';
+      if (val === 'full') return '<span class="badge badge-tr full">' + t('tr_support_full', '🇹🇷 Tam Destek') + '</span>';
+      if (val === 'partial') return '<span class="badge badge-tr partial">' + t('tr_support_partial', '🇹🇷 Kısmi') + '</span>';
+      return '<span class="badge badge-tr none">' + t('badge_tr_none', '🇬🇧 İngilizce') + '</span>';
     };
 
     const getPricingBadge = val => {
-      const labels = { ucretsiz: 'Ücretsiz', ucretli: 'Ücretli', freemium: 'Freemium' };
-      return `<span class="tool-pricing pricing-${val}">${labels[val] || val}</span>`;
+      let pricingLabel = val;
+      if (val === 'ucretsiz') pricingLabel = t('free', 'Ücretsiz');
+      if (val === 'ucretli') pricingLabel = t('paid', 'Ücretli');
+      if (val === 'freemium') pricingLabel = 'Freemium';
+      return `<span class="tool-pricing pricing-${val}">${pricingLabel}</span>`;
     };
 
     const rows = [
-      { label: 'Kategori', key: 'category_id', format: val => {
+      { label: t('compare_category', 'Kategori'), key: 'category_id', format: val => {
           const cat = categories.find(c => c.id === val);
           return cat ? `${cat.icon} ${cat.name}` : '';
         }
       },
-      { label: 'Puan', key: 'rating', format: val => '★'.repeat(Math.round(val)) + ` <span>(${val} / 5)</span>` },
-      { label: 'Fiyatlandırma Modeli', key: 'pricing', format: getPricingBadge },
-      { label: 'Türkiye Fiyatı / Notu', key: 'pricing_try', format: val => val || 'Belirtilmemiş' },
-      { label: 'Türkçe Desteği', key: 'turkish_supported', format: getTrBadge },
-      { label: 'Popülerlik (Oy)', key: 'votes', format: val => `👍 ${val || 0} Oy` },
-      { label: 'Etiketler', key: 'tags', format: val => {
+      { label: t('compare_rating', 'Puan'), key: 'rating', format: val => '★'.repeat(Math.round(val)) + ` <span>(${val} / 5)</span>` },
+      { label: t('compare_pricing_model', 'Fiyatlandırma Modeli'), key: 'pricing', format: getPricingBadge },
+      { label: t('compare_turkey_price', 'Türkiye Fiyatı / Notu'), key: 'pricing_try', format: val => val || t('compare_unspecified', 'Belirtilmemiş') },
+      { label: t('compare_turkish_support', 'Türkçe Desteği'), key: 'turkish_supported', format: getTrBadge },
+      { label: t('compare_popularity', 'Popülerlik (Oy)'), key: 'votes', format: val => `👍 ${val || 0} ${t('votes_suffix', 'Oy')}` },
+      { label: t('tags_label', 'Etiketler'), key: 'tags', format: val => {
           let tags = val;
           if (typeof tags === 'string') {
             try { tags = JSON.parse(tags); } catch(e) { tags = []; }
           }
-          return (tags || []).map(t => `<span class="tool-tag">${t}</span>`).join(' ');
+          return (tags || []).map(tagText => `<span class="tool-tag">${tagText}</span>`).join(' ');
         }
       },
-      { label: 'Kısa Açıklama', key: 'description', format: val => val },
-      { label: 'Bağlantı', key: 'url', format: val => `<a href="${val}" target="_blank" rel="noopener" class="btn-visit-table">Sitede Gör &rarr;</a>` }
+      { label: t('compare_description', 'Kısa Açıklama'), key: 'description', format: val => val },
+      { label: t('compare_link', 'Bağlantı'), key: 'url', format: val => `<a href="${val}" target="_blank" rel="noopener" class="btn-visit-table">${t('compare_visit_site', 'Sitede Gör')} &rarr;</a>` }
     ];
 
     rows.forEach(row => {
       html += `<tr><td class="compare-row-label">${row.label}</td>`;
-      toolsToCompare.forEach(t => {
-        const value = t[row.key];
+      toolsToCompare.forEach(toolObj => {
+        const value = toolObj[row.key];
         const formatted = row.format ? row.format(value) : value;
         html += `<td>${formatted || '-'}</td>`;
       });

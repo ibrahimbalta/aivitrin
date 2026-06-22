@@ -2,6 +2,8 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
+  const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
+
   // Chatbot HTML Arayüzünü Dinamik Olarak Enjekte Et
   const chatbotHtml = `
     <!-- Floating Chat Bubble -->
@@ -21,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="header-info">
           <span class="avatar-icon">🧠</span>
           <div>
-            <h4>AI Danışman</h4>
-            <span class="status-indicator">çevrimiçi</span>
+            <h4 data-i18n="advisor_title">AI Danışman</h4>
+            <span class="status-indicator" data-i18n="advisor_status">çevrimiçi</span>
           </div>
         </div>
         <button class="btn-close-chatbox" id="btn-close-chatbox">&times;</button>
@@ -30,14 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
       
       <div class="chatbox-body" id="chatbox-body">
         <div class="chat-message system">
-          <p>Merhaba! Ben AiKlavuz'in akıllı danışmanıyım. 🤖</p>
-          <p>İhtiyacınız olan yapay zeka aracı türünü yazın, size en popüler ve uygun alternatifleri hemen önereyim. (Örn: <em>"Resim çizen ücretsiz araçlar"</em> veya <em>"Kod yazma asistanı"</em>)</p>
+          <p data-i18n="advisor_welcome_1">Merhaba! Ben AiKlavuz'in akıllı danışmanıyım. 🤖</p>
+          <p data-i18n="advisor_welcome_2">İhtiyacınız olan yapay zeka aracı türünü yazın, size en popüler ve uygun alternatifleri hemen önereyim. (Örn: <em>"Resim çizen ücretsiz araçlar"</em> veya <em>"Kod yazma asistanı"</em>)</p>
         </div>
       </div>
       
       <div class="chatbox-footer">
         <form id="chatbox-form" style="display:flex; width:100%; gap:8px;">
-          <input type="text" id="chatbox-input" placeholder="Mesajınızı yazın..." autocomplete="off" required>
+          <input type="text" id="chatbox-input" placeholder="Mesajınızı yazın..." data-i18n-placeholder="advisor_input_placeholder" autocomplete="off" required>
           <button type="submit" class="btn-chatbox-send" id="btn-chatbox-send" title="Gönder">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
           </button>
@@ -51,6 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
   while (div.firstChild) {
     document.body.appendChild(div.firstChild);
   }
+
+  // Initial translation apply in case translations are already loaded
+  if (window.i18n && typeof window.i18n.applyTranslations === 'function') {
+    window.i18n.applyTranslations();
+  }
+
+  // Listen to language loaded events to translate chatbot interface on the fly
+  window.addEventListener('i18nLoaded', function () {
+    if (window.i18n && typeof window.i18n.applyTranslations === 'function') {
+      window.i18n.applyTranslations();
+    }
+  });
 
   const bubble = document.getElementById('ai-advisor-bubble');
   const chatbox = document.getElementById('ai-advisor-chatbox');
@@ -105,11 +119,11 @@ document.addEventListener('DOMContentLoaded', function () {
           const data = await res.json();
           appendMessage('system', data.reply, data.recommended_tools);
         } else {
-          appendMessage('system', 'Üzgünüm, şu anda yanıt veremiyorum. Lütfen daha sonra tekrar deneyin.');
+          appendMessage('system', t('advisor_error_response', 'Üzgünüm, şu anda yanıt veremiyorum. Lütfen daha sonra tekrar deneyin.'));
         }
       } catch (err) {
         removeTypingIndicator(typingId);
-        appendMessage('system', 'Bağlantı hatası oluştu. Lütfen internetinizi kontrol edin.');
+        appendMessage('system', t('advisor_conn_error', 'Bağlantı hatası oluştu. Lütfen internetinizi kontrol edin.'));
       }
       
       chatBody.scrollTop = chatBody.scrollHeight;
@@ -132,22 +146,31 @@ document.addEventListener('DOMContentLoaded', function () {
     if (tools && tools.length > 0) {
       htmlContent += `
         <div class="chat-tool-recommendations">
-          ${tools.map(t => {
-            const pricingLabel = t.pricing === 'ucretsiz' ? 'Ücretsiz' : t.pricing === 'freemium' ? 'Freemium' : 'Ücretli';
+          ${tools.map(toolItem => {
+            let pricingLabel = t('paid', 'Ücretli');
+            if (toolItem.pricing === 'ucretsiz') pricingLabel = t('free', 'Ücretsiz');
+            else if (toolItem.pricing === 'freemium') pricingLabel = t('freemium', 'Freemium');
+
+            let supportText = t('badge_tr_none', '🇬🇧 İngilizce');
+            if (toolItem.turkish_supported === 'full') supportText = t('badge_tr_full', '🇹🇷 Türkçe');
+            else if (toolItem.turkish_supported === 'partial') supportText = t('badge_tr_partial', '🇹🇷 Kısmi');
+
+            const viewBtnText = t('advisor_view_btn', 'İncele');
+
             return `
-              <div class="chat-tool-card" data-url="${t.url}" style="cursor:pointer">
+              <div class="chat-tool-card" data-url="${toolItem.url}" style="cursor:pointer">
                 <div class="card-top">
-                  <span class="tool-icon-mini">${t.name.charAt(0).toUpperCase()}</span>
+                  <span class="tool-icon-mini">${toolItem.name.charAt(0).toUpperCase()}</span>
                   <div class="card-name-group">
-                    <h5>${t.name}</h5>
-                    <span class="tool-cat-mini">${t.category_icon || '📁'} ${t.category_name || ''}</span>
+                    <h5>${toolItem.name}</h5>
+                    <span class="tool-cat-mini">${toolItem.category_icon || '📁'} ${toolItem.category_name || ''}</span>
                   </div>
                 </div>
-                <p class="tool-desc-mini">${t.description.substring(0, 75)}...</p>
+                <p class="tool-desc-mini">${toolItem.description.substring(0, 75)}...</p>
                 <div class="card-bottom">
-                  <span class="tool-badge-mini pricing-${t.pricing}">${pricingLabel}</span>
-                  <span class="tool-badge-mini tr-${t.turkish_supported || 'none'}">🇹🇷 ${t.turkish_supported === 'full' ? 'Türkçe' : t.turkish_supported === 'partial' ? 'Kısmi' : 'İngilizce'}</span>
-                  <a href="/tool/${t.id}" class="btn-tool-visit" target="_blank">İncele</a>
+                  <span class="tool-badge-mini pricing-${toolItem.pricing}">${pricingLabel}</span>
+                  <span class="tool-badge-mini tr-${toolItem.turkish_supported || 'none'}">${supportText}</span>
+                  <a href="/tool/${toolItem.id}" class="btn-tool-visit" target="_blank">${viewBtnText}</a>
                 </div>
               </div>
             `;

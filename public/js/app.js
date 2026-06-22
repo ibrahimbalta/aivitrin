@@ -19,6 +19,10 @@ function debounce(fn, ms) {
 }
 
 function getPricingLabel(pricing) {
+  if (window.i18n && typeof window.i18n.t === 'function') {
+    if (pricing === 'ucretsiz') return window.i18n.t('free');
+    if (pricing === 'ucretli') return window.i18n.t('paid');
+  }
   const labels = { ucretsiz: 'Ücretsiz', ucretli: 'Ücretli', freemium: 'Freemium' };
   return labels[pricing] || pricing;
 }
@@ -138,26 +142,28 @@ document.addEventListener('DOMContentLoaded', async function () {
     var stars = '★'.repeat(Math.round(tool.rating));
     var pricingLabel = getPricingLabel(tool.pricing);
 
+    const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
+
     var badges = '';
     if (tool.featured) {
-      badges += '<span class="badge badge-featured">⭐ Öne Çıkan</span>';
+      badges += '<span class="badge badge-featured">' + t('badge_featured', '⭐ Öne Çıkan') + '</span>';
     }
     if (tool.is_new || tool.isNew) {
-      badges += '<span class="badge badge-new">🆕 Yeni</span>';
+      badges += '<span class="badge badge-new">' + t('badge_new', '🆕 Yeni') + '</span>';
     }
 
     // Türkçe Desteği Rozeti
     if (tool.turkish_supported === 'full') {
-      badges += '<span class="badge badge-tr full">🇹🇷 Türkçe</span>';
+      badges += '<span class="badge badge-tr full">' + t('badge_tr_full', '🇹🇷 Türkçe') + '</span>';
     } else if (tool.turkish_supported === 'partial') {
-      badges += '<span class="badge badge-tr partial">🇹🇷 Kısmi</span>';
+      badges += '<span class="badge badge-tr partial">' + t('badge_tr_partial', '🇹🇷 Kısmi') + '</span>';
     } else if (tool.turkish_supported === 'none') {
-      badges += '<span class="badge badge-tr none">🇬🇧 İngilizce</span>';
+      badges += '<span class="badge badge-tr none">' + t('badge_tr_none', '🇬🇧 İngilizce') + '</span>';
     }
 
     // Yerli Teknoloji Rozeti
     if (tool.made_in_turkey) {
-      badges += '<span class="badge badge-yerli">🇹🇷 Yerli</span>';
+      badges += '<span class="badge badge-yerli">' + t('badge_yerli', '🇹🇷 Yerli') + '</span>';
     }
 
     var tags = tool.tags;

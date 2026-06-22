@@ -52,6 +52,66 @@ const categoryTranslations = {
   }
 };
 
+function translatePricingTry(pricingTry, lang) {
+  if (!pricingTry) return pricingTry;
+  if (!lang || lang === 'tr') return pricingTry;
+
+  let val = pricingTry.trim();
+  if (lang === 'en') {
+    if (val === 'Ücretsiz') return 'Free';
+    if (val === 'Ücretsiz Plan Mevcut') return 'Free Plan Available';
+    if (val === 'Özel Teklif') return 'Special Offer';
+    
+    val = val.replace(/(\d+)\s*TL\/ay'dan başlayan/i, "Starting from $1 TRY/month")
+             .replace(/(\d+)\s*TL\/ay/i, "$1 TRY/month")
+             .replace(/(\d+)\s*USD\/ay/i, "$1 USD/month")
+             .replace(/~\s*(\d+)\s*TL/i, "~$1 TRY")
+             .replace(/ay/i, "month");
+  } else if (lang === 'de') {
+    if (val === 'Ücretsiz') return 'Kostenlos';
+    if (val === 'Ücretsiz Plan Mevcut') return 'Kostenloser Plan verfügbar';
+    if (val === 'Özel Teklif') return 'Sonderangebot';
+
+    val = val.replace(/(\d+)\s*TL\/ay'dan başlayan/i, "ab $1 TRY/Monat")
+             .replace(/(\d+)\s*TL\/ay/i, "$1 TRY/Monat")
+             .replace(/(\d+)\s*USD\/ay/i, "$1 USD/Monat")
+             .replace(/~\s*(\d+)\s*TL/i, "~$1 TRY")
+             .replace(/ay/i, "Monat");
+  }
+  return val;
+}
+
+async function translateProsCons(pros, cons, lang, settings) {
+  if (!pros || !cons || pros.length === 0 || cons.length === 0) return { pros, cons };
+  if (!lang || lang === 'tr') return { pros, cons };
+
+  const apiKey = process.env.GROQ_API_KEY || process.env.AI_API_KEY || settings.ai_api_key;
+  if (!apiKey) return { pros, cons };
+
+  try {
+    const { callLLM } = require('../services/ai');
+    const systemPrompt = "You are a professional translator. Translate the following pros and cons list of an AI tool from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
+      "Keep the points short (max 80 chars) and return strictly as a JSON object with \"pros\" and \"cons\" arrays. Do not output anything else.\n\n" +
+      "JSON Format:\n{\n  \"pros\": [\"translated pro 1\", \"translated pro 2\", ...],\n  \"cons\": [\"translated con 1\", \"translated con 2\", ...]\n}";
+    const userPrompt = 'Pros: ' + JSON.stringify(pros) + '\nCons: ' + JSON.stringify(cons);
+    const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+    
+    let translated = { pros: [], cons: [] };
+    try {
+      translated = JSON.parse(llmResponse);
+    } catch(e) {
+      const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+      translated = JSON.parse(cleanJson);
+    }
+    if (translated.pros && translated.pros.length > 0) {
+      return translated;
+    }
+  } catch (err) {
+    console.error('[translateProsCons Helper Failed]:', err.message);
+  }
+  return { pros, cons };
+}
+
 const translatingIds = new Set();
 
 async function translateInBackground(toolId, lang) {
@@ -113,74 +173,82 @@ async function translateToolIfNeeded(tool, lang, db) {
   const descKey = 'description_' + lang;
   const tagsKey = 'tags_' + lang;
 
+  let translated = tool;
   if (tool[descKey]) {
-    return {
+    translated = {
       ...tool,
       description: tool[descKey],
       tags: tool[tagsKey] || tool.tags
     };
+  } else {
+    // Fallback to original Turkish, but translate in background
+    translateInBackground(tool.id, lang).catch(err => {});
   }
 
-  // Fallback to original Turkish, but translate in background
-  translateInBackground(tool.id, lang).catch(err => {});
-  return tool;
+  if (translated.pricing_try) {
+    translated.pricing_try = translatePricingTry(translated.pricing_try, lang);
+  }
+  return translated;
 }
 
 async function getTranslatedToolSync(tool, lang, db) {
   const descKey = 'description_' + lang;
   const tagsKey = 'tags_' + lang;
 
+  let translated = tool;
   if (tool[descKey]) {
-    return {
+    translated = {
       ...tool,
       description: tool[descKey],
       tags: tool[tagsKey] || tool.tags
     };
-  }
-
-  const settings = db.crawler_settings || {};
-  if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
-    return tool;
-  }
-
-  try {
-    const { callLLM } = require('../services/ai');
-    const systemPrompt = "You are a professional translator. Translate the following AI tool description and tags from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
-      "Keep the same tone, professional terminology, and style.\n" +
-      "Return the result strictly as a JSON object with \"description\" and \"tags\" keys. Do not output anything else.\n\n" +
-      "JSON Format:\n{\n  \"description\": \"translated description\",\n  \"tags\": [\"tag1\", \"tag2\", ...]\n}";
-    const userPrompt = 'Description: "' + tool.description + '"\nTags: ' + JSON.stringify(tool.tags);
-    const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
-    
-    let translated = { description: '', tags: [] };
-    try {
-      translated = JSON.parse(llmResponse);
-    } catch (e) {
-      const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-      translated = JSON.parse(cleanJson);
-    }
-
-    if (translated.description) {
-      const currentDb = readDB();
-      const currentIdx = currentDb.tools.findIndex(t => t.id === tool.id);
-      if (currentIdx !== -1) {
-        currentDb.tools[currentIdx][descKey] = translated.description;
-        currentDb.tools[currentIdx][tagsKey] = translated.tags;
-        writeDB(currentDb);
+  } else {
+    const settings = db.crawler_settings || {};
+    if (settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY) {
+      try {
+        const { callLLM } = require('../services/ai');
+        const systemPrompt = "You are a professional translator. Translate the following AI tool description and tags from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
+          "Keep the same tone, professional terminology, and style.\n" +
+          "Return the result strictly as a JSON object with \"description\" and \"tags\" keys. Do not output anything else.\n\n" +
+          "JSON Format:\n{\n  \"description\": \"translated description\",\n  \"tags\": [\"tag1\", \"tag2\", ...]\n}";
+        const userPrompt = 'Description: "' + tool.description + '"\nTags: ' + JSON.stringify(tool.tags);
+        const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
         
-        tool[descKey] = translated.description;
-        tool[tagsKey] = translated.tags;
+        let parsed = { description: '', tags: [] };
+        try {
+          parsed = JSON.parse(llmResponse);
+        } catch (e) {
+          const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+          parsed = JSON.parse(cleanJson);
+        }
+
+        if (parsed.description) {
+          const currentDb = readDB();
+          const currentIdx = currentDb.tools.findIndex(t => t.id === tool.id);
+          if (currentIdx !== -1) {
+            currentDb.tools[currentIdx][descKey] = parsed.description;
+            currentDb.tools[currentIdx][tagsKey] = parsed.tags;
+            writeDB(currentDb);
+            
+            tool[descKey] = parsed.description;
+            tool[tagsKey] = parsed.tags;
+          }
+        }
+      } catch (err) {
+        console.error('[Sync Translation Failed] for ' + tool.id + ' to ' + lang + ':', err.message);
       }
     }
-  } catch (err) {
-    console.error('[Sync Translation Failed] for ' + tool.id + ' to ' + lang + ':', err.message);
+    translated = {
+      ...tool,
+      description: tool[descKey] || tool.description,
+      tags: tool[tagsKey] || tool.tags
+    };
   }
 
-  return {
-    ...tool,
-    description: tool[descKey] || tool.description,
-    tags: tool[tagsKey] || tool.tags
-  };
+  if (translated.pricing_try) {
+    translated.pricing_try = translatePricingTry(translated.pricing_try, lang);
+  }
+  return translated;
 }
 
 // ─── CATEGORIES ───────────────────────────────
@@ -479,60 +547,32 @@ router.get('/tools/:id/analysis', async function (req, res) {
 
     const { lang } = req.query;
     const tool = db.tools[toolIdx];
+    const settings = db.crawler_settings || {};
     
+    // If lang requested and we already have cached translations, return them immediately
     if (lang && lang !== 'tr') {
       const prosKey = 'pros_' + lang;
       const consKey = 'cons_' + lang;
       if (tool[prosKey] && tool[consKey]) {
         return res.json({ success: true, pros: tool[prosKey], cons: tool[consKey] });
       }
-      
-      if (tool.pros && tool.cons && tool.pros.length > 0) {
+    }
+
+    // Determine the base Turkish pros and cons first
+    let basePros = tool.pros || [];
+    let baseCons = tool.cons || [];
+
+    if (basePros.length === 0 || baseCons.length === 0) {
+      // AI is not configured or disabled, fallback to mockup pros/cons
+      const hasApiKey = settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY;
+      if (!hasApiKey) {
+        const fallback = generateFallbackProsCons(tool, db);
+        basePros = fallback.pros;
+        baseCons = fallback.cons;
+      } else {
         try {
-          const settings = db.crawler_settings || {};
-          if (settings.ai_api_key || process.env.GROQ_API_KEY || process.env.AI_API_KEY) {
-            const { callLLM } = require('../services/ai');
-            const systemPrompt = "You are a professional translator. Translate the following pros and cons list of an AI tool from Turkish to " + (lang === 'de' ? 'German' : 'English') + ".\n" +
-              "Keep the points short (max 80 chars) and return strictly as a JSON object with \"pros\" and \"cons\" arrays. Do not output anything else.\n\n" +
-              "JSON Format:\n{\n  \"pros\": [\"translated pro 1\", \"translated pro 2\", ...],\n  \"cons\": [\"translated con 1\", \"translated con 2\", ...]\n}";
-            const userPrompt = 'Pros: ' + JSON.stringify(tool.pros) + '\nCons: ' + JSON.stringify(tool.cons);
-            const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
-            
-            let translated = { pros: [], cons: [] };
-            try {
-              translated = JSON.parse(llmResponse);
-            } catch(e) {
-              const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-              translated = JSON.parse(cleanJson);
-            }
-            
-            if (translated.pros && translated.pros.length > 0) {
-              db.tools[toolIdx][prosKey] = translated.pros;
-              db.tools[toolIdx][consKey] = translated.cons;
-              writeDB(db);
-              return res.json({ success: true, pros: translated.pros, cons: translated.cons });
-            }
-          }
-        } catch(err) {
-          console.error('[Pros/Cons Translation Failed]:', err.message);
-        }
-      }
-    }
-    
-    // If already has pros/cons, return them
-    if (tool.pros && tool.cons && tool.pros.length > 0) {
-      return res.json({ success: true, pros: tool.pros, cons: tool.cons });
-    }
-
-    const settings = db.crawler_settings || {};
-    // If AI is not configured or disabled, fallback to mockup pros/cons
-    if (!settings.ai_api_key && !process.env.GROQ_API_KEY && !process.env.AI_API_KEY) {
-      const fallback = generateFallbackProsCons(tool, db);
-      return res.json({ success: true, pros: fallback.pros, cons: fallback.cons });
-    }
-
-    const { callLLM } = require('../services/ai');
-    const systemPrompt = `Verilen yapay zeka aracı ismi ve açıklamasına dayanarak, bu aracın en olası 3 adet artı yönünü (Pros) ve 3 adet eksi yönünü (Cons) belirle.
+          const { callLLM } = require('../services/ai');
+          const systemPrompt = `Verilen yapay zeka aracı ismi ve açıklamasına dayanarak, bu aracın en olası 3 adet artı yönünü (Pros) ve 3 adet eksi yönünü (Cons) belirle.
 Türkçe ve profesyonel bir dille yazılmış maddeler halinde aşağıdaki JSON formatında döndür. Başka hiçbir açıklama yazma.
 
 JSON Formatı:
@@ -548,50 +588,97 @@ JSON Formatı:
     "eksi yön"
   ]
 }`;
+          const userPrompt = `Araç Adı: "${tool.name}"\nAçıklama: "${tool.description}"`;
+          const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+          
+          let analysis = { pros: [], cons: [] };
+          try {
+            analysis = JSON.parse(llmResponse);
+          } catch(e) {
+            const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+            analysis = JSON.parse(cleanJson);
+          }
 
-    const userPrompt = `Araç Adı: "${tool.name}"\nAçıklama: "${tool.description}"`;
-    const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
-    
-    let analysis = { pros: [], cons: [] };
-    try {
-      analysis = JSON.parse(llmResponse);
-    } catch(e) {
-      const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-      analysis = JSON.parse(cleanJson);
-    }
+          basePros = analysis.pros || [];
+          baseCons = analysis.cons || [];
 
-    // Cache to DB
-    db.tools[toolIdx].pros = analysis.pros || [];
-    db.tools[toolIdx].cons = analysis.cons || [];
-    writeDB(db);
-
-    res.json({ success: true, pros: db.tools[toolIdx].pros, cons: db.tools[toolIdx].cons });
-  } catch (err) {
-    console.error('AI Analysis error:', err);
-    try {
-      const fallbackDb = readDB();
-      const fallbackTool = fallbackDb.tools.find(t => t.id === req.params.id);
-      if (fallbackTool) {
-        const fallback = generateFallbackProsCons(fallbackTool, fallbackDb);
-        return res.json({ success: true, pros: fallback.pros, cons: fallback.cons });
+          // Cache base TR to DB
+          db.tools[toolIdx].pros = basePros;
+          db.tools[toolIdx].cons = baseCons;
+          writeDB(db);
+        } catch (err) {
+          console.error('AI Analysis generation error:', err);
+          const fallback = generateFallbackProsCons(tool, db);
+          basePros = fallback.pros;
+          baseCons = fallback.cons;
+        }
       }
-    } catch (fallbackErr) {
-      console.error('Fallback generator error:', fallbackErr);
     }
-    // Absolute fallback if database read fails
-    res.json({
-      success: true,
-      pros: [
-        "Kolay ve hızlı kullanım arayüzü.",
-        "Kendi kategorisinde en popüler çözümlerden biri.",
-        "Geniş entegrasyon desteği ve topluluk."
-      ],
-      cons: [
-        "Ücretsiz plandaki limitler kısıtlayıcı olabilir.",
-        "Gelişmiş özellikler için ücretli abonelik gerektirir.",
-        "Türkçe dil desteği tam olarak optimize edilmemiş olabilir."
-      ]
-    });
+
+    // Now, if lang is requested and not 'tr', translate the base pros and cons
+    if (lang && lang !== 'tr') {
+      const prosKey = 'pros_' + lang;
+      const consKey = 'cons_' + lang;
+      
+      try {
+        const translated = await translateProsCons(basePros, baseCons, lang, settings);
+        if (translated.pros && translated.pros.length > 0) {
+          // Cache translation to DB
+          const freshDb = readDB();
+          const freshIdx = freshDb.tools.findIndex(t => t.id === tool.id);
+          if (freshIdx !== -1) {
+            freshDb.tools[freshIdx][prosKey] = translated.pros;
+            freshDb.tools[freshIdx][consKey] = translated.cons;
+            writeDB(freshDb);
+          }
+          return res.json({ success: true, pros: translated.pros, cons: translated.cons });
+        }
+      } catch (err) {
+        console.error('AI Analysis translation error:', err);
+      }
+      
+      // Fallback translation if LLM translate fails or not configured
+      const translatedPros = basePros.map(p => {
+        if (p.includes("Kullanıcı dostu")) return lang === 'de' ? "Benutzerfreundliche und moderne Schnittstelle." : "User-friendly and modern interface.";
+        return p;
+      });
+      const translatedCons = baseCons.map(c => {
+        if (c.includes("Ücretsiz plandaki limitler")) return lang === 'de' ? "Einschränkungen im kostenlosen Plan." : "Limitations in the free plan.";
+        return c;
+      });
+      return res.json({ success: true, pros: translatedPros, cons: translatedCons });
+    }
+
+    res.json({ success: true, pros: basePros, cons: baseCons });
+  } catch (err) {
+    console.error('AI Analysis route error:', err);
+    // Absolute fallback
+    const defaultPros = [
+      "Kolay ve hızlı kullanım arayüzü.",
+      "Kendi kategorisinde en popüler çözümlerden biri.",
+      "Geniş entegrasyon desteği ve topluluk."
+    ];
+    const defaultCons = [
+      "Ücretsiz plandaki limitler kısıtlayıcı olabilir.",
+      "Gelişmiş özellikler için ücretli abonelik gerektirir.",
+      "Türkçe dil desteği tam olarak optimize edilmemiş olabilir."
+    ];
+    if (lang && lang !== 'tr') {
+      if (lang === 'de') {
+        return res.json({
+          success: true,
+          pros: ["Einfach und schnell zu bedienende Benutzeroberfläche.", "Eine der beliebtesten Lösungen in ihrer Kategorie.", "Breite Integrationsunterstützung und Community."],
+          cons: ["Einschränkungen im kostenlosen Plan können restriktiv sein.", "Erfordert ein kostenpflichtiges Abonnement für erweiterte Funktionen.", "Die Unterstützung der deutschen Sprache ist möglicherweise nicht vollständig optimiert."]
+        });
+      } else {
+        return res.json({
+          success: true,
+          pros: ["Easy and fast to use interface.", "One of the most popular solutions in its category.", "Wide integration support and community."],
+          cons: ["Limits in the free plan can be restrictive.", "Requires a paid subscription for advanced features.", "English support is fully optimized."]
+        });
+      }
+    }
+    res.json({ success: true, pros: defaultPros, cons: defaultCons });
   }
 });
 
@@ -1781,6 +1868,7 @@ router.post('/advisor', async function (req, res) {
       return res.status(400).json({ error: 'Mesaj alanı boş bırakılamaz.' });
     }
 
+    const { lang } = req.query;
     const db = readDB();
     const settings = db.crawler_settings || {};
     
@@ -1832,30 +1920,40 @@ router.post('/advisor', async function (req, res) {
           return { id: t.id, name: t.name, description: t.description.substring(0, 100), category_id: t.category_id, pricing: t.pricing };
         });
 
-        const systemPrompt = `Sen AiKlavuz yapay zeka dizini için akıllı bir yapay zeka danışmanısın (AI Advisor). Kullanıcıların Türkçe dilindeki yapay zeka aracı bulma, tavsiye alma veya soru sorma isteklerini yanıtla.
-Sana verilen araç listesinden en uygun olanları seç ve öner. Yanıtını dost canlısi, profesyonel ve kısa bir dille ver.
+        let advisorLangName = 'Turkish';
+        let responseInstructions = 'Kullanıcıya vereceğin Türkçe yanıt metni. Markdown formatında olabilir.';
+        if (lang === 'en') {
+          advisorLangName = 'English';
+          responseInstructions = 'The English response text to give to the user. Can be in Markdown format.';
+        } else if (lang === 'de') {
+          advisorLangName = 'German';
+          responseInstructions = 'Die deutsche Antwort, die Sie dem Benutzer geben werden. Kann im Markdown-Format vorliegen.';
+        }
 
-Yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbir metin ekleme):
+        const systemPrompt = `You are a smart AI advisor (AI Advisor) for the AiKlavuz AI directory. Respond to the user's request for AI tool search, recommendation, or questions in ${advisorLangName}.
+Select and recommend the most suitable tools from the list provided to you. Keep your response friendly, professional, and concise.
+
+Return your response strictly in the following JSON format (do not output any other text or markdown wrappers):
 {
-  "reply": "Kullanıcıya vereceğin Türkçe yanıt metni. Markdown formatında olabilir.",
-  "recommended_tool_ids": ["uygun-arac-id-1", "uygun-arac-id-2", ...]
+  "reply": "${responseInstructions}",
+  "recommended_tool_ids": ["suitable-tool-id-1", "suitable-tool-id-2", ...]
 }
 
-ÖNEMLİ KURALLAR:
-1. Eğer kullanıcının özel ihtiyacına (örneğin: iş güvenliği raporu yazma, sunum hazırlama, yazılım test senaryosu üretme, öğretmenler için ders planlama vb.) doğrudan uyan spesifik bir yapay zeka aracı listede yoksa, listedeki genel amaçlı metin/asistan araçlarını (örn: ChatGPT, Gemini, Claude vb.) seç ve öner.
-2. Bu genel amaçlı araçları bu görev için nasıl kullanabileceğini (nasıl prompt yazması gerektiğini) açıklayarak rehberlik et.
-3. Genel amaçlı popüler araçlar ve ID'leri şunlardır:
-   - ChatGPT: ID'si "chatgpt"
-   - Claude: ID'si "claude"
-   - Gemini: ID'si "gemini"
-   Özelleşmiş bir araç yoksa, bu genel amaçlı araçların ID'lerini (örn: "chatgpt", "claude") "recommended_tool_ids" dizisinde mutlaka döndür.
-4. Vitrinimizde 'binlerce araç' olduğunu kesinlikle söyleme. Sitemizde yaklaşık 100-200 seçkin yapay zeka aracı yer almaktadır.
-5. Kullanıcının sorusuna veya aradığı göreve yönelik (örneğin yazılım testi, sunum hazırlama, raporlama vb.) genel asistanları nasıl prompt ederek kullanabileceğini yanıtında açıkça anlat.
+IMPORTANT RULES:
+1. If there is no specific AI tool in the list that directly fits the user's specific need, select and recommend the general-purpose text/assistant tools (e.g., ChatGPT, Gemini, Claude, etc.).
+2. Guide the user on how they can use these general-purpose tools for this task (how they should write prompts).
+3. Popular general-purpose tools and their IDs are:
+   - ChatGPT: ID is "chatgpt"
+   - Claude: ID is "claude"
+   - Gemini: ID is "gemini"
+   If there is no specialized tool, make sure to return these general-purpose tool IDs in the "recommended_tool_ids" array.
+4. Do not tell the user that we have "thousands of tools". Our website lists about 100-200 curated AI tools.
+5. In your response, clearly explain how the user can prompt general assistants for their question or task (e.g. software testing, presentations, reporting, etc.).
 
-Mevcut Araçlar Listesi:
+Available Tools List:
 ${JSON.stringify(availableTools)}
 
-Geçerli Kategoriler:
+Valid Categories:
 [ ${categoriesList} ]`;
 
         const userPrompt = `Kullanıcı Mesajı: "${message}"`;
@@ -1891,6 +1989,10 @@ Geçerli Kategoriler:
               return { ...t, category_name: cat ? cat.name : '', category_icon: cat ? cat.icon : '' };
             });
         }
+
+        if (lang && lang !== 'tr') {
+          matched = await Promise.all(matched.map(t => translateToolIfNeeded(t, lang, db)));
+        }
           
         return res.json({
           reply: advisorReply.reply,
@@ -1902,7 +2004,35 @@ Geçerli Kategoriler:
     }
     
     // Fallback: Local search heuristics
-    const replyData = localHeuristicAdvisor(db.tools, db.categories, message);
+    let replyData = localHeuristicAdvisor(db.tools, db.categories, message);
+    if (lang && lang !== 'tr') {
+      const replyTranslations = {
+        en: {
+          'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:': 'We have great tools for image and design creation. Here are the most popular ones:',
+          'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:': 'For coding, autocompletion, and developer assistance, I can recommend these tools:',
+          'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:': 'For writing, blogging, and text generation, these are the most preferred tools:',
+          'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:': 'Popular AI tools for voiceover, music production, and podcast preparation:',
+          'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:': 'For AI-based video production, editing, and animation, you can check out these alternatives:',
+          'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:': 'For general chat, Q&A, and assistance, here are the most advanced AI models:',
+          'Doğrudan bu göreve özel spesifik bir araç bulamadım. Ancak genel amaçlı yapay zeka asistanları (örn: ChatGPT, Claude, Gemini) ile işinizi, detayları ve parametreleri belirterek kolayca halledebilirsiniz. İşte deneyebileceğiniz en gelişmiş genel asistanlar:': 'I couldn\'t find a specific tool for this task. However, you can easily get your job done with general-purpose AI assistants (e.g., ChatGPT, Claude, Gemini) by specifying the details and parameters. Here are the most advanced assistants you can try:',
+          'İhtiyacınıza yönelik olarak vitrinimizdeki en uygun yapay zeka araçlarını listeledim:': 'I have listed the most suitable AI tools in our directory for your needs:'
+        },
+        de: {
+          'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:': 'Wir haben großartige Tools für die Bild- und Designerstellung. Hier sind die beliebtesten:',
+          'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:': 'Für das Schreiben von Code, automatische Vervollständigung und Entwicklerhilfe kann ich folgende Tools empfehlen:',
+          'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:': 'Für das Schreiben von Texten, das Erstellen von Blogs und die Texterstellung sind dies die am meisten bevorzugten Tools:',
+          'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:': 'Beliebte KI-Tools für Vertonung, Musikproduktion und Podcast-Erstellung:',
+          'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:': 'Für die KI-gestützte Videoproduktion, Bearbeitung und Animation können Sie sich diese Alternativen ansehen:',
+          'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:': 'Für allgemeinen Chat, Fragen und Antworten und Assistenz sind dies die fortschrittlichsten KI-Modelle:',
+          'Doğrudan bu göreve özel spesifik bir araç bulamadım. Ancak genel amaçlı yapay zeka asistanları (örn: ChatGPT, Claude, Gemini) ile işinizi, detayları ve parametreleri belirterek kolayca halledebilirsiniz. İşte deneyebileceğiniz en gelişmiş genel asistanlar:': 'Ich konnte kein spezifisches Tool für diese Aufgabe finden. Sie können jedoch problemlos allgemeine KI-Assistenten (z. B. ChatGPT, Claude, Gemini) verwenden, indem Sie die Details und Parameter angeben. Hier sind die fortschrittlichsten Assistenten, die Sie ausprobieren können:',
+          'İhtiyacınıza yönelik olarak vitrinimizdeki en uygun yapay zeka araçlarını listeledim:': 'Ich habe die am besten geeigneten KI-Tools in unserem Verzeichnis für Ihre Bedürfnisse aufgelistet:'
+        }
+      };
+      if (replyTranslations[lang] && replyTranslations[lang][replyData.reply]) {
+        replyData.reply = replyTranslations[lang][replyData.reply];
+      }
+      replyData.recommended_tools = await Promise.all(replyData.recommended_tools.map(t => translateToolIfNeeded(t, lang, db)));
+    }
     return res.json(replyData);
 
   } catch (err) {

@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<h3 class="profession-card-title">' + p.title + '</h3>' +
           '<span class="profession-card-subtitle">' + p.subtitle + '</span>' +
           '<p class="profession-card-desc">' + p.description + '</p>' +
-          '<button class="profession-card-btn">Keşfet →</button>' +
+          '<button class="profession-card-btn">' + ((window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t('menu_explore') : 'Keşfet') + ' →</button>' +
         '</div>' +
       '</div>';
     }).join('');
@@ -649,7 +649,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // LOAD TOOLS FROM API
   // ═══════════════════════════════════════════
   function loadTools(prof) {
-    toolsGrid.innerHTML = '<p class="profession-loading">Araçlar yükleniyor...</p>';
+    const t = (key, fallback) => (window.i18n && typeof window.i18n.t === 'function') ? window.i18n.t(key) : fallback;
+    toolsGrid.innerHTML = '<p class="profession-loading">' + t('loading', 'Araçlar yükleniyor...') + '</p>';
     
     fetch('/api/tools')
       .then(function (res) { return res.json(); })
@@ -706,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         toolsGrid.innerHTML = display.map(function (tool) {
-          var catLabel = getCatLabel(tool.category_id);
+          var catLabel = tool.category_name ? (tool.category_icon + ' ' + tool.category_name) : '';
           var stars = '★'.repeat(Math.round(tool.rating || 4));
           var pricingLabel = getPricingLabel(tool.pricing);
           var firstLetter = tool.name.charAt(0).toUpperCase();
@@ -735,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       })
       .catch(function () {
-        toolsGrid.innerHTML = '<p class="profession-loading">Araçlar yüklenirken bir hata oluştu.</p>';
+        toolsGrid.innerHTML = '<p class="profession-loading">' + t('error_loading_tools', 'Araçlar yüklenirken bir hata oluştu.') + '</p>';
       });
   }
 
