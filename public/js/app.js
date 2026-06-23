@@ -452,6 +452,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     categoriesGrid.innerHTML = html;
 
+    // Sync search category dropdown label
+    var selectedTextEl = document.querySelector('#hero-category-select-btn .selected-category-text');
+    if (selectedTextEl) {
+      if (activeCategory) {
+        var selectedCat = categories.find(function(c) { return c.id === activeCategory; });
+        selectedTextEl.textContent = selectedCat ? (selectedCat.icon + ' ' + selectedCat.name) : 'Tüm Kategoriler';
+      } else {
+        selectedTextEl.textContent = 'Tüm Kategoriler';
+      }
+    }
+
     categoriesGrid.querySelectorAll('.category-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var selectedCategory = this.getAttribute('data-category');
@@ -897,6 +908,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     ]);
 
     renderCategories(categories);
+    initSearchCategoryDropdown(categories);
     renderFeatured();
     applyFilters();
     renderDirectoryIndex(categories, tools);
@@ -1215,65 +1227,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   };
 
   async function initHomepageFeatures() {
-    // Günün Promptu Yükleme
-    var promptWidget = document.getElementById('homepage-prompt-widget');
-    if (promptWidget) {
-      try {
-        var res = await fetch('/api/prompts/day');
-        var prompt = await res.json();
-        if (prompt) {
-          document.getElementById('widget-prompt-title').textContent = prompt.title;
-          document.getElementById('widget-prompt-category').textContent = prompt.category;
-          document.getElementById('widget-prompt-tool').textContent = prompt.targetTool;
-          document.getElementById('widget-prompt-desc').textContent = prompt.description;
-          document.getElementById('widget-prompt-text').textContent = prompt.promptText;
-          document.getElementById('widget-prompt-votes-count').textContent = prompt.votes || 0;
-          
-          var copyBtn = document.getElementById('btn-copy-widget-prompt');
-          if (copyBtn) {
-            copyBtn.addEventListener('click', function(e) {
-              e.preventDefault();
-              navigator.clipboard.writeText(prompt.promptText).then(function() {
-                var originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '✅ Kopyalandı!';
-                setTimeout(function() {
-                  copyBtn.innerHTML = originalText;
-                }, 2000);
-              });
-            });
-          }
-
-          var voteBtn = document.getElementById('widget-prompt-vote');
-          if (voteBtn) {
-            voteBtn.addEventListener('click', async function(e) {
-              e.preventDefault();
-              var votedPrompts = JSON.parse(localStorage.getItem('voted_prompts') || '[]');
-              if (votedPrompts.indexOf(prompt.id) !== -1) {
-                showToast('Bu promptu zaten beğendiniz!', 'error');
-                return;
-              }
-
-              try {
-                var voteRes = await fetch('/api/prompts/' + prompt.id + '/vote', { method: 'POST' });
-                var voteData = await voteRes.json();
-                if (voteData.success) {
-                  document.getElementById('widget-prompt-votes-count').textContent = voteData.votes;
-                  votedPrompts.push(prompt.id);
-                  localStorage.setItem('voted_prompts', JSON.stringify(votedPrompts));
-                  showToast('Beğeniniz kaydedildi!', 'success');
-                }
-              } catch (e) {
-                showToast('Oy verilemedi.', 'error');
-              }
-            });
-          }
-
-          promptWidget.style.display = 'block';
-        }
-      } catch (err) {
-        console.error('Günün promptu yükleme hatası:', err);
-      }
-    }
+    // Yeni ve Popüler Araçlar Slider Yükleme
+    await initPopularToolsSlider();
 
     // Son Haberleri Yükleme
     var newsGrid = document.getElementById('homepage-news-grid');
@@ -1310,6 +1265,266 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Haber yükleme hatası:', err);
         newsGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Haberler yüklenirken bir hata oluştu.</p>';
       }
+    }
+  }
+
+  async function initPopularToolsSlider() {
+    var sliderContainer = document.getElementById('popular-tools-slider-container');
+    var paginationContainer = document.getElementById('popular-slider-pagination');
+    var prevBtn = document.getElementById('popular-slider-prev');
+    var nextBtn = document.getElementById('popular-slider-next');
+
+    if (!sliderContainer) return;
+
+    try {
+      var res = await fetch('/api/tools?limit=12&sort=popular');
+      var data = await res.json();
+      var tools = data.tools || [];
+
+      if (tools.length === 0) {
+        sliderContainer.innerHTML = '<p style="color: var(--text-secondary); text-align: center; width: 100%;">Henüz araç eklenmemiş.</p>';
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        return;
+      }
+
+      var html = '';
+      tools.forEach(function(tool) {
+        var cat = getCategoryById(tool.category_id || tool.category);
+        var catIcon = cat ? cat.icon : '🛠️';
+        var catName = cat ? cat.name : (tool.category_name || 'Yapay Zeka');
+        
+        var verifiedBadge = tool.dogrulanmis ? '<span class="verified-badge" title="Doğrulanmış">✓</span>' : '';
+        
+        var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+        var isBookmarked = bookmarks.indexOf(tool.id) !== -1;
+        var activeClass = isBookmarked ? ' active' : '';
+
+        html += '<div class="popular-slider-card" data-url="' + tool.url + '" data-id="' + tool.id + '" style="cursor:pointer">' +
+          '<div class="popular-slider-card-center-icon">' + catIcon + '</div>' +
+          '<div class="popular-slider-card-content">' +
+            '<div class="popular-slider-card-info">' +
+              '<h3 class="popular-slider-card-title">' + tool.name + ' ' + verifiedBadge + '</h3>' +
+              '<p class="popular-slider-card-subtitle">' + catName + '</p>' +
+            '</div>' +
+            '<button class="popular-slider-card-action btn-slider-bookmark' + activeClass + '" data-id="' + tool.id + '" title="Çantama Ekle">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      });
+
+      sliderContainer.innerHTML = html;
+
+      // Click card to open website or details
+      sliderContainer.querySelectorAll('.popular-slider-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('.popular-slider-card-action')) return;
+          var id = this.getAttribute('data-id');
+          if (id) {
+            window.location.href = '/tool.html?id=' + id;
+          }
+        });
+      });
+
+      // Heart Button click listeners
+      sliderContainer.querySelectorAll('.btn-slider-bookmark').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var id = this.getAttribute('data-id');
+          var bookmarks = JSON.parse(localStorage.getItem('toolkit') || '[]');
+          var idx = bookmarks.indexOf(id);
+          if (idx === -1) {
+            bookmarks.push(id);
+            this.classList.add('active');
+            showToast('Çantaya eklendi!', 'success');
+          } else {
+            bookmarks.splice(idx, 1);
+            this.classList.remove('active');
+            showToast('Çantadan çıkarıldı.', 'info');
+          }
+          localStorage.setItem('toolkit', JSON.stringify(bookmarks));
+          
+          var counts = document.querySelectorAll('.toolkit-count');
+          counts.forEach(function(el) { el.textContent = bookmarks.length; });
+        });
+      });
+
+      // Pagination & Navigation Logic
+      var cardCount = tools.length;
+      var cardsPerView = 3;
+      
+      function updateCardsPerView() {
+        if (window.innerWidth <= 600) cardsPerView = 1;
+        else if (window.innerWidth <= 992) cardsPerView = 2;
+        else cardsPerView = 3;
+      }
+      updateCardsPerView();
+      window.addEventListener('resize', updateCardsPerView);
+
+      // Render pagination dots
+      function renderDots() {
+        if (!paginationContainer) return;
+        var dotsHtml = '';
+        var activeDotIndex = Math.round(sliderContainer.scrollLeft / ((sliderContainer.clientWidth / cardsPerView) || 1));
+        var totalDots = Math.ceil(cardCount / cardsPerView);
+        for (var i = 0; i < totalDots; i++) {
+          var activeClass = (i === activeDotIndex) ? ' active' : '';
+          dotsHtml += '<button class="slider-dot' + activeClass + '" data-index="' + i + '" aria-label="Sayfa ' + (i+1) + '"></button>';
+        }
+        paginationContainer.innerHTML = dotsHtml;
+
+        paginationContainer.querySelectorAll('.slider-dot').forEach(function(dot) {
+          dot.addEventListener('click', function() {
+            var index = parseInt(this.getAttribute('data-index'));
+            var scrollPos = index * (sliderContainer.clientWidth + 24);
+            sliderContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+          });
+        });
+      }
+      
+      renderDots();
+      
+      // Scroll listener to update dots
+      sliderContainer.addEventListener('scroll', function() {
+        var activeDotIndex = Math.round(sliderContainer.scrollLeft / (sliderContainer.clientWidth || 1));
+        var dots = paginationContainer.querySelectorAll('.slider-dot');
+        dots.forEach(function(dot, idx) {
+          if (idx === activeDotIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          sliderContainer.scrollBy({ left: -(sliderContainer.clientWidth + 24), behavior: 'smooth' });
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          sliderContainer.scrollBy({ left: (sliderContainer.clientWidth + 24), behavior: 'smooth' });
+        });
+      }
+
+    } catch (err) {
+      console.error('Yeni ve popüler araçlar yükleme hatası:', err);
+    }
+  }
+
+
+
+  // ═══════════════════════════════════════════
+  // CATEGORY SEARCH DROPDOWN AND SUBMIT BUTTON LISTENERS
+  // ═══════════════════════════════════════════
+  var heroSearchSubmitBtn = document.querySelector('#hero-search-submit-btn');
+  if (heroSearchSubmitBtn) {
+    heroSearchSubmitBtn.addEventListener('click', function() {
+      if (searchInput && heroSearchInput) {
+        searchInput.value = heroSearchInput.value;
+        currentPage = 1;
+        var toolsSection = document.querySelector('#tools-section');
+        if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+        applyFilters();
+      }
+    });
+  }
+
+  function initSearchCategoryDropdown(categories) {
+    var categorySelectBtn = document.querySelector('#hero-category-select-btn');
+    var categoryDropdown = document.querySelector('#hero-category-dropdown');
+    var dropdownListContainer = document.querySelector('#category-dropdown-list-container');
+    var categorySearchInput = document.querySelector('#category-dropdown-search-input');
+    var categoryWrapper = document.querySelector('.search-category-wrapper');
+
+    if (!categorySelectBtn || !categoryDropdown || !dropdownListContainer) return;
+
+    // Toggle Dropdown Panel
+    categorySelectBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isVisible = categoryDropdown.style.display !== 'none';
+      if (isVisible) {
+        categoryDropdown.style.display = 'none';
+        categoryWrapper.classList.remove('open');
+      } else {
+        categoryDropdown.style.display = 'block';
+        categoryWrapper.classList.add('open');
+        if (categorySearchInput) categorySearchInput.focus();
+      }
+    });
+
+    // Close Dropdown on Outside Click
+    document.addEventListener('click', function(e) {
+      if (!categoryWrapper.contains(e.target)) {
+        categoryDropdown.style.display = 'none';
+        categoryWrapper.classList.remove('open');
+      }
+    });
+
+    // Render Dropdown List
+    function renderDropdownItems(filteredCats) {
+      var activeId = activeCategory || '';
+      var html = '<button type="button" class="category-dropdown-item' + (activeId === '' ? ' active' : '') + '" data-id="">' +
+        '<span>📁 Tüm Kategoriler</span>' +
+        '<svg class="category-dropdown-item-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>' +
+        '</button>';
+
+      filteredCats.forEach(function(cat) {
+        var isActive = (activeId === cat.id) ? ' active' : '';
+        html += '<button type="button" class="category-dropdown-item' + isActive + '" data-id="' + cat.id + '">' +
+          '<span>' + cat.icon + ' ' + cat.name + '</span>' +
+          '<svg class="category-dropdown-item-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>' +
+          '</button>';
+      });
+
+      dropdownListContainer.innerHTML = html;
+
+      // Item click listener
+      dropdownListContainer.querySelectorAll('.category-dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+          var selectedId = this.getAttribute('data-id');
+          activeCategory = selectedId ? selectedId : null;
+
+          // Update trigger label
+          var selectedTextEl = categorySelectBtn.querySelector('.selected-category-text');
+          if (selectedTextEl) {
+            if (activeCategory) {
+              var selectedCat = categories.find(function(c) { return c.id === activeCategory; });
+              selectedTextEl.textContent = selectedCat ? (selectedCat.icon + ' ' + selectedCat.name) : 'Tüm Kategoriler';
+            } else {
+              selectedTextEl.textContent = 'Tüm Kategoriler';
+            }
+          }
+
+          // Close dropdown
+          categoryDropdown.style.display = 'none';
+          categoryWrapper.classList.remove('open');
+
+          // Sync category cards layout selection
+          renderCategories(window._categories);
+
+          // Apply filters and search
+          currentPage = 1;
+          applyFilters();
+        });
+      });
+    }
+
+    // Initial render of list
+    renderDropdownItems(categories);
+
+    // Live search inside dropdown
+    if (categorySearchInput) {
+      categorySearchInput.addEventListener('input', function() {
+        var query = this.value.toLowerCase().trim();
+        var filtered = categories.filter(function(cat) {
+          return cat.name.toLowerCase().includes(query);
+        });
+        renderDropdownItems(filtered);
+      });
     }
   }
 });

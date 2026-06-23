@@ -205,17 +205,55 @@
         </p>
         
         <div class="hero-search">
-          <div class="hero-search-box" style="position: relative;">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.34-4.34"></path>
-            </svg>
-            <input type="text" id="hero-search-input" placeholder="AI arayın..." data-i18n-placeholder="search_placeholder" maxlength="80" autocomplete="off" style="padding-right: 120px;">
-            <label class="smart-search-toggle" title="Yapay Zeka Destekli Akıllı Arama" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); margin-left: 0; background: rgba(0,0,0,0.6); height: 32px; border-radius: var(--radius-full);">
+          <div class="hero-search-box">
+            <!-- Left: Search Input -->
+            <div class="search-input-wrapper">
+              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.34-4.34"></path>
+              </svg>
+              <input type="text" id="hero-search-input" placeholder="AI arayın..." data-i18n-placeholder="search_placeholder" maxlength="80" autocomplete="off">
+            </div>
+            
+            <!-- Divider -->
+            <div class="search-divider"></div>
+            
+            <!-- Middle: Category Dropdown Selector -->
+            <div class="search-category-wrapper">
+              <button type="button" class="search-category-btn" id="hero-category-select-btn">
+                <span class="selected-category-text">Tüm Kategoriler</span>
+                <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </button>
+              
+              <!-- Dropdown Panel -->
+              <div class="search-category-dropdown" id="hero-category-dropdown" style="display: none;">
+                <div class="category-dropdown-search">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.34-4.34"></path>
+                  </svg>
+                  <input type="text" id="category-dropdown-search-input" placeholder="Kategori ara...">
+                </div>
+                <div class="category-dropdown-list" id="category-dropdown-list-container">
+                  <!-- JS renders list here -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="search-divider"></div>
+            
+            <!-- Right: Smart Search Toggle -->
+            <label class="smart-search-toggle" title="Yapay Zeka Destekli Akıllı Arama">
               <input type="checkbox" id="hero-smart-search-checkbox">
               <span class="toggle-slider"></span>
               <span class="toggle-text" data-i18n="smart_search">🧠 Akıllı</span>
             </label>
+            
+            <!-- Right: Search Submit Button -->
+            <button type="button" class="hero-search-btn" id="hero-search-submit-btn">Ara</button>
           </div>
         </div>
         
@@ -308,42 +346,36 @@
     <div class="ad-slot" data-position="hero-banner"></div>
   </div>
 
-  <!-- GÜNÜN PROMPTU WIDGET -->
-  <div class="container animate-on-scroll" style="margin-top: 15px; margin-bottom: 15px;">
-    <div id="homepage-prompt-widget" class="prompt-widget-card" style="display: none; background: linear-gradient(135deg, rgba(138, 75, 245, 0.04) 0%, rgba(20, 219, 212, 0.02) 100%); border: 1px solid rgba(138, 75, 245, 0.15); border-radius: var(--radius-md); padding: 18px; position: relative; overflow: hidden; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);">
-      <div class="prompt-grid">
-        <!-- Left side: Title and Details -->
-        <div>
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
-            <span class="prompt-badge" style="background: var(--gradient-primary); color: white; padding: 2px 8px; border-radius: var(--radius-full); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">🔥 Günün Promptu</span>
-            <span class="category-chip" id="widget-prompt-category" style="background: rgba(255, 255, 255, 0.04); color: var(--accent-cyan); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.75rem;">-</span>
-            <span class="tool-chip" id="widget-prompt-tool" style="background: rgba(255, 255, 255, 0.04); color: var(--accent-purple); padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.75rem;">-</span>
-          </div>
-          <h3 style="font-family: var(--font-title); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px; line-height: 1.3;" id="widget-prompt-title">Yükleniyor...</h3>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.4;" id="widget-prompt-desc">-</p>
-          
-          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-            <a href="/prompts" style="font-size: 0.8rem; color: var(--accent-cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; transition: color var(--transition-fast);">
-              Tüm Promptları Keşfet 
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <button id="widget-prompt-vote" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); color: var(--text-primary); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
-              👍 <span id="widget-prompt-votes-count">0</span> <span data-i18n="like">Beğen</span>i
-            </button>
-          </div>
+  <!-- YENİ VE POPÜLER YAPAY ZEKA ARAÇLARI SLIDER -->
+  <section class="section popular-tools-slider-section animate-on-scroll" id="popular-tools-slider-section">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom: 40px; text-align: center;">
+        <h2 style="font-family: var(--font-title); font-size: 2rem; color: var(--text-primary); margin-bottom: 8px;">Yeni ve Popüler Yapay Zeka Araçları</h2>
+        <span class="section-line" style="background: #ef4444; width: 60px; height: 3px; display: block; margin: 12px auto 0; border-radius: var(--radius-full);"></span>
+        <p style="color: var(--text-secondary); margin-top: 16px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+          aiklavuz.com'a eklenen en yeni araçlar — şu anda büyük ilgi görüyorlar.
+        </p>
+      </div>
+      
+      <div class="popular-tools-slider-wrapper" style="position: relative;">
+        <button class="slider-nav-btn prev-btn" id="popular-slider-prev" aria-label="Önceki">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        
+        <div class="popular-tools-slider" id="popular-tools-slider-container">
+          <!-- JS dinamik olarak araç kartlarını buraya dolduracak -->
         </div>
-
-        <!-- Right side: Prompt Code Box -->
-        <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: var(--radius-md); padding: 12px; position: relative;">
-          <pre style="margin: 0; white-space: pre-wrap; font-family: monospace; font-size: 0.78rem; color: var(--text-primary); max-height: 80px; overflow-y: auto; padding-bottom: 30px; line-height: 1.4;" id="widget-prompt-text">...</pre>
-          <button id="btn-copy-widget-prompt" class="btn-primary" style="position: absolute; right: 10px; bottom: 10px; padding: 4px 8px; font-size: 0.75rem; background: var(--gradient-primary); border: none; border-radius: 5px; color: white; cursor: pointer; display: flex; align-items: center; gap: 4px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Promptu Kopyala
-          </button>
-        </div>
+        
+        <button class="slider-nav-btn next-btn" id="popular-slider-next" aria-label="Sonraki">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+      
+      <div class="slider-pagination" id="popular-slider-pagination">
+        <!-- JS dinamik olarak sayfalama noktalarını buraya ekleyecek -->
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- CATEGORIES SECTION -->
   <section class="section" id="categories-section">
