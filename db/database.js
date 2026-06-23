@@ -217,12 +217,21 @@ async function syncFromMongo(force = false) {
       return dbCache;
     }
 
-    if (force || !dbCache || meta.version !== dbVersion || !fs.existsSync(DB_PATH)) {
-      console.log(`[Sync] Local version: ${dbVersion}, Remote version: ${meta.version}. Fetching full database...`);
+    if (force || !dbCache || !fs.existsSync(DB_PATH)) {
+      console.log(`[Sync] Cache initialized or missing. Fetching version: ${meta.version}`);
       const doc = await collection.findOne({ _id: 'main' });
       dbCache = doc.data;
       dbVersion = doc.version;
       writeLocalDB(dbCache);
+    } else if (meta.version > dbVersion) {
+      console.log(`[Sync] Local version: ${dbVersion}, Remote version: ${meta.version}. Fetching newer database...`);
+      const doc = await collection.findOne({ _id: 'main' });
+      dbCache = doc.data;
+      dbVersion = doc.version;
+      writeLocalDB(dbCache);
+    } else if (meta.version < dbVersion) {
+      console.log(`[Sync] Local version: ${dbVersion} is newer than Remote version: ${meta.version}. Pushing local database...`);
+      await syncToMongo(dbCache);
     }
 
     lastCheckTime = Date.now();
@@ -243,15 +252,16 @@ async function syncToMongo(data) {
     const db = client.db('aivitrin');
     const collection = db.collection('system_data');
 
-    dbVersion++;
+    const nextVersion = dbVersion + 1;
     const dbDoc = {
       _id: 'main',
-      version: dbVersion,
+      version: nextVersion,
       last_updated: new Date().toISOString(),
       data: data
     };
 
     await collection.replaceOne({ _id: 'main' }, dbDoc, { upsert: true });
+    dbVersion = nextVersion;
     // console.log(`[Sync] Successfully saved version ${dbVersion} to MongoDB Atlas.`);
   } catch (err) {
     console.error('[Sync Error] Failed to sync to MongoDB:', err.message);

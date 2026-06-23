@@ -1343,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           if (e.target.closest('.popular-slider-card-action')) return;
           var id = this.getAttribute('data-id');
           if (id) {
-            window.location.href = '/tool.html?id=' + id;
+            window.location.href = '/tool/' + id;
           }
         });
       });
