@@ -31851,7 +31851,13 @@
       "turkish_supported": "none",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Professional AI voice generation API",
+      "tags_en": [
+        "voice",
+        "tts",
+        "api"
+      ]
     },
     {
       "id": "resemble-api",
@@ -35501,7 +35507,13 @@
       "turkish_supported": "full",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Cloud ML experiment tracking system",
+      "tags_en": [
+        "ml",
+        "tracking",
+        "ai"
+      ]
     },
     {
       "id": "seldon-cloud",
@@ -45573,7 +45585,13 @@
       "turkish_supported": "full",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "ML training tracking and experiment logging",
+      "tags_en": [
+        "ml",
+        "tracking",
+        "ai"
+      ]
     },
     {
       "id": "neptune-training-tracker",
@@ -66512,7 +66530,13 @@
       "turkish_supported": "full",
       "pricing_try": "Özel Teklif",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Legal Database and Research Assistant",
+      "tags_en": [
+        "Legal",
+        "Cases",
+        "AI"
+      ]
     },
     {
       "id": "openai-contract-ai",
@@ -122058,6 +122082,6 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48410,
+  "pageViews": 48413,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
 }

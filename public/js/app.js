@@ -1277,9 +1277,30 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (!sliderContainer) return;
 
     try {
-      var res = await fetch('/api/tools?limit=12&sort=popular');
-      var data = await res.json();
-      var tools = data.tools || [];
+      var [resNewest, resPopular] = await Promise.all([
+        fetch('/api/tools?limit=6&sort=newest'),
+        fetch('/api/tools?limit=6&sort=popular')
+      ]);
+      var dataNewest = await resNewest.json();
+      var dataPopular = await resPopular.json();
+      var newestTools = dataNewest.tools || [];
+      var popularTools = dataPopular.tools || [];
+
+      var toolsMap = {};
+      var tools = [];
+      newestTools.forEach(function(t) {
+        if (!toolsMap[t.id]) {
+          toolsMap[t.id] = true;
+          tools.push(t);
+        }
+      });
+      popularTools.forEach(function(t) {
+        if (!toolsMap[t.id]) {
+          toolsMap[t.id] = true;
+          tools.push(t);
+        }
+      });
+      tools = tools.slice(0, 12);
 
       if (tools.length === 0) {
         sliderContainer.innerHTML = '<p style="color: var(--text-secondary); text-align: center; width: 100%;">Henüz araç eklenmemiş.</p>';
