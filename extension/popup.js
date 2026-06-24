@@ -366,18 +366,6 @@ async function loadNews() {
   }
 }
 
-// Page Summarization Logic
-async function summarizeCurrentPage() {
-  const loading = document.getElementById('summarize-loading');
-  const unsupported = document.getElementById('summarize-unsupported');
-  const content = document.getElementById('summarize-content');
-  const textEl = document.getElementById('summarize-text');
-
-  loading.classList.remove('hidden');
-  unsupported.classList.add('hidden');
-  content.classList.add('hidden');
-  textEl.innerHTML = '';
-
 // Storage Helpers (Safe fallback to localStorage)
 function getStorage(key, callback) {
   if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
