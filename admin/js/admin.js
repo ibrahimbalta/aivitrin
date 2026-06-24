@@ -1,4 +1,4 @@
-// Yapay Zeka Vitrini — Admin Panel
+// AiKlavuz — Admin Panel
 'use strict';
 
 // ─── MOBILE LAYOUT INTEGRATION ───────────────

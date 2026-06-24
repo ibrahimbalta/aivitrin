@@ -1,4 +1,4 @@
-// Yapay Zeka Vitrini — Admin Bülten Yönetimi Scripti
+// AiKlavuz — Admin Bülten Yönetimi Scripti
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
         await new Promise(r => setTimeout(r, 600));
 
         // Step 3: Trigger backend call
-        addConsoleLog('Yapay zeka bülten taslağı hazırlıyor (vitrindeki araçlar inceleniyor)...');
+        addConsoleLog('Yapay zeka bülten taslağı hazırlıyor (sitedeki araçlar inceleniyor)...');
         simProgressBar.style.width = '45%';
         
         const response = await fetch('/api/admin/newsletter/send-ai', {
