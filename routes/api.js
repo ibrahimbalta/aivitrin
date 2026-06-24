@@ -2,6 +2,7 @@
 const express = require('express');
 const { readDB, writeDB } = require('../db/database');
 const { requireAuth } = require('../middleware/auth');
+const { addToSocialQueue, sharePost } = require('../services/social');
 
 const router = express.Router();
 
@@ -805,9 +806,11 @@ router.post('/tools', requireAuth, function (req, res) {
   try {
     const { id, name, description, category_id, tags, pricing, rating, url, featured, is_new, show_in_slider, votes, turkish_supported, pricing_try } = req.body;
     if (!id || !name) return res.status(400).json({ error: 'ID ve isim gerekli.' });
+    
     const db = readDB();
     if (db.tools.find(t => t.id === id)) return res.status(409).json({ error: 'Bu ID zaten mevcut.' });
-    db.tools.push({
+    
+    const newTool = {
       id, name, description: description || '', category_id: category_id || null,
       tags: tags || [], pricing: pricing || 'freemium', rating: rating || 4.0,
       url: url || '', featured: featured ? 1 : 0, is_new: is_new ? 1 : 0,
@@ -816,8 +819,13 @@ router.post('/tools', requireAuth, function (req, res) {
       turkish_supported: turkish_supported || 'none',
       pricing_try: pricing_try || '',
       created_at: new Date().toISOString(), updated_at: new Date().toISOString()
-    });
+    };
+    db.tools.push(newTool);
     writeDB(db);
+    
+    // Add to social queue
+    addToSocialQueue(newTool);
+    
     res.status(201).json({ success: true, message: 'Araç oluşturuldu.' });
   } catch (err) {
     console.error(err);
@@ -974,6 +982,9 @@ router.post('/submissions/:id/approve', requireAuth, function (req, res) {
     db.tools.push(newTool);
     db.submissions.splice(subIdx, 1);
     writeDB(db);
+
+    // Add to social queue
+    addToSocialQueue(newTool);
 
     res.json({ success: true, message: 'Başvuru onaylandı ve yayına alındı.' });
   } catch (err) {
@@ -3184,6 +3195,68 @@ router.delete('/admin/quizzes/:id', requireAuth, function (req, res) {
     res.json({ success: true, message: 'Quiz silindi.' });
   } catch (err) {
     res.status(500).json({ error: 'Quiz silinemedi.' });
+  }
+});
+
+// ─── Social Media Queue Routes ─────────────────
+router.get('/admin/social/queue', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    res.json(db.social_queue || []);
+  } catch (err) {
+    res.status(500).json({ error: 'Sosyal medya kuyruğu alınamadı.' });
+  }
+});
+
+router.put('/admin/social/queue/:id', requireAuth, function (req, res) {
+  try {
+    const { text } = req.body;
+    if (!text) return res.status(400).json({ error: 'Paylaşım metni gerekli.' });
+    
+    const db = readDB();
+    if (!db.social_queue) db.social_queue = [];
+    
+    const idx = db.social_queue.findIndex(p => p.id === req.params.id);
+    if (idx === -1) return res.status(404).json({ error: 'Paylaşım bulunamadı.' });
+    
+    db.social_queue[idx].text = text;
+    writeDB(db);
+    
+    res.json({ success: true, message: 'Paylaşım metni güncellendi.', post: db.social_queue[idx] });
+  } catch (err) {
+    res.status(500).json({ error: 'Paylaşım güncellenemedi.' });
+  }
+});
+
+router.delete('/admin/social/queue/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    if (!db.social_queue) db.social_queue = [];
+    
+    const beforeLen = db.social_queue.length;
+    db.social_queue = db.social_queue.filter(p => p.id !== req.params.id);
+    
+    if (db.social_queue.length === beforeLen) {
+      return res.status(404).json({ error: 'Paylaşım bulunamadı.' });
+    }
+    
+    writeDB(db);
+    res.json({ success: true, message: 'Paylaşım kuyruktan kaldırıldı.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Paylaşım silinemedi.' });
+  }
+});
+
+router.post('/admin/social/queue/:id/share', requireAuth, async function (req, res) {
+  try {
+    const post = await sharePost(req.params.id);
+    if (post.status === 'shared') {
+      res.json({ success: true, message: 'Paylaşım sosyal medyada yayınlandı!', post });
+    } else {
+      res.status(400).json({ error: 'Paylaşım başarısız oldu.', details: post.error, post });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message || 'Paylaşım işlemi sırasında hata oluştu.' });
   }
 });
 

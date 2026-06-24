@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiKlavuz Yönetim — Sosyal Medya Paylaşımları</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .post-text-preview {
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+    .platform-status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .platform-badge.shared {
+      background: rgba(46, 213, 115, 0.15);
+      color: #2ed573;
+      border: 1px solid rgba(46, 213, 115, 0.3);
+    }
+    .platform-badge.failed {
+      background: rgba(255, 71, 87, 0.15);
+      color: #ff4757;
+      border: 1px solid rgba(255, 71, 87, 0.3);
+    }
+    .platform-badge.pending {
+      background: rgba(255, 165, 2, 0.15);
+      color: #ffa502;
+      border: 1px solid rgba(255, 165, 2, 0.3);
+    }
+    .textarea-post {
+      width: 100%;
+      height: 160px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .textarea-post:focus {
+      border-color: var(--accent-cyan);
+      outline: none;
+    }
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all var(--transition-fast);
+    }
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <span class="logo-icon" style="width:24px;height:24px;margin-right:8px">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" fill="none"/>
+            <polygon points="100,42 94,30 106,30" fill="#0099ff" />
+          </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">AI</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">vitrin</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/tools.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Araçlar
+        </a>
+        <a href="/admin/categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          Kategoriler
+        </a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular
+        </a>
+        <a href="/admin/prompts.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Prompt Yönetimi
+        </a>
+        <a href="/admin/news.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"/></svg>
+          Haber Yönetimi
+        </a>
+        <a href="/admin/quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Akademi/Quiz
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/social.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          Sosyal Medya
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/messages.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Mesajlar
+        </a>
+        <a href="/admin/ads.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="21" y1="9" x2="3" y2="9"/><line x1="21" y1="15" x2="3" y2="15"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          Reklam Yönetimi
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="btn-logout">Çıkış Yap</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <h1 class="page-title">Sosyal Medya Yönetimi</h1>
+      </div>
+
+      <!-- Info Alert -->
+      <div style="background:rgba(20,219,212,0.08); border:1px solid rgba(20,219,212,0.2); padding:16px; border-radius:var(--radius-md); margin-bottom:24px; color:var(--text-secondary); line-height:1.5; font-size:0.9rem">
+        📌 <strong>Sosyal Medya Paylaşım Botu:</strong> Sitede yeni bir yapay zeka aracı yayınlandığında otomatik olarak bu kuyruğa düşer. API anahtarlarınız (.env dosyasındaki) eksik olsa bile, paylaşımların yanındaki <strong>Kopyala</strong> butonuyla taslağı kopyalayıp hesaplarınızda manuel yayınlayabilirsiniz. API entegrasyonlarınız aktif ise <strong>Paylaş</strong> butonu ile otomatik gönderebilirsiniz.
+      </div>
+
+      <div class="data-table-wrapper">
+        <div class="table-header">
+          <h3>Paylaşım Kuyruğu</h3>
+          <span class="tools-count" id="queue-count">0 paylaşım</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Araç</th>
+              <th>Paylaşım Taslağı</th>
+              <th>Durum</th>
+              <th>Tarih</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="queue-table-body">
+            <tr>
+              <td colspan="5" class="empty-state">Yükleniyor...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-box" style="max-width:550px">
+      <div class="modal-header">
+        <h3 id="modal-title">Paylaşım İncele / Düzenle</h3>
+        <button class="modal-close-btn" id="detail-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; flex-direction:column; gap:16px">
+          <div>
+            <label style="color:var(--text-muted); font-size:0.75rem; display:block; margin-bottom:4px">Araç Adı</label>
+            <strong style="font-size:1.1rem" id="detail-tool-name">-</strong>
+          </div>
+          <div>
+            <label style="color:var(--text-muted); font-size:0.75rem; display:block; margin-bottom:6px">Paylaşım Metni</label>
+            <textarea class="textarea-post" id="detail-post-text"></textarea>
+          </div>
+          <div id="detail-status-section" style="display:none">
+            <label style="color:var(--text-muted); font-size:0.75rem; display:block; margin-bottom:4px">Hata Detayı</label>
+            <p id="detail-error-text" style="color:var(--accent-red); font-size:0.85rem; background:rgba(255,71,87,0.08); padding:10px; border-radius:4px; border:1px solid rgba(255,71,87,0.2)"></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="detail-close">Kapat</button>
+        <button class="btn-submit" id="detail-save" style="background:var(--accent-cyan); color:#000">Kaydet</button>
+        <button class="btn-submit" id="detail-share-direct">Şimdi Paylaş 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let activePost = null;
+
+    // Toast Helper
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast show ${type}`;
+      setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+    // Logout Helper
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      document.cookie = "auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      window.location.href = '/admin/login.html';
+    });
+
+    // Load Social Queue
+    async function loadQueue() {
+      const body = document.getElementById('queue-table-body');
+      const countEl = document.getElementById('queue-count');
+      
+      try {
+        const res = await fetch('/api/admin/social/queue');
+        if (res.status === 401) {
+          window.location.href = '/admin/login.html';
+          return;
+        }
+        
+        const data = await res.json();
+        countEl.textContent = `${data.length} paylaşım`;
+
+        if (data.length === 0) {
+          body.innerHTML = '<tr><td colspan="5" class="empty-state">Kuyrukta bekleyen veya gönderilen paylaşım yok. Yeni bir araç onaylandığında burada listelenir.</td></tr>';
+          return;
+        }
+
+        body.innerHTML = data.map(post => {
+          const dateStr = new Date(post.created_at).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          
+          // Status badge
+          let statusBadge = '';
+          if (post.status === 'shared') {
+            statusBadge = '<span class="badge badge-ucretsiz">Yayınlandı</span>';
+          } else if (post.status === 'failed') {
+            statusBadge = '<span class="badge badge-paid" style="background:rgba(255,71,87,0.15);color:#ff4757;border:1px solid rgba(255,71,87,0.3)">Hata</span>';
+          } else {
+            statusBadge = '<span class="badge badge-freemium">Bekliyor</span>';
+          }
+
+          // Platform details
+          const twitterStatus = post.share_platforms.twitter.status;
+          const linkedinStatus = post.share_platforms.linkedin.status;
+          
+          const platformBadges = `
+            <div class="platform-status">
+              <span class="platform-badge ${twitterStatus}">X/Twitter: ${twitterStatus === 'shared' ? '✓' : twitterStatus === 'failed' ? '✗' : '...'}</span>
+              <span class="platform-badge ${linkedinStatus}">LinkedIn: ${linkedinStatus === 'shared' ? '✓' : linkedinStatus === 'failed' ? '✗' : '...'}</span>
+            </div>
+          `;
+
+          return `
+            <tr>
+              <td><strong>${post.tool_name}</strong></td>
+              <td>
+                <div class="post-text-preview" title="${post.text}">${post.text.replace(/\n/g, ' ')}</div>
+                ${platformBadges}
+              </td>
+              <td>${statusBadge}</td>
+              <td>${dateStr}</td>
+              <td class="table-actions">
+                <button class="btn-edit btn-view-post" data-id="${post.id}">İncele/Düzenle</button>
+                <button class="btn-copy btn-copy-post" data-text="${encodeURIComponent(post.text)}">Kopyala 📋</button>
+                <button class="btn-edit btn-share-post" data-id="${post.id}" style="background:var(--accent-cyan); color:#000; border-color:var(--accent-cyan)">Paylaş 🚀</button>
+                <button class="btn-delete btn-delete-post" data-id="${post.id}" style="color:var(--accent-red)">&times;</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Action Listeners
+        body.querySelectorAll('.btn-view-post').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const p = data.find(item => item.id === btn.dataset.id);
+            openDetail(p);
+          });
+        });
+
+        body.querySelectorAll('.btn-copy-post').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const text = decodeURIComponent(this.dataset.text);
+            navigator.clipboard.writeText(text);
+            showToast('Paylaşım metni panoya kopyalandı! 📋');
+          });
+        });
+
+        body.querySelectorAll('.btn-share-post').forEach(btn => {
+          btn.addEventListener('click', function() {
+            triggerShare(this.dataset.id);
+          });
+        });
+
+        body.querySelectorAll('.btn-delete-post').forEach(btn => {
+          btn.addEventListener('click', function() {
+            deletePost(this.dataset.id);
+          });
+        });
+
+      } catch (err) {
+        showToast('Kuyruk yüklenemedi.', 'error');
+      }
+    }
+
+    // Modal Actions
+    const modal = document.getElementById('detail-modal');
+    
+    function openDetail(post) {
+      activePost = post;
+      document.getElementById('detail-tool-name').textContent = post.tool_name;
+      document.getElementById('detail-post-text').value = post.text;
+
+      const errorSection = document.getElementById('detail-status-section');
+      const errorText = document.getElementById('detail-error-text');
+
+      if (post.error) {
+        errorSection.style.display = 'block';
+        errorText.textContent = post.error;
+      } else {
+        errorSection.style.display = 'none';
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      activePost = null;
+    }
+
+    document.getElementById('detail-modal-close').addEventListener('click', closeModal);
+    document.getElementById('detail-close').addEventListener('click', closeModal);
+
+    // Save Text Edit
+    document.getElementById('detail-save').addEventListener('click', async () => {
+      if (!activePost) return;
+      const text = document.getElementById('detail-post-text').value;
+
+      try {
+        const res = await fetch(`/api/admin/social/queue/${activePost.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Metin güncellendi.');
+          closeModal();
+          loadQueue();
+        } else {
+          showToast(data.error || 'Güncellenemedi.', 'error');
+        }
+      } catch (e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    });
+
+    // Share from modal
+    document.getElementById('detail-share-direct').addEventListener('click', () => {
+      if (activePost) {
+        triggerShare(activePost.id);
+        closeModal();
+      }
+    });
+
+    // Delete post
+    async function deletePost(id) {
+      if (!confirm('Bu paylaşımı kuyruktan silmek istediğinizden emin misiniz?')) return;
+      try {
+        const res = await fetch(`/api/admin/social/queue/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Paylaşım silindi.');
+          loadQueue();
+        } else {
+          showToast(data.error || 'Silinemedi.', 'error');
+        }
+      } catch (e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    }
+
+    // Trigger share
+    async function triggerShare(id) {
+      showToast('Paylaşım gönderiliyor, lütfen bekleyin... 📡');
+      try {
+        const res = await fetch(`/api/admin/social/queue/${id}/share`, { method: 'POST' });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          showToast('Sosyal medyada başarıyla paylaşıldı! 🚀', 'success');
+        } else {
+          showToast(data.error || 'Paylaşım başarısız oldu.', 'error');
+        }
+        loadQueue();
+      } catch (e) {
+        showToast('İşlem başarısız oldu. API bağlantılarınızı kontrol edin.', 'error');
+        loadQueue();
+      }
+    }
+
+    // Init
+    loadQueue();
+  </script>
+</body>
+</html>
