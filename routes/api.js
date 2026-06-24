@@ -387,7 +387,7 @@ router.get('/tools', async function (req, res) {
     }
 
     if (sort === 'name-asc') tools.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
-    else if (sort === 'newest') tools.sort((a, b) => (b.is_new || 0) - (a.is_new || 0) || new Date(b.created_at) - new Date(a.created_at));
+    else if (sort === 'newest') tools.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     else if (sort === 'popular') tools.sort((a, b) => (b.votes || 0) - (a.votes || 0));
     else tools.sort((a, b) => b.rating - a.rating || a.name.localeCompare(b.name, 'tr'));
 
