@@ -451,3 +451,33 @@ body {
 .toast.show {
   opacity: 1;
 }
+
+#summarize-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+#summarize-text ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#summarize-text li {
+  position: relative;
+  padding-left: 14px;
+}
+
+#summarize-text li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+

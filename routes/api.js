@@ -462,6 +462,40 @@ router.get('/tools/detect', async function (req, res) {
   }
 });
 
+router.post('/ai/summarize', async function (req, res) {
+  try {
+    const { text, url } = req.body;
+    if (!text) return res.status(400).json({ error: 'Metin gerekli.' });
+
+    const db = readDB();
+    const settings = db.crawler_settings || {};
+    const { callLLM } = require('../services/ai');
+
+    const systemPrompt = `Sen AiKlavuz yapay zeka asistanısın. Görevin, sana gönderilen web sayfası içeriğini analiz etmek ve en önemli kısımlarını Türkçe olarak özetlemektir.
+Kurallar:
+1. Yanıtı sadece JSON formatında şu yapıda dön: {"summary": "• Madde 1\\n• Madde 2\\n• Madde 3..."}
+2. Maddeler halinde (en fazla 5 madde) net ve anlaşılır ol.
+3. Reklam ve gereksiz içerikleri ayıkla, sadece ana fikri yaz.
+4. Başka hiçbir açıklama metni ekleme, sadece JSON objesini döndür.`;
+
+    const userPrompt = `Web Sayfası Adresi: ${url || 'Belirtilmedi'}\n\nİçerik:\n${text.substring(0, 8000)}`;
+
+    const responseText = await callLLM(systemPrompt, userPrompt, { ...settings, jsonMode: true });
+    
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch(e) {
+      result = { summary: responseText };
+    }
+
+    res.json({ success: true, summary: result.summary });
+  } catch (err) {
+    console.error('AI summary error:', err);
+    res.status(500).json({ error: err.message || 'Özet oluşturulurken bir hata oluştu.' });
+  }
+});
+
 router.get('/tools/:id', async function (req, res) {
   try {
     const { lang } = req.query;

@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "AiKlavuz Günlük AI Asistanı",
-  "version": "1.1.0",
-  "description": "Günün AI promptu, yeni yapay zeka araçları, güncel haberler ve yapay zeka alternatifi bulucu.",
+  "version": "1.2.0",
+  "description": "Günün AI promptu, yeni yapay zeka araçları, güncel haberler, yapay zeka alternatifi bulucu ve anında sayfa özetleyici.",
   "permissions": [
     "activeTab",
     "tabs",
-    "contextMenus"
+    "contextMenus",
+    "scripting"
   ],
   "host_permissions": [
     "https://aiklavuz.com/*",

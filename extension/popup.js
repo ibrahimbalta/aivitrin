@@ -1,6 +1,23 @@
 'use strict';
 
-const API_BASE = 'https://aiklavuz.com/api';
+let API_BASE = 'https://aiklavuz.com/api';
+
+// Auto-detect localhost during development
+async function detectApiBase() {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 300);
+  try {
+    const res = await fetch('http://localhost:3000/api/tools?limit=1', { signal: controller.signal });
+    if (res.ok) {
+      API_BASE = 'http://localhost:3000/api';
+      console.log('Using local server:', API_BASE);
+    }
+  } catch (e) {
+    // defaults to production
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
 
 // DOM Elements
 const tabs = document.querySelectorAll('.tab-btn');
@@ -26,6 +43,11 @@ tabs.forEach(btn => {
     if (searchInput.value) {
       searchInput.value = '';
       searchClearBtn.classList.add('hidden');
+    }
+
+    // Trigger summarizer on tab switch
+    if (activeTabId === 'tab-summarize') {
+      summarizeCurrentPage();
     }
   });
 });
@@ -344,8 +366,140 @@ async function loadNews() {
   }
 }
 
+// Page Summarization Logic
+async function summarizeCurrentPage() {
+  const loading = document.getElementById('summarize-loading');
+  const unsupported = document.getElementById('summarize-unsupported');
+  const content = document.getElementById('summarize-content');
+  const textEl = document.getElementById('summarize-text');
+
+  loading.classList.remove('hidden');
+  unsupported.classList.add('hidden');
+  content.classList.add('hidden');
+  textEl.innerHTML = '';
+
+  try {
+    if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+      chrome.tabs.query({ active: true, currentWindow: true }, async (tabsList) => {
+        const activeTab = tabsList[0];
+        if (!activeTab || !activeTab.url || !activeTab.url.startsWith('http')) {
+          loading.classList.add('hidden');
+          unsupported.classList.remove('hidden');
+          return;
+        }
+
+        chrome.scripting.executeScript({
+          target: { tabId: activeTab.id },
+          func: () => {
+            return document.body.innerText || '';
+          }
+        }, async (results) => {
+          if (chrome.runtime.lastError || !results || !results[0]) {
+            console.warn('[AiKlavuz] Scripting injection error:', chrome.runtime.lastError);
+            loading.classList.add('hidden');
+            unsupported.classList.remove('hidden');
+            return;
+          }
+
+          let pageText = (results[0].result || '').trim();
+          if (pageText.length < 100) {
+            chrome.scripting.executeScript({
+              target: { tabId: activeTab.id },
+              func: () => {
+                const paragraphs = Array.from(document.querySelectorAll('p')).map(p => p.innerText.trim()).filter(Boolean);
+                return paragraphs.join('\n\n');
+              }
+            }, async (results2) => {
+              if (results2 && results2[0] && results2[0].result) {
+                pageText = results2[0].result.trim();
+              }
+              await fetchSummary(pageText, activeTab.url);
+            });
+          } else {
+            await fetchSummary(pageText, activeTab.url);
+          }
+        });
+      });
+    } else {
+      loading.classList.add('hidden');
+      unsupported.classList.remove('hidden');
+    }
+  } catch (err) {
+    console.error('Page summary execution error:', err);
+    loading.classList.add('hidden');
+    unsupported.classList.remove('hidden');
+  }
+}
+
+async function fetchSummary(text, url) {
+  const loading = document.getElementById('summarize-loading');
+  const content = document.getElementById('summarize-content');
+  const textEl = document.getElementById('summarize-text');
+  const copyBtn = document.getElementById('btn-copy-summary');
+
+  if (!text || text.length < 50) {
+    loading.classList.add('hidden');
+    document.getElementById('summarize-unsupported').classList.remove('hidden');
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}/ai/summarize`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: text.substring(0, 8000),
+        url: url
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Özet oluşturma hatası');
+    }
+
+    const data = await response.json();
+    if (data.success && data.summary) {
+      const formatted = data.summary;
+      if (formatted.includes('•') || formatted.includes('- ')) {
+        const lines = formatted.split('\n')
+          .map(line => line.trim())
+          .filter(line => line.length > 0)
+          .map(line => {
+            const clean = line.replace(/^[•\-\*]\s*/, '');
+            return `<li>${clean}</li>`;
+          })
+          .join('');
+        textEl.innerHTML = `<ul>${lines}</ul>`;
+      } else {
+        textEl.textContent = formatted;
+      }
+
+      copyBtn.onclick = () => {
+        const plainText = textEl.innerText || textEl.textContent;
+        navigator.clipboard.writeText(plainText);
+        showToast('Özet panoya kopyalandı! 📋');
+      };
+
+      loading.classList.add('hidden');
+      content.classList.remove('hidden');
+    } else {
+      throw new Error('Geçersiz sunucu yanıtı.');
+    }
+  } catch (err) {
+    console.error('Fetch summary failed:', err);
+    textEl.innerHTML = `<p style="color:#ff4757; font-size:0.78rem; text-align:center; padding:10px;">Hata: ${err.message || 'Özet alınırken bir hata oluştu.'}</p>`;
+    loading.classList.add('hidden');
+    content.classList.remove('hidden');
+  }
+}
+
+// Bind reload/refresh button
+document.getElementById('btn-refresh-summary').addEventListener('click', summarizeCurrentPage);
+
 // Init Load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await detectApiBase();
   checkCurrentTab();
   loadDailyPrompt();
   loadNewTools();
