@@ -225,10 +225,29 @@ app.get('/tool/:id', function (req, res) {
       const htmlPath = path.join(__dirname, 'public', 'tool.html');
       let htmlContent = fs.readFileSync(htmlPath, 'utf8');
       
-      const title = `${tool.name} — Türkçe Detaylı İnceleme & Alternatifleri | AiKlavuz`;
+      // Find top 3 alternatives for Programmatic SEO and pre-rendering
+      const targetCategory = tool.category_id;
+      const targetTags = Array.isArray(tool.tags) ? tool.tags : [];
+      const alternatives = db.tools
+        .filter(t => t.id !== tool.id)
+        .map(t => {
+          let score = 0;
+          if (t.category_id && t.category_id === targetCategory) {
+            score += 10;
+          }
+          const tTags = Array.isArray(t.tags) ? t.tags : [];
+          const matchingTags = tTags.filter(tag => targetTags.includes(tag));
+          score += matchingTags.length * 2;
+          return { ...t, score };
+        })
+        .filter(t => t.score > 0)
+        .sort((a, b) => b.score - a.score || b.rating - a.rating)
+        .slice(0, 3);
+      
+      const title = `${tool.name} Alternatifleri ve Benzeri Yapay Zeka Araçları | AiKlavuz`;
       // Clean and trim description to be SEO safe (max 160 chars)
       const cleanDesc = (tool.description || '').replace(/"/g, '&quot;').replace(/\n/g, ' ').trim();
-      const description = `${tool.name} yapay zeka aracının özellikleri, fiyatlandırması, kullanıcı yorumları, Türkçe dil desteği ve en iyi alternatif rakipleri. ${cleanDesc}`.substring(0, 160);
+      const description = `${tool.name} benzeri en iyi yapay zeka araçları ve alternatif rakipleri listesi. ${tool.name} özelliklerini, Türkçe kullanım detaylarını inceleyin.`;
       
       const ogImageUrl = `https://image.thum.io/get/width/1200/crop/800/maxAge/168/${tool.url}`;
       const pageUrl = `https://aiklavuz.com/tool/${tool.id}`;
@@ -257,6 +276,14 @@ app.get('/tool/:id', function (req, res) {
           "bestRating": "5",
           "worstRating": "1"
         };
+      }
+
+      if (alternatives.length > 0) {
+        schemaData.isSimilarTo = alternatives.map(alt => ({
+          "@type": "WebApplication",
+          "name": alt.name,
+          "url": `https://aiklavuz.com/tool/${alt.id}`
+        }));
       }
       
       // Replace generic meta tags in <head>
@@ -291,6 +318,43 @@ app.get('/tool/:id', function (req, res) {
       }
       
       htmlContent = htmlContent.replace('</head>', `${seoTags}\n</head>`);
+
+      // Pre-render alternatives cards for SEO crawling
+      let altCardsHtml = '';
+      if (alternatives.length > 0) {
+        altCardsHtml = alternatives.map(alt => {
+          const cat = db.categories.find(c => c.id === alt.category_id);
+          const catLabel = cat ? `${cat.icon} ${cat.name}` : '';
+          const stars = '★'.repeat(Math.round(alt.rating || 4));
+          const pricingMap = { free: 'Ücretsiz', freemium: 'Freemium', paid: 'Ücretli' };
+          const pricingLabel = pricingMap[alt.pricing] || alt.pricing || 'Ücretsiz';
+          
+          return `
+            <div class="tool-card" data-id="${alt.id}" style="cursor:pointer" onclick="window.location.href='/tool/${alt.id}'">
+              <div class="tool-card-header">
+                <div class="tool-icon">${alt.name.charAt(0).toUpperCase()}</div>
+                <div class="tool-info">
+                  <h3 class="tool-name">${alt.name}</h3>
+                  <span class="tool-category-badge">${catLabel}</span>
+                </div>
+              </div>
+              <p class="tool-description">${alt.description}</p>
+              <div class="tool-footer" style="margin-top:auto;">
+                <div class="tool-rating">${stars} <span>${alt.rating || '4.0'}</span></div>
+                <span class="tool-pricing pricing-${alt.pricing}">${pricingLabel}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } else {
+        altCardsHtml = `<p style="color:var(--text-muted); grid-column:1/-1;">Bu araç için benzer alternatif bulunamadı.</p>`;
+      }
+
+      htmlContent = htmlContent.replace(
+        '<div class="grid-tools" id="alternatives-grid">',
+        `<div class="grid-tools" id="alternatives-grid">${altCardsHtml}`
+      );
+
       return res.send(htmlContent);
     }
   } catch (err) {
