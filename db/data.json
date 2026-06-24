@@ -119001,6 +119001,29 @@
         "videograf",
         "pazarlamaci"
       ]
+    },
+    {
+      "id": "viggle-ai",
+      "name": "Viggle AI",
+      "description": "Viggle AI, yüklediğiniz durağan karakter görsellerine (fotoğraflara) istediğiniz hareket videolarını veya şablonlarını giydirerek, karakter tutarlılığını bozmadan gerçekçi 3D animasyonlar üretmenizi sağlayan yapay zeka tabanlı bir video oluşturma aracıdır.",
+      "category_id": "yaratici-ai",
+      "tags": [
+        "video-generation",
+        "character-animation",
+        "motion-transfer",
+        "3d-animation"
+      ],
+      "pricing": "freemium",
+      "rating": 4.5,
+      "url": "https://viggle.ai",
+      "featured": 0,
+      "is_new": 1,
+      "show_in_slider": 1,
+      "votes": 0,
+      "turkish_supported": "none",
+      "pricing_try": "",
+      "created_at": "2026-06-24T17:59:32.281Z",
+      "updated_at": "2026-06-24T17:59:32.281Z"
     }
   ],
   "submissions": [
@@ -121179,7 +121202,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-24T14:56:11.786Z",
+    "last_run": "2026-06-24T18:45:41.535Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -121854,6 +121877,22 @@
     },
     {
       "timestamp": "2026-06-24T14:56:11.786Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T17:47:19.806Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T18:45:41.535Z",
       "success": true,
       "tools_found": 50,
       "tools_added": 0,
@@ -122566,6 +122605,27 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48550,
-  "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
+  "pageViews": 48554,
+  "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>",
+  "social_queue": [
+    {
+      "id": "post-1782323972412-35",
+      "tool_id": "viggle-ai",
+      "tool_name": "Viggle AI",
+      "text": "🚀 AiKlavuz'da yeni bir yapay zeka aracı listelendi: Viggle AI!\n\n💡 Viggle AI, yüklediğiniz durağan karakter görsellerine (fotoğraflara) istediğiniz hareket videolarını veya şablonlarını giydirerek, karakter ...\n\n👉 Detaylar, alternatifleri ve Türkçe incelemesi için tıklayın:\nhttps://aiklavuz.com/tool/viggle-ai\n\n#yapayzeka #ai #aiklavuz #görsel&tasarımai",
+      "status": "failed",
+      "error": "Twitter: Unauthorized | LinkedIn: Access Token eksik (.env dosyasını kontrol edin)",
+      "share_platforms": {
+        "twitter": {
+          "status": "failed",
+          "error": "Unauthorized"
+        },
+        "linkedin": {
+          "status": "failed",
+          "error": "Access Token eksik (.env dosyasını kontrol edin)"
+        }
+      },
+      "created_at": "2026-06-24T17:59:32.412Z"
+    }
+  ]
 }

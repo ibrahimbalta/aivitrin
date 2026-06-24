@@ -209,6 +209,7 @@
       <div class="modal-footer">
         <button class="btn-cancel" id="detail-close">Kapat</button>
         <button class="btn-submit" id="detail-save" style="background:var(--accent-cyan); color:#000">Kaydet</button>
+        <button class="btn-submit" id="detail-tweet-direct" style="background:#1d9bf0; color:#fff; border-color:#1d9bf0">X'te Paylaş 🐦</button>
         <button class="btn-submit" id="detail-share-direct">Şimdi Paylaş 🚀</button>
       </div>
     </div>
@@ -290,6 +291,7 @@
               <td class="table-actions">
                 <button class="btn-edit btn-view-post" data-id="${post.id}">İncele/Düzenle</button>
                 <button class="btn-copy btn-copy-post" data-text="${encodeURIComponent(post.text)}">Kopyala 📋</button>
+                <button class="btn-copy btn-tweet-post" data-text="${encodeURIComponent(post.text)}" style="background:#1d9bf0; color:#fff; border-color:#1d9bf0">X'te Paylaş 🐦</button>
                 <button class="btn-edit btn-share-post" data-id="${post.id}" style="background:var(--accent-cyan); color:#000; border-color:var(--accent-cyan)">Paylaş 🚀</button>
                 <button class="btn-delete btn-delete-post" data-id="${post.id}" style="color:var(--accent-red)">&times;</button>
               </td>
@@ -310,6 +312,13 @@
             const text = decodeURIComponent(this.dataset.text);
             navigator.clipboard.writeText(text);
             showToast('Paylaşım metni panoya kopyalandı! 📋');
+          });
+        });
+
+        body.querySelectorAll('.btn-tweet-post').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const text = decodeURIComponent(this.dataset.text);
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
           });
         });
 
@@ -389,6 +398,12 @@
         triggerShare(activePost.id);
         closeModal();
       }
+    });
+
+    // Tweet manual share from modal
+    document.getElementById('detail-tweet-direct').addEventListener('click', () => {
+      const text = document.getElementById('detail-post-text').value;
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
     });
 
     // Delete post
