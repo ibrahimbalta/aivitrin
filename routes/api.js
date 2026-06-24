@@ -323,7 +323,7 @@ router.delete('/categories/:id', requireAuth, function (req, res) {
 
 router.get('/tools', async function (req, res) {
   try {
-    const { search, category, pricing, sort, limit, made_in_turkey, profession, lang } = req.query;
+    const { search, category, pricing, sort, limit, made_in_turkey, profession, lang, show_in_slider } = req.query;
     const db = readDB();
 
     let tools = db.tools.map(t => {
@@ -384,6 +384,10 @@ router.get('/tools', async function (req, res) {
     }
     if (profession) {
       tools = tools.filter(t => Array.isArray(t.professions) && t.professions.includes(profession));
+    }
+    if (show_in_slider !== undefined) {
+      const sliderFilter = show_in_slider === 'true' || show_in_slider === '1';
+      tools = tools.filter(t => !!t.show_in_slider === sliderFilter);
     }
 
     if (sort === 'name-asc') tools.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
@@ -799,7 +803,7 @@ router.post('/tools/:id/vote', function (req, res) {
 
 router.post('/tools', requireAuth, function (req, res) {
   try {
-    const { id, name, description, category_id, tags, pricing, rating, url, featured, is_new, votes, turkish_supported, pricing_try } = req.body;
+    const { id, name, description, category_id, tags, pricing, rating, url, featured, is_new, show_in_slider, votes, turkish_supported, pricing_try } = req.body;
     if (!id || !name) return res.status(400).json({ error: 'ID ve isim gerekli.' });
     const db = readDB();
     if (db.tools.find(t => t.id === id)) return res.status(409).json({ error: 'Bu ID zaten mevcut.' });
@@ -807,6 +811,7 @@ router.post('/tools', requireAuth, function (req, res) {
       id, name, description: description || '', category_id: category_id || null,
       tags: tags || [], pricing: pricing || 'freemium', rating: rating || 4.0,
       url: url || '', featured: featured ? 1 : 0, is_new: is_new ? 1 : 0,
+      show_in_slider: show_in_slider ? 1 : 0,
       votes: votes || 0,
       turkish_supported: turkish_supported || 'none',
       pricing_try: pricing_try || '',
@@ -822,7 +827,7 @@ router.post('/tools', requireAuth, function (req, res) {
 
 router.put('/tools/:id', requireAuth, function (req, res) {
   try {
-    const { name, description, category_id, tags, pricing, rating, url, featured, is_new, votes, turkish_supported, pricing_try } = req.body;
+    const { name, description, category_id, tags, pricing, rating, url, featured, is_new, show_in_slider, votes, turkish_supported, pricing_try } = req.body;
     const db = readDB();
     const idx = db.tools.findIndex(t => t.id === req.params.id);
     if (idx === -1) return res.status(404).json({ error: 'Araç bulunamadı.' });
@@ -830,6 +835,7 @@ router.put('/tools/:id', requireAuth, function (req, res) {
       ...db.tools[idx], name, description: description || '', category_id: category_id || null,
       tags: tags || [], pricing: pricing || 'freemium', rating: rating || 4.0,
       url: url || '', featured: featured ? 1 : 0, is_new: is_new ? 1 : 0,
+      show_in_slider: show_in_slider ? 1 : 0,
       votes: votes !== undefined ? votes : db.tools[idx].votes || 0,
       turkish_supported: turkish_supported || db.tools[idx].turkish_supported || 'none',
       pricing_try: pricing_try || db.tools[idx].pricing_try || '',
@@ -960,6 +966,7 @@ router.post('/submissions/:id/approve', requireAuth, function (req, res) {
       featured: sub.featured ? 1 : 0,
       made_in_turkey: sub.made_in_turkey ? 1 : 0,
       is_new: 1,
+      show_in_slider: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     };

@@ -443,7 +443,8 @@
         "Texterstellung",
         "K��nstliche Intelligenz",
         "GPT"
-      ]
+      ],
+      "show_in_slider": 1
     },
     {
       "id": "claude",
@@ -752,9 +753,9 @@
       "rating": 4.6,
       "url": "https://www.canva.com/ai-image-generator/",
       "featured": 0,
-      "is_new": 0,
+      "is_new": 1,
       "created_at": "2026-06-17T18:11:29.519Z",
-      "updated_at": "2026-06-17T18:11:29.519Z",
+      "updated_at": "2026-06-24T05:13:06.117Z",
       "ana_kategori": "Görsel & Tasarım AI",
       "alt_kategori": "Görsel Üretim",
       "sektor": "Bireysel",
@@ -115535,7 +115536,7 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T15:47:59.260Z",
-      "updated_at": "2026-06-22T19:40:49.019Z",
+      "updated_at": "2026-06-24T05:25:27.110Z",
       "ana_kategori": "Sosyal Medya",
       "alt_kategori": "SEO Araçları",
       "sektor": "Pazarlama",
@@ -118669,31 +118670,28 @@
       "alt_kategori": "Dil Öğrenme",
       "sektor": "Bireysel",
       "entegrasyon_tipi": "Web Uygulaması"
-    }
-  ],
-  "submissions": [
+    },
     {
-      "id": "sub_1781756206144_9hde3",
+      "id": "microsoft-copilot-1",
       "name": "Microsoft Copilot",
-      "url": "https://copilot.microsoft.com",
       "description": "AI assistant integrated with Microsoft services",
       "category_id": "genel-ai-asistan",
-      "pricing": "ucretsiz",
       "tags": [
         "chatbot",
         "office",
         "productivity"
       ],
+      "pricing": "ucretsiz",
       "rating": 4.5,
-      "source": "user",
-      "created_at": "2026-06-18T04:16:46.144Z",
-      "ana_kategori": "Genel AI Asistan",
-      "alt_kategori": "Dil Öğrenme",
-      "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması",
-      "dogrulanmis": true,
-      "öne_cikan": false
-    },
+      "url": "https://copilot.microsoft.com",
+      "featured": 0,
+      "made_in_turkey": 0,
+      "is_new": 1,
+      "created_at": "2026-06-24T05:18:33.606Z",
+      "updated_at": "2026-06-24T05:18:33.606Z"
+    }
+  ],
+  "submissions": [
     {
       "id": "sub_1781756206158_af1e5",
       "name": "Perplexity",
@@ -120869,7 +120867,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-23T19:05:53.565Z",
+    "last_run": "2026-06-24T05:41:01.857Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -121485,6 +121483,38 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T05:32:58.137Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T05:34:41.151Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T05:36:51.248Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T05:41:01.857Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -122082,6 +122112,6 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48421,
+  "pageViews": 48428,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
 }

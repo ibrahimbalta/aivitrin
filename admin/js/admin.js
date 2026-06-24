@@ -164,6 +164,7 @@ if (toolsTableBody) {
       var status = '';
       if(t.featured) status += '⭐ ';
       if(t.is_new) status += '🆕 ';
+      if(t.show_in_slider) status += '🎠 ';
       return '<tr>' +
         '<td><strong>'+t.name+'</strong></td>' +
         '<td>'+(t.category_name||t.category_id||'')+'</td>' +
@@ -225,6 +226,7 @@ if (toolsTableBody) {
       document.getElementById('tool-tags').value = '';
       document.getElementById('tool-featured').checked = false;
       document.getElementById('tool-is-new').checked = false;
+      document.getElementById('tool-show-in-slider').checked = false;
       openModal();
     });
   }
@@ -247,6 +249,7 @@ if (toolsTableBody) {
       document.getElementById('tool-tags').value = tags.join(', ');
       document.getElementById('tool-featured').checked = !!t.featured;
       document.getElementById('tool-is-new').checked = !!t.is_new;
+      document.getElementById('tool-show-in-slider').checked = !!t.show_in_slider;
       openModal();
     } catch(e) { showToast('Araç yüklenemedi','error'); }
   }
@@ -264,10 +267,11 @@ if (toolsTableBody) {
       var tags = tagsStr ? tagsStr.split(',').map(function(s){return s.trim()}).filter(Boolean) : [];
       var featured = document.getElementById('tool-featured').checked;
       var isNew = document.getElementById('tool-is-new').checked;
+      var showInSlider = document.getElementById('tool-show-in-slider').checked;
 
       if(!name || !url || !desc || !cat) { showToast('Tüm zorunlu alanları doldurun.','error'); return; }
 
-      var body = { name:name, description:desc, category_id:cat, tags:tags, pricing:pricing, rating:rating, url:url, featured:featured, is_new:isNew };
+      var body = { name:name, description:desc, category_id:cat, tags:tags, pricing:pricing, rating:rating, url:url, featured:featured, is_new:isNew, show_in_slider:showInSlider };
 
       try {
         var res;

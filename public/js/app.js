@@ -1278,8 +1278,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     try {
       var [resNewest, resPopular] = await Promise.all([
-        fetch('/api/tools?limit=6&sort=newest&t=' + Date.now()),
-        fetch('/api/tools?limit=6&sort=popular&t=' + Date.now())
+        fetch('/api/tools?limit=6&sort=newest&show_in_slider=true&t=' + Date.now()),
+        fetch('/api/tools?limit=6&sort=popular&show_in_slider=true&t=' + Date.now())
       ]);
       var dataNewest = await resNewest.json();
       var dataPopular = await resPopular.json();
