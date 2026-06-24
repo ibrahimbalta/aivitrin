@@ -121179,7 +121179,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-24T14:42:26.888Z",
+    "last_run": "2026-06-24T14:56:11.786Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -121851,6 +121851,14 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T14:56:11.786Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -122363,47 +122371,47 @@
     },
     {
       "id": "vid-3",
-      "title": "Cursor AI Kullanımı: 30 Dakikada Sıfırdan Web Uygulaması Geliştirin",
-      "youtubeId": "13p86mO1Cqg",
-      "channel": "Eser Kababulut",
+      "title": "Claude Code'u Sonsuza Kadar ÜCRETSİZ Kullanın (Openrouter)",
+      "youtubeId": "l85EZOeytj8",
+      "channel": "Mert Durmazer | Digital Academy",
       "category": "Yazılım & Geliştirme",
       "categoryId": "kodlama",
-      "duration": "32:10",
+      "duration": "18:00",
       "level": "Orta",
-      "description": "Yapay zeka destekli kod editörü Cursor'ı kullanarak hiç kod yazmadan veya çok az kodla modern web projeleri geliştirme rehberi."
+      "description": "Claude Code'u Sonsuza Kadar ÜCRETSİZ Kullanın (Openrouter)"
     },
     {
       "id": "vid-4",
-      "title": "Python ile Yapay Zeka Geliştirme: TensorFlow ve PyTorch Giriş",
-      "youtubeId": "wV01T5kHnSw",
-      "channel": "Kaan Academy Türkçe",
+      "title": "Yapay Zeka ile Otomatik ve Seri Video Oluşturma",
+      "youtubeId": "e-c3NK5fLto",
+      "channel": "WPMAVI | Burak Oran",
       "category": "Yazılım & Geliştirme",
-      "categoryId": "kodlama",
+      "categoryId": "tasarim",
       "duration": "45:15",
       "level": "İleri",
-      "description": "Python programlama dili kullanarak basit bir makine öğrenmesi modelinin TensorFlow kütüphanesi ile sıfırdan eğitilmesi."
+      "description": "Yapay Zeka ile Otomatik ve Seri Video Oluşturma"
     },
     {
       "id": "vid-5",
-      "title": "Midjourney ve Stable Diffusion ile Profesyonel Görsel Üretimi",
-      "youtubeId": "v08kK372Wk4",
-      "channel": "Tasarım Kanalı",
+      "title": "Claude Code kullanarak $10,000’lık Web Siteleri Oluşturun (Kapsamlı Rehber)",
+      "youtubeId": "VMvZuhcDdnw",
+      "channel": "Metics Media",
       "category": "Tasarım & Kreatif",
-      "categoryId": "tasarim",
-      "duration": "18:30",
+      "categoryId": "kodlama",
+      "duration": "26dk",
       "level": "Başlangıç",
-      "description": "Yapay zeka ile görsel oluşturma araçlarının (Midjourney, Stable Diffusion) parametre kullanımları ve yaratıcı görsel teknikleri."
+      "description": "Claude Code kullanarak $10,000’lık Web Siteleri Oluşturun (Kapsamlı Rehber)"
     },
     {
       "id": "vid-6",
-      "title": "Make.com ve ChatGPT ile Yapay Zeka Tabanlı İş Otomasyonu Kurmak",
-      "youtubeId": "2Fm9c23s43Q",
-      "channel": "Dijital Dönüşüm",
+      "title": "NotebookLM Nedir? NotebookLM ile neler yapabilirsiniz?",
+      "youtubeId": "jXyyHDW3qrM",
+      "channel": "Mert Sezer",
       "category": "İş & Otomasyon",
       "categoryId": "is-uretkenlik",
-      "duration": "25:50",
+      "duration": "20dk",
       "level": "Orta",
-      "description": "E-postaları otomatik yanıtlayan, verileri analiz edip rapor hazırlayan ChatGPT entegreli Make.com otomasyon senaryoları."
+      "description": "NotebookLM Nedir? NotebookLM ile neler yapabilirsiniz?"
     }
   ],
   "academy_resources": [
@@ -122448,6 +122456,6 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48545,
+  "pageViews": 48546,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
 }

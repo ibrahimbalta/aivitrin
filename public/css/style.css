@@ -826,6 +826,23 @@ img {
     padding: 0;
     font-weight: 600;
   }
+  
+  /* Responsive Modals */
+  .modal {
+    width: calc(100% - 24px);
+    margin: 12px;
+  }
+  .modal-header,
+  .modal-footer {
+    padding: 16px 20px;
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .search-suggestions {
@@ -2089,6 +2106,10 @@ img {
 .form-row {
   display: flex;
   gap: 16px;
+}
+.form-row .form-group {
+  flex: 1;
+  min-width: 0;
 }
 .form-group {
   display: flex;
