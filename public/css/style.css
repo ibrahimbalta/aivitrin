@@ -1820,6 +1820,15 @@ img {
     display: none;
   }
 
+  .header-assistant-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-assistant-link span {
+    display: none;
+  }
+
   .tool-card {
     padding: 18px;
   }
