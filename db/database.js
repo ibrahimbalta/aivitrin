@@ -282,7 +282,11 @@ function readLocalDB() {
 
 function writeLocalDB(data) {
   try {
-    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    const cloned = JSON.parse(JSON.stringify(data));
+    if (cloned.crawler_settings && cloned.crawler_settings.ai_api_key) {
+      cloned.crawler_settings.ai_api_key = 'xai-********************';
+    }
+    fs.writeFileSync(DB_PATH, JSON.stringify(cloned, null, 2), 'utf-8');
   } catch (e) {
     console.error('Local DB write error:', e.message);
   }

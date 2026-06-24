@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "$2a$10$pp8Ir6Dt3JA1PDgx5xe6peFcTaCgQjeu0IuErz7S.r.Y5SJ6V3f5u",
+      "password": "$2a$10$.40E371EsBTHId6/6t9zj.lfp4vRLsOP6fZepJWA1EeqtnAVdBn8S",
       "created_at": "2026-06-17T18:11:29.517Z",
       "bookmarks": [
         "chatgpt",
@@ -98965,7 +98965,17 @@
       "ana_kategori": "Video ve Animasyon",
       "alt_kategori": "Video Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "pros": [
+        "Uzun videoları hızlıca kısa ve paylaşılabilir kliplere dönüştürür",
+        "Video düzenleme sürecini otomatikleştirerek zaman tasarrufu sağlar",
+        "Sosyal medya içerik üretimi için pratik ve verimli bir çözüm sunar"
+      ],
+      "cons": [
+        "Otomatik kesimler her zaman istenen anlatımı doğru yansıtmayabilir",
+        "İnce kurgu ve yaratıcı kontrol açısından sınırlı kalabilir",
+        "Kaliteli sonuçlar için kaynak videonun net ve düzenli olması gerekebilir"
+      ]
     },
     {
       "id": "omnisearch",
@@ -118952,6 +118962,16 @@
         "tasarimci",
         "ogretmen",
         "pazarlamaci"
+      ],
+      "pros": [
+        "Ücretsiz kullanım sunması erişimi kolaylaştırır",
+        "Metinden yüksek kaliteli görseller üretir",
+        "Microsoft ve DALL-E desteği güvenilirlik sağlar"
+      ],
+      "cons": [
+        "Ücretsiz sürümde kullanım limiti olabilir",
+        "İstenilen sonucu tutturmak için prompt ayarı gerekebilir",
+        "Özgünlük ve telif açısından dikkat gerektirebilir"
       ]
     },
     {
@@ -121159,11 +121179,11 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-24T06:05:47.641Z",
+    "last_run": "2026-06-24T14:42:26.888Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
-    "ai_api_key": "",
+    "ai_api_key": "xai-********************",
     "ai_model": "gpt-5.4-mini",
     "ai_custom_endpoint": ""
   },
@@ -121815,6 +121835,22 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T06:25:12.206Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T14:42:26.888Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -122305,25 +122341,25 @@
   "academy_videos": [
     {
       "id": "vid-1",
-      "title": "Yapay Zeka Nedir? 10 Dakikada Yapay Zekanın Temelleri",
-      "youtubeId": "cQ54GDm1eL0",
-      "channel": "Barış Özcan",
+      "title": "Claude Code'u nasıl kullanıyorum? Sıfırdan AI destekli uygulama geliştiriyoruz!",
+      "youtubeId": "EIoPt1ry6ng",
+      "channel": "Onur Tirpan",
       "category": "Temel Eğitim",
       "categoryId": "giris",
-      "duration": "12:15",
+      "duration": "1:53",
       "level": "Başlangıç",
-      "description": "Yapay zeka teknolojisinin tarihçesi, çalışma mantığı ve hayatımızı nasıl etkilediğine dair anlaşılır bir başlangıç rehberi."
+      "description": "Claude Code'u nasıl kullanıyorum? Sıfırdan AI destekli uygulama geliştiriyoruz!"
     },
     {
       "id": "vid-2",
-      "title": "Prompt Engineering Nedir? Yapay Zeka ile Doğru Konuşma Sanatı",
-      "youtubeId": "hI3o7B37dM0",
-      "channel": "Yazılım Bilimi",
-      "category": "Prompt Mühendisliği",
-      "categoryId": "prompt",
+      "title": "Gerçekten Çalışan AI Ajanları Nasıl Oluşturulur (Kodlama Yok)",
+      "youtubeId": "b0ymN8OgiMM",
+      "channel": "Metics Media",
+      "category": "AI Ajanları Nasıl Oluşturulur",
+      "categoryId": "kodlama",
       "duration": "22:40",
       "level": "Başlangıç",
-      "description": "ChatGPT, Claude ve diğer büyük dil modellerinden en verimli yanıtları almak için kullanabileceğiniz profesyonel prompt teknikleri."
+      "description": "Gerçekten Çalışan AI Ajanları Nasıl Oluşturulur (Kodlama Yok)"
     },
     {
       "id": "vid-3",
@@ -122412,6 +122448,6 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48431,
+  "pageViews": 48545,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
 }
