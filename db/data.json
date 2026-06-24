@@ -121202,7 +121202,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-24T18:45:41.535Z",
+    "last_run": "2026-06-24T20:19:43.405Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -121893,6 +121893,14 @@
     },
     {
       "timestamp": "2026-06-24T18:45:41.535Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T20:19:43.405Z",
       "success": true,
       "tools_found": 50,
       "tools_added": 0,

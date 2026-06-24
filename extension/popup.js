@@ -488,10 +488,37 @@ async function fetchSummary(text, url) {
     }
   } catch (err) {
     console.error('Fetch summary failed:', err);
-    textEl.innerHTML = `<p style="color:#ff4757; font-size:0.78rem; text-align:center; padding:10px;">Hata: ${err.message || 'Özet alınırken bir hata oluştu.'}</p>`;
+    const friendlyMsg = getFriendlyErrorMessage(err.message);
+    textEl.innerHTML = `<div style="color:#ff4757; font-size:0.78rem; line-height:1.5; padding:6px 2px;">${friendlyMsg}</div>`;
     loading.classList.add('hidden');
     content.classList.remove('hidden');
   }
+}
+
+function getFriendlyErrorMessage(message) {
+  const msg = (message || '').toLowerCase();
+  
+  if (msg.includes('429') || msg.includes('rate limit') || msg.includes('rate_limit') || msg.includes('tpm') || msg.includes('rpm')) {
+    return '⚠️ API Kullanım Limiti Aşıldı!\n\nYapay zeka servisinin dakikalık/günlük limitleri aşılmış durumda. Lütfen API anahtarınızın bakiyesini veya limitlerini kontrol edip birkaç dakika sonra tekrar deneyin.';
+  }
+  
+  if (msg.includes('insufficient_quota') || msg.includes('quota') || msg.includes('bakiye') || msg.includes('billing')) {
+    return '💳 API Kotası / Bakiyesi Yetersiz!\n\nYapay zeka API anahtarınızın kullanım kotası dolmuş veya bakiyesi tükenmiş. Lütfen API sağlayıcınızın kontrol panelinden faturanızı/bakiyenizi kontrol edin.';
+  }
+  
+  if (msg.includes('401') || msg.includes('unauthorized') || msg.includes('invalid_api_key') || msg.includes('api anahtarı geçersiz')) {
+    return '🔑 Geçersiz API Anahtarı!\n\nYapay zeka API anahtarı geçersiz veya yetkilendirme hatası alındı. Lütfen yönetici panelinden API anahtarını güncelleyin.';
+  }
+  
+  if (msg.includes('timeout') || msg.includes('zaman aşımı') || msg.includes('timed out')) {
+    return '⏱️ Bağlantı Zaman Aşımına Uğradı!\n\nSunucu veya yapay zeka servisi zamanında yanıt vermedi. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.';
+  }
+
+  if (msg.includes('404') || msg.includes('model_not_found') || msg.includes('model bulunamadı')) {
+    return '🤖 Model Bulunamadı!\n\nAyarlarda seçilen yapay zeka modeli (örneğin gpt-5.4-mini) API sağlayıcısı tarafından desteklenmiyor veya geçersiz. Lütfen model adını kontrol edin.';
+  }
+  
+  return `❌ Bir Hata Oluştu:\n\n${message}`;
 }
 
 // Bind reload/refresh button
