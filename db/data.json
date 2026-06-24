@@ -598,6 +598,13 @@
       "made_in_turkey": false,
       "professions": [
         "yazilimci"
+      ],
+      "description_en": "An artificial intelligence assistant integrated with the Microsoft ecosystem; offers web search, text and visual production.",
+      "tags_en": [
+        "Microsoft",
+        "assistant",
+        "search",
+        "productivity"
       ]
     },
     {
@@ -1840,7 +1847,14 @@
       "turkish_supported": "partial",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Personalized language learning experience with artificial intelligence; offers role-playing and explanation features.",
+      "tags_en": [
+        "language learning",
+        "personalization",
+        "gamification",
+        "GPT-4"
+      ]
     },
     {
       "id": "khanmigo",
@@ -3095,7 +3109,12 @@
       "turkish_supported": "partial",
       "pricing_try": "9.99 USD/ay (~330 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "A Python framework and middleware project for developers building production-ready AI agents and workflows with YAML configuration, unified APIs, and enterprise controls.",
+      "tags_en": [
+        "crawled",
+        "AIDIRECTORY"
+      ]
     },
     {
       "id": "made-with-intent",
@@ -7089,7 +7108,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Eğitimciler ve yayıncılar için AI tarafından oluşturulan metinlerin tespiti",
+      "tags_en": [
+        "tespit",
+        "eğitim",
+        "analiz"
+      ]
     },
     {
       "id": "copyleaks-ai-detector",
@@ -8836,7 +8861,13 @@
       "turkish_supported": "full",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI destekli insan kaynağı ve finansal yönetim araçları",
+      "tags_en": [
+        "İK",
+        "finans",
+        "kurumsal"
+      ]
     },
     {
       "id": "oracle-hcm-ai",
@@ -13266,7 +13297,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Topluluk tarafından paylaşılan AI promt ve asistanlar",
+      "tags_en": [
+        "promt",
+        "topluluk",
+        "sohbet"
+      ]
     },
     {
       "id": "promptbase",
@@ -14821,6 +14858,12 @@
       "made_in_turkey": false,
       "professions": [
         "ogretmen"
+      ],
+      "description_en": "Create AI-powered documents and presentations",
+      "tags_en": [
+        "documents",
+        "slides",
+        "writing"
       ]
     },
     {
@@ -30539,7 +30582,13 @@
       "turkish_supported": "full",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Automated chatbot and workflow builder",
+      "tags_en": [
+        "chatbot",
+        "automation",
+        "ai"
+      ]
     },
     {
       "id": "hubspot-chat-ai",
@@ -33870,7 +33919,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Drag-and-drop AI workflow and chatbot builder",
+      "tags_en": [
+        "chatbot",
+        "visual",
+        "llm"
+      ]
     },
     {
       "id": "llamacpp",
@@ -35864,7 +35919,13 @@
       "turkish_supported": "full",
       "pricing_try": "450 TL/ay'dan başlayan",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Enterprise AI text-to-video content platform",
+      "tags_en": [
+        "video",
+        "tts",
+        "ai"
+      ]
     },
     {
       "id": "invideo-enterprise",
@@ -37469,7 +37530,13 @@
       "turkish_supported": "partial",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "Enterprise visual LLM workflow orchestration platform",
+      "tags_en": [
+        "workflow",
+        "llm",
+        "enterprise"
+      ]
     },
     {
       "id": "autogen-enterprise",
@@ -41592,7 +41659,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI metin-videye içerik otomasyon ajanları",
+      "tags_en": [
+        "video",
+        "tts",
+        "agents"
+      ]
     },
     {
       "id": "pictory-ai-agents",
@@ -53606,7 +53679,13 @@
       "turkish_supported": "partial",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI text-to-video and voiceover generation tool",
+      "tags_en": [
+        "video",
+        "voice",
+        "ai"
+      ]
     },
     {
       "id": "elai-ai-video",
@@ -56662,7 +56741,13 @@
       "turkish_supported": "none",
       "pricing_try": "Ücretsiz",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "No-code AI agent builder platform",
+      "tags_en": [
+        "agents",
+        "nocode",
+        "ai"
+      ]
     },
     {
       "id": "langflow-agents",
@@ -65800,7 +65885,13 @@
       "turkish_supported": "partial",
       "pricing_try": "19.99 USD/ay (~660 TL)",
       "made_in_turkey": false,
-      "professions": []
+      "professions": [],
+      "description_en": "AI Freight and Logistics Optimization System",
+      "tags_en": [
+        "Logistics",
+        "Shipping",
+        "AI"
+      ]
     },
     {
       "id": "project44-ai",
@@ -71137,7 +71228,14 @@
       "ana_kategori": "Ses Üretimi ve Dönüştürme",
       "alt_kategori": "Video Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "Native artificial intelligence voice production platform that vocalizes Turkish texts with the most realistic voice tones.",
+      "tags_en": [
+        "voiceover",
+        "text-to-speech",
+        "native",
+        "turkish"
+      ]
     },
     {
       "id": "yerli-hukuk-ai",
@@ -73528,11 +73626,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T12:58:05.912Z",
-      "updated_at": "2026-06-22T19:21:40.842Z",
+      "updated_at": "2026-06-24T05:46:17.810Z",
       "ana_kategori": "Sanat ve Yaratıcı Tasarım",
       "alt_kategori": "Görsel Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "show_in_slider": 1
     },
     {
       "id": "meta-ai",
@@ -74239,7 +74338,12 @@
       "ana_kategori": "Pazarlama & Satış AI",
       "alt_kategori": "SEO Araçları",
       "sektor": "Pazarlama",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "Turn any URL into ready-to-post social videos",
+      "tags_en": [
+        "Marketing & Sales",
+        "Social Media"
+      ]
     },
     {
       "id": "aidirectory",
@@ -75703,7 +75807,12 @@
       "ana_kategori": "Yazılım & Kod AI",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "Defines and manages AI agent teams with YAML",
+      "tags_en": [
+        "software",
+        "ai"
+      ]
     },
     {
       "id": "sorin",
@@ -78889,7 +78998,14 @@
       "ana_kategori": "Kodlama ve Geliştirme",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "Facilitates the creation of dynamic websites from tables and databases.",
+      "tags_en": [
+        "website",
+        "data",
+        "no-code",
+        "development"
+      ]
     },
     {
       "id": "linkboss",
@@ -82233,7 +82349,14 @@
       "ana_kategori": "Pazarlama & Satış AI",
       "alt_kategori": "SEO Araçları",
       "sektor": "Pazarlama",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "Converts long recordings into shareable social media clips.",
+      "tags_en": [
+        "video clip",
+        "social media",
+        "reuse",
+        "content"
+      ]
     },
     {
       "id": "missive",
@@ -82987,7 +83110,14 @@
       "ana_kategori": "Yazma ve Düzenleme",
       "alt_kategori": "İçerik Yazımı",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "Converts text and articles into shareable short videos quickly.",
+      "tags_en": [
+        "text to video",
+        "short video",
+        "content creation",
+        "social media"
+      ]
     },
     {
       "id": "leya-ai",
@@ -83689,7 +83819,14 @@
       "ana_kategori": "İş & Üretkenlik AI",
       "alt_kategori": "Tasarım Araçları",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "A visual artificial intelligence workspace that supports planning and business operations.",
+      "tags_en": [
+        "workspace",
+        "agents",
+        "planning",
+        "productivity"
+      ]
     },
     {
       "id": "civitai",
@@ -85526,11 +85663,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:17:01.089Z",
-      "updated_at": "2026-06-22T19:39:29.900Z",
+      "updated_at": "2026-06-24T05:48:16.229Z",
       "ana_kategori": "Kodlama ve Geliştirme",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "show_in_slider": 1
     },
     {
       "id": "nuelink",
@@ -87689,7 +87827,14 @@
       "ana_kategori": "Pazarlama & Satış AI",
       "alt_kategori": "SEO Araçları",
       "sektor": "Pazarlama",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "A tool for planning, writing, scheduling, and measuring social content with AI.",
+      "tags_en": [
+        "social media",
+        "planning",
+        "scheduling",
+        "analytics"
+      ]
     },
     {
       "id": "aptlystar",
@@ -88557,11 +88702,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:21:37.844Z",
-      "updated_at": "2026-06-22T19:24:51.941Z",
+      "updated_at": "2026-06-24T05:48:10.667Z",
       "ana_kategori": "Video ve Animasyon",
       "alt_kategori": "Video Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "show_in_slider": 1
     },
     {
       "id": "openart",
@@ -96776,7 +96922,14 @@
       "ana_kategori": "İş & Üretkenlik AI",
       "alt_kategori": "Tasarım Araçları",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "A no-code AI tool that creates conversational forms from simple descriptions.",
+      "tags_en": [
+        "form",
+        "no-code",
+        "automation",
+        "survey"
+      ]
     },
     {
       "id": "line0",
@@ -97871,11 +98024,12 @@
       "turkish_supported": "none",
       "pricing_try": "",
       "created_at": "2026-06-19T14:54:42.100Z",
-      "updated_at": "2026-06-22T19:26:05.065Z",
+      "updated_at": "2026-06-24T05:48:03.739Z",
       "ana_kategori": "Görüntü Oluşturma ve Düzenleme",
       "alt_kategori": "Görsel Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "show_in_slider": 1
     },
     {
       "id": "zing-coach",
@@ -99175,7 +99329,14 @@
       "ana_kategori": "Sanat ve Yaratıcı Tasarım",
       "alt_kategori": "Görsel Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "A creative production tool that creates multi-style AI videos with model-level control.",
+      "tags_en": [
+        "video",
+        "multi-style",
+        "creative",
+        "production"
+      ]
     },
     {
       "id": "vibegrade",
@@ -101789,7 +101950,14 @@
       "ana_kategori": "İş & Üretkenlik AI",
       "alt_kategori": "Tasarım Araçları",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "Sets up reusable AI workflows for visuals, videos, and text.",
+      "tags_en": [
+        "workflow",
+        "multi-media",
+        "creative",
+        "automation"
+      ]
     },
     {
       "id": "popvid-ai",
@@ -105223,7 +105391,14 @@
       "ana_kategori": "İş & Üretkenlik AI",
       "alt_kategori": "Tasarım Araçları",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "Offers personalized artificial intelligence instruction and activities for K-2 level",
+      "tags_en": [
+        "education",
+        "instruction",
+        "K-2",
+        "personalization"
+      ]
     },
     {
       "id": "kome",
@@ -106348,7 +106523,14 @@
       "ana_kategori": "Yazma ve Düzenleme",
       "alt_kategori": "İçerik Yazımı",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "SaaS"
+      "entegrasyon_tipi": "SaaS",
+      "description_en": "A tool that creates videos and voiceovers from text in a short time.",
+      "tags_en": [
+        "video",
+        "voiceover",
+        "text",
+        "content"
+      ]
     },
     {
       "id": "boltweb",
@@ -106660,7 +106842,14 @@
       "ana_kategori": "Video ve Animasyon",
       "alt_kategori": "Video Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "AI tool that produces cinematic videos, visuals, and audio from prompts.",
+      "tags_en": [
+        "video production",
+        "audio",
+        "visual",
+        "prompt"
+      ]
     },
     {
       "id": "recordskeeperai",
@@ -109953,7 +110142,14 @@
       "ana_kategori": "Ses Üretimi ve Dönüştürme",
       "alt_kategori": "Video Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "Offers natural and emotive text-to-speech conversion in over 70 languages.",
+      "tags_en": [
+        "text to speech",
+        "voice",
+        "multi-language",
+        "natural speech"
+      ]
     },
     {
       "id": "inbox-narrator",
@@ -110161,7 +110357,14 @@
       "ana_kategori": "Sanat ve Yaratıcı Tasarım",
       "alt_kategori": "Görsel Üretim",
       "sektor": "Bireysel",
-      "entegrasyon_tipi": "Web Uygulaması"
+      "entegrasyon_tipi": "Web Uygulaması",
+      "description_en": "A productivity tool that offers task prioritization and focus-oriented planning with AI.",
+      "tags_en": [
+        "task prioritization",
+        "planning",
+        "focus",
+        "productivity"
+      ]
     },
     {
       "id": "clips-ai",
@@ -118689,6 +118892,95 @@
       "is_new": 1,
       "created_at": "2026-06-24T05:18:33.606Z",
       "updated_at": "2026-06-24T05:18:33.606Z"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "description": "Yüksek performanslı, açık kaynaklı ve son derece ekonomik dil modelleri sunan yeni nesil yapay zeka asistanı ve geliştirici platformu.",
+      "category_id": "genel-ai-asistan",
+      "tags": [
+        "yapay zeka",
+        "sohbet botu",
+        "kodlama",
+        "dil modeli",
+        "açık kaynak"
+      ],
+      "pricing": "freemium",
+      "rating": 4.9,
+      "url": "https://www.deepseek.com",
+      "featured": 1,
+      "is_new": 1,
+      "show_in_slider": 1,
+      "created_at": "2026-06-24T06:01:55.832Z",
+      "updated_at": "2026-06-24T06:01:55.833Z",
+      "votes": 45,
+      "turkish_supported": "full",
+      "pricing_try": "Ücretsiz / API Kullandıkça Öde",
+      "made_in_turkey": false,
+      "professions": [
+        "yazilimci",
+        "ogretmen",
+        "avukat",
+        "pazarlamaci"
+      ]
+    },
+    {
+      "id": "bing-image-creator",
+      "name": "Bing Image Creator",
+      "description": "Microsoft ve DALL-E ortaklığıyla çalışan, yazdığınız metinleri yüksek kaliteli görüntülere dönüştüren ücretsiz yapay zeka görsel üreticisi.",
+      "category_id": "goruntu-olusturma-ve-duzenleme",
+      "tags": [
+        "görsel üretimi",
+        "yapay zeka",
+        "DALL-E",
+        "resim oluşturucu",
+        "tasarım"
+      ],
+      "pricing": "ucretsiz",
+      "rating": 4.8,
+      "url": "https://www.bing.com/images/create",
+      "featured": 1,
+      "is_new": 1,
+      "show_in_slider": 1,
+      "created_at": "2026-06-24T06:01:55.833Z",
+      "updated_at": "2026-06-24T06:01:55.833Z",
+      "votes": 40,
+      "turkish_supported": "full",
+      "pricing_try": "Ücretsiz",
+      "made_in_turkey": false,
+      "professions": [
+        "tasarimci",
+        "ogretmen",
+        "pazarlamaci"
+      ]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "description": "Son derece gerçekçi ve yüksek çözünürlüklü yapay zeka videoları, sesleri ve metinleri oluşturabilen güçlü bir yapay zeka platformu.",
+      "category_id": "video-ve-animasyon",
+      "tags": [
+        "yapay zeka",
+        "video üretimi",
+        "ses üretimi",
+        "animasyon"
+      ],
+      "pricing": "freemium",
+      "rating": 4.6,
+      "url": "https://www.minimaxi.com",
+      "featured": 0,
+      "is_new": 1,
+      "show_in_slider": 0,
+      "created_at": "2026-06-24T06:01:55.833Z",
+      "updated_at": "2026-06-24T06:01:55.833Z",
+      "votes": 18,
+      "turkish_supported": "partial",
+      "pricing_try": "Kısmi Ücretsiz",
+      "made_in_turkey": false,
+      "professions": [
+        "videograf",
+        "pazarlamaci"
+      ]
     }
   ],
   "submissions": [
@@ -120867,7 +121159,7 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-24T05:41:01.857Z",
+    "last_run": "2026-06-24T06:05:47.641Z",
     "total_crawled": 59,
     "ai_enabled": true,
     "ai_provider": "openai",
@@ -121515,6 +121807,14 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-24T06:05:47.642Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -122112,6 +122412,6 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48428,
+  "pageViews": 48431,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>"
 }
