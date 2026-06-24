@@ -34,13 +34,13 @@ function callLLM(systemPrompt, userPrompt, settings) {
     const providerFromEnv = envVars.AI_PROVIDER || process.env.AI_PROVIDER;
     const modelFromEnv = envVars.AI_MODEL || process.env.AI_MODEL;
 
-    if (keyFromEnv) {
+    if (!ai_api_key && keyFromEnv) {
       ai_api_key = keyFromEnv;
     }
-    if (providerFromEnv) {
+    if (!ai_provider && providerFromEnv) {
       ai_provider = providerFromEnv;
     }
-    if (modelFromEnv) {
+    if (!ai_model && modelFromEnv) {
       ai_model = modelFromEnv;
     }
 
