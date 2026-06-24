@@ -452,32 +452,93 @@ body {
   opacity: 1;
 }
 
-#summarize-text {
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: inherit;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+/* Sihirbaz & Kütüphane Stilleri */
+select option {
+  background: #07090e;
+  color: #fff;
 }
 
-#summarize-text ul {
-  list-style: none;
+select:focus, textarea:focus, input:focus {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.1) !important;
+}
+
+.wizard-sub-btn:hover {
+  color: var(--text-primary) !important;
+}
+
+.lib-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lib-item:hover {
+  background: rgba(0, 242, 254, 0.03);
+  border-color: rgba(0, 242, 254, 0.2);
+}
+
+.lib-item-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 2px;
+  overflow: hidden;
 }
 
-#summarize-text li {
-  position: relative;
-  padding-left: 14px;
+.lib-item-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#summarize-text li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
+.lib-item-preview {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lib-item-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-icon-lib {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-icon-lib:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon-lib.delete:hover {
+  color: #ff4757;
+  background: rgba(255, 71, 87, 0.1);
+}
+
+.btn-icon-lib.copy:hover {
   color: var(--accent-cyan);
-  font-weight: bold;
+  background: rgba(0, 242, 254, 0.1);
 }
 

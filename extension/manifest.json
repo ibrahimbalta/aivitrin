@@ -7,7 +7,7 @@
     "activeTab",
     "tabs",
     "contextMenus",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "https://aiklavuz.com/*",

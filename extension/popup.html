@@ -45,9 +45,9 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.9 5.5-5.5 2.9 2.9-5.5 5.5-2.9z"/></svg>
         Bulucu
       </button>
-      <button class="tab-btn" data-tab="tab-summarize">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        Özet
+      <button class="tab-btn" data-tab="tab-wizard">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.886L4.202 9.202l5.886 1.912L12 17l1.912-5.886 5.886-1.912-5.886-1.912z"/><path d="M5 3v4M3 5h4M19 17v4M17 19h4"/></svg>
+        Sihirbaz
       </button>
       <button class="tab-btn" data-tab="tab-prompt">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .2 1.8.8 2.5C9.6 11.3 10 12 10 13v1h5z"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
@@ -102,25 +102,70 @@
         </div>
       </section>
 
-      <!-- TAB: SUMMARIZE -->
-      <section id="tab-summarize" class="tab-content">
-        <div id="summarize-loading" class="spinner-wrapper"><div class="spinner"></div></div>
-        
-        <div id="summarize-unsupported" class="hidden" style="text-align:center; padding:24px 10px; color:var(--text-secondary); line-height:1.5;">
-          <div style="font-size:1.8rem; margin-bottom:12px;">🚫</div>
-          <p style="font-size:0.82rem; margin-bottom:14px;">Bu sayfa özetlenemez. Lütfen normal bir web sitesinde (http/https) deneyin.</p>
+      <!-- TAB: WIZARD -->
+      <section id="tab-wizard" class="tab-content">
+        <!-- Sub navigation tabs -->
+        <div class="wizard-sub-tabs" style="display: flex; background: rgba(255,255,255,0.02); padding: 3px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); gap: 4px; margin-bottom: 12px;">
+          <button class="wizard-sub-btn active" data-sub="wizard-generator" style="flex: 1; background: rgba(255,255,255,0.08); border: none; color: var(--text-primary); font-size: 0.72rem; font-weight: 600; padding: 6px 0; border-radius: 4px; cursor: pointer; transition: all var(--transition-fast);">Prompt Sihirbazı 🪄</button>
+          <button class="wizard-sub-btn" data-sub="wizard-library" style="flex: 1; background: transparent; border: none; color: var(--text-secondary); font-size: 0.72rem; font-weight: 500; padding: 6px 0; border-radius: 4px; cursor: pointer; transition: all var(--transition-fast);">Kütüphanem 📚</button>
         </div>
 
-        <div id="summarize-content" class="hidden">
-          <h3 id="summarize-title" class="title" style="font-size: 0.9rem; margin-bottom: 8px;">📄 Sayfa Özeti</h3>
-          <div class="prompt-text-box" style="height: 160px;">
-            <div id="summarize-text"></div>
+        <!-- Panel 1: Generator -->
+        <div id="wizard-generator" class="sub-tab-content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+            <div>
+              <label style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-bottom: 3px;">Yapay Zeka Rolü</label>
+              <select id="wizard-role" style="width: 100%; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.74rem; outline: none;">
+                <option value="yazilim">💻 Yazılım Uzmanı</option>
+                <option value="pazarlama">📈 Pazarlama Uzmanı</option>
+                <option value="yazar">✍️ İçerik Yazarı/Editör</option>
+                <option value="ogretmen">🎓 Eğitmen/Öğretmen</option>
+                <option value="is">💼 İş Analisti</option>
+                <option value="genel" selected>🤖 Genel Asistan</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-bottom: 3px;">Konuşma Üslubu</label>
+              <select id="wizard-tone" style="width: 100%; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.74rem; outline: none;">
+                <option value="profesyonel" selected>👔 Profesyonel & Net</option>
+                <option value="samimi">😊 Samimi & Doğal</option>
+                <option value="ikna">🔥 İkna Edici</option>
+                <option value="akademik">🔬 Akademik</option>
+                <option value="eglenceli">🎨 Eğlenceli</option>
+              </select>
+            </div>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-primary" id="btn-copy-summary" style="flex: 1;">Özeti Kopyala 📋</button>
-            <button class="btn-primary" id="btn-refresh-summary" style="flex: 0 0 45px; background: rgba(255,255,255,0.05); color: var(--text-primary); box-shadow: none; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-            </button>
+          
+          <div style="margin-bottom: 8px;">
+            <label style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-bottom: 3px;">Çıktı Formatı</label>
+            <select id="wizard-format" style="width: 100%; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.74rem; outline: none;">
+              <option value="bullet" selected>• Maddeler Halinde Liste</option>
+              <option value="report">📄 Detaylı Rapor</option>
+              <option value="email">✉️ E-posta Taslağı</option>
+              <option value="table">📊 Tablo Formatı</option>
+              <option value="guide">💡 Adım Adım Rehber</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-bottom: 3px;">Göreviniz veya İçerik</label>
+            <textarea id="wizard-text" placeholder="Yapay zekanın ne yapmasını istediğinizi yazın veya buraya bir metin yapıştırın..." style="width: 100%; height: 80px; background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.78rem; outline: none; resize: none;"></textarea>
+          </div>
+
+          <button class="btn-primary" id="btn-generate-prompt">Promptu Oluştur & Kopyala 📋</button>
+        </div>
+
+        <!-- Panel 2: Library -->
+        <div id="wizard-library" class="sub-tab-content hidden">
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <input type="text" id="lib-title" placeholder="Prompt Başlığı (Örn: Çevirici)" style="width: 100%; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.74rem; outline: none;">
+            <textarea id="lib-text" placeholder="Prompt metnini buraya yapıştırın..." style="width: 100%; height: 50px; background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-family: inherit; font-size: 0.74rem; outline: none; resize: none;"></textarea>
+            <button class="btn-primary" id="btn-save-prompt" style="padding: 6px; font-size: 0.78rem;">Promptu Kaydet 💾</button>
+          </div>
+          
+          <h4 style="font-family:'Outfit',sans-serif; font-size:0.8rem; margin-bottom:6px; color:var(--text-primary);">📚 Kayıtlı Promptlarım</h4>
+          <div style="max-height: 120px; overflow-y: auto; padding-right: 2px;">
+            <ul id="library-list" style="list-style: none; display: flex; flex-direction: column; gap: 6px;"></ul>
           </div>
         </div>
       </section>

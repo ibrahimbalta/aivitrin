@@ -45,9 +45,9 @@ tabs.forEach(btn => {
       searchClearBtn.classList.add('hidden');
     }
 
-    // Trigger summarizer on tab switch
-    if (activeTabId === 'tab-summarize') {
-      summarizeCurrentPage();
+    // Trigger prompt wizard init if switching to tab-wizard
+    if (activeTabId === 'tab-wizard') {
+      loadLibrary();
     }
   });
 });
@@ -378,151 +378,236 @@ async function summarizeCurrentPage() {
   content.classList.add('hidden');
   textEl.innerHTML = '';
 
-  try {
-    if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
-      chrome.tabs.query({ active: true, currentWindow: true }, async (tabsList) => {
-        const activeTab = tabsList[0];
-        if (!activeTab || !activeTab.url || !activeTab.url.startsWith('http')) {
-          loading.classList.add('hidden');
-          unsupported.classList.remove('hidden');
-          return;
-        }
-
-        chrome.scripting.executeScript({
-          target: { tabId: activeTab.id },
-          func: () => {
-            return document.body.innerText || '';
-          }
-        }, async (results) => {
-          if (chrome.runtime.lastError || !results || !results[0]) {
-            console.warn('[AiKlavuz] Scripting injection error:', chrome.runtime.lastError);
-            loading.classList.add('hidden');
-            unsupported.classList.remove('hidden');
-            return;
-          }
-
-          let pageText = (results[0].result || '').trim();
-          if (pageText.length < 100) {
-            chrome.scripting.executeScript({
-              target: { tabId: activeTab.id },
-              func: () => {
-                const paragraphs = Array.from(document.querySelectorAll('p')).map(p => p.innerText.trim()).filter(Boolean);
-                return paragraphs.join('\n\n');
-              }
-            }, async (results2) => {
-              if (results2 && results2[0] && results2[0].result) {
-                pageText = results2[0].result.trim();
-              }
-              await fetchSummary(pageText, activeTab.url);
-            });
-          } else {
-            await fetchSummary(pageText, activeTab.url);
-          }
-        });
-      });
-    } else {
-      loading.classList.add('hidden');
-      unsupported.classList.remove('hidden');
+// Storage Helpers (Safe fallback to localStorage)
+function getStorage(key, callback) {
+  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+    chrome.storage.local.get([key], (result) => {
+      callback(result[key]);
+    });
+  } else {
+    try {
+      const val = localStorage.getItem(key);
+      callback(val ? JSON.parse(val) : null);
+    } catch (e) {
+      callback(null);
     }
-  } catch (err) {
-    console.error('Page summary execution error:', err);
-    loading.classList.add('hidden');
-    unsupported.classList.remove('hidden');
   }
 }
 
-async function fetchSummary(text, url) {
-  const loading = document.getElementById('summarize-loading');
-  const content = document.getElementById('summarize-content');
-  const textEl = document.getElementById('summarize-text');
-  const copyBtn = document.getElementById('btn-copy-summary');
+function setStorage(key, value, callback) {
+  if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+    chrome.storage.local.set({ [key]: value }, () => {
+      if (callback) callback();
+    });
+  } else {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      // ignore
+    }
+    if (callback) callback();
+  }
+}
 
-  if (!text || text.length < 50) {
-    loading.classList.add('hidden');
-    document.getElementById('summarize-unsupported').classList.remove('hidden');
+// Prompt Wizard sub-tab switching
+const wizardSubBtns = document.querySelectorAll('.wizard-sub-btn');
+const subTabContents = document.querySelectorAll('.sub-tab-content');
+
+wizardSubBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    wizardSubBtns.forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--text-secondary)';
+      b.style.fontWeight = '500';
+    });
+    subTabContents.forEach(c => c.classList.add('hidden'));
+
+    btn.classList.add('active');
+    btn.style.background = 'rgba(255,255,255,0.08)';
+    btn.style.color = 'var(--text-primary)';
+    btn.style.fontWeight = '600';
+    
+    const subId = btn.dataset.sub;
+    document.getElementById(subId).classList.remove('hidden');
+
+    if (subId === 'wizard-library') {
+      loadLibrary();
+    }
+  });
+});
+
+// Prompt Wizard generation logic
+const roles = {
+  genel: 'Genel Yardımcı Yapay Zeka Asistanı',
+  yazilim: 'Kıdemli Yazılım Geliştirici ve Sistem Mimarı',
+  pazarlama: 'Deneyimli Dijital Pazarlama ve Büyüme Uzmanı',
+  yazar: 'Profesyonel Metin Yazarı ve Yaratıcı İçerik Editörü',
+  ogretmen: 'Pedagojik Uzmanlığa Sahip Eğitmen ve Öğretmen',
+  is: 'İş Analisti ve Proje Yöneticisi'
+};
+
+const tones = {
+  profesyonel: 'Profesyonel, net, kurumsal ve saygılı',
+  samimi: 'Samimi, içten, samimi ve günlük konuşma dilinde',
+  ikna: 'İkna edici, çarpıcı, harekete geçirici ve etkileyici',
+  akademik: 'Akademik, bilimsel, kanıta dayalı ve analitik',
+  eglenceli: 'Eğlenceli, mizahi, esprili ve yaratıcı'
+};
+
+const formats = {
+  bullet: 'maddeler halinde kısa ve net bir liste',
+  report: 'konu başlıklarını içeren detaylı ve yapılandırılmış bir rapor',
+  email: 'profesyonel bir e-posta taslağı',
+  table: 'Markdown formatında düzenlenmiş anlaşılır bir tablo',
+  guide: 'adım adım uygulanabilir bir rehber'
+};
+
+document.getElementById('btn-generate-prompt').addEventListener('click', () => {
+  const roleVal = document.getElementById('wizard-role').value;
+  const toneVal = document.getElementById('wizard-tone').value;
+  const formatVal = document.getElementById('wizard-format').value;
+  const textVal = document.getElementById('wizard-text').value.trim();
+
+  if (!textVal) {
+    showToast('Lütfen görevi veya içeriği yazın! ⚠️');
     return;
   }
 
-  try {
-    const response = await fetch(`${API_BASE}/ai/summarize`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text: text.substring(0, 8000),
-        url: url
-      })
+  const roleText = roles[roleVal] || roles.genel;
+  const toneText = tones[toneVal] || tones.profesyonel;
+  const formatText = formats[formatVal] || formats.bullet;
+
+  const promptText = `Sen bir "${roleText}" rolündesin.
+Sana vereceğim görevi "${toneText}" bir üslup kullanarak yerine getirmelisin.
+
+Görevin/Girdim:
+"""
+${textVal}
+"""
+
+Lütfen çıktıyı tam olarak "${formatText}" şeklinde sun.`;
+
+  navigator.clipboard.writeText(promptText);
+  showToast('Prompt oluşturuldu ve kopyalandı! 🪄');
+  
+  // Clear textarea
+  document.getElementById('wizard-text').value = '';
+});
+
+// Personal Prompt Library logic
+document.getElementById('btn-save-prompt').addEventListener('click', () => {
+  const titleEl = document.getElementById('lib-title');
+  const textEl = document.getElementById('lib-text');
+  
+  const title = titleEl.value.trim();
+  const text = textEl.value.trim();
+
+  if (!title || !text) {
+    showToast('Lütfen başlık ve prompt alanlarını doldurun! ⚠️');
+    return;
+  }
+
+  getStorage('aiklavuz_library', (savedList) => {
+    const list = savedList || [];
+    list.unshift({
+      id: Date.now().toString(),
+      title: title,
+      text: text
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Özet oluşturma hatası');
+    setStorage('aiklavuz_library', list, () => {
+      showToast('Kütüphaneye kaydedildi! 💾');
+      titleEl.value = '';
+      textEl.value = '';
+      loadLibrary();
+    });
+  });
+});
+
+function loadLibrary() {
+  const listEl = document.getElementById('library-list');
+  if (!listEl) return;
+  listEl.innerHTML = '';
+
+  getStorage('aiklavuz_library', (savedList) => {
+    const list = savedList || [];
+
+    if (list.length === 0) {
+      listEl.innerHTML = '<li style="text-align:center; font-size:0.72rem; color:var(--text-secondary); padding:20px;">Henüz kayıtlı promptunuz yok.</li>';
+      return;
     }
 
-    const data = await response.json();
-    if (data.success && data.summary) {
-      const formatted = data.summary;
-      if (formatted.includes('•') || formatted.includes('- ')) {
-        const lines = formatted.split('\n')
-          .map(line => line.trim())
-          .filter(line => line.length > 0)
-          .map(line => {
-            const clean = line.replace(/^[•\-\*]\s*/, '');
-            return `<li>${clean}</li>`;
-          })
-          .join('');
-        textEl.innerHTML = `<ul>${lines}</ul>`;
-      } else {
-        textEl.textContent = formatted;
-      }
+    listEl.innerHTML = list.map(item => {
+      return `
+        <li class="lib-item" data-id="${item.id}">
+          <div class="lib-item-info">
+            <span class="lib-item-title">${escapeHtml(item.title)}</span>
+            <span class="lib-item-preview">${escapeHtml(item.text.substring(0, 45))}...</span>
+          </div>
+          <div class="lib-item-actions">
+            <button class="btn-icon-lib copy" title="Kopyala" data-id="${item.id}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <button class="btn-icon-lib delete" title="Sil" data-id="${item.id}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            </button>
+          </div>
+        </li>
+      `;
+    }).join('');
 
-      copyBtn.onclick = () => {
-        const plainText = textEl.innerText || textEl.textContent;
-        navigator.clipboard.writeText(plainText);
-        showToast('Özet panoya kopyalandı! 📋');
-      };
+    // Attach click listeners to library list items
+    listEl.querySelectorAll('.lib-item-info').forEach(infoBox => {
+      infoBox.addEventListener('click', (e) => {
+        const id = infoBox.parentElement.dataset.id;
+        copyFromLibrary(id, list);
+      });
+    });
 
-      loading.classList.add('hidden');
-      content.classList.remove('hidden');
-    } else {
-      throw new Error('Geçersiz sunucu yanıtı.');
-    }
-  } catch (err) {
-    console.error('Fetch summary failed:', err);
-    const friendlyMsg = getFriendlyErrorMessage(err.message);
-    textEl.innerHTML = `<div style="color:#ff4757; font-size:0.78rem; line-height:1.5; padding:6px 2px;">${friendlyMsg}</div>`;
-    loading.classList.add('hidden');
-    content.classList.remove('hidden');
+    listEl.querySelectorAll('.btn-icon-lib.copy').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        copyFromLibrary(btn.dataset.id, list);
+      });
+    });
+
+    listEl.querySelectorAll('.btn-icon-lib.delete').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteFromLibrary(btn.dataset.id);
+      });
+    });
+  });
+}
+
+function copyFromLibrary(id, list) {
+  const item = list.find(x => x.id === id);
+  if (item) {
+    navigator.clipboard.writeText(item.text);
+    showToast(`"${item.title}" panoya kopyalandı! 📋`);
   }
 }
 
-function getFriendlyErrorMessage(message) {
-  const msg = (message || '').toLowerCase();
-  
-  if (msg.includes('429') || msg.includes('rate limit') || msg.includes('rate_limit') || msg.includes('tpm') || msg.includes('rpm')) {
-    return '⚠️ API Kullanım Limiti Aşıldı!\n\nYapay zeka servisinin dakikalık/günlük limitleri aşılmış durumda. Lütfen API anahtarınızın bakiyesini veya limitlerini kontrol edip birkaç dakika sonra tekrar deneyin.';
-  }
-  
-  if (msg.includes('insufficient_quota') || msg.includes('quota') || msg.includes('bakiye') || msg.includes('billing')) {
-    return '💳 API Kotası / Bakiyesi Yetersiz!\n\nYapay zeka API anahtarınızın kullanım kotası dolmuş veya bakiyesi tükenmiş. Lütfen API sağlayıcınızın kontrol panelinden faturanızı/bakiyenizi kontrol edin.';
-  }
-  
-  if (msg.includes('401') || msg.includes('unauthorized') || msg.includes('invalid_api_key') || msg.includes('api anahtarı geçersiz')) {
-    return '🔑 Geçersiz API Anahtarı!\n\nYapay zeka API anahtarı geçersiz veya yetkilendirme hatası alındı. Lütfen yönetici panelinden API anahtarını güncelleyin.';
-  }
-  
-  if (msg.includes('timeout') || msg.includes('zaman aşımı') || msg.includes('timed out')) {
-    return '⏱️ Bağlantı Zaman Aşımına Uğradı!\n\nSunucu veya yapay zeka servisi zamanında yanıt vermedi. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.';
-  }
-
-  if (msg.includes('404') || msg.includes('model_not_found') || msg.includes('model bulunamadı')) {
-    return '🤖 Model Bulunamadı!\n\nAyarlarda seçilen yapay zeka modeli (örneğin gpt-5.4-mini) API sağlayıcısı tarafından desteklenmiyor veya geçersiz. Lütfen model adını kontrol edin.';
-  }
-  
-  return `❌ Bir Hata Oluştu:\n\n${message}`;
+function deleteFromLibrary(id) {
+  getStorage('aiklavuz_library', (savedList) => {
+    const list = savedList || [];
+    const filtered = list.filter(x => x.id !== id);
+    setStorage('aiklavuz_library', filtered, () => {
+      showToast('Prompt silindi. 🗑️');
+      loadLibrary();
+    });
+  });
 }
 
-// Bind reload/refresh button
-document.getElementById('btn-refresh-summary').addEventListener('click', summarizeCurrentPage);
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 // Init Load
 document.addEventListener('DOMContentLoaded', async () => {
@@ -531,4 +616,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadDailyPrompt();
   loadNewTools();
   loadNews();
+  loadLibrary();
 });
