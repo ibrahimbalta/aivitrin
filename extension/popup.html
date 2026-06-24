@@ -34,15 +34,44 @@
 
     <!-- TABS -->
     <div class="tabs">
-      <button class="tab-btn active" data-tab="tab-prompt">Günün Promptu</button>
+      <button class="tab-btn active" data-tab="tab-detect">Sitede Ne Var?</button>
+      <button class="tab-btn" data-tab="tab-prompt">Günün Promptu</button>
       <button class="tab-btn" data-tab="tab-tools">Yeni Araçlar</button>
       <button class="tab-btn" data-tab="tab-news">AI Haberleri</button>
     </div>
 
     <!-- CONTENT PANEL -->
     <main class="content-panel">
+      <!-- TAB 0: DETECT SITE -->
+      <section id="tab-detect" class="tab-content active">
+        <div id="detect-loading" class="spinner-wrapper"><div class="spinner"></div></div>
+        
+        <div id="detect-not-found" class="hidden" style="text-align:center; padding:24px 10px; color:var(--text-secondary); line-height:1.5;">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🔍</div>
+          <p style="font-size:0.82rem; margin-bottom:14px;">Gezindiğiniz web sitesi henüz AiKlavuz'da listelenmemiş.</p>
+          <a href="https://aiklavuz.com" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none; padding:8px 16px; color:#000;">Rehberde Arama Yap</a>
+        </div>
+
+        <div id="detect-content" class="hidden">
+          <div style="background:rgba(0,242,254,0.05); border:1px solid rgba(0,242,254,0.15); padding:10px; border-radius:var(--radius-md); margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <h3 id="detect-tool-name" class="title" style="margin-bottom:0; font-size:0.95rem;">-</h3>
+              <span id="detect-tool-rating" style="font-size:0.8rem; color:#f1c40f; font-weight:600;">★ -</span>
+            </div>
+            <p id="detect-tool-desc" style="font-size:0.78rem; color:var(--text-secondary); line-height:1.4; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;"></p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span id="detect-tool-category" class="badge-category" style="margin-bottom:0;">-</span>
+              <a id="detect-tool-link" href="#" target="_blank" style="font-size:0.74rem; color:var(--accent-cyan); font-weight:500; text-decoration:none;">Türkçe İncelemeyi Oku →</a>
+            </div>
+          </div>
+          
+          <h4 style="font-family:'Outfit',sans-serif; font-size:0.85rem; margin-bottom:8px; color:var(--text-primary);">💡 Ücretsiz / Benzer Alternatifleri</h4>
+          <ul id="detect-alternatives-list" class="list-container"></ul>
+        </div>
+      </section>
+
       <!-- TAB 1: PROMPT OF THE DAY -->
-      <section id="tab-prompt" class="tab-content active">
+      <section id="tab-prompt" class="tab-content">
         <div id="prompt-loading" class="spinner-wrapper"><div class="spinner"></div></div>
         <div id="prompt-content" class="hidden">
           <h3 id="prompt-title" class="title">-</h3>

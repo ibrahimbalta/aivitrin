@@ -409,6 +409,59 @@ router.get('/tools', async function (req, res) {
   }
 });
 
+router.get('/tools/detect', async function (req, res) {
+  try {
+    const { domain } = req.query;
+    if (!domain) return res.status(400).json({ error: 'Domain parametresi gerekli.' });
+
+    const db = readDB();
+
+    const cleanDomain = (d) => {
+      let result = d.toLowerCase().trim();
+      result = result.replace(/^(https?:\/\/)?(www\.)?/, '');
+      result = result.split('/')[0];
+      return result;
+    };
+
+    const targetDomain = cleanDomain(domain);
+
+    const tool = db.tools.find(t => {
+      if (!t.url) return false;
+      return cleanDomain(t.url) === targetDomain;
+    });
+
+    if (!tool) {
+      return res.json({ exists: false });
+    }
+
+    const cat = db.categories.find(c => c.id === tool.category_id);
+    const categoryName = cat ? cat.name : '';
+
+    let alternatives = db.tools
+      .filter(t => t.category_id === tool.category_id && t.id !== tool.id)
+      .map(t => {
+        const c = db.categories.find(catItem => catItem.id === t.category_id);
+        return { ...t, category_name: c ? c.name : '' };
+      });
+
+    alternatives.sort((a, b) => b.rating - a.rating || (b.votes || 0) - (a.votes || 0));
+    const topAlternatives = alternatives.slice(0, 3);
+
+    res.json({
+      exists: true,
+      tool: {
+        ...tool,
+        category_name: categoryName,
+        category_icon: cat ? cat.icon : ''
+      },
+      alternatives: topAlternatives
+    });
+  } catch (err) {
+    console.error('Tool detection error:', err);
+    res.status(500).json({ error: 'Araç algılanamadı.' });
+  }
+});
+
 router.get('/tools/:id', async function (req, res) {
   try {
     const { lang } = req.query;

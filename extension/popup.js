@@ -152,8 +152,94 @@ async function loadNews() {
   }
 }
 
+// Detect & Load Current Website Tool & Alternatives
+async function checkCurrentTab() {
+  const loading = document.getElementById('detect-loading');
+  const notFound = document.getElementById('detect-not-found');
+  const content = document.getElementById('detect-content');
+
+  const showNotFound = () => {
+    loading.classList.add('hidden');
+    content.classList.add('hidden');
+    notFound.classList.remove('hidden');
+  };
+
+  try {
+    if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+      chrome.tabs.query({ active: true, currentWindow: true }, async (tabsList) => {
+        const activeTab = tabsList[0];
+        if (!activeTab || !activeTab.url || !activeTab.url.startsWith('http')) {
+          showNotFound();
+          return;
+        }
+
+        try {
+          const urlObj = new URL(activeTab.url);
+          const domain = urlObj.hostname;
+          
+          const res = await fetch(`${API_BASE}/tools/detect?domain=${encodeURIComponent(domain)}`);
+          if (!res.ok) throw new Error('API request failed');
+          const data = await res.json();
+
+          if (data && data.exists) {
+            const t = data.tool;
+            document.getElementById('detect-tool-name').textContent = t.name;
+            document.getElementById('detect-tool-rating').textContent = t.rating ? `★ ${t.rating.toFixed(1)}` : '★ -';
+            document.getElementById('detect-tool-desc').textContent = t.description || '';
+            document.getElementById('detect-tool-category').textContent = t.category_name || '';
+            
+            const reviewLink = document.getElementById('detect-tool-link');
+            reviewLink.href = `https://aiklavuz.com/tool/${t.id}`;
+
+            const altsList = document.getElementById('detect-alternatives-list');
+            const alts = data.alternatives || [];
+            
+            if (alts.length === 0) {
+              altsList.innerHTML = '<li class="empty-state" style="font-size:0.72rem; padding:10px;">Henüz alternatif araç bulunmuyor.</li>';
+            } else {
+              altsList.innerHTML = alts.map(alt => {
+                const altRating = alt.rating ? `★ ${alt.rating.toFixed(1)}` : '★ Yeni';
+                const pricingText = alt.pricing ? alt.pricing.toUpperCase() : 'Ücretsiz';
+                
+                return `
+                  <a class="item-card" href="https://aiklavuz.com/tool/${alt.id}" target="_blank" style="padding: 8px;">
+                    <div class="item-header">
+                      <span class="item-name" style="font-size:0.8rem;">${alt.name}</span>
+                      <span class="item-badge-right" style="font-size:0.6rem; padding:1px 4px;">${pricingText}</span>
+                    </div>
+                    <p class="item-desc" style="font-size:0.72rem; -webkit-line-clamp: 1;">${alt.description || ''}</p>
+                    <div class="item-header" style="margin-top: 2px;">
+                      <span class="item-badge-right" style="font-size:0.6rem; color:var(--accent-cyan); background:rgba(0,242,254,0.05); padding:1px 4px;">${alt.category_name || 'Yapay Zeka'}</span>
+                      <span style="font-size:0.65rem; color:#f1c40f">${altRating}</span>
+                    </div>
+                  </a>
+                `;
+              }).join('');
+            }
+
+            loading.classList.add('hidden');
+            notFound.classList.add('hidden');
+            content.classList.remove('hidden');
+          } else {
+            showNotFound();
+          }
+        } catch (e) {
+          console.error('Detection parse error:', e);
+          showNotFound();
+        }
+      });
+    } else {
+      showNotFound();
+    }
+  } catch (err) {
+    console.error('Failed to run active tab query:', err);
+    showNotFound();
+  }
+}
+
 // Init Load
 document.addEventListener('DOMContentLoaded', () => {
+  checkCurrentTab();
   loadDailyPrompt();
   loadNewTools();
   loadNews();
