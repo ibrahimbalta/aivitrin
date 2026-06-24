@@ -1812,21 +1812,73 @@ img {
     font-size: 1.25rem;
   }
 
+  .container {
+    padding: 0 12px !important;
+  }
+
+  .header-left {
+    gap: 8px !important;
+  }
+
+  .logo {
+    gap: 6px !important;
+  }
+
+  .logo-icon {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
   .logo-text {
-    font-size: 1.15rem;
+    font-size: 1.05rem !important;
   }
 
   .btn-submit {
-    display: none;
+    display: none !important;
+  }
+
+  .header-actions {
+    gap: 6px !important;
   }
 
   .header-assistant-link {
-    width: 40px;
-    height: 40px;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header-assistant-link svg {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
   }
 
   .header-assistant-link span {
-    display: none;
+    display: none !important;
+  }
+
+  .lang-select-element {
+    height: 34px !important;
+    font-size: 0.75rem !important;
+    padding: 0 6px !important;
+    padding-right: 20px !important;
+    background-size: 10px !important;
+    background-position: right 4px center !important;
+  }
+
+  .btn-icon {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .btn-icon svg {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .tool-card {
