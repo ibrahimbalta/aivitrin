@@ -1,8 +1,36 @@
 'use strict';
-const { readDB, writeDB } = require('./database');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const db = readDB();
-if (!db.news) db.news = [];
+// Load local .env file manually into process.env
+try {
+  const fs = require('fs');
+  const path = require('path');
+  const envPath = path.join(__dirname, '../.env');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    envContent.split(/\r?\n/).forEach(line => {
+      const parts = line.split('=');
+      if (parts.length >= 2) {
+        const key = parts[0].trim();
+        const val = parts.slice(1).join('=').trim();
+        if (!process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    });
+  }
+} catch (e) {
+  console.error('Error loading .env file:', e.message);
+}
+
+const { syncFromMongo, syncToMongo, readDB, writeDB } = require('./database');
+
+(async () => {
+  // Sync latest from MongoDB Atlas
+  await syncFromMongo(true);
+
+  const db = readDB();
+  if (!db.news) db.news = [];
 
 const newArticles = [
   {
@@ -137,16 +165,23 @@ const newArticles = [
   }
 ];
 
-// Combine and filter out existing items with the same IDs to prevent duplication
-const existingIds = new Set(db.news.map(n => n.id));
-let addedCount = 0;
+  // Combine and filter out existing items with the same IDs to prevent duplication
+  const existingIds = new Set(db.news.map(n => n.id));
+  let addedCount = 0;
 
-newArticles.forEach(art => {
-  if (!existingIds.has(art.id)) {
-    db.news.unshift(art); // Add to the beginning so they appear as recent news
-    addedCount++;
-  }
-});
+  newArticles.forEach(art => {
+    if (!existingIds.has(art.id)) {
+      db.news.unshift(art); // Add to the beginning so they appear as recent news
+      addedCount++;
+    }
+  });
 
-writeDB(db);
-console.log(`[Success] Successfully added ${addedCount} new SEO-optimized Turkish news articles to the database.`);
+  writeDB(db);
+  console.log('Writing locally to data.json...');
+  
+  console.log('Syncing to MongoDB Atlas...');
+  await syncToMongo(db);
+  
+  console.log(`[Success] Successfully added ${addedCount} new SEO-optimized Turkish news articles to the database and synced to MongoDB Atlas.`);
+  process.exit(0);
+})();
