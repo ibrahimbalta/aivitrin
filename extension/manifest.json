@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "AiKlavuz Günlük AI Asistanı",
+  "version": "1.0.0",
+  "description": "Günün AI promptu, yeni yapay zeka araçları ve güncel haberler tarayıcınızda.",
+  "permissions": [],
+  "host_permissions": [
+    "https://aiklavuz.com/*",
+    "http://localhost:3000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

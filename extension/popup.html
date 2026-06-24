@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>AiKlavuz Günlük AI Asistanı</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo-wrapper">
+        <svg class="logo-icon" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="80" stroke="url(#logo-grad)" stroke-width="14" fill="none"/>
+          <line x1="100" y1="35" x2="100" y2="165" stroke="url(#logo-grad)" stroke-width="8" stroke-linecap="round"/>
+          <line x1="35" y1="100" x2="165" y2="100" stroke="url(#logo-grad)" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="100,50 85,100 100,150 115,100" fill="url(#needle-grad)"/>
+          <circle cx="100" cy="100" r="10" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f2fe" />
+              <stop offset="100%" stop-color="#4facfe" />
+            </linearGradient>
+            <linearGradient id="needle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff4757" />
+              <stop offset="100%" stop-color="#ff6b81" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-klavuz">Klavuz</span></span>
+      </div>
+      <span class="badge-live">Canlı</span>
+    </header>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-prompt">Günün Promptu</button>
+      <button class="tab-btn" data-tab="tab-tools">Yeni Araçlar</button>
+      <button class="tab-btn" data-tab="tab-news">AI Haberleri</button>
+    </div>
+
+    <!-- CONTENT PANEL -->
+    <main class="content-panel">
+      <!-- TAB 1: PROMPT OF THE DAY -->
+      <section id="tab-prompt" class="tab-content active">
+        <div id="prompt-loading" class="spinner-wrapper"><div class="spinner"></div></div>
+        <div id="prompt-content" class="hidden">
+          <h3 id="prompt-title" class="title">-</h3>
+          <span id="prompt-category" class="badge-category">-</span>
+          <div class="prompt-text-box">
+            <pre id="prompt-text">-</pre>
+          </div>
+          <button class="btn-primary" id="btn-copy-prompt">Promptu Kopyala 📋</button>
+        </div>
+      </section>
+
+      <!-- TAB 2: NEW TOOLS -->
+      <section id="tab-tools" class="tab-content">
+        <div id="tools-loading" class="spinner-wrapper"><div class="spinner"></div></div>
+        <ul id="tools-list" class="list-container hidden"></ul>
+      </section>
+
+      <!-- TAB 3: AI NEWS -->
+      <section id="tab-news" class="tab-content">
+        <div id="news-loading" class="spinner-wrapper"><div class="spinner"></div></div>
+        <ul id="news-list" class="list-container hidden"></ul>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a href="https://aiklavuz.com" target="_blank" class="btn-footer">AiKlavuz.com'a Git 🌐</a>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Kopyalandı!</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
