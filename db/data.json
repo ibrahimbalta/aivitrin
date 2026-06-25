@@ -228,6 +228,13 @@
       "icon": "🔬",
       "sort_order": 19,
       "created_at": "2026-06-25T10:20:23.737Z"
+    },
+    {
+      "id": "yazilim-testi",
+      "name": "Yazılım Testi",
+      "icon": "🧪",
+      "sort_order": 20,
+      "created_at": "2026-06-25T11:00:37.687Z"
     }
   ],
   "tools": [
@@ -3218,7 +3225,7 @@
       "id": "muuktest",
       "name": "MuukTest",
       "description": "An AI-powered test automation and managed QA service for engineering teams, delivering Playwright, Selenium, and Appium coverage with CI/CD integration across web, mobile, and APIs.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "crawled",
         "AIDIRECTORY"
@@ -3230,7 +3237,7 @@
       "is_new": 1,
       "created_at": "2026-06-17T18:40:41.635Z",
       "updated_at": "2026-06-17T18:40:41.635Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -5276,7 +5283,7 @@
       "id": "qodo",
       "name": "Qodo",
       "description": "AI tools for code review, testing and quality",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "coding",
         "testing",
@@ -5289,7 +5296,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:27:10.068Z",
       "updated_at": "2026-06-22T19:02:31.841Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -15653,7 +15660,7 @@
       "id": "codiumai",
       "name": "CodiumAI",
       "description": "AI-powered code testing and quality tools",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "coding",
         "testing",
@@ -15666,7 +15673,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:37:23.244Z",
       "updated_at": "2026-06-22T19:03:36.040Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -23563,7 +23570,7 @@
       "id": "langsmith",
       "name": "LangSmith",
       "description": "Debug, test and monitor LLM applications",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "llm",
         "debugging",
@@ -23576,7 +23583,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:47:36.378Z",
       "updated_at": "2026-06-22T19:05:27.430Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -26307,7 +26314,7 @@
       "id": "langsmith-platform",
       "name": "LangSmith Platform",
       "description": "Debug and evaluate LLM applications",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "llm",
         "debugging",
@@ -26320,7 +26327,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:51:45.634Z",
       "updated_at": "2026-06-22T19:05:34.603Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -26568,7 +26575,7 @@
       "id": "agentops-ai",
       "name": "AgentOps AI",
       "description": "Monitor and debug AI agent workflows",
-      "category_id": "ai-agentlar",
+      "category_id": "yazilim-testi",
       "tags": [
         "agents",
         "monitoring",
@@ -26581,7 +26588,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:51:45.842Z",
       "updated_at": "2026-06-22T19:05:34.603Z",
-      "ana_kategori": "AI Agentlar",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -26597,7 +26604,7 @@
       "id": "langfuse-ai",
       "name": "Langfuse AI",
       "description": "Open-source LLM observability platform",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "llm",
         "monitoring",
@@ -26610,7 +26617,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:51:45.872Z",
       "updated_at": "2026-06-22T19:05:34.603Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -26684,7 +26691,7 @@
       "id": "deepeval",
       "name": "DeepEval",
       "description": "Unit testing framework for LLM applications",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "llm",
         "testing",
@@ -26697,7 +26704,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:51:45.940Z",
       "updated_at": "2026-06-22T19:05:34.603Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -30817,7 +30824,7 @@
       "id": "agentops-pro",
       "name": "AgentOps Pro",
       "description": "Monitor and debug AI agent workflows",
-      "category_id": "ai-agentlar",
+      "category_id": "yazilim-testi",
       "tags": [
         "agents",
         "monitoring",
@@ -30830,7 +30837,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T04:58:25.260Z",
       "updated_at": "2026-06-22T19:06:11.668Z",
-      "ana_kategori": "AI Agentlar",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -47199,7 +47206,7 @@
       "id": "sentry-ai-monitoring",
       "name": "Sentry AI Monitoring",
       "description": "AI-powered error tracking and monitoring system",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "ai",
         "monitoring",
@@ -47212,7 +47219,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T05:36:29.372Z",
       "updated_at": "2026-06-22T19:08:11.505Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -47493,7 +47500,7 @@
       "id": "truera-ai-platform",
       "name": "TruEra AI Platform",
       "description": "AI model quality evaluation and debugging platform",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "ai",
         "quality",
@@ -47506,7 +47513,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T05:36:29.632Z",
       "updated_at": "2026-06-22T19:08:11.505Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -48572,7 +48579,7 @@
       "id": "tonic-ai-data-generator",
       "name": "Tonic AI Data Generator",
       "description": "Synthetic data creation for software testing",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "data",
         "synthetic",
@@ -48585,7 +48592,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T05:37:41.567Z",
       "updated_at": "2026-06-22T19:08:18.338Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -56628,7 +56635,7 @@
       "id": "langsmith-agents",
       "name": "LangSmith Agents",
       "description": "AI agent debugging and evaluation platform",
-      "category_id": "ai-agentlar",
+      "category_id": "yazilim-testi",
       "tags": [
         "agents",
         "debugging",
@@ -56641,7 +56648,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T05:52:19.443Z",
       "updated_at": "2026-06-22T19:09:33.237Z",
-      "ana_kategori": "AI Agentlar",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -67582,7 +67589,7 @@
       "id": "openai-debug-ai",
       "name": "OpenAI Debug AI",
       "description": "AI debugging and error analysis system",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "code",
         "debug",
@@ -67595,7 +67602,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T06:12:24.728Z",
       "updated_at": "2026-06-22T19:21:34.626Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -67704,7 +67711,7 @@
       "id": "insomnia-ai",
       "name": "Insomnia AI",
       "description": "AI API design and testing tool",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "api",
         "developer",
@@ -67717,7 +67724,7 @@
       "is_new": 1,
       "created_at": "2026-06-18T06:12:24.901Z",
       "updated_at": "2026-06-22T19:21:34.626Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması",
@@ -79039,7 +79046,7 @@
       "id": "momentic",
       "name": "Momentic",
       "description": "UI değişse de stabil kalan doğal dilli otomatik testler oluşturur.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "QA",
@@ -79056,7 +79063,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T13:44:17.094Z",
       "updated_at": "2026-06-22T19:22:55.663Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -81993,7 +82000,7 @@
       "id": "usetusk",
       "name": "Usetusk",
       "description": "Üretim trafiğini otomatik testlere çevirerek hataları önlemeye yardımcı olur.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "QA",
@@ -82010,7 +82017,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:10:55.501Z",
       "updated_at": "2026-06-22T19:23:32.531Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -83997,7 +84004,7 @@
       "id": "panto-ai",
       "name": "Panto AI",
       "description": "Doğal dil akışlarından deterministik mobil testler oluşturan araç.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "mobil test",
         "otomasyon",
@@ -84014,7 +84021,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:14:13.119Z",
       "updated_at": "2026-06-22T19:39:29.900Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -85018,7 +85025,7 @@
       "id": "checksum",
       "name": "Checksum",
       "description": "Gerçek kullanıcı akışlarından uçtan uca testleri otomatik üretir ve iyileştirir.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "yazılım geliştirme",
@@ -85035,7 +85042,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:16:37.476Z",
       "updated_at": "2026-06-22T19:39:29.900Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -86298,7 +86305,7 @@
       "id": "harness",
       "name": "Harness",
       "description": "Teslimat, güvenlik, test ve harcamaları yöneten AI ajanları sunar.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "AI ajanları",
         "yazılım teslimatı",
@@ -86314,7 +86321,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:18:39.200Z",
       "updated_at": "2026-06-22T19:24:45.293Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -87159,7 +87166,7 @@
       "id": "pythagora",
       "name": "Pythagora",
       "description": "Promptlardan tam yığın web uygulamaları oluşturup hata ayıklamayı destekler.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "uygulama geliştirme",
         "prompt",
@@ -87176,7 +87183,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:19:46.130Z",
       "updated_at": "2026-06-22T19:24:45.293Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -87627,7 +87634,7 @@
       "id": "gitauto",
       "name": "GitAuto",
       "description": "GitHub issue'larını koda ve test edilmiş pull request'lere dönüştürür.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "kod üretimi",
         "GitHub",
@@ -87644,7 +87651,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:20:31.362Z",
       "updated_at": "2026-06-22T19:24:45.293Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -89287,7 +89294,7 @@
       "id": "agentops",
       "name": "AgentOps",
       "description": "AI ajanlarını üretimde izleme, hata ayıklama ve kontrol etme platformudur.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "ajanlar",
         "izleme",
@@ -89304,7 +89311,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:23:06.381Z",
       "updated_at": "2026-06-19T14:23:06.381Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -89443,7 +89450,7 @@
       "id": "gocodeo",
       "name": "GoCodeo",
       "description": "VS Code içinde kod yazma, test etme, hata ayıklama ve dağıtım yapar.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "kodlama",
         "debug",
@@ -89460,7 +89467,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T14:23:14.464Z",
       "updated_at": "2026-06-19T14:23:14.464Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -104733,7 +104740,7 @@
       "id": "testzeus",
       "name": "TestZeus",
       "description": "Salesforce için kodsuz ve kendi kendini onaran test otomasyonu sunar.",
-      "category_id": "otomasyon-ve-no-code",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "no-code",
@@ -104750,7 +104757,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:14:31.333Z",
       "updated_at": "2026-06-22T19:27:18.714Z",
-      "ana_kategori": "Otomasyon ve No-Code",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -106919,7 +106926,7 @@
       "id": "codemate-ai",
       "name": "CodeMate AI",
       "description": "Kod yazma, hata ayıklama ve optimizasyon için AI kod asistanı.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "kod asistanı",
         "debug",
@@ -106936,7 +106943,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:18:20.348Z",
       "updated_at": "2026-06-19T15:18:20.348Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -108777,7 +108784,7 @@
       "id": "alumnium",
       "name": "Alumnium",
       "description": "Düz İngilizce test adımlarını çalıştırılabilir otomasyon akışlarına dönüştürür.",
-      "category_id": "otomasyon-ve-no-code",
+      "category_id": "kodlama-ve-gelistirme",
       "tags": [
         "test otomasyonu",
         "no-code",
@@ -108793,7 +108800,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:23:56.505Z",
       "updated_at": "2026-06-22T19:28:01.508Z",
-      "ana_kategori": "Otomasyon ve No-Code",
+      "ana_kategori": "Kodlama ve Geliştirme",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -109562,7 +109569,7 @@
       "id": "blinqio",
       "name": "BlinqIO",
       "description": "Niyet bazlı, gerçek kod üreten otonom uçtan uca test platformudur.",
-      "category_id": "ai-agentlar",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "kod",
@@ -109579,7 +109586,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:25:37.993Z",
       "updated_at": "2026-06-22T19:28:01.508Z",
-      "ana_kategori": "AI Agentlar",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -115130,7 +115137,7 @@
       "id": "qatech",
       "name": "Qa.tech",
       "description": "Web ve mobil uygulamalar için uçtan uca yapay zeka destekli QA ajanları sunar.",
-      "category_id": "kodlama-ve-gelistirme",
+      "category_id": "yazilim-testi",
       "tags": [
         "test otomasyonu",
         "QA",
@@ -115147,7 +115154,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:47:30.736Z",
       "updated_at": "2026-06-22T19:40:49.019Z",
-      "ana_kategori": "Kodlama ve Geliştirme",
+      "ana_kategori": "Yazılım Testi",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -117004,7 +117011,7 @@
       "id": "bismuth",
       "name": "Bismuth",
       "description": "Test, fuzzing ve güvenlik kontrolleriyle otonom pull request üreten geliştirme aracı.",
-      "category_id": "ai-agentlar",
+      "category_id": "kodlama-ve-gelistirme",
       "tags": [
         "PR otomasyonu",
         "test",
@@ -117021,7 +117028,7 @@
       "pricing_try": "",
       "created_at": "2026-06-19T15:51:44.350Z",
       "updated_at": "2026-06-22T19:40:49.019Z",
-      "ana_kategori": "AI Agentlar",
+      "ana_kategori": "Kodlama ve Geliştirme",
       "alt_kategori": "Kod Üretimi",
       "sektor": "Geliştirici",
       "entegrasyon_tipi": "Web Uygulaması"
@@ -122880,7 +122887,7 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48565,
+  "pageViews": 48574,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>",
   "social_queue": [
     {
