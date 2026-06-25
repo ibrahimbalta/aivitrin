@@ -919,7 +919,7 @@
         var matchedCat = allCategories.find(function(c) {
           return c.id === category_id || c.name.toLowerCase() === category_id.toLowerCase();
         });
-        category_id = matchedCat ? matchedCat.id : (allCategories[0] ? allCategories[0].id : 'genel-ai-asistan');
+        category_id = matchedCat ? matchedCat.id : (allCategories[0] ? allCategories[0].id : 'ai-asistanlar');
 
         var tName = row[colName].trim();
         var rawUrl = (row[colUrl] || '').trim();
