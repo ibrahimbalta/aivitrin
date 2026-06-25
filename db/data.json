@@ -121202,12 +121202,12 @@
   ],
   "crawler_settings": {
     "auto_approve": false,
-    "last_run": "2026-06-25T09:36:57.321Z",
+    "last_run": "2026-06-25T10:02:13.395Z",
     "total_crawled": 59,
     "ai_enabled": true,
-    "ai_provider": "xai",
+    "ai_provider": "deepseek",
     "ai_api_key": "xai-********************",
-    "ai_model": "grok-4.3",
+    "ai_model": "deepseek-chat",
     "ai_custom_endpoint": ""
   },
   "crawler_logs": [
@@ -121922,6 +121922,30 @@
       "tools_added": 0,
       "auto_approved": false,
       "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-25T09:52:47.750Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-25T09:54:26.919Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
+    },
+    {
+      "timestamp": "2026-06-25T10:02:13.397Z",
+      "success": true,
+      "tools_found": 50,
+      "tools_added": 0,
+      "auto_approved": false,
+      "details": "Yeni araç bulunamadı."
     }
   ],
   "newsletter": [
@@ -122629,7 +122653,7 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 48563,
+  "pageViews": 48565,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>",
   "social_queue": [
     {
