@@ -45,9 +45,15 @@ tabs.forEach(btn => {
       searchClearBtn.classList.add('hidden');
     }
 
-    // Trigger prompt wizard init if switching to tab-wizard
+    // Trigger loading appropriate content on tab switch
     if (activeTabId === 'tab-wizard') {
       loadLibrary();
+    } else if (activeTabId === 'tab-tools') {
+      loadBagTools();
+      loadNewTools();
+    } else if (activeTabId === 'tab-news') {
+      loadAcademyVideos();
+      loadNews();
     }
   });
 });
@@ -589,12 +595,201 @@ function deleteFromLibrary(id) {
 }
 
 function escapeHtml(text) {
-  return text
+  return (text || '')
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+// Çantam (Bag) sub-tab switching
+const bagSubBtns = document.querySelectorAll('.bag-sub-btn');
+const bagSubContents = document.querySelectorAll('.bag-sub-content');
+
+bagSubBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    bagSubBtns.forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--text-secondary)';
+      b.style.fontWeight = '500';
+    });
+    bagSubContents.forEach(c => c.classList.add('hidden'));
+
+    btn.classList.add('active');
+    btn.style.background = 'rgba(255,255,255,0.08)';
+    btn.style.color = 'var(--text-primary)';
+    btn.style.fontWeight = '600';
+    
+    const subId = btn.dataset.sub;
+    document.getElementById(subId).classList.remove('hidden');
+
+    if (subId === 'tools-bag-view') {
+      loadBagTools();
+    } else if (subId === 'tools-new-view') {
+      loadNewTools();
+    }
+  });
+});
+
+// Akademi sub-tab switching
+const academySubBtns = document.querySelectorAll('.academy-sub-btn');
+const academySubContents = document.querySelectorAll('.academy-sub-content');
+
+academySubBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    academySubBtns.forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--text-secondary)';
+      b.style.fontWeight = '500';
+    });
+    academySubContents.forEach(c => c.classList.add('hidden'));
+
+    btn.classList.add('active');
+    btn.style.background = 'rgba(255,255,255,0.08)';
+    btn.style.color = 'var(--text-primary)';
+    btn.style.fontWeight = '600';
+    
+    const subId = btn.dataset.sub;
+    document.getElementById(subId).classList.remove('hidden');
+
+    if (subId === 'news-academy-view') {
+      loadAcademyVideos();
+    } else if (subId === 'news-articles-view') {
+      loadNews();
+    }
+  });
+});
+
+// Load Bookmarked Tools ("Çantam")
+async function loadBagTools() {
+  const loading = document.getElementById('bag-loading');
+  const list = document.getElementById('bag-list');
+  const empty = document.getElementById('bag-empty');
+
+  if (!loading || !list || !empty) return;
+
+  loading.classList.remove('hidden');
+  list.classList.add('hidden');
+  empty.classList.add('hidden');
+
+  getStorage('website_toolkit', async (toolkit) => {
+    const ids = toolkit || [];
+
+    if (ids.length === 0) {
+      loading.classList.add('hidden');
+      empty.classList.remove('hidden');
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/tools?ids=${encodeURIComponent(ids.join(','))}`);
+      if (!res.ok) throw new Error('Failed to fetch bookmarked tools');
+      const data = await res.json();
+      const tools = data.tools || [];
+
+      if (tools.length === 0) {
+        empty.classList.remove('hidden');
+      } else {
+        list.innerHTML = tools.map(t => {
+          const rating = t.rating ? `★ ${t.rating.toFixed(1)}` : '★ Yeni';
+          const meta = getPricingMeta(t.pricing);
+          
+          return `
+            <div class="item-card" style="position: relative;">
+              <a href="https://aiklavuz.com/tool/${t.id}" target="_blank" style="text-decoration:none; color:inherit; display:block; padding-right:24px;">
+                <div class="item-header">
+                  <span class="item-name">${t.name}</span>
+                  <span class="item-badge-right ${meta.className}">${meta.label}</span>
+                </div>
+                <p class="item-desc">${t.description || ''}</p>
+                <div class="item-header" style="margin-top: 4px;">
+                  <span class="item-badge-right" style="color:var(--accent-cyan); background:rgba(0,242,254,0.04); border:1px solid rgba(0,242,254,0.1); text-transform:none; font-weight:500;">${t.category_name || 'Yapay Zeka'}</span>
+                  <span style="font-size:0.75rem; color:#f1c40f; font-weight:600">${rating}</span>
+                </div>
+              </a>
+              <button class="btn-card-bookmark remove-bookmark" data-id="${t.id}" title="Çantamdan Çıkar" style="position: absolute; right: 10px; top: 12px; z-index: 10;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+          `;
+        }).join('');
+
+        // Attach delete listener to delete button
+        list.querySelectorAll('.remove-bookmark').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            removeToolFromBag(id);
+          });
+        });
+
+        list.classList.remove('hidden');
+      }
+    } catch (err) {
+      console.error('Failed to load bag tools:', err);
+      list.innerHTML = '<li style="text-align:center;font-size:0.8rem;color:var(--text-secondary);padding:20px;">Çanta yüklenirken hata oluştu.</li>';
+      list.classList.remove('hidden');
+    } finally {
+      loading.classList.add('hidden');
+    }
+  });
+}
+
+function removeToolFromBag(id) {
+  getStorage('website_toolkit', (toolkit) => {
+    const list = toolkit || [];
+    const filtered = list.filter(x => x !== id);
+    setStorage('website_toolkit', filtered, () => {
+      showToast('Araç çantanızdan çıkarıldı. 💼');
+      loadBagTools();
+    });
+  });
+}
+
+// Load Academy Videos
+async function loadAcademyVideos() {
+  const loading = document.getElementById('academy-loading');
+  const list = document.getElementById('academy-list');
+
+  if (!loading || !list) return;
+
+  loading.classList.remove('hidden');
+  list.classList.add('hidden');
+
+  try {
+    const res = await fetch(`${API_BASE}/academy/videos`);
+    if (!res.ok) throw new Error('Failed to fetch videos');
+    const videos = await res.json();
+
+    if (videos.length === 0) {
+      list.innerHTML = '<li class="empty-state" style="text-align:center; padding:20px; font-size:0.75rem; color:var(--text-secondary);">Henüz eğitim videosu bulunmuyor.</li>';
+    } else {
+      list.innerHTML = videos.map(v => {
+        return `
+          <a class="video-card" href="${v.url || '#'}" target="_blank">
+            <div class="video-thumbnail-wrapper">
+              <svg class="video-thumbnail-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.387.511a3.003 3.003 0 0 0-2.11 2.107C0 8.051 0 12 0 12s0 3.949.503 5.837a3.002 3.002 0 0 0 2.11 2.107c1.882.511 9.387.511 9.387.511s7.505 0 9.387-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.949 24 12 24 12s0-3.949-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <div class="video-info">
+              <span class="video-title">${escapeHtml(v.title)}</span>
+              <span class="video-channel">${escapeHtml(v.channel || 'AiKlavuz Akademi')}</span>
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+    list.classList.remove('hidden');
+  } catch (err) {
+    console.error('Failed to load academy videos:', err);
+    list.innerHTML = '<li style="text-align:center;font-size:0.8rem;color:var(--text-secondary);padding:20px;">Videolar yüklenirken hata oluştu.</li>';
+    list.classList.remove('hidden');
+  } finally {
+    loading.classList.add('hidden');
+  }
 }
 
 // Init Load
@@ -605,4 +800,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadNewTools();
   loadNews();
   loadLibrary();
+  loadBagTools();
+  loadAcademyVideos();
 });

@@ -324,7 +324,7 @@ router.delete('/categories/:id', requireAuth, function (req, res) {
 
 router.get('/tools', async function (req, res) {
   try {
-    const { search, category, pricing, sort, limit, made_in_turkey, profession, lang, show_in_slider } = req.query;
+    const { search, category, pricing, sort, limit, made_in_turkey, profession, lang, show_in_slider, ids } = req.query;
     const db = readDB();
 
     let tools = db.tools.map(t => {
@@ -335,6 +335,11 @@ router.get('/tools', async function (req, res) {
       }
       return { ...t, category_name: catName, category_icon: cat ? cat.icon : '' };
     });
+
+    if (ids) {
+      const idList = ids.split(',').map(id => id.trim()).filter(Boolean);
+      tools = tools.filter(t => idList.includes(t.id));
+    }
 
     if (search) {
       const s = search.trim().toLocaleLowerCase('tr-TR');
