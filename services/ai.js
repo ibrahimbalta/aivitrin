@@ -54,6 +54,9 @@ function callLLM(systemPrompt, userPrompt, settings) {
     if (ai_provider === 'openai') {
       host = 'api.openai.com';
       path = '/v1/chat/completions';
+    } else if (ai_provider === 'deepseek') {
+      host = 'api.deepseek.com';
+      path = '/v1/chat/completions';
     } else if (ai_provider === 'gemini') {
       host = 'generativelanguage.googleapis.com';
       path = '/v1beta/openai/chat/completions';
@@ -89,6 +92,8 @@ function callLLM(systemPrompt, userPrompt, settings) {
         modelName = 'gemini-2.5-flash';
       } else if (ai_provider === 'openai') {
         modelName = 'gpt-4o-mini';
+      } else if (ai_provider === 'deepseek') {
+        modelName = 'deepseek-chat';
       } else if (ai_provider === 'groq') {
         modelName = 'llama-3.3-70b-versatile';
       } else {
