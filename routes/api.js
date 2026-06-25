@@ -6,6 +6,83 @@ const { addToSocialQueue, sharePost } = require('../services/social');
 
 const router = express.Router();
 
+// Turkish normalization and stemming helper functions
+function normalizeText(text) {
+  if (!text) return '';
+  return text.toLowerCase()
+    .replace(/ı/g, 'i')
+    .replace(/ş/g, 's')
+    .replace(/ğ/g, 'g')
+    .replace(/ç/g, 'c')
+    .replace(/ö/g, 'o')
+    .replace(/ü/g, 'u');
+}
+
+function stripTurkishSuffixes(word) {
+  if (!word || word.length <= 3) return word;
+  
+  const suffixes = [
+    'larından', 'lerinin', 'larında', 'lerinde', 'larına', 'lerine', 'larını', 'lerini', 'larının', 'lerinin',
+    'umuzdan', 'ümüzden', 'imizden', 'umuzdan', 'ından', 'inden', 'undan', 'ünden',
+    'umuzda', 'ümüzde', 'imizde', 'umuzda', 'ında', 'inde', 'unda', 'ünde',
+    'umuza', 'ümüze', 'imize', 'umuza', 'ına', 'ine', 'una', 'üne',
+    'umuzu', 'ümüzü', 'imizi', 'umuzu', 'ını', 'ini', 'unu', 'ünü',
+    'lardan', 'lerden', 'larda', 'lerde', 'lara', 'lere', 'ları', 'leri',
+    'umuz', 'ümüz', 'imiz', 'ümüz', 'nız', 'niz', 'nuz', 'nüz',
+    'dan', 'den', 'tan', 'ten',
+    'lar', 'ler',
+    'mız', 'miz', 'muz', 'müz',
+    'da', 'de', 'ta', 'te',
+    'sı', 'si', 'su', 'sü',
+    'ya', 'ye',
+    'ın', 'in', 'un', 'ün',
+    'nı', 'ni', 'nu', 'nü',
+    'ı', 'i', 'u', 'ü'
+  ];
+
+  let stemmed = word;
+  for (const suffix of suffixes) {
+    if (stemmed.endsWith(suffix)) {
+      const candidate = stemmed.slice(0, -suffix.length);
+      if (candidate.length >= 3) {
+        stemmed = candidate;
+        break;
+      }
+    }
+  }
+  return stemmed;
+}
+
+function getStemsAndWords(text) {
+  if (!text) return [];
+  const clean = text.toLowerCase()
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  
+  const words = clean.split(/\s+/).filter(Boolean);
+  const result = new Set();
+  
+  const stopWords = new Set(['bana', 'bir', 've', 'en', 'için', 'olan', 'araçlar', 'araç', 'yapay', 'zeka', 'bul', 'öner', 'tavsiye', 'et', 'mi', 'mu', 'nedir', 'listele', 'hangileri', 'nasıl']);
+  
+  words.forEach(w => {
+    if (w.length <= 1 || stopWords.has(w)) return;
+    result.add(w);
+    
+    const norm = normalizeText(w);
+    result.add(norm);
+    
+    const stemmed = stripTurkishSuffixes(w);
+    result.add(stemmed);
+    result.add(normalizeText(stemmed));
+    
+    const stemmedNorm = stripTurkishSuffixes(norm);
+    result.add(stemmedNorm);
+  });
+  
+  return Array.from(result);
+}
+
 // ─── i18n Translation Support ──────────────────
 const categoryTranslations = {
   en: {
@@ -1765,10 +1842,14 @@ router.get('/semantic-search', async function (req, res) {
     const db = readDB();
     const settings = db.crawler_settings || {};
     
+    const apiKey = process.env.GROQ_API_KEY || process.env.AI_API_KEY || settings.ai_api_key;
+    const apiProvider = process.env.AI_PROVIDER || settings.ai_provider;
+    const apiModel = process.env.AI_MODEL || settings.ai_model;
+
     let matchedTools = [];
     
     // Check if API key is present
-    if (settings.ai_api_key) {
+    if (apiKey) {
       try {
         const systemPrompt = `Sen bir yapay zeka arama asistanısın. Kullanıcının Türkçe doğal dildeki yapay zeka arama sorgusunu analiz etmeli ve bunu bizim kategorilerimize ve kavramsal etiketlerimize eşlemelisin.
 Verilen kategoriler listesi:
@@ -1783,7 +1864,14 @@ Lütfen yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbi
 
         const userPrompt = `Kullanıcı Arama Sorgusu: "${q}"`;
         const { callLLM } = require('../services/ai');
-        const llmResponse = await callLLM(systemPrompt, userPrompt, settings);
+        
+        const llmSettings = {
+          ...settings,
+          ai_provider: apiProvider,
+          ai_model: apiModel,
+          ai_api_key: apiKey
+        };
+        const llmResponse = await callLLM(systemPrompt, userPrompt, llmSettings);
         
         let analysis = { category_ids: [], keywords: [], pricing: null };
         try {
@@ -1795,7 +1883,7 @@ Lütfen yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbi
         }
 
         const categoryIds = analysis.category_ids || [];
-        const keywords = (analysis.keywords || []).map(k => k.toLowerCase());
+        const keywords = (analysis.keywords || []).flatMap(k => getStemsAndWords(k));
 
         // Score each tool
         matchedTools = db.tools.map(t => {
@@ -1809,29 +1897,35 @@ Lütfen yanıtını SADECE aşağıdaki JSON formatında döndür (başka hiçbi
           }
           const tagsLower = (tags || []).map(tag => tag.toLowerCase());
 
+          // Normalized fields for substring checks
+          const normName = normalizeText(nameLower);
+          const normDesc = normalizeText(descLower);
+
           // Category match
           if (categoryIds.includes(t.category_id)) {
             score += 30;
           }
 
           // Exact query match in name
-          if (nameLower.includes(q.toLowerCase())) {
+          if (nameLower.includes(q.toLowerCase()) || normName.includes(normalizeText(q))) {
             score += 40;
           }
 
           // Keyword matches
           keywords.forEach(kw => {
-            if (nameLower.includes(kw)) score += 20;
-            if (tagsLower.includes(kw)) score += 15;
-            if (descLower.includes(kw)) score += 5;
+            const normKw = normalizeText(kw);
+            if (nameLower.includes(kw) || normName.includes(normKw)) score += 20;
+            if (tagsLower.includes(kw) || tagsLower.some(tag => normalizeText(tag).includes(normKw))) score += 15;
+            if (descLower.includes(kw) || normDesc.includes(normKw)) score += 5;
           });
 
-          // Tag matches with original query words
-          const queryWords = q.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+          // Tag matches with original query words (using stems)
+          const queryWords = getStemsAndWords(q);
           queryWords.forEach(qw => {
-            if (nameLower.includes(qw)) score += 15;
-            if (tagsLower.includes(qw)) score += 10;
-            if (descLower.includes(qw)) score += 3;
+            const normQw = normalizeText(qw);
+            if (nameLower.includes(qw) || normName.includes(normQw)) score += 15;
+            if (tagsLower.includes(qw) || tagsLower.some(tag => normalizeText(tag).includes(normQw))) score += 10;
+            if (descLower.includes(qw) || normDesc.includes(normQw)) score += 3;
           });
 
           return { ...t, score };
@@ -1992,11 +2086,7 @@ router.post('/advisor', async function (req, res) {
         const categoriesList = db.categories.map(c => `"${c.id}" (${c.name})`).join(', ');
         
         // Dynamic search heuristics to find top relevant tools for the LLM prompt
-        const stopWords = new Set(['bana', 'bir', 've', 'en', 'için', 'olan', 'araçlar', 'araç', 'yapay', 'zeka', 'bul', 'öner', 'tavsiye', 'et', 'mi', 'mu', 'nedir', 'listele', 'hangileri', 'nasıl']);
-        const keywords = message.toLowerCase()
-          .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
-          .split(/\s+/)
-          .filter(word => word.length > 1 && !stopWords.has(word));
+        const keywords = getStemsAndWords(message);
 
         const scoredTools = db.tools.map(t => {
           let score = 0;
@@ -2005,12 +2095,20 @@ router.post('/advisor', async function (req, res) {
           const tags = (Array.isArray(t.tags) ? t.tags.join(' ') : String(t.tags || '')).toLowerCase();
           const catId = String(t.category_id || '').toLowerCase();
 
+          const normName = normalizeText(name);
+          const normDesc = normalizeText(desc);
+          const normTags = normalizeText(tags);
+          const normCatId = normalizeText(catId);
+
           keywords.forEach(keyword => {
-            if (name === keyword) score += 25;
-            else if (name.includes(keyword)) score += 10;
-            if (desc.includes(keyword)) score += 4;
-            if (tags.includes(keyword)) score += 6;
-            if (catId.includes(keyword)) score += 5;
+            const normKeyword = normalizeText(keyword);
+            
+            if (name === keyword || normName === normKeyword) score += 25;
+            else if (name.includes(keyword) || normName.includes(normKeyword)) score += 10;
+            
+            if (desc.includes(keyword) || normDesc.includes(normKeyword)) score += 6;
+            if (tags.includes(keyword) || normTags.includes(normKeyword)) score += 8;
+            if (catId.includes(keyword) || normCatId.includes(normKeyword)) score += 5;
           });
 
           return { tool: t, score };
@@ -2069,7 +2167,15 @@ Valid Categories:
 [ ${categoriesList} ]`;
 
         const userPrompt = `Kullanıcı Mesajı: "${message}"`;
-        const llResponse = await callLLM(systemPrompt, userPrompt, settings);
+        const apiProvider = process.env.AI_PROVIDER || settings.ai_provider;
+        const apiModel = process.env.AI_MODEL || settings.ai_model;
+        const llmSettings = {
+          ...settings,
+          ai_provider: apiProvider,
+          ai_model: apiModel,
+          ai_api_key: apiKey
+        };
+        const llResponse = await callLLM(systemPrompt, userPrompt, llmSettings);
         
         let advisorReply = { reply: '', recommended_tool_ids: [] };
         try {
@@ -2094,7 +2200,7 @@ Valid Categories:
         // Safety Fallback: If no tools matched, automatically append general-purpose assistants
         if (matched.length === 0) {
           matched = db.tools
-            .filter(t => t.category_id === 'genel-ai-asistan')
+            .filter(t => t.category_id === 'ai-asistanlar')
             .slice(0, 3)
             .map(t => {
               const cat = db.categories.find(c => c.id === t.category_id);
@@ -2157,12 +2263,13 @@ function localHeuristicAdvisor(tools, categories, message) {
   const msg = message.toLowerCase();
   
   const rules = [
-    { keys: ['resim', 'görsel', 'çizim', 'tasarım', 'fotoğraf', 'photo', 'art', 'çiz', 'görselleştir'], cat: 'yaratici-ai', text: 'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:' },
-    { keys: ['kod', 'yazılım', 'geliştirici', 'code', 'program', 'python', 'javascript', 'html', 'yazılımcı'], cat: 'yazilim-kod-ai', text: 'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:' },
-    { keys: ['yazı', 'metin', 'yazar', 'makale', 'blog', 'text', 'write', 'copywriting', 'makale', 'editör'], cat: 'is-uretkenlik-ai', text: 'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:' },
-    { keys: ['ses', 'konuşma', 'müzik', 'audio', 'voice', 'sound', 'music', 'podcast', 'seslendir'], cat: 'yaratici-ai', text: 'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:' },
-    { keys: ['video', 'film', 'klip', 'editing', 'kurgu', 'animasyon', 'montaj'], cat: 'yaratici-ai', text: 'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:' },
-    { keys: ['asistan', 'sohbet', 'chat', 'chatbot', 'gpt', 'yardımcı', 'danışman'], cat: 'genel-ai-asistan', text: 'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:' }
+    { keys: ['resim', 'görsel', 'çizim', 'tasarım', 'fotoğraf', 'photo', 'art', 'çiz', 'görselleştir'], cat: 'gorsel-tasarim', text: 'Görsel ve tasarım üretimi için harika araçlarımız var. İşte en popüler olanlar:' },
+    { keys: ['kod', 'yazılım', 'geliştirici', 'code', 'program', 'python', 'javascript', 'html', 'yazılımcı'], cat: 'kodlama-ve-gelistirme', text: 'Kod yazma, otomatik tamamlama ve geliştirici yardımı için şu araçları önerebilirim:' },
+    { keys: ['yazı', 'metin', 'yazar', 'makale', 'blog', 'text', 'write', 'copywriting', 'makale', 'editör'], cat: 'yazma-ve-icerik-uretimi', text: 'Yazı yazma, blog hazırlama ve metin üretimi için en çok tercih edilen araçlar şunlardır:' },
+    { keys: ['ses', 'konuşma', 'müzik', 'audio', 'voice', 'sound', 'music', 'podcast', 'seslendir'], cat: 'ses-ve-muzik', text: 'Seslendirme, müzik üretimi ve podcast hazırlama için popüler yapay zekalar:' },
+    { keys: ['video', 'film', 'klip', 'editing', 'kurgu', 'animasyon', 'montaj'], cat: 'video-ve-animasyon', text: 'Yapay zeka ile video üretimi, montaj ve animasyon için şu alternatifleri inceleyebilirsiniz:' },
+    { keys: ['asistan', 'sohbet', 'chat', 'chatbot', 'gpt', 'yardımcı', 'danışman'], cat: 'ai-asistanlar', text: 'Genel sohbet, soru-cevap ve asistanlık için en gelişmiş yapay zeka modelleri şunlardır:' },
+    { keys: ['test', 'testing', 'qa', 'kalite', 'hata', 'bug', 'debug', 'sentry'], cat: 'yazilim-testi', text: 'Yazılım testi, hata ayıklama ve kalite güvence (QA) için şu araçları önerebilirim:' }
   ];
 
   let matchedCatId = null;
@@ -2181,11 +2288,7 @@ function localHeuristicAdvisor(tools, categories, message) {
     matchedTools = tools.filter(t => t.category_id === matchedCatId);
   } else {
     // Search tags, description or names using keyword tokenization
-    const stopWords = new Set(['bana', 'bir', 've', 'en', 'için', 'olan', 'araçlar', 'araç', 'yapay', 'zeka', 'bul', 'öner', 'tavsiye', 'et', 'mi', 'mu', 'nedir', 'listele', 'hangileri', 'nasıl']);
-    const keywords = msg
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
-      .split(/\s+/)
-      .filter(word => word.length > 1 && !stopWords.has(word));
+    const keywords = getStemsAndWords(message);
 
     if (keywords.length > 0) {
       const scoredTools = tools.map(t => {
@@ -2195,12 +2298,20 @@ function localHeuristicAdvisor(tools, categories, message) {
         const tags = (Array.isArray(t.tags) ? t.tags.join(' ') : String(t.tags || '')).toLowerCase();
         const catId = String(t.category_id || '').toLowerCase();
 
+        const normName = normalizeText(name);
+        const normDesc = normalizeText(desc);
+        const normTags = normalizeText(tags);
+        const normCatId = normalizeText(catId);
+
         keywords.forEach(keyword => {
-          if (name === keyword) score += 25;
-          else if (name.includes(keyword)) score += 10;
-          if (desc.includes(keyword)) score += 4;
-          if (tags.includes(keyword)) score += 6;
-          if (catId.includes(keyword)) score += 5;
+          const normKeyword = normalizeText(keyword);
+          
+          if (name === keyword || normName === normKeyword) score += 25;
+          else if (name.includes(keyword) || normName.includes(normKeyword)) score += 10;
+          
+          if (desc.includes(keyword) || normDesc.includes(normKeyword)) score += 6;
+          if (tags.includes(keyword) || normTags.includes(normKeyword)) score += 8;
+          if (catId.includes(keyword) || normCatId.includes(normKeyword)) score += 5;
         });
 
         return { tool: t, score };
@@ -2216,7 +2327,7 @@ function localHeuristicAdvisor(tools, categories, message) {
   // Fallback to general assistants if no matches found
   if (matchedTools.length === 0) {
     replyText = 'Doğrudan bu göreve özel spesifik bir araç bulamadım. Ancak genel amaçlı yapay zeka asistanları (örn: ChatGPT, Claude, Gemini) ile işinizi, detayları ve parametreleri belirterek kolayca halledebilirsiniz. İşte deneyebileceğiniz en gelişmiş genel asistanlar:';
-    matchedTools = tools.filter(t => t.category_id === 'genel-ai-asistan');
+    matchedTools = tools.filter(t => t.category_id === 'ai-asistanlar');
   }
 
   if (!replyText) {
