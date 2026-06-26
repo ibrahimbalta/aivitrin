@@ -3450,6 +3450,82 @@ router.delete('/admin/social/queue/:id', requireAuth, function (req, res) {
   }
 });
 
+// GET /api/tools/:id/badge.svg
+router.get('/tools/:id/badge.svg', function (req, res) {
+  try {
+    const toolId = req.params.id;
+    const db = readDB();
+    const tool = db.tools.find(t => t.id === toolId);
+    
+    let rating = 5.0;
+    let votes = 0;
+    let name = 'Yapay Zeka';
+    
+    if (tool) {
+      rating = typeof tool.rating === 'number' ? tool.rating : 5.0;
+      votes = typeof tool.votes === 'number' ? tool.votes : 0;
+      name = tool.name || 'AI Tool';
+    } else {
+      // If tool doesn't exist, return a generic placeholder badge
+      rating = 5.0;
+      votes = 0;
+      name = 'AiKlavuz';
+    }
+
+    const ratingText = rating.toFixed(1);
+    const votesText = `${votes} Oy`;
+    
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="40" viewBox="0 0 220 40">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f111a" />
+      <stop offset="100%" stop-color="#181b29" />
+    </linearGradient>
+    <!-- Brand Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a4bf5" />
+      <stop offset="100%" stop-color="#14dbd4" />
+    </linearGradient>
+  </defs>
+  <!-- Card Background -->
+  <rect width="220" height="40" rx="8" fill="url(#bgGrad)" stroke="url(#accentGrad)" stroke-width="1.5"/>
+  
+  <!-- Left Side: Logo/Text -->
+  <g transform="translate(10, 0)">
+    <!-- Mini Compass Logo Icon -->
+    <circle cx="12" cy="20" r="7" fill="none" stroke="url(#accentGrad)" stroke-width="1.5"/>
+    <polygon points="12,16 15,20 12,24 9,20" fill="url(#accentGrad)"/>
+    
+    <!-- Brand Text -->
+    <text x="25" y="24" fill="#ffffff" font-family="'Inter', -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">AiKlavuz</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="88" y1="8" x2="88" y2="32" stroke="#252b42" stroke-width="1.5"/>
+  
+  <!-- Right Side: Rating & Votes -->
+  <g transform="translate(98, 0)">
+    <!-- Star Icon -->
+    <path d="M 12 5 L 14.5 10 L 20 10.5 L 16 14.5 L 17 20 L 12 17.5 L 7 20 L 8 14.5 L 4 10.5 L 9.5 10 Z" fill="#ffd700" transform="translate(-4, 7.5) scale(0.7)"/>
+    
+    <!-- Rating Text -->
+    <text x="12" y="24" fill="#ffffff" font-family="'Inter', -apple-system, sans-serif" font-size="11" font-weight="700">${ratingText}</text>
+    
+    <!-- Vote Count Text -->
+    <text x="36" y="23" fill="#8892b0" font-family="'Inter', -apple-system, sans-serif" font-size="9" font-weight="500">(${votesText})</text>
+  </g>
+</svg>`;
+
+    res.header('Content-Type', 'image/svg+xml');
+    res.header('Cache-Control', 'public, max-age=60'); // cache for 1 minute
+    res.send(svg);
+  } catch (err) {
+    console.error('Error generating tool badge SVG:', err.message);
+    res.status(500).send('Error generating badge');
+  }
+});
+
 router.post('/admin/social/queue/:id/share', requireAuth, async function (req, res) {
   try {
     const post = await sharePost(req.params.id);

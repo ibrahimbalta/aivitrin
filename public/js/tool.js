@@ -180,6 +180,30 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Bookmark & Vote class states
     syncButtonStates();
 
+    // Render Developer Badge Embed Code
+    const badgePreviewEl = document.getElementById('badge-preview-container');
+    const badgeCodeEl = document.getElementById('badge-code-html');
+    const btnCopyBadge = document.getElementById('btn-copy-badge');
+    
+    if (badgePreviewEl && badgeCodeEl) {
+      const origin = window.location.origin;
+      const badgeUrl = `${origin}/api/tools/${toolId}/badge.svg`;
+      const toolUrl = `${origin}/tool/${toolId}`;
+      
+      const embedCode = `<a href="${toolUrl}" target="_blank"><img src="${badgeUrl}" alt="AiKlavuz'da Oylayın" width="220" height="40" style="border:none;"></a>`;
+      
+      badgePreviewEl.innerHTML = `<a href="${toolUrl}" target="_blank"><img src="${badgeUrl}" alt="AiKlavuz'da Oylayın" width="220" height="40" style="border:none;"></a>`;
+      badgeCodeEl.value = embedCode;
+      
+      if (btnCopyBadge) {
+        btnCopyBadge.onclick = function() {
+          badgeCodeEl.select();
+          document.execCommand('copy');
+          showToast('Rozet kodu kopyalandı!', 'success');
+        };
+      }
+    }
+
     // Render Reviews
     renderReviews(toolData.reviews || []);
   }
