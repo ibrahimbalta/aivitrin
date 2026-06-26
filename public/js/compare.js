@@ -282,6 +282,32 @@ document.addEventListener('DOMContentLoaded', async function () {
   });
 
   loadAndRenderCompare();
+  parseUrlQueryParams();
+
+  function parseUrlQueryParams() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const t1 = urlParams.get('t1');
+      const t2 = urlParams.get('t2');
+      const t3 = urlParams.get('t3');
+      
+      let list = [];
+      if (t1) list.push(t1.trim().toLowerCase());
+      if (t2) list.push(t2.trim().toLowerCase());
+      if (t3) list.push(t3.trim().toLowerCase());
+      
+      if (list.length > 0) {
+        // Filter valid tool ids
+        const validList = list.filter(id => allTools.some(t => t.id === id)).slice(0, 3);
+        if (validList.length > 0) {
+          localStorage.setItem('compare_tools', JSON.stringify(validList));
+          loadAndRenderCompare();
+        }
+      }
+    } catch (e) {
+      console.error('URL karşılaştırma parametreleri yüklenemedi:', e);
+    }
+  }
 
   // ═══════════════════════════════════════════
   // TEMA DEĞİŞTİRİCİ

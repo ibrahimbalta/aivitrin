@@ -5043,4 +5043,92 @@ img {
   }
 }
 
+/* AI Advisor Banner & Search Tabs Styles */
+.advisor-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, rgba(138, 75, 245, 0.08), rgba(20, 219, 212, 0.08));
+  border: 1px solid rgba(138, 75, 245, 0.15);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  box-shadow: 0 4px 20px rgba(138, 75, 245, 0.05);
+  backdrop-filter: blur(8px);
+}
 
+.advisor-banner .banner-badge {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+.advisor-banner a {
+  color: #14dbd4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.advisor-banner a:hover {
+  color: #8a4bf5;
+}
+
+.hero-search-tabs {
+  display: inline-flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-tab {
+  font-family: var(--font-base);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-tab.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-tab.advisor-tab {
+  color: var(--accent-purple);
+  position: relative;
+}
+
+.search-tab.advisor-tab:hover {
+  background: linear-gradient(90deg, rgba(138, 75, 245, 0.1), rgba(20, 219, 212, 0.1));
+  color: #fff;
+}
+
+.tab-glow-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-green);
+  display: inline-block;
+  animation: pulseGreen 1.5s infinite;
+}

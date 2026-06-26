@@ -184,6 +184,26 @@ app.get('/sitemap.xml', function (req, res) {
       }
     });
     
+    // Programmatic SEO: Generate comparisons for the top 10 most popular tools (45 permalinks)
+    try {
+      const popularTools = [...tools]
+        .sort((a, b) => (b.votes || 0) - (a.votes || 0) || (b.rating || 0) - (a.rating || 0))
+        .slice(0, 10);
+
+      for (let i = 0; i < popularTools.length; i++) {
+        for (let j = i + 1; j < popularTools.length; j++) {
+          xml += `  <url>\n`;
+          xml += `    <loc>https://aiklavuz.com/compare?t1=${popularTools[i].id}&amp;t2=${popularTools[j].id}</loc>\n`;
+          xml += `    <lastmod>${todayStr}</lastmod>\n`;
+          xml += `    <changefreq>weekly</changefreq>\n`;
+          xml += `    <priority>0.6</priority>\n`;
+          xml += `  </url>\n`;
+        }
+      }
+    } catch (e) {
+      console.error('Error generating comparison URLs for sitemap:', e.message);
+    }
+    
     xml += '</urlset>';
     
     res.header('Content-Type', 'application/xml');
@@ -199,7 +219,48 @@ app.get('/alternatives', function (req, res) {
 });
 
 app.get('/compare', function (req, res) {
-  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'compare.html'));
+  const { t1, t2 } = req.query;
+  const filePath = path.join(__dirname, 'public', 'compare.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      
+      let title = 'Yapay Zeka Araçlarını Karşılaştırın | AiKlavuz';
+      let description = 'Yapay zeka araçlarının özelliklerini, puanlarını, fiyatlandırmalarını ve Türkçe dil desteklerini yan yana karşılaştırın.';
+      
+      if (t1 && t2) {
+        const { readDB } = require('./db/database');
+        const db = readDB();
+        const tool1 = db.tools.find(t => t.id === t1);
+        const tool2 = db.tools.find(t => t.id === t2);
+        if (tool1 && tool2) {
+          title = `${tool1.name} vs ${tool2.name} Karşılaştırması ve Farkları | AiKlavuz`;
+          description = `${tool1.name} ile ${tool2.name} yapay zeka araçlarını yan yana karşılaştırın. Özellikler, puanlama, fiyatlandırma, Türkçe desteği ve kullanıcı yorumları arasındaki farkları inceleyin.`;
+        }
+      }
+      
+      const { readDB } = require('./db/database');
+      const db = readDB();
+      let headTags = '';
+      if (db.adsense_code) {
+        headTags = `${db.adsense_code}\n`;
+      }
+      
+      // Inject new Title and Meta Description
+      htmlContent = htmlContent.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`);
+      htmlContent = htmlContent.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
+      
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      
+      return res.send(htmlContent);
+    }
+  } catch (err) {
+    console.error('Error serving compare with AdSense/SEO:', err.message);
+  }
+  res.sendFile(filePath);
 });
 
 app.get('/workflows', function (req, res) {
@@ -441,6 +502,68 @@ if (!process.env.VERCEL) {
       }, 6 * 60 * 60 * 1000);
     } catch (err) {
       console.error('Tarayıcı zamanlayıcı hatası:', err.message);
+    }
+
+    // ─── Otomatik Sosyal Medya Paylaşım Zamanlayıcısı ───
+    try {
+      const initSocialAutoShare = function () {
+        const ONE_DAY = 24 * 60 * 60 * 1000;
+        
+        const runAutoShare = async function () {
+          try {
+            const { readDB, writeDB } = require('./db/database');
+            const { addToSocialQueue, sharePost } = require('./services/social');
+            
+            const db = readDB();
+            const tools = db.tools || [];
+            if (tools.length === 0) {
+              console.log('[Auto-Share] Paylaşılacak yapay zeka aracı bulunamadı.');
+              return;
+            }
+            
+            if (!db.shared_tool_ids) db.shared_tool_ids = [];
+            
+            let candidates = tools.filter(t => !db.shared_tool_ids.includes(t.id));
+            if (candidates.length === 0) {
+              db.shared_tool_ids = [];
+              candidates = tools;
+            }
+            
+            // Prioritize featured or newer tools
+            candidates.sort((a, b) => (b.featured || 0) - (a.featured || 0) || (b.is_new || 0) - (a.is_new || 0));
+            
+            const pool = candidates.slice(0, 10);
+            const selected = pool[Math.floor(Math.random() * pool.length)];
+            
+            if (selected) {
+              console.log(`[Auto-Share] Günün seçilen yapay zeka aracı: ${selected.name}`);
+              const post = addToSocialQueue(selected);
+              if (post) {
+                db.shared_tool_ids.push(selected.id);
+                writeDB(db);
+                
+                console.log(`[Auto-Share] Araç kuyruğa eklendi. Sosyal medyada paylaşılıyor...`);
+                const sharedPost = await sharePost(post.id);
+                if (sharedPost.status === 'shared') {
+                  console.log(`[Auto-Share] ${selected.name} başarıyla paylaşıldı.`);
+                } else {
+                  console.warn(`[Auto-Share] Paylaşım hatası:`, sharedPost.error);
+                }
+              }
+            }
+          } catch (e) {
+            console.error('[Auto-Share] Otomatik paylaşım hatası:', e.message);
+          }
+        };
+
+        // Sunucu açıldıktan 30 saniye sonra çalıştır, sonra her 24 saatte bir tekrarla
+        setTimeout(runAutoShare, 30000);
+        setInterval(runAutoShare, ONE_DAY);
+      };
+
+      initSocialAutoShare();
+    } catch (err) {
+      console.error('Otomatik paylaşım zamanlayıcı hatası:', err.message);
     }
   });
 }
