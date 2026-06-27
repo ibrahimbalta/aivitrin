@@ -1599,7 +1599,11 @@ router.post('/admin/ads', requireAuth, function (req, res) {
     res.status(201).json({ success: true, message: 'Reklam başarıyla eklendi.', ad: newAd });
   } catch (err) {
     console.error('Save ad error:', err);
-    res.status(500).json({ error: 'Reklam kaydedilemedi.' });
+    res.status(500).json({ 
+      error: 'Reklam kaydedilemedi.',
+      message: err.message,
+      stack: err.stack
+    });
   }
 });
 

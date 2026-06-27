@@ -485,7 +485,8 @@
           selectedImageBase64 = '';
           loadAds();
         } else {
-          showToast(data.error || 'Kaydedilirken hata oluştu.', 'error');
+          console.error('Ad save detailed error:', data);
+          showToast((data.error || 'Reklam kaydedilemedi.') + ' (Detay: ' + (data.message || 'Bilinmiyor') + ')', 'error');
         }
       } catch (err) {
         showToast('Bağlantı hatası.', 'error');
