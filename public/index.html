@@ -20,10 +20,7 @@
   <meta name="twitter:title" content="AiKlavuz — Türkçe Yapay Zeka Araçları Dizini & En İyi AI Siteleri">
   <meta name="twitter:description" content="10.000+ yapay zeka aracını keşfedin.">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -196,15 +193,35 @@
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero-content">
-        <!-- AI Advisor Promo Banner -->
-        <div class="advisor-banner animate-on-scroll">
-          <span class="banner-badge">YENİ</span>
-          <span class="banner-text">Kararsız mı kaldınız? 💬 <a href="/asistan"><strong>Yapay Zeka Yol Arkadaşımıza</strong></a> hedefinizi anlatın, size özel araç listesi çıkarsın!</span>
-        </div>
 
-        <h1 class="hero-title">
-          <span data-i18n="hero_title_1">İhtiyacınızı Anlatın,</span><br>
-          <span class="text-gradient" data-i18n="hero_title_2">Doğru AI Aracını Bulalım.</span>
+
+        <h1 class="hero-title brand-title">
+          <span class="brand-mascot">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="brand-logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+                <linearGradient id="brand-logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0066cc" />
+                  <stop offset="100%" stop-color="#5500cc" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#brand-logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#brand-logo-grad-primary)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#brand-logo-grad-primary)" />
+              <polygon points="42,90 30,84 30,96" fill="url(#brand-logo-grad-primary)" />
+              <polygon points="138,90 150,84 150,96" fill="url(#brand-logo-grad-primary)" />
+              <g class="compass-needle">
+                <polygon points="100,90 142,48 115,105" fill="url(#brand-logo-grad-primary)" />
+                <polygon points="100,90 142,48 85,75" fill="url(#brand-logo-grad-needle-dark)" opacity="0.8" />
+                <polygon points="100,90 58,132 85,75" fill="url(#brand-logo-grad-primary)" />
+                <polygon points="100,90 58,132 115,105" fill="url(#brand-logo-grad-needle-dark)" opacity="0.8" />
+              </g>
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#brand-logo-grad-primary)" stroke-width="4"/>
+            </svg>
+          </span><span class="brand-ai">Ai</span><span class="brand-klavuz">Klavuz</span>
         </h1>
         <p class="hero-subtitle" data-i18n="hero_subtitle">
           Bir hedef, bir görev veya bir sorun yazın — yapay zeka destekli arama motorumuz sizi anında doğru araçlar, iş akışları ve asistanlarla eşleştirsin.
@@ -212,7 +229,8 @@
         
         <!-- Search & Advisor Tabs -->
         <div class="hero-search-tabs">
-          <button class="search-tab active" type="button">🔍 Standart Arama</button>
+          <button class="search-tab active" id="tab-search" type="button">🔍 Standart Arama</button>
+          <button class="search-tab" id="tab-wizard" type="button">🧙‍♂️ Karar Sihirbazı</button>
           <a href="/asistan" class="search-tab advisor-tab">🧠 Yapay Zeka Asistanı <span class="tab-glow-dot"></span></a>
         </div>
 
@@ -266,6 +284,120 @@
             
             <!-- Right: Search Submit Button -->
             <button type="button" class="hero-search-btn" id="hero-search-submit-btn">Ara</button>
+          </div>
+        </div>
+
+        <!-- Wizard Container -->
+        <div class="hero-wizard" id="hero-wizard-container" style="display: none;">
+          <div class="wizard-card">
+            <!-- Progress Header -->
+            <div class="wizard-header">
+              <div class="wizard-progress-bar">
+                <div class="wizard-progress-fill" id="wizard-progress-fill" style="width: 33%;"></div>
+              </div>
+              <div class="wizard-step-indicator" id="wizard-step-indicator">Adım 1 / 3</div>
+            </div>
+
+            <!-- Wizard Steps Content -->
+            <div class="wizard-steps-content">
+              <!-- Step 1: Goal Selection -->
+              <div class="wizard-step active" id="wizard-step-1">
+                <h3 class="wizard-step-title">Amacınız nedir? Ne üretmek istiyorsunuz?</h3>
+                <div class="wizard-options-grid">
+                  <button type="button" class="wizard-option-card" data-value="gorsel">
+                    <span class="option-icon">🎨</span>
+                    <h5>Görsel & Tasarım</h5>
+                    <p>Logo, afiş, görsel düzenleme veya yapay zeka resimleri üretin.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="metin">
+                    <span class="option-icon">✍️</span>
+                    <h5>Metin & İçerik</h5>
+                    <p>Makale, e-posta, sosyal medya metni veya reklam yazarlığı yapın.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="ses">
+                    <span class="option-icon">🎵</span>
+                    <h5>Ses & Müzik</h5>
+                    <p>Seslendirme, müzik besteleme veya ses efektleri oluşturun.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="video">
+                    <span class="option-icon">🎥</span>
+                    <h5>Video Üretimi</h5>
+                    <p>Yapay zeka videoları, kurgu veya animasyon tasarlayın.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="yazilim">
+                    <span class="option-icon">💻</span>
+                    <h5>Kod & Yazılım</h5>
+                    <p>Kod yazma yardımı, refactoring veya yazılım hatalarını çözün.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="analiz">
+                    <span class="option-icon">📊</span>
+                    <h5>Veri & Analiz</h5>
+                    <p>Tablolar, Excel analizi, raporlama veya finansal tahminleme yapın.</p>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Budget Selection -->
+              <div class="wizard-step" id="wizard-step-2" style="display: none;">
+                <h3 class="wizard-step-title">Bütçe tercihiniz nedir?</h3>
+                <div class="wizard-options-grid cols-3">
+                  <button type="button" class="wizard-option-card" data-value="ucretsiz">
+                    <span class="option-icon">🎁</span>
+                    <h5>Tamamen Ücretsiz</h5>
+                    <p>Hiçbir ödeme yapmadan kullanabileceğiniz araçlar.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="freemium">
+                    <span class="option-icon">⚡</span>
+                    <h5>Freemium (Ücretsiz + Ücretli)</h5>
+                    <p>Ücretsiz başlayıp, isterseniz profesyonel özellikler için ödeme yapın.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="ucretli">
+                    <span class="option-icon">💼</span>
+                    <h5>Profesyonel (Ücretli)</h5>
+                    <p>Doğrudan profesyonel bütçeli, üst seviye özelliklere sahip araçlar.</p>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Experience Selection -->
+              <div class="wizard-step" id="wizard-step-3" style="display: none;">
+                <h3 class="wizard-step-title">Nasıl bir iş akışı tercih edersiniz?</h3>
+                <div class="wizard-options-grid cols-2">
+                  <button type="button" class="wizard-option-card" data-value="kolay">
+                    <span class="option-icon">🚀</span>
+                    <h5>Hızlı & Kolay</h5>
+                    <p>Yapay zeka tek tıkla her şeyi halletsin, karmaşık ayarlarla uğraşmayayım.</p>
+                  </button>
+                  <button type="button" class="wizard-option-card" data-value="gelismis">
+                    <span class="option-icon">⚙️</span>
+                    <h5>Gelişmiş & Kontrollü</h5>
+                    <p>Parametrelere müdahale edebileceğim, ince ayar yapabileceğim profesyonel araçlar.</p>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Loading View -->
+              <div class="wizard-loading-view" id="wizard-loading-view" style="display: none;">
+                <div class="wizard-spinner"></div>
+                <h4 class="wizard-loading-text">Yapay Zeka En Uygun Araçları Analiz Ediyor...</h4>
+                <p class="wizard-loading-subtext">Seçimlerinize göre veritabanımız taranıyor ve gerekçeleriniz hazırlanıyor.</p>
+              </div>
+
+              <!-- Results View -->
+              <div class="wizard-results-view" id="wizard-results-view" style="display: none;">
+                <h3 class="wizard-step-title">🎉 Sizin İçin En Uygun 3 Yapay Zeka</h3>
+                <div class="wizard-results-grid" id="wizard-results-grid-container">
+                  <!-- JS dinamik olarak araç kartlarını buraya yerleştirecek -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Controls -->
+            <div class="wizard-footer" id="wizard-footer-controls">
+              <button type="button" class="btn-secondary" id="btn-wizard-prev" disabled>Geri</button>
+              <button type="button" class="btn-primary" id="btn-wizard-next" disabled>Devam Et</button>
+              <button type="button" class="btn-primary" id="btn-wizard-restart" style="display: none; background: var(--gradient-primary); border: none; color: white;">Yeniden Başla 🧙‍♂️</button>
+            </div>
           </div>
         </div>
         
@@ -716,6 +848,7 @@
   <script src="js/toolkit.js"></script>
   <script src="js/advisor.js"></script>
   <script src="js/ads.js"></script>
+  <script src="js/wizard.js"></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">

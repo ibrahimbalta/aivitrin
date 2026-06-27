@@ -172,10 +172,45 @@ if (toolsTableBody) {
         '<td>⭐ '+t.rating+'</td>' +
         '<td>'+status+'</td>' +
         '<td class="table-actions">' +
+          '<button class="btn-index" data-id="'+t.id+'" data-name="'+t.name+'" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.3);margin-right:6px;padding:4px 8px;border-radius:4px;cursor:pointer;font-weight:600;font-size:0.8rem">Google İndeks</button>' +
           '<button class="btn-edit" data-id="'+t.id+'">Düzenle</button>' +
           '<button class="btn-delete" data-id="'+t.id+'" data-name="'+t.name+'">Sil</button>' +
         '</td></tr>';
     }).join('');
+
+    // Google Index buttons
+    toolsTableBody.querySelectorAll('.btn-index').forEach(function(btn){
+      btn.addEventListener('click', async function(){
+        var id = this.dataset.id;
+        var name = this.dataset.name;
+        var btnEl = this;
+        btnEl.disabled = true;
+        btnEl.textContent = 'Gönderiliyor...';
+        try {
+          var res = await fetch('/api/admin/google-index', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              url: 'https://aiklavuz.com/tool/' + id,
+              type: 'URL_UPDATED'
+            })
+          });
+          var data = await res.json();
+          if (res.ok) {
+            showToast('Google İndeks İsteği Gönderildi: ' + name, 'success');
+          } else {
+            showToast(data.error || 'İndeksleme başarısız.', 'error');
+          }
+        } catch(e) {
+          showToast('Bağlantı hatası.', 'error');
+        } finally {
+          btnEl.disabled = false;
+          btnEl.textContent = 'Google İndeks';
+        }
+      });
+    });
 
     // Edit buttons
     toolsTableBody.querySelectorAll('.btn-edit').forEach(function(btn){

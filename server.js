@@ -184,6 +184,19 @@ app.get('/sitemap.xml', function (req, res) {
       }
     });
     
+    // Categories
+    const categories = db.categories || [];
+    categories.forEach(c => {
+      if (c.id) {
+        xml += `  <url>\n`;
+        xml += `    <loc>https://aiklavuz.com/category/${c.id}</loc>\n`;
+        xml += `    <lastmod>${todayStr}</lastmod>\n`;
+        xml += `    <changefreq>daily</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `  </url>\n`;
+      }
+    });
+    
     // Programmatic SEO: Generate comparisons for the top 10 most popular tools (45 permalinks)
     try {
       const popularTools = [...tools]

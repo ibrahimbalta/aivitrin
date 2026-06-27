@@ -321,6 +321,13 @@ Geçerli Kategoriler (Sadece bunlardan birinin ID'sini kullanmalısın):
       };
 
       db.tools.push(newTool);
+      
+      // Google Indexing API auto-ping
+      const { pingGoogleIndexing } = require('./google-indexing');
+      pingGoogleIndexing(`https://aiklavuz.com/tool/${newTool.id}`, 'URL_UPDATED').catch(err => {
+        console.error('Google Indexing API auto-ping error on crawler auto-approve:', err.message);
+      });
+      
       addedTools.push({ name: item.name, status: 'approved', id: finalId });
     } else {
       // Send to submissions inbox as pending crawler item

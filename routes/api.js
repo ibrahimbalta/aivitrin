@@ -995,6 +995,12 @@ router.post('/tools', requireAuth, function (req, res) {
     // Add to social queue
     addToSocialQueue(newTool);
     
+    // Google Indexing API Auto Ping
+    const { pingGoogleIndexing } = require('../services/google-indexing');
+    pingGoogleIndexing(`https://aiklavuz.com/tool/${newTool.id}`, 'URL_UPDATED').catch(err => {
+      console.error('Google Indexing API auto-ping error on tool creation:', err.message);
+    });
+    
     res.status(201).json({ success: true, message: 'Araç oluşturuldu.' });
   } catch (err) {
     console.error(err);
@@ -1019,6 +1025,13 @@ router.put('/tools/:id', requireAuth, function (req, res) {
       updated_at: new Date().toISOString()
     };
     writeDB(db);
+    
+    // Google Indexing API Auto Ping
+    const { pingGoogleIndexing } = require('../services/google-indexing');
+    pingGoogleIndexing(`https://aiklavuz.com/tool/${req.params.id}`, 'URL_UPDATED').catch(err => {
+      console.error('Google Indexing API auto-ping error on tool update:', err.message);
+    });
+    
     res.json({ success: true, message: 'Araç güncellendi.' });
   } catch (err) {
     console.error(err);
@@ -1033,9 +1046,37 @@ router.delete('/tools/:id', requireAuth, function (req, res) {
     db.tools = db.tools.filter(t => t.id !== req.params.id);
     if (db.tools.length === before) return res.status(404).json({ error: 'Araç bulunamadı.' });
     writeDB(db);
+    
+    // Google Indexing API Auto Ping
+    const { pingGoogleIndexing } = require('../services/google-indexing');
+    pingGoogleIndexing(`https://aiklavuz.com/tool/${req.params.id}`, 'URL_DELETED').catch(err => {
+      console.error('Google Indexing API auto-ping error on tool deletion:', err.message);
+    });
+    
     res.json({ success: true, message: 'Araç silindi.' });
   } catch (err) {
     res.status(500).json({ error: 'Araç silinemedi.' });
+  }
+});
+
+// Google Indexing API - Manuel Ping Uç Noktası
+router.post('/admin/google-index', requireAuth, async function (req, res) {
+  const { url, type } = req.body;
+  if (!url) {
+    return res.status(400).json({ error: 'URL parametresi zorunludur.' });
+  }
+  
+  try {
+    const { pingGoogleIndexing } = require('../services/google-indexing');
+    const result = await pingGoogleIndexing(url, type || 'URL_UPDATED');
+    if (result.success) {
+      res.json({ success: true, message: 'Google İndeksleme isteği başarıyla gönderildi.' });
+    } else {
+      res.status(500).json({ error: result.error || 'İndeksleme isteği başarısız oldu.' });
+    }
+  } catch (err) {
+    console.error('Manual Google Indexing error:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 
@@ -1154,6 +1195,12 @@ router.post('/submissions/:id/approve', requireAuth, function (req, res) {
 
     // Add to social queue
     addToSocialQueue(newTool);
+
+    // Google Indexing API Auto Ping
+    const { pingGoogleIndexing } = require('../services/google-indexing');
+    pingGoogleIndexing(`https://aiklavuz.com/tool/${newTool.id}`, 'URL_UPDATED').catch(err => {
+      console.error('Google Indexing API auto-ping error on submission approval:', err.message);
+    });
 
     res.json({ success: true, message: 'Başvuru onaylandı ve yayına alındı.' });
   } catch (err) {
@@ -3526,16 +3573,222 @@ router.get('/tools/:id/badge.svg', function (req, res) {
   }
 });
 
-router.post('/admin/social/queue/:id/share', requireAuth, async function (req, res) {
+// Akıllı Karar Sihirbazı Öneri Motoru
+router.post('/advisor/wizard', async function (req, res) {
   try {
-    const post = await sharePost(req.params.id);
-    if (post.status === 'shared') {
-      res.json({ success: true, message: 'Paylaşım sosyal medyada yayınlandı!', post });
-    } else {
-      res.status(400).json({ error: 'Paylaşım başarısız oldu.', details: post.error, post });
+    const { goal, budget, experience } = req.body;
+    if (!goal || !budget || !experience) {
+      return res.status(400).json({ error: 'Eksik parametre gönderildi.' });
     }
+
+    const db = readDB();
+    const settings = db.crawler_settings || {};
+    
+    // 1. Eşleşen kategorileri ve anahtar kelimeleri belirle
+    let targetCategoryIds = [];
+    let searchKeywords = [];
+    
+    if (goal === 'gorsel') {
+      targetCategoryIds = ['yaratici-ai', 'gorsel-video-ai'];
+      searchKeywords = ['görsel', 'resim', 'tasarım', 'image', 'photo', 'art', 'draw', 'guzel'];
+    } else if (goal === 'metin') {
+      targetCategoryIds = ['genel-ai-asistan', 'is-uretkenlik-ai'];
+      searchKeywords = ['yazı', 'metin', 'içerik', 'write', 'copy', 'blog', 'makale'];
+    } else if (goal === 'ses') {
+      targetCategoryIds = ['gorsel-video-ai'];
+      searchKeywords = ['ses', 'seslendirme', 'müzik', 'audio', 'voice', 'music', 'sound', 'konusma'];
+    } else if (goal === 'video') {
+      targetCategoryIds = ['gorsel-video-ai'];
+      searchKeywords = ['video', 'kurgu', 'edit', 'animasyon', 'film', 'movie'];
+    } else if (goal === 'yazilim') {
+      targetCategoryIds = ['yazilim-kod-ai'];
+      searchKeywords = ['kod', 'yazılım', 'program', 'code', 'dev', 'bug', 'git', 'terminal'];
+    } else if (goal === 'analiz') {
+      targetCategoryIds = ['veri-analitik-ai', 'finans-ai', 'is-uretkenlik-ai'];
+      searchKeywords = ['veri', 'analiz', 'tablo', 'excel', 'data', 'finance', 'grafik', 'chart'];
+    }
+
+    // 2. Araçları puanla
+    const scoredTools = db.tools.map(t => {
+      let score = 0;
+      const name = String(t.name || '').toLowerCase();
+      const desc = String(t.description || '').toLowerCase();
+      const tags = (Array.isArray(t.tags) ? t.tags.join(' ') : String(t.tags || '')).toLowerCase();
+      const catId = String(t.category_id || '').toLowerCase();
+
+      // Kategori Eşleşmesi
+      if (targetCategoryIds.includes(t.category_id)) {
+        score += 30;
+      }
+
+      // Anahtar kelime eşleşmesi
+      searchKeywords.forEach(keyword => {
+        if (name.includes(keyword)) score += 10;
+        if (desc.includes(keyword)) score += 5;
+        if (tags.includes(keyword)) score += 8;
+      });
+
+      // Bütçe eşleşmesi
+      if (budget === 'ucretsiz') {
+        if (t.pricing === 'ucretsiz') score += 25;
+        else if (t.pricing === 'freemium') score += 15; // has free tier
+        else score -= 15; // paid tools penalized
+      } else if (budget === 'freemium') {
+        if (t.pricing === 'freemium') score += 25;
+        else if (t.pricing === 'ucretsiz') score += 15;
+        else score += 5;
+      } else if (budget === 'ucretli') {
+        if (t.pricing === 'ucretli' || t.pricing === 'premium') score += 25;
+        else if (t.pricing === 'freemium') score += 15;
+      }
+
+      // Deneyim Eşleşmesi (kolay / gelismis)
+      const cleanName = name.trim();
+      if (experience === 'kolay') {
+        // Simple tools
+        const easyTools = ['canva', 'gamma', 'chatgpt', 'photoroom', 'v0', 'bolt', 'notion', 'notion-ai', 'jasper'];
+        if (easyTools.includes(cleanName) || desc.includes('kolay') || desc.includes('basit') || desc.includes('no-code') || desc.includes('kodsuz')) {
+          score += 15;
+        }
+      } else if (experience === 'gelismis') {
+        // Professional/Complex tools
+        const advancedTools = ['midjourney', 'cursor', 'github-copilot', 'adobe-firefly', 'julius', 'runway', 'sora'];
+        if (advancedTools.includes(cleanName) || desc.includes('gelişmiş') || desc.includes('profesyonel') || desc.includes('kodlama') || desc.includes('advanced')) {
+          score += 15;
+        }
+      }
+
+      // Feature & Rating bonus
+      if (t.featured) score += 8;
+      score += (t.rating || 0) * 1.5;
+
+      return { tool: t, score };
+    });
+
+    // 3. En iyi 3 aracı seç
+    let matchedTools = scoredTools
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score || (b.tool.featured || 0) - (a.tool.featured || 0))
+      .map(item => item.tool)
+      .slice(0, 3);
+
+    // Emniyet mekanizması: Eğer araç bulunamazsa en popüler 3 genel aracı ata
+    if (matchedTools.length === 0) {
+      matchedTools = db.tools
+        .sort((a, b) => (b.featured || 0) - (a.featured || 0) || (b.rating || 0) - (a.rating || 0))
+        .slice(0, 3);
+    }
+
+    // 4. LLM yardımıyla dinamik açıklama üret
+    const apiKey = process.env.GROQ_API_KEY || process.env.AI_API_KEY || settings.ai_api_key;
+    let explanations = {};
+    
+    // Varsayılan gerekçeleri oluştur (fallback)
+    matchedTools.forEach(t => {
+      let pricingText = 'ücretsiz kullanım';
+      if (t.pricing === 'freemium') pricingText = 'ücretsiz başlangıç modeli (freemium)';
+      else if (t.pricing === 'ucretli') pricingText = 'profesyonel planları';
+
+      explanations[t.id] = `Bu araç, ${pricingText} ve sunduğu güçlü özellikleri ile seçtiğiniz hedefe ulaşmanızda son derece pratiktir.`;
+    });
+
+    if (apiKey && matchedTools.length > 0) {
+      try {
+        const { callLLM } = require('../services/ai');
+        
+        const goalTexts = {
+          gorsel: 'görsel/tasarım üretimi',
+          metin: 'metin/içerik yazarlığı',
+          ses: 'ses/müzik üretimi ve seslendirme',
+          video: 'video kurgu ve animasyon üretimi',
+          yazilim: 'kod yazma ve yazılım geliştirme',
+          analiz: 'veri analizi, excel ve raporlama'
+        };
+
+        const budgetTexts = {
+          ucretsiz: 'tamamen ücretsiz',
+          freemium: 'ücretsiz deneme veya freemium (kısmi ücretsiz)',
+          ucretli: 'bütçeli/ücretli profesyonel'
+        };
+
+        const experienceTexts = {
+          kolay: 'hızlı, pratik ve yapay zekanın tek tıkla halledeceği kolay bir iş akışı',
+          gelismis: 'detaylı parametrelere müdahale edebileceği profesyonel ve gelişmiş kontrol'
+        };
+
+        const systemPrompt = `You are an AI Matchmaking Expert for the AiKlavuz AI directory.
+A user completed our diagnostic wizard asking for AI tools with the following preferences:
+- Goal: ${goalTexts[goal]}
+- Budget preference: ${budgetTexts[budget]}
+- Desired workflow: ${experienceTexts[experience]}
+
+We matched the following 3 tools from our directory:
+${matchedTools.map(t => `- [${t.name}]: ${t.description.substring(0, 150)}`).join('\n')}
+
+For each of these 3 matched tools, write a highly personalized, compelling 1-2 sentence explanation in Turkish.
+Explain why this specific tool fits their exact need (mentioning their budget, goal, or experience preference). Keep it friendly, encouraging, and natural.
+
+Return your response strictly in the following JSON format:
+{
+  "explanations": {
+    "tool-id-1": "gerekçe metni...",
+    "tool-id-2": "gerekçe metni...",
+    "tool-id-3": "gerekçe metni..."
+  }
+}`;
+
+        const apiProvider = process.env.AI_PROVIDER || settings.ai_provider;
+        const apiModel = process.env.AI_MODEL || settings.ai_model;
+        const llmSettings = {
+          ...settings,
+          ai_provider: apiProvider,
+          ai_model: apiModel,
+          ai_api_key: apiKey
+        };
+
+        const llmResponse = await callLLM(systemPrompt, 'Generate explanations for the matched tools.', llmSettings);
+        let parsed = null;
+        try {
+          parsed = JSON.parse(llmResponse);
+        } catch (e) {
+          const cleanJson = llmResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+          parsed = JSON.parse(cleanJson);
+        }
+
+        if (parsed && parsed.explanations) {
+          // Merge dynamic explanations
+          matchedTools.forEach(t => {
+            if (parsed.explanations[t.id]) {
+              explanations[t.id] = parsed.explanations[t.id];
+            } else {
+              // Try case-insensitive or name match in JSON keys
+              const foundKey = Object.keys(parsed.explanations).find(k => k.toLowerCase() === t.id.toLowerCase() || k.toLowerCase() === t.name.toLowerCase());
+              if (foundKey) {
+                explanations[t.id] = parsed.explanations[foundKey];
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error('LLM wizard explanation generation failed, using fallback:', err.message);
+      }
+    }
+
+    // Kategorileri ekle
+    const resultTools = matchedTools.map(t => {
+      const cat = db.categories.find(c => c.id === t.category_id);
+      return {
+        ...t,
+        category_name: cat ? cat.name : '',
+        category_icon: cat ? cat.icon : '',
+        ai_explanation: explanations[t.id]
+      };
+    });
+
+    res.json({ success: true, tools: resultTools });
   } catch (err) {
-    res.status(500).json({ error: err.message || 'Paylaşım işlemi sırasında hata oluştu.' });
+    console.error('Wizard search error:', err.message);
+    res.status(500).json({ error: 'Karar sihirbazı çalıştırılırken hata oluştu.' });
   }
 });
 
