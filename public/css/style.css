@@ -41,24 +41,24 @@
 }
 
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.75);
-  --bg-card-hover: rgba(255, 255, 255, 0.96);
-  --bg-dropdown: rgba(255, 255, 255, 0.96);
-  --border-dropdown: rgba(0, 0, 0, 0.06);
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #e2e8f0;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-dropdown: #ffffff;
+  --border-dropdown: rgba(0, 0, 0, 0.1);
   --bg-input: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --border-color: rgba(0, 0, 0, 0.05);
-  --border-hover: rgba(0, 0, 0, 0.09);
+  --text-muted: #64748b;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
   --accent-purple: #4f46e5;
   --accent-cyan: #db2777;
   --gradient-hero: radial-gradient(ellipse at 15% 30%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
                    radial-gradient(ellipse at 85% 70%, rgba(219, 39, 119, 0.04) 0%, transparent 55%);
-  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.02);
-  --shadow-card-hover: 0 20px 40px rgba(79, 70, 229, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 16px 36px rgba(79, 70, 229, 0.08);
   --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.12);
 }
 
