@@ -255,6 +255,7 @@
             <div class="form-group">
               <label for="ad-position">Reklam Pozisyonu *</label>
               <select id="ad-position" required>
+                <option value="hero-sponsor">Hero Üstü Mini Sponsor (İkon + Metin + Buton)</option>
                 <option value="hero-banner">Hero Altı Banner (1200x120px önerilir)</option>
                 <option value="footer-banner">Footer Üstü Banner (1200x120px önerilir)</option>
                 <option value="sidebar">Sidebar Reklam (300x250px önerilir)</option>
@@ -386,7 +387,7 @@
         adsTableBody.innerHTML = ads.map(ad => {
           const statusClass = ad.active ? 'active' : 'inactive';
           const statusLabel = ad.active ? 'Aktif' : 'Pasif';
-          const positionLabel = ad.position === 'hero-banner' ? 'Hero Altı Banner' : ad.position === 'footer-banner' ? 'Footer Üstü Banner' : 'Sidebar Reklam';
+          const positionLabel = ad.position === 'hero-banner' ? 'Hero Altı Banner' : ad.position === 'footer-banner' ? 'Footer Üstü Banner' : ad.position === 'hero-sponsor' ? 'Hero Üstü Mini Sponsor' : 'Sidebar Reklam';
 
           return `
             <tr>

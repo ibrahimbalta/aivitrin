@@ -5793,3 +5793,128 @@ img {
   }
 }
 
+/* ============================================================
+   🏷️ SPONSOR BARI TASARIMI (HERO ÜSTÜ MİNİ SPONSOR)
+   ============================================================ */
+
+.sponsor-bar-link {
+  display: block;
+  max-width: 750px;
+  margin: 0 auto 36px; /* 36px space below, giving separation from brand-title */
+  text-decoration: none;
+  transition: transform var(--transition-base);
+}
+
+.sponsor-bar-link:hover {
+  transform: translateY(-2px);
+}
+
+.sponsor-bar-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 30px; /* pill shape */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+[data-theme="light"] .sponsor-bar-content {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.sponsor-bar-link:hover .sponsor-bar-content {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 20px rgba(138, 75, 245, 0.15);
+}
+
+.sponsor-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.sponsor-ad-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .sponsor-ad-label {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.sponsor-bar-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.sponsor-bar-text {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sponsor-bar-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 6px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+[data-theme="light"] .sponsor-bar-btn {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sponsor-bar-link:hover .sponsor-bar-btn {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+}
+
+/* Responsive Sponsor Bar */
+@media (max-width: 600px) {
+  .sponsor-bar-link {
+    margin-bottom: 24px;
+  }
+  .sponsor-bar-content {
+    padding: 8px 14px;
+    gap: 8px;
+  }
+  .sponsor-bar-text {
+    font-size: 0.75rem;
+  }
+  .sponsor-bar-btn {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  .sponsor-ad-label {
+    padding: 1px 4px;
+    font-size: 0.6rem;
+  }
+}
+

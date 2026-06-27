@@ -64,6 +64,25 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedAd = matchingAds[Math.floor(Math.random() * matchingAds.length)];
         
         // Render ad banner
+        if (position === 'hero-sponsor') {
+          slot.innerHTML = `
+            <a href="${selectedAd.target_url}" target="_blank" rel="noopener sponsored" class="sponsor-bar-link">
+              <div class="sponsor-bar-content">
+                <div class="sponsor-bar-left">
+                  <span class="sponsor-ad-label">Sponsor</span>
+                  <img src="${selectedAd.image_url}" alt="${selectedAd.title}" class="sponsor-bar-logo">
+                  <span class="sponsor-bar-text">${selectedAd.title}</span>
+                </div>
+                <div class="sponsor-bar-right">
+                  <span class="sponsor-bar-btn">İncele</span>
+                </div>
+              </div>
+            </a>
+          `;
+          slot.style.display = 'block';
+          return;
+        }
+
         slot.innerHTML = `
           <a href="${selectedAd.target_url}" target="_blank" rel="noopener sponsored" class="ad-banner-link" title="${selectedAd.title}">
             <img src="${selectedAd.image_url}" alt="${selectedAd.title}" class="ad-banner-image">
