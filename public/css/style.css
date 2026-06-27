@@ -1385,6 +1385,61 @@ img {
   opacity: 1;
 }
 
+/* ---- Alternatives in Tool Card ---- */
+.tool-card-alternatives {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+[data-theme="light"] .tool-card-alternatives {
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.alt-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.alt-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.alt-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  color: #ffffff !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.alt-icon-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .alt-icon-link {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .tool-card-header {
   display: flex;
   align-items: flex-start;

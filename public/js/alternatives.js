@@ -282,6 +282,36 @@ document.addEventListener('DOMContentLoaded', async function () {
     var isBookmarked = bookmarks.indexOf(tool.id) !== -1;
     var bookmarkClass = isBookmarked ? ' active' : '';
 
+    function getHashColor(str) {
+      var hash = 0;
+      for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      var h = Math.abs(hash) % 360;
+      return 'hsl(' + h + ', 60%, 42%)';
+    }
+
+    // Alternatifler listesi (Aynı kategorideki diğer 5 araç)
+    var alternativesHtml = '';
+    if (typeof allTools !== 'undefined' && allTools && allTools.length > 0) {
+      var alternatives = allTools.filter(function (t) {
+        return (t.category_id === tool.category_id || t.category === tool.category) && t.id !== tool.id;
+      });
+      if (alternatives.length > 0) {
+        alternativesHtml = '<div class="tool-card-alternatives">' +
+          '<span class="alt-label">Alternatifler:</span>' +
+          '<div class="alt-icons">';
+        
+        alternatives.slice(0, 5).forEach(function (alt) {
+          var firstAltLetter = alt.name.charAt(0).toUpperCase();
+          var hashColor = getHashColor(alt.id);
+          alternativesHtml += '<a href="/tool/' + alt.id + '" class="alt-icon-link" title="' + alt.name + '" style="background: ' + hashColor + '">' + firstAltLetter + '</a>';
+        });
+        
+        alternativesHtml += '</div></div>';
+      }
+    }
+
     return '<div class="tool-card" data-url="' + tool.url + '" data-id="' + tool.id + '" style="cursor:pointer">' +
       '<div class="tool-card-header">' +
         '<div class="tool-icon">' + firstLetter + '</div>' +
@@ -300,6 +330,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         '</div>' +
       '</div>' +
       tagsHtml +
+      alternativesHtml +
       '<div class="tool-card-actions">' +
         '<button class="btn-card-action btn-card-vote" data-id="' + tool.id + '" title="Beğen / Oy Ver">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>' +
@@ -334,7 +365,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     container.querySelectorAll('.tool-card').forEach(function (card) {
       card.addEventListener('click', function (e) {
-        if (e.target.closest('.tool-card-actions')) return;
+        if (e.target.closest('.tool-card-actions') || e.target.closest('.tool-card-alternatives')) return;
         var id = this.getAttribute('data-id');
         if (id) window.location.href = '/tool/' + id;
       });
