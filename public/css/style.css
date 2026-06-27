@@ -338,23 +338,45 @@ img {
 .icon-moon { display: none; }
 
 /* ---- 5. Mobile Navigation ---- */
+/* ---- 5. Mobile Navigation ---- */
 .mobile-nav {
   position: fixed;
   top: var(--header-height);
   left: 0;
   bottom: 0;
-  width: 280px;
-  background: color-mix(in srgb, var(--bg-primary) 95%, transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  width: 290px;
+  background: rgba(10, 10, 14, 0.88) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
   z-index: 99;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  gap: 4px;
+  padding: 30px 20px !important;
+  gap: 6px;
   transform: translateX(-100%);
   transition: transform var(--transition-slow);
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="light"] .mobile-nav {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mobile-nav::before {
+  content: "AiKlavuz";
+  display: block;
+  font-family: 'Fredoka', var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-left: 12px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
 }
 
 .mobile-nav.active {
@@ -365,26 +387,50 @@ img {
   display: flex;
   align-items: center;
   height: 48px;
-  padding: 0 12px;
-  border-radius: var(--radius-sm);
+  padding: 0 16px !important;
+  border-radius: 12px !important;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
   transition: all var(--transition-fast);
+  margin-bottom: 2px;
 }
 
 .mobile-nav a:hover {
-  background: var(--bg-card);
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(255, 255, 255, 0.06);
 }
+
+[data-theme="light"] .mobile-nav a:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+/* 🏷️ Mobile Nav Link Icon Injection */
+.mobile-nav a[href*="#tools-section"]::before { content: "⚡"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="alternatives"]::before { content: "🔄"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="compare"]::before { content: "📊"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="workflows"]::before { content: "⚙️"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="prompts"]::before { content: "✍️"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="haberler"]::before { content: "📰"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="akademi"]::before { content: "🎓"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="asistan"]::before { content: "💬"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="professions"]::before { content: "💼"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="stories"]::before { content: "📖"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[href*="calculator"]::before { content: "🧮"; margin-right: 12px; font-size: 1.1rem; }
+.mobile-nav a[id="mobile-btn-submit-tool"]::before { content: "🚀"; margin-right: 10px; font-size: 1.1rem; }
 
 #mobile-btn-submit-tool {
   background: var(--gradient-primary) !important;
   color: white !important;
   justify-content: center;
   font-weight: 600;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-full) !important;
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
-  margin-top: 8px;
+  margin-top: 14px;
 }
 
 #mobile-btn-submit-tool:hover {
@@ -395,8 +441,12 @@ img {
 
 .mobile-nav hr {
   border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 14px 0;
+}
+
+[data-theme="light"] .mobile-nav hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* ---- 6. Hero Section ---- */
