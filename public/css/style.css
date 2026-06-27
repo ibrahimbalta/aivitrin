@@ -1096,6 +1096,8 @@ img {
   }
 
   .category-dropdown-item {
+    display: flex !important;
+    align-items: center !important;
     padding: 8px 10px !important;
     font-size: 0.78rem !important;
     border-radius: 8px !important;
@@ -1104,6 +1106,7 @@ img {
     gap: 6px !important;
     height: auto !important;
     overflow: hidden !important;
+    min-width: 0 !important;
   }
 
   .category-dropdown-item:first-child {
@@ -1115,8 +1118,9 @@ img {
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    display: inline-block !important;
-    width: 100% !important;
+    display: block !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
 
   .category-dropdown-item-arrow {
