@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const path = require('path');
 const { readDB, writeDB } = require('../db/database');
 const { requireAuth } = require('../middleware/auth');
 const { addToSocialQueue, sharePost } = require('../services/social');
