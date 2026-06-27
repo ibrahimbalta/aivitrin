@@ -785,10 +785,11 @@ img {
   .search-tab {
     flex: 1 !important;
     justify-content: center !important;
-    font-size: 0.85rem !important;
-    padding: 10px 16px !important;
+    font-size: 0.75rem !important;
+    padding: 10px 4px !important;
     border-radius: 12px !important;
     text-align: center !important;
+    white-space: nowrap !important;
   }
 
   [data-theme="light"] .hero-search-tabs {
