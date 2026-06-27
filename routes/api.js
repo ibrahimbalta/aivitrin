@@ -1559,10 +1559,6 @@ router.post('/admin/ads', requireAuth, function (req, res) {
     const imageBuffer = Buffer.from(matches[2], 'base64');
     const uploadDir = path.join(__dirname, '../public/uploads/ads');
     
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
     // Extract file extension or default to png
     let ext = 'png';
     const mimeType = matches[1];
@@ -1570,11 +1566,19 @@ router.post('/admin/ads', requireAuth, function (req, res) {
     else if (mimeType === 'image/gif') ext = 'gif';
     else if (mimeType === 'image/webp') ext = 'webp';
 
-    const fileName = 'ad_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
-    const filePath = path.join(uploadDir, fileName);
-    fs.writeFileSync(filePath, imageBuffer);
-
-    const imageUrl = '/uploads/ads/' + fileName;
+    let imageUrl = '';
+    try {
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+      const fileName = 'ad_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+      const filePath = path.join(uploadDir, fileName);
+      fs.writeFileSync(filePath, imageBuffer);
+      imageUrl = '/uploads/ads/' + fileName;
+    } catch (writeErr) {
+      console.warn('Local file write failed, using base64 fallback (useful for serverless/Vercel):', writeErr.message);
+      imageUrl = image_base64; // Fallback to raw base64 string
+    }
 
     const db = readDB();
     if (!db.ads) db.ads = [];
@@ -2971,20 +2975,24 @@ router.post('/news', requireAuth, function (req, res) {
         const imageBuffer = Buffer.from(matches[2], 'base64');
         const uploadDir = path.join(__dirname, '../public/uploads/news');
         
-        if (!fs.existsSync(uploadDir)) {
-          fs.mkdirSync(uploadDir, { recursive: true });
-        }
-
         let ext = 'png';
         const mimeType = matches[1];
         if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') ext = 'jpg';
         else if (mimeType === 'image/gif') ext = 'gif';
         else if (mimeType === 'image/webp') ext = 'webp';
 
-        const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
-        const filePath = path.join(uploadDir, fileName);
-        fs.writeFileSync(filePath, imageBuffer);
-        imageUrl = '/uploads/news/' + fileName;
+        try {
+          if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+          }
+          const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+          const filePath = path.join(uploadDir, fileName);
+          fs.writeFileSync(filePath, imageBuffer);
+          imageUrl = '/uploads/news/' + fileName;
+        } catch (writeErr) {
+          console.warn('Local file write failed for news, using base64 fallback:', writeErr.message);
+          imageUrl = image_base64;
+        }
       }
     }
 
@@ -3031,20 +3039,24 @@ router.put('/news/:id', requireAuth, function (req, res) {
         const imageBuffer = Buffer.from(matches[2], 'base64');
         const uploadDir = path.join(__dirname, '../public/uploads/news');
         
-        if (!fs.existsSync(uploadDir)) {
-          fs.mkdirSync(uploadDir, { recursive: true });
-        }
-
         let ext = 'png';
         const mimeType = matches[1];
         if (mimeType === 'image/jpeg' || mimeType === 'image/jpg') ext = 'jpg';
         else if (mimeType === 'image/gif') ext = 'gif';
         else if (mimeType === 'image/webp') ext = 'webp';
 
-        const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
-        const filePath = path.join(uploadDir, fileName);
-        fs.writeFileSync(filePath, imageBuffer);
-        imageUrl = '/uploads/news/' + fileName;
+        try {
+          if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+          }
+          const fileName = 'news_' + Date.now() + '_' + Math.floor(Math.random() * 1000) + '.' + ext;
+          const filePath = path.join(uploadDir, fileName);
+          fs.writeFileSync(filePath, imageBuffer);
+          imageUrl = '/uploads/news/' + fileName;
+        } catch (writeErr) {
+          console.warn('Local file write failed for news update, using base64 fallback:', writeErr.message);
+          imageUrl = image_base64;
+        }
 
         // Delete old image if it was a local file
         if (db.news[idx].imageUrl && db.news[idx].imageUrl.startsWith('/uploads/news/')) {
