@@ -58,7 +58,18 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
   res.sendFile(filePath);
 }
 
+// ─── Public Static Files (Registered FIRST to completely bypass MongoDB sync & sessions for assets) ───
+app.use(express.static(path.join(__dirname, 'public'), { index: false }));
+
+// ─── Database Sync Middleware (Bypasses files, favicon, manifest, sitemap, and admin panel) ───
 app.use(async (req, res, next) => {
+  if (req.path.includes('.') || 
+      req.path.startsWith('/admin') || 
+      req.path.startsWith('/favicon') || 
+      req.path.startsWith('/manifest') || 
+      req.path.startsWith('/sitemap')) {
+    return next();
+  }
   try {
     await syncFromMongo();
   } catch (err) {
@@ -120,9 +131,6 @@ app.use(session(sessionOptions));
 app.get('/', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'index.html'));
 });
-
-// ─── Static Files ───
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Admin login sayfası (auth gerekmez)
 app.use('/admin/login.html', express.static(path.join(__dirname, 'admin', 'login.html')));

@@ -19,6 +19,15 @@ let dbCache = null;
 let dbVersion = 0;
 let lastCheckTime = 0;
 
+try {
+  dbCache = readLocalDB();
+  if (dbCache) {
+    dbVersion = dbCache._version || 0;
+  }
+} catch (e) {
+  console.error('[Sync] Failed to load local cache on startup:', e.message);
+}
+
 // Varsayılan veri yapısı
 const defaultData = {
   users: [],
@@ -222,12 +231,14 @@ async function syncFromMongo(force = false) {
       const doc = await collection.findOne({ _id: 'main' });
       dbCache = doc.data;
       dbVersion = doc.version;
+      if (dbCache) dbCache._version = doc.version;
       writeLocalDB(dbCache);
     } else if (meta.version > dbVersion) {
       console.log(`[Sync] Local version: ${dbVersion}, Remote version: ${meta.version}. Fetching newer database...`);
       const doc = await collection.findOne({ _id: 'main' });
       dbCache = doc.data;
       dbVersion = doc.version;
+      if (dbCache) dbCache._version = doc.version;
       writeLocalDB(dbCache);
     } else if (meta.version < dbVersion) {
       console.log(`[Sync] Local version: ${dbVersion} is newer than Remote version: ${meta.version}. Pushing local database...`);
@@ -262,6 +273,7 @@ async function syncToMongo(data) {
 
     await collection.replaceOne({ _id: 'main' }, dbDoc, { upsert: true });
     dbVersion = nextVersion;
+    if (dbCache) dbCache._version = nextVersion;
     // console.log(`[Sync] Successfully saved version ${dbVersion} to MongoDB Atlas.`);
   } catch (err) {
     console.error('[Sync Error] Failed to sync to MongoDB:', err.message);
