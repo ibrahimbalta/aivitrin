@@ -129,6 +129,22 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
   }
 
+  // Scroll animations
+  var animatedElements = document.querySelectorAll('.animate-on-scroll');
+  if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(function (el) { scrollObserver.observe(el); });
+  } else {
+    animatedElements.forEach(function (el) { el.classList.add('visible'); });
+  }
+
   // Spotlight effect
   document.addEventListener('mousemove', function (e) {
     document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
@@ -136,7 +152,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   });
 
   // Theme Toggler
-  var savedTheme = localStorage.getItem('theme') || 'dark';
+  var savedTheme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
 
   if (themeToggle) {
