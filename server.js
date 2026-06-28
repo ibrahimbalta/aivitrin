@@ -63,20 +63,22 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
 // ─── Public Static Files (Registered FIRST to completely bypass MongoDB sync & sessions for assets) ───
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
-// ─── Database Sync Middleware (Bypasses files, favicon, manifest, sitemap, and admin panel) ───
-app.use(async (req, res, next) => {
+// ─── Database Sync Middleware (Bypasses files, favicon, manifest, sitemap, API requests, and admin panel) ───
+app.use((req, res, next) => {
   if (req.path.includes('.') || 
+      req.path.startsWith('/api') || 
       req.path.startsWith('/admin') || 
       req.path.startsWith('/favicon') || 
       req.path.startsWith('/manifest') || 
       req.path.startsWith('/sitemap')) {
     return next();
   }
-  try {
-    await syncFromMongo();
-  } catch (err) {
-    console.error('Database sync middleware error:', err.message);
-  }
+  
+  // Non-blocking background sync for HTML page requests
+  syncFromMongo().catch(err => {
+    console.error('Background database sync error:', err.message);
+  });
+  
   next();
 });
 

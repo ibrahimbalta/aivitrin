@@ -185,6 +185,7 @@ const mongoUri = process.env.MONGODB_URI;
 
 // MongoClient instances
 let mongoClient = null;
+let syncPromise = null;
 
 async function getMongoClient() {
   if (!mongoUri) return null;
@@ -201,57 +202,67 @@ async function syncFromMongo(force = false) {
     return readLocalDB();
   }
 
+  if (syncPromise) {
+    return syncPromise;
+  }
+
   const now = Date.now();
   // 5 saniyede bir en fazla 1 kez uzaktan kontrol yap (sunucusuz fonksiyonlarda aşırı yükü engellemek için)
   if (!force && dbCache && (now - lastCheckTime < 5000)) {
     return dbCache;
   }
 
-  try {
-    const client = await getMongoClient();
-    const db = client.db('aivitrin');
-    const collection = db.collection('system_data');
+  syncPromise = (async () => {
+    try {
+      const client = await getMongoClient();
+      const db = client.db('aivitrin');
+      const collection = db.collection('system_data');
 
-    // Sadece version alanını hızlıca sorgula
-    const meta = await collection.findOne({ _id: 'main' }, { projection: { version: 1 } });
-    
-    if (!meta) {
-      // Veritabanı boşsa varsayılan veriyi yükle ve kaydet
-      console.log('MongoDB is empty. Seeding default data...');
-      await syncToMongo(defaultData);
-      dbCache = JSON.parse(JSON.stringify(defaultData));
-      dbVersion = 1;
-      writeLocalDB(dbCache);
+      // Sadece version alanını hızlıca sorgula
+      const meta = await collection.findOne({ _id: 'main' }, { projection: { version: 1 } });
+      
+      if (!meta) {
+        // Veritabanı boşsa varsayılan veriyi yükle ve kaydet
+        console.log('MongoDB is empty. Seeding default data...');
+        await syncToMongo(defaultData);
+        dbCache = JSON.parse(JSON.stringify(defaultData));
+        dbVersion = 1;
+        writeLocalDB(dbCache);
+        lastCheckTime = Date.now();
+        return dbCache;
+      }
+
+      if (force || !dbCache || !fs.existsSync(DB_PATH)) {
+        console.log(`[Sync] Cache initialized or missing. Fetching version: ${meta.version}`);
+        const doc = await collection.findOne({ _id: 'main' });
+        dbCache = doc.data;
+        dbVersion = doc.version;
+        if (dbCache) dbCache._version = doc.version;
+        writeLocalDB(dbCache);
+      } else if (meta.version > dbVersion) {
+        console.log(`[Sync] Local version: ${dbVersion}, Remote version: ${meta.version}. Fetching newer database...`);
+        const doc = await collection.findOne({ _id: 'main' });
+        dbCache = doc.data;
+        dbVersion = doc.version;
+        if (dbCache) dbCache._version = doc.version;
+        writeLocalDB(dbCache);
+      } else if (meta.version < dbVersion) {
+        console.log(`[Sync] Local version: ${dbVersion} is newer than Remote version: ${meta.version}. Pushing local database...`);
+        await syncToMongo(dbCache);
+      }
+
       lastCheckTime = Date.now();
       return dbCache;
+    } catch (err) {
+      console.error('[Sync Error] Failed to sync from MongoDB:', err.message);
+      // Hata durumunda yerel önbellek dosyasından devam et (fallback)
+      return readLocalDB();
+    } finally {
+      syncPromise = null;
     }
+  })();
 
-    if (force || !dbCache || !fs.existsSync(DB_PATH)) {
-      console.log(`[Sync] Cache initialized or missing. Fetching version: ${meta.version}`);
-      const doc = await collection.findOne({ _id: 'main' });
-      dbCache = doc.data;
-      dbVersion = doc.version;
-      if (dbCache) dbCache._version = doc.version;
-      writeLocalDB(dbCache);
-    } else if (meta.version > dbVersion) {
-      console.log(`[Sync] Local version: ${dbVersion}, Remote version: ${meta.version}. Fetching newer database...`);
-      const doc = await collection.findOne({ _id: 'main' });
-      dbCache = doc.data;
-      dbVersion = doc.version;
-      if (dbCache) dbCache._version = doc.version;
-      writeLocalDB(dbCache);
-    } else if (meta.version < dbVersion) {
-      console.log(`[Sync] Local version: ${dbVersion} is newer than Remote version: ${meta.version}. Pushing local database...`);
-      await syncToMongo(dbCache);
-    }
-
-    lastCheckTime = Date.now();
-    return dbCache;
-  } catch (err) {
-    console.error('[Sync Error] Failed to sync from MongoDB:', err.message);
-    // Hata durumunda yerel önbellek dosyasından devam et (fallback)
-    return readLocalDB();
-  }
+  return syncPromise;
 }
 
 // MongoDB'ye veriyi asenkron olarak gönder

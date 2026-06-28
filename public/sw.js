@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aiklavuz-cache-v4';
+const CACHE_NAME = 'aiklavuz-cache-v5';
 const ASSETS_TO_CACHE = [
   '/',
   '/css/style.css',
