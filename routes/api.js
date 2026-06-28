@@ -405,14 +405,7 @@ router.get('/tools', async function (req, res) {
     const { search, category, pricing, sort, limit, made_in_turkey, profession, lang, show_in_slider, ids } = req.query;
     const db = readDB();
 
-    let tools = db.tools.map(t => {
-      const cat = db.categories.find(c => c.id === t.category_id);
-      let catName = cat ? cat.name : '';
-      if (lang && categoryTranslations[lang] && cat && categoryTranslations[lang][cat.name]) {
-        catName = categoryTranslations[lang][cat.name];
-      }
-      return { ...t, category_name: catName, category_icon: cat ? cat.icon : '' };
-    });
+    let tools = db.tools;
 
     if (ids) {
       const idList = ids.split(',').map(id => id.trim()).filter(Boolean);
@@ -485,7 +478,43 @@ router.get('/tools', async function (req, res) {
       tools = await Promise.all(tools.map(t => translateToolIfNeeded(t, lang, db)));
     }
 
-    res.json({ tools, total: tools.length });
+    // Map to lightweight, fast-loading objects for the client card grid
+    const lightweightTools = tools.map(t => {
+      const cat = db.categories.find(c => c.id === t.category_id);
+      let catName = cat ? cat.name : '';
+      if (lang && categoryTranslations[lang] && cat && categoryTranslations[lang][cat.name]) {
+        catName = categoryTranslations[lang][cat.name];
+      }
+      
+      let parsedTags = [];
+      if (Array.isArray(t.tags)) {
+        parsedTags = t.tags;
+      } else if (typeof t.tags === 'string') {
+        try { parsedTags = JSON.parse(t.tags || '[]'); } catch (e) { parsedTags = []; }
+      }
+
+      return {
+        id: t.id,
+        name: t.name,
+        url: t.url,
+        description: t.description ? t.description.substring(0, 180) : '',
+        category_id: t.category_id,
+        pricing: t.pricing,
+        rating: t.rating,
+        votes: t.votes || 0,
+        turkish_supported: t.turkish_supported,
+        made_in_turkey: t.made_in_turkey,
+        tags: parsedTags.slice(0, 3),
+        pricing_try: t.pricing_try,
+        featured: t.featured,
+        is_new: t.is_new || t.isNew,
+        show_in_slider: t.show_in_slider,
+        category_name: catName,
+        category_icon: cat ? cat.icon : ''
+      };
+    });
+
+    res.json({ tools: lightweightTools, total: lightweightTools.length });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Araçlar yüklenemedi.' });

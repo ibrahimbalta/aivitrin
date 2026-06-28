@@ -24,11 +24,13 @@ try {
 }
 
 const express = require('express');
+const compression = require('compression');
 const session = require('express-session');
 const path = require('path');
 const { requireAuth } = require('./middleware/auth');
 
 const app = express();
+app.use(compression());
 const PORT = process.env.PORT || 3000;
 
 // ─── Database Synchronization Middleware ───
