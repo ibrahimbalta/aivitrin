@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hikayeler — AiKlavuz Yönetim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon" style="display:flex;align-items:center;justify-content:center;width:24px;height:24px">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
+            </svg>
+        </span>
+        <span class="logo-text"><span class="logo-ai" style="font-weight:800;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1px">Ai</span><span class="logo-vitrin" style="font-weight:400;color:var(--text-primary)">Klavuz</span></span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/admin/tools.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Araçlar
+        </a>
+        <a href="/admin/categories.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          Kategoriler
+        </a>
+        <a href="/admin/submissions.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Başvurular
+        </a>
+        <a href="/admin/stories.html" class="active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg>
+          Başarı Hikayeleri
+        </a>
+        <a href="/admin/prompts.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Prompt Yönetimi
+        </a>
+        <a href="/admin/news.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l5 5v11a2 2 0 0 1-2 2z"/></svg>
+          Haber Yönetimi
+        </a>
+        <a href="/admin/quizzes.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Akademi/Quiz
+        </a>
+        <a href="/admin/academy.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          Eğitim & Videolar
+        </a>
+        <a href="/admin/crawler.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          AI Tarayıcı
+        </a>
+        <a href="/admin/social.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          Sosyal Medya
+        </a>
+        <a href="/admin/newsletter.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Bülten Yönetimi
+        </a>
+        <a href="/admin/messages.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Mesajlar
+        </a>
+        <a href="/admin/ads.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="21" y1="9" x2="3" y2="9"/><line x1="21" y1="15" x2="3" y2="15"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          Reklam Yönetimi
+        </a>
+        <a href="/admin/users.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kullanıcılar
+        </a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="main-header">
+        <h2>📝 Başarı Hikayeleri & Deneyimler</h2>
+        <div class="user-profile">
+          <span id="admin-username-display">Admin</span>
+          <button class="btn-logout" id="btn-logout" style="padding: 6px 12px; font-size: 0.8rem;">Çıkış</button>
+        </div>
+      </header>
+
+      <section class="admin-content">
+        <div class="content-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+            <h3>Paylaşılan Hikaye Listesi</h3>
+            <span class="badge badge-freemium" id="stories-count-badge">0 Hikaye</span>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Görsel/İsim</th>
+                  <th>Başlık</th>
+                  <th>Kategori</th>
+                  <th>Tür</th>
+                  <th>Araçlar</th>
+                  <th>Durum</th>
+                  <th>Aksiyonlar</th>
+                </tr>
+              </thead>
+              <tbody id="stories-table-body">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                    Hikayeler yükleniyor...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal" style="max-width:650px;">
+      <div class="modal-header">
+        <h3>📖 Deneyim Detayı</h3>
+        <button class="modal-close" id="detail-modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="detail-modal-body">
+        <!-- Render detail here -->
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px; padding-top:15px; border-top:1px solid var(--border-color)">
+        <button class="btn-secondary" id="detail-close" style="padding:10px 16px; border:1px solid var(--border-color); background:transparent; color:var(--text-primary); border-radius:var(--radius-sm); cursor:pointer;">Kapat</button>
+        <button class="btn-danger" id="detail-delete" style="padding:10px 16px; background:var(--accent-red); color:white; border:none; border-radius:var(--radius-sm); cursor:pointer;">Sil</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    'use strict';
+
+    const storiesTableBody = document.getElementById('stories-table-body');
+    const storiesCountBadge = document.getElementById('stories-count-badge');
+    const detailModal = document.getElementById('detail-modal');
+    const detailModalBody = document.getElementById('detail-modal-body');
+    let stories = [];
+    let activeStory = null;
+
+    const categoryNames = {
+      'yazilim-tasarim': '💻 Yazılım & Tasarım',
+      'pazarlama-satis': '📈 Pazarlama & Satış',
+      'egitim-akademi': '🏫 Eğitim & Akademi',
+      'is-uretkenlik': '💼 İş & Üretkenlik',
+      'diger': '⚙️ Diğer'
+    };
+
+    const typeLabels = {
+      'başarı hikayesi': '🚀 Başarı Hikayesi',
+      'araç tavsiyesi': '💡 Tavsiye & İpucu',
+      'sektörel tecrübe': '🎓 Sektörel Tecrübe'
+    };
+
+    async function loadStories() {
+      try {
+        const res = await fetch('/api/admin/stories');
+        if (!res.ok) throw new Error();
+        stories = await res.json();
+        storiesCountBadge.textContent = `${stories.length} Hikaye`;
+
+        if (stories.length === 0) {
+          storiesTableBody.innerHTML = `
+            <tr>
+              <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                Henüz paylaşılmış hikaye bulunmuyor.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        storiesTableBody.innerHTML = stories.map(s => {
+          const cat = categoryNames[s.category] || '⚙️ Diğer';
+          const type = typeLabels[s.share_type] || '🚀 Başarı Hikayesi';
+          const isApproved = s.approved ? 'checked' : '';
+          const statusText = s.approved ? '<span style="color:#10b981">Yayında</span>' : '<span style="color:var(--accent-yellow)">Beklemede</span>';
+
+          return `
+            <tr>
+              <td>
+                <div style="display:flex; align-items:center; gap:10px">
+                  <div style="width:32px; height:32px; border-radius:50%; background:${s.color_accent || '#555'}; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold">${s.avatar || 'A'}</div>
+                  <div>
+                    <strong>${s.name}</strong>
+                    <div style="font-size:0.75rem; color:var(--text-muted)">${s.role}</div>
+                  </div>
+                </div>
+              </td>
+              <td><div style="max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap" title="${s.title}">${s.title}</div></td>
+              <td>${cat}</td>
+              <td>${type}</td>
+              <td>${(s.tools || []).join(', ')}</td>
+              <td>
+                <div style="display:flex; align-items:center; gap:8px">
+                  <input type="checkbox" class="story-approve-toggle" data-id="${s.id}" ${isApproved} style="cursor:pointer;">
+                  ${statusText}
+                </div>
+              </td>
+              <td>
+                <button class="btn-view-story" data-id="${s.id}" style="padding:6px 12px; background:var(--accent-purple); color:white; border:none; border-radius:var(--radius-sm); cursor:pointer; font-size:0.8rem;">Detay</button>
+                <button class="btn-delete-story" data-id="${s.id}" style="padding:6px 12px; background:var(--accent-red); color:white; border:none; border-radius:var(--radius-sm); cursor:pointer; font-size:0.8rem;">Sil</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Toggles
+        storiesTableBody.querySelectorAll('.story-approve-toggle').forEach(chk => {
+          chk.addEventListener('change', function() { toggleApproval(this.dataset.id); });
+        });
+
+        // Detail views
+        storiesTableBody.querySelectorAll('.btn-view-story').forEach(btn => {
+          btn.addEventListener('click', function() { openDetail(stories.find(s => s.id === this.dataset.id)); });
+        });
+
+        // Delete buttons
+        storiesTableBody.querySelectorAll('.btn-delete-story').forEach(btn => {
+          btn.addEventListener('click', function() { deleteStory(this.dataset.id); });
+        });
+
+      } catch(e) {
+        showToast('Hikayeler yüklenemedi.', 'error');
+      }
+    }
+
+    async function toggleApproval(id) {
+      try {
+        const res = await fetch(`/api/admin/stories/${id}/toggle`, { method: 'PUT' });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.approved ? 'Hikaye yayına alındı!' : 'Hikaye yayından kaldırıldı.', 'success');
+          loadStories();
+        } else {
+          showToast('Durum güncellenirken hata oluştu.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    }
+
+    function openDetail(story) {
+      activeStory = story;
+      const statusText = story.approved 
+        ? '<span style="color:#10b981; font-weight:bold">Yayında (Aktif)</span>' 
+        : '<span style="color:var(--accent-yellow); font-weight:bold">Beklemede (Onay Bekliyor)</span>';
+
+      detailModalBody.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:32px;flex-wrap:wrap">
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Gönderen</label><strong>${story.name}</strong></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Meslek & Şehir</label><span>${story.role}</span></div>
+            <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Durum</label><span>${statusText}</span></div>
+          </div>
+          <div><label style="color:var(--text-muted);font-size:0.75rem;display:block">Başlık</label><strong style="font-size:1.1rem;color:var(--text-primary)">${story.title}</strong></div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Özet Alıntı (Quote)</label>
+            <p style="background:var(--bg-input);padding:10px;border-radius:var(--radius-sm);color:var(--text-secondary);font-style:italic">"${story.quote}"</p>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Zorluk & İhtiyaç</label>
+            <p style="background:var(--bg-input);padding:10px;border-radius:var(--radius-sm);color:var(--text-secondary);line-height:1.5">${story.content?.challenge || ''}</p>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">AI Çözümü</label>
+            <p style="background:var(--bg-input);padding:10px;border-radius:var(--radius-sm);color:var(--text-secondary);line-height:1.5">${story.content?.solution || ''}</p>
+          </div>
+          <div>
+            <label style="color:var(--text-muted);font-size:0.75rem;display:block">Elde Edilen Sonuç</label>
+            <p style="background:var(--bg-input);padding:10px;border-radius:var(--radius-sm);color:var(--text-secondary);line-height:1.5">${story.content?.result || ''}</p>
+          </div>
+        </div>
+      `;
+      detailModal.classList.add('active');
+    }
+
+    function closeDetailModal() {
+      detailModal.classList.remove('active');
+      activeStory = null;
+    }
+
+    document.getElementById('detail-modal-close').addEventListener('click', closeDetailModal);
+    document.getElementById('detail-close').addEventListener('click', closeDetailModal);
+
+    document.getElementById('detail-delete').addEventListener('click', () => {
+      if (activeStory) deleteStory(activeStory.id);
+    });
+
+    async function deleteStory(id) {
+      if (!confirm('Bu başarı hikayesini silmek istediğinizden emin misiniz?')) return;
+      try {
+        const res = await fetch(`/api/admin/stories/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Hikaye başarıyla silindi.', 'success');
+          closeDetailModal();
+          loadStories();
+        } else {
+          showToast('Silinirken hata oluştu.', 'error');
+        }
+      } catch(e) {
+        showToast('Sunucu hatası.', 'error');
+      }
+    }
+
+    loadStories();
+  </script>
+</body>
+</html>

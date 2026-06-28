@@ -2786,7 +2786,7 @@ JSON Formatı:
       },
       category: category || 'diger',
       share_type: share_type || 'başarı hikayesi',
-      approved: !!settings.auto_approve, // false by default unless auto_approve settings is true
+      approved: settings.auto_approve !== false, // true by default to support instant local testing
       created_at: new Date().toISOString()
     };
 
@@ -2804,6 +2804,54 @@ JSON Formatı:
     res.status(500).json({ error: 'Başarı hikayesi gönderilemedi.' });
   }
 });
+
+// GET /api/admin/stories - Get all stories for admin
+router.get('/admin/stories', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    const stories = db.stories || [];
+    stories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    res.json(stories);
+  } catch (err) {
+    console.error('Admin get stories error:', err);
+    res.status(500).json({ error: 'Hikayeler yüklenemedi.' });
+  }
+});
+
+// PUT /api/admin/stories/:id/toggle - Toggle approval state of a story
+router.put('/admin/stories/:id/toggle', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    const story = (db.stories || []).find(s => s.id === req.params.id);
+    if (!story) {
+      return res.status(404).json({ error: 'Hikaye bulunamadı.' });
+    }
+    story.approved = !story.approved;
+    writeDB(db);
+    res.json({ success: true, approved: story.approved });
+  } catch (err) {
+    console.error('Admin toggle story approval error:', err);
+    res.status(500).json({ error: 'Onay durumu güncellenemedi.' });
+  }
+});
+
+// DELETE /api/admin/stories/:id - Delete a story
+router.delete('/admin/stories/:id', requireAuth, function (req, res) {
+  try {
+    const db = readDB();
+    const originalLength = (db.stories || []).length;
+    db.stories = (db.stories || []).filter(s => s.id !== req.params.id);
+    if (db.stories.length === originalLength) {
+      return res.status(404).json({ error: 'Hikaye bulunamadı.' });
+    }
+    writeDB(db);
+    res.json({ success: true, message: 'Hikaye silindi.' });
+  } catch (err) {
+    console.error('Admin delete story error:', err);
+    res.status(500).json({ error: 'Hikaye silinemedi.' });
+  }
+});
+
 
 // ─── PROMPTS API ───────────────────────────────
 router.get('/prompts', function (req, res) {
