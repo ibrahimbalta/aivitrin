@@ -6612,4 +6612,16 @@ img {
   }
 }
 
+/* ---- 6.0 Deals & Coupons Page Styles ---- */
+.deal-code-box {
+  transition: all var(--transition-fast) ease;
+}
+.btn-copy-code:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn-copy-code:active {
+  transform: translateY(1px);
+}
+
 

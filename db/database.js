@@ -38,6 +38,7 @@ const defaultData = {
   stories: [],
   messages: [],
   ads: [],
+  deals: [],
   adsense_code: "",
   prompts: [
     {
@@ -333,6 +334,7 @@ function readDB() {
     if (!dbCache.prompts) dbCache.prompts = defaultData.prompts || [];
     if (!dbCache.news) dbCache.news = defaultData.news || [];
     if (!dbCache.quizzes) dbCache.quizzes = defaultData.quizzes || [];
+    if (!dbCache.deals) dbCache.deals = [];
     return dbCache;
   }
   dbCache = readLocalDB();
@@ -340,6 +342,7 @@ function readDB() {
   if (!dbCache.prompts) { dbCache.prompts = defaultData.prompts || []; changed = true; }
   if (!dbCache.news) { dbCache.news = defaultData.news || []; changed = true; }
   if (!dbCache.quizzes) { dbCache.quizzes = defaultData.quizzes || []; changed = true; }
+  if (!dbCache.deals) { dbCache.deals = []; changed = true; }
   if (changed) {
     writeLocalDB(dbCache);
   }

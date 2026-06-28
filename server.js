@@ -459,6 +459,10 @@ app.get('/asistan', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'assistant.html'));
 });
 
+app.get('/firsatlar', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'firsatlar.html'));
+});
+
 app.get('/stories', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'stories.html'));
 });

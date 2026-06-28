@@ -3838,4 +3838,38 @@ Return your response strictly in the following JSON format:
   }
 });
 
+// ─── DEALS & PROMO CODES ───────────────────────
+
+// GET /api/deals
+router.get('/deals', function (req, res) {
+  try {
+    const db = readDB();
+    const deals = db.deals || [];
+    // Sort by popularity (clicks)
+    deals.sort((a, b) => (b.clicks || 0) - (a.clicks || 0));
+    res.json(deals);
+  } catch (err) {
+    console.error('Error fetching deals:', err.message);
+    res.status(500).json({ error: 'Kupon fırsatları yüklenemedi.' });
+  }
+});
+
+// POST /api/deals/:id/click
+router.post('/deals/:id/click', function (req, res) {
+  try {
+    const { id } = req.params;
+    const db = readDB();
+    const deal = (db.deals || []).find(d => d.id === id);
+    if (!deal) {
+      return res.status(404).json({ error: 'Fırsat bulunamadı.' });
+    }
+    deal.clicks = (deal.clicks || 0) + 1;
+    writeDB(db);
+    res.json({ success: true, clicks: deal.clicks });
+  } catch (err) {
+    console.error('Error updating deal click count:', err.message);
+    res.status(500).json({ error: 'Sayaç güncellenemedi.' });
+  }
+});
+
 module.exports = router;
