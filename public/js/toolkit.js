@@ -41,6 +41,47 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="toolkit-backdrop" id="toolkit-backdrop"></div>
 
+    <!-- Mobil Bottom Tab Navigation Bar -->
+    <div class="mobile-bottom-tabs">
+      <a href="#" class="mobile-bottom-tab-item" id="mobile-tab-bookmarks">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+        <span>Setim</span>
+      </a>
+      <a href="#" class="mobile-bottom-tab-item" id="mobile-tab-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Ara</span>
+      </a>
+      <a href="/professions" class="mobile-bottom-tab-item mobile-bottom-tab-center" id="mobile-tab-professions">
+        <div class="mobile-bottom-tab-center-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <span>Mesleğim</span>
+      </a>
+      <a href="/asistan" class="mobile-bottom-tab-item" id="mobile-tab-assistant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/>
+        </svg>
+        <span>Asistan</span>
+      </a>
+      <a href="/alternatives" class="mobile-bottom-tab-item" id="mobile-tab-explore">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+        </svg>
+        <span>Keşfet</span>
+      </a>
+    </div>
+
     <!-- Auth Modal (Giriş Yap / Üye Ol) -->
     <div class="modal-overlay" id="auth-modal" style="z-index: 2000; display: none;">
       <div class="modal" style="max-width: 400px; background: var(--bg-dropdown); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-card); position: relative;">
@@ -118,6 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnOpen = document.getElementById('nav-toolkit-btn');
   const btnOpenMobile = document.getElementById('mobile-toolkit-btn');
 
+  // Mobile bottom tab elements
+  const tabBookmarks = document.getElementById('mobile-tab-bookmarks');
+  const tabSearch = document.getElementById('mobile-tab-search');
+  const tabProfessions = document.getElementById('mobile-tab-professions');
+  const tabAssistant = document.getElementById('mobile-tab-assistant');
+  const tabExplore = document.getElementById('mobile-tab-explore');
+
   function openDrawer() {
     if (!window.isUserLoggedIn) {
       window.showAuthModal(() => {
@@ -128,17 +176,77 @@ document.addEventListener('DOMContentLoaded', function () {
     drawer.classList.add('active');
     backdrop.classList.add('active');
     renderToolkitItems();
+    if (tabBookmarks) tabBookmarks.classList.add('active');
   }
 
   function closeDrawer() {
     drawer.classList.remove('active');
     backdrop.classList.remove('active');
+    updateActiveBottomTab();
   }
 
   if (btnOpen) btnOpen.addEventListener('click', function(e) { e.preventDefault(); openDrawer(); });
   if (btnOpenMobile) btnOpenMobile.addEventListener('click', function(e) { e.preventDefault(); openDrawer(); });
   if (btnClose) btnClose.addEventListener('click', closeDrawer);
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+  // Mobile bottom tab actions
+  if (tabBookmarks) {
+    tabBookmarks.addEventListener('click', function(e) {
+      e.preventDefault();
+      openDrawer();
+    });
+  }
+
+  if (tabSearch) {
+    tabSearch.addEventListener('click', function(e) {
+      e.preventDefault();
+      const currentPath = window.location.pathname;
+      if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          searchInput.focus();
+        }
+      } else {
+        window.location.href = '/?focus=search';
+      }
+    });
+  }
+
+  // Auto-focus search if directed with URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('focus') === 'search') {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      setTimeout(() => {
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        searchInput.focus();
+      }, 500);
+    }
+  }
+
+  // Highlight active bottom tab
+  function updateActiveBottomTab() {
+    const currentPath = window.location.pathname;
+    
+    // Clear active classes
+    [tabBookmarks, tabSearch, tabProfessions, tabAssistant, tabExplore].forEach(tab => {
+      if (tab) tab.classList.remove('active');
+    });
+
+    if (currentPath.includes('/professions')) {
+      if (tabProfessions) tabProfessions.classList.add('active');
+    } else if (currentPath.includes('/asistan')) {
+      if (tabAssistant) tabAssistant.classList.add('active');
+    } else if (currentPath.includes('/alternatives')) {
+      if (tabExplore) tabExplore.classList.add('active');
+    } else if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
+      if (tabSearch) tabSearch.classList.add('active');
+    }
+  }
+
+  updateActiveBottomTab();
 
   // Auth Modal Actions
   window.showAuthModal = function (callback) {

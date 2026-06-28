@@ -6344,3 +6344,123 @@ img {
   }
 }
 
+/* ---- 5.1 Mobile Bottom Navigation Tabs ---- */
+.mobile-bottom-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(11, 11, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-color);
+  z-index: 998; /* Alt çekmece backdrop'unun altında kalması için */
+  display: none; /* Masaüstünde varsayılan olarak gizli */
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 8px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .mobile-bottom-tabs {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-bottom-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+  font-weight: 600;
+  gap: 4px;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.mobile-bottom-tab-item svg {
+  stroke: var(--text-secondary);
+  fill: none;
+  transition: all var(--transition-fast);
+}
+
+.mobile-bottom-tab-item:hover,
+.mobile-bottom-tab-item.active {
+  color: var(--accent-purple);
+}
+
+.mobile-bottom-tab-item:hover svg,
+.mobile-bottom-tab-item.active svg {
+  stroke: var(--accent-purple);
+  transform: translateY(-2px);
+}
+
+/* Ortadaki "Mesleğim" Butonu */
+.mobile-bottom-tab-center {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 6px;
+  overflow: visible;
+}
+
+.mobile-bottom-tab-center-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -18px;
+  border: 4px solid var(--bg-dropdown);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  transition: all var(--transition-fast);
+  z-index: 2;
+}
+
+[data-theme="light"] .mobile-bottom-tab-center-btn {
+  border-color: #ffffff;
+}
+
+.mobile-bottom-tab-center-btn svg {
+  stroke: #ffffff !important;
+}
+
+.mobile-bottom-tab-center:hover .mobile-bottom-tab-center-btn,
+.mobile-bottom-tab-center.active .mobile-bottom-tab-center-btn {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.55);
+}
+
+.mobile-bottom-tab-center span {
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.mobile-bottom-tab-item.active.mobile-bottom-tab-center span {
+  color: var(--accent-purple);
+}
+
+/* Mobil Ekranlar İçin Düzenlemeler */
+@media (max-width: 768px) {
+  .mobile-bottom-tabs {
+    display: flex;
+  }
+  body {
+    padding-bottom: 74px !important; /* Sayfa altındaki elemanların tab menü altında kalmasını engeller */
+  }
+}
+
+
