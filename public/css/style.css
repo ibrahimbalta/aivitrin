@@ -6536,4 +6536,11 @@ img {
   font-size: 1.1rem;
 }
 
+/* Mobil ekranlarda yüzen AI Asistan butonunu gizle */
+@media (max-width: 768px) {
+  .ai-advisor-bubble {
+    display: none !important;
+  }
+}
+
 
