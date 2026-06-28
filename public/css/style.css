@@ -363,12 +363,13 @@ img {
   z-index: 99;
   display: flex;
   flex-direction: column;
-  padding: 30px 20px !important;
+  padding: 30px 20px 80px 20px !important;
   gap: 6px;
   transform: translateX(-100%);
   transition: transform var(--transition-slow);
   border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
+  overflow-y: auto;
 }
 
 [data-theme="light"] .mobile-nav {
