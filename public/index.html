@@ -437,53 +437,7 @@
     </div>
   </div>
 
-  <!-- LIVE CHART PANEL -->
-  <div class="container animate-on-scroll" style="margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-    <div class="live-chart-card" style="background: transparent; border: none; position: relative; overflow: hidden;">
-      <div class="live-chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span class="live-pulse-dot" style="width: 8px; height: 8px; background-color: var(--accent-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--accent-green); animation: pulseGreen 1.5s infinite;"></span>
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.5px;" data-i18n="live_activity_trend">CANLI AKTİVİTE TRENDİ (ZİYARET VE ÜYE ARTIŞI)</span>
-        </div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">
-          <span style="display: inline-flex; align-items: center; gap: 4px; margin-right: 12px;">
-            <span style="width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%; display: inline-block;"></span>
-            <span data-i18n="stat_views_trend">Ziyaret Trendi</span>
-          </span>
-          <span style="display: inline-flex; align-items: center; gap: 4px;">
-            <span style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 4px var(--accent-green);"></span>
-            <span data-i18n="stat_members_trend">Yeni Kayıtlar</span>
-          </span>
-        </div>
-      </div>
-      <div style="height: 120px; width: 100%; position: relative;">
-        <svg id="live-trend-svg" style="width: 100%; height: 100%; display: block;" viewBox="0 0 100 30" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="chart-area-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="var(--accent-purple)" stop-opacity="0.15"></stop>
-              <stop offset="100%" stop-color="var(--accent-purple)" stop-opacity="0.0"></stop>
-            </linearGradient>
-            <linearGradient id="chart-area-grad-green" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="var(--accent-green)" stop-opacity="0.15"></stop>
-              <stop offset="100%" stop-color="var(--accent-green)" stop-opacity="0.0"></stop>
-            </linearGradient>
-          </defs>
-          <!-- Grid lines -->
-          <line x1="0" y1="7.5" x2="100" y2="7.5" stroke="rgba(255,255,255,0.03)" stroke-width="0.25"></line>
-          <line x1="0" y1="15" x2="100" y2="15" stroke="rgba(255,255,255,0.03)" stroke-width="0.25"></line>
-          <line x1="0" y1="22.5" x2="100" y2="22.5" stroke="rgba(255,255,255,0.03)" stroke-width="0.25"></line>
-          
-          <!-- Views Path -->
-          <path id="views-area-path" d="" fill="url(#chart-area-grad)"></path>
-          <path id="views-line-path" d="" fill="none" stroke="url(#gradient-primary)" stroke-width="0.8" stroke-linecap="round"></path>
-          
-          <!-- Members Path -->
-          <path id="members-area-path" d="" fill="url(#chart-area-grad-green)"></path>
-          <path id="members-line-path" d="" fill="none" stroke="var(--accent-green)" stroke-width="0.6" stroke-linecap="round" stroke-dasharray="0.5 0.5"></path>
-        </svg>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ADSLOT: HERO BANNER -->
   <div class="container animate-on-scroll">
