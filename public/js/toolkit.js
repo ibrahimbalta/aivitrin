@@ -18,32 +18,32 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="toolkit-drawer" id="toolkit-drawer">
       <div class="drawer-header">
         <h3>🎒 AI Çantam</h3>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="user-display" id="user-display" style="font-size:0.8rem;color:var(--text-secondary)"></span>
-          <button class="btn-toolkit-logout" id="btn-toolkit-logout" title="Çıkış Yap" style="font-size:0.75rem;color:var(--accent-red);background:rgba(239,68,68,0.1);padding:4px 8px;border-radius:4px;display:none;border:none;cursor:pointer;">Çıkış</button>
-          <button class="btn-close-drawer" id="btn-close-toolkit" style="border:none;background:none;cursor:pointer;">&times;</button>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="user-display" id="user-display" style="font-size:0.85rem;color:var(--text-secondary);font-weight:500;"></span>
+          <button class="btn-toolkit-logout" id="btn-toolkit-logout" title="Çıkış Yap" style="font-size:0.75rem;color:var(--accent-red);background:rgba(239,68,68,0.1);padding:5px 10px;border-radius:6px;display:none;border:none;cursor:pointer;font-weight:600;transition:var(--transition-fast);">Çıkış</button>
+          <button class="btn-close-drawer" id="btn-close-toolkit">&times;</button>
         </div>
       </div>
       
       <!-- Drawer Tabs -->
-      <div class="drawer-tabs" style="display:flex; background:rgba(255,255,255,0.02); border-bottom:1px solid var(--border-color)">
-        <button class="drawer-tab active" id="tab-drawer-bookmarks" style="flex:1; background:none; border:none; padding:12px; color:var(--text-primary); font-size:0.85rem; font-weight:600; cursor:pointer; border-bottom:2px solid var(--accent-purple);">🎒 Tüm Çantam</button>
-        <button class="drawer-tab" id="tab-drawer-collections" style="flex:1; background:none; border:none; padding:12px; color:var(--text-muted); font-size:0.85rem; font-weight:600; cursor:pointer; border-bottom:2px solid transparent;">📁 Koleksiyonlar</button>
+      <div class="drawer-tabs">
+        <button class="drawer-tab active" id="tab-drawer-bookmarks">🎒 Tüm Çantam</button>
+        <button class="drawer-tab" id="tab-drawer-collections">📁 Koleksiyonlar</button>
       </div>
 
       <div class="drawer-body" id="toolkit-drawer-body">
         <div class="loader">Yükleniyor...</div>
       </div>
-      <div class="drawer-footer" style="display:flex; gap:10px; padding:16px;">
-        <button class="btn-toolkit-share" id="btn-toolkit-share" style="flex:1; padding:12px; font-size:0.85rem; font-weight:600; background:var(--gradient-primary); border:none; color:white; border-radius:var(--radius-sm); cursor:pointer;">🔗 Çantamı Paylaş</button>
-        <button class="btn-toolkit-export" id="btn-toolkit-export" style="padding:12px; font-size:0.85rem; background:rgba(255,255,255,0.03); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:var(--radius-sm); cursor:pointer;">JSON</button>
+      <div class="drawer-footer" style="display:flex; gap:12px; padding:18px 20px; border-top:1px solid var(--border-color);">
+        <button class="btn-toolkit-share" id="btn-toolkit-share" style="flex:2; padding:12px; font-size:0.88rem; font-weight:600; background:var(--gradient-primary); border:none; color:white; border-radius:var(--radius-md); cursor:pointer; transition:var(--transition-fast); box-shadow:0 4px 12px rgba(99, 102, 241, 0.2);">🔗 Çantamı Paylaş</button>
+        <button class="btn-toolkit-export" id="btn-toolkit-export" style="flex:1;">JSON</button>
       </div>
     </div>
     <div class="toolkit-backdrop" id="toolkit-backdrop"></div>
 
     <!-- Auth Modal (Giriş Yap / Üye Ol) -->
     <div class="modal-overlay" id="auth-modal" style="z-index: 2000; display: none;">
-      <div class="modal" style="max-width: 400px; background: rgba(14, 16, 29, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-card); position: relative;">
+      <div class="modal" style="max-width: 400px; background: var(--bg-dropdown); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-card); position: relative;">
         <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
           <h3 id="auth-modal-title" style="font-family: 'Outfit', sans-serif; font-size: 1.25rem;">🎒 AI Çantam — Giriş Yap</h3>
           <button class="modal-close" id="btn-close-auth" style="border: none; background: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary);">&times;</button>
@@ -97,19 +97,17 @@ document.addEventListener('DOMContentLoaded', function () {
     activeDrawerTab = tab;
     if (tab === 'bookmarks') {
       tabDrawerBookmarks.classList.add('active');
-      tabDrawerBookmarks.style.color = 'var(--text-primary)';
-      tabDrawerBookmarks.style.borderBottom = '2px solid var(--accent-purple)';
       tabDrawerCollections.classList.remove('active');
-      tabDrawerCollections.style.color = 'var(--text-muted)';
-      tabDrawerCollections.style.borderBottom = '2px solid transparent';
     } else {
       tabDrawerCollections.classList.add('active');
-      tabDrawerCollections.style.color = 'var(--text-primary)';
-      tabDrawerCollections.style.borderBottom = '2px solid var(--accent-purple)';
       tabDrawerBookmarks.classList.remove('active');
-      tabDrawerBookmarks.style.color = 'var(--text-muted)';
-      tabDrawerBookmarks.style.borderBottom = '2px solid transparent';
     }
+    // Remove inline style properties so clean CSS rules apply
+    tabDrawerBookmarks.style.color = '';
+    tabDrawerBookmarks.style.borderBottom = '';
+    tabDrawerCollections.style.color = '';
+    tabDrawerCollections.style.borderBottom = '';
+
     renderToolkitItems();
   }
 
@@ -415,13 +413,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Koleksiyon eşleştirme dropdown'ı
         const optionsHtml = collections.map(col => {
           const isSelected = col.bookmarks && col.bookmarks.includes(t.id) ? 'selected' : '';
-          return `<option value="${col.id}" ${isSelected}>📁 ${col.name}</option>`;
+          return `<option value="${col.id}">${col.name}</option>`;
         }).join('');
 
         return `
           <div class="drawer-item" data-id="${t.id}">
             <div class="drawer-item-main">
-              <div class="item-info" style="cursor:pointer" onclick="window.location.href='/tool/${t.id}'">
+              <div class="item-info" onclick="window.location.href='/tool/${t.id}'">
                 <h4>${t.name}</h4>
                 <span class="item-cat">${catLabel}</span>
               </div>
@@ -435,8 +433,8 @@ document.addEventListener('DOMContentLoaded', function () {
               </div>
             </div>
             
-            <div class="drawer-item-col-select" style="margin-top:8px;">
-              <select class="select-item-collection" data-id="${t.id}" style="width:100%; padding:6px; background:var(--bg-input); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-primary); font-size:0.75rem;">
+            <div class="drawer-item-col-select">
+              <select class="select-item-collection" data-id="${t.id}">
                 <option value="">Koleksiyon: Yok (Genel)</option>
                 ${optionsHtml}
               </select>
@@ -500,11 +498,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       // 📁 KOLEKSİYONLAR GÖRÜNÜMÜ
       let collectionsHtml = `
-        <div class="create-collection-box" style="padding:16px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--radius-md); margin-bottom:20px;">
-          <h5 style="margin-top:0; margin-bottom:10px;">New Collection</h5>
-          <input type="text" id="new-col-name" placeholder="Koleksiyon Adı..." style="width:100%; padding:8px; border:1px solid var(--border-color); border-radius:var(--radius-sm); background:var(--bg-input); color:var(--text-primary); font-size:0.8rem; margin-bottom:8px;">
-          <input type="text" id="new-col-desc" placeholder="Açıklama (isteğe bağlı)..." style="width:100%; padding:8px; border:1px solid var(--border-color); border-radius:var(--radius-sm); background:var(--bg-input); color:var(--text-primary); font-size:0.8rem; margin-bottom:10px;">
-          <button class="btn-primary" id="btn-create-col" style="width:100%; padding:8px; font-size:0.8rem; background:var(--gradient-primary); border:none; color:white; border-radius:var(--radius-sm); cursor:pointer;">Oluştur</button>
+        <div class="create-collection-box">
+          <h5>Yeni Koleksiyon</h5>
+          <input type="text" id="new-col-name" placeholder="Koleksiyon Adı...">
+          <input type="text" id="new-col-desc" placeholder="Açıklama (isteğe bağlı)...">
+          <button class="btn-primary" id="btn-create-col" style="width:100%; padding:10px; font-size:0.85rem; background:var(--gradient-primary); border:none; color:white; border-radius:var(--radius-md); cursor:pointer; font-weight:600;">Oluştur</button>
         </div>
       `;
 
@@ -524,15 +522,15 @@ document.addEventListener('DOMContentLoaded', function () {
       collectionsHtml += collections.map(col => {
         const count = col.bookmarks ? col.bookmarks.length : 0;
         return `
-          <div class="collection-item" data-id="${col.id}" style="padding:14px; background:rgba(255,255,255,0.01); border:1px solid var(--border-color); border-radius:var(--radius-md); margin-bottom:12px; display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <h4 style="margin:0; font-family:'Outfit',sans-serif; font-size:0.95rem;">📂 ${col.name}</h4>
-              <span style="font-size:0.75rem; color:var(--text-muted);">${count} araç</span>
+          <div class="collection-item" data-id="${col.id}">
+            <div class="collection-item-header">
+              <h4>📂 ${col.name}</h4>
+              <span class="collection-item-count">${count} araç</span>
             </div>
-            ${col.description ? `<p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">${col.description}</p>` : ''}
-            <div style="display:flex; gap:10px; margin-top:6px;">
-              <button class="btn-share-col" data-id="${col.id}" style="flex:1; padding:6px; font-size:0.75rem; background:rgba(6,182,212,0.1); border:1px solid var(--accent-cyan); color:var(--accent-cyan); border-radius:4px; cursor:pointer;">🔗 Paylaş</button>
-              <button class="btn-delete-col" data-id="${col.id}" style="padding:6px 10px; font-size:0.75rem; background:rgba(239,68,68,0.1); border:1px solid var(--accent-red); color:var(--accent-red); border-radius:4px; cursor:pointer;">Sil</button>
+            ${col.description ? `<p class="collection-item-desc">${col.description}</p>` : ''}
+            <div class="collection-item-actions">
+              <button class="btn-share-col" data-id="${col.id}">🔗 Paylaş</button>
+              <button class="btn-delete-col" data-id="${col.id}">Sil</button>
             </div>
           </div>
         `;
