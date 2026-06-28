@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AiKlavuz — Yapay Zeka İndirim Fırsatları & Kupon Kodları</title>
-  <meta name="description" content="En popüler premium yapay zeka araçları için doğrulanmış indirim kuponları, promosyon kodları ve özel fırsatları keşfedin. Jasper, ElevenLabs, Cursor ve daha fazlası.">
+  <title>AiKlavuz — Bana Özel Yapay Zeka Kurulumu</title>
+  <meta name="description" content="Mesleğinize ve ihtiyaçlarınıza göre optimize edilmiş, size özel yapay zeka araç setini 60 saniyede keşfedin ve anında çantanıza ekleyin.">
   <meta name="robots" content="index, follow">
   
   <!-- Fonts -->
@@ -54,10 +54,6 @@
                   <stop offset="0%" stop-color="#0099ff" />
                   <stop offset="100%" stop-color="#7a00ff" />
                 </linearGradient>
-                <linearGradient id="logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0066cc" />
-                  <stop offset="100%" stop-color="#5500cc" />
-                </linearGradient>
               </defs>
               <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
               <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
@@ -67,46 +63,42 @@
         </a>
       </div>
       
-            <nav class="nav-links" id="nav-links">
+      <nav class="nav-links" id="nav-links">
         <a href="/#tools-section" data-i18n="menu_tools">AI Araçları</a>
-        <a href="/kurulum">Bana Özel YZ</a>
+        <a href="/kurulum" class="active">Bana Özel YZ</a>
         
         <div class="nav-item-dropdown nav-mega-dropdown">
           <span class="nav-dropdown-trigger">
-            <span data-i18n="menu_explore">Keşfet</span>
+            <span>Keşfet</span>
             <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu mega-menu">
             <div class="mega-menu-inner">
-              
               <div class="mega-menu-col">
-                <h5 data-i18n="menu_explore">Keşfet</h5>
-                <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-                <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
-                <a href="/professions" data-i18n="menu_professions">Meslekler</a>
-                <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
-                <a href="/firsatlar" class="active">Fırsatlar</a>
+                <h5>Keşfet</h5>
+                <a href="/alternatives">Alternatifler</a>
+                <a href="/compare">Karşılaştır</a>
+                <a href="/professions">Meslekler</a>
+                <a href="/stories">Hikayeler</a>
+                <a href="/firsatlar">Fırsatlar</a>
               </div>
-              
               <div class="mega-menu-col">
-                <h5 data-i18n="menu_solutions">Çözümler</h5>
-                <a href="/workflows" data-i18n="menu_workflows">İş Akışları</a>
-                <a href="/asistan" data-i18n="menu_assistant">AI Asistanı</a>
-                <a href="/calculator" data-i18n="menu_calculator">Hesaplayıcı</a>
+                <h5>Çözümler</h5>
+                <a href="/workflows">İş Akışları</a>
+                <a href="/asistan">AI Asistanı</a>
+                <a href="/calculator">Hesaplayıcı</a>
               </div>
-              
               <div class="mega-menu-col">
-                <h5 data-i18n="menu_academy_trend">Akademi & Trend</h5>
-                <a href="/prompts" data-i18n="menu_daily_prompt">Günün Promptu</a>
-                <a href="/haberler" data-i18n="menu_news">Haberler</a>
-                <a href="/akademi" data-i18n="menu_academy">Akademi</a>
+                <h5>Akademi & Trend</h5>
+                <a href="/prompts">Günün Promptu</a>
+                <a href="/haberler">Haberler</a>
+                <a href="/akademi">Akademi</a>
               </div>
-              
             </div>
           </div>
         </div>
 
-        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link"><span data-i18n="menu_toolkit">🎒 Çantam</span> <span class="toolkit-count" style="display:none">0</span></a>
+        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link">🎒 Çantam <span class="toolkit-count" style="display:none">0</span></a>
       </nav>
       
       <div class="header-actions">
@@ -123,11 +115,12 @@
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
+    <a href="/kurulum" class="active">Bana Özel YZ</a>
     <a href="/alternatives">Alternatifler</a>
     <a href="/compare">Karşılaştır</a>
     <a href="/workflows">İş Akışları</a>
     <a href="/asistan">AI Asistanı</a>
-    <a href="/firsatlar" class="active">Fırsatlar</a>
+    <a href="/firsatlar">Fırsatlar</a>
     <a href="/professions">Meslekler</a>
     <a href="/stories">Hikayeler</a>
     <a href="/haberler">Haberler</a>
@@ -135,38 +128,148 @@
   </div>
 
   <!-- HERO SECTION -->
-  <section class="professions-hero">
+  <section class="professions-hero" style="padding-bottom: 20px;">
     <div class="container animate-on-scroll">
       <h1 class="professions-hero-title">
-        Yapay Zeka Araçlarında<br>
-        <span class="text-gradient">En Özel İndirim Fırsatları</span>
+        Bana Özel<br>
+        <span class="text-gradient">Yapay Zeka Kurulumu</span>
       </h1>
       <p class="professions-hero-subtitle">
-        Premium yapay zeka araçları için doğrulanmış, güncel indirim kuponları ve özel promosyon kodlarını keşfedin.
+        3 hızlı soruyu yanıtlayın; mesleğinize, deneyiminize ve hedeflerinize en uygun YZ araç setini anında listeleyelim.
       </p>
     </div>
   </section>
 
   <!-- MAIN SECTION -->
-  <section class="section">
+  <section class="section" style="padding-top: 10px;">
     <div class="container">
       
-      <!-- Search & Filters -->
-      <div class="filter-bar animate-on-scroll" style="margin-bottom: 40px; justify-content: center;">
-        <div class="filter-search-wrapper" style="max-width: 400px; width: 100%;">
-          <svg class="filter-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.34-4.34"></path>
-          </svg>
-          <input type="text" id="deal-search-input" placeholder="Araç adına veya kupona göre ara...">
+      <div class="setup-container animate-on-scroll">
+        <!-- Left Panel -->
+        <div class="setup-left">
+          <div>
+            <div class="setup-left-badge">Ücretsiz — 60 Saniye</div>
+            <h2>Özel YZ Alet Çantanızı Alın</h2>
+            <p>Hızlı değerlendirmemiz sayesinde işinize en uygun, yüksek puanlı ve Türkçe destekli yapay zekaları saniyeler içinde belirleyin.</p>
+          </div>
+          
+          <div class="setup-left-features">
+            <div class="setup-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Rolünüze ve seviyenize göre uyarlanmış</span>
+            </div>
+            <div class="setup-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Anında çantanıza ekleme & kaydetme</span>
+            </div>
+            <div class="setup-feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Kayıt veya e-posta zorunluluğu yok</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Deals Grid -->
-      <div class="grid-tools" id="deals-grid">
-        <!-- Renders Deals JS here -->
-        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px;">
-          Kuponlar yükleniyor...
+        <!-- Right Panel (Wizard Steps) -->
+        <div class="setup-right">
+          
+          <!-- STEP 1: Profession -->
+          <div class="setup-step active" id="step-1">
+            <div class="setup-step-header">
+              <div class="setup-step-indicator">Soru 1 / 3</div>
+              <div class="setup-progress-bar"><div class="setup-progress-bar-fill" style="width: 33%;"></div></div>
+              <h3 class="setup-step-title">Mesleğiniz veya ilgi alanınız nedir?</h3>
+            </div>
+            
+            <div class="options-grid">
+              <button class="option-btn" data-value="ogretmen">🏫 Öğretmen / Akademisyen</button>
+              <button class="option-btn" data-value="yazilimci">💻 Yazılımcı / Mühendis</button>
+              <button class="option-btn" data-value="tasarimci">🎨 Tasarımcı / Sanatçı</button>
+              <button class="option-btn" data-value="yazar">✍️ İçerik Üreticisi / Yazar</button>
+              <button class="option-btn" data-value="pazarlamaci">📈 Pazarlamacı / SEO Uzmanı</button>
+              <button class="option-btn" data-value="girisimci">💼 Girişimci / Yönetici</button>
+              <button class="option-btn" data-value="hukukcu">⚖️ Avukat / Hukukçu</button>
+              <button class="option-btn" data-value="saglikci">🩺 Doktor / Sağlık Çalışanı</button>
+            </div>
+
+            <div class="wizard-nav-btns">
+              <button class="btn-wizard-prev" style="visibility: hidden;">Geri</button>
+              <button class="btn-wizard-next" id="next-1" disabled>İleri &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Experience -->
+          <div class="setup-step" id="step-2">
+            <div class="setup-step-header">
+              <div class="setup-step-indicator">Soru 2 / 3</div>
+              <div class="setup-progress-bar"><div class="setup-progress-bar-fill" style="width: 66%;"></div></div>
+              <h3 class="setup-step-title">Yapay zeka araçlarıyla deneyiminiz nedir?</h3>
+            </div>
+            
+            <div class="options-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 30px;">
+              <button class="option-btn" data-value="yeni">🌱 Yeni Başlıyorum (Temel kavramlar & sohbet robotları)</button>
+              <button class="option-btn" data-value="orta">🚀 Orta Seviye (Birkaç özel aracı düzenli denedim)</button>
+              <button class="option-btn" data-value="ileri">🔥 İleri Seviye (İşlerimi otomatize ediyor ve API kullanıyorum)</button>
+            </div>
+
+            <div class="wizard-nav-btns">
+              <button class="btn-wizard-prev" id="prev-2">&larr; Geri</button>
+              <button class="btn-wizard-next" id="next-2" disabled>İleri &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Pain Points -->
+          <div class="setup-step" id="step-3">
+            <div class="setup-step-header">
+              <div class="setup-step-indicator">Soru 3 / 3</div>
+              <div class="setup-progress-bar"><div class="setup-progress-bar-fill" style="width: 100%;"></div></div>
+              <h3 class="setup-step-title">En çok hangi konuda zaman kazanmak istiyorsunuz?</h3>
+            </div>
+            
+            <div class="options-grid">
+              <button class="option-btn" data-value="yazma">📝 Metin yazma, raporlama ve e-posta yanıtlama</button>
+              <button class="option-btn" data-value="gorsel">🖼️ Görsel tasarım, slayt ve sunum hazırlama</button>
+              <button class="option-btn" data-value="kod">💻 Kod yazma, hata ayıklama ve teknik işler</button>
+              <button class="option-btn" data-value="analiz">📊 Veri analizi, araştırma ve fikir üretme</button>
+              <button class="option-btn" data-value="otomasyon">🔄 Tekrarlayan işleri otomatize etme</button>
+              <button class="option-btn" data-value="hizli-cozum">⚡ Genel günlük işlerimi hızlandırma</button>
+            </div>
+
+            <div class="wizard-nav-btns">
+              <button class="btn-wizard-prev" id="prev-3">&larr; Geri</button>
+              <button class="btn-wizard-next" id="next-3" disabled>Kurulumu Tamamla &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Results -->
+          <div class="setup-step" id="step-4">
+            <div class="results-header-actions">
+              <div>
+                <h3 class="setup-step-title" style="margin-bottom: 4px;">Kurulum Tamamlandı! 🎉</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Tercihlerinize göre filtrelenmiş en ideal araç listeniz:</p>
+              </div>
+              <button class="btn-add-all-toolkit" id="btn-add-all-toolkit">
+                🎒 Hepsini Çantama Ekle
+              </button>
+            </div>
+
+            <!-- Loader -->
+            <div id="results-loader" style="text-align: center; padding: 40px; color: var(--text-muted);">
+              Araçlar analiz ediliyor...
+            </div>
+
+            <!-- Results Grid -->
+            <div class="grid-tools" id="results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; overflow-y: auto; max-height: 480px; padding: 4px;">
+              <!-- Dynamic Cards Render here -->
+            </div>
+
+            <div class="wizard-nav-btns" style="margin-top: 20px; padding-top: 15px;">
+              <button class="btn-wizard-prev" id="prev-4">&larr; Seçimleri Değiştir</button>
+              <a href="/#tools-section" class="btn-wizard-next" style="text-decoration: none; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                <span>Ana Sayfaya Dön</span> &rarr;
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -188,10 +291,6 @@
                 <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#0099ff" />
                   <stop offset="100%" stop-color="#7a00ff" />
-                </linearGradient>
-                <linearGradient id="logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0066cc" />
-                  <stop offset="100%" stop-color="#5500cc" />
                 </linearGradient>
               </defs>
               <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
@@ -288,7 +387,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="/js/firsatlar.js"></script>
+  <script src="/js/kurulum.js"></script>
   <script src="/js/ads.js"></script>
 </body>
 </html>

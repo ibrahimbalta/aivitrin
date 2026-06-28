@@ -463,6 +463,10 @@ app.get('/firsatlar', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'firsatlar.html'));
 });
 
+app.get('/bana-ozel', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'kurulum.html'));
+});
+
 app.get('/stories', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'stories.html'));
 });
