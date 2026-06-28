@@ -57,15 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
         </svg>
         <span>Ara</span>
       </a>
-      <a href="/professions" class="mobile-bottom-tab-item mobile-bottom-tab-center" id="mobile-tab-professions">
+      <a href="#" class="mobile-bottom-tab-item mobile-bottom-tab-center" id="mobile-tab-categories">
         <div class="mobile-bottom-tab-center-btn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <circle cx="12" cy="12" r="6"></circle>
-            <circle cx="12" cy="12" r="2"></circle>
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
           </svg>
         </div>
-        <span>Mesleğim</span>
+        <span>Kategoriler</span>
       </a>
       <a href="/asistan" class="mobile-bottom-tab-item" id="mobile-tab-assistant">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,6 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
         <span>Keşfet</span>
       </a>
     </div>
+
+    <!-- Categories Overlay / Drawer -->
+    <div class="categories-drawer" id="categories-drawer">
+      <div class="drawer-header">
+        <h3>🗂️ Kategoriler</h3>
+        <button class="btn-close-drawer" id="btn-close-categories">&times;</button>
+      </div>
+      <div class="drawer-body" id="categories-drawer-body">
+        <div class="loader">Yükleniyor...</div>
+      </div>
+    </div>
+    <div class="categories-backdrop" id="categories-backdrop"></div>
 
     <!-- Auth Modal (Giriş Yap / Üye Ol) -->
     <div class="modal-overlay" id="auth-modal" style="z-index: 2000; display: none;">
@@ -162,9 +175,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Mobile bottom tab elements
   const tabBookmarks = document.getElementById('mobile-tab-bookmarks');
   const tabSearch = document.getElementById('mobile-tab-search');
-  const tabProfessions = document.getElementById('mobile-tab-professions');
+  const tabCategories = document.getElementById('mobile-tab-categories');
   const tabAssistant = document.getElementById('mobile-tab-assistant');
   const tabExplore = document.getElementById('mobile-tab-explore');
+
+  // Categories drawer elements
+  const categoriesDrawer = document.getElementById('categories-drawer');
+  const categoriesBackdrop = document.getElementById('categories-backdrop');
+  const btnCloseCategories = document.getElementById('btn-close-categories');
+  const categoriesDrawerBody = document.getElementById('categories-drawer-body');
 
   function openDrawer() {
     if (!window.isUserLoggedIn) {
@@ -173,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       return;
     }
+    closeCategoriesDrawer(); // Close categories drawer if open
     drawer.classList.add('active');
     backdrop.classList.add('active');
     renderToolkitItems();
@@ -185,10 +205,70 @@ document.addEventListener('DOMContentLoaded', function () {
     updateActiveBottomTab();
   }
 
+  function openCategoriesDrawer() {
+    closeDrawer(); // Close toolkit drawer if open
+    if (categoriesDrawer) categoriesDrawer.classList.add('active');
+    if (categoriesBackdrop) categoriesBackdrop.classList.add('active');
+    renderCategoriesInDrawer();
+    if (tabCategories) tabCategories.classList.add('active');
+  }
+
+  function closeCategoriesDrawer() {
+    if (categoriesDrawer) categoriesDrawer.classList.remove('active');
+    if (categoriesBackdrop) categoriesBackdrop.classList.remove('active');
+    updateActiveBottomTab();
+  }
+
+  function renderCategoriesInDrawer() {
+    if (!categoriesDrawerBody) return;
+    if (!categories || categories.length === 0) {
+      categoriesDrawerBody.innerHTML = '<div class="loader">Yükleniyor...</div>';
+      return;
+    }
+
+    const html = `
+      <div class="categories-list-grid">
+        ${categories.map(cat => `
+          <button class="category-drawer-btn" data-id="${cat.id}">
+            <span class="cat-icon">${cat.icon || '📁'}</span>
+            <span class="cat-name">${cat.name}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    categoriesDrawerBody.innerHTML = html;
+
+    // Attach click events
+    categoriesDrawerBody.querySelectorAll('.category-drawer-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const catId = this.getAttribute('data-id');
+        selectCategoryFromDrawer(catId);
+      });
+    });
+  }
+
+  function selectCategoryFromDrawer(catId) {
+    closeCategoriesDrawer();
+    const currentPath = window.location.pathname;
+    
+    if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
+      if (typeof window.filterByCategory === 'function') {
+        window.filterByCategory(catId);
+      } else {
+        window.location.href = `/?category=${catId}`;
+      }
+    } else {
+      window.location.href = `/?category=${catId}`;
+    }
+  }
+
   if (btnOpen) btnOpen.addEventListener('click', function(e) { e.preventDefault(); openDrawer(); });
   if (btnOpenMobile) btnOpenMobile.addEventListener('click', function(e) { e.preventDefault(); openDrawer(); });
   if (btnClose) btnClose.addEventListener('click', closeDrawer);
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+  if (btnCloseCategories) btnCloseCategories.addEventListener('click', closeCategoriesDrawer);
+  if (categoriesBackdrop) categoriesBackdrop.addEventListener('click', closeCategoriesDrawer);
 
   // Mobile bottom tab actions
   if (tabBookmarks) {
@@ -214,6 +294,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  if (tabCategories) {
+    tabCategories.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (categoriesDrawer && categoriesDrawer.classList.contains('active')) {
+        closeCategoriesDrawer();
+      } else {
+        openCategoriesDrawer();
+      }
+    });
+  }
+
   // Auto-focus search if directed with URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('focus') === 'search') {
@@ -231,12 +322,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentPath = window.location.pathname;
     
     // Clear active classes
-    [tabBookmarks, tabSearch, tabProfessions, tabAssistant, tabExplore].forEach(tab => {
+    [tabBookmarks, tabSearch, tabCategories, tabAssistant, tabExplore].forEach(tab => {
       if (tab) tab.classList.remove('active');
     });
 
-    if (currentPath.includes('/professions')) {
-      if (tabProfessions) tabProfessions.classList.add('active');
+    if (categoriesDrawer && categoriesDrawer.classList.contains('active')) {
+      if (tabCategories) tabCategories.classList.add('active');
     } else if (currentPath.includes('/asistan')) {
       if (tabAssistant) tabAssistant.classList.add('active');
     } else if (currentPath.includes('/alternatives')) {

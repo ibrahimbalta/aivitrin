@@ -941,6 +941,20 @@ document.addEventListener('DOMContentLoaded', async function () {
     renderCategories(categories);
     initSearchCategoryDropdown(categories);
     renderFeatured();
+    
+    // Read category query parameter on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory) {
+      activeCategory = initialCategory;
+      currentPage = 1;
+      renderCategories(window._categories);
+      setTimeout(() => {
+        var toolsSection = document.querySelector('#tools-section');
+        if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth' });
+      }, 600);
+    }
+    
     applyFilters();
     renderDirectoryIndex(categories, tools);
 
