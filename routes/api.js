@@ -2676,7 +2676,7 @@ router.get('/stories', function (req, res) {
 // POST /api/stories/submit - Submit a user success story (AI assisted extraction)
 router.post('/stories/submit', async function (req, res) {
   try {
-    const { name, role, raw_story, tools_used } = req.body;
+    const { name, role, raw_story, tools_used, category, share_type } = req.body;
     
     if (!name || name.trim().length < 2) {
       return res.status(400).json({ error: 'Lütfen geçerli bir isim veya ünvan girin.' });
@@ -2784,6 +2784,8 @@ JSON Formatı:
         solution: parsedStory.content?.solution || raw_story,
         result: parsedStory.content?.result || 'AI entegrasyonu başarıyla sonuçlandı.'
       },
+      category: category || 'diger',
+      share_type: share_type || 'başarı hikayesi',
       approved: !!settings.auto_approve, // false by default unless auto_approve settings is true
       created_at: new Date().toISOString()
     };

@@ -196,7 +196,18 @@
 
   <!-- STORIES GRID -->
   <section class="stories-section">
-    <div class="container">
+    <div class="container animate-on-scroll">
+      
+      <!-- Category Filter Bar -->
+      <div class="filter-bar" style="margin-bottom: 40px; justify-content: center; display: flex; flex-wrap: wrap; gap: 8px;">
+        <button class="filter-btn active" data-category="all">Tüm Paylaşımlar</button>
+        <button class="filter-btn" data-category="yazilim-tasarim">💻 Yazılım & Tasarım</button>
+        <button class="filter-btn" data-category="pazarlama-satis">📈 Pazarlama & Satış</button>
+        <button class="filter-btn" data-category="egitim-akademi">🏫 Eğitim & Akademi</button>
+        <button class="filter-btn" data-category="is-uretkenlik">💼 İş & Üretkenlik</button>
+        <button class="filter-btn" data-category="diger">⚙️ Diğer</button>
+      </div>
+
       <div class="stories-grid" id="dynamic-stories-container">
         <!-- Dinamik başarı hikayeleri buraya yüklenecek -->
       </div>
@@ -365,8 +376,30 @@
           </div>
           
           <div class="form-group">
-            <label for="story-raw-input">Yapay Zeka ile Başarı Hikayeniz</label>
-            <textarea id="story-raw-input" rows="6" placeholder="Yapay zeka araçlarını işinizde nasıl kullandınız? Hangi sorunu çözdünüz ve işinize ne kadar katkı (zaman tasarrufu, satış artışı, gelir artışı vb.) sağladı? Lütfen detaylıca yazın..." required></textarea>
+            <label for="story-raw-input">Yapay Zeka ile Deneyiminizi Paylaşın</label>
+            <textarea id="story-raw-input" rows="6" placeholder="Yapay zeka araçlarını işinizde veya günlük hayatınızda nasıl kullandınız? Hangi sorunu çözdünüz ve nasıl bir verimlilik, katkı sağladı? Lütfen detaylıca yazın..." required></textarea>
+          </div>
+          
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 15px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="story-type-input">Paylaşım Türü</label>
+              <select id="story-type-input" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
+                <option value="başarı hikayesi">🚀 Başarı Hikayesi</option>
+                <option value="araç tavsiyesi">💡 Araç Tavsiyesi & İpucu</option>
+                <option value="sektörel tecrübe">🎓 Sektörel Tecrübe</option>
+              </select>
+            </div>
+            
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="story-category-input">İlgili Kategori</label>
+              <select id="story-category-input" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
+                <option value="yazilim-tasarim">💻 Yazılım & Tasarım</option>
+                <option value="pazarlama-satis">📈 Pazarlama & Satış</option>
+                <option value="egitim-akademi">🏫 Eğitim & Akademi</option>
+                <option value="is-uretkenlik">💼 İş & Üretkenlik</option>
+                <option value="diger">⚙️ Diğer</option>
+              </select>
+            </div>
           </div>
           
           <button type="submit" class="btn-submit" id="btn-submit-story" style="width: 100%; padding: 14px; margin-top: 10px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer;">
