@@ -291,10 +291,18 @@ async function syncToMongo(data) {
   }
 }
 
+const PACKAGED_DB_PATH = path.join(__dirname, 'data.json');
+
 function readLocalDB() {
   try {
     if (fs.existsSync(DB_PATH)) {
       const raw = fs.readFileSync(DB_PATH, 'utf-8');
+      return JSON.parse(raw);
+    } else if (VERCEL_MODE && fs.existsSync(PACKAGED_DB_PATH)) {
+      // Vercel'de /tmp/data.json yoksa, paketlenmiş dosyadan oku ve /tmp'e yaz
+      console.log('[Database] /tmp/data.json missing. Initializing from packaged data.json...');
+      const raw = fs.readFileSync(PACKAGED_DB_PATH, 'utf-8');
+      fs.writeFileSync(DB_PATH, raw, 'utf-8');
       return JSON.parse(raw);
     }
   } catch (e) {
