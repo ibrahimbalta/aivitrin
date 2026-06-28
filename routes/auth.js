@@ -13,7 +13,8 @@ router.post('/login', function (req, res) {
       return res.status(400).json({ success: false, message: 'Kullanıcı adı ve şifre gerekli.' });
     }
     const db = readDB();
-    const user = db.users.find(u => u.username === username);
+    const cleanUsername = username.trim().toLowerCase();
+    const user = db.users.find(u => u.username.toLowerCase() === cleanUsername);
     if (!user) {
       return res.status(401).json({ success: false, message: 'Kullanıcı bulunamadı.' });
     }
