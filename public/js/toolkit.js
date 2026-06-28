@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </svg>
         <span>Asistan</span>
       </a>
-      <a href="/alternatives" class="mobile-bottom-tab-item" id="mobile-tab-explore">
+      <a href="/kurulum" class="mobile-bottom-tab-item" id="mobile-tab-explore">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
         </svg>
-        <span>Keşfet</span>
+        <span>Bana Özel</span>
       </a>
     </div>
 
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (tabCategories) tabCategories.classList.add('active');
     } else if (currentPath.includes('/asistan')) {
       if (tabAssistant) tabAssistant.classList.add('active');
-    } else if (currentPath.includes('/alternatives')) {
+    } else if (currentPath.includes('/kurulum')) {
       if (tabExplore) tabExplore.classList.add('active');
     } else if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
       if (tabSearch) tabSearch.classList.add('active');

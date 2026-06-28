@@ -6960,4 +6960,20 @@ img {
   }
 }
 
+/* Mobile Nav highlighted button for Setup Wizard */
+.mobile-nav a[href="/kurulum"] {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  border-radius: var(--radius-sm);
+  margin: 12px 16px !important;
+  padding: 12px !important;
+  text-align: center;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+  display: block !important;
+}
+.mobile-nav a[href="/kurulum"]:hover {
+  filter: brightness(1.1);
+}
+
 
