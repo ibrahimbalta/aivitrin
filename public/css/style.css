@@ -7051,8 +7051,8 @@ img {
 .tool-card {
   background: var(--bg-card) !important;
   border: 1px solid #27272a !important; /* Zinc 800 for dark mode */
-  border-radius: 12px !important;
-  padding: 14px 16px !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
   box-shadow: var(--shadow-card) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -7063,9 +7063,9 @@ img {
   flex-direction: column !important;
   justify-content: space-between !important;
   width: 100% !important;
-  max-width: 330px !important;
-  height: 230px !important;
-  min-height: 230px !important;
+  max-width: 270px !important;
+  height: 170px !important;
+  min-height: 170px !important;
   box-sizing: border-box !important;
 }
 
@@ -7086,43 +7086,53 @@ img {
   background: #ffffff !important;
 }
 
+/* Hide Tags in Directory Grid Cards to save space */
+.tool-card .tool-tags {
+  display: none !important;
+}
+
 /* ---- Tool Card Content Elements ---- */
 .tool-icon {
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  border-radius: 6px !important;
-  font-size: 1.05rem !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  border-radius: 5px !important;
+  font-size: 0.9rem !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12) !important;
 }
 
 .tool-name {
-  font-size: 0.98rem !important;
+  font-size: 0.88rem !important;
   font-weight: 600 !important;
   letter-spacing: -0.01em !important;
   color: var(--text-primary) !important;
 }
 
 .tool-category-badge {
-  font-size: 0.74rem !important;
+  font-size: 0.7rem !important;
   color: var(--text-muted) !important;
   font-weight: 500 !important;
 }
 
 .tool-description {
-  font-size: 0.8rem !important;
-  line-height: 1.45 !important;
+  font-size: 0.76rem !important;
+  line-height: 1.35 !important;
   color: var(--text-secondary) !important;
-  margin: 6px 0 !important;
+  margin: 4px 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
 /* ---- Neutral Pill Badges ---- */
 .tool-header-badges {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 4px !important;
-  margin-top: 4px !important;
+  gap: 3px !important;
+  margin-top: 3px !important;
   margin-left: 0 !important;
   width: 100% !important;
   justify-content: flex-start !important;
@@ -7131,9 +7141,9 @@ img {
 }
 
 .tool-header-badges .badge {
-  font-size: 0.6rem !important;
-  padding: 2px 6px !important;
-  border-radius: 4px !important;
+  font-size: 0.58rem !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
   font-weight: 500 !important;
   line-height: 1 !important;
   border: 1px solid var(--border-color) !important;
@@ -7342,20 +7352,20 @@ img {
 
 /* ---- Grid layout overrides ---- */
 .grid-tools {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 330px)) !important;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 270px)) !important;
   justify-content: center !important;
-  gap: 20px !important;
+  gap: 16px !important;
 }
 
 /* ---- Mobile Responsiveness Overrides ---- */
 @media (max-width: 768px) {
   .grid-tools {
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    gap: 10px !important;
   }
   
   .tool-card {
-    padding: 12px 14px !important;
+    padding: 10px 12px !important;
   }
 
   .stats-bar {
