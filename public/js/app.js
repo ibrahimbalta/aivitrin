@@ -239,26 +239,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         '<div class="tool-header-badges">' + badges + '</div>' +
       '</div>' +
       '<p class="tool-description">' + tool.description + '</p>' +
+      tagsHtml +
       '<div class="tool-footer">' +
-        '<div class="tool-rating">' + stars + ' <span>' + tool.rating + '</span></div>' +
-        '<div class="tool-pricing-group">' +
+        '<div class="tool-footer-left">' +
           '<span class="tool-pricing pricing-' + tool.pricing + '">' + pricingLabel + '</span>' +
           pricingSub +
+          '<div class="tool-rating">' + stars + ' <span>' + tool.rating + '</span></div>' +
         '</div>' +
-      '</div>' +
-      tagsHtml +
-      alternativesHtml +
-      '<div class="tool-card-actions">' +
-        '<button class="btn-card-action btn-card-vote" data-id="' + tool.id + '" title="Beğen / Oy Ver">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>' +
-          '<span class="vote-count">' + (tool.votes || 0) + '</span>' +
-        '</button>' +
-        '<button class="btn-card-action btn-card-bookmark' + bookmarkClass + '" data-id="' + tool.id + '" title="Çantama Ekle">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>' +
-        '</button>' +
-        '<button class="btn-card-action btn-card-compare" data-id="' + tool.id + '" title="Karşılaştır">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20L20.5 3.5M20 16v5h-5M4 4l16.5 16.5"></path></svg>' +
-        '</button>' +
+        '<div class="tool-footer-actions">' +
+          '<button class="btn-card-action-mini btn-card-vote" data-id="' + tool.id + '" title="Beğen / Oy Ver">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>' +
+            '<span class="vote-count">' + (tool.votes || 0) + '</span>' +
+          '</button>' +
+          '<button class="btn-card-action-mini btn-card-bookmark' + bookmarkClass + '" data-id="' + tool.id + '" title="Çantama Ekle">' +
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>' +
+          '</button>' +
+        '</div>' +
       '</div>' +
     '</div>';
   }
@@ -279,7 +275,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     container.querySelectorAll('.tool-card').forEach(function (card) {
       card.addEventListener('click', function (e) {
-        if (e.target.closest('.tool-card-actions') || e.target.closest('.tool-card-alternatives')) return;
+        if (e.target.closest('.tool-footer-actions') || e.target.closest('.btn-card-action-mini')) return;
         var id = this.getAttribute('data-id');
         if (id) window.location.href = '/tool/' + id;
       });
