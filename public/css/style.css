@@ -7050,9 +7050,9 @@ img {
 /* ---- Compact Tool Cards ---- */
 .tool-card {
   background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 10px !important;
-  padding: 12px !important;
+  border: 1px solid #27272a !important; /* Zinc 800 for dark mode */
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
   box-shadow: var(--shadow-card) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -7061,14 +7061,29 @@ img {
               box-shadow 0.15s ease !important;
   display: flex !important;
   flex-direction: column !important;
-  height: 100% !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 330px !important;
+  height: 230px !important;
+  min-height: 230px !important;
+  box-sizing: border-box !important;
 }
 
 .tool-card:hover {
-  border-color: rgba(59, 130, 246, 0.25) !important;
+  border-color: #3f3f46 !important;
   transform: translateY(-2px) !important;
   box-shadow: var(--shadow-card-hover) !important;
   background: var(--bg-card-hover) !important;
+}
+
+[data-theme="light"] .tool-card {
+  border: 1px solid #cbd5e1 !important; /* Slate 300 for light mode background contrast */
+  background: #ffffff !important;
+}
+
+[data-theme="light"] .tool-card:hover {
+  border-color: #94a3b8 !important;
+  background: #ffffff !important;
 }
 
 /* ---- Tool Card Content Elements ---- */
@@ -7327,8 +7342,9 @@ img {
 
 /* ---- Grid layout overrides ---- */
 .grid-tools {
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 16px !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 330px)) !important;
+  justify-content: center !important;
+  gap: 20px !important;
 }
 
 /* ---- Mobile Responsiveness Overrides ---- */
@@ -7339,7 +7355,7 @@ img {
   }
   
   .tool-card {
-    padding: 12px !important;
+    padding: 12px 14px !important;
   }
 
   .stats-bar {
