@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yapay Zeka Başarı Hikayeleri — AiKlavuz</title>
-  <meta name="description" content="Yapay zeka araçları ile iş hayatında verimlilik artışı sağlayan gerçek kullanıcı hikayelerini keşfedin. Emlakçı, öğretmen ve girişimci başarı öyküleri.">
+  <title>Hakkımızda — AiKlavuz</title>
+  <meta name="description" content="AiKlavuz hakkında. Türkiye'nin en kapsamlı Türkçe yapay zeka dizini ve rehberinin hikayesi, misyonu ve vizyonu.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://aiklavuz.com/stories">
-  
-  <!-- OG Tags -->
-  <meta property="og:title" content="Yapay Zeka Başarı Hikayeleri — AiKlavuz">
-  <meta property="og:description" content="AI araçlarını kullanarak işlerini dönüştüren gerçek kullanıcı hikayelerini keşfedin.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="tr_TR">
+  <link rel="canonical" href="https://aiklavuz.com/hakkimizda">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +15,77 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .legal-hero {
+      padding: calc(var(--header-height) + 60px) 0 40px;
+      text-align: center;
+    }
+    .legal-hero-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .legal-hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .legal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 80px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .legal-content {
+        padding: 30px 20px;
+      }
+    }
+
+    .legal-text h2 {
+      font-size: 1.5rem;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .legal-text h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-text p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .legal-text ul {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      padding-left: 20px;
+    }
+
+    .legal-text li {
+      margin-bottom: 8px;
+    }
+  </style>
   <script src="/js/i18n.js"></script>
 
   <!-- PWA Meta Tags & Manifest -->
@@ -84,10 +149,10 @@
         </a>
       </div>
       
-                              <nav class="nav-links" id="nav-links">
+      <nav class="nav-links" id="nav-links">
         <a href="/#tools-section" data-i18n="menu_tools">AI Araçları</a>
         <a href="/kurulum">Bana Özel YZ</a>
-        <a href="/stories" data-i18n="menu_stories" class="active">Hikayeler</a>
+        <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
         <a href="/haberler" data-i18n="menu_news">Haberler</a>
         
         <div class="nav-item-dropdown nav-mega-dropdown">
@@ -103,7 +168,7 @@
                 <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
                 <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
                 <a href="/professions" data-i18n="menu_professions">Meslekler</a>
-                <a href="/stories" data-i18n="menu_stories" class="active">Hikayeler</a>
+                <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
                 <a href="/firsatlar">Fırsatlar</a>
               </div>
               
@@ -169,7 +234,7 @@
   </header>
 
   <!-- MOBILE NAV -->
-      <nav class="mobile-nav" id="mobile-nav">
+  <nav class="mobile-nav" id="mobile-nav">
     <a href="/#tools-section">AI Araçları</a>
     <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
     <a href="/compare" data-i18n="menu_compare"><span data-i18n="menu_compare">Karşılaştır</span></a>
@@ -184,54 +249,51 @@
   </nav>
 
   <!-- HERO -->
-  <section class="stories-hero">
+  <section class="legal-hero">
     <div class="container animate-on-scroll">
-      <h1 class="stories-hero-title">
-        Yapay Zeka ile<br>
-        <span class="text-gradient">Başarı Hikayeleri</span>
+      <h1 class="legal-hero-title">
+        Bizim<br>
+        <span class="text-gradient">Hikayemiz</span>
       </h1>
-      <p class="stories-hero-subtitle">
-        Türkiye'den gerçek kullanıcıların yapay zeka araçlarıyla iş hayatlarını nasıl dönüştürdüklerini keşfedin.
+      <p class="legal-hero-subtitle">
+        AiKlavuz'in kuruluş amacı, misyonu ve arkasındaki değerler.
       </p>
     </div>
   </section>
 
-  <!-- STORIES GRID -->
-  <section class="stories-section">
-    <div class="container animate-on-scroll">
+  <!-- CONTENT -->
+  <section class="container">
+    <div class="legal-content legal-text animate-on-scroll">
       
-      <!-- Category Filter Bar -->
-      <div class="filter-bar" style="margin-bottom: 40px; justify-content: center; display: flex; flex-wrap: wrap; gap: 8px;">
-        <button class="filter-btn active" data-category="all">Tüm Paylaşımlar</button>
-        <button class="filter-btn" data-category="yazilim-tasarim">💻 Yazılım & Tasarım</button>
-        <button class="filter-btn" data-category="pazarlama-satis">📈 Pazarlama & Satış</button>
-        <button class="filter-btn" data-category="egitim-akademi">🏫 Eğitim & Akademi</button>
-        <button class="filter-btn" data-category="is-uretkenlik">💼 İş & Üretkenlik</button>
-        <button class="filter-btn" data-category="diger">⚙️ Diğer</button>
-      </div>
+      <h2>1. AiKlavuz Nedir?</h2>
+      <p>
+        AiKlavuz, hızla gelişen yapay zeka dünyasında kullanıcıların kendilerine en uygun araçları, yazılımları ve çözümleri bulmasını kolaylaştırmak amacıyla kurulmuş, Türkiye'nin en kapsamlı yapay zeka vitrin ve rehber platformudur. 
+      </p>
+      <p>
+        Platformumuzda, metin yazarlığından kod geliştirmeye, görsel tasarımdan veri analizine kadar onlarca farklı kategorideki yapay zeka aracı detaylı incelemeleri, güncel puanları, Türkçe dil desteği durumları ve alternatif alternatif karşılaştırmaları ile birlikte listelenmektedir.
+      </p>
 
-      <div class="stories-grid" id="dynamic-stories-container">
-        <!-- Dinamik başarı hikayeleri buraya yüklenecek -->
-      </div>
+      <h2>2. Misyonumuz</h2>
+      <p>
+        Temel misyonumuz, yapay zeka teknolojilerini herkes için erişilebilir, anlaşılır ve kullanılabilir kılmaktır. Bireysel kullanıcıların, içerik üreticilerinin, yazılımcıların ve işletmelerin iş süreçlerini yapay zeka yardımıyla optimize etmelerini sağlayarak dijital dönüşümlerine rehberlik etmeyi amaçlıyoruz.
+      </p>
 
-      <!-- CTA Section -->
-      <div class="stories-cta">
-        <h2 class="stories-cta-title">Siz de Hikayenizi Paylaşın</h2>
-        <p class="stories-cta-desc">Yapay zeka araçları ile iş hayatınızda fark yarattıysanız, hikayenizi binlerce kullanıcıyla paylaşın.</p>
-        <button class="stories-cta-btn" id="btn-share-story" style="border:none; cursor:pointer;">Hikayemi Paylaş →</button>
-      </div>
+      <h2>3. Kalite ve Doğruluk Değerlerimiz</h2>
+      <p>
+        Vitrinimizde yer alan tüm yapay zeka araçları editörlerimiz tarafından test edilir ve sitemize eklenir. İncelemelerimizde ve önerilerimizde tamamen şeffaf, tarafsız ve kullanıcı odaklı bir yaklaşım benimsemekteyiz. Programatik SEO entegrasyonumuz ve akıllı yapay zeka asistanımız sayesinde, kullanıcıların aradıkları çözümlere en hızlı şekilde ulaşmalarını sağlıyoruz.
+      </p>
+
+      <h2>4. İletişim ve İş Birliği</h2>
+      <p>
+        Geliştirdiğiniz yerli veya küresel yapay zeka projesini vitrinimize eklemek, iş birliği yapmak veya sadece görüşlerinizi bizimle paylaşmak için dilediğiniz zaman <a href="/iletisim" style="color: var(--accent-cyan); text-decoration: underline;">İletişim</a> sayfamızdan bize ulaşabilirsiniz.
+      </p>
     </div>
   </section>
-
-  <!-- ADSLOT: FOOTER BANNER -->
-  <div class="container animate-on-scroll">
-    <div class="ad-slot" data-position="footer-banner"></div>
-  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-                  <div class="footer-grid">
+      <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
             <span class="logo-icon">
@@ -338,84 +400,21 @@
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.482 20.455 12 20.455 12 20.455s7.518 0 9.388-.511a3.003 3.003 0 0 0 2.11-2.107C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Modal: Share Story -->
-  <div id="modal-share-story" class="modal-overlay">
-    <div class="modal">
-      <div class="modal-header">
-        <h3>📝 Başarı Hikayeni Paylaş</h3>
-        <button class="modal-close" id="btn-close-modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5;">
-          Yapay zeka araçlarını kullanarak işinizde nasıl fark yarattığınızı anlatın. Yapay zeka motorumuz hikayenizi analiz ederek en çarpıcı başlıkları, özet alıntıları ve verimlilik metriklerini otomatik çıkaracaktır.
-        </p>
-        
-        <form class="modal-form" id="form-share-story">
-          <div class="form-group">
-            <label for="story-name-input">Adınız Soyadınız / Ünvanınız</label>
-            <input type="text" id="story-name-input" placeholder="Örn: Emlakçı Ahmet, Girişimci Can, Öğretmen Zeynep" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="story-role-input">Mesleğiniz ve Şehriniz</label>
-            <input type="text" id="story-role-input" placeholder="Örn: Gayrimenkul Danışmanı — İstanbul" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="story-tools-input">Kullandığınız AI Araçları (Virgülle ayırın)</label>
-            <input type="text" id="story-tools-input" placeholder="Örn: ChatGPT, Photoroom, Canva" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="story-raw-input">Yapay Zeka ile Deneyiminizi Paylaşın</label>
-            <textarea id="story-raw-input" rows="6" placeholder="Yapay zeka araçlarını işinizde veya günlük hayatınızda nasıl kullandınız? Hangi sorunu çözdünüz ve nasıl bir verimlilik, katkı sağladı? Lütfen detaylıca yazın..." required></textarea>
-          </div>
-          
-          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 15px;">
-            <div class="form-group" style="margin-bottom:0;">
-              <label for="story-type-input">Paylaşım Türü</label>
-              <select id="story-type-input" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
-                <option value="başarı hikayesi">🚀 Başarı Hikayesi</option>
-                <option value="araç tavsiyesi">💡 Araç Tavsiyesi & İpucu</option>
-                <option value="sektörel tecrübe">🎓 Sektörel Tecrübe</option>
-              </select>
-            </div>
-            
-            <div class="form-group" style="margin-bottom:0;">
-              <label for="story-category-input">İlgili Kategori</label>
-              <select id="story-category-input" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500;">
-                <option value="yazilim-tasarim">💻 Yazılım & Tasarım</option>
-                <option value="pazarlama-satis">📈 Pazarlama & Satış</option>
-                <option value="egitim-akademi">🏫 Eğitim & Akademi</option>
-                <option value="is-uretkenlik">💼 İş & Üretkenlik</option>
-                <option value="diger">⚙️ Diğer</option>
-              </select>
-            </div>
-          </div>
-          
-          <button type="submit" class="btn-submit" id="btn-submit-story" style="width: 100%; padding: 14px; margin-top: 10px; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer;">
-            <span>🤖</span> AI ile Analiz Et ve Gönder
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast Notification Container if not already present on page -->
-  <div id="toast-container" style="position:fixed;bottom:20px;right:20px;z-index:99999;"></div>
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="back-to-top" aria-label="Yukarı çık">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6"></path>
+    </svg>
+  </button>
 
   <!-- SCRIPTS -->
+  <script src="js/app.js"></script>
   <script>
     'use strict';
     document.addEventListener('DOMContentLoaded', function () {
@@ -439,9 +438,6 @@
         mobileMenuBtn.addEventListener('click', function () {
           mobileNav.classList.toggle('active');
         });
-        mobileNav.querySelectorAll('a').forEach(function (a) {
-          a.addEventListener('click', function () { mobileNav.classList.remove('active'); });
-        });
       }
 
       // Animate on scroll
@@ -458,9 +454,5 @@
       });
     });
   </script>
-  
-  <script src="js/stories.js"></script>
-  <script src="js/ads.js"></script>
-
 </body>
 </html>

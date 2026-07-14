@@ -170,7 +170,10 @@ app.get('/sitemap.xml', function (req, res) {
       { path: 'prompts', priority: '0.8', changefreq: 'daily' },
       { path: 'haberler', priority: '0.8', changefreq: 'daily' },
       { path: 'akademi', priority: '0.8', changefreq: 'weekly' },
-      { path: 'iletisim', priority: '0.5', changefreq: 'monthly' }
+      { path: 'iletisim', priority: '0.5', changefreq: 'monthly' },
+      { path: 'hakkimizda', priority: '0.5', changefreq: 'monthly' },
+      { path: 'gizlilik-politikasi', priority: '0.3', changefreq: 'monthly' },
+      { path: 'kullanim-kosullari', priority: '0.3', changefreq: 'monthly' }
     ];
     
     const todayStr = new Date().toISOString().split('T')[0];
@@ -497,6 +500,10 @@ app.get('/gizlilik-politikasi', function (req, res) {
 
 app.get('/kullanim-kosullari', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'kullanim-kosullari.html'));
+});
+
+app.get('/hakkimizda', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'hakkimizda.html'));
 });
 
 // ─── Start ───
