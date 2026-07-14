@@ -149,63 +149,54 @@ document.addEventListener('DOMContentLoaded', function () {
       card.className = 'story-card';
       card.id = story.id;
 
+      // Format stats inline for Ekşi Sözlük style
       let statsHtml = '';
       if (Array.isArray(story.stats)) {
         story.stats.forEach(stat => {
-          statsHtml += `
-            <div class="story-stat">
-              <span class="story-stat-value">${stat.value}</span>
-              <span class="story-stat-label">${stat.label}</span>
-            </div>
-          `;
+          statsHtml += `<span class="story-inline-stat" style="background:rgba(245, 158, 11, 0.06); color:#f59e0b; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:500; margin-right:6px;">${stat.value} ${stat.label}</span>`;
         });
       }
 
       let toolsHtml = '';
       if (Array.isArray(story.tools)) {
         story.tools.forEach(tool => {
-          toolsHtml += `<span class="story-tool-badge">${tool}</span>`;
+          toolsHtml += `<span class="story-tool-badge" style="background:rgba(99, 102, 241, 0.06); color:var(--accent-purple); padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:500; margin-right:4px;">${tool}</span>`;
         });
       }
 
       const catBadge = categoryNames[story.category] || '⚙️ Diğer';
       const typeBadge = typeLabels[story.share_type] || '🚀 Başarı Hikayesi';
+      const cleanNick = '@' + story.name.toLowerCase().replace(/[^a-z0-9]/g, '');
 
       card.innerHTML = `
         <div class="story-card-inner">
-          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;">
-            <span class="badge" style="font-size: 0.64rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-purple); border: none; padding: 2px 8px; border-radius: 4px;">${typeBadge}</span>
-            <span class="badge" style="font-size: 0.64rem; background: rgba(255, 255, 255, 0.04); color: var(--text-secondary); border: none; padding: 2px 8px; border-radius: 4px;">${catBadge}</span>
-          </div>
-
-          <div class="story-card-header">
-            <div class="story-avatar" style="background: ${story.color_accent || 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)'}">${story.avatar || 'A'}</div>
-            <div class="story-author-info">
-              <h3 class="story-name">${story.name}</h3>
-              <span class="story-role">${story.role}</span>
+          <h2 class="story-title"><a href="#${story.id}">${story.title.toLowerCase()}</a></h2>
+          
+          <div class="story-entry-body">
+            <p class="story-quote-text">"${story.quote}"</p>
+            <div class="story-detail-text">
+              <p><strong>deneyim:</strong> ${story.content?.challenge || ''}</p>
+              <p><strong>çözüm:</strong> ${story.content?.solution || ''}</p>
+              <p><strong>sonuç:</strong> ${story.content?.result || ''}</p>
             </div>
           </div>
-          <h2 class="story-title">${story.title}</h2>
-          <div class="story-quote">
-            <p>"${story.quote}"</p>
-          </div>
-          <div class="story-stats">
+          
+          <div class="story-entry-meta" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px;">
+            <span style="font-size:0.72rem; color:var(--text-muted);">araçlar:</span>
+            <div style="display:inline-flex; flex-wrap:wrap; gap:4px;">${toolsHtml}</div>
             ${statsHtml}
           </div>
-          <div class="story-tools">
-            ${toolsHtml}
-          </div>
-          <div class="story-content">
-            <h4>Deneyim & Zorluk</h4>
-            <p>${story.content?.challenge || ''}</p>
-            <h4>AI Çözümü</h4>
-            <p>${story.content?.solution || ''}</p>
-            <h4>Kazanılan Sonuç</h4>
-            <p>${story.content?.result || ''}</p>
-          </div>
+
           <div class="story-card-footer">
-            <span class="story-expand-btn">💬 Deneyimi Oku</span>
-            <span>⏱️ 2 dk okuma</span>
+            <div class="story-votes">
+              <button class="btn-story-vote">▲ <span>${story.upvotes || Math.floor(Math.random() * 40) + 10}</span></button>
+              <span class="story-action-link">★ favori</span>
+              <span class="story-action-link">🔗 paylaş</span>
+            </div>
+            <div class="story-author-meta">
+              <a href="#" class="story-author-nick">${cleanNick}</a>
+              <span class="story-entry-date">${story.date || '14.07.2026'}</span>
+            </div>
           </div>
         </div>
       `;
