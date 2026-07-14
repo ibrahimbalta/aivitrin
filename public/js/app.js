@@ -220,9 +220,18 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
     }
 
+    var hash = 0;
+    var nameId = tool.id || tool.name;
+    for (var i = 0; i < nameId.length; i++) {
+      hash = nameId.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var h1 = Math.abs(hash) % 360;
+    var h2 = (h1 + 45) % 360;
+    var gradientStyle = 'background: linear-gradient(135deg, hsl(' + h1 + ', 70%, 48%) 0%, hsl(' + h2 + ', 75%, 35%) 100%)';
+
     return '<div class="tool-card" data-url="' + tool.url + '" data-id="' + tool.id + '" style="cursor:pointer">' +
       '<div class="tool-card-header">' +
-        '<div class="tool-icon">' + firstLetter + '</div>' +
+        '<div class="tool-icon" style="' + gradientStyle + '">' + firstLetter + '</div>' +
         '<div class="tool-info">' +
           '<h3 class="tool-name">' + tool.name + '</h3>' +
           '<span class="tool-category-badge">' + catLabel + '</span>' +

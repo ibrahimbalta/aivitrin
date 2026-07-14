@@ -5,33 +5,33 @@
 
 /* ---- 1. CSS Custom Properties ---- */
 :root {
-  --bg-primary: #060608;
-  --bg-secondary: #0b0b0f;
-  --bg-card: rgba(16, 16, 24, 0.45);
-  --bg-card-hover: rgba(22, 22, 34, 0.65);
-  --bg-input: #0f0f15;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --border-color: rgba(255, 255, 255, 0.04);
-  --border-hover: rgba(255, 255, 255, 0.09);
+  --bg-primary: #030303;
+  --bg-secondary: #09090b;
+  --bg-card: rgba(13, 13, 22, 0.45);
+  --bg-card-hover: rgba(22, 22, 38, 0.6);
+  --bg-input: #0b0b0f;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-hover: rgba(255, 255, 255, 0.1);
   --accent-purple: #6366f1;
   --accent-cyan: #d946ef;
   --accent-green: #10b981;
-  --accent-amber: #f59e0b;
+  --accent-amber: #eab308;
   --accent-red: #ef4444;
-  --gradient-primary: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
-  --gradient-hero: radial-gradient(ellipse at 15% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 55%),
-                   radial-gradient(ellipse at 85% 70%, rgba(217, 70, 239, 0.06) 0%, transparent 55%);
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.08), 0 0 25px rgba(217, 70, 239, 0.04);
-  --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.2);
-  --bg-dropdown: rgba(14, 16, 29, 0.95);
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-hero: radial-gradient(ellipse at 15% 30%, rgba(99, 102, 241, 0.07) 0%, transparent 55%),
+                   radial-gradient(ellipse at 85% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 55%);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(99, 102, 241, 0.12), 0 0 30px rgba(236, 72, 153, 0.05);
+  --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.25);
+  --bg-dropdown: rgba(9, 9, 11, 0.95);
   --border-dropdown: rgba(255, 255, 255, 0.08);
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 30px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
   --header-height: 72px;
   --max-width: 1280px;
@@ -41,24 +41,24 @@
 }
 
 [data-theme="light"] {
-  --bg-primary: #f1f5f9;
-  --bg-secondary: #e2e8f0;
-  --bg-card: #ffffff;
-  --bg-card-hover: #ffffff;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
   --bg-dropdown: #ffffff;
-  --border-dropdown: rgba(0, 0, 0, 0.1);
+  --border-dropdown: rgba(0, 0, 0, 0.06);
   --bg-input: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(0, 0, 0, 0.15);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-hover: rgba(0, 0, 0, 0.12);
   --accent-purple: #4f46e5;
   --accent-cyan: #db2777;
-  --gradient-hero: radial-gradient(ellipse at 15% 30%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
-                   radial-gradient(ellipse at 85% 70%, rgba(219, 39, 119, 0.04) 0%, transparent 55%);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 16px 36px rgba(79, 70, 229, 0.08);
+  --gradient-hero: radial-gradient(ellipse at 15% 30%, rgba(79, 70, 229, 0.04) 0%, transparent 55%),
+                   radial-gradient(ellipse at 85% 70%, rgba(219, 39, 119, 0.03) 0%, transparent 55%);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 20px 48px rgba(79, 70, 229, 0.08), 0 0 25px rgba(79, 70, 229, 0.03);
   --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.12);
 }
 
@@ -6982,6 +6982,513 @@ img {
 }
 .mobile-nav a[href="/kurulum"]:hover {
   filter: brightness(1.1);
+}
+
+/* ============================================================
+   19. PREMIUM VISUAL REDESIGN OVERRIDES (Cards, Buttons, Colors & Mobile)
+   ============================================================ */
+
+/* ---- Tool Card Premium Upgrade ---- */
+.tool-card {
+  background: rgba(10, 10, 16, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              background-color 0.3s ease, 
+              box-shadow 0.3s ease !important;
+}
+
+[data-theme="light"] .tool-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02) !important;
+}
+
+.tool-card:hover {
+  background: rgba(16, 16, 26, 0.6) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 
+              0 0 30px rgba(99, 102, 241, 0.12), 
+              0 0 15px rgba(236, 72, 153, 0.04) !important;
+  transform: translateY(-6px) scale(1.005) !important;
+}
+
+[data-theme="light"] .tool-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(79, 70, 229, 0.25) !important;
+  box-shadow: 0 20px 48px rgba(79, 70, 229, 0.08), 
+              0 0 25px rgba(79, 70, 229, 0.03) !important;
+}
+
+/* ---- Tool Icon Styling ---- */
+.tool-icon {
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  font-family: 'Outfit', sans-serif !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.tool-card:hover .tool-icon {
+  transform: scale(1.06) rotate(-2deg) !important;
+}
+
+/* ---- Badges & Tags Overhaul ---- */
+.tool-header-badges .badge {
+  font-size: 0.7rem !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  border: 1px solid transparent !important;
+}
+
+.badge-featured {
+  background: rgba(234, 179, 8, 0.12) !important;
+  color: #eab308 !important;
+  border: 1px solid rgba(234, 179, 8, 0.2) !important;
+}
+
+.badge-new {
+  background: rgba(217, 70, 239, 0.12) !important;
+  color: #d946ef !important;
+  border: 1px solid rgba(217, 70, 239, 0.2) !important;
+}
+
+.badge-tr.full {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+}
+
+.badge-tr.partial {
+  background: rgba(99, 102, 241, 0.12) !important;
+  color: #6366f1 !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.badge-tr.none {
+  background: rgba(113, 113, 122, 0.12) !important;
+  color: #a1a1aa !important;
+  border: 1px solid rgba(113, 113, 122, 0.2) !important;
+}
+
+.badge-yerli {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+}
+
+.tool-tag {
+  font-size: 0.72rem !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: var(--text-secondary) !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  font-weight: 500 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+[data-theme="light"] .tool-tag {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.tool-tag:hover {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .tool-tag:hover {
+  color: var(--accent-purple) !important;
+}
+
+/* ---- Tool Card Header / Details ---- */
+.tool-name {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text-primary) !important;
+}
+
+.tool-category-badge {
+  font-size: 0.78rem !important;
+  color: var(--text-muted) !important;
+  font-weight: 500 !important;
+}
+
+.tool-description {
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.65 !important;
+  margin-bottom: 6px !important;
+}
+
+/* ---- Tool Rating & Pricing Overhaul ---- */
+.tool-rating {
+  color: #eab308 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+
+.tool-rating span {
+  color: var(--text-muted) !important;
+  font-size: 0.82rem !important;
+}
+
+.tool-pricing {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  border: none !important;
+  display: inline-block !important;
+}
+
+.pricing-ucretsiz {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+}
+
+.pricing-ucretli {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+}
+
+.pricing-freemium {
+  background: rgba(168, 85, 247, 0.12) !important;
+  color: #a855f7 !important;
+}
+
+/* ---- Action Buttons Redesign ---- */
+.tool-card-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 18px !important;
+  padding-top: 15px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  gap: 10px !important;
+}
+
+[data-theme="light"] .tool-card-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.btn-card-action {
+  flex: 1 !important;
+  height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+[data-theme="light"] .btn-card-action {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+}
+
+.btn-card-action svg {
+  stroke: var(--text-muted) !important;
+  transition: stroke 0.2s ease !important;
+}
+
+.btn-card-action:hover {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+  color: #ffffff !important;
+  transform: translateY(-1.5px) !important;
+}
+
+[data-theme="light"] .btn-card-action:hover {
+  background: rgba(79, 70, 229, 0.05) !important;
+  border-color: rgba(79, 70, 229, 0.2) !important;
+  color: var(--accent-purple) !important;
+}
+
+.btn-card-action:hover svg {
+  stroke: #ffffff !important;
+}
+
+[data-theme="light"] .btn-card-action:hover svg {
+  stroke: var(--accent-purple) !important;
+}
+
+.btn-card-vote.voted {
+  background: rgba(217, 70, 239, 0.1) !important;
+  border-color: rgba(217, 70, 239, 0.25) !important;
+  color: #d946ef !important;
+}
+
+.btn-card-vote.voted svg {
+  fill: #d946ef !important;
+  stroke: #d946ef !important;
+}
+
+.btn-card-bookmark.active {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+  color: #6366f1 !important;
+}
+
+.btn-card-bookmark.active svg {
+  fill: #6366f1 !important;
+  stroke: #6366f1 !important;
+}
+
+.btn-card-compare.active {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+  color: #10b981 !important;
+}
+
+.btn-card-compare.active svg {
+  stroke: #10b981 !important;
+}
+
+/* ---- Alternatives Overlap Avatars ---- */
+.tool-card-alternatives {
+  margin-top: 12px !important;
+  padding-top: 12px !important;
+  border-top: 1px dashed rgba(255, 255, 255, 0.05) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+[data-theme="light"] .tool-card-alternatives {
+  border-top: 1px dashed rgba(0, 0, 0, 0.05) !important;
+}
+
+.alt-label {
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+
+.alt-icons {
+  display: flex !important;
+  align-items: center !important;
+  gap: -6px !important;
+}
+
+.alt-icon-link {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  margin-left: -6px !important;
+  border: 2px solid #030303 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-theme="light"] .alt-icon-link {
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
+}
+
+.alt-icon-link:first-child {
+  margin-left: 0 !important;
+}
+
+.alt-icon-link:hover {
+  transform: translateY(-3px) scale(1.1) !important;
+  z-index: 10 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+
+/* ---- Premium Buttons Overhaul ---- */
+.btn-submit {
+  background: var(--gradient-primary) !important;
+  border-radius: 12px !important;
+  padding: 10px 22px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25), 0 0 15px rgba(99, 102, 241, 0.1) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45), 0 0 20px rgba(236, 72, 153, 0.2) !important;
+  filter: brightness(1.05) !important;
+}
+
+.hero-search-btn {
+  height: 48px !important;
+  margin-right: 6px !important;
+  border-radius: 10px !important;
+  background: var(--gradient-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 0 24px !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2) !important;
+}
+
+.hero-search-btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35) !important;
+  filter: brightness(1.05) !important;
+}
+
+/* ---- Categories Overhaul ---- */
+.category-card {
+  border-radius: 16px !important;
+  background: rgba(13, 13, 22, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 18px 12px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="light"] .category-card {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.category-card:hover {
+  background: rgba(22, 22, 38, 0.55) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="light"] .category-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(79, 70, 229, 0.2) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+}
+
+.category-card.active {
+  background: rgba(99, 102, 241, 0.12) !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* ---- Mobile Responsiveness Overrides ---- */
+@media (max-width: 768px) {
+  .grid-tools {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .tool-card {
+    padding: 20px !important;
+    border-radius: 14px !important;
+  }
+
+  .stats-bar {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    padding: 20px 10px !important;
+  }
+
+  .stat-item {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .stat-item:nth-child(3n) {
+    border-right: none;
+  }
+
+  [data-theme="light"] .stat-item {
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .stat-value {
+    font-size: 1.3rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.72rem !important;
+  }
+
+  .search-category-dropdown {
+    width: calc(100vw - 24px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .hero-search-box {
+    height: auto !important;
+    flex-direction: column !important;
+    padding: 12px !important;
+    gap: 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .search-input-wrapper {
+    width: 100% !important;
+    height: 48px !important;
+  }
+
+  .search-divider {
+    display: none !important;
+  }
+
+  .search-category-wrapper {
+    width: 100% !important;
+    height: 44px !important;
+  }
+
+  .search-category-btn {
+    width: 100% !important;
+    justify-content: space-between !important;
+    padding: 0 12px !important;
+  }
+
+  .smart-search-toggle {
+    margin-left: 0 !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 8px 12px !important;
+  }
+
+  .hero-search-btn {
+    width: 100% !important;
+    height: 46px !important;
+    margin-right: 0 !important;
+    border-radius: 8px !important;
+  }
 }
 
 
