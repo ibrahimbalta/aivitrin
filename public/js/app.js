@@ -235,8 +235,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         '<div class="tool-info">' +
           '<h3 class="tool-name">' + tool.name + '</h3>' +
           '<span class="tool-category-badge">' + catLabel + '</span>' +
+          '<div class="tool-header-badges">' + badges + '</div>' +
         '</div>' +
-        '<div class="tool-header-badges">' + badges + '</div>' +
       '</div>' +
       '<p class="tool-description">' + tool.description + '</p>' +
       tagsHtml +
