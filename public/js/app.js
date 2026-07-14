@@ -777,7 +777,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   // ═══════════════════════════════════════════
   // TEMA DEĞİŞTİRİCİ
   // ═══════════════════════════════════════════
-  var savedTheme = localStorage.getItem('theme') || 'light';
+  var savedTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
 
   if (themeToggle) {

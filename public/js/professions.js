@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ═══════════════════════════════════════════
   var themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
-    var savedTheme = localStorage.getItem('theme') || 'light';
+    var savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     themeToggle.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme');

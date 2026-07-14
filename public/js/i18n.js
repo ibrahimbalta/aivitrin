@@ -2,7 +2,7 @@
 
 // Theme Initialization (Default to light mode, preventing page flicker)
 (function () {
-  var savedTheme = localStorage.getItem('theme') || 'light';
+  var savedTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
 })();
 
