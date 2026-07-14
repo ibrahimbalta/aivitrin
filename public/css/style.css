@@ -4663,13 +4663,13 @@ img {
 
 .stories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
 }
 
 .story-card {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -4682,81 +4682,84 @@ img {
   transform: translateY(0);
 }
 
-.story-card-accent {
-  height: 4px;
-  width: 100%;
-}
-
 .story-card-inner {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
-  border-top: none;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 16px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   flex: 1;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.story-card:hover .story-card-inner {
+  border-color: rgba(59, 130, 246, 0.25);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  background: var(--bg-card-hover);
 }
 
 .story-card-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .story-avatar {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   flex-shrink: 0;
 }
 
 .story-name {
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .story-role {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
 }
 
 .story-title {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 16px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
   color: var(--text-primary);
 }
 
 .story-quote {
-  background: var(--bg-input);
-  border-left: 3px solid var(--accent-purple);
-  padding: 16px 20px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 2px solid var(--accent-purple);
+  padding: 4px 10px;
+  margin-bottom: 12px;
 }
 .story-quote p {
-  font-style: italic;
+  font-style: normal;
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .story-stats {
   display: flex;
-  gap: 24px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
@@ -4764,12 +4767,12 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 80px;
+  min-width: 60px;
 }
 
 .story-stat-value {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 700;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -4778,7 +4781,7 @@ img {
 }
 
 .story-stat-label {
-  font-size: 0.72rem;
+  font-size: 0.64rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -4788,49 +4791,70 @@ img {
 .story-tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .story-tool-badge {
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.66rem;
   font-weight: 600;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(99, 102, 241, 0.1);
   color: var(--accent-purple);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 .story-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.4s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   opacity: 0;
   padding: 0;
 }
 .story-card.expanded .story-content {
-  max-height: 600px;
+  max-height: 500px;
   opacity: 1;
-  padding-top: 20px;
+  padding-top: 12px;
+  margin-top: 10px;
   border-top: 1px solid var(--border-color);
 }
 
 .story-content h4 {
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 8px;
-  margin-top: 16px;
+  margin-bottom: 4px;
+  margin-top: 10px;
 }
 .story-content h4:first-child {
   margin-top: 0;
 }
 .story-content p {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 8px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.story-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.story-card.expanded .story-expand-btn {
+  color: var(--accent-purple) !important;
+}
+
+.story-card.expanded .story-expand-btn::after {
+  content: " (Daralt)";
+  font-size: 0.62rem;
 }
 
 /* CTA */

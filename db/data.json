@@ -126,6 +126,33 @@
           "bookmarks": []
         }
       ]
+    },
+    {
+      "id": 9,
+      "username": "asi",
+      "password": "$2a$10$OqTp4lFlRMrso2hcIZ.y5.mBBasWlgxstteGrg05PHF7qFkMubskS",
+      "created_at": "2026-07-14T14:28:04.997Z",
+      "bookmarks": [
+        "chatgpt",
+        "deepseek",
+        "claude",
+        "gemini",
+        "grammarly-ai",
+        "yerli-hukuk-ai",
+        "notion-ai-uretkenlik",
+        "1forallai",
+        "cursor",
+        "github-copilot",
+        "gamma"
+      ],
+      "bookmark_notes": {},
+      "collections": []
+    },
+    {
+      "id": 10,
+      "username": "erdem",
+      "password": "$2a$10$PTVukPJ2WkE8JDY9yl0K8u6B50S.4J2EeYRyq22Y4FvB1e7BvYsjy",
+      "created_at": "2026-07-14T14:28:26.327Z"
     }
   ],
   "categories": [
@@ -141813,7 +141840,7 @@
       "icon": "🚀"
     }
   ],
-  "pageViews": 49136,
+  "pageViews": 49142,
   "adsense_code": "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260\"\n     crossorigin=\"anonymous\"></script>",
   "social_queue": [
     {
@@ -152856,7 +152883,7 @@
       "created_at": "2026-06-27T17:49:32.368Z"
     }
   ],
-  "_version": 3228,
+  "_version": 3232,
   "deals": [
     {
       "id": "deal_cursor",

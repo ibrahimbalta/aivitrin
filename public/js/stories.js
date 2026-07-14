@@ -172,16 +172,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const typeBadge = typeLabels[story.share_type] || '🚀 Başarı Hikayesi';
 
       card.innerHTML = `
-        <div class="story-card-accent" style="background: ${story.color_accent || 'linear-gradient(135deg, hsl(235, 90%, 60%), hsl(260, 85%, 55%))'}"></div>
         <div class="story-card-inner">
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-            <span class="badge" style="font-size: 0.75rem; background: rgba(99, 102, 241, 0.1); color: var(--accent-cyan); border: none; padding: 2px 10px; border-radius: 50px;">${typeBadge}</span>
-            <span class="badge" style="font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); border: none; padding: 2px 10px; border-radius: 50px;">${catBadge}</span>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;">
+            <span class="badge" style="font-size: 0.64rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-purple); border: none; padding: 2px 8px; border-radius: 4px;">${typeBadge}</span>
+            <span class="badge" style="font-size: 0.64rem; background: rgba(255, 255, 255, 0.04); color: var(--text-secondary); border: none; padding: 2px 8px; border-radius: 4px;">${catBadge}</span>
           </div>
 
           <div class="story-card-header">
-            <div class="story-avatar" style="background: ${story.color_accent || 'linear-gradient(135deg, hsl(235, 90%, 60%), hsl(260, 85%, 55%))'}">${story.avatar || 'A'}</div>
-            <div>
+            <div class="story-avatar" style="background: ${story.color_accent || 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)'}">${story.avatar || 'A'}</div>
+            <div class="story-author-info">
               <h3 class="story-name">${story.name}</h3>
               <span class="story-role">${story.role}</span>
             </div>
@@ -203,6 +202,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <p>${story.content?.solution || ''}</p>
             <h4>Kazanılan Sonuç</h4>
             <p>${story.content?.result || ''}</p>
+          </div>
+          <div class="story-card-footer">
+            <span class="story-expand-btn">💬 Deneyimi Oku</span>
+            <span>⏱️ 2 dk okuma</span>
           </div>
         </div>
       `;
