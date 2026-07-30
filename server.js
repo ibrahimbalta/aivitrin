@@ -45,11 +45,15 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
       const db = readDB();
       
       let headTags = extraHeadTags || '';
-      if (db.adsense_code) {
+      const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+      
+      if (!htmlContent.includes('ca-pub-2978111918234260')) {
+        headTags = `${adsenseSnippet}\n${headTags}`;
+      } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
         headTags = `${db.adsense_code}\n${headTags}`;
       }
       
-      if (headTags) {
+      if (headTags.trim()) {
         htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
       }
       return res.send(htmlContent);
@@ -59,6 +63,17 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
   }
   res.sendFile(filePath);
 }
+
+// ─── Direct Route Handlers for AdSense & Crawlers ───
+app.get('/ads.txt', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.send('google.com, pub-2978111918234260, DIRECT, f08c47fec0942fa0\n');
+});
+
+app.get('/robots.txt', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.send('User-agent: *\nAllow: /\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://aiklavuz.com/sitemap.xml\n');
+});
 
 // ─── Public Static Files (Registered FIRST to completely bypass MongoDB sync & sessions for assets) ───
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "$2a$10$.40E371EsBTHId6/6t9zj.lfp4vRLsOP6fZepJWA1EeqtnAVdBn8S",
+      "password": "$2a$10$FTSFUGpFmTqMzk4T7/gppO53qirApkgeXvlvxtG04Hv2s4lJQf/mm",
       "created_at": "2026-06-17T18:11:29.517Z",
       "bookmarks": [
         "chatgpt",
@@ -20,7 +20,8 @@
             "midjourney"
           ]
         }
-      ]
+      ],
+      "updated_at": "2026-07-30T06:52:11.417Z"
     },
     {
       "id": 2,

@@ -70,10 +70,10 @@ if (!existingUser) {
   db.users.push({
     id: 1,
     username: 'admin',
-    password: bcrypt.hashSync('admin123', 10),
+    password: bcrypt.hashSync('6032.,Elif.', 10),
     created_at: new Date().toISOString()
   });
-  console.log('✅ Admin kullanıcı oluşturuldu (admin / admin123)');
+  console.log('✅ Admin kullanıcı oluşturuldu (admin / 6032.,Elif.)');
 } else {
   console.log('ℹ️  Admin kullanıcı zaten mevcut.');
 }
