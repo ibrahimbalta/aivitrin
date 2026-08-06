@@ -199,8 +199,25 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="AiKlavuz">
-  <link rel="apple-touch-icon" href="/icons/icon-512.png">
   <script src="/js/pwa-register.js" defer></script>
+  <script src="/js/cookie-consent.js" defer></script>
+
+  <!-- Structured Data (JSON-LD) for Contact Authority -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Bizimle İletişime Geçin — AiKlavuz",
+    "url": "https://aiklavuz.com/iletisim",
+    "description": "AiKlavuz ekibiyle iletişim kurun. Genel sorular, sponsorluk ve reklam talepleri.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "AiKlavuz",
+      "email": "destek@aiklavuz.com",
+      "url": "https://aiklavuz.com"
+    }
+  }
+  </script>
 </head>
 <body>
 

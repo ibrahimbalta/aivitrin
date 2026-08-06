@@ -67,11 +67,15 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
 // ─── Direct Route Handlers for AdSense & Crawlers ───
 app.get('/ads.txt', function (req, res) {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.send('google.com, pub-2978111918234260, DIRECT, f08c47fec0942fa0\n');
 });
 
 app.get('/robots.txt', function (req, res) {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.send('User-agent: *\nAllow: /\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://aiklavuz.com/sitemap.xml\n');
 });
 
