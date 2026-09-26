@@ -17,11 +17,9 @@ if ('serviceWorker' in navigator) {
 let deferredPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
   e.preventDefault();
   deferredPrompt = e;
 
-  // Check if user previously dismissed prompt in the last 7 days
   const dismissedTime = localStorage.getItem('aiklavuz_pwa_dismissed');
   if (dismissedTime && (Date.now() - parseInt(dismissedTime, 10)) < 7 * 24 * 60 * 60 * 1000) {
     return;
@@ -31,7 +29,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 function showInstallBanner() {
-  // Don't show if already installed (standalone mode)
   if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     return;
   }
@@ -56,14 +53,13 @@ function showInstallBanner() {
     </div>
   `;
 
-  // Append styling if not already present
   if (!document.getElementById('pwa-banner-style')) {
     const style = document.createElement('style');
     style.id = 'pwa-banner-style';
     style.textContent = `
       #pwa-install-banner {
         position: fixed;
-        bottom: 20px;
+        bottom: calc(66px + env(safe-area-inset-bottom, 10px));
         left: 50%;
         transform: translateX(-50%);
         z-index: 99999;
@@ -164,7 +160,75 @@ function showInstallBanner() {
   });
 }
 
-// Global hook for any UI button with data-pwa-install
+// ─── Native Mobile App Bottom Navigation Bar Injection ───
+function initMobileBottomBar() {
+  if (document.getElementById('mobile-app-bottom-bar')) return;
+
+  const pathname = window.location.pathname.toLowerCase();
+
+  const isHome = pathname === '/' || pathname === '/index.html' || pathname === '';
+  const isStudio = pathname.startsWith('/studio');
+  const isModels = pathname.startsWith('/models');
+  const isPrompts = pathname.startsWith('/prompt-studio') || pathname.startsWith('/prompts');
+  const isCareer = pathname.startsWith('/kariyer') || pathname.startsWith('/jobs');
+
+  const bottomNav = document.createElement('nav');
+  bottomNav.className = 'mobile-app-bottom-bar';
+  bottomNav.id = 'mobile-app-bottom-bar';
+  bottomNav.setAttribute('aria-label', 'Mobil Ana Gezinme Barı');
+
+  bottomNav.innerHTML = `
+    <a href="/#tools-section" class="mobile-bottom-tab ${isHome ? 'active' : ''}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>Keşfet</span>
+    </a>
+
+    <a href="/studio" class="mobile-bottom-tab ${isStudio ? 'active' : ''}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+      <span>Stüdyo</span>
+    </a>
+
+    <a href="/models" class="mobile-bottom-tab ${isModels ? 'active' : ''}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/>
+        <line x1="12" y1="20" x2="12" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+      <span>Borsa</span>
+    </a>
+
+    <a href="/prompt-studio" class="mobile-bottom-tab ${isPrompts ? 'active' : ''}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+      </svg>
+      <span>Promptlar</span>
+    </a>
+
+    <a href="/kariyer" class="mobile-bottom-tab ${isCareer ? 'active' : ''}">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+      </svg>
+      <span>Kariyer</span>
+    </a>
+  `;
+
+  document.body.appendChild(bottomNav);
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileBottomBar);
+} else {
+  initMobileBottomBar();
+}
+
+// Global click hook for [data-pwa-install]
 document.addEventListener('click', (e) => {
   const target = e.target.closest('[data-pwa-install]');
   if (target) {

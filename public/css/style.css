@@ -7592,3 +7592,299 @@ img {
 }
 
 
+
+
+/* ========================================================================== */
+/* 25. NATIVE MOBILE APP / APK RESPONSIVE & BOTTOM NAVIGATION BAR             */
+/* ========================================================================== */
+
+/* Prevent horizontal overflow on all mobile devices */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Touch active haptic feeling */
+button:active, 
+.btn-primary:active, 
+.btn-submit:active, 
+.career-card:active, 
+.tool-card:active, 
+.metric-card:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Base Bottom Bar (Hidden on desktop) */
+.mobile-app-bottom-bar {
+  display: none;
+}
+
+/* Mobile & Tablet (< 768px) Native App Layout */
+@media (max-width: 768px) {
+  /* Reserve space for fixed bottom bar + iPhone safe area */
+  body {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom, 12px)) !important;
+  }
+
+  /* Fixed Native Bottom Bar */
+  .mobile-app-bottom-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    background: rgba(13, 14, 18, 0.94) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    z-index: 9998 !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45) !important;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-bottom-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1;
+    height: 100%;
+    color: var(--text-muted, #94a3b8);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    position: relative;
+  }
+
+  .mobile-bottom-tab svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    transition: transform 0.15s ease, stroke 0.15s ease;
+  }
+
+  .mobile-bottom-tab.active {
+    color: var(--accent-cyan, #14dbd4) !important;
+  }
+
+  .mobile-bottom-tab.active svg {
+    stroke: var(--accent-cyan, #14dbd4) !important;
+    transform: translateY(-2px);
+  }
+
+  .mobile-bottom-tab.active::after {
+    content: '';
+    width: 16px;
+    height: 3px;
+    background: var(--gradient-primary, linear-gradient(135deg, #0099ff, #7a00ff));
+    border-radius: var(--radius-full);
+    position: absolute;
+    bottom: calc(3px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Back to Top repositioned above bottom nav */
+  .back-to-top {
+    bottom: calc(72px + env(safe-area-inset-bottom, 12px)) !important;
+    right: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* Container ergonomics */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Compact Native App Header */
+  .site-header {
+    height: 58px !important;
+  }
+  .header-inner {
+    height: 58px !important;
+  }
+
+  /* Prevent auto-zoom on mobile iOS inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Symmetrical tables on mobile */
+  .table-responsive,
+  .models-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 14px !important;
+    border: 1px solid var(--border-color) !important;
+    margin-bottom: 24px !important;
+  }
+}
+
+/* Smartphone screens (< 640px) Symmetry Rules */
+@media (max-width: 640px) {
+  /* Heroes */
+  .hero, .career-hero, .studio-hero, .models-hero {
+    padding: 32px 0 20px !important;
+  }
+  .career-title, .studio-title, .models-title {
+    font-size: 1.75rem !important;
+    line-height: 1.22 !important;
+    margin-bottom: 12px !important;
+  }
+  .career-subtitle, .studio-subtitle, .models-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    padding: 0 4px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Metrics Bars into clean 2x2 Grid */
+  .metrics-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 28px !important;
+  }
+  .metric-card {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    gap: 10px !important;
+  }
+  .metric-icon {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.1rem !important;
+    border-radius: 10px !important;
+  }
+  .metric-val {
+    font-size: 0.98rem !important;
+  }
+  .metric-label {
+    font-size: 0.7rem !important;
+  }
+
+  /* Full width symmetric cards in 1 column */
+  .careers-grid,
+  .grid-tools,
+  .models-grid,
+  .studio-grid,
+  .workflows-grid,
+  .mentor-rules-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .career-card,
+  .tool-card,
+  .studio-card,
+  .workflow-card,
+  .mentor-rule-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 18px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Horizontal touch scrolling for filter pills */
+  .careers-filter-bar, 
+  .filter-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .career-pills {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 6px !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+  }
+  .career-pill {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .career-search-box, 
+  .filter-search-wrapper {
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Modals on Mobile Phones */
+  .career-modal-card, 
+  .modal {
+    width: calc(100% - 24px) !important;
+    max-height: 88vh !important;
+    padding: 24px 18px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .career-meta-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+  }
+
+  .modal-header-section {
+    gap: 12px !important;
+    padding-bottom: 14px !important;
+    margin-bottom: 16px !important;
+  }
+  .modal-icon-large {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.4rem !important;
+  }
+  .modal-section-title {
+    font-size: 0.98rem !important;
+    margin: 16px 0 8px !important;
+  }
+
+  /* Quiz Card */
+  .quiz-card {
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+    margin-bottom: 32px !important;
+  }
+  .quiz-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Footer on Mobile */
+  .site-footer {
+    padding: 40px 0 20px !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: left !important;
+  }
+}
