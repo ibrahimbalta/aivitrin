@@ -231,7 +231,8 @@
   <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
+    <!-- FOOTER -->
+  <footer class="footer site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -239,17 +240,27 @@
             <span class="logo-icon">
               <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="logo-grad-primary-footer" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#0099ff" />
                   <stop offset="100%" stop-color="#7a00ff" />
                 </linearGradient>
-                <linearGradient id="logo-grad-needle-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="logo-grad-needle-dark-footer" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#0066cc" />
                   <stop offset="100%" stop-color="#5500cc" />
                 </linearGradient>
               </defs>
-              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
-              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary-footer)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad-primary-footer)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad-primary-footer)" />
+              <polygon points="42,90 30,84 30,96" fill="url(#logo-grad-primary-footer)" />
+              <polygon points="138,90 150,84 150,96" fill="url(#logo-grad-primary-footer)" />
+              <g class="compass-needle">
+                <polygon points="100,90 142,48 115,105" fill="url(#logo-grad-primary-footer)" />
+                <polygon points="100,90 142,48 85,75" fill="url(#logo-grad-needle-dark-footer)" opacity="0.8" />
+                <polygon points="100,90 58,132 85,75" fill="url(#logo-grad-primary-footer)" />
+                <polygon points="100,90 58,132 115,105" fill="url(#logo-grad-needle-dark-footer)" opacity="0.8" />
+              </g>
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary-footer)" stroke-width="4"/>
             </svg>
             </span>
             <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
@@ -260,37 +271,39 @@
         </div>
         
         <div class="footer-column">
-          <h4>Hızlı Erişim</h4>
-          <a href="/#tools-section">AI Araçları</a>
-          <a href="/#categories-section">Kategoriler</a>
-          <a href="/alternatives">Alternatifler</a>
+          <h4>Ürünler & Stüdyo</h4>
+          <a href="/studio">⚡ AI Stüdyo</a>
+          <a href="/models">📊 LLM Fiyat Borsası</a>
+          <a href="/prompt-studio">💡 Prompt Stüdyosu</a>
+          <a href="/stack">📦 Ekip AI Stack</a>
+          <a href="/kariyer">💼 AI Kariyer & İlanlar</a>
+          <a href="/calculator">API Hesaplayıcı</a>
           <a href="/compare">Karşılaştır</a>
-          <a href="/workflows">İş Akışları</a>
-          <a href="/#featured-section">Öne Çıkanlar</a>
         </div>
         
         <div class="footer-column" id="footer-categories">
           <h4>Kategoriler</h4>
-          <a href="/#tools-section" data-category="genel-ai-asistan">Genel AI Asistan</a>
-          <a href="/#tools-section" data-category="yazilim-kod-ai">Yazılım & Kod AI</a>
-          <a href="/#tools-section" data-category="yaratici-ai">Görsel & Tasarım AI</a>
-          <a href="/#tools-section" data-category="is-uretkenlik-ai">İş & Üretkenlik AI</a>
-          <a href="/#tools-section" data-category="veri-analitik-ai">Veri & Analitik AI</a>
+          <a href="/#tools-section" data-category="ai-asistanlar">AI Asistanlar</a>
+          <a href="/#tools-section" data-category="kodlama-ve-gelistirme">Kodlama ve Geliştirme</a>
+          <a href="/#tools-section" data-category="gorsel-tasarim">Görsel Tasarım</a>
+          <a href="/#tools-section" data-category="oyun-ve-eglence">Oyun & Eğlence AI</a>
+          <a href="/#tools-section" data-category="3d-ve-modelleme">3D & VR/AR AI</a>
+          <a href="/#categories-section">Tüm 42 Kategori &rarr;</a>
         </div>
         
         <div class="footer-column">
           <h4>Bilgi</h4>
           <a href="/stories">Başarı Hikayeleri</a>
           <a href="/hakkimizda" data-i18n="about">Hakkımızda</a>
-          <a href="/iletisim">İletişim</a>
-          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
-          <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+          <a href="/iletisim" data-i18n="contact">İletişim</a>
+          <a href="/gizlilik-politikasi" data-i18n="privacy_policy">Gizlilik Politikası</a>
+          <a href="/kullanim-kosullari" data-i18n="terms_of_use">Kullanım Koşulları</a>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <div class="footer-bottom-left">
-          <p><span>© 2026 AiKlavuz. Tüm hakları saklıdır.</span></p>
+          <p><span data-i18n="copyright">© 2026 AiKlavuz. Tüm hakları saklıdır.</span></p>
           <p style="margin-top: 4px; font-size: 0.75rem; color: var(--text-muted)">Türkiye'nin en kapsamlı AI araç dizini 🇹🇷</p>
         </div>
         
@@ -299,7 +312,7 @@
             <svg class="globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
             <select id="lang-select" aria-label="Dil Seçimi">
               <option value="tr">Türkçe</option>
