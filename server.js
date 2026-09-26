@@ -434,6 +434,12 @@ app.get('/calculator', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'calculator.html'));
 });
 
+// Category permalink handler
+app.get(['/category/:id', '/kategori/:id'], function (req, res) {
+  const catId = req.params.id;
+  res.redirect(`/?category=${encodeURIComponent(catId)}#tools-section`);
+});
+
 app.get('/tool/:id', function (req, res) {
   const toolId = req.params.id;
   try {

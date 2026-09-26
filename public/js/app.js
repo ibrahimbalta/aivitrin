@@ -617,6 +617,24 @@ document.addEventListener('DOMContentLoaded', async function () {
         matchScores[tool.id] = score;
       });
 
+      if (filtered.length === 0 && activeCategory) {
+        try {
+          var catRes = await fetch('/api/tools?category=' + encodeURIComponent(activeCategory));
+          var catData = await catRes.json();
+          var catTools = catData.tools || catData;
+          if (Array.isArray(catTools) && catTools.length > 0) {
+            filtered = catTools;
+            catTools.forEach(function (ct) {
+              if (!window._tools.find(function (x) { return x.id === ct.id; })) {
+                window._tools.push(ct);
+              }
+            });
+          }
+        } catch (e) {
+          console.error('Kategori araçları yüklenemedi:', e);
+        }
+      }
+
       if (sortBy === 'rating-desc') {
         filtered.sort(function (a, b) {
           if (searchTerm) {
