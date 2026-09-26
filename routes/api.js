@@ -122,7 +122,13 @@ const categoryTranslations = {
     'Moda & Sanal Stil': 'Fashion & Virtual Styling',
     'Podcast & Ses Yayıncılığı': 'Podcast & Audio Broadcasting',
     'SEO & Arama Motoru AI': 'SEO & Search Engine AI',
-    'Tarım & Sürdürülebilirlik AI': 'Agriculture & Sustainability AI'
+    'Tarım & Sürdürülebilirlik AI': 'Agriculture & Sustainability AI',
+    'Sunum & Slayt AI': 'Presentation & Slide AI',
+    'Toplantı & Not Asistanı AI': 'Meeting & Note Taking AI',
+    'E-Posta & İletişim AI': 'Email & Communication AI',
+    'Kişisel Gelişim & Koçluk AI': 'Personal Growth & Coaching AI',
+    'Lojistik & Tedarik Zinciri AI': 'Logistics & Supply Chain AI',
+    'Kripto & Web3 Analiz AI': 'Crypto & Web3 Analysis AI'
   },
   de: {
     'AI Asistanlar': 'KI-Assistenten',
@@ -160,7 +166,13 @@ const categoryTranslations = {
     'Moda & Sanal Stil': 'Mode & Virtuelles Styling',
     'Podcast & Ses Yayıncılığı': 'Podcast & Audio-Broadcasting',
     'SEO & Arama Motoru AI': 'SEO & Suchmaschinen KI',
-    'Tarım & Sürdürülebilirlik AI': 'Landwirtschaft & Nachhaltigkeit KI'
+    'Tarım & Sürdürülebilirlik AI': 'Landwirtschaft & Nachhaltigkeit KI',
+    'Sunum & Slayt AI': 'Präsentation & Folien KI',
+    'Toplantı & Not Asistanı AI': 'Meeting & Notizen KI',
+    'E-Posta & İletişim AI': 'E-Mail & Kommunikation KI',
+    'Kişisel Gelişim & Koçluk AI': 'Persönliche Entwicklung & Coaching KI',
+    'Lojistik & Tedarik Zinciri AI': 'Logistik & Lieferkette KI',
+    'Kripto & Web3 Analiz AI': 'Krypto & Web3 Analyse KI'
   }
 };
 
