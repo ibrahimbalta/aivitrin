@@ -129,8 +129,8 @@ app.use((req, res, next) => {
 });
 
 // ─── Middleware ───
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 const sessionOptions = {
   secret: process.env.SESSION_SECRET || 'aiklavuz-gizli-anahtar-2026',
