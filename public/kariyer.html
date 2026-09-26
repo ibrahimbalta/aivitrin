@@ -3,24 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yapay Zeka Kariyer & İş İlanları — Prompt Mühendisliği ve AI İlanları | AiKlavuz</title>
-  <meta name="description" content="Türkiye'nin ilk ve tek yapay zeka odaklı kariyer panosu. Prompt Mühendisi, LLM Geliştirici, AI Otomasyon ve Görsel Sanatçısı ilanlarını inceleyin, doğrudan başvurun.">
+  <title>Yapay Zeka Çağının Meslekleri & Kariyer Rehberi — AiKlavuz</title>
+  <meta name="description" content="Yapay zeka alanındaki en popüler meslekler, görev tanımları, maaş beklentileri, gereken yetenekler ve 90 günlük adım adım öğrenme yol haritaları. Kişisel YZ kariyer mentörünüz.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aiklavuz.com/kariyer">
   
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/toolkit.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="/js/i18n.js"></script>
 
   <style>
+    /* Career Mentor Hero */
     .career-hero {
-      padding: 60px 0 30px;
+      padding: 60px 0 36px;
       text-align: center;
     }
+    .career-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--accent-purple);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+    .career-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .career-subtitle {
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
 
-    .jobs-filter-bar {
+    /* Key Metrics Bar */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .metric-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(99, 102, 241, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Career Matcher Quiz Card */
+    .quiz-card {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(217, 70, 239, 0.05) 100%), var(--bg-card);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .quiz-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .quiz-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quiz-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .quiz-step-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .quiz-step-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .quiz-select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 10px 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--transition-fast);
+    }
+    .quiz-select:focus {
+      border-color: var(--accent-purple);
+    }
+    .quiz-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .quiz-result-banner {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Filters & Search */
+    .careers-filter-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
@@ -29,179 +200,485 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 16px 20px;
-      margin-bottom: 28px;
+      padding: 14px 18px;
+      margin-bottom: 30px;
     }
-
-    .job-pills {
+    .career-pills {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
     }
-    .job-pill {
-      padding: 6px 14px;
+    .career-pill {
+      padding: 7px 15px;
       border-radius: var(--radius-full);
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-color);
       color: var(--text-secondary);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       transition: all var(--transition-fast);
+      white-space: nowrap;
     }
-    .job-pill:hover {
+    .career-pill:hover {
       border-color: var(--accent-purple);
       color: var(--text-primary);
     }
-    .job-pill.active {
+    .career-pill.active {
       background: var(--gradient-primary);
       color: white;
       border-color: transparent;
     }
-
-    .jobs-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-bottom: 60px;
+    .career-search-box {
+      width: 100%;
+      max-width: 300px;
+    }
+    .career-search-input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      padding: 9px 18px;
+      font-size: 0.85rem;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+    .career-search-input:focus {
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.2);
     }
 
-    .job-card {
+    /* Career Cards Grid */
+    .careers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 60px;
+    }
+    .career-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 24px 28px;
-      box-shadow: var(--shadow-card);
-      transition: all var(--transition-fast);
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      justify-content: space-between;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-card);
+      position: relative;
     }
-    .job-card:hover {
-      border-color: var(--accent-purple);
-      transform: translateY(-2px);
+    .career-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-card-hover);
     }
-
-    .job-header {
+    .career-card-top {
       display: flex;
-      justify-content: space-between;
       align-items: flex-start;
-      gap: 16px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .job-title {
+    .career-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .career-tag-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(217, 70, 239, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(217, 70, 239, 0.25);
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .tag-hot {
+      background: rgba(239, 68, 68, 0.12);
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    .tag-rising {
+      background: rgba(234, 179, 8, 0.12);
+      color: #facc15;
+      border-color: rgba(234, 179, 8, 0.3);
+    }
+    .tag-elite {
+      background: rgba(99, 102, 241, 0.14);
+      color: #818cf8;
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    .career-card-title {
       font-family: 'Outfit', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin: 0 0 6px;
+      margin-bottom: 8px;
+      line-height: 1.3;
     }
-    .job-company {
-      font-size: 0.95rem;
-      color: var(--accent-purple);
-      font-weight: 600;
+    .career-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
     }
 
-    .job-meta-row {
+    /* Salary & Remote Meta */
+    .career-meta-row {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 16px;
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
+      gap: 8px;
     }
-    .job-badge {
-      display: inline-flex;
+    .meta-salary {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .meta-remote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
       align-items: center;
       gap: 4px;
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+    }
+
+    /* Skills Badges */
+    .career-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .skill-badge {
+      font-size: 0.74rem;
       font-weight: 600;
-      background: rgba(255, 255, 255, 0.03);
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-color);
       color: var(--text-secondary);
     }
-    .badge-remote {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent-green);
-      border-color: rgba(16, 185, 129, 0.25);
-    }
-    .badge-salary {
-      background: rgba(217, 70, 239, 0.1);
-      color: var(--accent-cyan);
-      border-color: rgba(217, 70, 239, 0.25);
-      font-family: 'JetBrains Mono', monospace;
-    }
 
-    .job-desc {
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .job-footer {
-      display: flex;
-      justify-content: space-between;
+    .btn-view-roadmap {
+      width: 100%;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--accent-purple);
+      font-size: 0.84rem;
+      font-weight: 700;
+      display: inline-flex;
       align-items: center;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-color);
-      flex-wrap: wrap;
-      gap: 10px;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .btn-view-roadmap:hover {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
     }
 
-    /* Modal styling */
-    .modal-overlay-custom {
+    /* Mentorship Rules Section */
+    .mentor-rules-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+    .mentor-rules-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .mentor-rules-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .mentor-rule-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .mentor-rule-num {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .mentor-rule-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .mentor-rule-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Modal Styling */
+    .career-modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 2000;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9999;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      animation: fadeIn 0.2s ease;
     }
-    .modal-overlay-custom.active {
+    .career-modal-overlay.active {
       display: flex;
     }
-    .modal-card {
-      background: #0f1016;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
+    .career-modal-card {
+      background: var(--bg-dropdown);
+      border: 1px solid var(--border-dropdown);
+      border-radius: var(--radius-xl);
+      max-width: 820px;
       width: 100%;
-      max-width: 580px;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: var(--shadow-card-hover);
+      padding: 32px 36px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
       position: relative;
     }
-    .btn-close-modal {
+    .modal-close-btn {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
       cursor: pointer;
+      transition: all var(--transition-fast);
     }
-    .btn-close-modal:hover {
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
       color: var(--text-primary);
     }
-  </style>
+    .modal-header-section {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .modal-icon-large {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .modal-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 22px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .roadmap-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .roadmap-step {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-purple);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .roadmap-step-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .roadmap-step-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .portfolio-ideas-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .portfolio-idea-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .portfolio-idea-item span {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+    .tools-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tool-link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    .tool-link-pill:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--accent-purple);
+      transform: translateY(-1px);
+    }
 
-  <script src="/js/i18n.js"></script>
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0d0e12">
-  <script src="/js/pwa-register.js" defer></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>
-  <script src="/js/cookie-consent.js" defer></script>
+    /* FAQ Accordion */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-chevron {
+      transition: transform var(--transition-fast);
+    }
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 1024px) {
+      .careers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .quiz-steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .mentor-rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+      .metrics-bar {
+        grid-template-columns: 1fr;
+      }
+      .mentor-rules-grid {
+        grid-template-columns: 1fr;
+      }
+      .career-modal-card {
+        padding: 24px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Glowing Background Orbs & Grid Overlay -->
   <div class="aurora-bg">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -209,26 +686,30 @@
   </div>
   <div class="grid-overlay"></div>
 
-  <!-- HEADER -->
+  <!-- SITE HEADER -->
   <header class="site-header" id="site-header">
     <div class="header-inner container">
       <div class="header-left">
         <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
         <a href="/" class="logo">
           <span class="logo-icon">
             <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#0099ff" />
                   <stop offset="100%" stop-color="#7a00ff" />
                 </linearGradient>
               </defs>
-              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad)" stroke-width="14" stroke-linejoin="round" fill="none"/>
-              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad)" />
-              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad)" />
-              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad)" stroke-width="4"/>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad-primary)" stroke-width="14" stroke-linejoin="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad-primary)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad-primary)" />
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad-primary)" stroke-width="4"/>
             </svg>
           </span>
           <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
@@ -314,22 +795,19 @@
       </nav>
 
       <div class="header-actions">
-        <button class="btn-submit" onclick="openPostJobModal()">
-          <span>📢</span>&nbsp;İlan Yayınla
-        </button>
         <a href="/asistan" class="header-assistant-link" title="Akıllı Yapay Zeka Asistanı">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <linearGradient id="robot-grad-jobs" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="robot-grad-kariyer" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#8a4bf5"></stop>
                 <stop offset="100%" stop-color="#14dbd4"></stop>
               </linearGradient>
             </defs>
-            <circle cx="12" cy="4" r="1" fill="url(#robot-grad-jobs)"></circle>
-            <path d="M12 5v2" stroke="url(#robot-grad-jobs)" stroke-width="1.5" stroke-linecap="round"></path>
-            <rect x="5" y="7" width="14" height="11" rx="3" stroke="url(#robot-grad-jobs)" stroke-width="1.8" fill="rgba(20, 219, 212, 0.05)"></rect>
-            <rect x="3" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-jobs)" stroke-width="0"></rect>
-            <rect x="19" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-jobs)" stroke-width="0"></rect>
+            <circle cx="12" cy="4" r="1" fill="url(#robot-grad-kariyer)"></circle>
+            <path d="M12 5v2" stroke="url(#robot-grad-kariyer)" stroke-width="1.5" stroke-linecap="round"></path>
+            <rect x="5" y="7" width="14" height="11" rx="3" stroke="url(#robot-grad-kariyer)" stroke-width="1.8" fill="rgba(20, 219, 212, 0.05)"></rect>
+            <rect x="3" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-kariyer)"></rect>
+            <rect x="19" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-kariyer)"></rect>
             <circle cx="9.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
             <circle cx="14.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
             <path d="M10 14.5c0.8 0.6 2.2 0.6 3 0" stroke="#14dbd4" stroke-width="1.2" stroke-linecap="round"></path>
@@ -358,172 +836,264 @@
     <a href="/asistan">AI Asistanı</a>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="career-hero container animate-on-scroll">
-    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); color:var(--accent-purple); padding:6px 14px; border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; margin-bottom:16px;">
-      💼 Türkiye'nin Özel Yapay Zeka Kariyer Merkezi
+    <div class="career-badge">
+      🎓 Yapay Zeka Kariyer & Popüler Meslekler Rehberi
     </div>
-    <h1 style="font-family:'Outfit',sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px;">
-      Yapay Zeka <span class="text-gradient">Kariyer & İş İlanları</span>
+    <h1 class="career-title">
+      Yapay Zeka Çağında <span class="text-gradient">Geleceğin Meslekleri</span>
     </h1>
-    <p style="color:var(--text-secondary); max-width:720px; margin:0 auto; font-size:1.05rem; line-height:1.6;">
-      Geleceğin meslekleri burada. Prompt Mühendisi, LLM Geliştirici, AI Ajan Otomasyonu ve Generative AI tasarım rollerindeki en güncel fırsatları keşfedin.
+    <p class="career-subtitle">
+      Yapay zeka işleri elimizden mi alacak? Hayır, yapay zekayı etkin kullananlar yeni dünyanın kazananı olacak. Bu rehber; yapay zeka devrimiyle doğan en popüler 12+ mesleği, günlük rutinlerini, maaş skalalarını ve 0'dan uzmanlığa giden 90 günlük yol haritalarını sunan kişisel mentörünüzdür.
     </p>
+
+    <!-- Key Metrics Bar -->
+    <div class="metrics-bar">
+      <div class="metric-card">
+        <div class="metric-icon">🚀</div>
+        <div>
+          <div class="metric-val">12+ Popüler Rol</div>
+          <div class="metric-label">En çok aranan YZ meslekleri</div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">📈</div>
+        <div>
+          <div class="metric-val">%320+ Talep Artışı</div>
+          <div class="metric-label">Global iş piyasası büyümesi</div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">💰</div>
+        <div>
+          <div class="metric-val">₺70k - ₺250k+</div>
+          <div class="metric-label">Türkiye & Global maaş skalası</div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">🗺️</div>
+        <div>
+          <div class="metric-val">90 Günlük Plan</div>
+          <div class="metric-label">Adım adım öğrenme yol haritası</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Matcher Quiz Card -->
+    <div class="quiz-card animate-on-scroll">
+      <div class="quiz-header">
+        <div class="quiz-title">
+          <span>🎯</span> Hangi Yapay Zeka Kariyeri Sana En Uygun? (Mini Mentör Testi)
+        </div>
+        <span style="font-size:0.82rem; color:var(--text-muted);">3 soruda sana özel meslek ve ilk adımı bul</span>
+      </div>
+
+      <div class="quiz-steps-grid">
+        <div class="quiz-step-box">
+          <div class="quiz-step-title">1. En çok ne yapmaktan keyif alırsın?</div>
+          <select id="quiz-interest" class="quiz-select">
+            <option value="coding">Kod yazmak, algoritmalar ve teknik sistemler kurmak</option>
+            <option value="creative">Görsel, video, tasarım ve yaratıcı medya üretmek</option>
+            <option value="automation">İş süreçlerini hızlandırmak, araçları birbirine bağlamak (No-Code)</option>
+            <option value="strategy">Ürün yönetimi, iş stratejisi ve ekip liderliği</option>
+            <option value="research">Analiz, hukuk, metinler ve veri madenciliği</option>
+          </select>
+        </div>
+
+        <div class="quiz-step-box">
+          <div class="quiz-step-title">2. Mevcut teknik / kodlama seviyen?</div>
+          <select id="quiz-level" class="quiz-select">
+            <option value="nocode">Hiç kod bilmiyorum (Tamamen No-Code)</option>
+            <option value="beginner">Temel seviye (HTML/Python mantığını biliyorum)</option>
+            <option value="advanced">İleri düzey (Python / JS / API geliştiricisiyim)</option>
+          </select>
+        </div>
+
+        <div class="quiz-step-box">
+          <div class="quiz-step-title">3. Hedef çalışma şeklin nedir?</div>
+          <select id="quiz-goal" class="quiz-select">
+            <option value="remote">Global uzaktan (Remote) çalışma / Dolar kazanma</option>
+            <option value="agency">Kendi yapay zeka ajansımı / danışmanlığımı kurmak</option>
+            <option value="corporate">Büyük bir teknoloji şirketinde kurumsal kariyer</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="quiz-actions">
+        <button class="btn-submit" onclick="calculateCareerMatch()" style="height:42px; padding:0 24px; font-size:0.9rem;">
+          <span>🔮</span>&nbsp;Kariyer Eşleşmemi Göster
+        </button>
+
+        <div class="quiz-result-banner" id="quiz-result">
+          <span style="font-size:1.3rem;" id="quiz-result-icon">✨</span>
+          <div>
+            <strong id="quiz-result-role" style="color:var(--text-primary); font-size:0.95rem;">-</strong>
+            <div id="quiz-result-advice" style="font-size:0.8rem; color:var(--text-secondary);">-</div>
+          </div>
+          <button id="quiz-result-btn" class="career-pill" style="margin-left:auto; background:var(--gradient-primary); color:#fff; border:none; padding:6px 14px; font-size:0.8rem;">İncele ➔</button>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-  <!-- MAIN -->
+  <!-- CAREERS LISTING SECTION -->
   <main class="container">
     
-    <!-- Filter Bar -->
-    <div class="jobs-filter-bar">
-      <div class="job-pills">
-        <button class="job-pill active" onclick="filterJobs('all', this)">Tüm Pozisyonlar</button>
-        <button class="job-pill" onclick="filterJobs('Remote', this)">🌐 Tamamen Uzaktan (Remote)</button>
-        <button class="job-pill" onclick="filterJobs('Prompt Mühendisi', this)">✨ Prompt Mühendisi</button>
-        <button class="job-pill" onclick="filterJobs('AI Otomasyon', this)">⚡ AI Otomasyon</button>
-        <button class="job-pill" onclick="filterJobs('LLM & AI Geliştirici', this)">💻 LLM & AI Geliştirici</button>
+    <!-- Filter & Search Bar -->
+    <div class="careers-filter-bar">
+      <div class="career-pills" id="category-pills">
+        <button class="career-pill active" onclick="filterCareers('all', this)">Tüm Meslekler (12)</button>
+        <button class="career-pill" onclick="filterCareers('tech', this)">💻 Mühendislik & Teknik</button>
+        <button class="career-pill" onclick="filterCareers('creative', this)">🎨 Kreatif & Medya</button>
+        <button class="career-pill" onclick="filterCareers('strategy', this)">📊 Strateji & Ürün</button>
+        <button class="career-pill" onclick="filterCareers('automation', this)">⚡ No-Code & Otomasyon</button>
       </div>
 
-      <div style="display:flex; gap:10px; width:100%; max-width:320px;">
-        <input type="text" id="job-search-input" class="template-search" style="margin-bottom:0;" placeholder="Şirket veya pozisyon ara..." oninput="searchJobs()">
+      <div class="career-search-box">
+        <input type="text" id="career-search" class="career-search-input" placeholder="Meslek, araç veya yetenek ara..." oninput="searchCareers()">
       </div>
     </div>
 
-    <!-- Jobs Grid List -->
-    <div class="jobs-grid" id="jobs-list-container">
-      <div class="loader">İlanlar yükleniyor...</div>
+    <!-- Career Cards Grid -->
+    <div class="careers-grid" id="careers-container">
+      <!-- Injected by JavaScript -->
     </div>
+
+    <!-- Mentorship Golden Rules -->
+    <section class="mentor-rules-section animate-on-scroll">
+      <h3 class="mentor-rules-title">Yapay Zeka Çağında Zirveye Çıkmanın <span class="text-gradient">4 Altın Kuralı</span></h3>
+      
+      <div class="mentor-rules-grid">
+        <div class="mentor-rule-card">
+          <div class="mentor-rule-num">1</div>
+          <h4>Orkestra Şefi Olun</h4>
+          <p>Yalnızca ChatGPT'ye soru soran bir tüketici olmayın. Araçları (n8n + Claude + Pinecone) birbirine bağlayan sistemler kurun.</p>
+        </div>
+
+        <div class="mentor-rule-card">
+          <div class="mentor-rule-num">2</div>
+          <h4>Proof of Work > Diploma</h4>
+          <p>Şirketler artık sertifika değil, canlı çalışan projeler istiyor. GitHub veya web sitenizde 3 adet çalışan demo yayınlayın.</p>
+        </div>
+
+        <div class="mentor-rule-card">
+          <div class="mentor-rule-num">3</div>
+          <h4>Hibrit Uzmanlık Kurun</h4>
+          <p>Sadece yapay zekacı olmak yerine "Hukuk + AI", "Finans + AI" veya "Mimarlık + AI" birleşimi yaparak vazgeçilmez olun.</p>
+        </div>
+
+        <div class="mentor-rule-card">
+          <div class="mentor-rule-num">4</div>
+          <h4>Açıkta İnşa Edin</h4>
+          <p>Öğrendiğiniz her yeni prompt tekniğini, karşılaştığınız sorunları ve çözümleri LinkedIn / X üzerinde düzenli paylaşın.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section style="margin-bottom:80px;" class="animate-on-scroll">
+      <h3 style="font-family:'Outfit',sans-serif; font-size:1.6rem; font-weight:800; margin-bottom:24px; text-align:center;">
+        Kariyer Mentörüne <span class="text-gradient">Sıkça Sorulan Sorular</span>
+      </h3>
+
+      <div style="max-width:820px; margin:0 auto;">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Kodlama bilmeden yapay zeka alanında kariyer yapabilir miyim?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Kesinlikle evet. Prompt Mühendisliği, AI Ajan Otomasyonu (n8n/Make), AI Kreatif Sanatçılığı ve Kurumsal Dönüşüm Koçluğu gibi alanlarda kodlama şart değildir. Mantıksal düşünme, problem çözme ve doğru araçları birbirine bağlama becerisi yeterlidir.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Prompt mühendisliği geçici bir heves mi yoksa kalıcı bir meslek mi?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Klasik "metin yazma" seviyesindeki promptluk evriliyor; ancak sistemik prompt mimarisi, context window optimizasyonu, RAG entegrasyonu ve model değerlendirme (evals) uzmanlığı önümüzdeki 10 yılın en kritik rollerinden biri olarak yerini sağlamlaştırıyor.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Türkiye'den yurt dışına remote (uzaktan) AI işleri nasıl bulunur?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            En etkili yol, Twitter (X) ve LinkedIn üzerinde İngilizce olarak yaptığınız projeleri (Build in Public) paylaşmaktır. Ayrıca Wellfound (AngelList), RemoteOK, Turing ve Contra gibi platformlarda çalışan canlı proje demolarınızı sunarak doğrudan döviz bazlı sözleşmeler yapabilirsiniz.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Sıfırdan bir yapay zeka mesleği öğrenmek ne kadar sürer?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer">
+            Günde 2 saat odaklanmış pratikle 90 günde işe hazır (job-ready) bir portfolyo oluşturabilirsiniz. İlk 30 gün araçların mekaniğini öğrenmeye, ikinci 30 gün gerçek hayat projeleri inşa etmeye, son 30 gün ise portfolyo sunumu ve iş başvurularına ayrılmalıdır.
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- QUICK APPLY MODAL -->
-  <div class="modal-overlay-custom" id="apply-modal">
-    <div class="modal-card">
-      <button class="btn-close-modal" onclick="closeApplyModal()">&times;</button>
+  <!-- CAREER DETAIL MODAL -->
+  <div class="career-modal-overlay" id="career-modal">
+    <div class="career-modal-card">
+      <button class="modal-close-btn" onclick="closeCareerModal()">&times;</button>
       
-      <div style="margin-bottom:20px;">
-        <span style="font-size:0.8rem; color:var(--accent-purple); font-weight:700; text-transform:uppercase;">Hızlı Başvuru</span>
-        <h3 id="modal-job-title" style="margin:4px 0 2px; font-family:'Outfit',sans-serif; color:var(--text-primary); font-size:1.35rem;">Pozisyon Başlığı</h3>
-        <span id="modal-job-company" style="font-size:0.9rem; color:var(--text-secondary);">Şirket Adı</span>
+      <div class="modal-header-section">
+        <div class="modal-icon-large" id="m-icon">🚀</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <span class="career-tag-pill" id="m-badge">Popüler</span>
+            <span style="font-size:0.8rem; color:var(--text-muted);" id="m-category">Kategori</span>
+          </div>
+          <h2 style="font-family:'Outfit',sans-serif; font-size:1.55rem; font-weight:800; color:var(--text-primary); margin:0;" id="m-title">Meslek Başlığı</h2>
+        </div>
       </div>
 
-      <form id="apply-form" onsubmit="submitApplication(event)">
-        <input type="hidden" id="apply-job-id">
-
-        <div class="studio-form-group">
-          <label class="studio-label">Adınız Soyadınız *</label>
-          <input type="text" id="app-name" class="studio-input" required placeholder="Örn: Ahmet Yılmaz">
+      <!-- Quick Metrics in Modal -->
+      <div class="career-meta-row" style="padding:14px 18px; margin-bottom:20px;">
+        <div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:2px;">Tahmini Gelir / Maaş Skalası</div>
+          <div class="meta-salary" id="m-salary" style="font-size:0.95rem;">₺75.000 - ₺180.000 / Ay</div>
         </div>
-
-        <div class="studio-row-2">
-          <div class="studio-form-group">
-            <label class="studio-label">E-Posta Adresi *</label>
-            <input type="email" id="app-email" class="studio-input" required placeholder="ahmet@example.com">
-          </div>
-          <div class="studio-form-group">
-            <label class="studio-label">Telefon Numarası</label>
-            <input type="tel" id="app-phone" class="studio-input" placeholder="0532 ...">
-          </div>
+        <div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:2px;">Çalışma Şekli</div>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--accent-purple);" id="m-worktype">Global Uzaktan (Remote)</div>
         </div>
-
-        <div class="studio-row-2">
-          <div class="studio-form-group">
-            <label class="studio-label">LinkedIn Profili</label>
-            <input type="url" id="app-linkedin" class="studio-input" placeholder="https://linkedin.com/in/...">
-          </div>
-          <div class="studio-form-group">
-            <label class="studio-label">GitHub veya Portfolyo</label>
-            <input type="url" id="app-portfolio" class="studio-input" placeholder="https://github.com/...">
-          </div>
+        <div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:2px;">Yıllık Talep Büyümesi</div>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--accent-green);" id="m-growth">+%340 Büyüme</div>
         </div>
+      </div>
 
-        <div class="studio-form-group">
-          <label class="studio-label">Kısa Ön Yazı / Kendinizi Tanıtın</label>
-          <textarea id="app-note" class="studio-textarea" style="min-height:90px;" placeholder="Bu pozisyon için sizi öne çıkaran yapay zeka projeleriniz veya tecrübeleriniz..."></textarea>
-        </div>
+      <!-- Daily Routine -->
+      <div class="modal-section-title">📌 Görev Tanımı & Günlük Rutin</div>
+      <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin:0;" id="m-routine"></p>
 
-        <button type="submit" class="btn-studio-action">
-          <span>🚀</span> Başvurumu Gönder
-        </button>
-      </form>
+      <!-- 90-Day Roadmap -->
+      <div class="modal-section-title">📅 90 Günlük Adım Adım Öğrenme Yol Haritası</div>
+      <div class="roadmap-timeline" id="m-roadmap"></div>
+
+      <!-- 3 Portfolio Projects -->
+      <div class="modal-section-title">💡 İşe Alınmanı Sağlayacak 3 Portfolyo Projesi Fikri</div>
+      <ul class="portfolio-ideas-list" id="m-portfolio"></ul>
+
+      <!-- Recommended Tools -->
+      <div class="modal-section-title">🛠️ Uzmanlaşman Gereken Temel AI Araçları</div>
+      <div class="tools-badges-row" id="m-tools"></div>
     </div>
   </div>
 
-  <!-- POST JOB MODAL -->
-  <div class="modal-overlay-custom" id="post-job-modal">
-    <div class="modal-card">
-      <button class="btn-close-modal" onclick="closePostJobModal()">&times;</button>
-      
-      <div style="margin-bottom:20px;">
-        <span style="font-size:0.8rem; color:var(--accent-purple); font-weight:700; text-transform:uppercase;">İşveren Paneli</span>
-        <h3 style="margin:4px 0 2px; font-family:'Outfit',sans-serif; color:var(--text-primary); font-size:1.35rem;">Yeni AI İlanı Yayınla</h3>
-        <p style="font-size:0.85rem; color:var(--text-secondary); margin:0;">Türkiye'nin en nitelikli yapay zeka yetenek havuzuna doğrudan ulaşın.</p>
-      </div>
-
-      <form id="post-job-form" onsubmit="submitNewJob(event)">
-        <div class="studio-row-2">
-          <div class="studio-form-group">
-            <label class="studio-label">İlan Başlığı *</label>
-            <input type="text" id="job-title-in" class="studio-input" required placeholder="Örn: Senior LLM Engineer">
-          </div>
-          <div class="studio-form-group">
-            <label class="studio-label">Şirket / Kuruluş Adı *</label>
-            <input type="text" id="job-comp-in" class="studio-input" required placeholder="Örn: AI Tech A.Ş.">
-          </div>
-        </div>
-
-        <div class="studio-row-2">
-          <div class="studio-form-group">
-            <label class="studio-label">Çalışma Modeli</label>
-            <select id="job-type-in" class="studio-select">
-              <option value="Remote">Tamamen Uzaktan (Remote)</option>
-              <option value="Hybrid">Hibrit (Ofis + Uzaktan)</option>
-              <option value="Office">Ofis / Yerinde</option>
-              <option value="Freelance">Freelance / Proje Bazlı</option>
-            </select>
-          </div>
-          <div class="studio-form-group">
-            <label class="studio-label">Konum</label>
-            <input type="text" id="job-loc-in" class="studio-input" placeholder="Örn: İstanbul / Levent veya Remote">
-          </div>
-        </div>
-
-        <div class="studio-row-2">
-          <div class="studio-form-group">
-            <label class="studio-label">Rol Kategorisi</label>
-            <select id="job-role-in" class="studio-select">
-              <option value="LLM & AI Geliştirici">LLM & AI Geliştirici</option>
-              <option value="Prompt Mühendisi">Prompt Mühendisi</option>
-              <option value="AI Otomasyon">AI Otomasyon & Ajanlar</option>
-              <option value="Computer Vision">Computer Vision & Görüntü</option>
-              <option value="AI Görsel & Tasarım">AI Görsel & Tasarım</option>
-              <option value="AI Veri & Test">AI Veri & Değerlendirme</option>
-            </select>
-          </div>
-          <div class="studio-form-group">
-            <label class="studio-label">Maaş / Ücret Skalası</label>
-            <input type="text" id="job-sal-in" class="studio-input" placeholder="Örn: ₺80.000 - ₺120.000 / Ay">
-          </div>
-        </div>
-
-        <div class="studio-form-group">
-          <label class="studio-label">İlan Detayları ve Aranan Nitelikler *</label>
-          <textarea id="job-desc-in" class="studio-textarea" required placeholder="Adayda aranan yapay zeka tecrübesi, sorumluluklar ve teknoloji stack'i..."></textarea>
-        </div>
-
-        <div class="studio-form-group">
-          <label class="studio-label">Başvuruların Gönderileceği E-Posta *</label>
-          <input type="email" id="job-email-in" class="studio-input" required placeholder="kariyer@sirketiniz.com">
-        </div>
-
-        <button type="submit" class="btn-studio-action">
-          <span>📢</span> İlanı Ücretsiz Yayınla
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-top">
@@ -531,26 +1101,27 @@
           <a href="/" class="logo">
             <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
           </a>
-          <p class="footer-tagline">Türkiye'nin en kapsamlı ve güncel yapay zeka rehberi.</p>
+          <p class="footer-tagline">Türkiye'nin en kapsamlı ve güncel yapay zeka araçları ve kariyer merkezi.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h5>Ürünler</h5>
+            <h5>Ürünler & Stüdyo</h5>
             <a href="/studio">AI Stüdyo</a>
-            <a href="/models">LLM Modelleri</a>
+            <a href="/models">LLM Borsası</a>
             <a href="/prompt-studio">Prompt Stüdyosu</a>
-            <a href="/stack">AI Stack'im</a>
+            <a href="/stack">Ekip AI Stack</a>
             <a href="/calculator">API Hesaplayıcı</a>
           </div>
           <div class="footer-col">
-            <h5>Topluluk</h5>
-            <a href="/kariyer">Kariyer & İlanlar</a>
+            <h5>Kariyer & Topluluk</h5>
+            <a href="/kariyer">YZ Meslekler Rehberi</a>
+            <a href="/workflows">İş Akışları</a>
             <a href="/stories">Başarı Hikayeleri</a>
             <a href="/haberler">Yapay Zeka Haberleri</a>
             <a href="/akademi">Akademi</a>
           </div>
           <div class="footer-col">
-            <h5>Yasal</h5>
+            <h5>Yasal & İletişim</h5>
             <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
             <a href="/kullanim-kosullari">Kullanım Koşulları</a>
             <a href="/iletisim">İletişim</a>
@@ -563,197 +1134,619 @@
     </div>
   </footer>
 
+  <!-- SCRIPT -->
   <script>
-    let allJobs = [];
+    const CAREERS_DATA = [
+      {
+        id: "prompt-engineer",
+        title: "Prompt Mühendisi & Bağlam Tasarımcısı",
+        category: "tech",
+        categoryName: "Mühendislik & Teknik",
+        badge: "En Çok Aranan 🔥",
+        badgeClass: "tag-hot",
+        icon: "💡",
+        salary: "₺70.000 - ₺175.000 / Ay ($90k - $185k/yıl)",
+        workType: "Global Remote (%92)",
+        growth: "+%340 Yıllık Talep",
+        desc: "LLM'lerin halüsinasyon görmeden tam istenen formatta (JSON, SQL, kod, analiz) yanıt vermesini sağlayan bağlam, prompt zincirleri ve system prompt mimarilerini kurar.",
+        skills: ["Few-Shot Learning", "Chain-of-Thought", "JSON Output", "Promptfoo", "Context Window Opt.", "Langfuse"],
+        tools: [
+          { name: "Claude 3.7", url: "/#tools-section" },
+          { name: "ChatGPT Plus", url: "/#tools-section" },
+          { name: "Promptfoo", url: "/#tools-section" },
+          { name: "OpenRouter", url: "/#tools-section" },
+          { name: "Langfuse", url: "/#tools-section" }
+        ],
+        routine: "Sabah modeller arası doğruluk testlerini çalıştırır, müşteri şikayetlerindeki edge-case halüsinasyonları inceler, token maliyetini düşürmek için sistem promptunu sıkıştırır ve yeni çıkan model ağırlıklarına prompt uyarlaması yapar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Temeller ve LLM Mekaniği", desc: "Tokenizasyon mantığı, temperature, top_p parametreleri, zero-shot ve few-shot teknikleri. Temel markdown ve JSON çıktısı alma." },
+          { title: "31 - 60. Gün: İleri Düzey Prompt Mühendisliği", desc: "ReAct, Chain-of-Thought, Promptfoo ile otomatik regresyon testleri yazma, jailbreak savunma promptları oluşturma." },
+          { title: "61 - 90. Gün: Canlı Portfolyo & Danışmanlık", desc: "GitHub üzerinde 3 farklı sektör için (E-ticaret, Finans, Hukuk) benchmarklanmış prompt kütüphanesi yayınlama ve ilk Upwork/freelance işini alma." }
+        ],
+        portfolio: [
+          "Karmaşık PDF sözleşmelerinden %99.4 doğrulukla özet çıkaran 'Hukuk Analiz Prompt Paketi'.",
+          "Müşteri destek botunun şirket sırlarını ifşa etmesini engelleyen 'Saldırıya Dayanıklı Guardrail Prompt Seti'.",
+          "5 farklı LLM modelinin (Claude, GPT-4o, DeepSeek) yanıt kalitesini otomatik puanlayan benchmark repo'su."
+        ]
+      },
+      {
+        id: "ai-agent-architect",
+        title: "AI Ajanı & İş Akışı Mimarı",
+        category: "automation",
+        categoryName: "No-Code & Otomasyon",
+        badge: "Patlama Noktasında ⚡",
+        badgeClass: "tag-hot",
+        icon: "🔄",
+        salary: "₺85.000 - ₺220.000 / Ay ($110k - $210k/yıl)",
+        workType: "Global Remote / Hibrit",
+        growth: "+%410 Yıllık Talep",
+        desc: "n8n, Make veya CrewAI kullanarak insanların saatler süren işlerini otonom olarak yapan akıllı yapay zeka ajanları ve şirket içi otomasyon zincirleri tasarlar.",
+        skills: ["n8n Workflow", "REST Webhooks", "Multi-Agent Systems", "Tool Calling", "RAG Integration", "Error Handling"],
+        tools: [
+          { name: "n8n", url: "/workflows" },
+          { name: "Make", url: "/workflows" },
+          { name: "CrewAI", url: "/#tools-section" },
+          { name: "Flowise", url: "/#tools-section" },
+          { name: "Airtable", url: "/#tools-section" }
+        ],
+        routine: "Şirketin CRM, e-posta, Slack ve muhasebe sistemlerini webhooks ile dinleyen AI iş akışları kurgular. Ajanların tool-calling başarı oranlarını takip eder ve tıkanıklıkları giderir.",
+        roadmap: [
+          { title: "1 - 30. Gün: No-Code ve Webhooks Temelleri", desc: "Make ve n8n üzerinde temel webhook tetikleyicileri, JSON veri filtreleme ve basit LLM API entegrasyonu." },
+          { title: "31 - 60. Gün: Çoklu Ajan Mimarisi", desc: "Araştırmacı Ajan -> Yazar Ajan -> Kalite Kontrol Ajanı zinciri kurma. Vektör veritabanlarıyla ajana hafıza (memory) kazandırma." },
+          { title: "61 - 90. Gün: KOBİ Çözümleri & Müşteri Satışı", desc: "Bir şirket için gelen mailleri sınıflandırıp CRM'e kaydeden ve taslak yanıt hazırlayan uçtan uca ajanın demosunu hazırlayıp satma." }
+        ],
+        portfolio: [
+          "Gelen destek maillerini sınıflandırıp Jira bileti açan ve kişiye özel yanıt hazırlayan 'Akıllı Destek Ajanı'.",
+          "Rakiplerin fiyatlarını ve sosyal medya hareketlerini günlük tarayıp Slack'e özetleyen 'Pazar İstihbarat Ajanı'.",
+          "Faturaları okuyup muhasebe veritabanına otomatik işleyen sıfır hatalı finans otomasyonu."
+        ]
+      },
+      {
+        id: "ai-product-manager",
+        title: "Yapay Zeka Ürün Yöneticisi (AI PM)",
+        category: "strategy",
+        categoryName: "Strateji & Ürün",
+        badge: "Kurumsal Gözde 💎",
+        badgeClass: "tag-elite",
+        icon: "📊",
+        salary: "₺95.000 - ₺240.000 / Ay ($130k - $240k/yıl)",
+        workType: "Global Remote / Hibrit",
+        growth: "+%260 Yıllık Talep",
+        desc: "Yapay zeka modellerinin teknik imkanları ile gerçek müşteri ihtiyaçlarını buluşturur. Token maliyet ekonomisini, yanıt gecikmesini (latency) ve AI kullanıcı deneyimini yönetir.",
+        skills: ["AI Discovery", "Token Unit Economics", "AI-Native UX", "Evaluation Metrics", "Latency Trade-offs", "PRD Writing"],
+        tools: [
+          { name: "Helicone", url: "/calculator" },
+          { name: "Notion AI", url: "/#tools-section" },
+          { name: "Postman", url: "/calculator" },
+          { name: "Miro", url: "/#tools-section" }
+        ],
+        routine: "Kullanıcı geri bildirimlerini inceler, modellerin token tüketim maliyetlerini denetler, veri bilimciler ve yazılımcılarla sprint planlar ve AI özelliklerinin metriklerini ölçer.",
+        roadmap: [
+          { title: "1 - 30. Gün: Model Yetenek Haritası", desc: "Hangi iş için hangi model uygun? Açık kaynak vs. kapalı kaynak model karşılaştırmaları ve token maliyet simülasyonları." },
+          { title: "31 - 60. Gün: AI-Native Kullanıcı Deneyimi", desc: "Streaming text, undo/retry mekanizmaları, hata toleranslı arayüzler ve model değerlendirme (Eval) metrikleri." },
+          { title: "61 - 90. Gün: Kapsamlı PRD & Case Study", desc: "Var olan bir SaaS uygulamasına AI özelliği ekleyen detaylı bir PRD (Product Requirement Document) ve Figma prototipi hazırlama." }
+        ],
+        portfolio: [
+          "B2B SaaS ürünü için token maliyetini %45 düşüren 'Model Routing & Caching PRD' dokümanı.",
+          "Müşteri memnuniyetini ölçen ve halüsinasyon oranını takip eden 'AI Ürün Metrikleri Dashboard Tasarımı'.",
+          "E-ticaret platformunda kişiselleştirilmiş ürün tavsiyeleri sunan yapay zeka asistanının kullanıcı akışı (User Flow)."
+        ]
+      },
+      {
+        id: "rag-vector-engineer",
+        title: "RAG & Vektör Veri Mühendisi",
+        category: "tech",
+        categoryName: "Mühendislik & Teknik",
+        badge: "Yüksek Maaş Garantili 🚀",
+        badgeClass: "tag-hot",
+        icon: "🗄️",
+        salary: "₺90.000 - ₺230.000 / Ay ($120k - $225k/yıl)",
+        workType: "Global Remote (%95)",
+        growth: "+%380 Yıllık Talep",
+        desc: "Şirket içi devasa PDF, doküman ve veri yığınlarını vektör veritabanlarına dönüştürerek, LLM'lerin şirket içi verilerle sıfır halüsinasyonla konuşmasını sağlayan arama mimarı.",
+        skills: ["Embeddings Models", "Vector DBs (Pinecone/Qdrant)", "Chunking Strategies", "Hybrid Search", "Reranking (Cohere)", "Ragas Evals"],
+        tools: [
+          { name: "Pinecone", url: "/#tools-section" },
+          { name: "Qdrant", url: "/#tools-section" },
+          { name: "Cohere", url: "/#tools-section" },
+          { name: "LlamaIndex", url: "/#tools-section" }
+        ],
+        routine: "Doküman ayrıştırma boru hatlarını optimize eder, embedding boyutlarını seçer, vektör arama kalitesini ölçer ve re-ranking mekanizmasını ince ayarlar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Vektör Arama Temelleri", desc: "Vektör uzayı, kosinüs benzerliği, chunk boyutu/örtüşmesi ve ChromaDB ile ilk semantik arama uygulamasını yazma." },
+          { title: "31 - 60. Gün: Gelişmiş RAG Mimarisi", desc: "Hibrit arama (BM25 + Dense Vectors), Cohere Re-ranker, üst veri (metadata) filtreleme ve sorgu dönüştürme." },
+          { title: "61 - 90. Gün: Üretim Seviyesi RAG & Değerlendirme", desc: "RAGAS ile doğruluk ve bağlam alaka testi yapma, Qdrant/Pinecone üzerinde canlı çalışan bilgi bankası yayınlama." }
+        ],
+        portfolio: [
+          "15.000 sayfalık teknik el kitaplarını saniyede kaynak göstererek cevaplayan 'Teknik Destek RAG Motoru'.",
+          "Klasik anahtar kelime araması ile vektör aramayı harmanlayan 'Hibrit Kurumsal Doküman Arama Sistemi'.",
+          "Gelen soruları önce alt sorgulara bölen 'Gelişmiş Multi-Hop RAG Sorgulama Boru Hattı'."
+        ]
+      },
+      {
+        id: "ai-creative-director",
+        title: "AI Görsel & Kreatif Yönetmen",
+        category: "creative",
+        categoryName: "Kreatif & Medya",
+        badge: "Viral & Popüler 🎨",
+        badgeClass: "tag-rising",
+        icon: "🎨",
+        salary: "₺55.000 - ₺160.000 / Ay ($75k - $165k/yıl)",
+        workType: "Freelance / Uzaktan / Ajans",
+        growth: "+%310 Yıllık Talep",
+        desc: "Midjourney, ComfyUI, ControlNet ve generative video araçlarını kullanarak reklam filmleri, ürün çekimleri, konsept sanat ve oyun varlıkları üreten yeni nesil sanatçı.",
+        skills: ["ComfyUI Nodes", "LoRA Training", "ControlNet (Pose/Depth)", "Runway/Kling Video", "Style References", "Upscaling & Inpainting"],
+        tools: [
+          { name: "Midjourney", url: "/#tools-section" },
+          { name: "Runway Gen-3", url: "/#tools-section" },
+          { name: "Kling AI", url: "/#tools-section" },
+          { name: "Magnific AI", url: "/#tools-section" }
+        ],
+        routine: "ComfyUI üzerinde görsel üretim akışları kurar, marka kimliğine uygun karakter tutarlılığı sağlar ve yapay zeka video renderları alır.",
+        roadmap: [
+          { title: "1 - 30. Gün: Estetik Prompt & Midjourney", desc: "Işık, lens, açı ve stil parametreleri. --sref, --cref ile tutarlı karakter ve stil transferi yapma." },
+          { title: "31 - 60. Gün: ComfyUI ve Kontrol", desc: "Node tabanlı görsel mimarisi, ControlNet ile poz/çizim kontrolü, Inpainting ve 4K lüks upscale teknikleri." },
+          { title: "61 - 90. Gün: Kendi LoRA Modelini Eğitme & Video", desc: "Bir ürün veya sanal influencer için LoRA eğitme, Kling/Runway ile 30 saniyelik sinematik reklam showreel'i hazırlama." }
+        ],
+        portfolio: [
+          "Fiziksel stüdyo ve kamera kullanmadan üretilmiş 'Lüks Kozmetik Markası Reklam Kampanyası'.",
+          "50 farklı poz ve kıyafette yüz anatomisi değişmeyen 'Sanal Influencer Karakter Portfolyosu'.",
+          "Bağımsız bir oyun için hazırlanmış konsept çizimleri, çevre tasarımları ve UI ikon seti."
+        ]
+      },
+      {
+        id: "fine-tuning-llm-engineer",
+        title: "İnce Ayar & LLM Mühendisi",
+        category: "tech",
+        categoryName: "Mühendislik & Teknik",
+        badge: "Elit Geliştirici 🧠",
+        badgeClass: "tag-elite",
+        icon: "⚡",
+        salary: "₺110.000 - ₺270.000 / Ay ($140k - $260k/yıl)",
+        workType: "Global Remote / Silikon Vadisi",
+        growth: "+%370 Yıllık Talep",
+        desc: "Llama 3, Mistral, DeepSeek gibi açık kaynak modelleri şirket verileriyle LoRA/QLoRA kullanarak eğiten, GPU maliyetlerini optimize edip kendi sunucularında çalıştıran derin uzman.",
+        skills: ["Python & PyTorch", "Hugging Face", "QLoRA / LoRA", "Unsloth & Axolotl", "Model Quantization (AWQ/GGUF)", "vLLM Inference"],
+        tools: [
+          { name: "Hugging Face", url: "/models" },
+          { name: "Unsloth", url: "/#tools-section" },
+          { name: "vLLM", url: "/models" },
+          { name: "Ollama", url: "/#tools-section" }
+        ],
+        routine: "Eğitim veri setlerini hazırlar ve filtreler, GPU kümelerinde (cluster) fine-tuning işleri koşturur, model ağırlıklarını kuantize eder ve çıkarım (inference) hızını artırır.",
+        roadmap: [
+          { title: "1 - 30. Gün: Açık Kaynak Ekosistemi", desc: "Hugging Face kütüphaneleri, Ollama/vLLM ile yerel model ayağa kaldırma ve GPU VRAM bellek hesapları." },
+          { title: "31 - 60. Gün: QLoRA Fine-Tuning", desc: "Alpaca ve ShareGPT veri formatları, Unsloth ile Google Colab/RunPod üzerinde hızlı eğitim yapma ve loss analizi." },
+          { title: "61 - 90. Gün: Üretime Alma & Dağıtım", desc: "Modeli AWQ veya GGUF formatına kuantize etme, vLLM ile yüksek eşzamanlı API sunucusu kurma." }
+        ],
+        portfolio: [
+          "Türkçe tıp veya hukuk literatürüyle eğitilmiş 'Özelleştirilmiş Llama 3 Fine-Tuned Model'.",
+          "Normalde 24GB VRAM isteyen modeli 8GB VRAM'de çalıştıran 4-bit kuantizasyon boru hattı.",
+          "Şirketin özel kod yazım standartlarını %90 doğrulukla tamamlayan özel kodlama modeli."
+        ]
+      },
+      {
+        id: "ai-safety-specialist",
+        title: "AI Güvenlik & Kırmızı Takım Uzmanı",
+        category: "tech",
+        categoryName: "Mühendislik & Teknik",
+        badge: "Kritik Siber Güvenlik 🛡️",
+        badgeClass: "tag-elite",
+        icon: "🛡️",
+        salary: "₺90.000 - ₺240.000 / Ay ($120k - $235k/yıl)",
+        workType: "Global Remote / Danışmanlık",
+        growth: "+%330 Yıllık Talep",
+        desc: "Yapay zeka modellerini hacklemeye çalışan; prompt injection, jailbreak, veri sızıntısı ve önyargı açıklarını tespit edip savunma duvarları (guardrails) ören siber güvenlik uzmanı.",
+        skills: ["Prompt Injection", "Jailbreak Testing", "OWASP Top 10 LLM", "NeMo Guardrails", "Data Exfiltration", "Red Teaming"],
+        tools: [
+          { name: "Garak", url: "/#tools-section" },
+          { name: "NeMo Guardrails", url: "/#tools-section" },
+          { name: "Lakera Guard", url: "/#tools-section" }
+        ],
+        routine: "Şirketin chatbotlarına ve ajanlarına saldırı senaryoları düzenler, sistem promptlarının çalınmasını engeller ve güvenlik açık raporu hazırlar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Saldırı Vektörleri", desc: "Doğrudan ve dolaylı prompt injection saldırıları, Base64 şifreleme ve jailbreak tekniklerinin anatomisi." },
+          { title: "31 - 60. Gün: Savunma Mimarisi", desc: "Girdi denetimi, çıktı filtreleme, NeMo Guardrails ve Lakera Guard entegrasyonuyla güvenli filtre katmanı örme." },
+          { title: "61 - 90. Gün: Otomatik Güvenlik Taraması", desc: "Garak kütüphanesiyle otomatik güvenlik açığı tarayıcısı kurma ve GitHub'da AI Security Audit raporu yayınlama." }
+        ],
+        portfolio: [
+          "5 popüler ticari LLM uygulamasının açıklarını belgeleyen 'Kapsamlı AI Penetrasyon Testi Raporu'.",
+          "Kullanıcıların gizli system promptu çalmasını %100 engelleyen 'Açık Kaynak Prompt Savunma Kütüphanesi'.",
+          "Çalışanların müşteri kredi kartı ve TC kimlik verilerini LLM'e göndermesini engelleyen maskeleme aracı."
+        ]
+      },
+      {
+        id: "ai-growth-hacker",
+        title: "AI Büyüme & Pazarlama Mimarı",
+        category: "strategy",
+        categoryName: "Strateji & Ürün",
+        badge: "Yüksek Gelir Potansiyeli 📈",
+        badgeClass: "tag-rising",
+        icon: "📈",
+        salary: "₺60.000 - ₺170.000 / Ay ($80k - $170k/yıl)",
+        workType: "Remote / Freelance / Performans",
+        growth: "+%290 Yıllık Talep",
+        desc: "Pazarlama kampanyalarını, SEO içeriklerini, sosyal medya yönetimini ve soğuk e-posta satış hunilerini yapay zeka ajanlarıyla 10 kat hızlandıran büyüme lideri.",
+        skills: ["Programmatic SEO", "Clay Lead Enrichment", "Tone Calibration", "Perplexity Deep Research", "Cold Email Automations"],
+        tools: [
+          { name: "Perplexity Pro", url: "/#tools-section" },
+          { name: "Clay", url: "/#tools-section" },
+          { name: "Claude 3.7", url: "/#tools-section" },
+          { name: "Jasper", url: "/#tools-section" }
+        ],
+        routine: "Hedef kitle verilerini yapay zekayla zenginleştirir, kişiselleştirilmiş 1000'lerce e-posta hazırlar, programatik blog içeriklerini denetler ve reklam görselleri üretir.",
+        roadmap: [
+          { title: "1 - 30. Gün: Marka Sesi ve İçerik Motoru", desc: "Markanın ses tonunu LLM'e tanıtma, yüksek tıklama oranlı (CTR) başlık ve reklam metni üretim şablonları." },
+          { title: "31 - 60. Gün: Veri Zenginleştirme & Soğuk Satış", desc: "Clay kullanarak LinkedIn profillerinden kişiye özel 1-1 satış maili üreten otomatik boru hattı kurma." },
+          { title: "61 - 90. Gün: Programatik SEO & Lansman", desc: "Kullanıcı aramalarına göre otomatik 100 sayfa üreten ve Google'da indekslenen programatik SEO projesi." }
+        ],
+        portfolio: [
+          "Sıfırdan bir ayda 50.000 organik ziyaretçiye ulaşan 'Programatik Yapay Zeka İçerik Portalı'.",
+          "Kişiselleştirilmiş ilk satırlarla %46 açılma sağlayan 'B2B Soğuk E-Posta Satış Hunisi'.",
+          "Haftalık 30 tweet ve 5 LinkedIn makalesini otomatik hazırlayıp planlayan 'İçerik Stüdyosu'."
+        ]
+      },
+      {
+        id: "ai-audio-producer",
+        title: "AI Ses & Multimedya Yapımcısı",
+        category: "creative",
+        categoryName: "Kreatif & Medya",
+        badge: "Yeni Nesil Prodüksiyon 🎙️",
+        badgeClass: "tag-rising",
+        icon: "🎙️",
+        salary: "₺50.000 - ₺140.000 / Ay ($65k - $140k/yıl)",
+        workType: "Uzaktan / Stüdyo / Ajans",
+        growth: "+%280 Yıllık Talep",
+        desc: "Çok dilli ses klonlama, sentetik dublaj, sanal insan avatarları ve yapay zeka müzik üretimiyle eğitim, reklam ve sosyal medya içerikleri üreten yapımcı.",
+        skills: ["Voice Cloning", "Emotion Tuning", "Lip-Sync Syncing", "AI Music Composition", "Multi-Language Dubbing"],
+        tools: [
+          { name: "ElevenLabs", url: "/#tools-section" },
+          { name: "HeyGen", url: "/#tools-section" },
+          { name: "Suno", url: "/#tools-section" },
+          { name: "Descript", url: "/#tools-section" }
+        ],
+        routine: "Şirket eğitim videolarını 15 dile yapay zeka dublajı ile çevirir, ses tonlamalarını duygusal olarak düzenler ve konuşan yapay zeka avatarları tasarlar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Ses Klonlama ve Düzenleme", desc: "ElevenLabs ses klonlama mekaniği, duygu/vurgu parametreleri ve telaffuz sözlüğü (phonetics) oluşturma." },
+          { title: "31 - 60. Gün: Sanal Avatar & Senkronizasyon", desc: "HeyGen ile sanal insan videoları, mimik kontrolü ve video dublajında dudak senkronizasyonu." },
+          { title: "61 - 90. Gün: Çok Dilli Prodüksiyon Portfolyosu", desc: "Bir şirketin eğitim setini 5 farklı dile sıfır hata ve doğal aksanla uyarlayan tam portfolyo demosu." }
+        ],
+        portfolio: [
+          "Tek bir Türkçe sunumu kusursuz dudak senkronuyla İngilizce, Almanca ve Arapçaya çeviren showreel.",
+          "Tamamen yapay zeka ile bestelenmiş, sözleri yazılmış ve seslendirilmiş 5 şarkılık kurumsal albüm.",
+          "Stüdyosuz, kameramansız ve mikrofonsuz üretilmiş 10 bölümlük 'AI Destekli Satış Eğitimi'."
+        ]
+      },
+      {
+        id: "ai-transformation-coach",
+        title: "AI Kurumsal Dönüşüm Koçu & Eğitmeni",
+        category: "automation",
+        categoryName: "No-Code & Otomasyon",
+        badge: "Yüksek Danışmanlık Ücreti 💼",
+        badgeClass: "tag-elite",
+        icon: "👨‍🏫",
+        salary: "₺80.000 - ₺220.000 / Ay (Saatlik: ₺4k - ₺18k)",
+        workType: "Hibrit / Kurumsal Danışmanlık",
+        growth: "+%320 Yıllık Talep",
+        desc: "Şirketlerin departmanlarını (İK, Finans, Satış, Hukuk) yapay zeka ile dönüştüren, çalışanlara özel eğitimler, verimlilik denetimleri ve prompt müfredatları sunan danışman.",
+        skills: ["AI Readiness Audit", "Departmental Workflows", "Prompt Literacy", "Change Management", "AI Policy Design"],
+        tools: [
+          { name: "ChatGPT Team", url: "/#tools-section" },
+          { name: "Claude Enterprise", url: "/#tools-section" },
+          { name: "Gamma", url: "/#tools-section" },
+          { name: "Notion", url: "/stack" }
+        ],
+        routine: "Şirket yöneticileriyle yapay zeka strateji toplantıları yapar, çalışanlara uygulamalı prompt atölyeleri düzenler ve verimlilik raporları hazırlar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Departman Bazlı Kullanım Vakaları", desc: "İK, Finans, Satış ve Destek departmanlarının en çok zaman harcadığı 5'er temel AI çözümünü öğrenme." },
+          { title: "31 - 60. Gün: Müfredat ve Sunum Tasarımı", desc: "Gamma ve Notion ile etkileşimli, uygulamalı atölye materyalleri ve canlı prompt egzersizleri hazırlama." },
+          { title: "61 - 90. Gün: İlk Kurumsal Müşteri & Referans", desc: "10-20 kişilik bir şirkete 2 saatlik pilot atölye verme, verimlilik ölçümü raporlama ve kurumsal sözleşme yapma." }
+        ],
+        portfolio: [
+          "100 kişilik bir şirket için yazılmış 'Kurumsal Yapay Zeka Etik ve Güvenlik Kullanım Kılavuzu'.",
+          "İK departmanının CV eleme ve aday iletişim süresini %65 kısaltan 'İK Yapay Zeka Dönüşüm Rehberi'.",
+          "Finans departmanı için geliştirilen fatura analizi ve nakit akış tahminleme prompt eğitim seti."
+        ]
+      },
+      {
+        id: "legal-tech-specialist",
+        title: "Yapay Zeka Destekli Hukuk Uzmanı",
+        category: "strategy",
+        categoryName: "Strateji & Ürün",
+        badge: "Yüksek Prestij ⚖️",
+        badgeClass: "tag-rising",
+        icon: "⚖️",
+        salary: "₺75.000 - ₺190.000 / Ay ($90k - $180k/yıl)",
+        workType: "Hukuk Bürosu / Kurumsal",
+        growth: "+%250 Yıllık Talep",
+        desc: "Yüzlerce sayfalık dava dosyalarını, sözleşmeleri ve regülasyonları yapay zekayla dakikalar içinde analiz eden, yasal riskleri tarayan uzman.",
+        skills: ["Contract Red-Flagging", "NotebookLM Research", "EU AI Act Compliance", "Legal Prompting", "Case Law Search"],
+        tools: [
+          { name: "NotebookLM", url: "/#tools-section" },
+          { name: "Claude 3.7", url: "/#tools-section" },
+          { name: "Harvey AI", url: "/#tools-section" },
+          { name: "ChatPDF", url: "/#tools-section" }
+        ],
+        routine: "Sözleşmelerdeki riskli maddeleri tespit eder, mevzuat değişikliklerini yapay zeka ile özetler ve dava stratejilerine yönelik içtihat taraması yapar.",
+        roadmap: [
+          { title: "1 - 30. Gün: Uzun Bağlam Hukuki Analiz", desc: "200k+ token bağlam pencereli modellerle 50+ sayfalık sözleşmeleri tarama ve lehe/aleyhe madde analizi." },
+          { title: "31 - 60. Gün: Yasal Bilgi Tabanı Kurulumu", desc: "NotebookLM ile kanun metinleri ve emsal içtihatları güvenli bir kapalı devre bilgi havuzuna dönüştürme." },
+          { title: "61 - 90. Gün: Hukuk Bürosu AI Entegrasyonu", desc: "Bir hukuk bürosu için standart sözleşme inceleme prompt kütüphanesi ve KVKK uyumlu yapay zeka protokolü hazırlama." }
+        ],
+        portfolio: [
+          "Karmaşık ticari sözleşmelerdeki gizli cezai şartları listeleyen 'Sözleşme Kırmızı Bayrak Analizörü'.",
+          "Binlerce sayfalık Yargıtay kararını tarayıp savunma argümanı çıkaran 'İçtihat Tarama Asistanı'.",
+          "Şirketlerin yapay zeka kullanımının KVKK ve EU AI Act standartlarına uyumluluk kontrol listesi."
+        ]
+      },
+      {
+        id: "healthcare-ai-specialist",
+        title: "Sağlık & Biyomedikal AI Uzmanı",
+        category: "tech",
+        categoryName: "Mühendislik & Teknik",
+        badge: "Hayat Kurtaran Teknoloji 🩺",
+        badgeClass: "tag-elite",
+        icon: "🩺",
+        salary: "₺115.000 - ₺290.000 / Ay ($150k - $290k/yıl)",
+        workType: "Araştırma / Hastane / Biyoteknoloji",
+        growth: "+%270 Yıllık Talep",
+        desc: "Medikal görüntü analizi, klinik rapor özetleme ve ilaç keşfi süreçlerinde derin öğrenme ve yapay zeka modellerini optimize eden uzman.",
+        skills: ["DICOM Processing", "Clinical Decision Support", "BioBERT / Med-PaLM", "HIPAA/KVKK Medical Data", "Genomics Analysis"],
+        tools: [
+          { name: "AlphaFold", url: "/#tools-section" },
+          { name: "BioBERT", url: "/#tools-section" },
+          { name: "OpenTargets", url: "/#tools-section" },
+          { name: "3D Slicer", url: "/#tools-section" }
+        ],
+        routine: "Radyoloji ve patoloji görüntü modellerini inceler, klinik verilerdeki anomalileri tespit eder ve araştırma makalelerindeki bulguları modelleştirir.",
+        roadmap: [
+          { title: "1 - 30. Gün: Medikal Veri Temelleri", desc: "DICOM görüntü formatı, tıbbi veri gizliliği, biyo-veri işleme kütüphaneleri ve temel CNN modelleri." },
+          { title: "31 - 60. Gün: Medikal Dil Modelleri", desc: "BioBERT ve Med-PaLM ile hasta epikriz raporlarını özetleme, kodlama (ICD-10) ve semptom analizi." },
+          { title: "61 - 90. Gün: Klinik Karar Destek Prototipi", desc: "Radyoloji raporu üreten açık kaynak görüntü işleme modeli demosu ve akademik vaka sunumu." }
+        ],
+        portfolio: [
+          "Akciğer röntgenlerinde pnömoni ve nodül tespiti yapan 'Derin Öğrenme Radyoloji Demosu'.",
+          "Karmaşık laboratuvar sonuçlarını hastanın anlayacağı sade Türkçe ile özetleyen 'Klinik Tahlil Yorumlayıcı'.",
+          "İlaç etken maddeleri arasındaki yan etki etkileşimlerini tarayan 'Biyomedikal Bilgi Grafiği'."
+        ]
+      }
+    ];
+
     let currentFilter = 'all';
 
-    async function loadJobs() {
-      try {
-        const res = await fetch('/api/jobs');
-        if (res.ok) {
-          allJobs = await res.json();
-          renderJobs();
-        } else {
-          document.getElementById('jobs-list-container').innerHTML = '<p style="color:var(--text-muted); text-align:center;">İlanlar yüklenirken bir sorun oluştu.</p>';
-        }
-      } catch (err) {
-        console.error(err);
-        document.getElementById('jobs-list-container').innerHTML = '<p style="color:var(--text-muted); text-align:center;">Bağlantı hatası.</p>';
-      }
-    }
+    function renderCareers() {
+      const container = document.getElementById('careers-container');
+      const search = document.getElementById('career-search').value.toLowerCase();
 
-    function renderJobs() {
-      const container = document.getElementById('jobs-list-container');
-      const search = document.getElementById('job-search-input').value.toLowerCase();
+      const filtered = CAREERS_DATA.filter(item => {
+        const matchesCategory = (currentFilter === 'all') || (item.category === currentFilter);
+        const matchesSearch = !search || 
+          item.title.toLowerCase().includes(search) || 
+          item.desc.toLowerCase().includes(search) || 
+          item.skills.some(s => s.toLowerCase().includes(search)) ||
+          item.categoryName.toLowerCase().includes(search);
 
-      const filtered = allJobs.filter(j => {
-        let matchFilter = true;
-        if (currentFilter === 'Remote') {
-          matchFilter = j.workType === 'Remote';
-        } else if (currentFilter !== 'all') {
-          matchFilter = j.role === currentFilter;
-        }
-
-        const matchSearch = !search || 
-          j.title.toLowerCase().includes(search) || 
-          j.company.toLowerCase().includes(search) || 
-          (j.description && j.description.toLowerCase().includes(search));
-
-        return matchFilter && matchSearch;
+        return matchesCategory && matchesSearch;
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '<div style="text-align:center; padding:40px; background:var(--bg-card); border-radius:var(--radius-lg); border:1px solid var(--border-color); color:var(--text-muted);">Aradığınız kriterde aktif ilan bulunamadı.</div>';
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align:center; padding:50px; background:var(--bg-card); border-radius:var(--radius-lg); border:1px solid var(--border-color); color:var(--text-muted);">
+            <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+            <h4 style="color:var(--text-primary); margin-bottom:4px;">Aradığınız Kriterde Meslek Bulunamadı</h4>
+            <p style="font-size:0.85rem;">Farklı bir arama kelimesi veya kategori deneyebilirsiniz.</p>
+          </div>
+        `;
         return;
       }
 
-      container.innerHTML = filtered.map(j => `
-        <div class="job-card">
-          <div class="job-header">
-            <div>
-              <h3 class="job-title">${j.title}</h3>
-              <span class="job-company">${j.company}</span>
+      container.innerHTML = filtered.map(item => `
+        <div class="career-card animate-on-scroll" id="card-${item.id}">
+          <div>
+            <div class="career-card-top">
+              <div class="career-card-icon">${item.icon}</div>
+              <span class="career-tag-pill ${item.badgeClass}">${item.badge}</span>
             </div>
-            <div class="job-meta-row">
-              <span class="job-badge badge-remote">📍 ${j.location}</span>
-              ${j.salary && j.salary !== 'Belirtilmedi' ? `<span class="job-badge badge-salary">💰 ${j.salary}</span>` : ''}
-              <span class="job-badge">🎯 ${j.level}</span>
+
+            <div style="font-size:0.75rem; color:var(--accent-purple); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">
+              ${item.categoryName}
             </div>
+            <h3 class="career-card-title">${item.title}</h3>
+            <p class="career-card-desc">${item.desc}</p>
           </div>
-          
-          <p class="job-desc">${j.description}</p>
-          
-          <div class="job-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted);">📅 İlan Tarihi: ${j.createdAt || 'Yeni'}</span>
-            <button class="btn-studio-action" style="padding:8px 18px; font-size:0.88rem;" onclick="openApplyModal('${j.id}')">
-              <span>⚡</span> Hızlı Başvuru Yap
+
+          <div>
+            <div class="career-meta-row">
+              <span class="meta-salary">${item.salary.split('(')[0].trim()}</span>
+              <span class="meta-remote">🌐 ${item.workType}</span>
+            </div>
+
+            <div class="career-skills">
+              ${item.skills.slice(0, 4).map(s => `<span class="skill-badge">${s}</span>`).join('')}
+              ${item.skills.length > 4 ? `<span class="skill-badge">+${item.skills.length - 4}</span>` : ''}
+            </div>
+
+            <button class="btn-view-roadmap" onclick="openCareerModal('${item.id}')">
+              <span>🗺️</span> Yol Haritası & Mentör Dosyası ➔
             </button>
           </div>
         </div>
       `).join('');
     }
 
-    function filterJobs(filterVal, btn) {
-      currentFilter = filterVal;
-      document.querySelectorAll('.job-pill').forEach(b => b.classList.remove('active'));
+    function filterCareers(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('#category-pills .career-pill').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderJobs();
+      renderCareers();
     }
 
-    function searchJobs() {
-      renderJobs();
+    function searchCareers() {
+      renderCareers();
     }
 
-    // Apply Modal
-    function openApplyModal(jobId) {
-      const job = allJobs.find(x => x.id === jobId);
-      if (!job) return;
+    // Modal Operations
+    function openCareerModal(careerId) {
+      const item = CAREERS_DATA.find(c => c.id === careerId);
+      if (!item) return;
 
-      document.getElementById('apply-job-id').value = jobId;
-      document.getElementById('modal-job-title').textContent = job.title;
-      document.getElementById('modal-job-company').textContent = `${job.company} • ${job.location}`;
-      document.getElementById('apply-modal').classList.add('active');
+      document.getElementById('m-icon').textContent = item.icon;
+      document.getElementById('m-title').textContent = item.title;
+      document.getElementById('m-category').textContent = item.categoryName;
+      document.getElementById('m-badge').textContent = item.badge;
+      document.getElementById('m-badge').className = `career-tag-pill ${item.badgeClass}`;
+      document.getElementById('m-salary').textContent = item.salary;
+      document.getElementById('m-worktype').textContent = item.workType;
+      document.getElementById('m-growth').textContent = item.growth;
+      document.getElementById('m-routine').textContent = item.routine;
+
+      // Roadmap
+      const roadmapContainer = document.getElementById('m-roadmap');
+      roadmapContainer.innerHTML = item.roadmap.map(step => `
+        <div class="roadmap-step">
+          <div class="roadmap-step-title">🎯 ${step.title}</div>
+          <div class="roadmap-step-desc">${step.desc}</div>
+        </div>
+      `).join('');
+
+      // Portfolio Ideas
+      const portfolioContainer = document.getElementById('m-portfolio');
+      portfolioContainer.innerHTML = item.portfolio.map((idea, idx) => `
+        <li class="portfolio-idea-item">
+          <span>Proje ${idx + 1}:</span> ${idea}
+        </li>
+      `).join('');
+
+      // Tools
+      const toolsContainer = document.getElementById('m-tools');
+      toolsContainer.innerHTML = item.tools.map(t => `
+        <a href="${t.url}" class="tool-link-pill" title="${t.name} aracını vitrinde incele">
+          <span>⚡</span> ${t.name}
+        </a>
+      `).join('');
+
+      document.getElementById('career-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
-    function closeApplyModal() {
-      document.getElementById('apply-modal').classList.remove('active');
+    function closeCareerModal() {
+      document.getElementById('career-modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
     }
 
-    async function submitApplication(e) {
-      e.preventDefault();
-      const jobId = document.getElementById('apply-job-id').value;
-      const data = {
-        fullName: document.getElementById('app-name').value,
-        email: document.getElementById('app-email').value,
-        phone: document.getElementById('app-phone').value,
-        linkedin: document.getElementById('app-linkedin').value,
-        portfolio: document.getElementById('app-portfolio').value,
-        note: document.getElementById('app-note').value
-      };
+    // Close on overlay click
+    document.getElementById('career-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeCareerModal();
+      }
+    });
 
-      try {
-        const res = await fetch(`/api/jobs/${jobId}/apply`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await res.json();
-        if (res.ok) {
-          alert('Başvurunuz başarıyla işverene iletildi! İyi şanslar.');
-          closeApplyModal();
-          document.getElementById('apply-form').reset();
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeCareerModal();
+      }
+    });
+
+    // Quiz Matching Logic
+    function calculateCareerMatch() {
+      const interest = document.getElementById('quiz-interest').value;
+      const level = document.getElementById('quiz-level').value;
+      const goal = document.getElementById('quiz-goal').value;
+
+      let matchedId = "prompt-engineer";
+      let advice = "";
+
+      if (interest === "coding") {
+        if (level === "advanced") {
+          matchedId = "fine-tuning-llm-engineer";
+          advice = "İleri yazılım bilginizle açık kaynak LLM modellerini eğitmek ve optimize etmek size en yüksek küresel geliri sağlayacaktır.";
         } else {
-          alert(result.error || 'Başvuru gönderilemedi.');
+          matchedId = "rag-vector-engineer";
+          advice = "Python ve vektör veritabanlarını öğrenerek şirketlerin kurumsal bilgi bankalarını yöneten RAG uzmanı olabilirsiniz.";
         }
-      } catch (err) {
-        alert('Sunucu hatası oluştu.');
+      } else if (interest === "creative") {
+        if (goal === "remote") {
+          matchedId = "ai-creative-director";
+          advice = "Midjourney ve ComfyUI ile global reklam ve oyun projelerinde karakter ve görsel yönetmenliği yapabilirsiniz.";
+        } else {
+          matchedId = "ai-audio-producer";
+          advice = "Ses klonlama ve sentetik dublaj ile YouTube ve podcast dünyasında çok dilli yapımcı olabilirsiniz.";
+        }
+      } else if (interest === "automation") {
+        matchedId = "ai-agent-architect";
+        advice = "Kod yazmadan n8n ve Make ile şirketlerin günlük işlerini otonom ajanlara devrederek kendi ajansınızı kurabilirsiniz.";
+      } else if (interest === "strategy") {
+        if (level === "nocode" && goal === "corporate") {
+          matchedId = "ai-transformation-coach";
+          advice = "Şirket çalışanlarına ve yöneticilerine yapay zeka kullanım atölyeleri vererek kurumsal dönüşüm koçu olabilirsiniz.";
+        } else {
+          matchedId = "ai-product-manager";
+          advice = "Yapay zeka modellerinin sınırlarını ve kullanıcı deneyimini yöneten yüksek maaşlı AI PM rolü tam size göre.";
+        }
+      } else if (interest === "research") {
+        matchedId = "legal-tech-specialist";
+        advice = "Metin analizi ve derin araştırma kabiliyetinizi NotebookLM ve Claude ile birleştirerek regülasyon ve analiz uzmanı olabilirsiniz.";
+      }
+
+      const matchedRole = CAREERS_DATA.find(c => c.id === matchedId);
+      if (matchedRole) {
+        const resultBanner = document.getElementById('quiz-result');
+        document.getElementById('quiz-result-icon').textContent = matchedRole.icon;
+        document.getElementById('quiz-result-role').textContent = `Tavsiyemiz: ${matchedRole.title}`;
+        document.getElementById('quiz-result-advice').textContent = advice;
+        
+        const btn = document.getElementById('quiz-result-btn');
+        btn.onclick = () => {
+          openCareerModal(matchedRole.id);
+        };
+
+        resultBanner.style.display = 'flex';
+
+        // Scroll to card smoothly
+        setTimeout(() => {
+          const cardEl = document.getElementById(`card-${matchedRole.id}`);
+          if (cardEl) {
+            cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            cardEl.style.borderColor = 'var(--accent-cyan)';
+            cardEl.style.boxShadow = '0 0 30px rgba(217, 70, 239, 0.4)';
+            setTimeout(() => {
+              cardEl.style.borderColor = '';
+              cardEl.style.boxShadow = '';
+            }, 3000);
+          }
+        }, 300);
       }
     }
 
-    // Post Job Modal
-    function openPostJobModal() {
-      document.getElementById('post-job-modal').classList.add('active');
-    }
-    function closePostJobModal() {
-      document.getElementById('post-job-modal').classList.remove('active');
+    // FAQ Toggle
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('active');
     }
 
-    async function submitNewJob(e) {
-      e.preventDefault();
-      const data = {
-        title: document.getElementById('job-title-in').value,
-        company: document.getElementById('job-comp-in').value,
-        workType: document.getElementById('job-type-in').value,
-        location: document.getElementById('job-loc-in').value,
-        role: document.getElementById('job-role-in').value,
-        salary: document.getElementById('job-sal-in').value,
-        description: document.getElementById('job-desc-in').value,
-        contactEmail: document.getElementById('job-email-in').value
-      };
-
-      try {
-        const res = await fetch('/api/jobs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await res.json();
-        if (res.ok) {
-          alert('İlanınız başarıyla yayınlandı!');
-          closePostJobModal();
-          document.getElementById('post-job-form').reset();
-          loadJobs();
-        } else {
-          alert(result.error || 'İlan kaydedilemedi.');
-        }
-      } catch (err) {
-        alert('Sunucu hatası oluştu.');
-      }
+    // Mobile nav toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileNav) {
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+      });
     }
 
-    // Initialize
-    loadJobs();
-
-    // Theme setup
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
+    // Theme toggle
     const themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) {
       themeBtn.addEventListener('click', () => {
-        const activeTheme = document.documentElement.getAttribute('data-theme');
-        const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', nextTheme);
-        localStorage.setItem('theme', nextTheme);
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
       });
     }
 
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-nav');
-    if (mobileBtn && mobileMenu) {
-      mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-      });
-    }
+    // Initial render
+    renderCareers();
   </script>
 </body>
 </html>
