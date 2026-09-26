@@ -41,47 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     <div class="toolkit-backdrop" id="toolkit-backdrop"></div>
 
-    <!-- Mobil Bottom Tab Navigation Bar -->
-    <div class="mobile-bottom-tabs">
-      <a href="#" class="mobile-bottom-tab-item" id="mobile-tab-bookmarks">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-        <span>Setim</span>
-      </a>
-      <a href="#" class="mobile-bottom-tab-item" id="mobile-tab-search">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <span>Ara</span>
-      </a>
-      <a href="#" class="mobile-bottom-tab-item mobile-bottom-tab-center" id="mobile-tab-categories">
-        <div class="mobile-bottom-tab-center-btn">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
-        </div>
-        <span>Kategoriler</span>
-      </a>
-      <a href="/asistan" class="mobile-bottom-tab-item" id="mobile-tab-assistant">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z"/>
-        </svg>
-        <span>Asistan</span>
-      </a>
-      <a href="/kurulum" class="mobile-bottom-tab-item" id="mobile-tab-explore">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 11l3 3L22 4"/>
-          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-        </svg>
-        <span>Bana Özel</span>
-      </a>
-    </div>
 
     <!-- Categories Overlay / Drawer -->
     <div class="categories-drawer" id="categories-drawer">
@@ -172,13 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnOpen = document.getElementById('nav-toolkit-btn');
   const btnOpenMobile = document.getElementById('mobile-toolkit-btn');
 
-  // Mobile bottom tab elements
-  const tabBookmarks = document.getElementById('mobile-tab-bookmarks');
-  const tabSearch = document.getElementById('mobile-tab-search');
-  const tabCategories = document.getElementById('mobile-tab-categories');
-  const tabAssistant = document.getElementById('mobile-tab-assistant');
-  const tabExplore = document.getElementById('mobile-tab-explore');
-
   // Categories drawer elements
   const categoriesDrawer = document.getElementById('categories-drawer');
   const categoriesBackdrop = document.getElementById('categories-backdrop');
@@ -196,13 +148,11 @@ document.addEventListener('DOMContentLoaded', function () {
     drawer.classList.add('active');
     backdrop.classList.add('active');
     renderToolkitItems();
-    if (tabBookmarks) tabBookmarks.classList.add('active');
   }
 
   function closeDrawer() {
     drawer.classList.remove('active');
     backdrop.classList.remove('active');
-    updateActiveBottomTab();
   }
 
   function openCategoriesDrawer() {
@@ -210,13 +160,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (categoriesDrawer) categoriesDrawer.classList.add('active');
     if (categoriesBackdrop) categoriesBackdrop.classList.add('active');
     renderCategoriesInDrawer();
-    if (tabCategories) tabCategories.classList.add('active');
   }
 
   function closeCategoriesDrawer() {
     if (categoriesDrawer) categoriesDrawer.classList.remove('active');
     if (categoriesBackdrop) categoriesBackdrop.classList.remove('active');
-    updateActiveBottomTab();
   }
 
   function renderCategoriesInDrawer() {
@@ -270,40 +218,30 @@ document.addEventListener('DOMContentLoaded', function () {
   if (btnCloseCategories) btnCloseCategories.addEventListener('click', closeCategoriesDrawer);
   if (categoriesBackdrop) categoriesBackdrop.addEventListener('click', closeCategoriesDrawer);
 
-  // Mobile bottom tab actions
-  if (tabBookmarks) {
-    tabBookmarks.addEventListener('click', function(e) {
+  // Open categories drawer from left mobile nav or any button with data-open-categories
+  document.addEventListener('click', function(e) {
+    const catTrigger = e.target.closest('#mobile-nav-categories, [data-open-categories], .open-categories-btn');
+    if (catTrigger) {
       e.preventDefault();
-      openDrawer();
-    });
-  }
-
-  if (tabSearch) {
-    tabSearch.addEventListener('click', function(e) {
-      e.preventDefault();
-      const currentPath = window.location.pathname;
-      if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          searchInput.focus();
-        }
-      } else {
-        window.location.href = '/?focus=search';
-      }
-    });
-  }
-
-  if (tabCategories) {
-    tabCategories.addEventListener('click', function(e) {
-      e.preventDefault();
+      const mobileNav = document.getElementById('mobile-nav');
+      if (mobileNav) mobileNav.classList.remove('active');
       if (categoriesDrawer && categoriesDrawer.classList.contains('active')) {
         closeCategoriesDrawer();
       } else {
         openCategoriesDrawer();
       }
-    });
-  }
+      return;
+    }
+
+    const toolkitBtn = e.target.closest('#mobile-toolkit-btn');
+    if (toolkitBtn) {
+      e.preventDefault();
+      const mobileNav = document.getElementById('mobile-nav');
+      if (mobileNav) mobileNav.classList.remove('active');
+      openDrawer();
+      return;
+    }
+  });
 
   // Auto-focus search if directed with URL parameters
   const urlParams = new URLSearchParams(window.location.search);
@@ -317,27 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Highlight active bottom tab
-  function updateActiveBottomTab() {
-    const currentPath = window.location.pathname;
-    
-    // Clear active classes
-    [tabBookmarks, tabSearch, tabCategories, tabAssistant, tabExplore].forEach(tab => {
-      if (tab) tab.classList.remove('active');
-    });
-
-    if (categoriesDrawer && categoriesDrawer.classList.contains('active')) {
-      if (tabCategories) tabCategories.classList.add('active');
-    } else if (currentPath.includes('/asistan')) {
-      if (tabAssistant) tabAssistant.classList.add('active');
-    } else if (currentPath.includes('/kurulum')) {
-      if (tabExplore) tabExplore.classList.add('active');
-    } else if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('vitrini/') || currentPath === '') {
-      if (tabSearch) tabSearch.classList.add('active');
-    }
-  }
-
-  updateActiveBottomTab();
+  function updateActiveBottomTab() {}
 
   // Auth Modal Actions
   window.showAuthModal = function (callback) {
