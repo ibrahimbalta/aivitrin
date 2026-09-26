@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Modelleri & Token Fiyat Borsası — 2026 Güncel Karşılaştırma | AiKlavuz</title>
+  <meta name="description" content="GPT-4o, Claude 3.5 Sonnet, Gemini 2.0, DeepSeek R1 ve Llama 3.3 modellerinin 1M token girdi/çıktı fiyatları, hızları ve bağlam pencerelerini canlı döviz kuruyla karşılaştırın.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/toolkit.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    .models-hero {
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .filter-pill:hover {
+      border-color: var(--accent-purple);
+      color: var(--text-primary);
+    }
+    .filter-pill.active {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+    }
+
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 40px;
+    }
+    .models-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+      min-width: 900px;
+    }
+    .models-table th {
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      user-select: none;
+    }
+    .models-table th:hover {
+      color: var(--text-primary);
+    }
+    .models-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+    .models-table tr:hover td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .model-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .provider-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .price-cell {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .price-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .speed-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-green);
+    }
+    .speed-blazing {
+      background: rgba(217, 70, 239, 0.15);
+      color: var(--accent-cyan);
+    }
+
+    .simulator-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 60px;
+    }
+  </style>
+
+  <script src="/js/i18n.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d0e12">
+  <script src="/js/pwa-register.js" defer></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>
+  <script src="/js/cookie-consent.js" defer></script>
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <a href="/" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad)" stroke-width="14" stroke-linejoin="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad)" />
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad)" stroke-width="4"/>
+            </svg>
+          </span>
+          <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+        </a>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="/#tools-section">AI Araçları</a>
+        <a href="/studio">Stüdyo</a>
+        <a href="/models" class="active">LLM Modelleri</a>
+        <a href="/prompt-studio">Prompt Stüdyosu</a>
+        <a href="/stack">AI Stack'im</a>
+        <a href="/kariyer">Kariyer</a>
+
+        <div class="nav-item-dropdown nav-mega-dropdown">
+          <span class="nav-dropdown-trigger">
+            <span>Daha Fazla</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-menu-col">
+                <h5>Keşif & Karşılaştırma</h5>
+                <a href="/alternatives">Alternatifler</a>
+                <a href="/compare">Karşılaştır</a>
+                <a href="/calculator">API Hesaplayıcı</a>
+                <a href="/professions">Meslekler</a>
+                <a href="/firsatlar">Fırsatlar</a>
+              </div>
+              <div class="mega-menu-col">
+                <h5>Akademi & Çözümler</h5>
+                <a href="/workflows">İş Akışları</a>
+                <a href="/asistan">AI Asistanı</a>
+                <a href="/prompts">Günün Promptu</a>
+                <a href="/haberler">Haberler</a>
+                <a href="/akademi">Akademi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-right">
+        <a href="/asistan" class="assistant-pill-btn">
+          <span>AI Asistan</span>
+        </a>
+        <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="/#tools-section">AI Araçları</a>
+    <a href="/studio">Stüdyo</a>
+    <a href="/models" class="active">LLM Modelleri</a>
+    <a href="/prompt-studio">Prompt Stüdyosu</a>
+    <a href="/stack">AI Stack'im</a>
+    <a href="/kariyer">Kariyer</a>
+    <a href="/compare">Karşılaştır</a>
+    <a href="/calculator">API Hesaplayıcı</a>
+    <a href="/workflows">İş Akışları</a>
+    <a href="/asistan">AI Asistanı</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="models-hero container animate-on-scroll">
+    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); color:var(--accent-purple); padding:6px 14px; border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; margin-bottom:16px;">
+      📈 Canlı LLM Borsası & Fiyat İndeksi • 2026
+    </div>
+    <h1 style="font-family:'Outfit',sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px;">
+      Büyük Dil Modelleri <span class="text-gradient">Fiyat & Hız Tablosu</span>
+    </h1>
+    <p style="color:var(--text-secondary); max-width:720px; margin:0 auto; font-size:1.05rem; line-height:1.6;">
+      OpenAI, Anthropic, Google, DeepSeek ve Meta modellerinin 1 Milyon Token başına girdi/çıktı maliyetlerini, bağlam sınırlarını ve hızlarını canlı olarak karşılaştırın.
+    </p>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+    
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-right:4px;">Sağlayıcı:</span>
+        <button class="filter-pill active" onclick="filterModels('all', this)">Tümü</button>
+        <button class="filter-pill" onclick="filterModels('OpenAI', this)">OpenAI</button>
+        <button class="filter-pill" onclick="filterModels('Anthropic', this)">Anthropic</button>
+        <button class="filter-pill" onclick="filterModels('Google', this)">Google</button>
+        <button class="filter-pill" onclick="filterModels('DeepSeek', this)">DeepSeek</button>
+        <button class="filter-pill" onclick="filterModels('Open Source', this)">Açık Kaynak</button>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:0.85rem; color:var(--text-muted); font-weight:600;">Döviz Kuru: $1 =</span>
+        <input type="number" id="usd-rate-input" value="38.50" step="0.5" style="width:75px; padding:6px 10px; background:var(--bg-input); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-primary); font-weight:700; text-align:center;" oninput="updateCurrencyRate()">
+        <span style="font-size:0.85rem; color:var(--text-primary); font-weight:700;">₺</span>
+      </div>
+    </div>
+
+    <!-- Models Table -->
+    <div class="table-container">
+      <table class="models-table" id="models-table">
+        <thead>
+          <tr>
+            <th onclick="sortModels('name')">Model & Sağlayıcı ↕</th>
+            <th onclick="sortModels('inputPrice')">Girdi (1M Token) ↕</th>
+            <th onclick="sortModels('outputPrice')">Çıktı (1M Token) ↕</th>
+            <th onclick="sortModels('context')">Bağlam Penceresi ↕</th>
+            <th onclick="sortModels('speed')">Hız (Token/sn) ↕</th>
+            <th>Yetkinlikler</th>
+            <th onclick="sortModels('score')">Fiyat/Performans ↕</th>
+          </tr>
+        </thead>
+        <tbody id="models-tbody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Monthly Budget Simulator -->
+    <div class="simulator-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h3 style="font-family:'Outfit',sans-serif; font-size:1.35rem; margin:0 0 4px; color:var(--text-primary);">
+            🧮 Hızlı Aylık Bütçe Simülatörü
+          </h3>
+          <p style="color:var(--text-secondary); font-size:0.9rem; margin:0;">
+            Günlük kullanıcı ve sorgu sayınıza göre ay sonunda karşılaşacağınız faturaları kıyaslayın.
+          </p>
+        </div>
+        <a href="/calculator" class="btn-studio-sec" style="color:var(--accent-purple); font-weight:700;">
+          Gelişmiş API Hesaplayıcı &rarr;
+        </a>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Günlük Toplam İstek Sayısı</label>
+            <span id="sim-req-val" style="font-weight:700; color:var(--accent-purple);">1.000</span>
+          </div>
+          <input type="range" id="sim-req-slider" min="100" max="25000" step="100" value="1000" class="calc-slider" style="width:100%;" oninput="updateSimulator()">
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Ortalama Girdi (Kullanıcı İstemi)</label>
+            <span id="sim-in-val" style="font-weight:700; color:var(--accent-purple);">500 Token (~375 Kelime)</span>
+          </div>
+          <input type="range" id="sim-in-slider" min="100" max="4000" step="100" value="500" class="calc-slider" style="width:100%;" oninput="updateSimulator()">
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">Ortalama Çıktı (Model Yanıtı)</label>
+            <span id="sim-out-val" style="font-weight:700; color:var(--accent-purple);">1.000 Token (~750 Kelime)</span>
+          </div>
+          <input type="range" id="sim-out-slider" min="100" max="4000" step="100" value="1000" class="calc-slider" style="width:100%;" oninput="updateSimulator()">
+        </div>
+      </div>
+
+      <!-- Simulator Comparative Cards -->
+      <div id="sim-results-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px;">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+          </a>
+          <p class="footer-tagline">Türkiye'nin en kapsamlı ve güncel yapay zeka rehberi.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Ürünler</h5>
+            <a href="/studio">AI Stüdyo</a>
+            <a href="/models">LLM Modelleri</a>
+            <a href="/prompt-studio">Prompt Stüdyosu</a>
+            <a href="/stack">AI Stack'im</a>
+            <a href="/calculator">API Hesaplayıcı</a>
+          </div>
+          <div class="footer-col">
+            <h5>Topluluk</h5>
+            <a href="/kariyer">Kariyer & İlanlar</a>
+            <a href="/stories">Başarı Hikayeleri</a>
+            <a href="/haberler">Yapay Zeka Haberleri</a>
+            <a href="/akademi">Akademi</a>
+          </div>
+          <div class="footer-col">
+            <h5>Yasal</h5>
+            <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+            <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+            <a href="/iletisim">İletişim</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AiKlavuz.com — Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const LLM_MODELS = [
+      {
+        id: 'gpt-4o',
+        name: 'GPT-4o',
+        provider: 'OpenAI',
+        inputPrice: 2.50,
+        outputPrice: 10.00,
+        context: 128000,
+        contextStr: '128K',
+        speed: 105,
+        speedCategory: 'Hızlı',
+        capabilities: ['Multimodal', 'Vision', 'Voice', 'Code'],
+        score: 9.6
+      },
+      {
+        id: 'gpt-4o-mini',
+        name: 'GPT-4o mini',
+        provider: 'OpenAI',
+        inputPrice: 0.15,
+        outputPrice: 0.60,
+        context: 128000,
+        contextStr: '128K',
+        speed: 140,
+        speedCategory: 'Çok Hızlı',
+        capabilities: ['Vision', 'Code', 'Ultra Ucuz'],
+        score: 9.8
+      },
+      {
+        id: 'o3-mini',
+        name: 'o3-mini (Reasoning)',
+        provider: 'OpenAI',
+        inputPrice: 1.10,
+        outputPrice: 4.40,
+        context: 200000,
+        contextStr: '200K',
+        speed: 65,
+        speedCategory: 'Düşünce Zinciri',
+        capabilities: ['Deep Reasoning', 'Math', 'STEM Code'],
+        score: 9.5
+      },
+      {
+        id: 'claude-3-5-sonnet',
+        name: 'Claude 3.5 Sonnet',
+        provider: 'Anthropic',
+        inputPrice: 3.00,
+        outputPrice: 15.00,
+        context: 200000,
+        contextStr: '200K',
+        speed: 85,
+        speedCategory: 'Dengeli',
+        capabilities: ['Artifacts', 'En İyi Kod', 'Vision', 'Analiz'],
+        score: 9.9
+      },
+      {
+        id: 'claude-3-5-haiku',
+        name: 'Claude 3.5 Haiku',
+        provider: 'Anthropic',
+        inputPrice: 0.80,
+        outputPrice: 4.00,
+        context: 200000,
+        contextStr: '200K',
+        speed: 130,
+        speedCategory: 'Çok Hızlı',
+        capabilities: ['Sub-second', 'Hızlı Kod', 'Chatbot'],
+        score: 9.2
+      },
+      {
+        id: 'gemini-2-flash',
+        name: 'Gemini 2.0 Flash',
+        provider: 'Google',
+        inputPrice: 0.10,
+        outputPrice: 0.40,
+        context: 1000000,
+        contextStr: '1M',
+        speed: 175,
+        speedCategory: 'Işık Hızında',
+        capabilities: ['Realtime Audio', '1M Context', 'Vision', 'Ultra Ucuz'],
+        score: 9.9
+      },
+      {
+        id: 'gemini-1-5-pro',
+        name: 'Gemini 1.5 Pro',
+        provider: 'Google',
+        inputPrice: 1.25,
+        outputPrice: 5.00,
+        context: 2000000,
+        contextStr: '2M',
+        speed: 70,
+        speedCategory: 'Dev Bağlam',
+        capabilities: ['2M Context', 'Video Analizi', 'Kitap Boyutu'],
+        score: 9.4
+      },
+      {
+        id: 'deepseek-r1',
+        name: 'DeepSeek R1',
+        provider: 'DeepSeek',
+        inputPrice: 0.55,
+        outputPrice: 2.19,
+        context: 64000,
+        contextStr: '64K',
+        speed: 55,
+        speedCategory: 'Mantık / CoT',
+        capabilities: ['Açık Ağırlıklı', 'o1 Seviyesi', 'STEM', 'F/P Şampiyonu'],
+        score: 9.9
+      },
+      {
+        id: 'deepseek-v3',
+        name: 'DeepSeek V3',
+        provider: 'DeepSeek',
+        inputPrice: 0.14,
+        outputPrice: 0.28,
+        context: 64000,
+        contextStr: '64K',
+        speed: 95,
+        speedCategory: 'Hızlı',
+        capabilities: ['MoE 671B', 'Genel Amaç', 'Ekonomik'],
+        score: 9.7
+      },
+      {
+        id: 'llama-3-3-70b',
+        name: 'Llama 3.3 70B (Groq)',
+        provider: 'Open Source',
+        inputPrice: 0.59,
+        outputPrice: 0.79,
+        context: 128000,
+        contextStr: '128K',
+        speed: 280,
+        speedCategory: '280 tps Rekor',
+        capabilities: ['Açık Kaynak', 'LPU Hızlanması', 'Kurumsal'],
+        score: 9.5
+      },
+      {
+        id: 'mistral-large-2',
+        name: 'Mistral Large 2',
+        provider: 'Open Source',
+        inputPrice: 2.00,
+        outputPrice: 6.00,
+        context: 128000,
+        contextStr: '128K',
+        speed: 80,
+        speedCategory: 'Dengeli',
+        capabilities: ['Avrupa Menşeili', 'Çok Dilli', 'Akıl Yürütme'],
+        score: 9.0
+      }
+    ];
+
+    let currentFilter = 'all';
+    let currentSort = 'score';
+    let sortAsc = false;
+    let usdRate = 38.50;
+
+    function renderModelsTable() {
+      const tbody = document.getElementById('models-tbody');
+      let filtered = LLM_MODELS.filter(m => {
+        if (currentFilter === 'all') return true;
+        return m.provider === currentFilter;
+      });
+
+      filtered.sort((a, b) => {
+        let valA = a[currentSort];
+        let valB = b[currentSort];
+        if (typeof valA === 'string') {
+          return sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
+        return sortAsc ? valA - valB : valB - valA;
+      });
+
+      tbody.innerHTML = filtered.map(m => {
+        const inTry = (m.inputPrice * usdRate).toFixed(2);
+        const outTry = (m.outputPrice * usdRate).toFixed(2);
+        const isSuperSpeed = m.speed > 130;
+
+        return `
+          <tr>
+            <td>
+              <span class="model-badge">${m.name}</span>
+              <span class="provider-tag">${m.provider}</span>
+            </td>
+            <td>
+              <span class="price-cell">$${m.inputPrice.toFixed(2)}</span>
+              <span class="price-sub">₺${inTry} / 1M</span>
+            </td>
+            <td>
+              <span class="price-cell">$${m.outputPrice.toFixed(2)}</span>
+              <span class="price-sub">₺${outTry} / 1M</span>
+            </td>
+            <td>
+              <span style="font-weight:700; color:var(--text-primary);">${m.contextStr}</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); display:block;">${m.context.toLocaleString()} tokens</span>
+            </td>
+            <td>
+              <span class="speed-badge ${isSuperSpeed ? 'speed-blazing' : ''}">${m.speed} t/s</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">${m.speedCategory}</span>
+            </td>
+            <td>
+              <div style="display:flex; flex-wrap:wrap; gap:4px;">
+                ${m.capabilities.map(c => `<span style="font-size:0.72rem; background:rgba(255,255,255,0.03); border:1px solid var(--border-color); padding:2px 6px; border-radius:3px; color:var(--text-secondary);">${c}</span>`).join('')}
+              </div>
+            </td>
+            <td>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="font-weight:800; color:var(--accent-purple); font-size:1.05rem;">${m.score}</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">/10</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function filterModels(provider, btn) {
+      currentFilter = provider;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderModelsTable();
+    }
+
+    function sortModels(field) {
+      if (currentSort === field) {
+        sortAsc = !sortAsc;
+      } else {
+        currentSort = field;
+        sortAsc = field === 'inputPrice' || field === 'outputPrice'; // Cheaper first by default
+      }
+      renderModelsTable();
+    }
+
+    function updateCurrencyRate() {
+      const val = parseFloat(document.getElementById('usd-rate-input').value);
+      if (val && val > 0) {
+        usdRate = val;
+        renderModelsTable();
+        updateSimulator();
+      }
+    }
+
+    function updateSimulator() {
+      const dailyReq = parseInt(document.getElementById('sim-req-slider').value, 10);
+      const inTokens = parseInt(document.getElementById('sim-in-slider').value, 10);
+      const outTokens = parseInt(document.getElementById('sim-out-slider').value, 10);
+
+      document.getElementById('sim-req-val').textContent = dailyReq.toLocaleString('tr-TR');
+      document.getElementById('sim-in-val').textContent = `${inTokens.toLocaleString('tr-TR')} Token (~${Math.round(inTokens*0.75)} Kelime)`;
+      document.getElementById('sim-out-val').textContent = `${outTokens.toLocaleString('tr-TR')} Token (~${Math.round(outTokens*0.75)} Kelime)`;
+
+      const monthlyReq = dailyReq * 30;
+      const totalInM = (monthlyReq * inTokens) / 1000000;
+      const totalOutM = (monthlyReq * outTokens) / 1000000;
+
+      const simContainer = document.getElementById('sim-results-grid');
+      const highlightModels = ['gemini-2-flash', 'gpt-4o-mini', 'deepseek-r1', 'claude-3-5-sonnet', 'gpt-4o'];
+
+      simContainer.innerHTML = highlightModels.map(id => {
+        const m = LLM_MODELS.find(x => x.id === id);
+        if (!m) return '';
+        const costUsd = (totalInM * m.inputPrice) + (totalOutM * m.outputPrice);
+        const costTry = costUsd * usdRate;
+
+        return `
+          <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; position:relative; overflow:hidden;">
+            <div style="font-size:0.75rem; color:var(--text-muted);">${m.provider}</div>
+            <div style="font-weight:700; font-size:1.05rem; color:var(--text-primary); margin-bottom:10px;">${m.name}</div>
+            
+            <div style="font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:800; color:var(--accent-purple);">
+              $${costUsd < 1 ? costUsd.toFixed(2) : Math.round(costUsd).toLocaleString('tr-TR')}
+            </div>
+            <div style="font-size:0.85rem; color:var(--text-secondary); margin-top:2px;">
+              ₺${Math.round(costTry).toLocaleString('tr-TR')} / Ay
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Initialize
+    renderModelsTable();
+    updateSimulator();
+
+    // Theme setup
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme');
+        const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+    }
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>

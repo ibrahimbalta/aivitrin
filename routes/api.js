@@ -3967,4 +3967,114 @@ router.post('/deals/:id/click', function (req, res) {
   }
 });
 
+// ─── AI CAREERS & JOBS ───────────────────────
+
+// GET /api/jobs
+router.get('/jobs', function (req, res) {
+  try {
+    const db = readDB();
+    let jobs = db.jobs || [];
+    const { category, workType, search } = req.query;
+
+    if (category && category !== 'all') {
+      jobs = jobs.filter(j => j.role === category);
+    }
+    if (workType && workType !== 'all') {
+      jobs = jobs.filter(j => j.workType === workType);
+    }
+    if (search) {
+      const q = search.toLowerCase();
+      jobs = jobs.filter(j => 
+        (j.title && j.title.toLowerCase().includes(q)) ||
+        (j.company && j.company.toLowerCase().includes(q)) ||
+        (j.description && j.description.toLowerCase().includes(q))
+      );
+    }
+
+    res.json(jobs);
+  } catch (err) {
+    console.error('Error fetching jobs:', err.message);
+    res.status(500).json({ error: 'İş ilanları yüklenemedi.' });
+  }
+});
+
+// POST /api/jobs
+router.post('/jobs', function (req, res) {
+  try {
+    const { title, company, location, workType, role, level, salary, description, applyUrl, contactEmail } = req.body;
+    if (!title || !company || !description) {
+      return res.status(400).json({ error: 'Lütfen zorunlu alanları (Başlık, Şirket, Açıklama) doldurun.' });
+    }
+
+    const db = readDB();
+    db.jobs = db.jobs || [];
+
+    const newJob = {
+      id: 'job_' + Date.now(),
+      title: title.trim(),
+      company: company.trim(),
+      location: location ? location.trim() : 'Uzaktan (Remote)',
+      workType: workType || 'Remote',
+      role: role || 'AI Geliştirici',
+      level: level || 'Mid-Level',
+      salary: salary ? salary.trim() : 'Belirtilmedi',
+      description: description.trim(),
+      applyUrl: applyUrl ? applyUrl.trim() : '',
+      contactEmail: contactEmail ? contactEmail.trim() : '',
+      status: 'active',
+      createdAt: new Date().toISOString().split('T')[0]
+    };
+
+    db.jobs.unshift(newJob);
+    writeDB(db);
+
+    res.status(201).json({ success: true, job: newJob });
+  } catch (err) {
+    console.error('Error creating job:', err.message);
+    res.status(500).json({ error: 'İlan kaydedilemedi.' });
+  }
+});
+
+// POST /api/jobs/:id/apply
+router.post('/jobs/:id/apply', function (req, res) {
+  try {
+    const { id } = req.params;
+    const { fullName, email, phone, linkedin, portfolio, note } = req.body;
+
+    if (!fullName || !email) {
+      return res.status(400).json({ error: 'Lütfen Ad-Soyad ve E-Posta adresinizi girin.' });
+    }
+
+    const db = readDB();
+    const job = (db.jobs || []).find(j => j.id === id);
+    if (!job) {
+      return res.status(404).json({ error: 'İlan bulunamadı.' });
+    }
+
+    db.job_applications = db.job_applications || [];
+    const application = {
+      id: 'app_' + Date.now(),
+      jobId: id,
+      jobTitle: job.title,
+      company: job.company,
+      fullName: fullName.trim(),
+      email: email.trim(),
+      phone: phone ? phone.trim() : '',
+      linkedin: linkedin ? linkedin.trim() : '',
+      portfolio: portfolio ? portfolio.trim() : '',
+      note: note ? note.trim() : '',
+      appliedAt: new Date().toISOString()
+    };
+
+    db.job_applications.push(application);
+    writeDB(db);
+
+    res.json({ success: true, message: 'Başvurunuz başarıyla iletildi.' });
+  } catch (err) {
+    console.error('Error submitting application:', err.message);
+    res.status(500).json({ error: 'Başvuru gönderilirken bir hata oluştu.' });
+  }
+});
+
 module.exports = router;
+

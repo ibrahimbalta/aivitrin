@@ -335,6 +335,8 @@ function readDB() {
     if (!dbCache.news) dbCache.news = defaultData.news || [];
     if (!dbCache.quizzes) dbCache.quizzes = defaultData.quizzes || [];
     if (!dbCache.deals) dbCache.deals = [];
+    if (!dbCache.jobs) dbCache.jobs = [];
+    if (!dbCache.job_applications) dbCache.job_applications = [];
     return dbCache;
   }
   dbCache = readLocalDB();
@@ -343,6 +345,8 @@ function readDB() {
   if (!dbCache.news) { dbCache.news = defaultData.news || []; changed = true; }
   if (!dbCache.quizzes) { dbCache.quizzes = defaultData.quizzes || []; changed = true; }
   if (!dbCache.deals) { dbCache.deals = []; changed = true; }
+  if (!dbCache.jobs) { dbCache.jobs = []; changed = true; }
+  if (!dbCache.job_applications) { dbCache.job_applications = []; changed = true; }
   if (changed) {
     writeLocalDB(dbCache);
   }

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tarayıcı Stüdyosu — Ücretsiz Prompt Geliştirici, BG Remover & Metin Analizi | AiKlavuz</title>
+  <meta name="description" content="Sunucuya veri göndermeden tarayıcınızda çalışan ücretsiz AI araçları: Profesyonel Prompt Geliştirici, Hızlı Arka Plan Kaldırıcı ve AI Metin Analiz & İnsanlaştırıcı.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/toolkit.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .studio-hero {
+      padding: 60px 0 30px;
+      text-align: center;
+      position: relative;
+    }
+    .studio-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    .studio-tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .studio-tab-btn:hover {
+      border-color: var(--accent-purple);
+      color: var(--text-primary);
+    }
+    .studio-tab-btn.active {
+      background: var(--gradient-primary);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    }
+
+    .studio-panel {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .studio-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 900px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .studio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+
+    .studio-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+    }
+
+    .studio-form-group {
+      margin-bottom: 18px;
+    }
+    .studio-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .studio-input, .studio-select, .studio-textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: border-color var(--transition-fast);
+      outline: none;
+    }
+    .studio-input:focus, .studio-select:focus, .studio-textarea:focus {
+      border-color: var(--accent-purple);
+    }
+    .studio-textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .studio-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .btn-studio-action {
+      width: 100%;
+      padding: 13px 20px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+    }
+    .btn-studio-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .studio-output-box {
+      width: 100%;
+      min-height: 250px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-y: auto;
+      max-height: 480px;
+    }
+
+    .studio-btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-studio-sec {
+      padding: 9px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition-fast);
+      text-decoration: none;
+    }
+    .btn-studio-sec:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent-purple);
+    }
+
+    .dropzone {
+      border: 2px dashed rgba(99, 102, 241, 0.4);
+      background: rgba(99, 102, 241, 0.03);
+      border-radius: var(--radius-md);
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--accent-purple);
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .dropzone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .canvas-preview-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .checkerboard-bg {
+      background-image: linear-gradient(45deg, #181824 25%, transparent 25%), 
+                        linear-gradient(-45deg, #181824 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #181824 75%), 
+                        linear-gradient(-45deg, transparent 75%, #181824 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      max-width: 100%;
+      max-height: 420px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .checkerboard-bg canvas {
+      max-width: 100%;
+      max-height: 400px;
+      height: auto;
+      display: block;
+    }
+
+    .gauge-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+    }
+    .gauge-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      border: 4px solid var(--border-color);
+      flex-shrink: 0;
+    }
+    .gauge-details h4 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+    .gauge-details p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .detected-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--accent-red);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      margin: 4px;
+    }
+  </style>
+
+  <script src="/js/i18n.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d0e12">
+  <script src="/js/pwa-register.js" defer></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>
+  <script src="/js/cookie-consent.js" defer></script>
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <a href="/" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad)" stroke-width="14" stroke-linejoin="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad)" />
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad)" stroke-width="4"/>
+            </svg>
+          </span>
+          <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+        </a>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="/#tools-section">AI Araçları</a>
+        <a href="/studio" class="active">Stüdyo</a>
+        <a href="/models">LLM Modelleri</a>
+        <a href="/prompt-studio">Prompt Stüdyosu</a>
+        <a href="/stack">AI Stack'im</a>
+        <a href="/kariyer">Kariyer</a>
+
+        <div class="nav-item-dropdown nav-mega-dropdown">
+          <span class="nav-dropdown-trigger">
+            <span>Daha Fazla</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-menu-col">
+                <h5>Keşif & Karşılaştırma</h5>
+                <a href="/alternatives">Alternatifler</a>
+                <a href="/compare">Karşılaştır</a>
+                <a href="/calculator">API Hesaplayıcı</a>
+                <a href="/professions">Meslekler</a>
+                <a href="/firsatlar">Fırsatlar</a>
+              </div>
+              <div class="mega-menu-col">
+                <h5>Akademi & Çözümler</h5>
+                <a href="/workflows">İş Akışları</a>
+                <a href="/asistan">AI Asistanı</a>
+                <a href="/prompts">Günün Promptu</a>
+                <a href="/haberler">Haberler</a>
+                <a href="/akademi">Akademi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-right">
+        <a href="/asistan" class="assistant-pill-btn">
+          <span>AI Asistan</span>
+        </a>
+        <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="12" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="/#tools-section">AI Araçları</a>
+    <a href="/studio" class="active">Stüdyo</a>
+    <a href="/models">LLM Modelleri</a>
+    <a href="/prompt-studio">Prompt Stüdyosu</a>
+    <a href="/stack">AI Stack'im</a>
+    <a href="/kariyer">Kariyer</a>
+    <a href="/compare">Karşılaştır</a>
+    <a href="/calculator">API Hesaplayıcı</a>
+    <a href="/workflows">İş Akışları</a>
+    <a href="/asistan">AI Asistanı</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="studio-hero container animate-on-scroll">
+    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); color:var(--accent-purple); padding:6px 14px; border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; margin-bottom:16px;">
+      ⚡ 100% Tarayıcı Tabanlı • Sıfır Sunucu Gecikmesi • Tamamen Gizli
+    </div>
+    <h1 style="font-family:'Outfit',sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px;">
+      AI <span class="text-gradient">Tarayıcı Stüdyosu</span>
+    </h1>
+    <p style="color:var(--text-secondary); max-width:680px; margin:0 auto; font-size:1.05rem; line-height:1.6;">
+      Verileriniz sunucuya aktarılmadan doğrudan cihazınızın gücüyle çalışan mikro araçlar: Profesyonel Prompt Motoru, Hızlı Arka Plan Kaldırıcı ve AI Metin Analizörü.
+    </p>
+
+    <!-- TAB BUTTONS -->
+    <div class="studio-tabs">
+      <button class="studio-tab-btn active" onclick="switchStudioTab('prompt')">
+        <span>✨</span> Prompt Geliştirici
+      </button>
+      <button class="studio-tab-btn" onclick="switchStudioTab('bg')">
+        <span>✂️</span> Hızlı Arka Plan Kaldırıcı
+      </button>
+      <button class="studio-tab-btn" onclick="switchStudioTab('detector')">
+        <span>🔍</span> AI Metin Analizi & İnsanlaştırıcı
+      </button>
+    </div>
+  </section>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- ═════════ TAB 1: PROMPT GELİŞTİRİCİ ═════════ -->
+    <div class="studio-panel active" id="panel-prompt">
+      <div class="studio-grid">
+        <!-- Controls -->
+        <div class="studio-card">
+          <h3><span>⚙️</span> Prompt Yapılandırması</h3>
+          
+          <div class="studio-row-2">
+            <div class="studio-form-group">
+              <label class="studio-label">Hedef Yapay Zeka</label>
+              <select id="pe-target" class="studio-select" onchange="updatePromptEnhancerUI()">
+                <option value="chatgpt">ChatGPT / OpenAI (GPT-4o)</option>
+                <option value="claude">Claude 3.5 Sonnet (Anthropic)</option>
+                <option value="gemini">Google Gemini 2.0</option>
+                <option value="midjourney">Midjourney v6.1 / Niji</option>
+                <option value="flux">Flux.1 / Stable Diffusion</option>
+              </select>
+            </div>
+            <div class="studio-form-group">
+              <label class="studio-label">Üstlenilecek Rol (Persona)</label>
+              <select id="pe-role" class="studio-select">
+                <option value="expert-dev">Kıdemli Yazılım Mimarı</option>
+                <option value="growth-marketer">Büyüme Pazarlamacısı & Copywriter</option>
+                <option value="seo-specialist">Teknik SEO & İçerik Stratejisti</option>
+                <option value="legal-advisor">Hukuk ve Sözleşme Danışmanı</option>
+                <option value="data-analyst">Kıdemli Veri Analisti</option>
+                <option value="creative-writer">Ödüllü Hikaye ve Senaryo Yazarı</option>
+                <option value="executive-coach">C-Level Yönetici & Girişim Koçu</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="studio-row-2">
+            <div class="studio-form-group">
+              <label class="studio-label">Üslup ve Ton</label>
+              <select id="pe-tone" class="studio-select">
+                <option value="pro">Profesyonel, Net ve İkna Edici</option>
+                <option value="academic">Akademik, Kaynakçalı ve Analitik</option>
+                <option value="creative">Yaratıcı, Metaforik ve Çarpıcı</option>
+                <option value="simple">Sade, 5 Yaşında Anlatır Gibi (ELI5)</option>
+                <option value="friendly">Samimi, Esprili ve İlham Veren</option>
+              </select>
+            </div>
+            <div class="studio-form-group">
+              <label class="studio-label">Çıktı Formatı</label>
+              <select id="pe-format" class="studio-select">
+                <option value="cot">Adım Adım Düşünce Zinciri (CoT)</option>
+                <option value="table">Karşılaştırmalı Markdown Tablosu</option>
+                <option value="bullets">Önceliklendirilmiş Madde İmleri</option>
+                <option value="code">Kod Bloğu & JSON / YAML</option>
+                <option value="actionable">Hemen Uygulanabilir Aksiyon Listesi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="studio-form-group">
+            <label class="studio-label">Ham Fikriniz / İstediğiniz Görev</label>
+            <textarea id="pe-input" class="studio-textarea" placeholder="Örn: Yeni bir SaaS projesi için landing page başlığı ve değer önerisi yazmak istiyorum. Hedef kitlem yazılımcılar."></textarea>
+          </div>
+
+          <!-- Midjourney Specific Params (hidden by default) -->
+          <div id="pe-midjourney-options" style="display:none; margin-bottom:18px; padding:14px; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.2); border-radius:var(--radius-sm);">
+            <div class="studio-row-2">
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label">En-Boy Oranı (--ar)</label>
+                <select id="pe-mj-ar" class="studio-select">
+                  <option value="16:9">16:9 (Geniş Ekran / Banner)</option>
+                  <option value="9:16">9:16 (Instagram / Reels / TikTok)</option>
+                  <option value="1:1">1:1 (Kare / Post)</option>
+                  <option value="4:5">4:5 (Dikey Portre)</option>
+                  <option value="21:9">21:9 (Sinematik)</option>
+                </select>
+              </div>
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label">Stilizasyon Seviyesi (--s)</label>
+                <select id="pe-mj-stylize" class="studio-select">
+                  <option value="250">Standart (250)</option>
+                  <option value="50">Gerçekçi / Düşük (50)</option>
+                  <option value="750">Çok Sanatsal (750)</option>
+                  <option value="1000">Maksimum Yaratıcılık (1000)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-studio-action" onclick="generateEnhancedPrompt()">
+            <span>✨</span> Mükemmel Prompt'a Dönüştür
+          </button>
+        </div>
+
+        <!-- Output Preview -->
+        <div class="studio-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+            <h3 style="margin:0;"><span>🚀</span> Optimize Edilmiş Prompt</h3>
+            <span id="pe-token-count" style="font-size:0.8rem; color:var(--accent-purple); font-weight:600; background:rgba(99,102,241,0.1); padding:2px 8px; border-radius:4px;">0 Token</span>
+          </div>
+
+          <div id="pe-output" class="studio-output-box">Henüz bir prompt oluşturulmadı. Sol taraftaki parametreleri doldurup "Mükemmel Prompt'a Dönüştür" butonuna tıklayın.</div>
+
+          <div class="studio-btn-row">
+            <button class="btn-studio-sec" onclick="copyEnhancedPrompt()">
+              <span>📋</span> Kopyala
+            </button>
+            <a id="pe-btn-chatgpt" href="https://chatgpt.com" target="_blank" rel="noopener" class="btn-studio-sec">
+              <span>🤖</span> ChatGPT'de Aç
+            </a>
+            <a id="pe-btn-claude" href="https://claude.ai" target="_blank" rel="noopener" class="btn-studio-sec">
+              <span>⚡</span> Claude'da Aç
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════════ TAB 2: ARKA PLAN KALDIRICI ═════════ -->
+    <div class="studio-panel" id="panel-bg">
+      <div class="studio-grid">
+        <!-- Upload & Settings -->
+        <div class="studio-card">
+          <h3><span>✂️</span> Görsel Yükle & Temizle</h3>
+          <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:16px;">
+            Görselleriniz hiçbir sunucuya iletilmez, tamamen bilgisayarınızdaki HTML5 Canvas işlemcisiyle şeffaflaştırılır.
+          </p>
+
+          <div class="dropzone" id="bg-dropzone">
+            <input type="file" id="bg-file-input" accept="image/png, image/jpeg, image/webp">
+            <div style="font-size:2.4rem; margin-bottom:8px;">📁</div>
+            <div style="font-weight:700; color:var(--text-primary); margin-bottom:4px;">Fotoğrafı buraya sürükleyin veya seçin</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">PNG, JPG, WEBP (Maksimum 15 MB)</div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <div class="studio-form-group">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <label class="studio-label" style="margin:0;">Renk Hassasiyeti (Tolerans)</label>
+                <span id="tolerance-val" style="font-size:0.85rem; font-weight:700; color:var(--accent-purple);">25</span>
+              </div>
+              <input type="range" id="bg-tolerance" min="5" max="90" value="25" class="calc-slider" style="width:100%;" oninput="document.getElementById('tolerance-val').textContent=this.value; processBgRemoval();">
+            </div>
+
+            <div class="studio-form-group">
+              <label class="studio-label">Yeni Arka Plan Rengi</label>
+              <select id="bg-replace-mode" class="studio-select" onchange="processBgRemoval()">
+                <option value="transparent">Şeffaf (Transparan PNG)</option>
+                <option value="white">Saf Beyaz (#FFFFFF)</option>
+                <option value="black">Derin Siyah (#000000)</option>
+                <option value="studio-gray">Stüdyo Grisi (#F3F4F6)</option>
+                <option value="neon-gradient">Modern Degrade (Mor & Mavi)</option>
+              </select>
+            </div>
+
+            <button class="btn-studio-action" onclick="processBgRemoval()">
+              <span>🔄</span> Yeniden İşle
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Output -->
+        <div class="studio-card">
+          <h3><span>🖼️</span> Temizlenmiş Sonuç</h3>
+          
+          <div class="canvas-preview-wrap">
+            <div class="checkerboard-bg" id="canvas-container">
+              <canvas id="bg-canvas"></canvas>
+            </div>
+            
+            <div style="display:flex; gap:12px; width:100%;">
+              <button id="btn-download-png" class="btn-studio-action" style="flex:1;" onclick="downloadCanvasImage()">
+                <span>⬇️</span> PNG Olarak İndir
+              </button>
+              <button class="btn-studio-sec" onclick="resetBgCanvas()">
+                <span>🗑️</span> Sıfırla
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════════ TAB 3: AI METIN ANALIZI & INSANLASTIRICI ═════════ -->
+    <div class="studio-panel" id="panel-detector">
+      <div class="studio-grid">
+        <!-- Input Text -->
+        <div class="studio-card">
+          <h3><span>📝</span> Metni İncele</h3>
+          <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:14px;">
+            Yapay zeka modellerinin sıklıkla tekrarladığı basmakalıp Türkçe ve İngilizce kalıpları, cümle uzunluğu değişkenliğini ve şablon yapıları tespit eder.
+          </p>
+
+          <div class="studio-form-group">
+            <textarea id="detector-input" class="studio-textarea" style="min-height:220px;" placeholder="Analiz etmek istediğiniz metni buraya yapıştırın... (Örn: ChatGPT veya Claude tarafından üretilmiş bir makale ya da e-posta)"></textarea>
+          </div>
+
+          <div style="display:flex; gap:10px;">
+            <button class="btn-studio-action" style="flex:1;" onclick="analyzeAiText()">
+              <span>🔍</span> Metni Analiz Et
+            </button>
+            <button class="btn-studio-action" style="flex:1; background:linear-gradient(135deg,#10b981,#059669);" onclick="humanizeAiText()">
+              <span>✨</span> İnsanlaştır & Sadeleştir
+            </button>
+          </div>
+        </div>
+
+        <!-- Results & Humanized View -->
+        <div class="studio-card">
+          <h3><span>📊</span> Analiz & İpuçları</h3>
+
+          <!-- Gauge -->
+          <div class="gauge-wrapper" id="gauge-container">
+            <div class="gauge-circle" id="ai-score-circle" style="color:var(--accent-green); border-color:var(--accent-green);">
+              %0
+            </div>
+            <div class="gauge-details">
+              <h4 id="ai-score-title">Henüz Analiz Yapılmadı</h4>
+              <p id="ai-score-desc">Metninizi yapıştırıp analiz butonuna tıklayın.</p>
+            </div>
+          </div>
+
+          <!-- Detected Cliches -->
+          <div style="margin-bottom:18px;">
+            <label class="studio-label">Yakalanan AI Kalıpları</label>
+            <div id="detected-cliches-box" style="min-height:48px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px;">
+              <span style="color:var(--text-muted); font-size:0.85rem;">Henüz bir kalıp tespit edilmedi.</span>
+            </div>
+          </div>
+
+          <!-- Humanized Output -->
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label class="studio-label" style="margin:0;">İnsanlaştırılmış / Doğal Akış</label>
+              <button class="btn-studio-sec" style="padding:4px 10px; font-size:0.75rem;" onclick="copyHumanizedText()">📋 Kopyala</button>
+            </div>
+            <div id="humanized-output" class="studio-output-box" style="min-height:140px; max-height:220px; font-family:inherit;">
+              İnsanlaştırılmış metin burada görünecektir.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+          </a>
+          <p class="footer-tagline">Türkiye'nin en kapsamlı ve güncel yapay zeka rehberi.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Ürünler</h5>
+            <a href="/studio">AI Stüdyo</a>
+            <a href="/models">LLM Modelleri</a>
+            <a href="/prompt-studio">Prompt Stüdyosu</a>
+            <a href="/stack">AI Stack'im</a>
+            <a href="/calculator">API Hesaplayıcı</a>
+          </div>
+          <div class="footer-col">
+            <h5>Topluluk</h5>
+            <a href="/kariyer">Kariyer & İlanlar</a>
+            <a href="/stories">Başarı Hikayeleri</a>
+            <a href="/haberler">Yapay Zeka Haberleri</a>
+            <a href="/akademi">Akademi</a>
+          </div>
+          <div class="footer-col">
+            <h5>Yasal</h5>
+            <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+            <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+            <a href="/iletisim">İletişim</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AiKlavuz.com — Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STUDIO JAVASCRIPT LOGIC -->
+  <script>
+    function switchStudioTab(tabId) {
+      document.querySelectorAll('.studio-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.studio-panel').forEach(p => p.classList.remove('active'));
+
+      if (tabId === 'prompt') {
+        document.querySelectorAll('.studio-tab-btn')[0].classList.add('active');
+        document.getElementById('panel-prompt').classList.add('active');
+      } else if (tabId === 'bg') {
+        document.querySelectorAll('.studio-tab-btn')[1].classList.add('active');
+        document.getElementById('panel-bg').classList.add('active');
+      } else if (tabId === 'detector') {
+        document.querySelectorAll('.studio-tab-btn')[2].classList.add('active');
+        document.getElementById('panel-detector').classList.add('active');
+      }
+    }
+
+    // ─────────────────────────────────────────────
+    // 1. PROMPT ENHANCER LOGIC
+    // ─────────────────────────────────────────────
+    function updatePromptEnhancerUI() {
+      const target = document.getElementById('pe-target').value;
+      const mjArea = document.getElementById('pe-midjourney-options');
+      if (target === 'midjourney' || target === 'flux') {
+        mjArea.style.display = 'block';
+      } else {
+        mjArea.style.display = 'none';
+      }
+    }
+
+    function generateEnhancedPrompt() {
+      const target = document.getElementById('pe-target').value;
+      const roleVal = document.getElementById('pe-role').value;
+      const toneVal = document.getElementById('pe-tone').value;
+      const formatVal = document.getElementById('pe-format').value;
+      const rawInput = document.getElementById('pe-input').value.trim();
+
+      if (!rawInput) {
+        alert('Lütfen ham fikrinizi veya geliştirmek istediğiniz konuyu yazın.');
+        return;
+      }
+
+      const roles = {
+        'expert-dev': 'Sen 15+ yıllık tecrübeye sahip, temiz kod (Clean Code), SOLID prensipleri ve yüksek ölçeklenebilirlik standartlarına hakim Kıdemli bir Yazılım Mimarı ve Tech Lead\'sin.',
+        'growth-marketer': 'Sen milyonlarca liralık reklam bütçelerini yönetmiş, nöropazarlama ve yüksek dönüşümlü copywriting (metin yazarlığı) ustası bir Büyüme Pazarlamacısısın.',
+        'seo-specialist': 'Sen Google EEAT algoritmalarını derinlemesine bilen, kullanıcı niyetini (search intent) kusursuz karşılayan ve semantik SEO uzmanı bir danışmansın.',
+        'legal-advisor': 'Sen ticari sözleşmeler, bilişim hukuku ve KVKK / GDPR regülasyonlarında uzmanlaşmış kıdemli bir hukuk danışmanısın.',
+        'data-analyst': 'Sen karmaşık veri kümelerini anlamlı içgörülere, KPI panolarına ve aksiyona dönüştürülebilir tahmin modellerine çeviren bir Veri Bilim uzmanısın.',
+        'creative-writer': 'Sen uluslararası festivallerde ödül kazanmış, karakter derinliği ve sürükleyici kurgular inşa eden usta bir hikaye anlatıcısısın.',
+        'executive-coach': 'Sen Fortune 500 yöneticilerine ve hızlı büyüyen girişim kurucularına stratejik karar alma rehberliği veren bir C-Level Koçsun.'
+      };
+
+      const tones = {
+        'pro': 'Üslubun: Profesyonel, net, gereksiz laf kalabalığından arındırılmış ve doğrudan sonuca odaklı olsun.',
+        'academic': 'Üslubun: Akademik ciddiyette, nedensellik bağları güçlü, metodik ve bilimsel argümanlara dayalı olsun.',
+        'creative': 'Üslubun: Özgün metaforlar içeren, okuyucunun merakını tetikleyen ve ezber bozan bir tarzda olsun.',
+        'simple': 'Üslubun: Konuyu 5 yaşındaki bir çocuğun dahi rahatlıkla kavrayabileceği kadar berrak, samimi ve sade olsun.',
+        'friendly': 'Üslubun: Enerjik, motive edici, empati kuran ve yapıcı bir tonda olsun.'
+      };
+
+      const formats = {
+        'cot': 'Çıktı Formatı: Çözümünü adım adım "Düşünce Zinciri" (Chain-of-Thought) mantığıyla aşamalara bölerek sun.',
+        'table': 'Çıktı Formatı: Ana bulguları, karşılaştırmaları veya metrikleri düzenli bir Markdown tablosunda özetle.',
+        'bullets': 'Çıktı Formatı: Aksiyonları önem sırasına göre numaralandırılmış veya madde işaretli listeler halinde ver.',
+        'code': 'Çıktı Formatı: Tamamen çalışmaya hazır, dokümante edilmiş ve test senaryolarını içeren kod bloğu formatında yaz.',
+        'actionable': 'Çıktı Formatı: Hemen bugün uygulanabilecek 5 somut aksiyon adımı ve olası riskler tablosu şeklinde sun.'
+      };
+
+      let finalPrompt = '';
+
+      if (target === 'midjourney' || target === 'flux') {
+        const ar = document.getElementById('pe-mj-ar').value;
+        const stylize = document.getElementById('pe-mj-stylize').value;
+        finalPrompt = `/imagine prompt: ${rawInput}, award-winning commercial aesthetic, ultra-detailed textures, cinematic global illumination, octane render, 8k resolution, ray tracing, professional color grading, dynamic composition --ar ${ar} --stylize ${stylize} --v 6.1 --no watermark, blur, distorted anatomy, grainy, low-res`;
+      } else {
+        finalPrompt = `### ROL VE KİMLİK
+${roles[roleVal]}
+
+### GÖREV VE BAĞLAM
+${rawInput}
+
+### TALİMATLAR VE KISITLAMALAR
+1. Asla genel geçer, yüzeysel veya klişe cevaplar verme. Somut, uygulanabilir ve derinlemesine bilgi sağla.
+2. ${tones[toneVal]}
+3. ${formats[formatVal]}
+4. Yanıtına başlamadan önce gerekiyorsa eksik gördüğün 1-2 kritik parametreyi netleştirmek için soru sorabilirsin.`;
+      }
+
+      document.getElementById('pe-output').textContent = finalPrompt;
+      const estimatedTokens = Math.round(finalPrompt.length / 3.8);
+      document.getElementById('pe-token-count').textContent = `~${estimatedTokens} Token`;
+    }
+
+    function copyEnhancedPrompt() {
+      const text = document.getElementById('pe-output').textContent;
+      if (!text || text.includes('Henüz bir prompt')) return;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Prompt panoya kopyalandı!');
+      });
+    }
+
+    // ─────────────────────────────────────────────
+    // 2. CLIENT-SIDE CANVAS BG REMOVER
+    // ─────────────────────────────────────────────
+    let sourceImage = null;
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+    const dropzone = document.getElementById('bg-dropzone');
+    const fileInput = document.getElementById('bg-file-input');
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        loadInputImage(e.target.files[0]);
+      }
+    });
+
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        loadInputImage(e.dataTransfer.files[0]);
+      }
+    });
+
+    function loadInputImage(file) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = new Image();
+        img.onload = function() {
+          sourceImage = img;
+          processBgRemoval();
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function processBgRemoval() {
+      if (!sourceImage) return;
+
+      const maxDim = 1200;
+      let w = sourceImage.width;
+      let h = sourceImage.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) {
+          h = Math.round((h * maxDim) / w);
+          w = maxDim;
+        } else {
+          w = Math.round((w * maxDim) / h);
+          h = maxDim;
+        }
+      }
+
+      canvas.width = w;
+      canvas.height = h;
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(sourceImage, 0, 0, w, h);
+
+      const tolerance = parseInt(document.getElementById('bg-tolerance').value, 10);
+      const replaceMode = document.getElementById('bg-replace-mode').value;
+
+      const imgData = ctx.getImageData(0, 0, w, h);
+      const data = imgData.data;
+
+      const corners = [
+        [0, 0],
+        [w - 1, 0],
+        [0, h - 1],
+        [w - 1, h - 1]
+      ];
+      let bgR = 0, bgG = 0, bgB = 0;
+      corners.forEach(([cx, cy]) => {
+        const idx = (cy * w + cx) * 4;
+        bgR += data[idx];
+        bgG += data[idx + 1];
+        bgB += data[idx + 2];
+      });
+      bgR /= 4;
+      bgG /= 4;
+      bgB /= 4;
+
+      const tolSq = (tolerance * 2.8) ** 2;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        const distSq = (r - bgR)**2 + (g - bgG)**2 + (b - bgB)**2;
+
+        if (distSq < tolSq) {
+          if (replaceMode === 'transparent') {
+            data[i + 3] = 0;
+          } else if (replaceMode === 'white') {
+            data[i] = 255; data[i + 1] = 255; data[i + 2] = 255; data[i + 3] = 255;
+          } else if (replaceMode === 'black') {
+            data[i] = 0; data[i + 1] = 0; data[i + 2] = 0; data[i + 3] = 255;
+          } else if (replaceMode === 'studio-gray') {
+            data[i] = 243; data[i + 1] = 244; data[i + 2] = 246; data[i + 3] = 255;
+          } else if (replaceMode === 'neon-gradient') {
+            data[i] = 99; data[i + 1] = 102; data[i + 2] = 241; data[i + 3] = 255;
+          }
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    function downloadCanvasImage() {
+      if (!sourceImage) {
+        alert('Lütfen önce bir görsel yükleyin.');
+        return;
+      }
+      const link = document.createElement('a');
+      link.download = 'aiklavuz-temizlenmis-gorsel.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function resetBgCanvas() {
+      sourceImage = null;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      fileInput.value = '';
+    }
+
+    // ─────────────────────────────────────────────
+    // 3. AI TEXT ANALYZER & HUMANIZE LOGIC
+    // ─────────────────────────────────────────────
+    const AI_CLICHES = [
+      { trigger: 'sonuç olarak', replace: 'kısacası' },
+      { trigger: 'özetle', replace: 'özün sözü' },
+      { trigger: 'önemli bir rol oynamaktadır', replace: 'doğrudan belirleyicidir' },
+      { trigger: 'bununla birlikte', replace: 'öte yandan' },
+      { trigger: 'göz ardı edilmemelidir', replace: 'unutulmamalı' },
+      { trigger: 'dikkate değer', replace: 'çarpıcı' },
+      { trigger: 'bir yapay zeka dili modeli olarak', replace: '' },
+      { trigger: 'çağımızda', replace: 'bugün' },
+      { trigger: 'günümüz dünyasında', replace: 'artık' },
+      { trigger: 'büyük bir öneme sahiptir', replace: 'kritiktir' },
+      { trigger: 'in conclusion', replace: 'overall' },
+      { trigger: 'delve into', replace: 'explore' },
+      { trigger: 'tapestry of', replace: 'range of' },
+      { trigger: 'it is important to remember', replace: 'notably' }
+    ];
+
+    function analyzeAiText() {
+      const text = document.getElementById('detector-input').value.trim();
+      if (!text) {
+        alert('Lütfen incelenecek bir metin girin.');
+        return;
+      }
+
+      const lower = text.toLowerCase();
+      let foundCliches = [];
+      let totalPenalty = 0;
+
+      AI_CLICHES.forEach(c => {
+        if (lower.includes(c.trigger)) {
+          foundCliches.push(c.trigger);
+          totalPenalty += 18;
+        }
+      });
+
+      const sentences = text.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 0);
+      let avgLength = 0;
+      let variance = 0;
+      if (sentences.length > 1) {
+        const lengths = sentences.map(s => s.split(/\s+/).length);
+        avgLength = lengths.reduce((a, b) => a + b, 0) / lengths.length;
+        variance = lengths.reduce((acc, len) => acc + (len - avgLength)**2, 0) / lengths.length;
+      }
+
+      if (sentences.length >= 3 && variance < 12) {
+        totalPenalty += 25;
+      }
+
+      let score = Math.min(98, Math.max(12, totalPenalty + 15));
+      if (foundCliches.length === 0 && variance >= 15) {
+        score = 15;
+      }
+
+      const circle = document.getElementById('ai-score-circle');
+      const title = document.getElementById('ai-score-title');
+      const desc = document.getElementById('ai-score-desc');
+
+      circle.textContent = `%${score}`;
+      if (score >= 65) {
+        circle.style.color = 'var(--accent-red)';
+        circle.style.borderColor = 'var(--accent-red)';
+        title.textContent = 'Yüksek Yapay Zeka Benzerliği';
+        desc.textContent = 'Metin belirgin AI kalıpları ve monoton cümle ritmi içeriyor.';
+      } else if (score >= 35) {
+        circle.style.color = 'var(--accent-amber)';
+        circle.style.borderColor = 'var(--accent-amber)';
+        title.textContent = 'Karışık / Hibrit Üslup';
+        desc.textContent = 'Bazı AI şablonları saptandı ancak kısmi insansı çeşitlilik mevcut.';
+      } else {
+        circle.style.color = 'var(--accent-green)';
+        circle.style.borderColor = 'var(--accent-green)';
+        title.textContent = 'Yüksek İnsansı Doğallık';
+        desc.textContent = 'Metin akıcı, zengin ritimli ve basmakalıp robotik ifadelerden uzak.';
+      }
+
+      const box = document.getElementById('detected-cliches-box');
+      if (foundCliches.length > 0) {
+        box.innerHTML = foundCliches.map(cl => `<span class="detected-badge">⚠️ "${cl}"</span>`).join('');
+      } else {
+        box.innerHTML = '<span style="color:var(--accent-green); font-size:0.85rem;">✓ Belirgin yapay zeka kalıbı bulunamadı.</span>';
+      }
+    }
+
+    function humanizeAiText() {
+      const text = document.getElementById('detector-input').value.trim();
+      if (!text) {
+        alert('Lütfen insanlaştırılacak bir metin girin.');
+        return;
+      }
+
+      let humanized = text;
+      AI_CLICHES.forEach(c => {
+        if (c.replace) {
+          const reg = new RegExp('\\b' + c.trigger + '\\b', 'gi');
+          humanized = humanized.replace(reg, c.replace);
+        } else {
+          const reg = new RegExp(c.trigger, 'gi');
+          humanized = humanized.replace(reg, '');
+        }
+      });
+
+      humanized = humanized.replace(/Özetlemek gerekirse, /gi, 'Kısaca, ');
+      humanized = humanized.replace(/İlk olarak, /gi, 'Öncelikle ');
+      humanized = humanized.replace(/İkinci olarak, /gi, 'Dahası, ');
+      humanized = humanized.replace(/Üçüncü olarak, /gi, 'Ayrıca ');
+
+      document.getElementById('humanized-output').textContent = humanized;
+      analyzeAiText();
+    }
+
+    function copyHumanizedText() {
+      const text = document.getElementById('humanized-output').textContent;
+      if (!text || text.includes('burada görünecektir')) return;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('İnsanlaştırılmış metin kopyalandı!');
+      });
+    }
+
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme');
+        const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+    }
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>

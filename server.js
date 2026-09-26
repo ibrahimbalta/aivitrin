@@ -188,6 +188,11 @@ app.get('/sitemap.xml', function (req, res) {
       { path: 'stories', priority: '0.8', changefreq: 'daily' },
       { path: 'prompts', priority: '0.8', changefreq: 'daily' },
       { path: 'haberler', priority: '0.8', changefreq: 'daily' },
+      { path: 'studio', priority: '0.9', changefreq: 'daily' },
+      { path: 'models', priority: '0.9', changefreq: 'daily' },
+      { path: 'prompt-studio', priority: '0.9', changefreq: 'daily' },
+      { path: 'stack', priority: '0.9', changefreq: 'weekly' },
+      { path: 'kariyer', priority: '0.9', changefreq: 'daily' },
       { path: 'firsatlar', priority: '0.8', changefreq: 'weekly' },
       { path: 'akademi', priority: '0.8', changefreq: 'weekly' },
       { path: 'iletisim', priority: '0.5', changefreq: 'monthly' },
@@ -432,6 +437,26 @@ app.get('/collection', function (req, res) {
 
 app.get('/calculator', function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'calculator.html'));
+});
+
+app.get('/studio', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'studio.html'));
+});
+
+app.get('/models', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'models.html'));
+});
+
+app.get(['/prompt-studio', '/prompts-studio'], function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'prompt-studio.html'));
+});
+
+app.get('/stack', function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'stack.html'));
+});
+
+app.get(['/kariyer', '/jobs', '/career'], function (req, res) {
+  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'kariyer.html'));
 });
 
 // Category permalink handler

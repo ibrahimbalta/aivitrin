@@ -428580,5 +428580,98 @@
       "expiry_date": "31.12.2026",
       "clicks": 412
     }
-  ]
+  ],
+  "jobs": [
+    {
+      "id": "job_1",
+      "title": "Kıdemli LLM Entegrasyon & AI Mühendisi",
+      "company": "PeakAI Labs",
+      "location": "Tamamen Uzaktan (Remote)",
+      "workType": "Remote",
+      "role": "LLM & AI Geliştirici",
+      "level": "Senior",
+      "salary": "₺110.000 - ₺160.000 / Ay",
+      "description": "OpenAI, Anthropic ve açık kaynak DeepSeek modellerini kurumsal API altyapımıza entegre edecek, RAG (Retrieval Augmented Generation) ve vektör veritabanları (Pinecone, Qdrant) konusunda tecrübeli yazılım mimarı arıyoruz.",
+      "applyUrl": "",
+      "contactEmail": "kariyer@peakai.io",
+      "status": "active",
+      "createdAt": "2026-09-24"
+    },
+    {
+      "id": "job_2",
+      "title": "AI Otomasyon & Agent Mimarı (n8n, Make, Python)",
+      "company": "Büyüme Dijital",
+      "location": "Hibrit (İstanbul / Levent)",
+      "workType": "Hybrid",
+      "role": "AI Otomasyon",
+      "level": "Mid-Senior",
+      "salary": "₺75.000 - ₺95.000 / Ay",
+      "description": "Şirketlerin iş akışlarını Make, n8n ve özel Python scriptleri ile otonom ajanlara dönüştürecek otomasyon uzmanı. CRM, ERP ve Slack botları entegrasyonu gerçekleştirilecektir.",
+      "applyUrl": "",
+      "contactEmail": "hr@buyumedijital.com",
+      "status": "active",
+      "createdAt": "2026-09-25"
+    },
+    {
+      "id": "job_3",
+      "title": "Kıdemli Prompt Mühendisi & İçerik Direktörü",
+      "company": "Vitrin Medya Grubu",
+      "location": "Tamamen Uzaktan (Remote)",
+      "workType": "Remote",
+      "role": "Prompt Mühendisi",
+      "level": "Senior",
+      "salary": "₺65.000 - ₺85.000 / Ay",
+      "description": "Yapay zeka modelleri (ChatGPT, Claude, Midjourney) için yüksek kaliteli sistem promptları tasarlayacak, pazarlama kampanyalarının yaratıcı çıktısını yönetecek deneyimli prompt mühendisi.",
+      "applyUrl": "",
+      "contactEmail": "talent@vitrinmedya.com",
+      "status": "active",
+      "createdAt": "2026-09-23"
+    },
+    {
+      "id": "job_4",
+      "title": "Computer Vision & Derin Öğrenme Araştırmacısı",
+      "company": "DeepVision Teknoloji",
+      "location": "Ankara (ODTÜ Teknokent / Hibrit)",
+      "workType": "Hybrid",
+      "role": "Computer Vision",
+      "level": "Senior",
+      "salary": "₺95.000 - ₺140.000 / Ay",
+      "description": "Endüstriyel kamera sistemleri için nesne tanıma, segmentasyon ve PyTorch tabanlı model eğitimi gerçekleştirecek araştırmacı mühendis.",
+      "applyUrl": "",
+      "contactEmail": "jobs@deepvision.ai",
+      "status": "active",
+      "createdAt": "2026-09-22"
+    },
+    {
+      "id": "job_5",
+      "title": "Generative AI Görsel & Video Sanatçısı",
+      "company": "PixelCraft Stüdyo",
+      "location": "İstanbul (Kadıköy / Hibrit)",
+      "workType": "Hybrid",
+      "role": "AI Görsel & Tasarım",
+      "level": "Mid-Level",
+      "salary": "₺55.000 - ₺75.000 / Ay",
+      "description": "Midjourney v6, ComfyUI, Runway Gen-3 ve Kling AI kullanarak reklam filmleri, sosyal medya materyalleri ve konsept sanat çalışmaları üretecek yaratıcı sanatçı.",
+      "applyUrl": "",
+      "contactEmail": "studio@pixelcraft.design",
+      "status": "active",
+      "createdAt": "2026-09-25"
+    },
+    {
+      "id": "job_6",
+      "title": "Freelance AI Model Değerlendirici & Eğitmeni",
+      "company": "Global AI Benchmark",
+      "location": "Proje Bazlı (Freelance)",
+      "workType": "Freelance",
+      "role": "AI Veri & Test",
+      "level": "Junior / Mid",
+      "salary": " -  / Saat",
+      "description": "Türkçe LLM yanıtlarını doğruluk, üslup ve mantık testlerine tabi tutarak insan geri bildirimiyle takviyeli öğrenme (RLHF) verisi sağlayacak analistler aranıyor.",
+      "applyUrl": "",
+      "contactEmail": "eval@aibenchmark.org",
+      "status": "active",
+      "createdAt": "2026-09-26"
+    }
+  ],
+  "job_applications": []
 }

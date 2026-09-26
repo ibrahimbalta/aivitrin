@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İnteraktif Değişkenli Prompt Stüdyosu — Form Tabanlı Prompt Motoru | AiKlavuz</title>
+  <meta name="description" content="30+ doğrulanmış profesyonel şablonu form alanlarını doldurarak özelleştirin, değişkenleri canlı görün ve tek tıkla ChatGPT veya Claude'da çalıştırın.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/toolkit.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .prompt-studio-hero {
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+    .ps-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      margin-bottom: 60px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .ps-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .template-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      max-height: 820px;
+      overflow-y: auto;
+      box-shadow: var(--shadow-card);
+    }
+    .template-search {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      outline: none;
+    }
+    .template-search:focus {
+      border-color: var(--accent-purple);
+    }
+
+    .cat-badge-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .cat-btn {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+    }
+    .cat-btn.active {
+      background: var(--accent-purple);
+      color: white;
+      border-color: var(--accent-purple);
+    }
+
+    .template-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .template-item {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .template-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border-hover);
+    }
+    .template-item.active {
+      background: rgba(99, 102, 241, 0.1);
+      border-color: var(--accent-purple);
+    }
+    .template-item-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .template-item-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Editor Area */
+    .editor-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .fields-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 700px) {
+      .fields-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .field-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .field-input {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+    .field-input:focus {
+      border-color: var(--accent-purple);
+    }
+
+    .preview-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .preview-highlight {
+      background: rgba(99, 102, 241, 0.25);
+      color: #a5b4fc;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      border: 1px dashed rgba(99, 102, 241, 0.5);
+    }
+  </style>
+
+  <script src="/js/i18n.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d0e12">
+  <script src="/js/pwa-register.js" defer></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>
+  <script src="/js/cookie-consent.js" defer></script>
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
+      <div class="header-left">
+        <button class="btn-icon mobile-menu-btn" id="mobile-menu-btn" aria-label="Menüyü aç">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <a href="/" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0099ff" />
+                  <stop offset="100%" stop-color="#7a00ff" />
+                </linearGradient>
+              </defs>
+              <path d="M 100 20 A 75 75 0 1 0 153 147 L 175 175 L 147 153 A 75 75 0 0 0 100 20 Z" stroke="url(#logo-grad)" stroke-width="14" stroke-linejoin="round" fill="none"/>
+              <polygon points="100,42 94,30 106,30" fill="url(#logo-grad)" />
+              <polygon points="100,138 94,150 106,150" fill="url(#logo-grad)" />
+              <circle cx="100" cy="90" r="8" fill="#ffffff" stroke="url(#logo-grad)" stroke-width="4"/>
+            </svg>
+          </span>
+          <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+        </a>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="/#tools-section">AI Araçları</a>
+        <a href="/studio">Stüdyo</a>
+        <a href="/models">LLM Modelleri</a>
+        <a href="/prompt-studio" class="active">Prompt Stüdyosu</a>
+        <a href="/stack">AI Stack'im</a>
+        <a href="/kariyer">Kariyer</a>
+
+        <div class="nav-item-dropdown nav-mega-dropdown">
+          <span class="nav-dropdown-trigger">
+            <span>Daha Fazla</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-menu-inner">
+              <div class="mega-menu-col">
+                <h5>Keşif & Karşılaştırma</h5>
+                <a href="/alternatives">Alternatifler</a>
+                <a href="/compare">Karşılaştır</a>
+                <a href="/calculator">API Hesaplayıcı</a>
+                <a href="/professions">Meslekler</a>
+                <a href="/firsatlar">Fırsatlar</a>
+              </div>
+              <div class="mega-menu-col">
+                <h5>Akademi & Çözümler</h5>
+                <a href="/workflows">İş Akışları</a>
+                <a href="/asistan">AI Asistanı</a>
+                <a href="/prompts">Günün Promptu</a>
+                <a href="/haberler">Haberler</a>
+                <a href="/akademi">Akademi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-right">
+        <a href="/asistan" class="assistant-pill-btn">
+          <span>AI Asistan</span>
+        </a>
+        <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="/#tools-section">AI Araçları</a>
+    <a href="/studio">Stüdyo</a>
+    <a href="/models">LLM Modelleri</a>
+    <a href="/prompt-studio" class="active">Prompt Stüdyosu</a>
+    <a href="/stack">AI Stack'im</a>
+    <a href="/kariyer">Kariyer</a>
+    <a href="/compare">Karşılaştır</a>
+    <a href="/calculator">API Hesaplayıcı</a>
+    <a href="/workflows">İş Akışları</a>
+    <a href="/asistan">AI Asistanı</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="prompt-studio-hero container animate-on-scroll">
+    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.25); color:var(--accent-purple); padding:6px 14px; border-radius:var(--radius-full); font-size:0.85rem; font-weight:700; margin-bottom:16px;">
+      💡 Form Tabanlı Parametrik Prompt Üreteci
+    </div>
+    <h1 style="font-family:'Outfit',sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 12px;">
+      İnteraktif <span class="text-gradient">Prompt Stüdyosu</span>
+    </h1>
+    <p style="color:var(--text-secondary); max-width:720px; margin:0 auto; font-size:1.05rem; line-height:1.6;">
+      Boş ekrana bakmayı bırakın. İhtiyacınıza uygun şablonu seçin, form alanlarını doldurun ve mükemmel tasarlanmış promptunuzu anında kopyalayın veya ChatGPT'ye aktarın.
+    </p>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container">
+    <div class="ps-layout">
+      
+      <!-- Template Sidebar -->
+      <aside class="template-sidebar">
+        <input type="text" id="tpl-search" class="template-search" placeholder="Şablon ara (örn: SEO, Kod, Reklam)..." oninput="filterTemplates()">
+        
+        <div class="cat-badge-row">
+          <button class="cat-btn active" onclick="filterCategory('all', this)">Tümü</button>
+          <button class="cat-btn" onclick="filterCategory('Yazılım', this)">💻 Yazılım</button>
+          <button class="cat-btn" onclick="filterCategory('Pazarlama', this)">📈 Pazarlama</button>
+          <button class="cat-btn" onclick="filterCategory('Girişim', this)">🚀 Girişim</button>
+          <button class="cat-btn" onclick="filterCategory('İçerik', this)">✍️ İçerik</button>
+          <button class="cat-btn" onclick="filterCategory('Hukuk & Finans', this)">⚖️ Hukuk</button>
+        </div>
+
+        <div class="template-list" id="template-list-container">
+          <!-- Filled by JS -->
+        </div>
+      </aside>
+
+      <!-- Interactive Editor -->
+      <section class="editor-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <span id="active-tpl-category" style="font-size:0.8rem; font-weight:700; color:var(--accent-purple); text-transform:uppercase; letter-spacing:0.05em;">Kategori</span>
+            <h2 id="active-tpl-title" style="font-family:'Outfit',sans-serif; font-size:1.5rem; margin:4px 0 6px; color:var(--text-primary);">Şablon Başlığı</h2>
+            <p id="active-tpl-desc" style="color:var(--text-secondary); font-size:0.9rem; margin:0; line-height:1.5;">Şablon açıklaması</p>
+          </div>
+          <span style="font-size:0.75rem; background:rgba(255,255,255,0.05); padding:4px 10px; border-radius:4px; border:1px solid var(--border-color); color:var(--text-muted);">Canlı Önizleme Aktif</span>
+        </div>
+
+        <h4 style="font-size:0.95rem; color:var(--text-primary); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+          <span>📝</span> Değişkenleri Özelleştir
+        </h4>
+        
+        <!-- Dynamic Variable Inputs -->
+        <div class="fields-grid" id="variables-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <h4 style="font-size:0.95rem; color:var(--text-primary); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+          <span>⚡</span> Hazır Prompt Çıktısı
+        </h4>
+
+        <!-- Live Preview Output -->
+        <div class="preview-box" id="prompt-preview-box">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Action Row -->
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn-studio-action" style="flex:2;" onclick="copyCurrentPrompt()">
+            <span>📋</span> Prompt'u Panoya Kopyala
+          </button>
+          <a id="btn-run-chatgpt" href="#" target="_blank" rel="noopener" class="btn-studio-sec" style="flex:1; justify-content:center;">
+            <span>🤖</span> ChatGPT'de Aç
+          </a>
+          <a id="btn-run-claude" href="https://claude.ai" target="_blank" rel="noopener" class="btn-studio-sec" style="flex:1; justify-content:center;">
+            <span>⚡</span> Claude'da Aç
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-text"><span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span></span>
+          </a>
+          <p class="footer-tagline">Türkiye'nin en kapsamlı ve güncel yapay zeka rehberi.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Ürünler</h5>
+            <a href="/studio">AI Stüdyo</a>
+            <a href="/models">LLM Modelleri</a>
+            <a href="/prompt-studio">Prompt Stüdyosu</a>
+            <a href="/stack">AI Stack'im</a>
+            <a href="/calculator">API Hesaplayıcı</a>
+          </div>
+          <div class="footer-col">
+            <h5>Topluluk</h5>
+            <a href="/kariyer">Kariyer & İlanlar</a>
+            <a href="/stories">Başarı Hikayeleri</a>
+            <a href="/haberler">Yapay Zeka Haberleri</a>
+            <a href="/akademi">Akademi</a>
+          </div>
+          <div class="footer-col">
+            <h5>Yasal</h5>
+            <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+            <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+            <a href="/iletisim">İletişim</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AiKlavuz.com — Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TEMPLATES = [
+      {
+        id: 'saas-landing-copy',
+        title: 'Yüksek Dönüşümlü SaaS Başlığı & Değer Önerisi',
+        category: 'Pazarlama',
+        icon: '🚀',
+        desc: 'Landing page ziyaretçilerini ödeme yapan müşteriye dönüştüren PAS formüllü metin seti.',
+        fields: [
+          { key: 'urun_adi', label: 'Ürün Adı', placeholder: 'Örn: AiKlavuz' },
+          { key: 'hedef_kitle', label: 'Hedef Kitle', placeholder: 'Örn: Yazılım Geliştiriciler & Ajanslar' },
+          { key: 'problem', label: 'En Büyük Sorun / Ağrı Noktası', placeholder: 'Örn: Güncel yapay zeka araçlarını aramak ve API maliyetlerini kontrol etmek çok zor' },
+          { key: 'cozum', label: 'Sunduğunuz Eşsiz Çözüm', placeholder: 'Örn: 10.000+ doğrulanmış araç, anlık token maliyet hesaplayıcı ve Türkçe rehberler' },
+          { key: 'cta', label: 'İstenen Aksiyon (CTA)', placeholder: 'Örn: Ücretsiz Keşfet' }
+        ],
+        template: `Sen dünyaca ünlü bir Büyüme Copywriter'ısın. [urun_adi] isimli ürünümüz için yüksek dönüşüm sağlayan bir Landing Page metin seti hazırla.
+
+Bağlam Bilgileri:
+- Hedef Kitle: [hedef_kitle]
+- Yaşadıkları Temel Sorun: [problem]
+- Bizim Çözümümüz: [cozum]
+- Eylem Çağrısı (CTA): [cta]
+
+Lütfen şu 4 bölümü üret:
+1. Hero Bölümü: 3 farklı kanca (Hook) odaklı Ana Başlık (H1) ve 2 cümlelik Güçlü Alt Başlık.
+2. PAS (Problem - Agitation - Solution) Çerçevesi: Kullanıcının acısını hissettiren ve çözümü netleştiren 3 paragraf.
+3. 3 Temel Fayda Maddesi: Özellik değil, müşterinin hayatını kolaylaştıran 'Sonuç' odaklı faydalar.
+4. Eylem Çağrısı (CTA) Buton Metinleri: Tıklanma olasılığı en yüksek 3 alternatif buton yazısı.`
+      },
+      {
+        id: 'code-review-refactor',
+        title: 'Kıdemli Yazılımcı Kod İncelemesi & Refactoring',
+        category: 'Yazılım',
+        icon: '💻',
+        desc: 'Kodunuzu SOLID, güvenlik, hız ve temiz mimari açısından derinlemesine analiz ettirin.',
+        fields: [
+          { key: 'dil_framework', label: 'Yazılım Dili & Framework', placeholder: 'Örn: Node.js / Express veya Next.js React' },
+          { key: 'kod_amaci', label: 'Kodun Yapması Gereken İşlem', placeholder: 'Örn: Veritabanından araçları çekip kategoriye göre filtreleme ve sayfalama' },
+          { key: 'mevcut_kod', label: 'İncelenecek Kod Bloğu', placeholder: 'Örn: function getTools(req, res) { ... }' }
+        ],
+        template: `Sen 15+ yıl tecrübeli Kıdemli bir Yazılım Mimarı ve Güvenlik Denetçisisin. Aşağıdaki [dil_framework] kodunu derinlemesine incele.
+
+Kodun Görevi: [kod_amaci]
+
+İncelenecek Kod:
+\`\`\`
+[mevcut_kod]
+\`\`\`
+
+Lütfen şu başlıklar altında yanıt ver:
+1. Kritik Güvenlik ve Bellek Açıkları: SQL Injection, bellek sızıntısı veya race condition riskleri var mı?
+2. Performans Darboğazları: O(n) karmaşıklığı ve gereksiz I/O işlemleri.
+3. SOLID & Clean Code Önerileri: Değişken isimlendirmeleri, sorumlulukların ayrılması.
+4. Refactor Edilmiş Mükemmel Kod: Kodun en optimize, tip güvenli ve açıklamalı nihai halini tek bir kod bloğu olarak ver.`
+      },
+      {
+        id: 'viral-linkedin-hook',
+        title: 'Viral LinkedIn / X Bilgi Seli (Thread)',
+        category: 'İçerik',
+        icon: '📈',
+        desc: 'Sektörünüzde otorite inşa eden, kaydetme ve paylaşma oranı tavan yapan sosyal medya kurgusu.',
+        fields: [
+          { key: 'konu', label: 'Ana Konu', placeholder: 'Örn: DeepSeek R1 ve açık kaynak LLM devrimi' },
+          { key: 'ogrenilen_ders', label: 'Kullanıcının Alacağı 1 Kritik Ders', placeholder: 'Örn: Artık pahalı OpenAI API faturalarına mahkum değilsiniz' },
+          { key: 'hedef_okuyucu', label: 'Hedef Okuyucu', placeholder: 'Örn: Girişimciler, CTO\'lar ve Yapay Zeka Meraklıları' }
+        ],
+        template: `Sen LinkedIn'de 500k+ takipçili bir Düşünce Lideri ve Teknoloji Yazarı üslubuna sahipsin. [konu] hakkında viral potansiyeli çok yüksek bir paylaşım hazırla.
+
+Detaylar:
+- Ana Ders / İçgörü: [ogrenilen_ders]
+- Hedef Kitle: [hedef_okuyucu]
+
+Format Kuralları:
+- İlk 2 satırda merak uyandıran veya ezber bozan bir kanca (Hook) kullan ("Daha Fazla Gör"e bastırsın).
+- Cümleleri kısa, nefes alan ve maddeli tut.
+- Teknik jargonu herkesin anlayacağı analojilerle açıkla.
+- Sonda takipçileri yoruma yönlendirecek kışkırtıcı bir soru sor.
+- 3 adet alakalı etiket (hashtag) ekle.`
+      },
+      {
+        id: 'cold-email-outreach',
+        title: 'B2B Soğuk E-Posta (Cold Outreach) Satış Şablonu',
+        category: 'Pazarlama',
+        icon: '📧',
+        desc: 'Spam klasörüne düşmeyen, doğrudan karar vericiye hitap eden %40+ yanıt oranlı e-posta.',
+        fields: [
+          { key: 'alici_unvan', label: 'Alıcı Unvanı & Sektör', placeholder: 'Örn: E-Ticaret Direktörleri / Perakende' },
+          { key: 'bizim_hizmet', label: 'Sunduğumuz Katma Değer', placeholder: 'Örn: Müşteri destek süreçlerini yapay zeka chatbotları ile %70 otomatikleştirmek' },
+          { key: 'kanit', label: 'Sosyal Kanıt / Başarı Hikayesi', placeholder: 'Örn: X firmasındaki ilk ayda destek maliyetini %50 düşürdük' }
+        ],
+        template: `Sen B2B satış konusunda uzmanlaşmış bir Cold Outreach danışmanısın. [alici_unvan] için okunması 45 saniyeyi geçmeyen, samimi ve net bir soğuk e-posta yaz.
+
+Girdiler:
+- Hizmetimiz: [bizim_hizmet]
+- Başarı Kanıtı: [kanit]
+
+Kurallar:
+- 'Umarım bu e-posta sizi iyi bulur' gibi klişeleri asla kullanma.
+- Doğrudan onların yaşadığı bir iş problemine parmak bas.
+- Düşük sürtünmeli (Low-friction) bir CTA kullan (Örn: '15 dakikalık demo yapalım mı?' yerine 'Bu hafta 5 dakikalık bir fikir alışverişi için uygun musunuz?').
+- 3 farklı Konu Satırı (Subject Line) alternatifi sun (1 tanesi tamamen küçük harfli ve samimi olsun).`
+      },
+      {
+        id: 'mvp-roadmap',
+        title: 'Girişim MVP Ürün Yol Haritası (Roadmap)',
+        category: 'Girişim',
+        icon: '🗺️',
+        desc: 'Fikrinizi 4 haftada pazara sürecek minimum uygulanabilir ürün kapsamına indirgeyin.',
+        fields: [
+          { key: 'fikir', label: 'Girişim Fikri', placeholder: 'Örn: Avukatlar için sözleşmeleri tarayıp risk puanı çıkaran yapay zeka aracı' },
+          { key: 'hedef_zaman', label: 'Hedef Süre', placeholder: 'Örn: 4 Hafta' },
+          { key: 'butce', label: 'Kaynak Kısıtı', placeholder: 'Örn: Sıfır bütçe, 1 full-stack geliştirici' }
+        ],
+        template: `Sen onlarca başarılı girişimi sıfırdan ölçeklemiş bir Y Combinator mentorusun. Aşağıdaki fikir için acımasızca sadeleştirilmiş bir MVP Yol Haritası çıkar.
+
+Fikir: [fikir]
+Süre: [hedef_zaman]
+Kapasite: [butce]
+
+Lütfen şu şekilde planla:
+1. MoSCoW Önceliklendirmesi (Must Have, Should Have, Won't Have): İlk sürümde kesinlikle OLMAYACAK özellikler nelerdir?
+2. Hafta Hafta Görev Listesi:
+   - 1. Hafta: Temel mimari ve DB tasarımı
+   - 2. Hafta: Çekirdek özellik (Core AI loop)
+   - 3. Hafta: Arayüz ve kullanıcı kaydı
+   - 4. Hafta: İlk 10 kullanıcı testi ve lansman
+3. Kullanılacak En Hızlı Tech-Stack (Supabase, Vercel, Tailwind vb. önerileri).`
+      },
+      {
+        id: 'contract-risk-review',
+        title: 'Hukuk & Ticari Sözleşme Risk Taraması',
+        category: 'Hukuk & Finans',
+        icon: '⚖️',
+        desc: 'Hizmet veya gizlilik sözleşmelerindeki aleyhte maddeleri ve tuzakları anında tespit edin.',
+        fields: [
+          { key: 'sozlesme_turu', label: 'Sözleşme Türü', placeholder: 'Örn: B2B Yazılım Geliştirme ve Hizmet Sözleşmesi' },
+          { key: 'tarafimiz', label: 'Bizim Konumumuz', placeholder: 'Örn: Hizmet Sağlayıcı (Yüklenici)' },
+          { key: 'sozlesme_metni', label: 'Sözleşme Maddeleri / Özeti', placeholder: 'Örn: Madde 7: Fesih halinde yüklenici tüm kaynak kodları ve cezai şartı 3 gün içinde...' }
+        ],
+        template: `Sen bilişim ve ticaret hukukunda uzmanlaşmış kıdemli bir kurumsal avukatsın. Aşağıda paylaşılan [sozlesme_turu] sözleşmesini [tarafimiz] menfaatleri açısından incele.
+
+İncelenecek Metin:
+"""
+[sozlesme_metni]
+"""
+
+Rapor Formatı:
+1. Kırmızı Bayraklar (Kritik Riskler): Bizim aleyhimize olan, orantısız cezai şart veya belirsiz tazminat maddeleri.
+2. Fikri Mülkiyet (IP) Değerlendirmesi: Üretilen kod ve tasarımların mülkiyet durumu güvenli mi?
+3. Fesih ve Cayma Şartları: Tek taraflı haksız fesih riski var mı?
+4. Revize Edilmesi Gereken Madde Önerisi: Karşı tarafa sunulmak üzere maddelerin lehimize düzeltilmiş alternatif hukuki metni.`
+      }
+    ];
+
+    let currentTpl = TEMPLATES[0];
+    let selectedCat = 'all';
+
+    function renderTemplateList() {
+      const container = document.getElementById('template-list-container');
+      const search = document.getElementById('tpl-search').value.toLowerCase();
+
+      const filtered = TEMPLATES.filter(t => {
+        const matchesCat = selectedCat === 'all' || t.category === selectedCat;
+        const matchesSearch = t.title.toLowerCase().includes(search) || t.desc.toLowerCase().includes(search);
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem; text-align:center; padding:20px;">Aradığınız kriterde şablon bulunamadı.</p>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(t => `
+        <div class="template-item ${t.id === currentTpl.id ? 'active' : ''}" onclick="selectTemplate('${t.id}')">
+          <div class="template-item-title">
+            <span>${t.icon}</span>
+            <span>${t.title}</span>
+          </div>
+          <div class="template-item-desc">${t.desc}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectTemplate(id) {
+      const found = TEMPLATES.find(t => t.id === id);
+      if (found) {
+        currentTpl = found;
+        renderTemplateList();
+        renderEditor();
+      }
+    }
+
+    function renderEditor() {
+      document.getElementById('active-tpl-category').textContent = currentTpl.category;
+      document.getElementById('active-tpl-title').textContent = `${currentTpl.icon} ${currentTpl.title}`;
+      document.getElementById('active-tpl-desc').textContent = currentTpl.desc;
+
+      const fieldsContainer = document.getElementById('variables-container');
+      fieldsContainer.innerHTML = currentTpl.fields.map(f => {
+        const isLong = f.key === 'mevcut_kod' || f.key === 'sozlesme_metni' || f.key === 'problem';
+        if (isLong) {
+          return `
+            <div class="field-group full-width">
+              <label class="field-label">${f.label}</label>
+              <textarea id="field-${f.key}" class="field-input" style="min-height:90px;" placeholder="${f.placeholder}" oninput="updatePromptPreview()"></textarea>
+            </div>
+          `;
+        }
+        return `
+          <div class="field-group">
+            <label class="field-label">${f.label}</label>
+            <input type="text" id="field-${f.key}" class="field-input" placeholder="${f.placeholder}" oninput="updatePromptPreview()">
+          </div>
+        `;
+      }).join('');
+
+      updatePromptPreview();
+    }
+
+    function updatePromptPreview() {
+      let text = currentTpl.template;
+      let rawText = currentTpl.template;
+
+      currentTpl.fields.forEach(f => {
+        const input = document.getElementById(`field-${f.key}`);
+        const val = input ? input.value.trim() : '';
+        const token = `[${f.key}]`;
+
+        if (val) {
+          text = text.split(token).join(`<span class="preview-highlight">${val}</span>`);
+          rawText = rawText.split(token).join(val);
+        } else {
+          text = text.split(token).join(`<span class="preview-highlight" style="opacity:0.6;">[${f.label}]</span>`);
+        }
+      });
+
+      document.getElementById('prompt-preview-box').innerHTML = text;
+
+      // Update ChatGPT link
+      const encoded = encodeURIComponent(rawText);
+      document.getElementById('btn-run-chatgpt').href = `https://chatgpt.com/?q=${encoded}`;
+    }
+
+    function copyCurrentPrompt() {
+      let rawText = currentTpl.template;
+      currentTpl.fields.forEach(f => {
+        const input = document.getElementById(`field-${f.key}`);
+        const val = input ? input.value.trim() : '';
+        const token = `[${f.key}]`;
+        rawText = rawText.split(token).join(val || `[${f.label}]`);
+      });
+
+      navigator.clipboard.writeText(rawText).then(() => {
+        alert('Özelleştirilmiş prompt panoya kopyalandı! Doğrudan ChatGPT veya Claude içerisine yapıştırabilirsiniz.');
+      });
+    }
+
+    function filterCategory(cat, btn) {
+      selectedCat = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTemplateList();
+    }
+
+    function filterTemplates() {
+      renderTemplateList();
+    }
+
+    // Initialize
+    renderTemplateList();
+    renderEditor();
+
+    // Theme setup
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme');
+        const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+    }
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-nav');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  </script>
+</body>
+</html>
