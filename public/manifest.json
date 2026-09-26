@@ -1,25 +1,132 @@
 {
-  "name": "AiKlavuz",
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "id": "/?source=pwa",
+  "name": "AiKlavuz — Yapay Zeka Dünyası",
   "short_name": "AiKlavuz",
-  "description": "Türkçe Yapay Zeka Araçları Dizini & En İyi AI Siteleri",
-  "start_url": "/",
+  "description": "Türkiye'nin en kapsamlı yapay zeka platformu. AI Araçları, Prompt Stüdyosu, LLM Fiyat Borsası, AI Kariyer Rehberi ve Akıllı Asistan.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#0d0e12",
-  "theme_color": "#7a00ff",
-  "orientation": "portrait-primary",
-  "categories": ["utilities", "productivity"],
+  "theme_color": "#0d0e12",
+  "orientation": "any",
+  "lang": "tr",
+  "dir": "ltr",
+  "categories": [
+    "productivity",
+    "utilities",
+    "business",
+    "education"
+  ],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI Stüdyo",
+      "short_name": "Stüdyo",
+      "description": "Prompt İyileştirici & AI Araçları",
+      "url": "/studio",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "LLM Fiyat Borsası",
+      "short_name": "LLM Borsası",
+      "description": "Model token maliyet analizi & bütçe simülatörü",
+      "url": "/models",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Prompt Stüdyosu",
+      "short_name": "Promptlar",
+      "description": "30+ form parametreli hazır prompt şablonu",
+      "url": "/prompt-studio",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "AI Kariyer Rehberi",
+      "short_name": "Kariyer",
+      "description": "Geleceğin 12 YZ mesleği & yol haritaları",
+      "url": "/kariyer",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Akıllı Asistan",
+      "short_name": "Asistan",
+      "description": "Yapay zeka asistanı ile canlı sohbet",
+      "url": "/asistan",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }

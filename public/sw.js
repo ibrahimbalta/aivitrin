@@ -1,37 +1,52 @@
-const CACHE_NAME = 'aiklavuz-cache-v5';
-const ASSETS_TO_CACHE = [
+// AiKlavuz Advanced Service Worker v7 (PWA & APK Optimized)
+const CACHE_NAME = 'aiklavuz-cache-v7';
+const OFFLINE_URL = '/offline.html';
+
+const APP_SHELL_ASSETS = [
   '/',
+  '/manifest.json',
   '/css/style.css',
+  '/css/toolkit.css',
   '/js/i18n.js',
   '/js/app.js',
   '/js/toolkit.js',
-  '/js/advisor.js',
-  '/js/ads.js',
-  '/manifest.json',
-  '/icons/icon-512.png',
-  '/icons/icon.svg'
+  '/js/pwa-register.js',
+  '/icons/icon-192.png',
+  '/icons/icon-512x512.png',
+  '/icons/apple-touch-icon.png',
+  '/icons/icon.svg',
+  '/studio',
+  '/models',
+  '/prompt-studio',
+  '/stack',
+  '/kariyer',
+  '/workflows',
+  '/calculator',
+  '/offline.html'
 ];
 
-// Install Event - Pre-caches App Shell
+// Install: Pre-cache App Shell & Offline Page
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      console.log('[Service Worker] Caching App Shell');
-      return cache.addAll(ASSETS_TO_CACHE);
+      console.log('[Service Worker] Pre-caching App Shell & Offline Assets');
+      return cache.addAll(APP_SHELL_ASSETS).catch(err => {
+        console.warn('[Service Worker] Non-fatal caching issue on install:', err);
+      });
     })
   );
   self.skipWaiting();
 });
 
-// Activate Event - Cleans up old cache
+// Activate: Remove outdated cache versions
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            console.log('[Service Worker] Clearing Old Cache');
-            return caches.delete(cache);
+        cacheNames.map(name => {
+          if (name !== CACHE_NAME) {
+            console.log('[Service Worker] Purging old cache:', name);
+            return caches.delete(name);
           }
         })
       );
@@ -40,50 +55,61 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch Event - Stale-While-Revalidate caching strategy
+// Fetch: Stale-While-Revalidate with Offline HTML Fallback
 self.addEventListener('fetch', event => {
+  const request = event.request;
+
   // Only handle same-origin GET requests
-  // Exclude administrative panels, login, session auth, and data APIs
   if (
-    !event.request.url.startsWith(self.location.origin) ||
-    event.request.url.includes('/api/') ||
-    event.request.url.includes('/auth/') ||
-    event.request.url.includes('/admin') ||
-    event.request.method !== 'GET'
+    request.method !== 'GET' ||
+    !request.url.startsWith(self.location.origin) ||
+    request.url.includes('/api/') ||
+    request.url.includes('/auth/') ||
+    request.url.includes('/admin')
   ) {
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      if (cachedResponse) {
-        // Return cache instantly, and fetch fresh content in background to update cache
-        fetch(event.request)
-          .then(networkResponse => {
-            if (networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse));
-            }
-          })
-          .catch(() => {
-            // Quietly absorb offline errors during background sync
-          });
-        return cachedResponse;
-      }
-
-      // If not in cache, request from network
-      return fetch(event.request).then(networkResponse => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+  // For HTML navigation requests
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(networkResponse => {
+          if (networkResponse.status === 200) {
+            const copy = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          }
           return networkResponse;
-        }
+        })
+        .catch(async () => {
+          // Try to serve from cache first
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          // Fallback to offline page
+          const offlineFallback = await caches.match(OFFLINE_URL);
+          if (offlineFallback) return offlineFallback;
+          return new Response('Çevrimdışısınız. Lütfen internet bağlantınızı kontrol edin.', {
+            headers: { 'Content-Type': 'text/html; charset=utf-8' }
+          });
+        })
+    );
+    return;
+  }
 
-        // Cache newly discovered resources dynamically
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
+  // For static assets: Stale-While-Revalidate
+  event.respondWith(
+    caches.match(request).then(cachedResponse => {
+      const fetchPromise = fetch(request)
+        .then(networkResponse => {
+          if (networkResponse.status === 200 && networkResponse.type === 'basic') {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, responseToCache));
+          }
+          return networkResponse;
+        })
+        .catch(() => cachedResponse);
 
-        return networkResponse;
-      });
+      return cachedResponse || fetchPromise;
     })
   );
 });

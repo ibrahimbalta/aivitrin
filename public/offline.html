@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şu Anda Çevrimdışısınız — AiKlavuz</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: var(--bg-primary, #0d0e12);
+      color: var(--text-primary, #fff);
+      font-family: 'Inter', sans-serif;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .offline-card {
+      background: var(--bg-card, rgba(255,255,255,0.03));
+      border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .offline-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+    .offline-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .offline-desc {
+      color: var(--text-secondary, #94a3b8);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn-retry {
+      background: var(--gradient-primary, linear-gradient(135deg, #0099ff, #7a00ff));
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+    .btn-retry:hover {
+      transform: translateY(-2px);
+    }
+    .offline-links {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .offline-links a {
+      color: var(--accent-purple, #a855f7);
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+  </style>
+  <!-- PWA & Mobile WebAPK Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0d0e12">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AiKlavuz">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <script src="/js/pwa-register.js" defer></script>
+</head>
+<body>
+  <div class="offline-card">
+    <div class="offline-icon">📡</div>
+    <h1 class="offline-title">İnternet Bağlantısı Yok</h1>
+    <p class="offline-desc">
+      Şu anda çevrimdışısınız. Bağlantınız kurulduğunda sayfa otomatik olarak yüklenecektir. Cihazınızda önbelleğe alınmış bölümlere göz atabilirsiniz.
+    </p>
+    <button class="btn-retry" onclick="window.location.reload()">
+      <span>🔄</span> Tekrar Dene
+    </button>
+    
+    <div class="offline-links">
+      <a href="/">Ana Sayfa</a>
+      <a href="/studio">AI Stüdyo</a>
+      <a href="/models">LLM Borsası</a>
+      <a href="/kariyer">Kariyer Rehberi</a>
+    </div>
+  </div>
+</body>
+</html>
