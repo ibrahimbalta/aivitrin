@@ -6678,10 +6678,27 @@ img {
   font-size: 1.1rem;
 }
 
-/* Mobil ekranlarda yüzen AI Asistan butonunu gizle */
+/* Mobil ekranlarda yüzen AI Danışman Asistan Butonu & Chatbox Konumlandırması */
 @media (max-width: 768px) {
   .ai-advisor-bubble {
-    display: none !important;
+    display: flex !important;
+    bottom: calc(76px + env(safe-area-inset-bottom, 8px)) !important;
+    right: 16px !important;
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 1.3rem !important;
+    z-index: 9999 !important;
+  }
+
+  .ai-advisor-chatbox {
+    bottom: calc(136px + env(safe-area-inset-bottom, 8px)) !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: calc(100vw - 24px) !important;
+    max-width: 420px !important;
+    height: 62vh !important;
+    max-height: 520px !important;
+    z-index: 10000 !important;
   }
 }
 
