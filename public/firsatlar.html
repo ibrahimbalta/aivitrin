@@ -71,50 +71,100 @@
       
             <nav class="nav-links" id="nav-links">
         <a href="/#tools-section" data-i18n="menu_tools">AI Araçları</a>
-        <a href="/kurulum">Bana Özel YZ</a>
-        <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
-        <a href="/haberler" data-i18n="menu_news">Haberler</a>
-        
+        <a href="/studio">Stüdyo</a>
+        <a href="/models">LLM Borsası</a>
+
+        <!-- Çözümler Dropdown -->
+        <div class="nav-item-dropdown">
+          <span class="nav-dropdown-trigger">
+            <span data-i18n="menu_solutions">Çözümler</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+          <div class="nav-dropdown-menu solutions-menu">
+            <a href="/prompt-studio">
+              <span class="solutions-item-icon">💡</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">Prompt Stüdyosu</span>
+                <span class="solutions-item-desc">30+ parametreli optimizasyon</span>
+              </div>
+            </a>
+            <a href="/stack">
+              <span class="solutions-item-icon">📦</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">Ekip AI Stack</span>
+                <span class="solutions-item-desc">Araç yığınları & PDF/Notion export</span>
+              </div>
+            </a>
+            <a href="/workflows">
+              <span class="solutions-item-icon">🔄</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">İş Akışları</span>
+                <span class="solutions-item-desc">Uçtan uca AI senaryoları</span>
+              </div>
+            </a>
+            <a href="/calculator">
+              <span class="solutions-item-icon">🧮</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">API Hesaplayıcı</span>
+                <span class="solutions-item-desc">Model & token maliyet analizi</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="/kariyer">Kariyer</a>
+
+        <!-- Keşfet Mega Dropdown -->
         <div class="nav-item-dropdown nav-mega-dropdown">
           <span class="nav-dropdown-trigger">
             <span data-i18n="menu_explore">Keşfet</span>
-            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu mega-menu">
             <div class="mega-menu-inner">
-              
               <div class="mega-menu-col">
-                <h5 data-i18n="menu_explore">Keşfet</h5>
-                <a href="/alternatives" data-i18n="menu_alternatives">Alternatifler</a>
-                <a href="/compare" data-i18n="menu_compare">Karşılaştır</a>
-                <a href="/professions" data-i18n="menu_professions">Meslekler</a>
-                <a href="/stories" data-i18n="menu_stories">Hikayeler</a>
-                <a href="/firsatlar" class="active">Fırsatlar</a>
+                <h5 data-i18n="menu_explore">Keşif Rehberi</h5>
+                <a href="/alternatives" data-i18n="menu_alternatives">⚡ Alternatifler</a>
+                <a href="/compare" data-i18n="menu_compare">🔀 Karşılaştır</a>
+                <a href="/professions" data-i18n="menu_professions">🎯 Meslekler</a>
+                <a href="/stories" data-i18n="menu_stories">📖 Başarı Hikayeleri</a>
+                <a href="/firsatlar" class="active">🏷️ Fırsatlar & Kuponlar</a>
               </div>
-              
               <div class="mega-menu-col">
-                <h5 data-i18n="menu_solutions">Çözümler</h5>
-                <a href="/workflows" data-i18n="menu_workflows">İş Akışları</a>
-                <a href="/asistan" data-i18n="menu_assistant">AI Asistanı</a>
-                <a href="/calculator" data-i18n="menu_calculator">Hesaplayıcı</a>
+                <h5 data-i18n="menu_academy_trend">İçerik & Topluluk</h5>
+                <a href="/prompts" data-i18n="menu_daily_prompt">✨ Günün Promptu</a>
+                <a href="/haberler" data-i18n="menu_news">📰 Yapay Zeka Haberleri</a>
+                <a href="/akademi" data-i18n="menu_academy">🎓 AI Akademi Rehberi</a>
+                <a href="/kurulum">⚙️ Kurulum & Katkı</a>
               </div>
-              
-              <div class="mega-menu-col">
-                <h5 data-i18n="menu_academy_trend">Akademi & Trend</h5>
-                <a href="/prompts" data-i18n="menu_daily_prompt">Günün Promptu</a>
-                <a href="/haberler" data-i18n="menu_news">Haberler</a>
-                <a href="/akademi" data-i18n="menu_academy">Akademi</a>
-              </div>
-              
             </div>
           </div>
         </div>
 
-        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link"><span data-i18n="menu_toolkit">🎒 Çantam</span> <span class="toolkit-count" style="display:none">0</span></a>
+        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link">
+          <span data-i18n="menu_toolkit">Çantam</span>
+          <span class="toolkit-count" style="display:none">0</span>
+        </a>
       </nav>
       
       <div class="header-actions">
-        <a href="/asistan" class="header-assistant-link">
+        <a href="/asistan" class="header-assistant-link" title="Akıllı Yapay Zeka Asistanı">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="robot-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8a4bf5"></stop>
+                <stop offset="100%" stop-color="#14dbd4"></stop>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="4" r="1" fill="url(#robot-grad)"></circle>
+            <path d="M12 5v2" stroke="url(#robot-grad)" stroke-width="1.5" stroke-linecap="round"></path>
+            <rect x="5" y="7" width="14" height="11" rx="3" stroke="url(#robot-grad)" stroke-width="1.8" fill="rgba(20, 219, 212, 0.05)"></rect>
+            <rect x="3" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad)"></rect>
+            <rect x="19" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad)"></rect>
+            <circle cx="9.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
+            <circle cx="14.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
+            <path d="M10 14.5c0.8 0.6 2.2 0.6 3 0" stroke="#14dbd4" stroke-width="1.2" stroke-linecap="round"></path>
+          </svg>
           <span>Asistan</span>
         </a>
         <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">

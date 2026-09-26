@@ -199,47 +199,105 @@
       </div>
 
       <nav class="nav-links" id="nav-links">
-        <a href="/#tools-section">AI Araçları</a>
+        <a href="/#tools-section" data-i18n="menu_tools">AI Araçları</a>
         <a href="/studio">Stüdyo</a>
-        <a href="/models">LLM Modelleri</a>
-        <a href="/prompt-studio">Prompt Stüdyosu</a>
-        <a href="/stack" class="active">AI Stack'im</a>
+        <a href="/models">LLM Borsası</a>
+
+        <!-- Çözümler Dropdown -->
+        <div class="nav-item-dropdown">
+          <span class="nav-dropdown-trigger">
+            <span data-i18n="menu_solutions">Çözümler</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+          <div class="nav-dropdown-menu solutions-menu">
+            <a href="/prompt-studio">
+              <span class="solutions-item-icon">💡</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">Prompt Stüdyosu</span>
+                <span class="solutions-item-desc">30+ parametreli optimizasyon</span>
+              </div>
+            </a>
+            <a href="/stack" class="active">
+              <span class="solutions-item-icon">📦</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">Ekip AI Stack</span>
+                <span class="solutions-item-desc">Araç yığınları & PDF/Notion export</span>
+              </div>
+            </a>
+            <a href="/workflows">
+              <span class="solutions-item-icon">🔄</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">İş Akışları</span>
+                <span class="solutions-item-desc">Uçtan uca AI senaryoları</span>
+              </div>
+            </a>
+            <a href="/calculator">
+              <span class="solutions-item-icon">🧮</span>
+              <div class="solutions-item-info">
+                <span class="solutions-item-title">API Hesaplayıcı</span>
+                <span class="solutions-item-desc">Model & token maliyet analizi</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <a href="/kariyer">Kariyer</a>
 
+        <!-- Keşfet Mega Dropdown -->
         <div class="nav-item-dropdown nav-mega-dropdown">
           <span class="nav-dropdown-trigger">
-            <span>Daha Fazla</span>
-            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <span data-i18n="menu_explore">Keşfet</span>
+            <svg class="dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </span>
           <div class="nav-dropdown-menu mega-menu">
             <div class="mega-menu-inner">
               <div class="mega-menu-col">
-                <h5>Keşif & Karşılaştırma</h5>
-                <a href="/alternatives">Alternatifler</a>
-                <a href="/compare">Karşılaştır</a>
-                <a href="/calculator">API Hesaplayıcı</a>
-                <a href="/professions">Meslekler</a>
-                <a href="/firsatlar">Fırsatlar</a>
+                <h5 data-i18n="menu_explore">Keşif Rehberi</h5>
+                <a href="/alternatives" data-i18n="menu_alternatives">⚡ Alternatifler</a>
+                <a href="/compare" data-i18n="menu_compare">🔀 Karşılaştır</a>
+                <a href="/professions" data-i18n="menu_professions">🎯 Meslekler</a>
+                <a href="/stories" data-i18n="menu_stories">📖 Başarı Hikayeleri</a>
+                <a href="/firsatlar">🏷️ Fırsatlar & Kuponlar</a>
               </div>
               <div class="mega-menu-col">
-                <h5>Akademi & Çözümler</h5>
-                <a href="/workflows">İş Akışları</a>
-                <a href="/asistan">AI Asistanı</a>
-                <a href="/prompts">Günün Promptu</a>
-                <a href="/haberler">Haberler</a>
-                <a href="/akademi">Akademi</a>
+                <h5 data-i18n="menu_academy_trend">İçerik & Topluluk</h5>
+                <a href="/prompts" data-i18n="menu_daily_prompt">✨ Günün Promptu</a>
+                <a href="/haberler" data-i18n="menu_news">📰 Yapay Zeka Haberleri</a>
+                <a href="/akademi" data-i18n="menu_academy">🎓 AI Akademi Rehberi</a>
+                <a href="/kurulum">⚙️ Kurulum & Katkı</a>
               </div>
             </div>
           </div>
         </div>
+
+        <a href="#" id="nav-toolkit-btn" class="nav-toolkit-link">
+          <span data-i18n="menu_toolkit">Çantam</span>
+          <span class="toolkit-count" style="display:none">0</span>
+        </a>
       </nav>
 
-      <div class="header-right">
-        <a href="/asistan" class="assistant-pill-btn">
-          <span>AI Asistan</span>
+      <div class="header-actions">
+        <a href="/asistan" class="header-assistant-link" title="Akıllı Yapay Zeka Asistanı">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="robot-grad-stack" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8a4bf5"></stop>
+                <stop offset="100%" stop-color="#14dbd4"></stop>
+              </linearGradient>
+            </defs>
+            <circle cx="12" cy="4" r="1" fill="url(#robot-grad-stack)"></circle>
+            <path d="M12 5v2" stroke="url(#robot-grad-stack)" stroke-width="1.5" stroke-linecap="round"></path>
+            <rect x="5" y="7" width="14" height="11" rx="3" stroke="url(#robot-grad-stack)" stroke-width="1.8" fill="rgba(20, 219, 212, 0.05)"></rect>
+            <rect x="3" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-stack)" stroke-width="0"></rect>
+            <rect x="19" y="11" width="2" height="3" rx="0.5" fill="url(#robot-grad-stack)" stroke-width="0"></rect>
+            <circle cx="9.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
+            <circle cx="14.5" cy="11.5" r="1.2" fill="#14dbd4"></circle>
+            <path d="M10 14.5c0.8 0.6 2.2 0.6 3 0" stroke="#14dbd4" stroke-width="1.2" stroke-linecap="round"></path>
+          </svg>
+          <span>Asistan</span>
         </a>
         <button class="btn-icon" id="theme-toggle" aria-label="Tema değiştir">
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="12" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
       </div>
