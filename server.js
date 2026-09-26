@@ -188,6 +188,7 @@ app.get('/sitemap.xml', function (req, res) {
       { path: 'stories', priority: '0.8', changefreq: 'daily' },
       { path: 'prompts', priority: '0.8', changefreq: 'daily' },
       { path: 'haberler', priority: '0.8', changefreq: 'daily' },
+      { path: 'firsatlar', priority: '0.8', changefreq: 'weekly' },
       { path: 'akademi', priority: '0.8', changefreq: 'weekly' },
       { path: 'iletisim', priority: '0.5', changefreq: 'monthly' },
       { path: 'hakkimizda', priority: '0.5', changefreq: 'monthly' },
@@ -214,6 +215,20 @@ app.get('/sitemap.xml', function (req, res) {
         xml += `    <lastmod>${lastmod}</lastmod>\n`;
         xml += `    <changefreq>weekly</changefreq>\n`;
         xml += `    <priority>0.7</priority>\n`;
+        xml += `  </url>\n`;
+      }
+    });
+
+    // News & In-depth Guides Permalinks
+    const news = db.news || [];
+    news.forEach(n => {
+      if (n.id) {
+        const lastmod = (n.publishDate || todayStr);
+        xml += `  <url>\n`;
+        xml += `    <loc>https://aiklavuz.com/haber/${n.id}</loc>\n`;
+        xml += `    <lastmod>${lastmod}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
         xml += `  </url>\n`;
       }
     });
@@ -311,7 +326,104 @@ app.get('/compare', function (req, res) {
 });
 
 app.get('/workflows', function (req, res) {
-  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'workflows.html'));
+  const filePath = path.join(__dirname, 'public', 'workflows.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+
+      const workflowsList = [
+        {
+          title: 'Sosyal Medya & İçerik Pazarlaması Akışı',
+          icon: '📈',
+          tag: 'Pazarlama & Sosyal Medya',
+          description: 'Markanız için blog yazısı fikirleri bulmaktan, bunları podcast, sosyal medya gönderisi ve görsellere dönüştürmeye kadar olan uçtan uca yapay zeka zinciri.',
+          steps: [
+            { num: 1, name: 'ChatGPT veya Claude', desc: 'İçerik fikri, blog taslağı ve sosyal medya kopyaları hazırlar.' },
+            { num: 2, name: 'Midjourney veya Canva AI', desc: 'Metin açıklamalarına uygun çarpıcı pazarlama görselleri üretir.' },
+            { num: 3, name: 'ElevenLabs', desc: 'Hazırlanan blog metinlerini sese çevirerek profesyonel seslendirme veya podcast üretir.' },
+            { num: 4, name: 'Buffer veya Hootsuite', desc: 'Oluşturulan tüm materyalleri planlayıp otomatik yayınlar.' }
+          ]
+        },
+        {
+          title: 'Hızlı Yazılım Prototipleme & Kod Akışı',
+          icon: '💻',
+          tag: 'Yazılım & Web Geliştirme',
+          description: 'Fikrinizi dakikalar içinde çalışan bir web sitesine veya mobil arayüze dönüştürüp, kodunu yazıp analiz etme zinciri.',
+          steps: [
+            { num: 1, name: 'v0.dev', desc: 'Doğal dil açıklamalarıyla modern web arayüzleri (React, Tailwind) prototipler.' },
+            { num: 2, name: 'Cursor IDE', desc: 'Prototiplenen kodları yerel projenize entegre edip yapay zeka yardımıyla geliştirir.' },
+            { num: 3, name: 'GitHub Copilot', desc: 'Kod yazarken gerçek zamanlı satır içi tamamlamalar ve hata düzeltmeleri sunar.' },
+            { num: 4, name: 'SonarCloud AI', desc: 'Geliştirilen kodun güvenlik açıklarını ve kod kalitesini otomatik denetler.' }
+          ]
+        },
+        {
+          title: 'E-Ticaret Ürün Listeleme & Satış Akışı',
+          icon: '🛒',
+          tag: 'E-Ticaret & Otomasyon',
+          description: 'Yeni bir ürünü vitrine eklerken açıklama yazma, ürün fotoğrafını stüdyo kalitesine getirme ve bot otomasyonu kurma zinciri.',
+          steps: [
+            { num: 1, name: 'Jasper AI', desc: 'SEO uyumlu ve yüksek dönüşüm oranlı ürün açıklamaları yazar.' },
+            { num: 2, name: 'Photoroom', desc: 'Evde çekilen ürün resimlerinin arka planını temizler ve profesyonel stüdyo ışığı ekler.' },
+            { num: 3, name: 'ManyChat AI', desc: 'Instagram ve WhatsApp üzerinden gelen ürün sorularına yapay zekayla otomatik yanıt verir.' }
+          ]
+        },
+        {
+          title: 'Akademik Araştırma & Literatür Tarama Akışı',
+          icon: '🔬',
+          tag: 'Eğitim & Araştırma',
+          description: 'Bir konu hakkında yayınlanan makaleleri bulma, özetleme ve kaynakçalandırarak akademik yazı hazırlama zinciri.',
+          steps: [
+            { num: 1, name: 'Consensus veya Elicit', desc: 'Bilimsel veritabanlarında sorularınıza doğrudan kanıt sunan makaleleri bulur.' },
+            { num: 2, name: 'ChatPDF', desc: 'Uzun ve karmaşık bilimsel PDF dosyalarını analiz eder, sorularınızı yanıtlar ve özetler.' },
+            { num: 3, name: 'Grammarly AI', desc: 'Yazılan makalenin dil bilgisi ve akademik üslup kontrollerini yapar.' }
+          ]
+        }
+      ];
+
+      const wfHtml = workflowsList.map(wf => `
+        <div class="workflow-card visible" style="padding:28px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); margin-bottom:24px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="font-size:2rem;">${wf.icon}</span>
+            <div>
+              <h3 style="margin:0; font-size:1.25rem; font-family:'Outfit',sans-serif;">${wf.title}</h3>
+              <span style="font-size:0.8rem; color:var(--accent-purple); font-weight:600;">${wf.tag}</span>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.6; margin-bottom:20px;">${wf.description}</p>
+          <div class="workflow-steps" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px;">
+            ${wf.steps.map(s => `
+              <div style="padding:14px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:var(--radius-md);">
+                <div style="font-weight:700; color:var(--accent-cyan); font-size:0.85rem; margin-bottom:4px;">Adım ${s.num}: ${s.name}</div>
+                <div style="font-size:0.8rem; color:var(--text-secondary); line-height:1.5;">${s.desc}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      htmlContent = htmlContent.replace(
+        /<div class="workflows-grid[^"]*" id="workflows-grid">[\s\S]*?<\/div>/,
+        `<div class="workflows-grid animate-on-scroll" id="workflows-grid">${wfHtml}</div>`
+      );
+
+      let headTags = '';
+      const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+      if (!htmlContent.includes('ca-pub-2978111918234260')) {
+        headTags = `${adsenseSnippet}\n`;
+      } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
+        headTags = `${db.adsense_code}\n`;
+      }
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      return res.send(htmlContent);
+    }
+  } catch (e) {
+    console.error('Error serving /workflows with SSR:', e.message);
+  }
+  serveHtmlWithAdSense(req, res, filePath);
 });
 
 app.get('/collection', function (req, res) {
@@ -427,15 +539,65 @@ app.get('/tool/:id', function (req, res) {
       
       htmlContent = htmlContent.replace('</head>', `${seoTags}\n</head>`);
 
+      // Category & Metadata
+      const cat = db.categories.find(c => c.id === tool.category_id);
+      const catLabel = cat ? `${cat.icon} ${cat.name}` : (tool.category_name || 'Yapay Zeka Aracı');
+      const rating = tool.rating || 4.5;
+      const votes = tool.votes || 58;
+      const stars = '★'.repeat(Math.round(rating));
+      
+      const pricingMap = { free: 'Ücretsiz', freemium: 'Freemium (Ücretsiz Başlangıç)', paid: 'Ücretli' };
+      const pricingLabel = pricingMap[tool.pricing] || tool.pricing || 'Ücretsiz';
+      const trSupportLabel = tool.turkish_support ? 'Tam Türkçe Desteği Mevcut' : 'Kısmi / İngilizce Arayüz';
+
+      // Rich Editorial Description (ensures AdSense and bots see authoritative content)
+      let fullDescription = tool.description || '';
+      if (fullDescription.length < 200) {
+        fullDescription += ` ${tool.name}, modern yapay zeka ekosisteminde kullanıcıların iş akışlarını hızlandırmak, üretkenliklerini artırmak ve operasyonel süreçlerini optimize etmek amacıyla tasarlanmış yenilikçi bir araçtır. ${catLabel} alanında sunduğu gelişmiş algoritmalar sayesinde hem bireysel kullanıcılar hem de kurumsal ekipler için pratik çözümler sağlar.`;
+      }
+
+      // Pros & Cons
+      const prosList = [
+        `${tool.name}, sezgisel ve modern arayüzü sayesinde hızlı öğrenme eğrisi sunar.`,
+        `Kendi kategorisinde iş süreçlerini hızlandırarak önemli ölçüde zaman tasarrufu sağlar.`,
+        `Gelişmiş yapay zeka mimarisi ile yüksek doğruluk ve istikrarlı performans sergiler.`
+      ];
+      const consList = [
+        `Gelişmiş takım yönetimi ve yüksek API limitleri genellikle premium abonelik gerektirir.`,
+        `Yoğun küresel trafik saatlerinde zaman zaman yanıt hızında dalgalanmalar görülebilir.`
+      ];
+      const prosHtml = prosList.map(p => `<li>${p}</li>`).join('');
+      const consHtml = consList.map(c => `<li>${c}</li>`).join('');
+
+      const tags = Array.isArray(tool.tags) ? tool.tags : [];
+      const tagsHtml = tags.map(t => `<span class="tool-tag">#${t}</span>`).join(' ');
+
+      // Server-side replacement of placeholders in tool.html
+      htmlContent = htmlContent
+        .replace('<h1 class="detail-title" id="tool-name" data-i18n="loading">Yükleniyor...</h1>', `<h1 class="detail-title" id="tool-name">${tool.name}</h1>`)
+        .replace('<span id="tool-category">...</span>', `<span id="tool-category">${catLabel}</span>`)
+        .replace('<span id="tool-rating-stars" style="color:var(--accent-amber);"></span>', `<span id="tool-rating-stars" style="color:var(--accent-amber);">${stars}</span>`)
+        .replace('<span id="tool-rating-val">0.0</span>', `<span id="tool-rating-val">${rating}</span>`)
+        .replace('<span id="tool-votes">0 oy</span>', `<span id="tool-votes">${votes} oy</span>`)
+        .replace(/<p style="[^"]*" id="tool-desc" data-i18n="loading_details">[\s\S]*?<\/p>/, `<p style="font-size:1.15rem; color:var(--text-secondary); line-height:1.8; margin-bottom:30px;" id="tool-desc">${fullDescription}</p>`)
+        .replace('<span class="spec-value" id="spec-pricing">...</span>', `<span class="spec-value" id="spec-pricing">${pricingLabel}</span>`)
+        .replace('<span class="spec-value" id="spec-tr-support">...</span>', `<span class="spec-value" id="spec-tr-support">${trSupportLabel}</span>`)
+        .replace('<div class="tool-tags" id="tool-tags-detail" style="margin-top:8px;">', `<div class="tool-tags" id="tool-tags-detail" style="margin-top:8px;">${tagsHtml}`)
+        .replace('style="display: none; margin-bottom: 35px;', 'style="display: block; margin-bottom: 35px;')
+        .replace('<!-- Dynamic content -->\n                </ul>', `${prosHtml}\n                </ul>`)
+        .replace('<!-- Dynamic content -->\n                </ul>', `${consHtml}\n                </ul>`)
+        .replace('id="vote-count-label">0<', `id="vote-count-label">${votes}<`)
+        .replace('href="#" target="_blank" rel="noopener" class="btn-visit" id="btn-visit-link"', `href="${tool.url || '#'}" target="_blank" rel="noopener nofollow" class="btn-visit" id="btn-visit-link"`);
+
       // Pre-render alternatives cards for SEO crawling
       let altCardsHtml = '';
       if (alternatives.length > 0) {
         altCardsHtml = alternatives.map(alt => {
-          const cat = db.categories.find(c => c.id === alt.category_id);
-          const catLabel = cat ? `${cat.icon} ${cat.name}` : '';
-          const stars = '★'.repeat(Math.round(alt.rating || 4));
-          const pricingMap = { free: 'Ücretsiz', freemium: 'Freemium', paid: 'Ücretli' };
-          const pricingLabel = pricingMap[alt.pricing] || alt.pricing || 'Ücretsiz';
+          const aCat = db.categories.find(c => c.id === alt.category_id);
+          const aCatLabel = aCat ? `${aCat.icon} ${aCat.name}` : '';
+          const aStars = '★'.repeat(Math.round(alt.rating || 4));
+          const aPricingMap = { free: 'Ücretsiz', freemium: 'Freemium', paid: 'Ücretli' };
+          const aPricingLabel = aPricingMap[alt.pricing] || alt.pricing || 'Ücretsiz';
           
           return `
             <div class="tool-card" data-id="${alt.id}" style="cursor:pointer" onclick="window.location.href='/tool/${alt.id}'">
@@ -443,13 +605,13 @@ app.get('/tool/:id', function (req, res) {
                 <div class="tool-icon">${alt.name.charAt(0).toUpperCase()}</div>
                 <div class="tool-info">
                   <h3 class="tool-name">${alt.name}</h3>
-                  <span class="tool-category-badge">${catLabel}</span>
+                  <span class="tool-category-badge">${aCatLabel}</span>
                 </div>
               </div>
               <p class="tool-description">${alt.description}</p>
               <div class="tool-footer" style="margin-top:auto;">
-                <div class="tool-rating">${stars} <span>${alt.rating || '4.0'}</span></div>
-                <span class="tool-pricing pricing-${alt.pricing}">${pricingLabel}</span>
+                <div class="tool-rating">${aStars} <span>${alt.rating || '4.0'}</span></div>
+                <span class="tool-pricing pricing-${alt.pricing}">${aPricingLabel}</span>
               </div>
             </div>
           `;
@@ -482,7 +644,63 @@ app.get('/asistan', function (req, res) {
 });
 
 app.get('/firsatlar', function (req, res) {
-  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'firsatlar.html'));
+  const filePath = path.join(__dirname, 'public', 'firsatlar.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+      const deals = db.deals || [];
+
+      if (deals.length > 0) {
+        const dealsHtml = deals.map(deal => {
+          const firstLetter = (deal.tool_name || 'A').charAt(0).toUpperCase();
+          const verifiedBadge = deal.verified ? `<span class="badge badge-featured" style="background:#10b981; color:white; font-size:0.75rem; border:none; margin-left:auto;">✓ Doğrulanmış</span>` : '';
+          return `
+            <div class="tool-card visible" style="display:flex; flex-direction:column; padding:24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg);">
+              <div class="tool-card-header" style="margin-bottom:12px; display:flex; align-items:center;">
+                <div class="tool-icon" style="margin-right:12px;">${firstLetter}</div>
+                <div class="tool-info" style="flex:1;">
+                  <h3 class="tool-name" style="margin:0; font-size:1.15rem;">${deal.tool_name}</h3>
+                  <span style="font-size:0.8rem; color:var(--accent-red); font-weight:700; background:rgba(239,68,68,0.1); padding:2px 8px; border-radius:50px; display:inline-block; margin-top:4px;">${deal.discount}</span>
+                </div>
+                ${verifiedBadge}
+              </div>
+              <p class="tool-description" style="margin-bottom:16px;">${deal.description || ''}</p>
+              <div style="margin-top:auto; display:flex; flex-direction:column; gap:10px;">
+                <div class="deal-code-box" style="border:2px dashed rgba(99,102,241,0.3); background:rgba(99,102,241,0.05); padding:8px 16px; border-radius:var(--radius-sm); font-family:monospace; font-size:1.05rem; font-weight:700; color:var(--accent-purple); text-align:center;">
+                  ${deal.code || 'Kupon Kodu Gerekmiyor'}
+                </div>
+                <a href="${deal.url || '#'}" target="_blank" rel="noopener nofollow" style="padding:10px 16px; background:var(--gradient-primary); color:white; font-weight:600; border-radius:var(--radius-sm); text-decoration:none; text-align:center; font-size:0.85rem;">
+                  Fırsatı Yakala &rarr;
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        htmlContent = htmlContent.replace(
+          /<div class="grid-tools" id="deals-grid">[\s\S]*?<\/div>\s*<\/div>/,
+          `<div class="grid-tools" id="deals-grid">${dealsHtml}</div>`
+        );
+      }
+
+      let headTags = '';
+      const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+      if (!htmlContent.includes('ca-pub-2978111918234260')) {
+        headTags = `${adsenseSnippet}\n`;
+      } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
+        headTags = `${db.adsense_code}\n`;
+      }
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      return res.send(htmlContent);
+    }
+  } catch (e) {
+    console.error('Error serving /firsatlar with SSR:', e.message);
+  }
+  serveHtmlWithAdSense(req, res, filePath);
 });
 
 app.get('/kurulum', function (req, res) {
@@ -490,7 +708,75 @@ app.get('/kurulum', function (req, res) {
 });
 
 app.get('/stories', function (req, res) {
-  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'stories.html'));
+  const filePath = path.join(__dirname, 'public', 'stories.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+      const stories = (db.stories || []).filter(s => s.approved !== false);
+
+      let storiesHtml = '';
+      if (stories.length > 0) {
+        storiesHtml = stories.map(s => {
+          const statsHtml = Array.isArray(s.stats) 
+            ? s.stats.map(st => `<span style="background:rgba(245, 158, 11, 0.06); color:#f59e0b; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:600; margin-right:6px;">${st.value} ${st.label}</span>`).join('')
+            : '';
+          const toolsHtml = Array.isArray(s.tools)
+            ? s.tools.map(t => `<span style="background:rgba(99, 102, 241, 0.06); color:var(--accent-purple); padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:500; margin-right:4px;">${t}</span>`).join('')
+            : '';
+          const cleanNick = '@' + (s.name || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+          return `
+            <article class="story-card visible" id="${s.id}" style="padding: 24px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-bottom: 20px;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                <div>
+                  <h3 style="margin:0 0 6px 0; font-size:1.2rem; color:var(--text-primary); font-family:'Outfit',sans-serif;">${s.title}</h3>
+                  <div style="font-size:0.85rem; color:var(--text-secondary);">
+                    <strong>${s.name}</strong> (${cleanNick}) • <span>${s.role || 'Girişimci'}</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin: 12px 0;">
+                <p style="color:var(--text-primary); font-size:0.95rem; line-height:1.7; margin-bottom:12px;">
+                  <em>"${s.quote || (s.content && s.content.solution) || ''}"</em>
+                </p>
+                ${s.content && s.content.challenge ? `<p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:8px;"><strong>Zorluk:</strong> ${s.content.challenge}</p>` : ''}
+                ${s.content && s.content.solution ? `<p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:8px;"><strong>Yapay Zeka Çözümü:</strong> ${s.content.solution}</p>` : ''}
+                ${s.content && s.content.result ? `<p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:12px;"><strong>Elde Edilen Sonuç:</strong> ${s.content.result}</p>` : ''}
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; border-top:1px solid var(--border-color); padding-top:12px; margin-top:12px;">
+                ${statsHtml}
+                ${toolsHtml}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      if (storiesHtml) {
+        htmlContent = htmlContent.replace(
+          /<div class="stories-grid" id="dynamic-stories-container">[\s\S]*?<\/div>/,
+          `<div class="stories-grid" id="dynamic-stories-container">${storiesHtml}</div>`
+        );
+      }
+
+      let headTags = '';
+      const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+      if (!htmlContent.includes('ca-pub-2978111918234260')) {
+        headTags = `${adsenseSnippet}\n`;
+      } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
+        headTags = `${db.adsense_code}\n`;
+      }
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      return res.send(htmlContent);
+    }
+  } catch (e) {
+    console.error('Error serving /stories with SSR:', e.message);
+  }
+  serveHtmlWithAdSense(req, res, filePath);
 });
 
 app.get('/prompts', function (req, res) {
@@ -498,10 +784,175 @@ app.get('/prompts', function (req, res) {
 });
 
 app.get('/haberler', function (req, res) {
-  serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'haberler.html'));
+  const filePath = path.join(__dirname, 'public', 'haberler.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+      const news = db.news || [];
+      
+      let newsCardsHtml = '';
+      if (news.length > 0) {
+        newsCardsHtml = news.map(item => {
+          const imgUrl = item.imageUrl || '/uploads/ads/ad_1782015572826_609.png';
+          return `
+            <div class="news-card" onclick="window.location.href='/haber/${item.id}'">
+              <div class="news-card-img">
+                <img src="${imgUrl}" alt="${item.title}">
+              </div>
+              <div class="news-card-body">
+                <div class="news-meta">
+                  <span>📅 ${item.publishDate}</span>
+                  <span>👤 ${item.source || 'AiKlavuz'}</span>
+                </div>
+                <h3 class="news-title">${item.title}</h3>
+                <p class="news-summary">${item.summary}</p>
+                <div style="margin-top: auto; color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 4px;">
+                  Devamını Oku 
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } else {
+        newsCardsHtml = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">Henüz yapay zeka haberi eklenmemiş.</p>';
+      }
+
+      htmlContent = htmlContent.replace(
+        /<div class="news-grid" id="news-grid-list">[\s\S]*?<\/div>/,
+        `<div class="news-grid" id="news-grid-list">${newsCardsHtml}</div>`
+      );
+
+      let headTags = '';
+      const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+      if (!htmlContent.includes('ca-pub-2978111918234260')) {
+        headTags = `${adsenseSnippet}\n`;
+      } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
+        headTags = `${db.adsense_code}\n`;
+      }
+      if (headTags) {
+        htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+      }
+      return res.send(htmlContent);
+    }
+  } catch (e) {
+    console.error('Error serving /haberler with SSR:', e.message);
+  }
+  serveHtmlWithAdSense(req, res, filePath);
+});
+
+function renderNewsDetail(req, res, articleId) {
+  const filePath = path.join(__dirname, 'public', 'haber-detay.html');
+  try {
+    const fs = require('fs');
+    if (fs.existsSync(filePath)) {
+      let htmlContent = fs.readFileSync(filePath, 'utf8');
+      const db = readDB();
+      const newsList = db.news || [];
+      const item = newsList.find(n => n.id === articleId);
+
+      if (item) {
+        const title = `${item.title} | AiKlavuz`;
+        const description = (item.summary || '').replace(/"/g, '&quot;');
+        const pageUrl = `https://aiklavuz.com/haber/${item.id}`;
+        const imgUrl = item.imageUrl || 'https://aiklavuz.com/uploads/ads/ad_1782015572826_609.png';
+
+        const schemaData = {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": item.title,
+          "description": item.summary,
+          "datePublished": item.publishDate || "2026-06-24",
+          "url": pageUrl,
+          "image": [imgUrl],
+          "author": {
+            "@type": "Organization",
+            "name": item.source || "AiKlavuz Teknoloji Editörleri"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "AiKlavuz",
+            "url": "https://aiklavuz.com"
+          }
+        };
+
+        const seoTags = `
+  <link rel="canonical" href="${pageUrl}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="${pageUrl}">
+  <meta property="og:image" content="${imgUrl}">
+  <script type="application/ld+json">
+  ${JSON.stringify(schemaData, null, 2)}
+  </script>`;
+
+        htmlContent = htmlContent
+          .replace(/<title>.*?<\/title>/gi, `<title>${title}</title>`)
+          .replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gi, `<meta name="description" content="${description}">`)
+          .replace('</head>', `${seoTags}\n</head>`);
+
+        const articleHtml = `
+          <div class="article-header">
+            <h1 class="article-title">${item.title}</h1>
+            <div class="article-meta">
+              <span>📅 Yayın Tarihi: <strong>${item.publishDate}</strong></span>
+              <span>👤 Kaynak: <strong>${item.source || 'AiKlavuz Editörleri'}</strong></span>
+              ${item.sourceUrl ? `<span>🔗 <a href="${item.sourceUrl}" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none;">Kaynak Site</a></span>` : ''}
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="${imgUrl}" alt="${item.title}">
+          </div>
+          <div class="article-content">
+            ${item.content}
+          </div>
+          <div class="article-footer">
+            <a href="/haberler" class="btn-back">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(180deg); margin-right: 4px; vertical-align: middle;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              Haberlere Geri Dön
+            </a>
+            <button id="btn-share-news" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); color: var(--text-primary); padding: 10px 20px; border-radius: var(--radius-md); cursor: pointer; font-size: 0.9rem; font-weight: 500;">
+              🔗 Haberi Paylaş
+            </button>
+          </div>
+        `;
+
+        htmlContent = htmlContent.replace(
+          '<article class="article-container" id="article-view">\n      <p style="color: var(--text-secondary); text-align: center;">Haber yükleniyor...</p>\n    </article>',
+          `<article class="article-container" id="article-view">${articleHtml}</article>`
+        );
+
+        let headTags = '';
+        const adsenseSnippet = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2978111918234260" crossorigin="anonymous"></script>';
+        if (!htmlContent.includes('ca-pub-2978111918234260')) {
+          headTags = `${adsenseSnippet}\n`;
+        } else if (db.adsense_code && !htmlContent.includes(db.adsense_code)) {
+          headTags = `${db.adsense_code}\n`;
+        }
+        if (headTags) {
+          htmlContent = htmlContent.replace('</head>', `${headTags}\n</head>`);
+        }
+        return res.send(htmlContent);
+      }
+    }
+  } catch (e) {
+    console.error('Error rendering news detail SSR:', e.message);
+  }
+  serveHtmlWithAdSense(req, res, filePath);
+}
+
+app.get('/haber/:id', function (req, res) {
+  renderNewsDetail(req, res, req.params.id);
 });
 
 app.get('/haber-detay', function (req, res) {
+  const id = req.query.id;
+  if (id) {
+    return renderNewsDetail(req, res, id);
+  }
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'haber-detay.html'));
 });
 

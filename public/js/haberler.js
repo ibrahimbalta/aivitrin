@@ -6,11 +6,32 @@ document.addEventListener('DOMContentLoaded', function () {
   var articleView = document.getElementById('article-view');
 
   if (newsGrid) {
-    loadNewsList();
+    if (!newsGrid.querySelector('.news-card')) {
+      loadNewsList();
+    }
   }
 
   if (articleView) {
-    loadArticleDetail();
+    if (articleView.querySelector('.article-title')) {
+      bindShareButton();
+    } else {
+      loadArticleDetail();
+    }
+  }
+
+  function bindShareButton() {
+    var shareBtn = document.getElementById('btn-share-news');
+    if (shareBtn && !shareBtn.dataset.bound) {
+      shareBtn.dataset.bound = 'true';
+      shareBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          shareBtn.textContent = '✅ Bağlantı Kopyalandı!';
+          setTimeout(function () {
+            shareBtn.textContent = '🔗 Haberi Paylaş';
+          }, 2000);
+        });
+      });
+    }
   }
 
   async function loadNewsList() {
@@ -27,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
       newsGrid.innerHTML = news.map(function (item) {
         var imgUrl = item.imageUrl || '/uploads/ads/ad_1782015572826_609.png'; // placeholder fallback
         return `
-          <div class="news-card" onclick="window.location.href='/haber-detay?id=${item.id}'">
+          <div class="news-card" onclick="window.location.href='/haber/${item.id}'">
             <div class="news-card-img">
               <img src="${imgUrl}" alt="${item.title}">
             </div>
