@@ -7619,9 +7619,31 @@ button:active,
   transition: transform 0.1s ease;
 }
 
-/* Base Bottom Bar (Hidden on desktop) */
-.mobile-app-bottom-bar {
-  display: none;
+/* Base Bottom Bar (STRICTLY Hidden on desktop) */
+.mobile-app-bottom-bar,
+#mobile-app-bottom-bar {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  bottom: -9999px !important;
+}
+
+@media (min-width: 769px) {
+  .mobile-app-bottom-bar,
+  #mobile-app-bottom-bar {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    bottom: -9999px !important;
+  }
 }
 
 /* Mobile & Tablet (< 768px) Native App Layout */

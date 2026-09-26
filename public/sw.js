@@ -1,5 +1,5 @@
-// AiKlavuz Advanced Service Worker v7 (PWA & APK Optimized)
-const CACHE_NAME = 'aiklavuz-cache-v7';
+// AiKlavuz Advanced Service Worker v8 (PWA & APK Optimized)
+const CACHE_NAME = 'aiklavuz-cache-v8';
 const OFFLINE_URL = '/offline.html';
 
 const APP_SHELL_ASSETS = [
