@@ -76,7 +76,7 @@ app.get('/robots.txt', function (req, res) {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=86400');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.send('User-agent: *\nAllow: /\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://aiklavuz.com/sitemap.xml\n');
+  res.send('User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /auth/\nDisallow: /api/\n\nUser-agent: Googlebot\nAllow: /\n\nUser-agent: Googlebot-Image\nAllow: /\nAllow: /og-image.png\nAllow: /icons/\n\nUser-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\nSitemap: https://aiklavuz.com/sitemap.xml\n');
 });
 
 // ─── Public Static Files (Registered FIRST to completely bypass MongoDB sync & sessions for assets) ───
@@ -167,116 +167,156 @@ app.use('/admin', requireAuth, express.static(path.join(__dirname, 'admin')));
 app.use('/auth', require('./routes/auth'));
 app.use('/api', require('./routes/api'));
 
-// ─── Dynamic Sitemap Generator for Google SEO ───
+// ─── High-Performance Cached XML Sitemaps for Google SEO ───
+// Main Sitemap Index
 app.get('/sitemap.xml', function (req, res) {
   try {
+    const todayStr = new Date().toISOString().split('T')[0];
     const { readDB } = require('./db/database');
     const db = readDB();
     const tools = db.tools || [];
+    const chunkSize = 4000;
+    const toolParts = Math.max(1, Math.ceil(tools.length / chunkSize));
     
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml += '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml += `  <sitemap>\n    <loc>https://aiklavuz.com/sitemap-main.xml</loc>\n    <lastmod>${todayStr}</lastmod>\n  </sitemap>\n`;
+    xml += `  <sitemap>\n    <loc>https://aiklavuz.com/sitemap-categories.xml</loc>\n    <lastmod>${todayStr}</lastmod>\n  </sitemap>\n`;
+    for (let p = 1; p <= toolParts; p++) {
+      xml += `  <sitemap>\n    <loc>https://aiklavuz.com/sitemap-tools-${p}.xml</loc>\n    <lastmod>${todayStr}</lastmod>\n  </sitemap>\n`;
+    }
+    xml += `  <sitemap>\n    <loc>https://aiklavuz.com/sitemap-news.xml</loc>\n    <lastmod>${todayStr}</lastmod>\n  </sitemap>\n`;
+    xml += '</sitemapindex>';
     
+    res.header('Content-Type', 'application/xml; charset=utf-8');
+    res.header('Cache-Control', 'public, max-age=43200');
+    res.send(xml);
+  } catch (err) {
+    console.error('Error generating sitemap index:', err.message);
+    res.status(500).end();
+  }
+});
+
+// Sub-sitemap: Main pages
+app.get('/sitemap-main.xml', function (req, res) {
+  try {
+    const todayStr = new Date().toISOString().split('T')[0];
     const staticPages = [
       { path: '', priority: '1.0', changefreq: 'daily' },
-      { path: 'alternatives', priority: '0.8', changefreq: 'daily' },
-      { path: 'compare', priority: '0.8', changefreq: 'daily' },
-      { path: 'workflows', priority: '0.8', changefreq: 'weekly' },
-      { path: 'collection', priority: '0.8', changefreq: 'weekly' },
-      { path: 'calculator', priority: '0.8', changefreq: 'weekly' },
-      { path: 'professions', priority: '0.8', changefreq: 'weekly' },
-      { path: 'stories', priority: '0.8', changefreq: 'daily' },
-      { path: 'prompts', priority: '0.8', changefreq: 'daily' },
-      { path: 'haberler', priority: '0.8', changefreq: 'daily' },
-      { path: 'studio', priority: '0.9', changefreq: 'daily' },
-      { path: 'models', priority: '0.9', changefreq: 'daily' },
-      { path: 'prompt-studio', priority: '0.9', changefreq: 'daily' },
+      { path: 'studio', priority: '0.95', changefreq: 'daily' },
+      { path: 'models', priority: '0.95', changefreq: 'daily' },
+      { path: 'prompt-studio', priority: '0.95', changefreq: 'daily' },
       { path: 'stack', priority: '0.9', changefreq: 'weekly' },
       { path: 'kariyer', priority: '0.9', changefreq: 'daily' },
-      { path: 'firsatlar', priority: '0.8', changefreq: 'weekly' },
-      { path: 'akademi', priority: '0.8', changefreq: 'weekly' },
-      { path: 'iletisim', priority: '0.5', changefreq: 'monthly' },
+      { path: 'workflows', priority: '0.85', changefreq: 'weekly' },
+      { path: 'calculator', priority: '0.85', changefreq: 'weekly' },
+      { path: 'prompts', priority: '0.85', changefreq: 'daily' },
+      { path: 'alternatives', priority: '0.85', changefreq: 'daily' },
+      { path: 'compare', priority: '0.85', changefreq: 'daily' },
+      { path: 'firsatlar', priority: '0.85', changefreq: 'weekly' },
+      { path: 'kurulum', priority: '0.8', changefreq: 'weekly' },
+      { path: 'haberler', priority: '0.8', changefreq: 'daily' },
+      { path: 'professions', priority: '0.8', changefreq: 'weekly' },
+      { path: 'stories', priority: '0.8', changefreq: 'daily' },
+      { path: 'collection', priority: '0.7', changefreq: 'weekly' },
+      { path: 'akademi', priority: '0.7', changefreq: 'weekly' },
       { path: 'hakkimizda', priority: '0.5', changefreq: 'monthly' },
+      { path: 'iletisim', priority: '0.5', changefreq: 'monthly' },
       { path: 'gizlilik-politikasi', priority: '0.3', changefreq: 'monthly' },
       { path: 'kullanim-kosullari', priority: '0.3', changefreq: 'monthly' }
     ];
-    
-    const todayStr = new Date().toISOString().split('T')[0];
-    
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
     staticPages.forEach(p => {
-      xml += `  <url>\n`;
-      xml += `    <loc>https://aiklavuz.com/${p.path}</loc>\n`;
-      xml += `    <lastmod>${todayStr}</lastmod>\n`;
-      xml += `    <changefreq>${p.changefreq}</changefreq>\n`;
-      xml += `    <priority>${p.priority}</priority>\n`;
-      xml += `  </url>\n`;
+      xml += `  <url>\n    <loc>https://aiklavuz.com/${p.path}</loc>\n    <lastmod>${todayStr}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>\n`;
     });
-    
-    tools.forEach(t => {
-      if (t.id) {
-        const lastmod = (t.updated_at || t.created_at || new Date().toISOString()).split('T')[0];
-        xml += `  <url>\n`;
-        xml += `    <loc>https://aiklavuz.com/tool/${t.id}</loc>\n`;
-        xml += `    <lastmod>${lastmod}</lastmod>\n`;
-        xml += `    <changefreq>weekly</changefreq>\n`;
-        xml += `    <priority>0.7</priority>\n`;
-        xml += `  </url>\n`;
+    xml += '</urlset>';
+
+    res.header('Content-Type', 'application/xml; charset=utf-8');
+    res.header('Cache-Control', 'public, max-age=43200');
+    res.send(xml);
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+
+// Sub-sitemap: Categories (42 programmatic landing pages)
+app.get('/sitemap-categories.xml', function (req, res) {
+  try {
+    const todayStr = new Date().toISOString().split('T')[0];
+    const { readDB } = require('./db/database');
+    const db = readDB();
+    const categories = db.categories || [];
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    categories.forEach(c => {
+      if (c.id) {
+        xml += `  <url>\n    <loc>https://aiklavuz.com/category/${c.id}</loc>\n    <lastmod>${todayStr}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
       }
     });
+    xml += '</urlset>';
 
-    // News & In-depth Guides Permalinks
+    res.header('Content-Type', 'application/xml; charset=utf-8');
+    res.header('Cache-Control', 'public, max-age=43200');
+    res.send(xml);
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+
+// Sub-sitemap: Tools in chunks of 4000
+app.get('/sitemap-tools-:part.xml', function (req, res) {
+  try {
+    const part = parseInt(req.params.part, 10) || 1;
+    const chunkSize = 4000;
+    const { readDB } = require('./db/database');
+    const db = readDB();
+    const tools = db.tools || [];
+    const startIndex = (part - 1) * chunkSize;
+    const chunk = tools.slice(startIndex, startIndex + chunkSize);
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    chunk.forEach(t => {
+      if (t.id) {
+        const lastmod = (t.updated_at || t.created_at || new Date().toISOString()).split('T')[0];
+        xml += `  <url>\n    <loc>https://aiklavuz.com/tool/${t.id}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+      }
+    });
+    xml += '</urlset>';
+
+    res.header('Content-Type', 'application/xml; charset=utf-8');
+    res.header('Cache-Control', 'public, max-age=43200');
+    res.send(xml);
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+
+// Sub-sitemap: News
+app.get('/sitemap-news.xml', function (req, res) {
+  try {
+    const todayStr = new Date().toISOString().split('T')[0];
+    const { readDB } = require('./db/database');
+    const db = readDB();
     const news = db.news || [];
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
     news.forEach(n => {
       if (n.id) {
         const lastmod = (n.publishDate || todayStr);
-        xml += `  <url>\n`;
-        xml += `    <loc>https://aiklavuz.com/haber/${n.id}</loc>\n`;
-        xml += `    <lastmod>${lastmod}</lastmod>\n`;
-        xml += `    <changefreq>weekly</changefreq>\n`;
-        xml += `    <priority>0.8</priority>\n`;
-        xml += `  </url>\n`;
+        xml += `  <url>\n    <loc>https://aiklavuz.com/haber/${n.id}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
       }
     });
-    
-    // Categories
-    const categories = db.categories || [];
-    categories.forEach(c => {
-      if (c.id) {
-        xml += `  <url>\n`;
-        xml += `    <loc>https://aiklavuz.com/category/${c.id}</loc>\n`;
-        xml += `    <lastmod>${todayStr}</lastmod>\n`;
-        xml += `    <changefreq>daily</changefreq>\n`;
-        xml += `    <priority>0.8</priority>\n`;
-        xml += `  </url>\n`;
-      }
-    });
-    
-    // Programmatic SEO: Generate comparisons for the top 10 most popular tools (45 permalinks)
-    try {
-      const popularTools = [...tools]
-        .sort((a, b) => (b.votes || 0) - (a.votes || 0) || (b.rating || 0) - (a.rating || 0))
-        .slice(0, 10);
-
-      for (let i = 0; i < popularTools.length; i++) {
-        for (let j = i + 1; j < popularTools.length; j++) {
-          xml += `  <url>\n`;
-          xml += `    <loc>https://aiklavuz.com/compare?t1=${popularTools[i].id}&amp;t2=${popularTools[j].id}</loc>\n`;
-          xml += `    <lastmod>${todayStr}</lastmod>\n`;
-          xml += `    <changefreq>weekly</changefreq>\n`;
-          xml += `    <priority>0.6</priority>\n`;
-          xml += `  </url>\n`;
-        }
-      }
-    } catch (e) {
-      console.error('Error generating comparison URLs for sitemap:', e.message);
-    }
-    
     xml += '</urlset>';
-    
-    res.header('Content-Type', 'application/xml');
+
+    res.header('Content-Type', 'application/xml; charset=utf-8');
+    res.header('Cache-Control', 'public, max-age=43200');
     res.send(xml);
   } catch (err) {
-    console.error('Error generating sitemap:', err.message);
     res.status(500).end();
   }
 });
@@ -459,11 +499,162 @@ app.get(['/kariyer', '/jobs', '/career'], function (req, res) {
   serveHtmlWithAdSense(req, res, path.join(__dirname, 'public', 'kariyer.html'));
 });
 
-// Category permalink handler
+// ─── 42 Programmatic SEO Category Landing Pages (SSR) ───
 app.get(['/category/:id', '/kategori/:id'], function (req, res) {
   const catId = req.params.id;
-  res.redirect(`/?category=${encodeURIComponent(catId)}#tools-section`);
+  try {
+    const { readDB } = require('./db/database');
+    const db = readDB();
+    const cat = (db.categories || []).find(c => c.id === catId);
+    
+    if (!cat) {
+      return res.redirect('/#tools-section');
+    }
+    
+    const fs = require('fs');
+    const indexPath = path.join(__dirname, 'public', 'index.html');
+    let htmlContent = fs.readFileSync(indexPath, 'utf8');
+    
+    const catName = cat.name || 'Yapay Zeka';
+    const catIcon = cat.icon || '🤖';
+    const catDesc = cat.description || `${catName} alanında işlerinizi kolaylaştıracak en popüler yapay zeka araçları.`;
+    
+    const title = `En İyi ${catName} Yapay Zeka Araçları (2026 Güncel Liste) | AiKlavuz`;
+    const metaDesc = `${catName} alanındaki en iyi, en popüler ve Türkçe destekli 10+ yapay zeka aracını keşfedin. Ücretsiz deneme, kullanıcı puanları ve alternatifleriyle 2026'nın en iyi ${catName} çözümleri AiKlavuz'da.`;
+    const pageUrl = `https://aiklavuz.com/category/${cat.id}`;
+    
+    // Top 16 tools for this category for SSR Pre-rendering
+    const catTools = (db.tools || [])
+      .filter(t => (t.category_id === cat.id || t.category === cat.id))
+      .sort((a, b) => (b.votes || 0) - (a.votes || 0) || (b.rating || 0) - (a.rating || 0))
+      .slice(0, 16);
+      
+    // Schema.org CollectionPage & ItemList
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": `${pageUrl}#webpage`,
+          "url": pageUrl,
+          "name": title,
+          "description": metaDesc,
+          "inLanguage": "tr-TR",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://aiklavuz.com/#website",
+            "name": "AiKlavuz",
+            "url": "https://aiklavuz.com"
+          },
+          "about": {
+            "@type": "Thing",
+            "name": catName,
+            "description": catDesc
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Ana Sayfa",
+              "item": "https://aiklavuz.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Kategoriler",
+              "item": "https://aiklavuz.com/#categories-section"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": catName,
+              "item": pageUrl
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "name": `En Popüler ${catName} Yapay Zeka Araçları`,
+          "numberOfItems": catTools.length,
+          "itemListElement": catTools.map((t, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "name": t.name,
+            "url": `https://aiklavuz.com/tool/${t.id}`
+          }))
+        }
+      ]
+    };
+    
+    // Replace Title, Description, Canonical
+    htmlContent = htmlContent.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`);
+    htmlContent = htmlContent.replace(/<meta\s+name=["']description["']\s+content=["'][^"']*["']/i, `<meta name="description" content="${metaDesc}">`);
+    htmlContent = htmlContent.replace(/<link\s+rel=["']canonical["']\s+href=["'][^"']*["']/i, `<link rel="canonical" href="${pageUrl}">`);
+    
+    // Replace / Inject OG & Twitter Meta
+    const ogMeta = `
+  <link rel="canonical" href="${pageUrl}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${metaDesc}">
+  <meta property="og:url" content="${pageUrl}">
+  <meta property="og:image" content="https://aiklavuz.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${metaDesc}">
+  <meta name="twitter:image" content="https://aiklavuz.com/og-image.png">
+  <script type="application/ld+json">
+${JSON.stringify(schemaData, null, 2)}
+  </script>`;
+    
+    htmlContent = htmlContent.replace('</head>', `${ogMeta}\n</head>`);
+    
+    // Pre-render Category Hero Spotlight in HTML
+    const categorySpotlightHtml = `
+      <div class="category-seo-spotlight" style="padding: 24px; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: 16px; margin: 20px 0 30px; text-align: center;">
+        <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">${catIcon}</span>
+        <h1 style="font-size: 1.8rem; font-family: 'Outfit', sans-serif; margin-bottom: 8px; color: var(--text-primary);">En İyi ${catName} Yapay Zeka Araçları</h1>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto; font-size: 0.95rem; line-height: 1.5;">${catDesc} — Aşağıda bu alanda en çok tercih edilen, puanlanan ve Türkçe desteği bulunan araçları inceleyebilirsiniz.</p>
+      </div>
+    `;
+    
+    htmlContent = htmlContent.replace('<div class="grid-tools" id="tools-grid"', `${categorySpotlightHtml}\n      <div class="grid-tools" id="tools-grid"`);
+    
+    // Pre-render tools cards into tools-grid so crawler sees them immediately
+    if (catTools.length > 0) {
+      const preRenderedCards = catTools.map(t => {
+        const firstLetter = (t.name || 'A').charAt(0).toUpperCase();
+        return `
+        <article class="tool-card visible" style="display:flex; flex-direction:column; padding:20px; border:1px solid var(--border-color); border-radius:var(--radius-lg); background:var(--bg-card);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:42px; height:42px; border-radius:10px; background:var(--gradient-primary); display:flex; align-items:center; justify-content:center; color:white; font-weight:700;">${firstLetter}</div>
+            <div>
+              <h3 style="margin:0; font-size:1.05rem;"><a href="/tool/${t.id}" style="color:var(--text-primary); text-decoration:none;">${t.name}</a></h3>
+              <span style="font-size:0.8rem; color:var(--text-muted);">⭐ ${t.rating || '4.8'} (${t.votes || '10+'} oy)</span>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.5; flex:1; margin-bottom:14px;">${(t.description || '').slice(0, 140)}...</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.06); padding-top:10px;">
+            <span style="font-size:0.75rem; color:var(--accent-cyan); font-weight:600;">${t.pricing === 'ucretsiz' ? 'Ücretsiz' : (t.pricing === 'freemium' ? 'Freemium' : 'Ücretli')}</span>
+            <a href="/tool/${t.id}" style="font-size:0.8rem; font-weight:700; color:var(--accent-purple); text-decoration:none;">İncele &rarr;</a>
+          </div>
+        </article>`;
+      }).join('');
+      
+      htmlContent = htmlContent.replace('<div class="grid-tools" id="tools-grid">', `<div class="grid-tools" id="tools-grid">${preRenderedCards}`);
+    }
+    
+    return res.send(htmlContent);
+  } catch (err) {
+    console.error('Error serving category landing page with SSR:', err.message);
+    res.redirect('/#tools-section');
+  }
 });
+
 
 app.get('/tool/:id', function (req, res) {
   const toolId = req.params.id;

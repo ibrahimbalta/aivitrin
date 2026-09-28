@@ -1,10 +1,21 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /og-image.png
+Allow: /icons/
 
 User-agent: Mediapartners-Google
 Allow: /
 
-User-agent: Googlebot
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://aiklavuz.com/sitemap.xml

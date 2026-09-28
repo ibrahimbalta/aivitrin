@@ -965,9 +965,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     initSearchCategoryDropdown(categories);
     renderFeatured();
     
-    // Read category query parameter on load
+    // Read category query parameter or pathname on load
     const urlParams = new URLSearchParams(window.location.search);
-    const initialCategory = urlParams.get('category');
+    const pathMatch = window.location.pathname.match(/^\/(?:category|kategori)\/([^\/]+)/);
+    const initialCategory = urlParams.get('category') || (pathMatch ? decodeURIComponent(pathMatch[1]) : null);
     if (initialCategory) {
       activeCategory = initialCategory;
       currentPage = 1;
