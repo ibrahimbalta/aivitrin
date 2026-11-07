@@ -42,6 +42,7 @@ function serveHtmlWithAdSense(req, res, filePath, extraHeadTags = '') {
     const fs = require('fs');
     if (fs.existsSync(filePath)) {
       let htmlContent = fs.readFileSync(filePath, 'utf8');
+      htmlContent = htmlContent.replace(/<link\s+rel=["']canonical["'][^>]*>\r?\n?/gi, '');
       const db = readDB();
       
       let headTags = extraHeadTags || '';
