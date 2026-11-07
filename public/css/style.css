@@ -5,11 +5,11 @@
 
 /* ---- 1. CSS Custom Properties ---- */
 :root {
-  --bg-primary: #030303;
-  --bg-secondary: #09090b;
-  --bg-card: rgba(13, 13, 22, 0.45);
-  --bg-card-hover: rgba(22, 22, 38, 0.6);
-  --bg-input: #0b0b0f;
+  --bg-primary: #0a0e1c;
+  --bg-secondary: #0f152a;
+  --bg-card: rgba(16, 22, 40, 0.7);
+  --bg-card-hover: rgba(24, 34, 60, 0.8);
+  --bg-input: #111728;
   --text-primary: #fafafa;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
@@ -80,9 +80,9 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-primary);
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 90% 80%, rgba(217, 70, 239, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.02) 0%, transparent 60%);
+    radial-gradient(circle at 20% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 25%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100dvh;
@@ -7284,28 +7284,28 @@ img {
 
 /* ---- Color & Ambient Light Override ---- */
 :root {
-  --bg-primary: #040406 !important;
-  --bg-secondary: #0a0a0d !important;
-  --bg-card: rgba(20, 20, 24, 0.7) !important;
-  --bg-card-hover: rgba(30, 30, 36, 0.8) !important;
-  --bg-input: #121215 !important;
-  --text-primary: #f4f4f5 !important;
-  --text-secondary: #a1a1aa !important;
-  --text-muted: #52525b !important;
-  --border-color: rgba(255, 255, 255, 0.05) !important;
-  --border-hover: rgba(255, 255, 255, 0.1) !important;
-  --accent-purple: #3b82f6 !important;
-  --accent-cyan: #3b82f6 !important;
+  --bg-primary: #0a0e1c !important;
+  --bg-secondary: #0f152a !important;
+  --bg-card: rgba(16, 22, 40, 0.72) !important;
+  --bg-card-hover: rgba(24, 34, 60, 0.82) !important;
+  --bg-input: #111728 !important;
+  --text-primary: #f8fafc !important;
+  --text-secondary: #94a3b8 !important;
+  --text-muted: #64748b !important;
+  --border-color: rgba(255, 255, 255, 0.08) !important;
+  --border-hover: rgba(99, 102, 241, 0.35) !important;
+  --accent-purple: #8b5cf6 !important;
+  --accent-cyan: #06b6d4 !important;
   --accent-green: #10b981 !important;
   --accent-amber: #f59e0b !important;
   --accent-red: #ef4444 !important;
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%) !important;
-  --gradient-hero: radial-gradient(ellipse at 50% -20%, rgba(59, 130, 246, 0.04) 0%, transparent 60%) !important;
-  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
-  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
-  --shadow-glow: none !important;
-  --bg-dropdown: #121215 !important;
-  --border-dropdown: rgba(255, 255, 255, 0.06) !important;
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%) !important;
+  --gradient-hero: radial-gradient(ellipse at 50% -10%, rgba(99, 102, 241, 0.22) 0%, transparent 65%) !important;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.28) !important;
+  --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.18) !important;
+  --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.25) !important;
+  --bg-dropdown: #0f152a !important;
+  --border-dropdown: rgba(255, 255, 255, 0.08) !important;
 }
 
 [data-theme="light"] {
@@ -7328,17 +7328,101 @@ img {
   --shadow-card-hover: 0 6px 16px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* ---- Remove Ambient Glow Orbs ---- */
-.orb, .orb-1, .orb-2, .orb-3 {
-  display: none !important;
-  background: none !important;
-  opacity: 0 !important;
+/* ---- Modern Luminous Animated Aurora Glows ---- */
+.aurora-bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: -2 !important;
+  overflow: hidden !important;
+  background: radial-gradient(circle at 50% 0%, #151e3a 0%, #0d1224 40%, #090c18 100%) !important;
+}
+
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  top: -12%;
+  left: 10%;
+  right: 10%;
+  height: 550px;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(99, 102, 241, 0.35) 0%, rgba(6, 182, 212, 0.22) 50%, transparent 80%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: heroPulse 10s ease-in-out infinite alternate;
+}
+
+.orb {
+  display: block !important;
+  position: absolute !important;
+  border-radius: 50% !important;
+  mix-blend-mode: screen !important;
+  pointer-events: none !important;
+  will-change: transform, opacity;
+}
+
+.orb-1 {
+  width: 800px !important;
+  height: 800px !important;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.55) 0%, rgba(99, 102, 241, 0.3) 45%, transparent 75%) !important;
+  top: -10% !important;
+  left: -5% !important;
+  filter: blur(100px) !important;
+  opacity: 0.7 !important;
+  animation: floatOrb1 18s ease-in-out infinite alternate !important;
+}
+
+.orb-2 {
+  width: 900px !important;
+  height: 900px !important;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.5) 0%, rgba(59, 130, 246, 0.3) 45%, transparent 75%) !important;
+  top: 15% !important;
+  right: -10% !important;
+  filter: blur(110px) !important;
+  opacity: 0.65 !important;
+  animation: floatOrb2 22s ease-in-out infinite alternate !important;
+}
+
+.orb-3 {
+  width: 750px !important;
+  height: 750px !important;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(139, 92, 246, 0.25) 50%, transparent 75%) !important;
+  bottom: 0% !important;
+  left: 20% !important;
+  filter: blur(100px) !important;
+  opacity: 0.55 !important;
+  animation: floatOrb3 20s ease-in-out infinite alternate !important;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(80px, 60px) scale(1.12) rotate(45deg); }
+  100% { transform: translate(-40px, 90px) scale(0.95) rotate(90deg); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-90px, 80px) scale(1.08) rotate(-45deg); }
+  100% { transform: translate(50px, -40px) scale(1.15) rotate(-90deg); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -70px) scale(1.1); }
+  100% { transform: translate(-70px, 50px) scale(0.92); }
+}
+
+@keyframes heroPulse {
+  0% { opacity: 0.75; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1.04); }
 }
 
 /* ---- Compact Tool Cards ---- */
 .tool-card {
   background: var(--bg-card) !important;
-  border: 1px solid #27272a !important; /* Zinc 800 for dark mode */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Zinc 800 for dark mode */
   border-radius: 10px !important;
   padding: 10px 12px !important;
   box-shadow: var(--shadow-card) !important;
@@ -7358,9 +7442,9 @@ img {
 }
 
 .tool-card:hover {
-  border-color: #3f3f46 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: var(--shadow-card-hover) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 20px rgba(99, 102, 241, 0.15) !important;
   background: var(--bg-card-hover) !important;
 }
 
@@ -7626,10 +7710,12 @@ img {
 
 /* ---- Hero Search Layout ---- */
 .hero-search-box {
-  background: rgba(24, 24, 27, 0.7) !important;
-  border: 1px solid var(--border-color) !important;
-  box-shadow: var(--shadow-card) !important;
-  border-radius: 16px !important;
+  background: rgba(16, 22, 40, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 25px rgba(99, 102, 241, 0.12) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: 18px !important;
 }
 
 [data-theme="light"] .hero-search-box {
