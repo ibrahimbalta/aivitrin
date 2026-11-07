@@ -128,11 +128,19 @@ document.addEventListener('DOMContentLoaded', async function () {
   var currentPage = 1;
   var itemsPerPage = 12;
 
-  // Interactive Cursor Spotlight tracking
+  // Interactive Cursor Spotlight & Card Relative Tracking
   document.addEventListener('mousemove', function (e) {
     document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
     document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-  });
+
+    // Per-card spotlight coordinates for smooth luminous border glow
+    var targetCard = e.target && e.target.closest && e.target.closest('.tool-card, .category-card');
+    if (targetCard) {
+      var rect = targetCard.getBoundingClientRect();
+      targetCard.style.setProperty('--card-mouse-x', (e.clientX - rect.left) + 'px');
+      targetCard.style.setProperty('--card-mouse-y', (e.clientY - rect.top) + 'px');
+    }
+  }, { passive: true });
 
   // ═══════════════════════════════════════════
   // RENDER FONKSİYONLARI
@@ -213,7 +221,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         alternatives.slice(0, 5).forEach(function (alt) {
           var firstAltLetter = alt.name.charAt(0).toUpperCase();
           var hashColor = getHashColor(alt.id);
-          alternativesHtml += '<a href="/tool/' + alt.id + '" class="alt-icon-link" title="' + alt.name + '" style="background: ' + hashColor + '">' + firstAltLetter + '</a>';
+          var altDomain = '';
+          if (alt.url) {
+            try {
+              var p = new URL(alt.url.startsWith('http') ? alt.url : 'https://' + alt.url);
+              altDomain = p.hostname;
+            } catch(e) {}
+          }
+          var altIconHtml = '<span class="alt-letter">' + firstAltLetter + '</span>';
+          if (altDomain) {
+            altIconHtml += '<img class="alt-favicon" src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(altDomain) + '&sz=32" alt="' + (alt.name || '') + '" loading="lazy" onload="this.classList.add(\'loaded\')" onerror="this.remove()" />';
+          }
+          alternativesHtml += '<a href="/tool/' + alt.id + '" class="alt-icon-link" title="' + alt.name + '" style="background: ' + hashColor + '">' + altIconHtml + '</a>';
         });
         
         alternativesHtml += '</div></div>';
@@ -229,9 +248,25 @@ document.addEventListener('DOMContentLoaded', async function () {
     var h2 = (h1 + 45) % 360;
     var gradientStyle = 'background: linear-gradient(135deg, hsl(' + h1 + ', 70%, 48%) 0%, hsl(' + h2 + ', 75%, 35%) 100%)';
 
+    var domain = '';
+    if (tool.url) {
+      try {
+        var parsedUrl = new URL(tool.url.startsWith('http') ? tool.url : 'https://' + tool.url);
+        domain = parsedUrl.hostname;
+      } catch (e) {
+        domain = '';
+      }
+    }
+
+    var iconContent = '<span class="tool-letter-fallback">' + firstLetter + '</span>';
+    if (domain) {
+      var faviconUrl = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=64';
+      iconContent += '<img class="tool-favicon" src="' + faviconUrl + '" alt="' + (tool.name || '') + '" loading="lazy" onload="this.classList.add(\'loaded\')" onerror="this.remove()" />';
+    }
+
     return '<div class="tool-card" data-url="' + tool.url + '" data-id="' + tool.id + '" style="cursor:pointer">' +
       '<div class="tool-card-header">' +
-        '<div class="tool-icon" style="' + gradientStyle + '">' + firstLetter + '</div>' +
+        '<div class="tool-icon" style="' + gradientStyle + '">' + iconContent + '</div>' +
         '<div class="tool-info">' +
           '<h3 class="tool-name">' + tool.name + '</h3>' +
           '<span class="tool-category-badge">' + catLabel + '</span>' +
@@ -700,6 +735,70 @@ document.addEventListener('DOMContentLoaded', async function () {
         applyFilters();
       }
     }, 300));
+
+    // Dynamic Turkish Typewriter Placeholder Animation
+    (function initHeroTypewriter() {
+      var suggestions = [
+        "Logo tasarlayan ücretsiz AI...",
+        "Kod inceleyen en iyi asistan...",
+        "Video oluşturan popüler araçlar...",
+        "Metinden ses üreten Türkçe yapay zeka...",
+        "PDF özetleme ve araştırma araçları...",
+        "Ücretsiz SEO ve blog içerik yazarı...",
+        "Fotoğraf arka planı silen araçlar..."
+      ];
+      
+      var phraseIndex = 0;
+      var charIndex = 0;
+      var isDeleting = false;
+      var isFocused = false;
+      var timer = null;
+
+      heroSearchInput.addEventListener('focus', function() {
+        isFocused = true;
+        if (timer) clearTimeout(timer);
+        if (!heroSearchInput.value) {
+          heroSearchInput.setAttribute('placeholder', 'Örn: Kod yazma asistanı...');
+        }
+      });
+
+      heroSearchInput.addEventListener('blur', function() {
+        isFocused = false;
+        if (!heroSearchInput.value) {
+          timer = setTimeout(typeLoop, 600);
+        }
+      });
+
+      function typeLoop() {
+        if (isFocused || (heroSearchInput.value && heroSearchInput.value.length > 0)) {
+          return;
+        }
+
+        var current = suggestions[phraseIndex];
+        if (isDeleting) {
+          charIndex--;
+          heroSearchInput.setAttribute('placeholder', current.substring(0, charIndex));
+          if (charIndex <= 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % suggestions.length;
+            timer = setTimeout(typeLoop, 350);
+            return;
+          }
+          timer = setTimeout(typeLoop, 35);
+        } else {
+          charIndex++;
+          heroSearchInput.setAttribute('placeholder', current.substring(0, charIndex));
+          if (charIndex >= current.length) {
+            isDeleting = true;
+            timer = setTimeout(typeLoop, 2200);
+            return;
+          }
+          timer = setTimeout(typeLoop, 70);
+        }
+      }
+
+      timer = setTimeout(typeLoop, 1000);
+    })();
   }
 
   if (smartSearchCheckbox) {
