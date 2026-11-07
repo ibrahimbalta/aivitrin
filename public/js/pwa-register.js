@@ -174,3 +174,75 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
+
+// ─── Unified Mobile Navigation Drawer Controller ───
+(function initGlobalMobileDrawer() {
+  function setupDrawer() {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (!mobileNav) return;
+
+    let backdrop = document.getElementById('mobile-nav-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'mobile-nav-backdrop';
+      backdrop.className = 'mobile-nav-backdrop';
+      mobileNav.parentNode.insertBefore(backdrop, mobileNav);
+    }
+
+    function openNav() {
+      mobileNav.classList.add('active');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      mobileNav.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function(e) {
+      const toggleBtn = e.target.closest('#mobile-menu-btn, .mobile-menu-btn');
+      if (toggleBtn) {
+        e.preventDefault();
+        if (mobileNav.classList.contains('active')) {
+          closeNav();
+        } else {
+          openNav();
+        }
+        return;
+      }
+
+      const closeBtn = e.target.closest('#mobile-nav-close, .mobile-nav-close');
+      if (closeBtn) {
+        e.preventDefault();
+        closeNav();
+        return;
+      }
+
+      if (e.target === backdrop) {
+        e.preventDefault();
+        closeNav();
+        return;
+      }
+
+      const navLink = e.target.closest('#mobile-nav a');
+      if (navLink) {
+        closeNav();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+        closeNav();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupDrawer);
+  } else {
+    setupDrawer();
+  }
+})();

@@ -400,117 +400,248 @@ img {
 .icon-sun { display: block; }
 .icon-moon { display: none; }
 
-/* ---- 5. Mobile Navigation ---- */
-/* ---- 5. Mobile Navigation ---- */
+/* ---- 5. Modern Mobile Navigation Drawer ---- */
+.mobile-nav-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(4, 6, 14, 0.72) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 9998 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.mobile-nav-backdrop.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
 .mobile-nav {
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  bottom: 0;
-  width: 290px;
-  background: rgba(10, 10, 14, 0.88) !important;
-  backdrop-filter: blur(25px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px 80px 20px !important;
-  gap: 6px;
-  transform: translateX(-100%);
-  transition: transform var(--transition-slow);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 310px !important;
+  max-width: 86vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background: rgba(10, 14, 28, 0.96) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 16px 14px 40px 14px !important;
+  gap: 3px !important;
+  transform: translateX(-100%) !important;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6) !important;
-  overflow-y: auto;
+  box-shadow: 20px 0 60px rgba(0, 0, 0, 0.75) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 [data-theme="light"] .mobile-nav {
-  background: rgba(255, 255, 255, 0.94) !important;
+  background: rgba(255, 255, 255, 0.98) !important;
   border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.15) !important;
-}
-
-.mobile-nav::before {
-  content: "AiKlavuz";
-  display: block;
-  font-family: 'Fredoka', var(--font-primary);
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  padding-left: 12px;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.02em;
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.12) !important;
 }
 
 .mobile-nav.active {
-  transform: translateX(0);
+  transform: translateX(0) !important;
 }
 
+/* Drawer Header */
+.mobile-nav-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 6px 6px 14px 8px !important;
+  margin-bottom: 6px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-theme="light"] .mobile-nav-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.mobile-nav-brand {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.mobile-nav-brand .logo-ai {
+  color: #6366f1 !important;
+}
+
+.mobile-nav-brand .logo-vitrin {
+  color: var(--text-primary) !important;
+}
+
+.mobile-nav-close {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  color: var(--text-secondary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.mobile-nav-close:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: var(--text-primary) !important;
+  transform: scale(1.05) !important;
+}
+
+[data-theme="light"] .mobile-nav-close {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Category Dividers */
+.mobile-nav-section-title {
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(148, 163, 184, 0.65) !important;
+  padding: 10px 10px 4px 10px !important;
+  margin-top: 4px !important;
+  user-select: none !important;
+}
+
+[data-theme="light"] .mobile-nav-section-title {
+  color: #64748b !important;
+}
+
+/* Navigation Links */
 .mobile-nav a {
-  display: flex;
-  align-items: center;
-  height: 48px;
-  padding: 0 16px !important;
-  border-radius: 12px !important;
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.92rem;
-  border: 1px solid transparent;
-  transition: all var(--transition-fast);
-  margin-bottom: 2px;
+  display: flex !important;
+  align-items: center !important;
+  height: 44px !important;
+  padding: 0 12px !important;
+  border-radius: 11px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  border: 1px solid transparent !important;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none !important;
+  user-select: none !important;
 }
 
 .mobile-nav a:hover {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
   color: var(--text-primary) !important;
-  border-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  transform: translateX(3px) !important;
 }
 
 [data-theme="light"] .mobile-nav a:hover {
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
   color: var(--text-primary) !important;
-  border-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* 🏷️ Mobile Nav Link Icon Injection */
-.mobile-nav a[href*="#tools-section"]::before { content: "⚡"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="alternatives"]::before { content: "🔄"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="compare"]::before { content: "📊"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="workflows"]::before { content: "⚙️"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="prompts"]::before { content: "✍️"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="haberler"]::before { content: "📰"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="akademi"]::before { content: "🎓"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="asistan"]::before { content: "💬"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="professions"]::before { content: "💼"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="stories"]::before { content: "📖"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="calculator"]::before { content: "🧮"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[id="mobile-btn-submit-tool"]::before { content: "🚀"; margin-right: 10px; font-size: 1.1rem; }
+/* Modern Glass Icon Badges */
+.mobile-nav a::before {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border-radius: 9px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  margin-right: 12px !important;
+  font-size: 0.98rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  flex-shrink: 0 !important;
+}
+
+.mobile-nav a:hover::before {
+  background: rgba(99, 102, 241, 0.18) !important;
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  transform: scale(1.06) !important;
+}
+
+[data-theme="light"] .mobile-nav a::before {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Unique Non-Repeating Icons */
+.mobile-nav a[href*="#tools-section"]::before { content: "🔍" !important; }
+.mobile-nav a[id="mobile-nav-categories"]::before { content: "🗂️" !important; }
+.mobile-nav a[id="mobile-toolkit-btn"]::before { content: "🎒" !important; }
+.mobile-nav a[href*="asistan"]::before { content: "💬" !important; }
+.mobile-nav a[href*="kurulum"]::before { content: "🎯" !important; }
+.mobile-nav a[href*="studio"]::before { content: "⚡" !important; }
+.mobile-nav a[href*="models"]::before { content: "📊" !important; }
+.mobile-nav a[href*="prompt-studio"]::before { content: "💡" !important; }
+.mobile-nav a[href*="stack"]::before { content: "📦" !important; }
+.mobile-nav a[href*="kariyer"]::before { content: "🎓" !important; }
+.mobile-nav a[href*="alternatives"]::before { content: "🔄" !important; }
+.mobile-nav a[href*="compare"]::before { content: "⚖️" !important; }
+.mobile-nav a[href*="workflows"]::before { content: "⚙️" !important; }
+.mobile-nav a[href*="calculator"]::before { content: "🧮" !important; }
+.mobile-nav a[href*="firsatlar"]::before { content: "🏷️" !important; }
+.mobile-nav a[href*="haberler"]::before { content: "📰" !important; }
+.mobile-nav a[id="mobile-btn-submit-tool"]::before { content: "🚀" !important; }
+
+/* Highlighted Bana Özel Rehber */
+.mobile-nav a[href*="kurulum"] {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(236, 72, 153, 0.18)) !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.18) !important;
+  margin: 6px 0 !important;
+  display: flex !important;
+}
+
+.mobile-nav a[href*="kurulum"]::before {
+  background: linear-gradient(135deg, #6366f1, #ec4899) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* Bottom Actions */
+.mobile-nav-footer {
+  margin-top: auto !important;
+  padding-top: 14px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="light"] .mobile-nav-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
 
 #mobile-btn-submit-tool {
   background: var(--gradient-primary) !important;
   color: white !important;
-  justify-content: center;
-  font-weight: 600;
-  border-radius: var(--radius-full) !important;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
-  margin-top: 14px;
-}
-
-#mobile-btn-submit-tool:hover {
-  filter: brightness(1.1);
-  background: var(--gradient-primary) !important;
-  color: white !important;
-}
-
-.mobile-nav hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin: 14px 0;
-}
-
-[data-theme="light"] .mobile-nav hr {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  justify-content: center !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.3) !important;
+  height: 46px !important;
 }
 
 /* ---- 6. Hero Section ---- */
@@ -7262,21 +7393,7 @@ img {
   }
 }
 
-/* Mobile Nav highlighted button for Setup Wizard */
-.mobile-nav a[href="/kurulum"] {
-  background: var(--gradient-primary) !important;
-  color: white !important;
-  border-radius: var(--radius-sm);
-  margin: 12px 16px !important;
-  padding: 12px !important;
-  text-align: center;
-  font-weight: 700 !important;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2) !important;
-  display: block !important;
-}
-.mobile-nav a[href="/kurulum"]:hover {
-  filter: brightness(1.1);
-}
+
 
 /* ============================================================
    19. MINIMALIST PROFESSIONAL REDESIGN OVERRIDES
@@ -8898,12 +9015,4 @@ html, body {
   }
 }
 
-/* Additional Mobile Nav Category & Toolkit Icon Styles */
-.mobile-nav a[id="mobile-nav-categories"]::before { content: "🗂️"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[id="mobile-toolkit-btn"]::before { content: "🎒"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="studio"]::before { content: "⚡"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="models"]::before { content: "📊"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="prompt-studio"]::before { content: "💡"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="stack"]::before { content: "📦"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="kariyer"]::before { content: "💼"; margin-right: 12px; font-size: 1.1rem; }
-.mobile-nav a[href*="kurulum"]::before { content: "🎯"; margin-right: 12px; font-size: 1.1rem; }
+

@@ -662,27 +662,45 @@
   </header>
 
     <!-- MOBILE NAV -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
   <nav class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <a href="/" class="mobile-nav-brand">
+        <span class="logo-ai">Ai</span><span class="logo-vitrin">Klavuz</span>
+      </a>
+      <button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="Menüyü Kapat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav-section-title">Keşfet & Araçlar</div>
     <a href="/#tools-section">AI Araçları</a>
     <a href="#" id="mobile-nav-categories" data-open-categories>Tüm Kategoriler</a>
     <a href="#" id="mobile-toolkit-btn">AI Çantam (<span class="toolkit-count">0</span>)</a>
     <a href="/asistan">AI Asistanı</a>
     <a href="/kurulum">Bana Özel Rehber</a>
-    <hr>
-    <a href="/studio">⚡ AI Stüdyo</a>
-    <a href="/models">📊 LLM Fiyat Borsası</a>
-    <a href="/prompt-studio">💡 Prompt Stüdyosu</a>
-    <a href="/stack">📦 Ekip AI Stack</a>
-    <a href="/kariyer">🎓 AI Kariyer & Mentörlük</a>
-    <hr>
+
+    <div class="mobile-nav-section-title">Stüdyo & Çözümler</div>
+    <a href="/studio">AI Stüdyo</a>
+    <a href="/models">LLM Fiyat Borsası</a>
+    <a href="/prompt-studio">Prompt Stüdyosu</a>
+    <a href="/stack">Ekip AI Stack</a>
+    <a href="/kariyer">AI Kariyer & Mentörlük</a>
+
+    <div class="mobile-nav-section-title">Ekstra & Topluluk</div>
     <a href="/alternatives">Alternatifler</a>
     <a href="/compare">Karşılaştır</a>
     <a href="/workflows">İş Akışları</a>
     <a href="/calculator">Hesaplayıcı</a>
     <a href="/firsatlar">Fırsatlar & Kuponlar</a>
     <a href="/haberler">Yapay Zeka Haberleri</a>
-    <hr>
-    <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
+
+    <div class="mobile-nav-footer">
+      <a href="#" id="mobile-btn-submit-tool">Projemi Vitrine Ekle</a>
+    </div>
   </nav>
 
   <!-- MAIN CONTENT -->
