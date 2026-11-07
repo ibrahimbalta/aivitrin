@@ -9016,3 +9016,11 @@ html, body {
 }
 
 
+
+
+/* Hide PWA Install Banner on Desktop Web */
+@media (min-width: 769px) {
+  #pwa-install-banner {
+    display: none !important;
+  }
+}

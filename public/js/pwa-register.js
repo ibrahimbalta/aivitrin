@@ -16,9 +16,20 @@ if ('serviceWorker' in navigator) {
 // ─── Native Install Prompt (Android APK / PWA Banner) ───
 let deferredPrompt = null;
 
+function isMobileDevice() {
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent || '');
+  const isSmallScreen = window.innerWidth <= 768;
+  return isMobileUA || isSmallScreen;
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
+
+  // Web / Masaüstünde kesinlikle gösterme, sadece mobilde göster
+  if (!isMobileDevice()) {
+    return;
+  }
 
   const dismissedTime = localStorage.getItem('aiklavuz_pwa_dismissed');
   if (dismissedTime && (Date.now() - parseInt(dismissedTime, 10)) < 7 * 24 * 60 * 60 * 1000) {
@@ -29,6 +40,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 function showInstallBanner() {
+  // Web / Masaüstünde kesinlikle gösterme, sadece mobilde göster
+  if (!isMobileDevice()) {
+    return;
+  }
+
   if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     return;
   }
@@ -73,6 +89,11 @@ function showInstallBanner() {
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2);
         padding: 12px 16px;
         animation: pwaSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @media (min-width: 769px) {
+        #pwa-install-banner {
+          display: none !important;
+        }
       }
       @keyframes pwaSlideUp {
         from { opacity: 0; transform: translate(-50%, 40px); }
