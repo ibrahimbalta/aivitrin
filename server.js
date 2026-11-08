@@ -854,8 +854,8 @@ app.get('/tool/:id', function (req, res) {
     console.error('Error injecting dynamic SEO tags:', err.message);
   }
   
-  // Fallback to sending standard static file
-  res.sendFile(path.join(__dirname, 'public', 'tool.html'));
+  // Fallback to sending standard static file with 404 status
+  res.status(404).sendFile(path.join(__dirname, 'public', 'tool.html'));
 });
 
 app.get('/professions', function (req, res) {
